@@ -5,7 +5,15 @@ using UnityEngine;
 namespace MoveToCode {
     public abstract class Instruction {
         public List<IArgument> argumentList = new List<IArgument>();
-        public abstract void RunInstruction();
+        public abstract InstructionReturnValue RunInstruction();
+        Instruction nextInstruction;
+
+        public void SetNextInstruction(Instruction instIn) {
+            nextInstruction = instIn;
+        }
+        public Instruction GetNextInstruction() {
+            return nextInstruction;
+        }
 
         /// <summary>
         /// Adds argument onto the argument list at specified position. If position is -1, argument is added to end of list. Resizes list if index out of bounds.

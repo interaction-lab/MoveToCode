@@ -11,8 +11,10 @@ namespace MoveToCode {
             AddArgument(argIn, 0);
         }
 
-        public override void RunInstruction() {
+
+        public override InstructionReturnValue RunInstruction() {
             Debug.Log(argumentList[0].EvaluateArgument().GetValue());
+            return new InstructionReturnValue(null, GetNextInstruction());
         }
     }
 }

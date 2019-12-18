@@ -1,37 +1,29 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace MoveToCode {
     public class CodeBlock : MonoBehaviour {
         public Instruction myInstruction;
-        CodeBlock parentCodeBlock;
+        CodeBlock childCodeBlock;
 
         public void SetNextInstruction(Instruction iIn) {
             myInstruction.SetNextInstruction(iIn);
         }
 
-        public void RemoveCurParentAndAttachNewParentBlock(CodeBlock parentCodeBlockIn) {
-            RemoveFromParentCodeBlock();
-            SetParentBlocksNextInstruction(null);
-            SetThisCodeBlocksParentAndPosition(parentCodeBlockIn);
-            SetParentBlocksNextInstruction(myInstruction);
+        public void RemoveChildBlockAndAttachNew(CodeBlock newChildBlock) {
+            RemoveChildBlock();
+            AddNewChildBlock(newChildBlock);
         }
 
-        private void SetThisCodeBlocksParentAndPosition(CodeBlock parentCodeBlockIn) {
-            transform.SetParent(parentCodeBlockIn ?
-                parentCodeBlockIn.transform :
-                CodeBlockManager.instance.transform);
-            transform.localPosition = Vector3.down;
-            parentCodeBlock = parentCodeBlockIn;
+        private void AddNewChildBlock(CodeBlock newChildBlock) {
+            childCodeBlock = newChildBlock;
+            if (newChildBlock) {
+                newChildBlock.transform.SetParent(transform);
+                newChildBlock.transform.localPosition = Vector3.down;
+            }
         }
 
-        public void RemoveFromParentCodeBlock() {
-            parentCodeBlock?.SetNextInstruction(null);
-        }
-
-        public void SetParentBlocksNextInstruction(Instruction iIn) {
-            parentCodeBlock?.SetNextInstruction(myInstruction);
+        public void RemoveChildBlock() {
+            childCodeBlock?.transform.SetParent(CodeBlockManager.instance.transform);
         }
     }
 }

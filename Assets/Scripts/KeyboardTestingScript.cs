@@ -3,14 +3,18 @@ using UnityEngine;
 
 public class KeyboardTestingScript : MonoBehaviour {
 
-    IntDataType i;
+    IntDataType i, i2;
     PrintInstruction pi;
     PrintInstruction p2;
+    SubtractionInstruction st;
     void Start() {
         i = new IntDataType(4);
+        i2 = new IntDataType(9);
         pi = new PrintInstruction(i);
         p2 = new PrintInstruction(i);
+        st = new SubtractionInstruction(i, i2);
         pi.SetNextInstruction(p2);
+        pi.SetArgumentAt(st, 0);
         Interpreter.instance.AddToInstructionStack(pi);
     }
 

@@ -3,17 +3,23 @@
 namespace MoveToCode {
     public class PrintInstruction : Instruction {
 
+        string output;
+
         public PrintInstruction() {
             ResizeArgumentList(1);
         }
 
         public PrintInstruction(IArgument argIn) {
-            AddArgument(argIn, 0);
+            SetArgumentAt(argIn, 0);
         }
 
+        public override void EvaluateArgumentList() {
+            output = argumentList[0].EvaluateArgument().GetValue().ToString();
+        }
 
         public override InstructionReturnValue RunInstruction() {
-            Debug.Log(argumentList[0].EvaluateArgument().GetValue());
+            EvaluateArgumentList();
+            Debug.Log(output);
             return new InstructionReturnValue(null, GetNextInstruction());
         }
     }

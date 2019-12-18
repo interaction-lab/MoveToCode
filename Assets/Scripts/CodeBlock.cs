@@ -19,8 +19,8 @@ namespace MoveToCode {
         }
 
         private void SetThisCodeBlocksParentAndPosition(CodeBlock parentCodeBlockIn) {
-            transform.SetParent(parentCodeBlock ?
-                parentCodeBlock.transform :
+            transform.SetParent(parentCodeBlockIn ?
+                parentCodeBlockIn.transform :
                 CodeBlockManager.instance.transform);
             transform.localPosition = Vector3.down;
             parentCodeBlock = parentCodeBlockIn;

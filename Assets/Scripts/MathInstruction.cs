@@ -1,19 +1,20 @@
 ﻿namespace MoveToCode {
     public abstract class MathInstruction : Instruction {
-        protected int leftInt, rightInt, numArguments = 2;
+        protected float leftNum, rightNum;
+        protected int numArguments = 2;
 
         public MathInstruction() {
             ResizeArgumentList(numArguments);
         }
 
-        public MathInstruction(IntDataType intLeft, IntDataType intRight) {
-            SetArgumentAt(intLeft);
-            SetArgumentAt(intRight);
+        public MathInstruction(INumberDataType numLeftIn, INumberDataType numRightIn) {
+            SetArgumentAt(numLeftIn);
+            SetArgumentAt(numRightIn);
         }
 
         public override void EvaluateArgumentList() {
-            leftInt = argumentList[0].EvaluateArgument().GetValue();
-            rightInt = argumentList[1].EvaluateArgument().GetValue();
+            leftNum = argumentList[0].EvaluateArgument().GetValue();
+            rightNum = argumentList[1].EvaluateArgument().GetValue();
         }
 
         public override int GetNumArguments() {

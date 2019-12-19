@@ -1,7 +1,5 @@
-﻿using System;
-
-namespace MoveToCode {
-    public class IntDataType : IDataType {
+﻿namespace MoveToCode {
+    public class IntDataType : INumberDataType {
         public IntDataType(int valIn) {
             SetValue(valIn);
         }

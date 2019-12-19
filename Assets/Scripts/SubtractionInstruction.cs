@@ -2,7 +2,7 @@
     public class SubtractionInstruction : MathInstruction {
         public override InstructionReturnValue RunInstruction() {
             EvaluateArgumentList();
-            return new InstructionReturnValue(new IntDataType(leftInt - rightInt), GetNextInstruction());
+            return new InstructionReturnValue(new FloatDataType(leftNum - rightNum), GetNextInstruction());
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿namespace MoveToCode {
     public class SubtractionInstruction : Instruction {
 
-        int leftInt, rightInt, numArguments;
+        int leftInt, rightInt, numArguments = 2;
 
         public SubtractionInstruction() {
             ResizeArgumentList(numArguments);

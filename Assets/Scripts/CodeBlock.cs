@@ -1,51 +1,84 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+// TODO: this should probably be "Instruction Code Block" and "Data Code Block"
 namespace MoveToCode {
-    public class CodeBlock : MonoBehaviour {
-        Instruction myInstruction;
+    public abstract class CodeBlock : MonoBehaviour {
+        protected Instruction myInstruction;
+        protected IDataType myData;
         CodeBlock nextCodeBlock;
         List<CodeBlock> argumentCodeBlocks;
 
-        private void Start() {
-            ResizeArgumentCodeBlocks(myInstruction.GetNumArguments());
+        // Abstract Methods
+        protected abstract void SetInstructionOrData();
+        protected abstract IArgument GetArgumentValueOfCodeBlock();
+
+        // Start Up
+        private void Awake() {
+            argumentCodeBlocks = new List<CodeBlock>();
+            SetInstructionOrData();
+            myInstruction?.SetCodeBlock(this);
+            myData?.SetCodeBlock(this);
+            argumentCodeBlocks.Resize(myInstruction.GetNumArguments());
         }
 
         // Public Methods
-        public Instruction GetCodeBlockInstruction() {
+        public Instruction GetInstruction() {
             return myInstruction;
         }
 
-        public void setNextCodeBlock(CodeBlock newCodeBlock) {
+        public IArgument GetArgumentAt(int position) {
+            return myInstruction.GetArgumentAt(position);
+        }
+
+        public void SetNextCodeBlock(CodeBlock newInstructionCodeBlock) {
             RemoveNextCodeBlock();
-            AddNewNextCodeBlock(newCodeBlock);
+            AddNewNextCodeBlock(newInstructionCodeBlock);
         }
 
-        public void setArgumentBlockAt(CodeBlock arg, int position) {
-            myInstruction.SetArgumentAt(arg.GetCodeBlockInstruction(), position);
-        }
-
-        public void RemoveNextCodeBlock() {
-            nextCodeBlock?.transform.SetParent(CodeBlockManager.instance.transform);
+        public void SetArgumentBlockAt(CodeBlock newArgumentCodeBlock, int position) {
+            RemoveArgumentAt(position);
+            AddNewArgumentAt(newArgumentCodeBlock, position);
         }
 
         // Private Helpers
+        // If you find yourself making these public, 
+        // then you should reconsider what you are doing
         private void AddNewNextCodeBlock(CodeBlock newCodeBlock) {
             nextCodeBlock = newCodeBlock;
             if (newCodeBlock) {
                 newCodeBlock.transform.SetParent(transform);
-                newCodeBlock.transform.localPosition = Vector3.down;
+                newCodeBlock.transform.localPosition = Vector3.down; // TODO: once arg placing is done, update this for better placement
             }
+            SetNextInstruction(newCodeBlock.GetInstruction());
+        }
+
+        private void AddNewArgumentAt(CodeBlock newArgumentCodeBlock, int position) {
+            // need to update instruction arguments
+            argumentCodeBlocks[position] = newArgumentCodeBlock;
+            if (newArgumentCodeBlock) {
+                newArgumentCodeBlock.transform.SetParent(transform);
+                newArgumentCodeBlock.transform.localPosition = Vector3.right * (position + 1); // TODO: this placement
+            }
+            myInstruction.SetArgumentAt(newArgumentCodeBlock.GetArgumentValueOfCodeBlock(), position);
         }
 
         private void SetNextInstruction(Instruction iIn) {
             myInstruction.SetNextInstruction(iIn);
         }
 
-        private void ResizeArgumentCodeBlocks(int numArgs) {
-            while (argumentCodeBlocks.Count < numArgs) {
-                argumentCodeBlocks.Add(null);
-            }
+        private void SetArgumentAt(IArgument newArg, int position) {
+            myInstruction.SetArgumentAt(newArg, position);
+        }
+
+        private void RemoveNextCodeBlock() {
+            nextCodeBlock?.transform.SetParent(CodeBlockManager.instance.transform);
+            nextCodeBlock = null;
+        }
+
+        private void RemoveArgumentAt(int position) {
+            argumentCodeBlocks[position]?.transform.SetParent(CodeBlockManager.instance.transform);
+            argumentCodeBlocks[position] = null;
         }
     }
 }

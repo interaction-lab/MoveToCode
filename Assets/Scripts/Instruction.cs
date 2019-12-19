@@ -2,17 +2,34 @@
 
 namespace MoveToCode {
     public abstract class Instruction : IArgument {
-        public List<IArgument> argumentList = new List<IArgument>();
+
+        Instruction nextInstruction;
+        protected List<IArgument> argumentList = new List<IArgument>();
+        protected CodeBlock myCodeBlock;
+
         public abstract InstructionReturnValue RunInstruction();
         public abstract void EvaluateArgumentList();
         public abstract int GetNumArguments();
-        Instruction nextInstruction;
 
         public void SetNextInstruction(Instruction instIn) {
             nextInstruction = instIn;
         }
         public Instruction GetNextInstruction() {
             return nextInstruction;
+        }
+        public IArgument GetArgumentAt(int position) {
+            return argumentList[position];
+        }
+        public void RemoveArgumentAt(int position) {
+            argumentList[position] = null;
+        }
+
+        public CodeBlock GetCodeBlock() {
+            return myCodeBlock;
+        }
+
+        public void SetCodeBlock(CodeBlock codeBlock) {
+            myCodeBlock = codeBlock;
         }
 
         /// <summary>
@@ -31,9 +48,7 @@ namespace MoveToCode {
         }
 
         public void ResizeArgumentList(int desiredSize) {
-            while (desiredSize > argumentList.Count) {
-                argumentList.Add(new NULLArgument());
-            }
+            argumentList.Resize(desiredSize);
         }
 
         public IDataType EvaluateArgument() {

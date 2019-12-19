@@ -40,12 +40,14 @@ namespace MoveToCode {
         public void SetNextCodeBlock(CodeBlock newInstructionCodeBlock) {
             Assert.IsTrue(IsInstructionCodeBlock());
             RemoveNextCodeBlock();
+            newInstructionCodeBlock.RemoveFromParentBlock();
             AddNewNextCodeBlock(newInstructionCodeBlock);
         }
 
         public void SetArgumentBlockAt(CodeBlock newArgumentCodeBlock, int position) {
             Assert.IsTrue(IsInstructionCodeBlock());
             RemoveArgumentAt(position);
+            newArgumentCodeBlock.RemoveFromParentBlock();
             AddNewArgumentAt(newArgumentCodeBlock, position);
         }
 
@@ -119,11 +121,13 @@ namespace MoveToCode {
         }
 
         private void RemoveNextCodeBlock() {
+            SetNextInstruction(null);
             nextCodeBlock?.transform.SetParent(CodeBlockManager.instance.transform);
             nextCodeBlock = null;
         }
 
         private void RemoveArgumentAt(int position) {
+            SetArgumentAt(null, position);
             argumentCodeBlocks[position]?.transform.SetParent(CodeBlockManager.instance.transform);
             argumentCodeBlocks[position] = null;
         }

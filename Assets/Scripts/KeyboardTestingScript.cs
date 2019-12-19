@@ -31,7 +31,7 @@ public class KeyboardTestingScript : MonoBehaviour {
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2)) {
             Debug.Log(2);
-            pb2.SetNextCodeBlock(pb3);
+            pb2.SetArgumentBlockAt(dt1, 0);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3)) {
             Debug.Log(3);

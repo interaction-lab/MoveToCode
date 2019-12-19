@@ -2,6 +2,7 @@
     public abstract class IDataType : IArgument {
         public dynamic value;
         protected CodeBlock myCodeBlock;
+        public abstract bool IsSameDataTypeAndEqualTo(IDataType otherVal);
 
         public IDataType EvaluateArgument() {
             return this;

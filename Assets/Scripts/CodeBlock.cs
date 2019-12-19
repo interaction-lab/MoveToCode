@@ -49,12 +49,43 @@ namespace MoveToCode {
             AddNewArgumentAt(newArgumentCodeBlock, position);
         }
 
+        public bool IsMyNextInstruction(Instruction iIn) {
+            return myInstruction.GetNextInstruction() == iIn;
+        }
+
+        public int GetPositionOfArgument(IArgument iArgIn) {
+            int index = 0;
+            foreach (CodeBlock codeBlock in argumentCodeBlocks) {
+                if (codeBlock.GetArgumentValueOfCodeBlock() == iArgIn) {
+                    return index;
+                }
+                ++index;
+            }
+            Assert.IsTrue(false); // Should be able to find argument, must call IsMyNextInstruction first
+            return -1; // Will never get here, put so VS stops complaining
+        }
+
         public bool IsInstructionCodeBlock() {
             return myInstruction != null;
         }
 
         public bool IsDataCodeBlock() {
             return myData != null;
+        }
+
+        // Note: This is slightly inefficienct approach but makes it so you don't have to keep track of as much
+        public void RemoveFromParentBlock() {
+            CodeBlock parentCodeBlock = transform.parent?.GetComponent<CodeBlock>();
+            if (parentCodeBlock != null) {
+                if (IsInstructionCodeBlock() && parentCodeBlock.IsMyNextInstruction(myInstruction)) {
+                    parentCodeBlock.SetNextCodeBlock(null);
+                }
+                else {
+                    parentCodeBlock.RemoveArgumentAt(
+                        parentCodeBlock.GetPositionOfArgument(
+                            GetArgumentValueOfCodeBlock()));
+                }
+            }
         }
 
         // Private Helpers

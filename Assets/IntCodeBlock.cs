@@ -1,10 +1,10 @@
 ﻿namespace MoveToCode {
 
     public class IntCodeBlock : CodeBlock {
-        public string output = "DEFAULT STRING";
+        public int output;
 
         protected override void SetInstructionOrData() {
-            myData = new StringDataType(output);
+            myData = new IntDataType(output);
         }
     }
 }

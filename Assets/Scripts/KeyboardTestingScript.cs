@@ -8,16 +8,16 @@ public class KeyboardTestingScript : MonoBehaviour {
     PrintInstruction p2;
     SubtractionInstruction st;
 
-    public CodeBlock pb1, pb2, pb3;
+    public CodeBlock pb1, pb2, pb3, dt1;
 
     void Start() {
-        i = new IntDataType(4);
-        i2 = new IntDataType(9);
-        pi = new PrintInstruction(i);
-        p2 = new PrintInstruction(i);
-        st = new SubtractionInstruction(i, i2);
-        pi.SetNextInstruction(p2);
-        pi.SetArgumentAt(st, 0);
+        /* i = new IntDataType(4);
+         i2 = new IntDataType(9);
+         pi = new PrintInstruction(i);
+         p2 = new PrintInstruction(i);
+         st = new SubtractionInstruction(i, i2);
+         pi.SetNextInstruction(p2);
+         pi.SetArgumentAt(st, 0);*/
         Interpreter.instance.AddToInstructionStack(pb1.GetInstruction());
     }
 
@@ -27,7 +27,7 @@ public class KeyboardTestingScript : MonoBehaviour {
         }
         else if (Input.GetKeyDown(KeyCode.Alpha1)) {
             Debug.Log(1);
-            pb2.SetNextCodeBlock(pb1);
+            pb1.SetArgumentBlockAt(dt1, 0);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2)) {
             Debug.Log(2);

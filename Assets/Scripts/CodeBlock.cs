@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace MoveToCode {
     public abstract class CodeBlock : MonoBehaviour {
@@ -17,7 +18,9 @@ namespace MoveToCode {
             SetInstructionOrData();
             myInstruction?.SetCodeBlock(this);
             myData?.SetCodeBlock(this);
-            argumentCodeBlocks.Resize(myInstruction.GetNumArguments());
+            if (IsInstructionCodeBlock()) {
+                argumentCodeBlocks.Resize(myInstruction.GetNumArguments());
+            }
         }
 
         // Public Methods
@@ -29,12 +32,19 @@ namespace MoveToCode {
             return myInstruction.GetArgumentAt(position);
         }
 
+        public void SetValueOfData(IDataType dTIn) {
+            Assert.IsTrue(IsDataCodeBlock());
+            myData.SetValue(dTIn.GetValue());
+        }
+
         public void SetNextCodeBlock(CodeBlock newInstructionCodeBlock) {
+            Assert.IsTrue(IsInstructionCodeBlock());
             RemoveNextCodeBlock();
             AddNewNextCodeBlock(newInstructionCodeBlock);
         }
 
         public void SetArgumentBlockAt(CodeBlock newArgumentCodeBlock, int position) {
+            Assert.IsTrue(IsInstructionCodeBlock());
             RemoveArgumentAt(position);
             AddNewArgumentAt(newArgumentCodeBlock, position);
         }

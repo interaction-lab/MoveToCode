@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-// TODO: this should probably be "Instruction Code Block" and "Data Code Block"
 namespace MoveToCode {
     public abstract class CodeBlock : MonoBehaviour {
         protected Instruction myInstruction;
@@ -11,7 +10,6 @@ namespace MoveToCode {
 
         // Abstract Methods
         protected abstract void SetInstructionOrData();
-        protected abstract IArgument GetArgumentValueOfCodeBlock();
 
         // Start Up
         private void Awake() {
@@ -39,6 +37,14 @@ namespace MoveToCode {
         public void SetArgumentBlockAt(CodeBlock newArgumentCodeBlock, int position) {
             RemoveArgumentAt(position);
             AddNewArgumentAt(newArgumentCodeBlock, position);
+        }
+
+        public bool IsInstructionCodeBlock() {
+            return myInstruction != null;
+        }
+
+        public bool IsDataCodeBlock() {
+            return myData != null;
         }
 
         // Private Helpers
@@ -79,6 +85,13 @@ namespace MoveToCode {
         private void RemoveArgumentAt(int position) {
             argumentCodeBlocks[position]?.transform.SetParent(CodeBlockManager.instance.transform);
             argumentCodeBlocks[position] = null;
+        }
+
+        private IArgument GetArgumentValueOfCodeBlock() {
+            if (IsInstructionCodeBlock()) {
+                return myInstruction;
+            }
+            return myData;
         }
     }
 }

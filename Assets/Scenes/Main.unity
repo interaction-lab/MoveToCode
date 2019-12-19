@@ -611,6 +611,8 @@ MonoBehaviour:
   pb2: {fileID: 863074443}
   pb3: {fileID: 2004704140}
   dt1: {fileID: 997384220}
+  dt2: {fileID: 1728407340}
+  subCB: {fileID: 283716582}
 --- !u!4 &1250844566
 Transform:
   m_ObjectHideFlags: 0

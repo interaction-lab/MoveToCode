@@ -14,6 +14,9 @@ namespace MoveToCode {
         }
 
         public void ResetCodeState() {
+            if (instructionStack == null) {
+                instructionStack = new Stack<Instruction>();
+            }
             instructionStack.Clear();
             lastInstructionReturn = null;
             curInstruction = startingInstruction;

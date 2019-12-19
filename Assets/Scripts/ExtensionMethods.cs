@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
+
 namespace MoveToCode {
     public static class ExtensionMethods {
 
@@ -18,6 +17,11 @@ namespace MoveToCode {
         // Stack Extensions
         public static bool Empty<T>(this Stack<T> s) {
             return s.Count == 0;
+        }
+
+        // Hashset Extensions
+        public static bool Empty<T>(this HashSet<T> h) {
+            return h.Count == 0;
         }
     }
 }

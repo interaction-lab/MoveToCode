@@ -27,5 +27,10 @@ namespace MoveToCode {
             Debug.Log(output);
             return new InstructionReturnValue(null, GetNextInstruction());
         }
+
+        public override void SetUpArgumentCompatability() {
+            compatibileArgumentTypes.Add(typeof(IDataType));
+            compatibileArgumentTypes.Add(typeof(Instruction));
+        }
     }
 }

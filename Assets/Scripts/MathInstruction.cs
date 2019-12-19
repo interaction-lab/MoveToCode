@@ -20,5 +20,9 @@
         public override int GetNumArguments() {
             return numArguments;
         }
+
+        public override void SetUpArgumentCompatability() {
+            compatibileArgumentTypes.Add(typeof(INumberDataType));
+        }
     }
 }

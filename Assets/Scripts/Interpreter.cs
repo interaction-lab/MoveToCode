@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MoveToCode {
@@ -9,10 +10,10 @@ namespace MoveToCode {
         public Instruction curInstruction;
 
         private void Awake() {
-            ResetAndRunCodeStartUp();
+            ResetCodeState();
         }
 
-        public void ResetAndRunCodeStartUp() {
+        public void ResetCodeState() {
             instructionStack.Clear();
             lastInstructionReturn = null;
             curInstruction = startingInstruction;
@@ -21,10 +22,18 @@ namespace MoveToCode {
 
         public void RunNextInstruction() {
             if (!CodeIsRunning()) {
-                ResetAndRunCodeStartUp();
+                ResetCodeState();
             }
-            lastInstructionReturn = curInstruction.RunInstruction();
-            UpdateCurInstruction();
+            try {
+                lastInstructionReturn = curInstruction.RunInstruction();
+                UpdateCurInstruction();
+            }
+            catch (Exception ex) {
+                Debug.LogWarning("Exception caught while running code: ");
+                Debug.LogWarning(ex.ToString());
+                ResetCodeState();
+            }
+
         }
 
         void UpdateCurInstruction() {

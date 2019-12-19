@@ -1,9 +1,10 @@
 ﻿namespace MoveToCode {
     public class SubtractionInstruction : Instruction {
 
-        int leftInt, rightInt;
+        int leftInt, rightInt, numArguments;
+
         public SubtractionInstruction() {
-            ResizeArgumentList(2);
+            ResizeArgumentList(numArguments);
         }
 
         public SubtractionInstruction(IntDataType intLeft, IntDataType intRight) {
@@ -14,6 +15,10 @@
         public override void EvaluateArgumentList() {
             leftInt = argumentList[0].EvaluateArgument().GetValue();
             rightInt = argumentList[1].EvaluateArgument().GetValue();
+        }
+
+        public override int GetNumArguments() {
+            return numArguments;
         }
 
         public override InstructionReturnValue RunInstruction() {

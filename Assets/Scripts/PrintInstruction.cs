@@ -4,9 +4,10 @@ namespace MoveToCode {
     public class PrintInstruction : Instruction {
 
         string output;
+        int numArguments = 1;
 
         public PrintInstruction() {
-            ResizeArgumentList(1);
+            ResizeArgumentList(numArguments);
         }
 
         public PrintInstruction(IArgument argIn) {
@@ -15,6 +16,10 @@ namespace MoveToCode {
 
         public override void EvaluateArgumentList() {
             output = argumentList[0].EvaluateArgument().GetValue().ToString();
+        }
+
+        public override int GetNumArguments() {
+            return numArguments;
         }
 
         public override InstructionReturnValue RunInstruction() {

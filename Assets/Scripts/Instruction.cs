@@ -5,6 +5,7 @@ namespace MoveToCode {
         public List<IArgument> argumentList = new List<IArgument>();
         public abstract InstructionReturnValue RunInstruction();
         public abstract void EvaluateArgumentList();
+        public abstract int GetNumArguments();
         Instruction nextInstruction;
 
         public void SetNextInstruction(Instruction instIn) {

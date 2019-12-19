@@ -1,29 +1,51 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace MoveToCode {
     public class CodeBlock : MonoBehaviour {
-        public Instruction myInstruction;
-        CodeBlock childCodeBlock;
+        Instruction myInstruction;
+        CodeBlock nextCodeBlock;
+        List<CodeBlock> argumentCodeBlocks;
 
-        public void SetNextInstruction(Instruction iIn) {
-            myInstruction.SetNextInstruction(iIn);
+        private void Start() {
+            ResizeArgumentCodeBlocks(myInstruction.GetNumArguments());
         }
 
-        public void RemoveChildBlockAndAttachNew(CodeBlock newChildBlock) {
-            RemoveChildBlock();
-            AddNewChildBlock(newChildBlock);
+        // Public Methods
+        public Instruction GetCodeBlockInstruction() {
+            return myInstruction;
         }
 
-        private void AddNewChildBlock(CodeBlock newChildBlock) {
-            childCodeBlock = newChildBlock;
-            if (newChildBlock) {
-                newChildBlock.transform.SetParent(transform);
-                newChildBlock.transform.localPosition = Vector3.down;
+        public void setNextCodeBlock(CodeBlock newCodeBlock) {
+            RemoveNextCodeBlock();
+            AddNewNextCodeBlock(newCodeBlock);
+        }
+
+        public void setArgumentBlockAt(CodeBlock arg, int position) {
+            myInstruction.SetArgumentAt(arg.GetCodeBlockInstruction(), position);
+        }
+
+        public void RemoveNextCodeBlock() {
+            nextCodeBlock?.transform.SetParent(CodeBlockManager.instance.transform);
+        }
+
+        // Private Helpers
+        private void AddNewNextCodeBlock(CodeBlock newCodeBlock) {
+            nextCodeBlock = newCodeBlock;
+            if (newCodeBlock) {
+                newCodeBlock.transform.SetParent(transform);
+                newCodeBlock.transform.localPosition = Vector3.down;
             }
         }
 
-        public void RemoveChildBlock() {
-            childCodeBlock?.transform.SetParent(CodeBlockManager.instance.transform);
+        private void SetNextInstruction(Instruction iIn) {
+            myInstruction.SetNextInstruction(iIn);
+        }
+
+        private void ResizeArgumentCodeBlocks(int numArgs) {
+            while (argumentCodeBlocks.Count < numArgs) {
+                argumentCodeBlocks.Add(null);
+            }
         }
     }
 }

@@ -27,15 +27,15 @@ public class KeyboardTestingScript : MonoBehaviour {
         }
         else if (Input.GetKeyDown(KeyCode.Alpha1)) {
             Debug.Log(1);
-            pb2.RemoveChildBlockAndAttachNew(pb1);
+            pb2.setNextCodeBlock(pb1);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2)) {
             Debug.Log(2);
-            pb2.RemoveChildBlockAndAttachNew(pb3);
+            pb2.setNextCodeBlock(pb3);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3)) {
             Debug.Log(3);
-            pb3.RemoveChildBlockAndAttachNew(pb1);
+            pb3.setNextCodeBlock(pb1);
         }
     }
 }

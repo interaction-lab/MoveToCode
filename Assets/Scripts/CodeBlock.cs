@@ -44,6 +44,7 @@ namespace MoveToCode {
         public void SetValueOfData(IDataType dTIn) {
             Assert.IsTrue(IsDataCodeBlock());
             myData.SetValue(dTIn.GetValue());
+            UpdateText();
         }
 
         public void SetNextCodeBlock(CodeBlock newInstructionCodeBlock) {
@@ -58,6 +59,7 @@ namespace MoveToCode {
             RemoveArgumentAt(position);
             newArgumentCodeBlock.RemoveFromParentBlock();
             AddNewArgumentAt(newArgumentCodeBlock, position);
+            UpdateText();
         }
 
         public bool IsMyNextInstruction(Instruction iIn) {
@@ -90,6 +92,7 @@ namespace MoveToCode {
                         parentCodeBlock.GetPositionOfArgument(
                             GetArgumentValueOfCodeBlock()));
                 }
+                parentCodeBlock.UpdateText();
             }
         }
 
@@ -160,6 +163,7 @@ namespace MoveToCode {
             }
             else {
                 textMesh.SetText(ToString());
+                transform.parent.GetComponent<CodeBlock>()?.UpdateText();
             }
         }
     }

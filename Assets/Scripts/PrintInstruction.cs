@@ -32,5 +32,9 @@ namespace MoveToCode {
             compatibileArgumentTypes.Add(typeof(IDataType));
             compatibileArgumentTypes.Add(typeof(Instruction));
         }
+
+        public override string ToString() {
+            return string.Join("", "Print: ", argumentList[0]?.ToString());
+        }
     }
 }

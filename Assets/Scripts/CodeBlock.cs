@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -8,9 +11,13 @@ namespace MoveToCode {
         protected IDataType myData;
         CodeBlock nextCodeBlock;
         List<CodeBlock> argumentCodeBlocks;
+        TextMeshPro textMesh;
+
 
         // Abstract Methods
         protected abstract void SetInstructionOrData();
+        public abstract bool IsInstructionCodeBlock();
+        public abstract bool IsDataCodeBlock();
 
         // Start Up
         private void Awake() {
@@ -21,6 +28,8 @@ namespace MoveToCode {
             if (IsInstructionCodeBlock()) {
                 argumentCodeBlocks.Resize(myInstruction.GetNumArguments());
             }
+
+            UpdateText();
         }
 
         // Public Methods
@@ -67,13 +76,7 @@ namespace MoveToCode {
             return -1; // Will never get here, put so VS stops complaining
         }
 
-        public bool IsInstructionCodeBlock() {
-            return myInstruction != null;
-        }
 
-        public bool IsDataCodeBlock() {
-            return myData != null;
-        }
 
         // Note: This is slightly inefficienct approach but makes it so you don't have to keep track of as much
         public void RemoveFromParentBlock() {
@@ -137,6 +140,27 @@ namespace MoveToCode {
                 return myInstruction;
             }
             return myData;
+        }
+
+        // This is needed to wait for the gameobject to spawn
+        private IEnumerator UpdateTextNextFrame() {
+            yield return new WaitForEndOfFrame();
+            UpdateText();
+        }
+
+        private void UpdateText() {
+            if (textMesh == null) {
+                textMesh = GetComponentInChildren<TextMeshPro>(true);
+            }
+            if (textMesh == null) {
+                Object codeBlockTextPrefab = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/CodeBlockText.prefab", typeof(Object));
+                GameObject codeBlockTextGameObject = (GameObject)GameObject.Instantiate(
+                    codeBlockTextPrefab, transform);
+                StartCoroutine(UpdateTextNextFrame());
+            }
+            else {
+                textMesh.SetText(ToString());
+            }
         }
     }
 }

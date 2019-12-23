@@ -1,5 +1,5 @@
 ﻿namespace MoveToCode {
-    public class ConditionalCodeBlock : CodeBlock {
+    public class ConditionalCodeBlock : InstructionCodeBlock {
         public enum OPERATION {
             EQUALS,
             NOTEQUALS

@@ -23,5 +23,9 @@
         public void SetValue(dynamic valIn) {
             value = valIn;
         }
+
+        public override string ToString() {
+            return GetValue().ToString();
+        }
     }
 }

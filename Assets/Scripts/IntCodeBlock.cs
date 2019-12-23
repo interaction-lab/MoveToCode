@@ -1,6 +1,6 @@
 ﻿namespace MoveToCode {
 
-    public class IntCodeBlock : CodeBlock {
+    public class IntCodeBlock : DataCodeBlock {
         public int output;
 
         protected override void SetInstructionOrData() {

@@ -1,5 +1,5 @@
 ﻿namespace MoveToCode {
-    public class MathOperationCodeBlock : CodeBlock {
+    public class MathOperationCodeBlock : InstructionCodeBlock {
         public enum OPERATION {
             ADD,
             DIV,

@@ -1,5 +1,5 @@
 ﻿namespace MoveToCode {
-    public class PrintCodeBlock : CodeBlock {
+    public class PrintCodeBlock : InstructionCodeBlock {
         public string output;
 
         protected override void SetInstructionOrData() {

@@ -113,7 +113,9 @@ namespace MoveToCode {
             argumentCodeBlocks[position] = newArgumentCodeBlock;
             if (newArgumentCodeBlock) {
                 newArgumentCodeBlock.transform.SetParent(transform);
-                newArgumentCodeBlock.transform.localPosition = Vector3.right * (position + 1); // TODO: this placement
+                newArgumentCodeBlock.transform.localPosition = Vector3.right *
+                    (newArgumentCodeBlock.transform.localScale.x + 0.25f)
+                    * (position + 1); // TODO: this placement
             }
             myInstruction.SetArgumentAt(newArgumentCodeBlock.GetArgumentValueOfCodeBlock(), position);
         }

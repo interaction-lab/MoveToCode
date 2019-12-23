@@ -8,7 +8,7 @@ public class KeyboardTestingScript : MonoBehaviour {
     PrintInstruction p2;
     SubtractionInstruction st;
 
-    public CodeBlock pb1, pb2, pb3, dt1, dt2, subCB;
+    public CodeBlock pb1, pb2, pb3, dt1, dt2, dt3, subCB;
 
     void Start() {
         /* i = new IntDataType(4);
@@ -26,16 +26,19 @@ public class KeyboardTestingScript : MonoBehaviour {
             Interpreter.instance.RunNextInstruction();
         }
         else if (Input.GetKeyDown(KeyCode.Alpha1)) {
-            Debug.Log(1);
             subCB.SetArgumentBlockAt(dt1, 0);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2)) {
-            Debug.Log(2);
             subCB.SetArgumentBlockAt(dt2, 1);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3)) {
-            Debug.Log(3);
             pb1.SetArgumentBlockAt(subCB, 0);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4)) {
+            pb1.SetNextCodeBlock(pb2);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha5)) {
+            pb2.SetArgumentBlockAt(dt3, 0);
         }
     }
 }

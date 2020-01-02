@@ -17,6 +17,7 @@ namespace MoveToCode {
         TextMeshPro textMesh;
         ManipulationHandler manipHandler;
         NearInteractionGrabbable nearInteractionGrabbable;
+        CodeBlockSnap codeBlockSnap;
 
         // Abstract Methods
         protected abstract void SetInstructionOrData();
@@ -29,6 +30,10 @@ namespace MoveToCode {
             manipHandler = gameObject.AddComponent(typeof(ManipulationHandler)) as ManipulationHandler;
             nearInteractionGrabbable = gameObject.AddComponent(typeof(NearInteractionGrabbable)) as NearInteractionGrabbable;
 
+            // Other components
+            codeBlockSnap = gameObject.AddComponent(typeof(CodeBlockSnap)) as CodeBlockSnap;
+
+            // Setup
             argumentCodeBlocks = new List<CodeBlock>();
             SetInstructionOrData();
             myInstruction?.SetCodeBlock(this);

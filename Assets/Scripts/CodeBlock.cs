@@ -1,9 +1,12 @@
-﻿using System.Collections;
+﻿using Microsoft.MixedReality.Toolkit.Input;
+using Microsoft.MixedReality.Toolkit.UI;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Assertions;
+
 
 namespace MoveToCode {
     public abstract class CodeBlock : MonoBehaviour {
@@ -12,7 +15,8 @@ namespace MoveToCode {
         CodeBlock nextCodeBlock;
         List<CodeBlock> argumentCodeBlocks;
         TextMeshPro textMesh;
-
+        ManipulationHandler manipHandler;
+        NearInteractionGrabbable nearInteractionGrabbable;
 
         // Abstract Methods
         protected abstract void SetInstructionOrData();
@@ -21,6 +25,10 @@ namespace MoveToCode {
 
         // Start Up
         private void Awake() {
+            // MRTK components to add
+            manipHandler = gameObject.AddComponent(typeof(ManipulationHandler)) as ManipulationHandler;
+            nearInteractionGrabbable = gameObject.AddComponent(typeof(NearInteractionGrabbable)) as NearInteractionGrabbable;
+
             argumentCodeBlocks = new List<CodeBlock>();
             SetInstructionOrData();
             myInstruction?.SetCodeBlock(this);

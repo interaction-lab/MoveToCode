@@ -143,7 +143,11 @@ namespace MoveToCode {
 
         private void RemoveNextCodeBlock() {
             SetNextInstruction(null);
-            nextCodeBlock?.transform.SetParent(CodeBlockManager.instance.transform);
+            if (nextCodeBlock != null) {
+                nextCodeBlock.transform.localPosition = new Vector3(1.05f, 1.05f, 0); // TODO: This Placement
+                nextCodeBlock.transform.SetParent(CodeBlockManager.instance.transform);
+            }
+
             nextCodeBlock = null;
         }
 

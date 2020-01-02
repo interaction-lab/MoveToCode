@@ -50,13 +50,18 @@ namespace MoveToCode {
 
         IEnumerator HackyFixForEnablingTrigger() {
             yield return new WaitForFixedUpdate();
+            yield return new WaitForFixedUpdate();
             justEnabled = false;
         }
 
         private void OnEnable() {
-            meshRend.enabled = false;
+            ExitCollisionRoutine();
             justEnabled = true;
             StartCoroutine(HackyFixForEnablingTrigger());
+        }
+
+        private void OnDisable() {
+            ExitCollisionRoutine();
         }
     }
 }

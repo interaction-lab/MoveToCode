@@ -8,22 +8,25 @@ namespace MoveToCode {
     public class CodeBlockSnap : MonoBehaviour {
         CodeBlock myCodeBlock;
         ManipulationHandler manipulationHandler;
-        GameObject snapColliders;
+        SnapColliders snapColliders;
         SnapCollider curSnapColliderInCollision;
+
+        // TODO: On grabbing me, disable all hitboxes of mine as well as children
+
 
         private void Awake() {
             myCodeBlock = GetComponent<CodeBlock>();
             manipulationHandler = GetComponent<ManipulationHandler>();
             manipulationHandler.OnManipulationStarted.AddListener(OnManipulationStart);
             manipulationHandler.OnManipulationEnded.AddListener(OnManipulationEnd);
-            snapColliders = GetComponentInChildren<SnapColliders>()?.gameObject;
+            snapColliders = GetComponentInChildren<SnapColliders>();
         }
 
         void OnManipulationStart(ManipulationEventData call) {
             Debug.Log(transform.name + " Selected");
 
             // deactivate outsideColliders
-            snapColliders?.SetActive(false);
+            snapColliders.DisableAllCollidersAndChildrenColliders();
         }
         void OnManipulationEnd(ManipulationEventData call) {
             if (curSnapColliderInCollision != null) {
@@ -31,11 +34,7 @@ namespace MoveToCode {
                 curSnapColliderInCollision.ExitCollisionRoutine();
             }
 
-            snapColliders?.SetActive(true);
-        }
-
-        public bool IsSnappable() {
-            return snapColliders != null && !snapColliders.activeSelf;
+            snapColliders?.EnableAllCollidersAndChildrenColliders();
         }
 
         public void SetCollisionSnapCollider(SnapCollider snapColIn) {

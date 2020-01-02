@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace MoveToCode {
     public abstract class SnapCollider : MonoBehaviour {
@@ -6,6 +7,7 @@ namespace MoveToCode {
         public abstract void DoSnapAction(CodeBlock myCodeBlock, CodeBlock collidedCodeBlock);
         public abstract bool IsSnappableToThisSnapColliderType(CodeBlock collidedCodeBlock);
         MeshRenderer meshRend;
+        bool justEnabled = false;
         private void Awake() {
             meshRend = GetComponent<MeshRenderer>();
             meshRend.enabled = false;
@@ -13,7 +15,9 @@ namespace MoveToCode {
         }
         private void OnTriggerEnter(Collider collision) {
             collisionCodeBlockSnap = collision.transform.GetComponent<CodeBlockSnap>();
-            if (IsSnappableToThisSnapColliderType(collisionCodeBlockSnap?.GetMyCodeBlock())) {
+            // Make sure it is of right type and not already a part of my code
+            if (IsSnappableToThisSnapColliderType(collisionCodeBlockSnap?.GetMyCodeBlock())
+                && !justEnabled) {
                 meshRend.enabled = true;
                 InitializeMyCodeBlockSnapIfNull();
                 collisionCodeBlockSnap?.SetCollisionSnapCollider(this);
@@ -21,6 +25,10 @@ namespace MoveToCode {
 
         }
         private void OnTriggerExit(Collider collision) {
+            ExitCollisionRoutine();
+        }
+
+        public void ExitCollisionRoutine() {
             if (IsSnappableToThisSnapColliderType(collisionCodeBlockSnap?.GetMyCodeBlock())) {
                 meshRend.enabled = false;
                 collisionCodeBlockSnap?.SetCollisionSnapCollider(null);
@@ -40,5 +48,15 @@ namespace MoveToCode {
             }
         }
 
+        IEnumerator HackyFixForEnablingTrigger() {
+            yield return new WaitForFixedUpdate();
+            justEnabled = false;
+        }
+
+        private void OnEnable() {
+            meshRend.enabled = false;
+            justEnabled = true;
+            StartCoroutine(HackyFixForEnablingTrigger());
+        }
     }
 }

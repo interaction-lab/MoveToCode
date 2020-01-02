@@ -26,9 +26,9 @@ namespace MoveToCode {
             snapColliders?.SetActive(false);
         }
         void OnManipulationEnd(ManipulationEventData call) {
-
             if (curSnapColliderInCollision != null) {
                 curSnapColliderInCollision.DoSnapAction(curSnapColliderInCollision.GetMyCodeBlock(), GetMyCodeBlock());
+                curSnapColliderInCollision.ExitCollisionRoutine();
             }
 
             snapColliders?.SetActive(true);

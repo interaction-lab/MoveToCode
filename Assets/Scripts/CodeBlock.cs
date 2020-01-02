@@ -161,7 +161,7 @@ namespace MoveToCode {
         private void RemoveArgumentAt(int position) {
             SetArgumentAt(null, position);
             if (argumentCodeBlocks[position] != null) {
-                nextCodeBlock.transform.localPosition = new Vector3(2.05f, 1.05f, 0); // TODO: This Placement
+                argumentCodeBlocks[position].transform.localPosition = new Vector3(2.05f, 1.05f, 0); // TODO: This Placement
                 argumentCodeBlocks[position].transform.SetParent(CodeBlockManager.instance.transform);
                 argumentCodeBlocks[position] = null;
             }

@@ -4,5 +4,9 @@
         public override void DoSnapAction(CodeBlock myCodeBlock, CodeBlock collidedCodeBlock) {
             myCodeBlock.SetArgumentBlockAt(collidedCodeBlock, myInstructionPosition);
         }
+
+        public override bool IsSnappableToThisSnapColliderType(CodeBlock collidedCodeBlock) {
+            return collidedCodeBlock != null; // TODO: need instructions with no return maybe...
+        }
     }
 }

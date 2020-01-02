@@ -4,21 +4,28 @@ namespace MoveToCode {
     public abstract class SnapCollider : MonoBehaviour {
         protected CodeBlockSnap myCodeBlockSnap, collisionCodeBlockSnap;
         public abstract void DoSnapAction(CodeBlock myCodeBlock, CodeBlock collidedCodeBlock);
+        public abstract bool IsSnappableToThisSnapColliderType(CodeBlock collidedCodeBlock);
         MeshRenderer meshRend;
         private void Awake() {
             meshRend = GetComponent<MeshRenderer>();
             meshRend.enabled = false;
+            GetComponent<Collider>().isTrigger = true;
         }
         private void OnTriggerEnter(Collider collision) {
-            meshRend.enabled = true;
-            InitializeMyCodeBlockSnapIfNull();
             collisionCodeBlockSnap = collision.transform.GetComponent<CodeBlockSnap>();
-            collisionCodeBlockSnap?.SetCollisionSnapCollider(this);
+            if (IsSnappableToThisSnapColliderType(collisionCodeBlockSnap?.GetMyCodeBlock())) {
+                meshRend.enabled = true;
+                InitializeMyCodeBlockSnapIfNull();
+                collisionCodeBlockSnap?.SetCollisionSnapCollider(this);
+            }
+
         }
         private void OnTriggerExit(Collider collision) {
-            meshRend.enabled = false;
-            collisionCodeBlockSnap?.SetCollisionSnapCollider(null);
-            collisionCodeBlockSnap = null;
+            if (IsSnappableToThisSnapColliderType(collisionCodeBlockSnap?.GetMyCodeBlock())) {
+                meshRend.enabled = false;
+                collisionCodeBlockSnap?.SetCollisionSnapCollider(null);
+                collisionCodeBlockSnap = null;
+            }
         }
 
         public CodeBlock GetMyCodeBlock() {

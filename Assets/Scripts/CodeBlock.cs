@@ -18,6 +18,8 @@ namespace MoveToCode {
         ManipulationHandler manipHandler;
         NearInteractionGrabbable nearInteractionGrabbable;
         CodeBlockSnap codeBlockSnap;
+        Rigidbody rigidBody;
+
 
         // Abstract Methods
         protected abstract void SetInstructionOrData();
@@ -26,6 +28,12 @@ namespace MoveToCode {
 
         // Start Up
         private void Awake() {
+            // Set up collision
+            rigidBody = gameObject.AddComponent(typeof(Rigidbody)) as Rigidbody;
+            rigidBody.isKinematic = true;
+            rigidBody.useGravity = false;
+            GetComponent<Collider>().isTrigger = true;
+
             // MRTK components to add
             manipHandler = gameObject.AddComponent(typeof(ManipulationHandler)) as ManipulationHandler;
             nearInteractionGrabbable = gameObject.AddComponent(typeof(NearInteractionGrabbable)) as NearInteractionGrabbable;
@@ -146,15 +154,17 @@ namespace MoveToCode {
             if (nextCodeBlock != null) {
                 nextCodeBlock.transform.localPosition = new Vector3(1.05f, 1.05f, 0); // TODO: This Placement
                 nextCodeBlock.transform.SetParent(CodeBlockManager.instance.transform);
+                nextCodeBlock = null;
             }
-
-            nextCodeBlock = null;
         }
 
         private void RemoveArgumentAt(int position) {
             SetArgumentAt(null, position);
-            argumentCodeBlocks[position]?.transform.SetParent(CodeBlockManager.instance.transform);
-            argumentCodeBlocks[position] = null;
+            if (argumentCodeBlocks[position] != null) {
+                nextCodeBlock.transform.localPosition = new Vector3(2.05f, 1.05f, 0); // TODO: This Placement
+                argumentCodeBlocks[position].transform.SetParent(CodeBlockManager.instance.transform);
+                argumentCodeBlocks[position] = null;
+            }
         }
 
         private IArgument GetArgumentValueOfCodeBlock() {

@@ -29,6 +29,10 @@ namespace MoveToCode {
         }
 
         public void ExitCollisionRoutine() {
+            justEnabled = true;
+            if (gameObject.activeSelf) {
+                StartCoroutine(HackyFixForEnablingTrigger());
+            }
             if (IsSnappableToThisSnapColliderType(collisionCodeBlockSnap?.GetMyCodeBlock())) {
                 meshRend.enabled = false;
                 collisionCodeBlockSnap?.SetCollisionSnapCollider(null);
@@ -56,8 +60,6 @@ namespace MoveToCode {
 
         private void OnEnable() {
             ExitCollisionRoutine();
-            justEnabled = true;
-            StartCoroutine(HackyFixForEnablingTrigger());
         }
 
         private void OnDisable() {

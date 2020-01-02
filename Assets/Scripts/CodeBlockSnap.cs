@@ -7,35 +7,44 @@ using UnityEngine.Events;
 namespace MoveToCode {
     public class CodeBlockSnap : MonoBehaviour {
         CodeBlock myCodeBlock;
-        Ray upRay, downRay;
-        RaycastHit upHit, downHit;
-        public float snapDist = 1.0f;
-        bool snapped = false;
-        ManipulationHandler i;
+        ManipulationHandler manipulationHandler;
+        GameObject snapColliders;
+        SnapCollider curSnapColliderInCollision;
 
         private void Awake() {
             myCodeBlock = GetComponent<CodeBlock>();
-            i = GetComponent<ManipulationHandler>();
-            //  Interactable b = GetComponent<Interactable>();
-            // b.OnClick.AddListener(Idk());
-            i.OnManipulationStarted.AddListener(Idk);
+            manipulationHandler = GetComponent<ManipulationHandler>();
+            manipulationHandler.OnManipulationStarted.AddListener(OnManipulationStart);
+            manipulationHandler.OnManipulationEnded.AddListener(OnManipulationEnd);
+            snapColliders = GetComponentInChildren<SnapColliders>()?.gameObject;
         }
 
-        void Idk(ManipulationEventData call) {
-            Debug.Log(transform.name);
+        void OnManipulationStart(ManipulationEventData call) {
+            Debug.Log(transform.name + " Selected");
+
+            // deactivate outsideColliders
+            snapColliders?.SetActive(false);
         }
+        void OnManipulationEnd(ManipulationEventData call) {
 
-        private void Update() {
-            upRay = new Ray(transform.position, Vector3.up);
-            downRay = new Ray(transform.position, Vector3.down);
-
-            if (!snapped && Physics.Raycast(upRay, out upHit, snapDist) && myCodeBlock.IsInstructionCodeBlock()) {
-                CodeBlock otherblock = upHit.transform.GetComponent<CodeBlock>();
-                if (otherblock != null && otherblock.IsInstructionCodeBlock()) {
-                    otherblock.SetNextCodeBlock(myCodeBlock);
-                }
+            if (curSnapColliderInCollision != null) {
+                curSnapColliderInCollision.DoSnapAction(curSnapColliderInCollision.GetMyCodeBlock(), GetMyCodeBlock());
             }
 
+            snapColliders?.SetActive(true);
         }
+
+        public bool IsSnappable() {
+            return snapColliders != null && !snapColliders.activeSelf;
+        }
+
+        public void SetCollisionSnapCollider(SnapCollider snapColIn) {
+            curSnapColliderInCollision = snapColIn;
+        }
+
+        public CodeBlock GetMyCodeBlock() {
+            return myCodeBlock;
+        }
+
     }
 }

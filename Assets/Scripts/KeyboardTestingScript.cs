@@ -21,6 +21,8 @@ public class KeyboardTestingScript : MonoBehaviour {
         Interpreter.instance.AddToInstructionStack(pb1.GetInstruction());
     }
 
+
+
     void Update() {
         if (Input.GetKeyDown(KeyCode.Alpha0)) {
             Interpreter.instance.RunNextInstruction();

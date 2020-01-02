@@ -9,6 +9,8 @@ namespace MoveToCode {
         public InstructionReturnValue lastInstructionReturn;
         public Instruction curInstruction;
 
+        Color lastColor;
+
         private void Awake() {
             ResetCodeState();
         }
@@ -46,6 +48,8 @@ namespace MoveToCode {
                     null :
                     instructionStack.Pop();
             }
+
+
             if (curInstruction == null) {
                 Debug.LogWarning("CODE COMPLETED, not sure what to implement here yet");
             }

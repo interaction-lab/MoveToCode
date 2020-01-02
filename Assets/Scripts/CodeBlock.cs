@@ -61,6 +61,9 @@ namespace MoveToCode {
         }
 
         public IEnumerable GetAllAttachedCodeBlocks() {
+            if (IsDataCodeBlock()) {
+                yield break;
+            }
             if (myInstruction.GetNextInstruction() != null) {
                 yield return myInstruction.GetNextInstruction().GetCodeBlock();
             }

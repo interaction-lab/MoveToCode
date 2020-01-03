@@ -10,7 +10,7 @@ namespace MoveToCode {
         }
 
         public IDataType GetVariableValueFromBlockCollection() {
-            return parentVariableBlockCollection.GetVariableValueFromBlockCollection();
+            return parentVariableBlockCollection?.GetVariableValueFromBlockCollection();
         }
 
         public void SetVariableValueFromBlockCollection(IDataType valIn) {
@@ -18,7 +18,7 @@ namespace MoveToCode {
         }
 
         public override string ToString() {
-            return GetVariableValueFromBlockCollection().GetValue()?.ToString();
+            return GetVariableValueFromBlockCollection()?.GetValue()?.ToString();
         }
     }
 }

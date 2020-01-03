@@ -5,9 +5,11 @@ namespace MoveToCode {
     public class VariableBlockCollection : MonoBehaviour {
         HashSet<VariableCodeBlock> variableCodeBlockSet;
         IDataType myData;
+        string variableName;
 
-        public VariableBlockCollection(IDataType dIn) {
+        public VariableBlockCollection(IDataType dIn, string vNameIn) {
             SetVariableValueFromBlockCollection(dIn);
+            variableName = vNameIn;
         }
 
         public IDataType GetVariableValueFromBlockCollection() {
@@ -21,6 +23,8 @@ namespace MoveToCode {
         public void AddCodeBlock(VariableCodeBlock cbIn) {
             variableCodeBlockSet.Add(cbIn);
         }
-
+        public string GetVariableNameFromBlockCollection() {
+            return variableName;
+        }
     }
 }

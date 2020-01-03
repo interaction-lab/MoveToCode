@@ -4,27 +4,20 @@ using UnityEngine;
 
 namespace MoveToCode {
     public class MemoryManager : Singleton<MemoryManager> {
-        Dictionary<Variable, IDataType> variables;
-        protected CodeBlock myCodeBlock;
+        Dictionary<string, VariableBlockCollection> variables;
 
         private void Awake() {
-            variables = new Dictionary<Variable, IDataType>();
+            variables = new Dictionary<string, VariableBlockCollection>();
         }
 
-        public IDataType GetVariableValue(Variable vIn) {
-            return variables[vIn];
+        public void AddNewVariableCodeBlock(string varName, VariableCodeBlock cbIn, IDataType dIn = null) {
+            if (variables.ContainsKey(varName)) {
+                variables[varName].AddCodeBlock(cbIn);
+            }
+            else {
+                variables[varName] = new VariableBlockCollection(dIn);
+            }
         }
 
-        public void AddVariable(Variable vIn, IDataType dIn) {
-            variables.Add(vIn, dIn);
-        }
-
-        public CodeBlock GetCodeBlock() {
-            return myCodeBlock;
-        }
-
-        public void SetCodeBlock(CodeBlock codeBlock) {
-            myCodeBlock = codeBlock;
-        }
     }
 }

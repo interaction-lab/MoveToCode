@@ -4,16 +4,19 @@ using UnityEngine;
 
 namespace MoveToCode {
     public class Variable : IArgument {
+
+        VariableCodeBlock myVariableCodeBlock;
+
         public IDataType EvaluateArgument() {
-            return MemoryManager.instance.GetVariableValue(this);
+            return myVariableCodeBlock.GetVariableValueFromBlockCollection();
         }
 
         public CodeBlock GetCodeBlock() {
-            throw new System.NotImplementedException();
+            return myVariableCodeBlock;
         }
 
         public void SetCodeBlock(CodeBlock codeBlock) {
-            throw new System.NotImplementedException();
+            myVariableCodeBlock = codeBlock as VariableCodeBlock;
         }
     }
 }

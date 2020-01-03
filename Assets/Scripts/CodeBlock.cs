@@ -155,11 +155,16 @@ namespace MoveToCode {
         private void AddNewArgumentAt(CodeBlock newArgumentCodeBlock, int position, Vector3 newLocalPosition) {
             // need to update instruction arguments
             argumentCodeBlocks[position] = newArgumentCodeBlock;
-            if (newArgumentCodeBlock) {
-                newArgumentCodeBlock.transform.SetParent(transform);
-                newArgumentCodeBlock.transform.localPosition = newLocalPosition;
+            try {
+                myInstruction.SetArgumentAt(newArgumentCodeBlock?.GetArgumentValueOfCodeBlock(), position);
+                if (newArgumentCodeBlock) {
+                    newArgumentCodeBlock.transform.SetParent(transform);
+                    newArgumentCodeBlock.transform.localPosition = newLocalPosition;
+                }
             }
-            myInstruction.SetArgumentAt(newArgumentCodeBlock.GetArgumentValueOfCodeBlock(), position);
+            catch (System.Exception ex) {
+                Debug.LogWarning(ex.ToString());
+            }
         }
 
         private void SetNextInstruction(Instruction iIn) {

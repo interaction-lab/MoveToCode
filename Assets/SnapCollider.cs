@@ -12,6 +12,7 @@ namespace MoveToCode {
             meshRend = GetComponent<MeshRenderer>();
             meshRend.enabled = false;
             GetComponent<Collider>().isTrigger = true;
+            gameObject.layer = 2;
         }
         private void OnTriggerEnter(Collider collision) {
             collisionCodeBlockSnap = collision.transform.GetComponent<CodeBlockSnap>();
@@ -20,7 +21,7 @@ namespace MoveToCode {
                 && !justEnabled) {
                 meshRend.enabled = true;
                 InitializeMyCodeBlockSnapIfNull();
-                collisionCodeBlockSnap?.SetCollisionSnapCollider(this);
+                collisionCodeBlockSnap?.AddCollisionSnapCollider(this);
             }
 
         }
@@ -28,16 +29,14 @@ namespace MoveToCode {
             ExitCollisionRoutine();
         }
 
-        public void ExitCollisionRoutine() {
+        public void ExitCollisionRoutine(bool isBeingDisabled = false) {
             justEnabled = true;
-            if (gameObject.activeSelf) {
+            if (gameObject.activeSelf && enabled && !isBeingDisabled) {
                 StartCoroutine(HackyFixForEnablingTrigger());
             }
-            if (IsSnappableToThisSnapColliderType(collisionCodeBlockSnap?.GetMyCodeBlock())) {
-                meshRend.enabled = false;
-                collisionCodeBlockSnap?.SetCollisionSnapCollider(null);
-                collisionCodeBlockSnap = null;
-            }
+            collisionCodeBlockSnap?.RemoveCollisionSnapCollider(this);
+            meshRend.enabled = false;
+            collisionCodeBlockSnap = null;
         }
 
         public CodeBlock GetMyCodeBlock() {
@@ -63,7 +62,7 @@ namespace MoveToCode {
         }
 
         private void OnDisable() {
-            ExitCollisionRoutine();
+            ExitCollisionRoutine(true);
         }
     }
 }

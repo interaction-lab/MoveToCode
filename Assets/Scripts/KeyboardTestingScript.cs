@@ -27,20 +27,6 @@ public class KeyboardTestingScript : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Alpha0)) {
             Interpreter.instance.RunNextInstruction();
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha1)) {
-            subCB.SetArgumentBlockAt(dt1, 0);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2)) {
-            subCB.SetArgumentBlockAt(dt2, 1);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3)) {
-            pb1.SetArgumentBlockAt(subCB, 0);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha4)) {
-            pb1.SetNextCodeBlock(pb2);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha5)) {
-            pb2.SetArgumentBlockAt(dt3, 0);
-        }
+
     }
 }

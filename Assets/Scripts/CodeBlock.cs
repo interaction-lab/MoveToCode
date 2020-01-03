@@ -91,18 +91,18 @@ namespace MoveToCode {
             UpdateText();
         }
 
-        public void SetNextCodeBlock(CodeBlock newInstructionCodeBlock) {
+        public void SetNextCodeBlock(CodeBlock newInstructionCodeBlock, Vector3 newLocalPosition) {
             Assert.IsTrue(IsInstructionCodeBlock());
             RemoveNextCodeBlock();
             newInstructionCodeBlock.RemoveFromParentBlock();
-            AddNewNextCodeBlock(newInstructionCodeBlock);
+            AddNewNextCodeBlock(newInstructionCodeBlock, newLocalPosition);
         }
 
-        public void SetArgumentBlockAt(CodeBlock newArgumentCodeBlock, int position) {
+        public void SetArgumentBlockAt(CodeBlock newArgumentCodeBlock, int argPosition, Vector3 newLocalPosition) {
             Assert.IsTrue(IsInstructionCodeBlock());
-            RemoveArgumentAt(position);
+            RemoveArgumentAt(argPosition);
             newArgumentCodeBlock.RemoveFromParentBlock();
-            AddNewArgumentAt(newArgumentCodeBlock, position);
+            AddNewArgumentAt(newArgumentCodeBlock, argPosition, newLocalPosition);
             UpdateText();
         }
 
@@ -129,7 +129,7 @@ namespace MoveToCode {
             CodeBlock parentCodeBlock = transform.parent?.GetComponent<CodeBlock>();
             if (parentCodeBlock != null) {
                 if (IsInstructionCodeBlock() && parentCodeBlock.IsMyNextInstruction(myInstruction)) {
-                    parentCodeBlock.SetNextCodeBlock(null);
+                    parentCodeBlock.SetNextCodeBlock(null, Vector3.zero);
                 }
                 else {
                     parentCodeBlock.RemoveArgumentAt(
@@ -143,23 +143,21 @@ namespace MoveToCode {
         // Private Helpers
         // If you find yourself making these public, 
         // then you should reconsider what you are doing
-        private void AddNewNextCodeBlock(CodeBlock newCodeBlock) {
+        private void AddNewNextCodeBlock(CodeBlock newCodeBlock, Vector3 newLocalPosition) {
             nextCodeBlock = newCodeBlock;
             if (newCodeBlock) {
                 newCodeBlock.transform.SetParent(transform);
-                newCodeBlock.transform.localPosition = Vector3.down; // TODO: once arg placing is done, update this for better placement
+                newCodeBlock.transform.localPosition = newLocalPosition; // TODO: once arg placing is done, update this for better placement
             }
             SetNextInstruction(newCodeBlock.GetInstruction());
         }
 
-        private void AddNewArgumentAt(CodeBlock newArgumentCodeBlock, int position) {
+        private void AddNewArgumentAt(CodeBlock newArgumentCodeBlock, int position, Vector3 newLocalPosition) {
             // need to update instruction arguments
             argumentCodeBlocks[position] = newArgumentCodeBlock;
             if (newArgumentCodeBlock) {
                 newArgumentCodeBlock.transform.SetParent(transform);
-                newArgumentCodeBlock.transform.localPosition = Vector3.right *
-                    (newArgumentCodeBlock.transform.localScale.x + 0.25f)
-                    * (position + 1); // TODO: this placement
+                newArgumentCodeBlock.transform.localPosition = newLocalPosition;
             }
             myInstruction.SetArgumentAt(newArgumentCodeBlock.GetArgumentValueOfCodeBlock(), position);
         }

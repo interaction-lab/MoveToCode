@@ -14,7 +14,11 @@ namespace MoveToCode {
         }
 
         public void SetVariableValueFromBlockCollection(IDataType valIn) {
-            parentVariableBlockCollection.SetVariableValueFromBlockCollection(valIn);
+            parentVariableBlockCollection.SetVariableValue(valIn);
+        }
+
+        public string GetVariableNameFromBlockCollection() {
+            return parentVariableBlockCollection?.GetVariableNameFromBlockCollection();
         }
 
         public override string ToString() {

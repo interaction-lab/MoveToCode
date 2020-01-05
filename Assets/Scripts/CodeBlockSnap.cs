@@ -30,6 +30,10 @@ namespace MoveToCode {
                 closestCollider.DoSnapAction(closestCollider?.GetMyCodeBlock(), GetMyCodeBlock());
                 ClearAndResetAllColliders();
             }
+            else {
+                // TODO: check if still in collision with arg?
+                myCodeBlock.RemoveFromParentBlock();
+            }
             mySnapColliders?.EnableAllCollidersAndChildrenColliders();
         }
 

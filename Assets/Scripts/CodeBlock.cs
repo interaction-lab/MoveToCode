@@ -113,7 +113,7 @@ namespace MoveToCode {
         public int GetPositionOfArgument(IArgument iArgIn) {
             int index = 0;
             foreach (CodeBlock codeBlock in argumentCodeBlocks) {
-                if (codeBlock.GetArgumentValueOfCodeBlock() == iArgIn) {
+                if (codeBlock?.GetArgumentValueOfCodeBlock() == iArgIn) {
                     return index;
                 }
                 ++index;

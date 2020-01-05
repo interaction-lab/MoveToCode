@@ -15,7 +15,7 @@ namespace MoveToCode {
         }
 
         public override void EvaluateArgumentList() {
-            output = argumentList[0].EvaluateArgument()?.GetValue()?.ToString();
+            output = argumentList[0]?.EvaluateArgument()?.GetValue()?.ToString();
         }
 
         public override int GetNumArguments() {

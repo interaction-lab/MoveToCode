@@ -2608,6 +2608,26 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7882343430551067693, guid: b4304af5a55eb38479ecaa6b14157987,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882343430551067693, guid: b4304af5a55eb38479ecaa6b14157987,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882343430551067693, guid: b4304af5a55eb38479ecaa6b14157987,
+        type: 3}
+      propertyPath: m_firstOverflowCharacterIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882343430551067693, guid: b4304af5a55eb38479ecaa6b14157987,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4304af5a55eb38479ecaa6b14157987, type: 3}
 --- !u!224 &354947054275686345 stripped

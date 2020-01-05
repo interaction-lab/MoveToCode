@@ -23,7 +23,8 @@ namespace MoveToCode {
 
         void OnManipulationStart(ManipulationEventData call) {
             mySnapColliders?.DisableAllCollidersAndChildrenColliders();
-            // disable my collider, wait one frame, reenable
+            // Disable my collider, wait one frame, reenable
+            // This allows for a "resnap" to same spot
             StartCoroutine(DisableMyColliderForOneFrame());
         }
 

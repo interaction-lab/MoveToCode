@@ -23,7 +23,17 @@ namespace MoveToCode {
 
         void OnManipulationStart(ManipulationEventData call) {
             mySnapColliders?.DisableAllCollidersAndChildrenColliders();
+            // disable my collider, wait one frame, reenable
+            StartCoroutine(DisableMyColliderForOneFrame());
         }
+
+        IEnumerator DisableMyColliderForOneFrame() {
+            Collider myCollider = GetComponent<Collider>();
+            myCollider.enabled = false;
+            yield return new WaitForFixedUpdate();
+            myCollider.enabled = true;
+        }
+
         void OnManipulationEnd(ManipulationEventData call) {
             if (!curSnapCollidersInCollision.Empty()) {
                 SnapCollider closestCollider = CalculateClosestSnapCollider();

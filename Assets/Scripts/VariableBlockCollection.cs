@@ -30,7 +30,9 @@ namespace MoveToCode {
         }
 
         public void CreateNewVariableBlock() {
+            Debug.Log("Spawned");
             GameObject go = Instantiate(variableBlock, CodeBlockManager.instance.transform.position, Quaternion.identity) as GameObject;
+            go.GetComponent<VariableCodeBlock>().SetParentBlockCollection(this);
             go.transform.SetParent(CodeBlockManager.instance.transform);
         }
 

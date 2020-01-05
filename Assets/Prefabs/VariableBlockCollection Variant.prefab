@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7731db4e5107e04fb4ee1609a6d4fce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  variableBlock: {fileID: 2122886152402194503, guid: f17e25d662fe0824e80fb4c5fabb9075,
+    type: 3}
 --- !u!1001 &2722389327329957659
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26,8 +28,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5234426576715676736, guid: df89e360642c6fc46abbc1c2656856f6,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2875955773523030761}
+    - target: {fileID: 5234426576715676736, guid: df89e360642c6fc46abbc1c2656856f6,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SpawnVariableCB
+      value: CreateNewVariableBlock
       objectReference: {fileID: 0}
     - target: {fileID: 5234426576715676736, guid: df89e360642c6fc46abbc1c2656856f6,
         type: 3}

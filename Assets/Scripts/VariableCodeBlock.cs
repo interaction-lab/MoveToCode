@@ -21,8 +21,12 @@ namespace MoveToCode {
             return parentVariableBlockCollection?.GetVariableNameFromBlockCollection();
         }
 
+        public void SetParentBlockCollection(VariableBlockCollection vBCIn) {
+            parentVariableBlockCollection = vBCIn;
+        }
+
         public override string ToString() {
-            return GetVariableValueFromBlockCollection()?.GetValue()?.ToString();
+            return GetVariableNameFromBlockCollection();
         }
     }
 }

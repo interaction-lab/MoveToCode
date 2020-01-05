@@ -31,7 +31,7 @@ namespace MoveToCode {
                 ClearAndResetAllColliders();
             }
             else {
-                // TODO: check if still in collision with arg?
+                // TODO: check if still in collision with current arg and snap back to it?
                 myCodeBlock.RemoveFromParentBlock();
             }
             mySnapColliders?.EnableAllCollidersAndChildrenColliders();

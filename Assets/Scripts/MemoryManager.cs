@@ -36,7 +36,7 @@ namespace MoveToCode {
         }
 
         public void SpawnVariableCB() {
-            AddNewVariableCodeBlock("potato");
+            AddNewVariableCodeBlock("potato", new IntDataType(4));
         }
 
     }

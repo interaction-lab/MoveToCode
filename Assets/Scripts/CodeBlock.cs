@@ -94,7 +94,7 @@ namespace MoveToCode {
         public void SetNextCodeBlock(CodeBlock newInstructionCodeBlock, Vector3 newLocalPosition) {
             Assert.IsTrue(IsInstructionCodeBlock());
             RemoveNextCodeBlock();
-            newInstructionCodeBlock.RemoveFromParentBlock();
+            newInstructionCodeBlock?.RemoveFromParentBlock();
             AddNewNextCodeBlock(newInstructionCodeBlock, newLocalPosition);
         }
 
@@ -149,7 +149,7 @@ namespace MoveToCode {
                 newCodeBlock.transform.SetParent(transform);
                 newCodeBlock.transform.localPosition = newLocalPosition; // TODO: once arg placing is done, update this for better placement
             }
-            SetNextInstruction(newCodeBlock.GetInstruction());
+            SetNextInstruction(newCodeBlock?.GetInstruction());
         }
 
         private void AddNewArgumentAt(CodeBlock newArgumentCodeBlock, int position, Vector3 newLocalPosition) {
@@ -197,13 +197,23 @@ namespace MoveToCode {
             if (IsInstructionCodeBlock()) {
                 return myInstruction;
             }
-            return myData;
+            return GetMyData();
         }
 
         // This is needed to wait for the gameobject to spawn
         private IEnumerator UpdateTextNextFrame() {
             yield return new WaitForEndOfFrame();
             UpdateText();
+        }
+
+
+
+        private IDataType GetMyData() {
+            VariableCodeBlock check = this as VariableCodeBlock;
+            if (check != null) {
+                return check.GetVariableValueFromBlockCollection();
+            }
+            return myData;
         }
 
         private void UpdateText() {

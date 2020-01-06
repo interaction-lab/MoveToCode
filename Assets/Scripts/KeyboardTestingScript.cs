@@ -1,4 +1,5 @@
 ﻿using MoveToCode;
+using RosSharp.RosBridgeClient;
 using UnityEngine;
 
 public class KeyboardTestingScript : MonoBehaviour {
@@ -26,6 +27,7 @@ public class KeyboardTestingScript : MonoBehaviour {
     void Update() {
         if (Input.GetKeyDown(KeyCode.Alpha0)) {
             Interpreter.instance.RunNextInstruction();
+
         }
 
     }

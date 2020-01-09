@@ -4,23 +4,23 @@
         protected CodeBlock myCodeBlock;
         public abstract bool IsSameDataTypeAndEqualTo(IDataType otherVal);
 
-        public IDataType EvaluateArgument() {
+        public virtual IDataType EvaluateArgument() {
             return this;
         }
 
-        public CodeBlock GetCodeBlock() {
+        public virtual CodeBlock GetCodeBlock() {
             return myCodeBlock;
         }
 
-        public dynamic GetValue() {
+        public virtual dynamic GetValue() {
             return value;
         }
 
-        public void SetCodeBlock(CodeBlock codeBlock) {
+        public virtual void SetCodeBlock(CodeBlock codeBlock) {
             myCodeBlock = codeBlock;
         }
 
-        public void SetValue(dynamic valIn) {
+        public virtual void SetValue(dynamic valIn) {
             value = valIn;
         }
 

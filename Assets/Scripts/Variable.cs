@@ -1,22 +1,36 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace MoveToCode {
-    public class Variable : IArgument {
+﻿namespace MoveToCode {
+    public class Variable : IDataType {
 
         VariableCodeBlock myVariableCodeBlock;
 
-        public IDataType EvaluateArgument() {
+        public override IDataType EvaluateArgument() {
             return myVariableCodeBlock.GetVariableValueFromBlockCollection();
         }
 
-        public CodeBlock GetCodeBlock() {
+        public override CodeBlock GetCodeBlock() {
             return myVariableCodeBlock;
         }
 
-        public void SetCodeBlock(CodeBlock codeBlock) {
+        public override bool IsSameDataTypeAndEqualTo(IDataType otherVal) {
+            return GetMyData().IsSameDataTypeAndEqualTo(otherVal);
+        }
+
+        public override void SetCodeBlock(CodeBlock codeBlock) {
             myVariableCodeBlock = codeBlock as VariableCodeBlock;
+        }
+
+        public void SetValue(IDataType dIn) {
+            myVariableCodeBlock.SetVariableValueFromBlockCollection(dIn);
+        }
+        public override dynamic GetValue() {
+            return GetMyData().GetValue();
+        }
+        public IDataType GetMyData() {
+            return myVariableCodeBlock.GetVariableValueFromBlockCollection();
+        }
+
+        public override string ToString() {
+            return myVariableCodeBlock.GetVariableNameFromBlockCollection();
         }
     }
 }

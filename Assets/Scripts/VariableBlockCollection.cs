@@ -12,6 +12,7 @@ namespace MoveToCode {
         public GameObject variableBlock;
 
         private void Awake() {
+            variableCodeBlockSet = new HashSet<VariableCodeBlock>();
             textMesh = GetComponentInChildren<TextMeshProUGUI>();
             UpdateText();
         }
@@ -30,10 +31,9 @@ namespace MoveToCode {
         }
 
         public void CreateNewVariableBlock() {
-            Debug.Log("Spawned");
-            GameObject go = Instantiate(variableBlock, CodeBlockManager.instance.transform.position, Quaternion.identity) as GameObject;
+            GameObject go = Instantiate(Resources.Load<GameObject>("VariableCodeBlock"), CodeBlockManager.instance.transform) as GameObject;
             go.GetComponent<VariableCodeBlock>().SetParentBlockCollection(this);
-            go.transform.SetParent(CodeBlockManager.instance.transform);
+            go.transform.position = transform.position + Vector3.back;
         }
 
         public void AddCodeBlock(VariableCodeBlock cbIn) {

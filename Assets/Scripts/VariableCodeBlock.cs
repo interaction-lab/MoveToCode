@@ -1,12 +1,14 @@
 ﻿
+using UnityEngine;
+
 namespace MoveToCode {
     public class VariableCodeBlock : DataCodeBlock {
 
         VariableBlockCollection parentVariableBlockCollection;
-        Variable myVariable;
+
         // add itself to a collection
-        protected override void SetInstructionOrData() {
-            myVariable = new Variable();
+        protected override void SetMyBlockInternalArg() {
+            myBlockInternalArg = new Variable();
         }
 
         public IDataType GetVariableValueFromBlockCollection() {

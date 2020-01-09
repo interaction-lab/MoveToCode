@@ -36,6 +36,7 @@ namespace MoveToCode {
         }
 
         public void TryArgumentCompatibleType(Type argTypeIn) {
+            // need to check for variable too
             if (compatibileArgumentTypes == null || compatibileArgumentTypes.Empty()) {
                 compatibileArgumentTypes = new HashSet<Type>();
                 compatibileArgumentTypes.Add(null);
@@ -61,7 +62,10 @@ namespace MoveToCode {
         /// <param name="argIn">Argument to be added to the list.</param>
         /// <param name="position">Position of the argument, zero indexed. Default value -1, argument is added to end in this case. </param>
         public void SetArgumentAt(IArgument argIn, int position = -1) {
-            TryArgumentCompatibleType(argIn?.GetType());
+            Type typeToTry = argIn as Variable != null ?
+                (argIn as Variable).GetMyData().GetType() :
+                argIn?.GetType();
+            TryArgumentCompatibleType(typeToTry);
             ResizeArgumentList(position + 1);
             if (position == -1) {
                 argumentList.Add(argIn);

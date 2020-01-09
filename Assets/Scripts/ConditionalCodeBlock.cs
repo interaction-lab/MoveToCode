@@ -7,13 +7,13 @@
 
         public OPERATION op;
 
-        protected override void SetInstructionOrData() {
+        protected override void SetMyBlockInternalArg() {
             switch (op) {
                 case OPERATION.EQUALS:
-                    myInstruction = new EqualsConditionInstruction();
+                    myBlockInternalArg = new EqualsConditionInstruction();
                     break;
                 case OPERATION.NOTEQUALS:
-                    myInstruction = new NotEqualsConditionInstruction();
+                    myBlockInternalArg = new NotEqualsConditionInstruction();
                     break;
             }
 

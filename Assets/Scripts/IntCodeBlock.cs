@@ -3,8 +3,8 @@
     public class IntCodeBlock : DataCodeBlock {
         public int output;
 
-        protected override void SetInstructionOrData() {
-            myData = new IntDataType(output);
+        protected override void SetMyBlockInternalArg() {
+            myBlockInternalArg = new IntDataType(output);
         }
     }
 }

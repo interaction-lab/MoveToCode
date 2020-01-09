@@ -3,15 +3,13 @@ using Microsoft.MixedReality.Toolkit.UI;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Assertions;
 
 
 namespace MoveToCode {
     public abstract class CodeBlock : MonoBehaviour {
-        protected Instruction myInstruction;
-        protected IDataType myData;
+        protected IArgument myBlockInternalArg;
         CodeBlock nextCodeBlock;
         List<CodeBlock> argumentCodeBlocks;
         TextMeshPro textMesh;
@@ -23,9 +21,8 @@ namespace MoveToCode {
 
 
         // Abstract Methods
-        protected abstract void SetInstructionOrData();
-        public abstract bool IsInstructionCodeBlock();
-        public abstract bool IsDataCodeBlock();
+        protected abstract void SetMyBlockInternalArg();
+
 
         // Start Up
         private void Awake() {
@@ -45,27 +42,36 @@ namespace MoveToCode {
 
             // Setup
             argumentCodeBlocks = new List<CodeBlock>();
-            SetInstructionOrData();
-            myInstruction?.SetCodeBlock(this);
-            myData?.SetCodeBlock(this);
+            SetMyBlockInternalArg();
+            myBlockInternalArg.SetCodeBlock(this);
             if (IsInstructionCodeBlock()) {
-                argumentCodeBlocks.Resize(myInstruction.GetNumArguments());
+                argumentCodeBlocks.Resize(GetMyInstruction().GetNumArguments());
             }
 
             UpdateText();
         }
 
         // Public Methods
-        public Instruction GetInstruction() {
-            return myInstruction;
+        public bool IsInstructionCodeBlock() {
+            return (this as InstructionCodeBlock) != null;
+        }
+        public bool IsDataCodeBlock() {
+            return (this as DataCodeBlock) != null;
+        }
+
+        public Instruction GetMyInstruction() {
+            return myBlockInternalArg as Instruction;
+        }
+        public IDataType GetMyData() {
+            return myBlockInternalArg as IDataType;
         }
 
         public IEnumerable GetAllAttachedCodeBlocks() {
             if (IsDataCodeBlock()) {
                 yield break;
             }
-            if (myInstruction.GetNextInstruction() != null) {
-                yield return myInstruction.GetNextInstruction().GetCodeBlock();
+            if (GetMyInstruction().GetNextInstruction() != null) {
+                yield return GetMyInstruction().GetNextInstruction().GetCodeBlock();
             }
             for (int i = 0; i < argumentCodeBlocks.Count; ++i) {
                 if (argumentCodeBlocks[i] != null) {
@@ -82,12 +88,12 @@ namespace MoveToCode {
         }
 
         public IArgument GetArgumentAt(int position) {
-            return myInstruction.GetArgumentAt(position);
+            return GetMyInstruction().GetArgumentAt(position);
         }
 
         public void SetValueOfData(IDataType dTIn) {
             Assert.IsTrue(IsDataCodeBlock());
-            myData.SetValue(dTIn.GetValue());
+            GetMyData().SetValue(dTIn.GetValue());
             UpdateText();
         }
 
@@ -107,7 +113,7 @@ namespace MoveToCode {
         }
 
         public bool IsMyNextInstruction(Instruction iIn) {
-            return myInstruction.GetNextInstruction() == iIn;
+            return GetMyInstruction()?.GetNextInstruction() == iIn;
         }
 
         public int GetPositionOfArgument(IArgument iArgIn) {
@@ -128,7 +134,7 @@ namespace MoveToCode {
         public void RemoveFromParentBlock() {
             CodeBlock parentCodeBlock = transform.parent?.GetComponent<CodeBlock>();
             if (parentCodeBlock != null) {
-                if (IsInstructionCodeBlock() && parentCodeBlock.IsMyNextInstruction(myInstruction)) {
+                if (IsInstructionCodeBlock() && parentCodeBlock.IsMyNextInstruction(GetMyInstruction())) {
                     parentCodeBlock.SetNextCodeBlock(null, Vector3.zero);
                 }
                 else {
@@ -149,14 +155,14 @@ namespace MoveToCode {
                 newCodeBlock.transform.SetParent(transform);
                 newCodeBlock.transform.localPosition = newLocalPosition; // TODO: once arg placing is done, update this for better placement
             }
-            SetNextInstruction(newCodeBlock?.GetInstruction());
+            SetNextInstruction(newCodeBlock?.GetMyInstruction());
         }
 
         private void AddNewArgumentAt(CodeBlock newArgumentCodeBlock, int position, Vector3 newLocalPosition) {
             // need to update instruction arguments
             argumentCodeBlocks[position] = newArgumentCodeBlock;
             try {
-                myInstruction.SetArgumentAt(newArgumentCodeBlock?.GetArgumentValueOfCodeBlock(), position);
+                GetMyInstruction().SetArgumentAt(newArgumentCodeBlock?.GetArgumentValueOfCodeBlock(), position);
                 if (newArgumentCodeBlock) {
                     newArgumentCodeBlock.transform.SetParent(transform);
                     newArgumentCodeBlock.transform.localPosition = newLocalPosition;
@@ -168,11 +174,11 @@ namespace MoveToCode {
         }
 
         private void SetNextInstruction(Instruction iIn) {
-            myInstruction.SetNextInstruction(iIn);
+            GetMyInstruction().SetNextInstruction(iIn);
         }
 
         private void SetArgumentAt(IArgument newArg, int position) {
-            myInstruction.SetArgumentAt(newArg, position);
+            GetMyInstruction().SetArgumentAt(newArg, position);
         }
 
         private void RemoveNextCodeBlock() {
@@ -194,26 +200,13 @@ namespace MoveToCode {
         }
 
         private IArgument GetArgumentValueOfCodeBlock() {
-            if (IsInstructionCodeBlock()) {
-                return myInstruction;
-            }
-            return GetMyData();
+            return myBlockInternalArg;
         }
 
         // This is needed to wait for the gameobject to spawn
         private IEnumerator UpdateTextNextFrame() {
             yield return new WaitForEndOfFrame();
             UpdateText();
-        }
-
-
-
-        private IDataType GetMyData() {
-            VariableCodeBlock check = this as VariableCodeBlock;
-            if (check != null) {
-                return check.GetVariableValueFromBlockCollection();
-            }
-            return myData;
         }
 
         private void UpdateText() {
@@ -228,6 +221,10 @@ namespace MoveToCode {
                 textMesh.SetText(ToString());
                 transform.parent.GetComponent<CodeBlock>()?.UpdateText();
             }
+        }
+
+        public override string ToString() {
+            return myBlockInternalArg.ToString();
         }
     }
 }

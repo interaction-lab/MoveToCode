@@ -9,19 +9,19 @@
 
         public OPERATION op;
 
-        protected override void SetInstructionOrData() {
+        protected override void SetMyBlockInternalArg() {
             switch (op) {
                 case OPERATION.ADD:
-                    myInstruction = new AdditionInstruction();
+                    myBlockInternalArg = new AdditionInstruction();
                     break;
                 case OPERATION.DIV:
-                    myInstruction = new DivisionInstruction();
+                    myBlockInternalArg = new DivisionInstruction();
                     break;
                 case OPERATION.MUL:
-                    myInstruction = new MultiplicationInstruction();
+                    myBlockInternalArg = new MultiplicationInstruction();
                     break;
                 case OPERATION.SUB:
-                    myInstruction = new SubtractionInstruction();
+                    myBlockInternalArg = new SubtractionInstruction();
                     break;
             }
 

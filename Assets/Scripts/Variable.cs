@@ -4,7 +4,7 @@
         VariableCodeBlock myVariableCodeBlock;
 
         public override IDataType EvaluateArgument() {
-            return myVariableCodeBlock.GetVariableValueFromBlockCollection();
+            return myVariableCodeBlock.GetVariableDataFromBlockCollection();
         }
 
         public override CodeBlock GetCodeBlock() {
@@ -26,7 +26,7 @@
             return GetMyData().GetValue();
         }
         public IDataType GetMyData() {
-            return myVariableCodeBlock.GetVariableValueFromBlockCollection();
+            return myVariableCodeBlock.GetVariableDataFromBlockCollection();
         }
 
         public override string ToString() {

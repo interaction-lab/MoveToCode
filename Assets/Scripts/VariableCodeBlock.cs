@@ -11,7 +11,7 @@ namespace MoveToCode {
             myBlockInternalArg = new Variable();
         }
 
-        public IDataType GetVariableValueFromBlockCollection() {
+        public IDataType GetVariableDataFromBlockCollection() {
             return parentVariableBlockCollection?.GetVariableValueFromBlockCollection();
         }
 

@@ -140,7 +140,8 @@ namespace MoveToCode {
                 if (IsInstructionCodeBlock() && parentCodeBlock.IsMyNextInstruction(GetMyInstruction())) {
                     parentCodeBlock.SetNextCodeBlock(null, Vector3.zero);
                 }
-                else if (parentAsControlFlowBlock.IsMyExitInstruction(GetMyInstruction())) {
+                else if (parentAsControlFlowBlock != null &&
+                    parentAsControlFlowBlock.IsMyExitInstruction(GetMyInstruction())) {
                     parentAsControlFlowBlock.SetExitCodeBlock(null, Vector3.zero);
                 }
                 else {

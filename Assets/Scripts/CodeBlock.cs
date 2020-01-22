@@ -19,10 +19,8 @@ namespace MoveToCode {
         Rigidbody rigidBody;
         SnapColliders snapColliders;
 
-
         // Abstract Methods
         protected abstract void SetMyBlockInternalArg();
-
 
         // Start Up
         private void Awake() {
@@ -131,11 +129,16 @@ namespace MoveToCode {
 
 
         // Note: This is slightly inefficienct approach but makes it so you don't have to keep track of as much
+        // TODO add in endifinstructions to this
         public void RemoveFromParentBlock() {
             CodeBlock parentCodeBlock = transform.parent?.GetComponent<CodeBlock>();
+            ControlFlowCodeBlock parentAsControlFlowBlock = parentCodeBlock as ControlFlowCodeBlock;
             if (parentCodeBlock != null) {
                 if (IsInstructionCodeBlock() && parentCodeBlock.IsMyNextInstruction(GetMyInstruction())) {
                     parentCodeBlock.SetNextCodeBlock(null, Vector3.zero);
+                }
+                else if (parentAsControlFlowBlock.IsMyExitInstruction(GetMyInstruction())) {
+                    parentAsControlFlowBlock.SetExitCodeBlock(null, Vector3.zero);
                 }
                 else {
                     parentCodeBlock.RemoveArgumentAt(
@@ -160,13 +163,13 @@ namespace MoveToCode {
 
         private void AddNewArgumentAt(CodeBlock newArgumentCodeBlock, int position, Vector3 newLocalPosition) {
             // need to update instruction arguments
-            argumentCodeBlocks[position] = newArgumentCodeBlock;
             try {
                 GetMyInstruction().SetArgumentAt(newArgumentCodeBlock?.GetArgumentValueOfCodeBlock(), position);
                 if (newArgumentCodeBlock) {
                     newArgumentCodeBlock.transform.SetParent(transform);
                     newArgumentCodeBlock.transform.localPosition = newLocalPosition;
                 }
+                argumentCodeBlocks[position] = newArgumentCodeBlock;
             }
             catch (System.Exception ex) {
                 Debug.LogWarning(ex.ToString());

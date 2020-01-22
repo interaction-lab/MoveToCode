@@ -4,10 +4,9 @@ namespace MoveToCode {
     public class PrintInstruction : Instruction {
 
         string output;
-        int numArguments = 1;
 
         public PrintInstruction() {
-            ResizeArgumentList(numArguments);
+            ResizeArgumentList(GetNumArguments());
         }
 
         public PrintInstruction(IArgument argIn) {
@@ -19,7 +18,7 @@ namespace MoveToCode {
         }
 
         public override int GetNumArguments() {
-            return numArguments;
+            return 1;
         }
 
         public override InstructionReturnValue RunInstruction() {

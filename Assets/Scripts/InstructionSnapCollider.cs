@@ -3,7 +3,10 @@
 namespace MoveToCode {
     public class InstructionSnapCollider : SnapCollider {
         public override void DoSnapAction(CodeBlock myCodeBlock, CodeBlock collidedCodeBlock) {
-            myCodeBlock.SetNextCodeBlock(collidedCodeBlock, Vector3.down);
+            // maybe quadrant round for snapping instructions due to if statements?
+            Vector3 relationToParent = transform.localPosition;
+            relationToParent.y = -1f;
+            myCodeBlock.SetNextCodeBlock(collidedCodeBlock, relationToParent);
         }
 
         public override bool IsSnappableToThisSnapColliderType(CodeBlock collidedCodeBlock) {

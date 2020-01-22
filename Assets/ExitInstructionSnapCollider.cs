@@ -11,7 +11,7 @@ namespace MoveToCode {
             relationToParent.y = -1f;
             ControlFlowCodeBlock castedMyBlock = myCodeBlock as ControlFlowCodeBlock;
             Assert.IsNotNull(castedMyBlock);
-            castedMyBlock.SetExitCodeBlock(collidedCodeBlock, transform.parent.parent.GetComponentInChildren<CodeBlockObjectMesh>().GetLocalPositionOfExitInstruction());
+            castedMyBlock.SetExitCodeBlock(collidedCodeBlock, Vector3.down);
         }
     }
 }

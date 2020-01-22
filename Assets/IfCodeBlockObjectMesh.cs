@@ -3,8 +3,8 @@
 namespace MoveToCode {
     public class IfCodeBlockObjectMesh : CodeBlockObjectMesh {
         Transform top, side, bottom;
-        float scaleValue = 2.0f;
-        float translateValue = 1.0f;
+        float scaleValue = 1.0f;
+        float translateValue = 0.5f;
 
         private void Awake() {
             top = transform.GetChild(0);
@@ -20,8 +20,8 @@ namespace MoveToCode {
             ResizeMeshes(-scaleValue, -translateValue);
         }
 
-        public override Vector3 GetLocalPositionOfExitInstruction() {
-            return bottom.localPosition;
+        public override Transform GetExitInstructionParentTransform() {
+            return bottom;
         }
 
         private void ResizeMeshes(float scaleVal, float transVal) {

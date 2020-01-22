@@ -35,7 +35,9 @@ namespace MoveToCode {
                 StartCoroutine(HackyFixForEnablingTrigger());
             }
             collisionCodeBlockSnap?.RemoveCollisionSnapCollider(this);
-            meshRend.enabled = false;
+            if (meshRend != null) {
+                meshRend.enabled = false;
+            }
             collisionCodeBlockSnap = null;
         }
 

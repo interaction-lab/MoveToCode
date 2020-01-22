@@ -3,9 +3,18 @@
 namespace MoveToCode {
     public abstract class ControlFlowCodeBlock : InstructionCodeBlock {
         CodeBlock exitCodeBlock;
+        CodeBlockObjectMesh myCodeBlockObjectMesh;
+
         // public methods
         public void SetExitInstruction(Instruction iIn) {
             (myBlockInternalArg as ControlFlowInstruction).SetExitInstruction(iIn);
+        }
+
+        public CodeBlockObjectMesh GetMyCodeBlockObjectMesh() {
+            if (myCodeBlockObjectMesh == null) {
+                myCodeBlockObjectMesh = GetComponentInChildren<CodeBlockObjectMesh>();
+            }
+            return myCodeBlockObjectMesh;
         }
 
         public void SetExitCodeBlock(CodeBlock newExitInstuctionCodeBlock, Vector3 newLocalPosition) {
@@ -18,6 +27,13 @@ namespace MoveToCode {
             return iIn == (myBlockInternalArg as ControlFlowInstruction).GetExitInstruction();
         }
 
+        public void AlertNewInstructionAdded() {
+            GetMyCodeBlockObjectMesh().AlertInstructionAdded();
+        }
+
+        public void AlertInstructionRemoved() {
+            GetMyCodeBlockObjectMesh().AlertInstructionRemoved();
+        }
 
         // private helpers
         private void AddNewExitCodeBlock(CodeBlock newCodeBlock, Vector3 newLocalPosition) {

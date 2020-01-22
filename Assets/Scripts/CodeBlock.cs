@@ -56,6 +56,9 @@ namespace MoveToCode {
         public bool IsDataCodeBlock() {
             return (this as DataCodeBlock) != null;
         }
+        public bool IsControlFlowCodeBlock() {
+            return (this as ControlFlowCodeBlock) != null;
+        }
 
         public Instruction GetMyInstruction() {
             return myBlockInternalArg as Instruction;
@@ -157,6 +160,9 @@ namespace MoveToCode {
             if (newCodeBlock) {
                 newCodeBlock.transform.SetParent(transform);
                 newCodeBlock.transform.localPosition = newLocalPosition; // TODO: once arg placing is done, update this for better placement
+                if (IsControlFlowCodeBlock()) {
+                    (this as ControlFlowCodeBlock).AlertNewInstructionAdded();
+                }
             }
             SetNextInstruction(newCodeBlock?.GetMyInstruction());
         }
@@ -190,6 +196,9 @@ namespace MoveToCode {
                 nextCodeBlock.transform.localPosition = new Vector3(1.05f, 1.05f, 0); // TODO: This Placement
                 nextCodeBlock.transform.SetParent(CodeBlockManager.instance.transform);
                 nextCodeBlock = null;
+                if (IsControlFlowCodeBlock()) {
+                    (this as ControlFlowCodeBlock).AlertInstructionRemoved();
+                }
             }
         }
 

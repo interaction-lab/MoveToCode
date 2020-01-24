@@ -1,29 +1,46 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
-// Empty Class to denote type of GameObject
-// See CodeBlockSnap for more information
 namespace MoveToCode {
     public class SnapColliders : MonoBehaviour {
-
-        // TODO: should be one function
+        List<SnapCollider> snapColliders;
+        CodeBlock myCodeBlock;
         public void DisableAllCollidersAndChildrenColliders() {
-            foreach (SnapCollider sc in transform.GetComponentsInChildren<SnapCollider>()) {
-                gameObject.SetActive(false);
-            }
-            CodeBlock myCodeBlock = transform.parent.GetComponent<CodeBlock>();
-            foreach (CodeBlock c in myCodeBlock.GetAllAttachedCodeBlocks()) {
-                c.GetSnapColliders()?.DisableAllCollidersAndChildrenColliders();
-            }
+            SetCollidersAndChildrenState(false);
         }
 
         public void EnableAllCollidersAndChildrenColliders() {
-            foreach (SnapCollider sc in transform.GetComponentsInChildren<SnapCollider>()) {
-                gameObject.SetActive(true);
+            SetCollidersAndChildrenState(true);
+        }
+
+
+        // Private methods
+        private void SetCollidersAndChildrenState(bool desiredActiveState) {
+            foreach (SnapCollider sc in GetSnapColliders()) {
+                sc.gameObject.SetActive(desiredActiveState);
             }
-            CodeBlock myCodeBlock = transform.parent.GetComponent<CodeBlock>();
-            foreach (CodeBlock c in myCodeBlock.GetAllAttachedCodeBlocks()) {
-                c.GetSnapColliders()?.EnableAllCollidersAndChildrenColliders();
+            foreach (CodeBlock c in GetMyCodeBlock().GetAllAttachedCodeBlocks()) {
+                if (desiredActiveState) {
+                    c.GetSnapColliders()?.EnableAllCollidersAndChildrenColliders();
+                }
+                else {
+                    c.GetSnapColliders()?.DisableAllCollidersAndChildrenColliders();
+                }
             }
+        }
+
+        private CodeBlock GetMyCodeBlock() {
+            if (myCodeBlock == null) {
+                myCodeBlock = transform.parent.GetComponent<CodeBlock>();
+            }
+            return myCodeBlock;
+        }
+
+        private List<SnapCollider> GetSnapColliders() {
+            if (snapColliders == null) {
+                snapColliders = new List<SnapCollider>(transform.GetComponentsInChildren<SnapCollider>());
+            }
+            return snapColliders;
         }
     }
 }

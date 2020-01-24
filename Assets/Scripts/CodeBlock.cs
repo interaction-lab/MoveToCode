@@ -129,6 +129,16 @@ namespace MoveToCode {
             return -1; // Will never get here, put so VS stops complaining
         }
 
+        public int FindChainSize() {
+            int size = 0;
+            Instruction runner = GetMyInstruction();
+            while (runner != null) {
+                runner = runner.GetNextInstruction();
+                ++size;
+            }
+            return size;
+        }
+
 
 
         // Note: This is slightly inefficienct approach but makes it so you don't have to keep track of as much

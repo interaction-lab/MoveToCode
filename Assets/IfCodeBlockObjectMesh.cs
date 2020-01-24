@@ -13,23 +13,27 @@ namespace MoveToCode {
         }
 
         public override void AlertInstructionAdded() {
-            ResizeMeshes(scaleValue, translateValue);
+            ResizeMeshes(scaleValue, -translateValue);
         }
 
         public override void AlertInstructionRemoved() {
-            ResizeMeshes(-scaleValue, -translateValue);
+            ResizeMeshes(-scaleValue, translateValue);
         }
 
         public override Transform GetExitInstructionParentTransform() {
             return bottom;
         }
 
+        private int FindChainSize() {
+            return transform.parent.GetComponent<CodeBlock>().FindChainSize();
+        }
+
         private void ResizeMeshes(float scaleVal, float transVal) {
             Vector3 scaler = side.localScale;
-            scaler.y += scaleVal;
+            scaler.y = scaleVal * FindChainSize() + 2;
             side.localScale = scaler;
             Vector3 translate = side.localPosition;
-            translate.y -= transVal;
+            translate.y = transVal * FindChainSize() + 1;
             side.localPosition = translate;
 
             // need to move down bottom also

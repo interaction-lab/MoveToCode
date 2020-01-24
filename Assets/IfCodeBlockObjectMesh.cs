@@ -22,11 +22,15 @@ namespace MoveToCode {
             return transform.parent.GetComponent<CodeBlock>().FindChainSize();
         }
 
+        private int GetMyVerticalSize() {
+            return transform.parent.GetComponent<CodeBlock>().GetBlockVerticalSize();
+        }
+
         private void ResizeMeshes() {
-            int chainSize = FindChainSize();
+            int chainSize = FindChainSize(); // Also need trailing size of things within, make this within chain
 
             Vector3 scaler = side.localScale;
-            scaler.y = chainSize + 3;
+            scaler.y = chainSize + GetMyVerticalSize();
             side.localScale = scaler;
 
             scaler = side.localPosition;

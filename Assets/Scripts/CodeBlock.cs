@@ -142,8 +142,11 @@ namespace MoveToCode {
             Instruction runner = GetMyInstruction().GetNextInstruction();
             while (runner != null) {
                 size += runner.GetCodeBlock().GetBlockVerticalSize();
-                if ((runner as ControlFlowInstruction) != null) { // this is to deal with big chains of control flow blocks changing at once
+                ControlFlowInstruction cfi = runner as ControlFlowInstruction;
+                if (cfi != null) { // this is to deal with big chains of control flow blocks changing at once
                     size += runner.GetCodeBlock().FindChainSize();
+                    // need to find size of exitinstuction
+                    size += cfi.FindExitChainSize();
                 }
                 runner = runner.GetNextInstruction();
             }

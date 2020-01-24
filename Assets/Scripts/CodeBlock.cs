@@ -135,6 +135,9 @@ namespace MoveToCode {
             while (runner != null) {
                 runner = runner.GetNextInstruction();
                 ++size;
+                if ((runner as ControlFlowInstruction) != null) { // this is to deal with big chains of control flow blocks changing at once
+                    size += runner.GetCodeBlock().FindChainSize();
+                }
             }
             return size;
         }

@@ -51,6 +51,9 @@ namespace MoveToCode {
             if (myCodeBlockSnap == null) {
                 myCodeBlockSnap = transform.parent.parent.GetComponent<CodeBlockSnap>();
             }
+            if (myCodeBlockSnap == null) {
+                myCodeBlockSnap = transform.parent.parent.parent.GetComponent<CodeBlockSnap>(); // TODO: this is so jank, need fix for object mesh abstraction on all instructions
+            }
         }
 
         IEnumerator HackyFixForEnablingTrigger() {

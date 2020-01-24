@@ -5,6 +5,8 @@ namespace MoveToCode {
     public class SnapColliders : MonoBehaviour {
         List<SnapCollider> snapColliders;
         CodeBlock myCodeBlock;
+
+        // public methods
         public void DisableAllCollidersAndChildrenColliders() {
             SetCollidersAndChildrenState(false);
         }
@@ -38,7 +40,15 @@ namespace MoveToCode {
 
         private List<SnapCollider> GetSnapColliders() {
             if (snapColliders == null) {
-                snapColliders = new List<SnapCollider>(transform.GetComponentsInChildren<SnapCollider>());
+                if (GetComponent<CodeBlockObjectMesh>()) {
+                    snapColliders = new List<SnapCollider>();
+                    foreach (Transform go in transform) {
+                        snapColliders.AddRange(go.GetComponentsInChildren<SnapCollider>());
+                    }
+                }
+                else {
+                    snapColliders = new List<SnapCollider>(transform.GetComponentsInChildren<SnapCollider>());
+                }
             }
             return snapColliders;
         }

@@ -4,7 +4,7 @@ namespace MoveToCode {
     public class IfCodeBlockObjectMesh : CodeBlockObjectMesh {
         Transform top, side, bottom;
         float scaleValue = 1.0f;
-        float translateValue = 0.5f;
+        float translateValue = -0.5f;
 
         private void Awake() {
             top = transform.GetChild(0);

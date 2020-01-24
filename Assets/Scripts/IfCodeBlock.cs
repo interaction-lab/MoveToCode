@@ -7,7 +7,7 @@ namespace MoveToCode {
         }
 
         public override Vector3 GetSnapToParentPosition() {
-            return new Vector3(0.33f, 0, 0);
+            return new Vector3(0.25f, 0, 0);
         }
 
         protected override void SetMyBlockInternalArg() {

@@ -38,6 +38,7 @@ namespace MoveToCode {
             if (newCodeBlock) {
                 newCodeBlock.transform.SetParent(GetMyCodeBlockObjectMesh().GetExitInstructionParentTransform()); // this needs to be bottom transform 
                 newCodeBlock.transform.localPosition = newLocalPosition; // TODO: once arg placing is done, update this for better placement
+                newCodeBlock.transform.localRotation = Quaternion.identity;
             }
             SetExitInstruction(newCodeBlock?.GetMyInstruction());
         }

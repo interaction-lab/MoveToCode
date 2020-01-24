@@ -27,13 +27,11 @@ namespace MoveToCode {
             return iIn == (myBlockInternalArg as ControlFlowInstruction).GetExitInstruction();
         }
 
-        public void AlertNewInstructionAdded() {
-            GetMyCodeBlockObjectMesh().AlertInstructionAdded();
+        public void AlertInstructionChanged() {
+            GetMyCodeBlockObjectMesh().AlertInstructionChanged();
+            // TODO: need to alert parent instructions as well
         }
 
-        public void AlertInstructionRemoved() {
-            GetMyCodeBlockObjectMesh().AlertInstructionRemoved();
-        }
 
         // private helpers
         private void AddNewExitCodeBlock(CodeBlock newCodeBlock, Vector3 newLocalPosition) {

@@ -131,7 +131,7 @@ namespace MoveToCode {
 
         public int FindChainSize() {
             int size = 0;
-            Instruction runner = GetMyInstruction();
+            Instruction runner = GetMyInstruction().GetNextInstruction();
             while (runner != null) {
                 runner = runner.GetNextInstruction();
                 ++size;
@@ -174,9 +174,6 @@ namespace MoveToCode {
             if (newCodeBlock) {
                 newCodeBlock.transform.SetParent(transform);
                 newCodeBlock.transform.localPosition = newLocalPosition; // TODO: once arg placing is done, update this for better placement
-                if (IsControlFlowCodeBlock()) {
-                    (this as ControlFlowCodeBlock).AlertNewInstructionAdded();
-                }
             }
             SetNextInstruction(newCodeBlock?.GetMyInstruction());
         }
@@ -198,6 +195,9 @@ namespace MoveToCode {
 
         private void SetNextInstruction(Instruction iIn) {
             GetMyInstruction().SetNextInstruction(iIn);
+            if ((this as ControlFlowCodeBlock) != null) {
+                (this as ControlFlowCodeBlock).AlertInstructionChanged();
+            }
         }
 
         private void SetArgumentAt(IArgument newArg, int position) {
@@ -210,9 +210,6 @@ namespace MoveToCode {
                 nextCodeBlock.transform.localPosition = new Vector3(1.05f, 1.05f, 0); // TODO: This Placement
                 nextCodeBlock.transform.SetParent(CodeBlockManager.instance.transform);
                 nextCodeBlock = null;
-                if (IsControlFlowCodeBlock()) {
-                    (this as ControlFlowCodeBlock).AlertInstructionRemoved();
-                }
             }
         }
 

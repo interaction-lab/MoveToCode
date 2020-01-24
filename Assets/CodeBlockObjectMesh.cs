@@ -4,8 +4,7 @@ using UnityEngine;
 
 namespace MoveToCode {
     public abstract class CodeBlockObjectMesh : MonoBehaviour {
-        public abstract void AlertInstructionAdded();
-        public abstract void AlertInstructionRemoved();
+        public abstract void AlertInstructionChanged();
         public abstract Transform GetExitInstructionParentTransform();
     }
 }

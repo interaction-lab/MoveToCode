@@ -3,8 +3,6 @@
 namespace MoveToCode {
     public class IfCodeBlockObjectMesh : CodeBlockObjectMesh {
         Transform top, side, bottom;
-        float scaleValue = 1.0f;
-        float translateValue = -0.5f;
 
         private void Awake() {
             top = transform.GetChild(0);
@@ -12,12 +10,8 @@ namespace MoveToCode {
             bottom = transform.GetChild(2);
         }
 
-        public override void AlertInstructionAdded() {
-            ResizeMeshes(scaleValue, -translateValue);
-        }
-
-        public override void AlertInstructionRemoved() {
-            ResizeMeshes(-scaleValue, translateValue);
+        public override void AlertInstructionChanged() {
+            ResizeMeshes();
         }
 
         public override Transform GetExitInstructionParentTransform() {
@@ -28,18 +22,22 @@ namespace MoveToCode {
             return transform.parent.GetComponent<CodeBlock>().FindChainSize();
         }
 
-        private void ResizeMeshes(float scaleVal, float transVal) {
+        private void ResizeMeshes() {
+            int chainSize = FindChainSize();
+            Debug.Log("Chainsize: " + chainSize);
+
             Vector3 scaler = side.localScale;
-            scaler.y = scaleVal * FindChainSize() + 2;
+            scaler.y = chainSize + 3;
             side.localScale = scaler;
-            Vector3 translate = side.localPosition;
-            translate.y = transVal * FindChainSize() + 1;
-            side.localPosition = translate;
+
+            scaler = side.localPosition;
+            scaler.y = -(side.localScale.y - 1) / 2;
+            side.localPosition = scaler;
 
             // need to move down bottom also
-            translate = bottom.localPosition;
-            translate.y -= scaleVal;
-            bottom.localPosition = translate;
+            scaler = bottom.localPosition;
+            scaler.y = -chainSize - 2;
+            bottom.localPosition = scaler;
         }
     }
 }

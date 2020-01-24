@@ -8,6 +8,12 @@
             ResizeArgumentList(GetNumArguments());
         }
 
+        public ConditionalInstruction(IDataType numLeftIn, IDataType numRightIn) {
+            ResizeArgumentList(GetNumArguments());
+            SetArgumentAt(numLeftIn, 0);
+            SetArgumentAt(numRightIn, 1);
+        }
+
         public override void EvaluateArgumentList() {
             // check same data type both sides, throw exception if not
             leftArg = argumentList[0].EvaluateArgument();
@@ -24,7 +30,11 @@
         }
 
         public override string ToString() {
-            return string.Join("", leftArg?.ToString(), " ", GetConditionalSymbol(), " ", rightArg?.ToString());
+            return string.Join("", argumentList[0]?.ToString(),
+                " ",
+                GetConditionalSymbol(),
+                " ",
+                argumentList[1]?.ToString());
         }
     }
 }

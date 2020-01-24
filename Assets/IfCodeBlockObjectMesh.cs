@@ -24,7 +24,6 @@ namespace MoveToCode {
 
         private void ResizeMeshes() {
             int chainSize = FindChainSize();
-            Debug.Log("Chainsize: " + chainSize);
 
             Vector3 scaler = side.localScale;
             scaler.y = chainSize + 3;

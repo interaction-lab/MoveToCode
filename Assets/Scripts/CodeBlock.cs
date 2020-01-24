@@ -193,11 +193,39 @@ namespace MoveToCode {
             }
         }
 
+        private CodeBlock FindParentCodeBlock() {
+            Transform upRunner = transform;
+            while (upRunner.GetComponent<CodeBlockManager>() == null) {
+                upRunner = upRunner.parent;
+                if (upRunner.GetComponent<CodeBlock>()) {
+                    return upRunner.GetComponent<CodeBlock>();
+                }
+            }
+            return null;
+        }
+
+        private void UpdateParentControlFlowSizes() {
+            CodeBlock parentBlock = FindParentCodeBlock();
+            ControlFlowCodeBlock parentAsControl = parentBlock as ControlFlowCodeBlock;
+            if (parentAsControl != null) {
+                parentAsControl.UpdateControlFlowSizes();
+            }
+            else if (parentBlock != null) {
+                parentBlock.UpdateParentControlFlowSizes();
+            }
+        }
+
+        private void UpdateControlFlowSizes() {
+            ControlFlowCodeBlock asControl = this as ControlFlowCodeBlock;
+            if (asControl != null) {
+                asControl.AlertInstructionChanged();
+            }
+            UpdateParentControlFlowSizes();
+        }
+
         private void SetNextInstruction(Instruction iIn) {
             GetMyInstruction().SetNextInstruction(iIn);
-            if ((this as ControlFlowCodeBlock) != null) {
-                (this as ControlFlowCodeBlock).AlertInstructionChanged();
-            }
+            UpdateControlFlowSizes();
         }
 
         private void SetArgumentAt(IArgument newArg, int position) {

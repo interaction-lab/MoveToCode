@@ -29,7 +29,6 @@ namespace MoveToCode {
 
         public void AlertInstructionChanged() {
             GetMyCodeBlockObjectMesh().AlertInstructionChanged();
-            // TODO: need to alert parent instructions as well
         }
 
 

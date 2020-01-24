@@ -185,6 +185,7 @@ namespace MoveToCode {
             if (newCodeBlock) {
                 newCodeBlock.transform.SetParent(transform);
                 newCodeBlock.transform.localPosition = newLocalPosition; // TODO: once arg placing is done, update this for better placement
+                newCodeBlock.transform.rotation = Quaternion.identity;
             }
             SetNextInstruction(newCodeBlock?.GetMyInstruction());
         }
@@ -196,6 +197,7 @@ namespace MoveToCode {
                 if (newArgumentCodeBlock) {
                     newArgumentCodeBlock.transform.SetParent(transform);
                     newArgumentCodeBlock.transform.localPosition = newLocalPosition;
+                    newArgumentCodeBlock.transform.localRotation = Quaternion.identity; // TODO: fix this and make normalized with addarg
                 }
                 argumentCodeBlocks[position] = newArgumentCodeBlock;
             }

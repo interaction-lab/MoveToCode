@@ -22,6 +22,14 @@ namespace MoveToCode {
         // Abstract Methods
         protected abstract void SetMyBlockInternalArg();
 
+        // Virtual methods, made for control blocks really
+        public virtual int GetBlockVerticalSize() {
+            return 1;
+        }
+        public virtual Vector3 GetSnapToParentPosition() {
+            return Vector3.zero;
+        }
+
         // Start Up
         private void Awake() {
             // Set up collision
@@ -133,11 +141,11 @@ namespace MoveToCode {
             int size = 0;
             Instruction runner = GetMyInstruction().GetNextInstruction();
             while (runner != null) {
-                runner = runner.GetNextInstruction();
-                ++size;
+                size += runner.GetCodeBlock().GetBlockVerticalSize();
                 if ((runner as ControlFlowInstruction) != null) { // this is to deal with big chains of control flow blocks changing at once
                     size += runner.GetCodeBlock().FindChainSize();
                 }
+                runner = runner.GetNextInstruction();
             }
             return size;
         }

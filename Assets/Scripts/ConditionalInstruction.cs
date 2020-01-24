@@ -1,9 +1,12 @@
 ﻿namespace MoveToCode {
     public abstract class ConditionalInstruction : Instruction {
-        int numArgs = 2;
         protected IDataType leftArg, rightArg;
 
         public abstract string GetConditionalSymbol();
+
+        public ConditionalInstruction() {
+            ResizeArgumentList(GetNumArguments());
+        }
 
         public override void EvaluateArgumentList() {
             // check same data type both sides, throw exception if not
@@ -12,7 +15,7 @@
         }
 
         public override int GetNumArguments() {
-            return numArgs;
+            return 2;
         }
 
         public override void SetUpArgumentCompatability() {

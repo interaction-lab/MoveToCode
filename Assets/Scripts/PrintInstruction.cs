@@ -10,6 +10,7 @@ namespace MoveToCode {
         }
 
         public PrintInstruction(IArgument argIn) {
+            ResizeArgumentList(GetNumArguments());
             SetArgumentAt(argIn, 0);
         }
 

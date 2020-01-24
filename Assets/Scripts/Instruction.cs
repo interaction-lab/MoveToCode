@@ -56,23 +56,12 @@ namespace MoveToCode {
 
         }
 
-        /// <summary>
-        /// Adds argument onto the argument list at specified position. If position is -1, argument is added to end of list. Resizes list if index out of bounds.
-        /// </summary>
-        /// <param name="argIn">Argument to be added to the list.</param>
-        /// <param name="position">Position of the argument, zero indexed. Default value -1, argument is added to end in this case. </param>
-        public void SetArgumentAt(IArgument argIn, int position = -1) {
+        public void SetArgumentAt(IArgument argIn, int position) {
             Type typeToTry = argIn as Variable != null ?
                 (argIn as Variable).GetMyData().GetType() :
                 argIn?.GetType();
             TryArgumentCompatibleType(typeToTry);
-            ResizeArgumentList(position + 1);
-            if (position == -1) {
-                argumentList.Add(argIn);
-            }
-            else {
-                argumentList[position] = argIn;
-            }
+            argumentList[position] = argIn;
         }
 
         public void ResizeArgumentList(int desiredSize) {

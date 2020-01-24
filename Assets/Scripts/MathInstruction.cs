@@ -1,17 +1,17 @@
 ﻿namespace MoveToCode {
     public abstract class MathInstruction : Instruction {
         protected float leftNum, rightNum;
-        protected int numArguments = 2;
 
         public abstract string GetMathSymbol();
 
         public MathInstruction() {
-            ResizeArgumentList(numArguments);
+            ResizeArgumentList(GetNumArguments());
         }
 
         public MathInstruction(INumberDataType numLeftIn, INumberDataType numRightIn) {
-            SetArgumentAt(numLeftIn);
-            SetArgumentAt(numRightIn);
+            ResizeArgumentList(GetNumArguments());
+            SetArgumentAt(numLeftIn, 0);
+            SetArgumentAt(numRightIn, 1);
         }
 
         public override void EvaluateArgumentList() {
@@ -20,7 +20,7 @@
         }
 
         public override int GetNumArguments() {
-            return numArguments;
+            return 2;
         }
 
         public override void SetUpArgumentCompatability() {

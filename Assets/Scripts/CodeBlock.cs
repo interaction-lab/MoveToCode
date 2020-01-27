@@ -55,6 +55,8 @@ namespace MoveToCode {
                 argumentCodeBlocks.Resize(GetMyInstruction().GetNumArguments());
             }
 
+            CodeBlockManager.instance.RegisterCodeBlock(this);
+
             UpdateText();
         }
 
@@ -74,6 +76,9 @@ namespace MoveToCode {
         }
         public IDataType GetMyData() {
             return myBlockInternalArg as IDataType;
+        }
+        public IArgument GetMyInternalIArgument() {
+            return myBlockInternalArg;
         }
 
         public IEnumerable GetAllAttachedCodeBlocks() {
@@ -306,6 +311,12 @@ namespace MoveToCode {
 
         public override string ToString() {
             return myBlockInternalArg.ToString();
+        }
+
+        private void OnDestroy() {
+            if (CodeBlockManager.instance && CodeBlockManager.instance.isActiveAndEnabled) {
+                CodeBlockManager.instance.DeregisterCodeBlock(this);
+            }
         }
     }
 }

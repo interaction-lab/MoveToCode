@@ -5,30 +5,48 @@ namespace MoveToCode {
         HashSet<CodeBlock> codeBlocks;
         HashSet<SnapCollider> snapColliders;
 
-        private void Awake() {
-            codeBlocks = new HashSet<CodeBlock>();
-            snapColliders = new HashSet<SnapCollider>();
-        }
-
         public HashSet<CodeBlock> GetAllCodeBlocks() {
+            if (codeBlocks == null) {
+                codeBlocks = new HashSet<CodeBlock>();
+            }
             return codeBlocks;
         }
         public HashSet<SnapCollider> GetAllSnapColliders() {
+            if (snapColliders == null) {
+                snapColliders = new HashSet<SnapCollider>();
+            }
             return snapColliders;
         }
 
         public void RegisterCodeBlock(CodeBlock cIn) {
-            codeBlocks.Add(cIn);
+            GetAllCodeBlocks().Add(cIn);
         }
         public void RegisterSnapCollider(SnapCollider sIn) {
-            snapColliders.Add(sIn);
+            GetAllSnapColliders().Add(sIn);
         }
 
         public void DeregisterCodeBlock(CodeBlock cIn) {
-            codeBlocks.Remove(cIn);
+            GetAllCodeBlocks().Remove(cIn);
         }
         public void DeregisterSnapCollider(SnapCollider sIn) {
-            snapColliders.Remove(sIn);
+            GetAllSnapColliders().Remove(sIn);
         }
+
+        public void EnableCollidersCompatibleCodeBlock(CodeBlock cIn) {
+            SetCompatibleColliderState(cIn, true);
+        }
+        // Maybe make this "disable all active colliders by keeping track of them?
+        public void DisableCollidersCompatibleCodeBlock(CodeBlock cIn) {
+            SetCompatibleColliderState(cIn, false);
+        }
+
+        private void SetCompatibleColliderState(CodeBlock cIn, bool desiredActiveState) {
+            foreach (SnapCollider sc in GetAllSnapColliders()) {
+                if (sc.HasCompatibleType(cIn.GetMyInternalIArgument())) {
+                    sc.gameObject.SetActive(desiredActiveState);
+                }
+            }
+        }
+
     }
 }

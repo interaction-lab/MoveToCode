@@ -29,11 +29,11 @@ namespace MoveToCode {
             return argumentList[position];
         }
 
-        public CodeBlock GetCodeBlock() {
+        public override CodeBlock GetCodeBlock() {
             return myCodeBlock;
         }
 
-        public void SetCodeBlock(CodeBlock codeBlock) {
+        public override void SetCodeBlock(CodeBlock codeBlock) {
             myCodeBlock = codeBlock;
         }
 
@@ -55,7 +55,6 @@ namespace MoveToCode {
                 }
             }
             throw new InvalidOperationException("Argument type invalid, cannot use");
-
         }
 
         public void SetArgumentAt(IArgument argIn, int position) {
@@ -70,7 +69,7 @@ namespace MoveToCode {
             argumentList.Resize(desiredSize);
         }
 
-        public IDataType EvaluateArgument() {
+        public override IDataType EvaluateArgument() {
             return RunInstruction().GetReturnDataVal();
         }
     }

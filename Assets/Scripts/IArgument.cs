@@ -1,7 +1,7 @@
 ﻿namespace MoveToCode {
-    public interface IArgument {
-        IDataType EvaluateArgument();
-        CodeBlock GetCodeBlock();
-        void SetCodeBlock(CodeBlock codeBlock);
+    public abstract class IArgument {
+        public abstract IDataType EvaluateArgument();
+        public abstract CodeBlock GetCodeBlock();
+        public abstract void SetCodeBlock(CodeBlock codeBlock);
     }
 }

@@ -4,11 +4,11 @@
         protected CodeBlock myCodeBlock;
         public abstract bool IsSameDataTypeAndEqualTo(IDataType otherVal);
 
-        public virtual IDataType EvaluateArgument() {
+        public override IDataType EvaluateArgument() {
             return this;
         }
 
-        public virtual CodeBlock GetCodeBlock() {
+        public override CodeBlock GetCodeBlock() {
             return myCodeBlock;
         }
 
@@ -16,7 +16,7 @@
             return value;
         }
 
-        public virtual void SetCodeBlock(CodeBlock codeBlock) {
+        public override void SetCodeBlock(CodeBlock codeBlock) {
             myCodeBlock = codeBlock;
         }
 

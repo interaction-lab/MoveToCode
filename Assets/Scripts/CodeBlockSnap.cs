@@ -22,6 +22,8 @@ namespace MoveToCode {
         }
 
         void OnManipulationStart(ManipulationEventData call) {
+            // enable all of the snap colliders that are ok
+            mySnapColliders?.EnableAllCompatibleColliders();
             mySnapColliders?.DisableAllCollidersAndChildrenColliders();
             // Disable my collider, wait one frame, reenable
             // This allows for a "resnap" to same spot
@@ -42,9 +44,9 @@ namespace MoveToCode {
                 ClearAndResetAllColliders();
             }
             else {
-                // TODO: check if still in collision with current arg and snap back to it?
                 myCodeBlock.RemoveFromParentBlock();
             }
+            //mySnapColliders?.DisableAllCompatibleColliders();
             mySnapColliders?.EnableAllCollidersAndChildrenColliders();
         }
 

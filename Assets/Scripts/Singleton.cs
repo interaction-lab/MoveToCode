@@ -17,8 +17,8 @@ namespace MoveToCode {
         public static T instance {
             get {
                 if (m_ShuttingDown) {
-                    Debug.LogWarning("[Singleton] Instance '" + typeof(T) +
-                        "' already destroyed. Returning null.");
+                    // Debug.LogWarning("[Singleton] Instance '" + typeof(T) +
+                    //    "' already destroyed. Returning null."); // ignoring currently
                     return null;
                 }
 

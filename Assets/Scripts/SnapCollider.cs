@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MoveToCode {
@@ -13,7 +15,67 @@ namespace MoveToCode {
             meshRend.enabled = false;
             GetComponent<Collider>().isTrigger = true;
             gameObject.layer = 2;
+            CodeBlockManager.instance.RegisterSnapCollider(this);
         }
+
+        public IARGSNAPTYPES[] compatibleArgs;
+        protected List<Type> myCompatibleArgTypes;
+
+        public enum IARGSNAPTYPES {
+            Any,
+            Instruction,
+            ConditionalInstruction,
+            IDataType,
+            INumberDataType,
+            NULL,
+        }
+        static Dictionary<IARGSNAPTYPES, Type> argCompatibleTypeLookUp;
+        public Dictionary<IARGSNAPTYPES, Type> GetArgCompatibleTypeLookUp() {
+            if (argCompatibleTypeLookUp == null) {
+                argCompatibleTypeLookUp = new Dictionary<IARGSNAPTYPES, Type>();
+                argCompatibleTypeLookUp.Add(IARGSNAPTYPES.Any, typeof(IArgument));
+                argCompatibleTypeLookUp.Add(IARGSNAPTYPES.Instruction, typeof(Instruction));
+                argCompatibleTypeLookUp.Add(IARGSNAPTYPES.ConditionalInstruction, typeof(ConditionalInstruction));
+                argCompatibleTypeLookUp.Add(IARGSNAPTYPES.IDataType, typeof(IDataType));
+                argCompatibleTypeLookUp.Add(IARGSNAPTYPES.INumberDataType, typeof(INumberDataType));
+                argCompatibleTypeLookUp.Add(IARGSNAPTYPES.NULL, null);
+            }
+            return argCompatibleTypeLookUp;
+        }
+
+        public List<Type> GetMyCompatibleArgTypes() {
+            if (myCompatibleArgTypes == null) {
+                myCompatibleArgTypes = new List<Type>();
+                foreach (IARGSNAPTYPES iastp in compatibleArgs) {
+                    myCompatibleArgTypes.Add(GetArgCompatibleTypeLookUp()[iastp]);
+                }
+            }
+            return myCompatibleArgTypes;
+        }
+
+        private bool CheckArgCompatibleType(Type argTypeIn) {
+            foreach (Type T in GetMyCompatibleArgTypes()) {
+                if (T == null) {
+                    if (argTypeIn == null) {
+                        return true;
+                    }
+                }
+                else if (argTypeIn.IsAssignableFrom(T) || T.IsAssignableFrom(argTypeIn)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool HasCompatibleType(IArgument argIn) {
+            Type typeToTry = argIn as Variable != null ?
+                            (argIn as Variable).GetMyData().GetType() :
+                            argIn?.GetType();
+            return CheckArgCompatibleType(typeToTry);
+        }
+
+
+
         private void OnTriggerEnter(Collider collision) {
             collisionCodeBlockSnap = collision.transform.GetComponent<CodeBlockSnap>();
             // Make sure it is of right type and not already a part of my code
@@ -68,6 +130,12 @@ namespace MoveToCode {
 
         private void OnDisable() {
             ExitCollisionRoutine(true);
+        }
+
+        private void OnDestroy() {
+            if (CodeBlockManager.instance && CodeBlockManager.instance.isActiveAndEnabled) {
+                CodeBlockManager.instance.DeregisterSnapCollider(this);
+            }
         }
     }
 }

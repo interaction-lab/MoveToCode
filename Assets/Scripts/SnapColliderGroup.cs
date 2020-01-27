@@ -15,6 +15,10 @@ namespace MoveToCode {
             SetCollidersAndChildrenState(true);
         }
 
+        public void EnableAllCompatibleColliders() {
+            CodeBlockManager.instance.EnableCollidersCompatibleCodeBlock(GetMyCodeBlock());
+        }
+
 
         // Private methods
         private void SetCollidersAndChildrenState(bool desiredActiveState) {

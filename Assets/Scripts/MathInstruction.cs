@@ -4,11 +4,6 @@
 
         public abstract string GetMathSymbol();
 
-        public MathInstruction(INumberDataType numLeftIn, INumberDataType numRightIn) {
-            SetArgumentAt(numLeftIn, 0);
-            SetArgumentAt(numRightIn, 1);
-        }
-
         public override void EvaluateArgumentList() {
             leftNum = argumentList[0].EvaluateArgument().GetValue();
             rightNum = argumentList[1].EvaluateArgument().GetValue();

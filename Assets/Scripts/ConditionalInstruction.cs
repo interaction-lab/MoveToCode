@@ -4,12 +4,6 @@
 
         public abstract string GetConditionalSymbol();
 
-        public ConditionalInstruction(IDataType numLeftIn, IDataType numRightIn) {
-            ResizeArgumentList(GetNumArguments());
-            SetArgumentAt(numLeftIn, 0);
-            SetArgumentAt(numRightIn, 1);
-        }
-
         public override void EvaluateArgumentList() {
             // check same data type both sides, throw exception if not
             leftArg = argumentList[0]?.EvaluateArgument();

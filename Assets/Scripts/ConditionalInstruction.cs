@@ -4,10 +4,6 @@
 
         public abstract string GetConditionalSymbol();
 
-        public ConditionalInstruction() {
-            ResizeArgumentList(GetNumArguments());
-        }
-
         public ConditionalInstruction(IDataType numLeftIn, IDataType numRightIn) {
             ResizeArgumentList(GetNumArguments());
             SetArgumentAt(numLeftIn, 0);

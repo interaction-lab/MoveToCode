@@ -5,12 +5,7 @@ namespace MoveToCode {
 
         string output;
 
-        public PrintInstruction() {
-            ResizeArgumentList(GetNumArguments());
-        }
-
         public PrintInstruction(IArgument argIn) {
-            ResizeArgumentList(GetNumArguments());
             SetArgumentAt(argIn, 0);
         }
 

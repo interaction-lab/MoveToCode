@@ -4,12 +4,7 @@
 
         public abstract string GetMathSymbol();
 
-        public MathInstruction() {
-            ResizeArgumentList(GetNumArguments());
-        }
-
         public MathInstruction(INumberDataType numLeftIn, INumberDataType numRightIn) {
-            ResizeArgumentList(GetNumArguments());
             SetArgumentAt(numLeftIn, 0);
             SetArgumentAt(numRightIn, 1);
         }

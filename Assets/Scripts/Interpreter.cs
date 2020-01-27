@@ -23,6 +23,7 @@ namespace MoveToCode {
             lastInstructionReturn = null;
             curInstruction = startingInstruction;
             // this will also reset memory later
+            // this will also reset all instruction states as well
         }
 
         public void RunNextInstruction() {

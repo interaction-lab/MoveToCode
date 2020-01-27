@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 namespace MoveToCode {
-    public class IfCodeBlockObjectMesh : CodeBlockObjectMesh {
+    public class SingleControlFlowBlockObjectMesh : CodeBlockObjectMesh {
         Transform top, side, bottom;
 
         private void Awake() {

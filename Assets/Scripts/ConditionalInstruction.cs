@@ -16,8 +16,8 @@
 
         public override void EvaluateArgumentList() {
             // check same data type both sides, throw exception if not
-            leftArg = argumentList[0].EvaluateArgument();
-            rightArg = argumentList[1].EvaluateArgument();
+            leftArg = argumentList[0]?.EvaluateArgument();
+            rightArg = argumentList[1]?.EvaluateArgument();
         }
 
         public override int GetNumArguments() {

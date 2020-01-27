@@ -14,6 +14,11 @@ namespace MoveToCode {
         public abstract void EvaluateArgumentList();
         public abstract int GetNumArguments();
 
+        // public methods
+        public Instruction() {
+            ResizeArgumentList(GetNumArguments());
+        }
+
         public void SetNextInstruction(Instruction instIn) {
             nextInstruction = instIn;
         }

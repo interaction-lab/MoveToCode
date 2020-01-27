@@ -28,9 +28,6 @@ namespace MoveToCode {
         public IArgument GetArgumentAt(int position) {
             return argumentList[position];
         }
-        public void RemoveArgumentAt(int position) {
-            argumentList[position] = null;
-        }
 
         public CodeBlock GetCodeBlock() {
             return myCodeBlock;

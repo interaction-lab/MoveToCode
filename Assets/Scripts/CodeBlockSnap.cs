@@ -9,7 +9,7 @@ namespace MoveToCode {
     public class CodeBlockSnap : MonoBehaviour {
         CodeBlock myCodeBlock;
         ManipulationHandler manipulationHandler;
-        SnapColliders mySnapColliders;
+        SnapColliderGroup mySnapColliders;
         HashSet<SnapCollider> curSnapCollidersInCollision;
 
         private void Awake() {
@@ -17,7 +17,7 @@ namespace MoveToCode {
             manipulationHandler = GetComponent<ManipulationHandler>();
             manipulationHandler.OnManipulationStarted.AddListener(OnManipulationStart);
             manipulationHandler.OnManipulationEnded.AddListener(OnManipulationEnd);
-            mySnapColliders = GetComponentInChildren<SnapColliders>();
+            mySnapColliders = GetComponentInChildren<SnapColliderGroup>();
             curSnapCollidersInCollision = new HashSet<SnapCollider>();
         }
 

@@ -18,7 +18,7 @@ namespace MoveToCode {
         NearInteractionGrabbable nearInteractionGrabbable;
         CodeBlockSnap codeBlockSnap;
         Rigidbody rigidBody;
-        SnapColliders snapColliders;
+        SnapColliderGroup snapColliders;
 
         // Abstract Methods
         protected abstract void SetMyBlockInternalArg();
@@ -45,7 +45,7 @@ namespace MoveToCode {
 
             // Other components
             codeBlockSnap = gameObject.AddComponent(typeof(CodeBlockSnap)) as CodeBlockSnap;
-            snapColliders = GetComponentInChildren<SnapColliders>();
+            snapColliders = GetComponentInChildren<SnapColliderGroup>();
 
             // Setup
             argumentCodeBlocks = new List<CodeBlock>();
@@ -90,9 +90,9 @@ namespace MoveToCode {
             }
         }
 
-        public SnapColliders GetSnapColliders() {
+        public SnapColliderGroup GetSnapColliders() {
             if (snapColliders == null) {
-                snapColliders = GetComponentInChildren<SnapColliders>();
+                snapColliders = GetComponentInChildren<SnapColliderGroup>();
             }
             return snapColliders;
         }

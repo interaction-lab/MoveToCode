@@ -2,7 +2,7 @@
 using UnityEngine;
 
 namespace MoveToCode {
-    public class SnapColliders : MonoBehaviour {
+    public class SnapColliderGroup : MonoBehaviour {
         List<SnapCollider> snapColliders;
         CodeBlock myCodeBlock;
 

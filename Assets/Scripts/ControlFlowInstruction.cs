@@ -8,10 +8,6 @@
             conditionIsTrue = (argumentList[0] as ConditionalInstruction)?.RunInstruction().GetReturnDataVal().GetValue();
         }
 
-        public override void SetUpArgumentCompatability() {
-            compatibileArgumentTypes.Add(typeof(ConditionalInstruction));
-        }
-
         public override int GetNumArguments() {
             return 1;
         }

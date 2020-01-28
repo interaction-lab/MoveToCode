@@ -23,11 +23,6 @@ namespace MoveToCode {
             return new InstructionReturnValue(null, GetNextInstruction());
         }
 
-        public override void SetUpArgumentCompatability() {
-            compatibileArgumentTypes.Add(typeof(IDataType));
-            compatibileArgumentTypes.Add(typeof(Instruction));
-        }
-
         public override string ToString() {
             return string.Join("", "Print: ", argumentList[0]?.ToString());
         }

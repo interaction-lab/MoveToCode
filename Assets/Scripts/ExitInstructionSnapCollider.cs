@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace MoveToCode {
-    public class ExitInstructionSnapCollider : InstructionSnapCollider {
+    public class ExitInstructionSnapCollider : SnapCollider {
         public override void DoSnapAction(CodeBlock myCodeBlock, CodeBlock collidedCodeBlock) {
             // need to grab position relative to parent
             Vector3 relationToParent = transform.localPosition + collidedCodeBlock.GetSnapToParentPosition();

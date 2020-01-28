@@ -121,18 +121,10 @@ namespace MoveToCode {
 
         public void SetArgumentBlockAt(CodeBlock newArgumentCodeBlock, int argPosition, Vector3 newLocalPosition) {
             Assert.IsTrue(IsInstructionCodeBlock());
-            // check compatibility
-            try {
-                TryCheckArgCodeBlockTypeIsCompatible(newArgumentCodeBlock);
-
-                RemoveArgumentAt(argPosition);
-                newArgumentCodeBlock?.RemoveFromParentBlock();
-                AddNewArgumentAt(newArgumentCodeBlock, argPosition, newLocalPosition);
-                UpdateText();
-            }
-            catch (Exception ex) {
-                Debug.LogWarning(ex.ToString());
-            }
+            RemoveArgumentAt(argPosition);
+            newArgumentCodeBlock?.RemoveFromParentBlock();
+            AddNewArgumentAt(newArgumentCodeBlock, argPosition, newLocalPosition);
+            UpdateText();
         }
 
         public bool IsMyNextInstruction(Instruction iIn) {
@@ -299,14 +291,6 @@ namespace MoveToCode {
                 textMesh.SetText(ToString());
                 transform.parent.GetComponent<CodeBlock>()?.UpdateText();
             }
-        }
-
-        private void TryCheckArgCodeBlockTypeIsCompatible(CodeBlock newArgumentCodeBlock) {
-            IArgument argIn = newArgumentCodeBlock.GetArgumentValueOfCodeBlock();
-            Type typeToTry = argIn as Variable != null ?
-               (argIn as Variable).GetMyData().GetType() :
-               argIn?.GetType();
-            GetMyInstruction().TryArgumentCompatibleType(typeToTry);
         }
 
         public override string ToString() {

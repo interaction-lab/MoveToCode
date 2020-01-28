@@ -13,10 +13,6 @@
             return 2;
         }
 
-        public override void SetUpArgumentCompatability() {
-            compatibileArgumentTypes.Add(typeof(INumberDataType));
-        }
-
         public override string ToString() {
             return string.Join("", argumentList[0]?.ToString(), " ", GetMathSymbol(), " ", argumentList[1]?.ToString());
         }

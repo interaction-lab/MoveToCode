@@ -10,7 +10,6 @@ namespace MoveToCode {
         protected CodeBlock myCodeBlock;
 
         public abstract InstructionReturnValue RunInstruction();
-        public abstract void SetUpArgumentCompatability();
         public abstract void EvaluateArgumentList();
         public abstract int GetNumArguments();
 
@@ -37,31 +36,7 @@ namespace MoveToCode {
             myCodeBlock = codeBlock;
         }
 
-        public void TryArgumentCompatibleType(Type argTypeIn) {
-            // need to check for variable too
-            if (compatibileArgumentTypes == null || compatibileArgumentTypes.Empty()) {
-                compatibileArgumentTypes = new HashSet<Type>();
-                compatibileArgumentTypes.Add(null);
-                SetUpArgumentCompatability();
-            }
-            foreach (Type T in compatibileArgumentTypes) {
-                if (T == null) {
-                    if (argTypeIn == null) {
-                        return;
-                    }
-                }
-                else if (argTypeIn.IsAssignableFrom(T) || T.IsAssignableFrom(argTypeIn)) {
-                    return;
-                }
-            }
-            throw new InvalidOperationException("Argument type invalid, cannot use");
-        }
-
         public void SetArgumentAt(IArgument argIn, int position) {
-            Type typeToTry = argIn as Variable != null ?
-                (argIn as Variable).GetMyData().GetType() :
-                argIn?.GetType();
-            TryArgumentCompatibleType(typeToTry);
             argumentList[position] = argIn;
         }
 

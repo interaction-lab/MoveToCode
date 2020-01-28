@@ -8,9 +8,5 @@ namespace MoveToCode {
             relationToParent.y = -1f;
             myCodeBlock.SetNextCodeBlock(collidedCodeBlock, relationToParent);
         }
-
-        public override bool IsSnappableToThisSnapColliderType(CodeBlock collidedCodeBlock) {
-            return collidedCodeBlock != null && collidedCodeBlock.IsInstructionCodeBlock(); // TODO: need instructions with no return maybe...
-        }
     }
 }

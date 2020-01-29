@@ -23,7 +23,6 @@ namespace MoveToCode {
         }
         public void RegisterSnapCollider(SnapCollider sIn) {
             GetAllSnapColliders().Add(sIn);
-            Debug.Log(sIn.name + " added");
         }
 
         public void DeregisterCodeBlock(CodeBlock cIn) {

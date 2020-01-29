@@ -46,8 +46,8 @@ namespace MoveToCode {
             else {
                 myCodeBlock.RemoveFromParentBlock();
             }
-            //mySnapColliders?.DisableAllCompatibleColliders();
-            mySnapColliders?.EnableAllCollidersAndChildrenColliders();
+
+            mySnapColliders?.DisableAllCompatibleColliders();
         }
 
         // Requires Hashset to not be empty

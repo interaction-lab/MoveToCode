@@ -16,6 +16,7 @@ namespace MoveToCode {
             GetComponent<Collider>().isTrigger = true;
             gameObject.layer = 2;
             CodeBlockManager.instance.RegisterSnapCollider(this);
+            gameObject.SetActive(false);
         }
 
         public IARGSNAPTYPES[] compatibleArgs;

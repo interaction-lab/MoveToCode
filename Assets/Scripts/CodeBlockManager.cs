@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-
+using UnityEngine;
 namespace MoveToCode {
     public class CodeBlockManager : Singleton<CodeBlockManager> {
         HashSet<CodeBlock> codeBlocks;
@@ -23,6 +23,7 @@ namespace MoveToCode {
         }
         public void RegisterSnapCollider(SnapCollider sIn) {
             GetAllSnapColliders().Add(sIn);
+            Debug.Log(sIn.name + " added");
         }
 
         public void DeregisterCodeBlock(CodeBlock cIn) {
@@ -41,8 +42,9 @@ namespace MoveToCode {
         }
 
         private void SetCompatibleColliderState(CodeBlock cIn, bool desiredActiveState) {
+            IArgument internalArg = cIn.GetMyInternalIArgument();
             foreach (SnapCollider sc in GetAllSnapColliders()) {
-                if (sc.HasCompatibleType(cIn.GetMyInternalIArgument())) {
+                if (sc.HasCompatibleType(internalArg)) {
                     sc.gameObject.SetActive(desiredActiveState);
                 }
             }

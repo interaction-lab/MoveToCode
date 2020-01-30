@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Assertions;
 
 namespace MoveToCode {
     public class VariableBlockCollection : MonoBehaviour {
@@ -31,7 +30,7 @@ namespace MoveToCode {
         }
 
         public void CreateNewVariableBlock() {
-            GameObject go = Instantiate(Resources.Load<GameObject>("Prefabs/VariableCodeBlock"), CodeBlockManager.instance.transform) as GameObject;
+            GameObject go = Instantiate(Resources.Load<GameObject>(ResourcePathConstants.VariableCodeBlockPrefab), CodeBlockManager.instance.transform) as GameObject;
             go.GetComponent<VariableCodeBlock>().SetParentBlockCollection(this);
             go.transform.position = transform.position + Vector3.back;
         }

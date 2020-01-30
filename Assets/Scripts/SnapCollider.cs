@@ -8,7 +8,7 @@ namespace MoveToCode {
     public abstract class SnapCollider : MonoBehaviour {
         protected CodeBlockSnap myCodeBlockSnap, collisionCodeBlockSnap;
         public abstract void DoSnapAction(CodeBlock myCodeBlock, CodeBlock collidedCodeBlock);
-        Material m;
+        static Material outlineMaterial;
         MeshRenderer meshRend;
         bool justEnabled = false;
         private void Awake() {
@@ -18,9 +18,10 @@ namespace MoveToCode {
             gameObject.layer = 2;
             CodeBlockManager.instance.RegisterSnapCollider(this);
             gameObject.AddComponent(typeof(MeshOutline));
-            m = Resources.Load<Material>("Materials/OutlineSnapCollider") as Material;
-            Debug.Log(m);
-            GetComponent<MeshOutline>().OutlineMaterial = m;
+            if (outlineMaterial == null) {
+                outlineMaterial = Resources.Load<Material>(ResourcePathConstants.OutlineSnapColliderMaterial) as Material;
+            }
+            GetComponent<MeshOutline>().OutlineMaterial = outlineMaterial;
             gameObject.SetActive(false);
         }
 

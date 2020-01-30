@@ -284,7 +284,7 @@ namespace MoveToCode {
                 textMesh = GetComponentInChildren<TextMeshPro>(true);
             }
             if (textMesh == null) {
-                GameObject codeBlockTextGameObject = Instantiate(Resources.Load<GameObject>("Prefabs/CodeBlockText"), transform) as GameObject;
+                GameObject codeBlockTextGameObject = Instantiate(Resources.Load<GameObject>(ResourcePathConstants.CodeBlockTextPrefab), transform) as GameObject;
                 StartCoroutine(UpdateTextNextFrame());
             }
             else {

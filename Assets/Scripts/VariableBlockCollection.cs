@@ -31,7 +31,7 @@ namespace MoveToCode {
         }
 
         public void CreateNewVariableBlock() {
-            GameObject go = Instantiate(Resources.Load<GameObject>("VariableCodeBlock"), CodeBlockManager.instance.transform) as GameObject;
+            GameObject go = Instantiate(Resources.Load<GameObject>("Prefabs/VariableCodeBlock"), CodeBlockManager.instance.transform) as GameObject;
             go.GetComponent<VariableCodeBlock>().SetParentBlockCollection(this);
             go.transform.position = transform.position + Vector3.back;
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.MixedReality.Toolkit.Utilities;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,7 @@ namespace MoveToCode {
     public abstract class SnapCollider : MonoBehaviour {
         protected CodeBlockSnap myCodeBlockSnap, collisionCodeBlockSnap;
         public abstract void DoSnapAction(CodeBlock myCodeBlock, CodeBlock collidedCodeBlock);
-
+        Material m;
         MeshRenderer meshRend;
         bool justEnabled = false;
         private void Awake() {
@@ -16,6 +17,10 @@ namespace MoveToCode {
             GetComponent<Collider>().isTrigger = true;
             gameObject.layer = 2;
             CodeBlockManager.instance.RegisterSnapCollider(this);
+            gameObject.AddComponent(typeof(MeshOutline));
+            m = Resources.Load<Material>("Materials/OutlineSnapCollider") as Material;
+            Debug.Log(m);
+            GetComponent<MeshOutline>().OutlineMaterial = m;
             gameObject.SetActive(false);
         }
 

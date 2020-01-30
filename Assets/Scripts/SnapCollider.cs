@@ -10,24 +10,85 @@ namespace MoveToCode {
         public abstract void DoSnapAction(CodeBlock myCodeBlock, CodeBlock collidedCodeBlock);
         static Material outlineMaterial;
         MeshRenderer meshRend;
-        bool justEnabled = false;
+        MeshOutline meshOutline;
+
         private void Awake() {
             meshRend = GetComponent<MeshRenderer>();
             meshRend.enabled = false;
             GetComponent<Collider>().isTrigger = true;
             gameObject.layer = 2;
             CodeBlockManager.instance.RegisterSnapCollider(this);
-            gameObject.AddComponent(typeof(MeshOutline));
-            if (outlineMaterial == null) {
-                outlineMaterial = Resources.Load<Material>(ResourcePathConstants.OutlineSnapColliderMaterial) as Material;
-            }
-            GetComponent<MeshOutline>().OutlineMaterial = outlineMaterial;
             gameObject.SetActive(false);
         }
 
+
+
+        // Collision/outline
+        public MeshOutline GetMeshOutline() {
+            if (outlineMaterial == null) {
+                outlineMaterial = Resources.Load<Material>(ResourcePathConstants.OutlineSnapColliderMaterial) as Material;
+            }
+            if (meshOutline == null) {
+                meshOutline = gameObject.AddComponent(typeof(MeshOutline)) as MeshOutline;
+                meshOutline.OutlineMaterial = outlineMaterial;
+            }
+            return meshOutline;
+        }
+
+
+
+        public bool HasCompatibleType(IArgument argIn) {
+            Type typeToTry = argIn as Variable != null ?
+                            (argIn as Variable).GetMyData().GetType() :
+                            argIn?.GetType();
+            return CheckArgCompatibleType(typeToTry);
+        }
+
+        private void OnTriggerEnter(Collider collision) {
+            collisionCodeBlockSnap = collision.transform.GetComponent<CodeBlockSnap>();
+            InitializeMyCodeBlockSnapIfNull();
+            collisionCodeBlockSnap?.SetCurSnapColliderInContact(this);
+
+
+        }
+        private void OnTriggerExit(Collider collision) {
+            collisionCodeBlockSnap = collision.transform.GetComponent<CodeBlockSnap>();
+            collisionCodeBlockSnap?.RemoveAsCurSnapColliderInContact(this);
+        }
+
+        public CodeBlock GetMyCodeBlock() {
+            InitializeMyCodeBlockSnapIfNull();
+            return myCodeBlockSnap.GetMyCodeBlock();
+        }
+
+        // This is used because of race conditions, need better solution
+        void InitializeMyCodeBlockSnapIfNull() {
+            if (myCodeBlockSnap == null) {
+                myCodeBlockSnap = transform.parent.parent.GetComponent<CodeBlockSnap>();
+            }
+            if (myCodeBlockSnap == null) {
+                myCodeBlockSnap = transform.parent.parent.parent.GetComponent<CodeBlockSnap>(); // TODO: this is so jank, need fix for object mesh abstraction on all instructions
+            }
+        }
+
+        private void OnEnable() {
+            meshRend.enabled = true;
+        }
+
+
+        private void OnDisable() {
+            meshRend.enabled = false;
+        }
+
+        private void OnDestroy() {
+            if (CodeBlockManager.instance && CodeBlockManager.instance.isActiveAndEnabled) {
+                CodeBlockManager.instance.DeregisterSnapCollider(this);
+            }
+        }
+
+        // Compatability
         public IARGSNAPTYPES[] compatibleArgs;
         protected List<Type> myCompatibleArgTypes;
-
         public enum IARGSNAPTYPES {
             Any,
             Instruction,
@@ -72,75 +133,6 @@ namespace MoveToCode {
                 }
             }
             return false;
-        }
-
-        public bool HasCompatibleType(IArgument argIn) {
-            Type typeToTry = argIn as Variable != null ?
-                            (argIn as Variable).GetMyData().GetType() :
-                            argIn?.GetType();
-            return CheckArgCompatibleType(typeToTry);
-        }
-
-
-
-        private void OnTriggerEnter(Collider collision) {
-            collisionCodeBlockSnap = collision.transform.GetComponent<CodeBlockSnap>();
-            // Make sure it is of right type and not already a part of my code
-            if (!justEnabled) {
-                InitializeMyCodeBlockSnapIfNull();
-                collisionCodeBlockSnap?.AddCollisionSnapCollider(this);
-            }
-
-        }
-        private void OnTriggerExit(Collider collision) {
-            ExitCollisionRoutine();
-        }
-
-        public void ExitCollisionRoutine(bool isBeingDisabled = false) {
-            justEnabled = true;
-            if (gameObject.activeSelf && enabled && !isBeingDisabled) {
-                StartCoroutine(HackyFixForEnablingTrigger());
-            }
-            collisionCodeBlockSnap?.RemoveCollisionSnapCollider(this);
-            collisionCodeBlockSnap = null;
-        }
-
-        public CodeBlock GetMyCodeBlock() {
-            InitializeMyCodeBlockSnapIfNull();
-            return myCodeBlockSnap.GetMyCodeBlock();
-        }
-
-        // This is used because of race conditions, need better solution
-        void InitializeMyCodeBlockSnapIfNull() {
-            if (myCodeBlockSnap == null) {
-                myCodeBlockSnap = transform.parent.parent.GetComponent<CodeBlockSnap>();
-            }
-            if (myCodeBlockSnap == null) {
-                myCodeBlockSnap = transform.parent.parent.parent.GetComponent<CodeBlockSnap>(); // TODO: this is so jank, need fix for object mesh abstraction on all instructions
-            }
-        }
-
-        IEnumerator HackyFixForEnablingTrigger() {
-            yield return new WaitForFixedUpdate();
-            yield return new WaitForFixedUpdate();
-            justEnabled = false;
-        }
-
-        private void OnEnable() {
-            ExitCollisionRoutine();
-            meshRend.enabled = true;
-        }
-
-
-        private void OnDisable() {
-            ExitCollisionRoutine(true);
-            meshRend.enabled = false;
-        }
-
-        private void OnDestroy() {
-            if (CodeBlockManager.instance && CodeBlockManager.instance.isActiveAndEnabled) {
-                CodeBlockManager.instance.DeregisterSnapCollider(this);
-            }
         }
     }
 }

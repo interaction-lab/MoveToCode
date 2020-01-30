@@ -3,14 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Events;
 
+// only keep track of last collided instead, highlight it
 namespace MoveToCode {
     public class CodeBlockSnap : MonoBehaviour {
         CodeBlock myCodeBlock;
         ManipulationHandler manipulationHandler;
         SnapColliderGroup mySnapColliders;
-        HashSet<SnapCollider> curSnapCollidersInCollision;
+        SnapCollider curSnapColliderInContact;
 
         private void Awake() {
             myCodeBlock = GetComponent<CodeBlock>();
@@ -18,7 +18,6 @@ namespace MoveToCode {
             manipulationHandler.OnManipulationStarted.AddListener(OnManipulationStart);
             manipulationHandler.OnManipulationEnded.AddListener(OnManipulationEnd);
             mySnapColliders = GetComponentInChildren<SnapColliderGroup>();
-            curSnapCollidersInCollision = new HashSet<SnapCollider>();
         }
 
         void OnManipulationStart(ManipulationEventData call) {
@@ -37,46 +36,32 @@ namespace MoveToCode {
             myCollider.enabled = true;
         }
 
+        public void SetCurSnapColliderInContact(SnapCollider sc) {
+            if (curSnapColliderInContact != null) {
+                curSnapColliderInContact.GetMeshOutline().enabled = false;
+            }
+            curSnapColliderInContact = sc;
+            if (curSnapColliderInContact != null) {
+                curSnapColliderInContact.GetMeshOutline().enabled = true;
+            }
+        }
+
+        public void RemoveAsCurSnapColliderInContact(SnapCollider sc) {
+            if (sc == curSnapColliderInContact) {
+                SetCurSnapColliderInContact(null);
+            }
+        }
+
         void OnManipulationEnd(ManipulationEventData call) {
-            if (!curSnapCollidersInCollision.Empty()) {
-                SnapCollider closestCollider = CalculateClosestSnapCollider();
-                closestCollider.DoSnapAction(closestCollider?.GetMyCodeBlock(), GetMyCodeBlock());
-                ClearAndResetAllColliders();
+            if (curSnapColliderInContact == null) {
+                curSnapColliderInContact.DoSnapAction(curSnapColliderInContact.GetMyCodeBlock(), GetMyCodeBlock());
             }
             else {
+                // Remove when dragged away
                 myCodeBlock.RemoveFromParentBlock();
             }
 
             mySnapColliders?.DisableAllCompatibleColliders();
-        }
-
-        // Requires Hashset to not be empty
-        SnapCollider CalculateClosestSnapCollider() {
-            SnapCollider result = null;
-            float closestDist = -1;
-            foreach (SnapCollider sc in curSnapCollidersInCollision) {
-                float tempDist = Vector3.Distance(sc.transform.position, transform.position);
-                if (result == null || closestDist > tempDist) {
-                    result = sc;
-                    closestDist = tempDist;
-                }
-            }
-            return result;
-        }
-
-        void ClearAndResetAllColliders() {
-            foreach (SnapCollider sc in curSnapCollidersInCollision.ToList()) {
-                sc.ExitCollisionRoutine();
-            }
-            curSnapCollidersInCollision.Clear();
-        }
-
-        public void AddCollisionSnapCollider(SnapCollider snapColIn) {
-            curSnapCollidersInCollision.Add(snapColIn);
-        }
-
-        public void RemoveCollisionSnapCollider(SnapCollider snapColIn) {
-            curSnapCollidersInCollision.Remove(snapColIn);
         }
 
         public CodeBlock GetMyCodeBlock() {

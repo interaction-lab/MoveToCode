@@ -20,8 +20,8 @@ namespace MoveToCode {
         CodeBlockSnap codeBlockSnap;
         Rigidbody rigidBody;
         SnapColliderGroup snapColliders;
-        BaseMeshOutline meshOutline;
-        static Material outlineMaterial;
+        protected BaseMeshOutline meshOutline;
+        protected static Material outlineMaterial;
 
         // Abstract Methods
         protected abstract void SetMyBlockInternalArg();
@@ -46,7 +46,7 @@ namespace MoveToCode {
             }
         }
 
-        protected virtual BaseMeshOutline GetMeshOutline() {
+        protected BaseMeshOutline GetMeshOutline() {
             if (meshOutline == null) {
                 SetupMeshOutline();
             }
@@ -54,7 +54,12 @@ namespace MoveToCode {
         }
 
         public void ToggleOutline(bool on) {
-            GetMeshOutline().enabled = on;
+            if (on) {
+                GetMeshOutline().OutlineWidth = 0.05f;
+            }
+            else {
+                GetMeshOutline().OutlineWidth = 0.0f;
+            }
         }
 
         // Start Up

@@ -22,7 +22,7 @@ namespace MoveToCode {
             instructionStack.Clear();
             lastInstructionReturn = null;
             curInstruction = StartCodeBlock.instance.GetMyInstruction();
-            curInstruction?.GetCodeBlock()?.ToggleOutline(true);
+            curInstruction.GetCodeBlock().ToggleOutline(true);
             // this will also reset memory later
             // this will also reset all instruction states as well
         }
@@ -45,7 +45,6 @@ namespace MoveToCode {
         void UpdateCurInstruction() {
             curInstruction?.GetCodeBlock()?.ToggleOutline(false);
             curInstruction = lastInstructionReturn?.GetNextInstruction();
-            curInstruction?.GetCodeBlock()?.ToggleOutline(true);
             if (curInstruction == null) {
                 curInstruction = instructionStack.Empty() ?
                     null :
@@ -53,6 +52,9 @@ namespace MoveToCode {
             }
             if (curInstruction == null) {
                 Debug.LogWarning("CODE COMPLETED, not sure what to implement here yet");
+            }
+            else {
+                curInstruction?.GetCodeBlock()?.ToggleOutline(true);
             }
         }
 

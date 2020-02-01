@@ -11,6 +11,7 @@ namespace MoveToCode {
         static Material outlineMaterial;
         MeshRenderer meshRend;
         MeshOutline meshOutline;
+        bool disabledForResnapFix = false;
 
         private void Awake() {
             meshRend = GetComponent<MeshRenderer>();
@@ -37,6 +38,7 @@ namespace MoveToCode {
             collisionCodeBlockSnap = collision.transform.GetComponent<CodeBlockSnap>();
             InitializeMyCodeBlockSnapIfNull();
             collisionCodeBlockSnap?.SetCurSnapColliderInContact(this);
+
         }
 
         private void OnTriggerExit(Collider collision) {

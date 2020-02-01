@@ -60,7 +60,6 @@ namespace MoveToCode {
                 // Remove when dragged away
                 myCodeBlock.RemoveFromParentBlock();
             }
-
             mySnapColliders?.DisableAllCompatibleColliders();
         }
 

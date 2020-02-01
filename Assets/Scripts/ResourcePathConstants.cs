@@ -13,5 +13,6 @@ namespace MoveToCode {
         // Materials
         public static string MaterialFolder = "Materials/";
         public static string OutlineSnapColliderMaterial = MaterialFolder + "OutlineSnapCollider";
+        public static string OutlineCodeBlockMaterial = MaterialFolder + "OutlineCodeBlock";
     }
 }

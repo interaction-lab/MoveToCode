@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace MoveToCode {
     public class Interpreter : Singleton<Interpreter> {
-        PrintInstruction startingInstruction = new PrintInstruction(new StringDataType("START"));
         Stack<Instruction> instructionStack = new Stack<Instruction>();
         public InstructionReturnValue lastInstructionReturn;
         public Instruction curInstruction;
@@ -19,9 +18,11 @@ namespace MoveToCode {
             if (instructionStack == null) {
                 instructionStack = new Stack<Instruction>();
             }
+            curInstruction?.GetCodeBlock()?.ToggleOutline(false);
             instructionStack.Clear();
             lastInstructionReturn = null;
-            curInstruction = startingInstruction;
+            curInstruction = StartCodeBlock.instance.GetMyInstruction();
+            curInstruction?.GetCodeBlock()?.ToggleOutline(true);
             // this will also reset memory later
             // this will also reset all instruction states as well
         }
@@ -39,18 +40,17 @@ namespace MoveToCode {
                 Debug.LogWarning(ex.ToString());
                 ResetCodeState();
             }
-
         }
 
         void UpdateCurInstruction() {
+            curInstruction?.GetCodeBlock()?.ToggleOutline(false);
             curInstruction = lastInstructionReturn?.GetNextInstruction();
+            curInstruction?.GetCodeBlock()?.ToggleOutline(true);
             if (curInstruction == null) {
                 curInstruction = instructionStack.Empty() ?
                     null :
                     instructionStack.Pop();
             }
-
-
             if (curInstruction == null) {
                 Debug.LogWarning("CODE COMPLETED, not sure what to implement here yet");
             }

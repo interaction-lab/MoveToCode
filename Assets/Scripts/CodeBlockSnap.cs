@@ -53,7 +53,7 @@ namespace MoveToCode {
         }
 
         void OnManipulationEnd(ManipulationEventData call) {
-            if (curSnapColliderInContact == null) {
+            if (curSnapColliderInContact != null) {
                 curSnapColliderInContact.DoSnapAction(curSnapColliderInContact.GetMyCodeBlock(), GetMyCodeBlock());
             }
             else {

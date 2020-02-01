@@ -20,7 +20,7 @@ public class KeyboardTestingScript : MonoBehaviour {
          st = new SubtractionInstruction(i, i2);
          pi.SetNextInstruction(p2);
          pi.SetArgumentAt(st, 0);*/
-        Interpreter.instance.AddToInstructionStack(pb1.GetMyInstruction());
+        //Interpreter.instance.AddToInstructionStack(pb1.GetMyInstruction());
     }
 
 

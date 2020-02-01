@@ -21,8 +21,6 @@ namespace MoveToCode {
             gameObject.SetActive(false);
         }
 
-
-
         // Collision/outline
         public MeshOutline GetMeshOutline() {
             if (outlineMaterial == null) {
@@ -35,22 +33,12 @@ namespace MoveToCode {
             return meshOutline;
         }
 
-
-
-        public bool HasCompatibleType(IArgument argIn) {
-            Type typeToTry = argIn as Variable != null ?
-                            (argIn as Variable).GetMyData().GetType() :
-                            argIn?.GetType();
-            return CheckArgCompatibleType(typeToTry);
-        }
-
         private void OnTriggerEnter(Collider collision) {
             collisionCodeBlockSnap = collision.transform.GetComponent<CodeBlockSnap>();
             InitializeMyCodeBlockSnapIfNull();
             collisionCodeBlockSnap?.SetCurSnapColliderInContact(this);
-
-
         }
+
         private void OnTriggerExit(Collider collision) {
             collisionCodeBlockSnap = collision.transform.GetComponent<CodeBlockSnap>();
             collisionCodeBlockSnap?.RemoveAsCurSnapColliderInContact(this);
@@ -61,7 +49,6 @@ namespace MoveToCode {
             return myCodeBlockSnap.GetMyCodeBlock();
         }
 
-        // This is used because of race conditions, need better solution
         void InitializeMyCodeBlockSnapIfNull() {
             if (myCodeBlockSnap == null) {
                 myCodeBlockSnap = transform.parent.parent.GetComponent<CodeBlockSnap>();
@@ -109,6 +96,13 @@ namespace MoveToCode {
                 argCompatibleTypeLookUp.Add(IARGSNAPTYPES.NULL, null);
             }
             return argCompatibleTypeLookUp;
+        }
+
+        public bool HasCompatibleType(IArgument argIn) {
+            Type typeToTry = argIn as Variable != null ?
+                            (argIn as Variable).GetMyData().GetType() :
+                            argIn?.GetType();
+            return CheckArgCompatibleType(typeToTry);
         }
 
         public List<Type> GetMyCompatibleArgTypes() {

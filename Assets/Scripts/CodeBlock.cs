@@ -1,5 +1,6 @@
 ﻿using Microsoft.MixedReality.Toolkit.Input;
 using Microsoft.MixedReality.Toolkit.UI;
+using Microsoft.MixedReality.Toolkit.Utilities;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,9 +20,12 @@ namespace MoveToCode {
         CodeBlockSnap codeBlockSnap;
         Rigidbody rigidBody;
         SnapColliderGroup snapColliders;
+        BaseMeshOutline meshOutline;
+        static Material outlineMaterial;
 
         // Abstract Methods
         protected abstract void SetMyBlockInternalArg();
+
 
         // Virtual methods, made for control blocks really
         public virtual int GetBlockVerticalSize() {
@@ -29,6 +33,28 @@ namespace MoveToCode {
         }
         public virtual Vector3 GetSnapToParentPosition() {
             return Vector3.zero;
+        }
+
+        protected virtual void SetupMeshOutline() {
+            if (outlineMaterial == null) {
+                outlineMaterial = Resources.Load<Material>(ResourcePathConstants.OutlineCodeBlockMaterial) as Material;
+            }
+            if (meshOutline == null) {
+                meshOutline = gameObject.AddComponent(typeof(MeshOutline)) as MeshOutline;
+                meshOutline.OutlineMaterial = outlineMaterial;
+                meshOutline.OutlineWidth = 0.05f;
+            }
+        }
+
+        protected virtual BaseMeshOutline GetMeshOutline() {
+            if (meshOutline == null) {
+                SetupMeshOutline();
+            }
+            return meshOutline;
+        }
+
+        public void ToggleOutline(bool on) {
+            GetMeshOutline().enabled = on;
         }
 
         // Start Up

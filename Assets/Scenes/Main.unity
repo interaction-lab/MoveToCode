@@ -1670,9 +1670,6 @@ GameObject:
   - component: {fileID: 997384222}
   - component: {fileID: 997384221}
   - component: {fileID: 997384220}
-  - component: {fileID: 997384224}
-  - component: {fileID: 997384225}
-  - component: {fileID: 997384226}
   m_Layer: 0
   m_Name: Seven
   m_TagString: Untagged
@@ -1766,74 +1763,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 997384218}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &997384224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 997384218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa162a1be707e7f4bb2c94f4fd6df84f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMaterial: {fileID: 2100000, guid: 2869998e25270db429b9ba04a256a2f2, type: 2}
-  outlineWidth: 0.055
---- !u!114 &997384225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 997384218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddd70ddb68d07e9488e40945640e5ca3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smoothNormalsOnAwake: 1
---- !u!114 &997384226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 997384218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69935ecfe76b9574b8576db8631a802e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  markEventsAsUsed: 0
-  onFocusEnterEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 997384224}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  onFocusExitEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 997384224}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &1048042979
 GameObject:
   m_ObjectHideFlags: 0
@@ -2557,7 +2486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pb1: {fileID: 1738498531}
-  pb2: {fileID: 1710312772}
+  pb2: {fileID: 0}
   pb3: {fileID: 0}
   dt1: {fileID: 997384220}
   dt2: {fileID: 1728407340}
@@ -3730,7 +3659,7 @@ GameObject:
   - component: {fileID: 1710312771}
   - component: {fileID: 1710312770}
   - component: {fileID: 1710312769}
-  - component: {fileID: 1710312772}
+  - component: {fileID: 1710312773}
   m_Layer: 0
   m_Name: PrintCodeBlock
   m_TagString: Untagged
@@ -3783,7 +3712,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: efc0eb3233ba03e44a871cac137f7614, type: 2}
+  - {fileID: 2100000, guid: 330fb46a9a704e74e9f1ff4ca54836e4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3811,7 +3740,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1710312767}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1710312772
+--- !u!114 &1710312773
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3820,10 +3749,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1710312767}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 226bd63b903637e408e91d6f906ae741, type: 3}
+  m_Script: {fileID: 11500000, guid: 471219409ecddf746b5253acfc085f84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  output: one
+  output: START
 --- !u!1 &1728407338
 GameObject:
   m_ObjectHideFlags: 0

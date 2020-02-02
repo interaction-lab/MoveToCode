@@ -1,7 +1,5 @@
-﻿
-
-namespace MoveToCode {
-    public class StartCodeBlock : PrintCodeBlock {
+﻿namespace MoveToCode {
+    public class StartCodeBlock : InstructionCodeBlock {
         public static StartCodeBlock m_Instance;
         private static bool m_ShuttingDown = false;
         private static object m_Lock = new object();
@@ -20,12 +18,12 @@ namespace MoveToCode {
             }
         }
 
-        public StartCodeBlock() {
-            output = "START";
-        }
-
         public override string ToString() {
             return "START";
+        }
+
+        protected override void SetMyBlockInternalArg() {
+            myBlockInternalArg = new StartInstruction();
         }
     }
 }

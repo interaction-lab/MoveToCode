@@ -49,5 +49,11 @@ namespace MoveToCode {
             }
         }
 
+        public void ResetAllCodeBlockInternalState() {
+            foreach (CodeBlock c in GetAllCodeBlocks()) {
+                c.ResetInstructionInternalState();
+            }
+        }
+
     }
 }

@@ -4,6 +4,10 @@
         protected bool exitInstructionAddedToStack;
         protected Instruction exitInstruction;
 
+        public override void ResestInternalState() {
+            exitInstructionAddedToStack = false;
+        }
+
         public override void EvaluateArgumentList() {
             conditionIsTrue = (argumentList[0] as ConditionalInstruction)?.RunInstruction().GetReturnDataVal().GetValue();
         }

@@ -34,6 +34,9 @@ namespace MoveToCode {
         public virtual Vector3 GetSnapToParentPosition() {
             return Vector3.zero;
         }
+        public void ResetInstructionInternalState() {
+            myBlockInternalArg.ResestInternalState();
+        }
 
         protected virtual void SetupMeshOutline() {
             if (outlineMaterial == null) {

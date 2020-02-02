@@ -23,6 +23,7 @@ namespace MoveToCode {
             lastInstructionReturn = null;
             curInstruction = StartCodeBlock.instance.GetMyInstruction();
             curInstruction.GetCodeBlock().ToggleOutline(true);
+            CodeBlockManager.instance.ResetAllCodeBlockInternalState();
             // this will also reset memory later
             // this will also reset all instruction states as well
         }

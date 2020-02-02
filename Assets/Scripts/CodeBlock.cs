@@ -26,18 +26,20 @@ namespace MoveToCode {
         // Abstract Methods
         protected abstract void SetMyBlockInternalArg();
 
-
         // Virtual methods, made for control blocks really
         public virtual int GetBlockVerticalSize() {
             return 1;
         }
+
         public virtual Vector3 GetSnapToParentPosition() {
             return Vector3.zero;
         }
+
         public void ResetInstructionInternalState() {
             myBlockInternalArg.ResestInternalState();
         }
 
+        // MeshOutlines
         protected virtual void SetupMeshOutline() {
             if (outlineMaterial == null) {
                 outlineMaterial = Resources.Load<Material>(ResourcePathConstants.OutlineCodeBlockMaterial) as Material;
@@ -318,7 +320,9 @@ namespace MoveToCode {
             }
             else {
                 textMesh.SetText(ToString());
-                transform.parent.GetComponent<CodeBlock>()?.UpdateText();
+                textMesh.enabled = false;
+                textMesh.enabled = true;
+                FindParentCodeBlock()?.UpdateText();
             }
         }
 

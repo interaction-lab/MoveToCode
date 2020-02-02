@@ -220,25 +220,20 @@ namespace MoveToCode {
         private void AddNewNextCodeBlock(CodeBlock newCodeBlock, Vector3 newLocalPosition) {
             nextCodeBlock = newCodeBlock;
             if (newCodeBlock) {
-                newCodeBlock.transform.SetParent(transform);
-                newCodeBlock.transform.localPosition = newLocalPosition; // TODO: once arg placing is done, update this for better placement
-                newCodeBlock.transform.rotation = Quaternion.identity;
+                newCodeBlock.transform.SnapToParent(transform, newLocalPosition);
             }
             SetNextInstruction(newCodeBlock?.GetMyInstruction());
         }
 
         private void AddNewArgumentAt(CodeBlock newArgumentCodeBlock, int position, Vector3 newLocalPosition) {
-            // need to update instruction arguments
             try {
                 GetMyInstruction().SetArgumentAt(newArgumentCodeBlock?.GetArgumentValueOfCodeBlock(), position);
                 if (newArgumentCodeBlock) {
-                    newArgumentCodeBlock.transform.SetParent(transform);
-                    newArgumentCodeBlock.transform.localPosition = newLocalPosition;
-                    newArgumentCodeBlock.transform.localRotation = Quaternion.identity; // TODO: fix this and make normalized with addarg
+                    newArgumentCodeBlock.transform.SnapToParent(transform, newLocalPosition);
                 }
                 argumentCodeBlocks[position] = newArgumentCodeBlock;
             }
-            catch (System.Exception ex) {
+            catch (Exception ex) {
                 Debug.LogWarning(ex.ToString());
             }
         }

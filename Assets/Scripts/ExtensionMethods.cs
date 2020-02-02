@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace MoveToCode {
     public static class ExtensionMethods {
@@ -22,6 +23,13 @@ namespace MoveToCode {
         // Hashset Extensions
         public static bool Empty<T>(this HashSet<T> h) {
             return h.Count == 0;
+        }
+
+        // Transform Extensions
+        public static void SnapToParent(this Transform t, Transform prospectiveParent, Vector3 newLocalPosition) {
+            t.rotation = prospectiveParent.rotation;
+            t.SetParent(prospectiveParent);
+            t.localPosition = newLocalPosition;
         }
     }
 }

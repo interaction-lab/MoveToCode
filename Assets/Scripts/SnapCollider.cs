@@ -20,6 +20,7 @@ namespace MoveToCode {
             gameObject.layer = 2;
             CodeBlockManager.instance.RegisterSnapCollider(this);
             gameObject.SetActive(false);
+            GetMyCodeBlockSnap();
         }
 
         // Collision/outline
@@ -34,36 +35,38 @@ namespace MoveToCode {
             return meshOutline;
         }
 
+        // still need to do a backup for double collision for this
         private void OnTriggerEnter(Collider collision) {
             collisionCodeBlockSnap = collision.transform.GetComponent<CodeBlockSnap>();
-            InitializeMyCodeBlockSnapIfNull();
-            collisionCodeBlockSnap?.SetCurSnapColliderInContact(this);
-
+            if (collisionCodeBlockSnap == CodeBlockSnap.currentlyDraggingCBS) {
+                collisionCodeBlockSnap?.SetCurSnapColliderInContact(this);
+            }
         }
 
         private void OnTriggerExit(Collider collision) {
             collisionCodeBlockSnap = collision.transform.GetComponent<CodeBlockSnap>();
-            collisionCodeBlockSnap?.RemoveAsCurSnapColliderInContact(this);
+            if (collisionCodeBlockSnap == CodeBlockSnap.currentlyDraggingCBS) {
+                collisionCodeBlockSnap?.RemoveAsCurSnapColliderInContact(this);
+            }
         }
 
         public CodeBlock GetMyCodeBlock() {
-            InitializeMyCodeBlockSnapIfNull();
-            return myCodeBlockSnap.GetMyCodeBlock();
+            return GetMyCodeBlockSnap().GetMyCodeBlock();
         }
 
-        void InitializeMyCodeBlockSnapIfNull() {
+        CodeBlockSnap GetMyCodeBlockSnap() {
             if (myCodeBlockSnap == null) {
                 myCodeBlockSnap = transform.parent.parent.GetComponent<CodeBlockSnap>();
             }
             if (myCodeBlockSnap == null) {
                 myCodeBlockSnap = transform.parent.parent.parent.GetComponent<CodeBlockSnap>(); // TODO: this is so jank, need fix for object mesh abstraction on all instructions
             }
+            return myCodeBlockSnap;
         }
 
         private void OnEnable() {
             meshRend.enabled = true;
         }
-
 
         private void OnDisable() {
             meshRend.enabled = false;

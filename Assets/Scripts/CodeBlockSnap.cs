@@ -7,6 +7,7 @@ using UnityEngine;
 // only keep track of last collided instead, highlight it
 namespace MoveToCode {
     public class CodeBlockSnap : MonoBehaviour {
+        public static CodeBlockSnap currentlyDraggingCBS;
         CodeBlock myCodeBlock;
         ManipulationHandler manipulationHandler;
         SnapColliderGroup mySnapColliders;
@@ -24,6 +25,7 @@ namespace MoveToCode {
             // enable all of the snap colliders that are ok
             mySnapColliders?.EnableAllCompatibleColliders();
             mySnapColliders?.DisableAllCollidersAndChildrenColliders();
+            currentlyDraggingCBS = this;
             // Disable my collider, wait one frame, reenable
             // This allows for a "resnap" to same spot
             StartCoroutine(DisableMyColliderForOneFrame());
@@ -53,6 +55,7 @@ namespace MoveToCode {
         }
 
         void OnManipulationEnd(ManipulationEventData call) {
+            currentlyDraggingCBS = null;
             if (curSnapColliderInContact != null) {
                 curSnapColliderInContact.DoSnapAction(curSnapColliderInContact.GetMyCodeBlock(), GetMyCodeBlock());
             }
@@ -61,10 +64,19 @@ namespace MoveToCode {
                 myCodeBlock.RemoveFromParentBlock();
             }
             mySnapColliders?.DisableAllCompatibleColliders();
+            SetCurSnapColliderInContact(null);
         }
 
         public CodeBlock GetMyCodeBlock() {
             return myCodeBlock;
+        }
+
+        private void OnEnable() {
+            SetCurSnapColliderInContact(null);
+        }
+
+        private void OnDisable() {
+            SetCurSnapColliderInContact(null);
         }
 
     }

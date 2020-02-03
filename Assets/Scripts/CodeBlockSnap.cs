@@ -11,7 +11,8 @@ namespace MoveToCode {
         CodeBlock myCodeBlock;
         ManipulationHandler manipulationHandler;
         SnapColliderGroup mySnapColliders;
-        SnapCollider curSnapColliderInContact;
+        HashSet<SnapCollider> curSnapCollidersInContact;
+        SnapCollider bestCandidateSnapCollider;
 
         private void Awake() {
             myCodeBlock = GetComponent<CodeBlock>();
@@ -19,6 +20,7 @@ namespace MoveToCode {
             manipulationHandler.OnManipulationStarted.AddListener(OnManipulationStart);
             manipulationHandler.OnManipulationEnded.AddListener(OnManipulationEnd);
             mySnapColliders = GetComponentInChildren<SnapColliderGroup>();
+            curSnapCollidersInContact = new HashSet<SnapCollider>();
         }
 
         void OnManipulationStart(ManipulationEventData call) {
@@ -38,33 +40,40 @@ namespace MoveToCode {
             myCollider.enabled = true;
         }
 
-        public void SetCurSnapColliderInContact(SnapCollider sc) {
-            if (curSnapColliderInContact != null) {
-                curSnapColliderInContact.GetMeshOutline().enabled = false;
+        public void AddSnapColliderInContact(SnapCollider sc) {
+            if (bestCandidateSnapCollider != null) {
+                bestCandidateSnapCollider.GetMeshOutline().enabled = false;
             }
-            curSnapColliderInContact = sc;
-            if (curSnapColliderInContact != null) {
-                curSnapColliderInContact.GetMeshOutline().enabled = true;
+            bestCandidateSnapCollider = sc;
+            if (bestCandidateSnapCollider != null) {
+                bestCandidateSnapCollider.GetMeshOutline().enabled = true;
+                curSnapCollidersInContact.Add(bestCandidateSnapCollider);
+            }
+            else if (!curSnapCollidersInContact.Empty()) {
+                bestCandidateSnapCollider = curSnapCollidersInContact.ElementAt(0);
+                bestCandidateSnapCollider.GetMeshOutline().enabled = true;
             }
         }
 
         public void RemoveAsCurSnapColliderInContact(SnapCollider sc) {
-            if (sc == curSnapColliderInContact) {
-                SetCurSnapColliderInContact(null);
+            curSnapCollidersInContact.Remove(sc);
+            if (sc == bestCandidateSnapCollider) {
+                AddSnapColliderInContact(null);
             }
         }
 
         void OnManipulationEnd(ManipulationEventData call) {
             currentlyDraggingCBS = null;
-            if (curSnapColliderInContact != null) {
-                curSnapColliderInContact.DoSnapAction(curSnapColliderInContact.GetMyCodeBlock(), GetMyCodeBlock());
+            if (bestCandidateSnapCollider != null) {
+                bestCandidateSnapCollider.DoSnapAction(bestCandidateSnapCollider.GetMyCodeBlock(), GetMyCodeBlock());
             }
             else {
                 // Remove when dragged away
                 myCodeBlock.RemoveFromParentBlock();
             }
             mySnapColliders?.DisableAllCompatibleColliders();
-            SetCurSnapColliderInContact(null);
+            curSnapCollidersInContact.Clear();
+            AddSnapColliderInContact(null);
         }
 
         public CodeBlock GetMyCodeBlock() {
@@ -72,11 +81,11 @@ namespace MoveToCode {
         }
 
         private void OnEnable() {
-            SetCurSnapColliderInContact(null);
+            AddSnapColliderInContact(null);
         }
 
         private void OnDisable() {
-            SetCurSnapColliderInContact(null);
+            AddSnapColliderInContact(null);
         }
 
     }

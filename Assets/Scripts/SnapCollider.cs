@@ -39,7 +39,7 @@ namespace MoveToCode {
         private void OnTriggerEnter(Collider collision) {
             collisionCodeBlockSnap = collision.transform.GetComponent<CodeBlockSnap>();
             if (collisionCodeBlockSnap == CodeBlockSnap.currentlyDraggingCBS) {
-                collisionCodeBlockSnap?.SetCurSnapColliderInContact(this);
+                collisionCodeBlockSnap?.AddSnapColliderInContact(this);
             }
         }
 

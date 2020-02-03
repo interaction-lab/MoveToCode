@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Assertions;
 
 namespace MoveToCode {
     public class ExitInstructionSnapCollider : SnapCollider {

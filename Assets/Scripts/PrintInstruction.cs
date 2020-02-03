@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 namespace MoveToCode {
-    public class PrintInstruction : Instruction {
+    public class PrintInstruction : StandAloneInstruction {
 
         string output;
 

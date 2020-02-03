@@ -1,5 +1,5 @@
 ﻿namespace MoveToCode {
-    public abstract class ControlFlowInstruction : Instruction {
+    public abstract class ControlFlowInstruction : StandAloneInstruction {
         protected bool conditionIsTrue;
         protected bool exitInstructionAddedToStack;
         protected Instruction exitInstruction;

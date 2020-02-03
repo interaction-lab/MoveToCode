@@ -84,6 +84,7 @@ namespace MoveToCode {
         public enum IARGSNAPTYPES {
             Any,
             Instruction,
+            StandAloneInstruction,
             ConditionalInstruction,
             IDataType,
             INumberDataType,
@@ -95,6 +96,7 @@ namespace MoveToCode {
                 argCompatibleTypeLookUp = new Dictionary<IARGSNAPTYPES, Type>();
                 argCompatibleTypeLookUp.Add(IARGSNAPTYPES.Any, typeof(IArgument));
                 argCompatibleTypeLookUp.Add(IARGSNAPTYPES.Instruction, typeof(Instruction));
+                argCompatibleTypeLookUp.Add(IARGSNAPTYPES.StandAloneInstruction, typeof(StandAloneInstruction));
                 argCompatibleTypeLookUp.Add(IARGSNAPTYPES.ConditionalInstruction, typeof(ConditionalInstruction));
                 argCompatibleTypeLookUp.Add(IARGSNAPTYPES.IDataType, typeof(IDataType));
                 argCompatibleTypeLookUp.Add(IARGSNAPTYPES.INumberDataType, typeof(INumberDataType));

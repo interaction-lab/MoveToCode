@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace MoveToCode {
@@ -9,9 +7,7 @@ namespace MoveToCode {
             // need to grab position relative to parent
             Vector3 relationToParent = transform.localPosition + collidedCodeBlock.GetSnapToParentPosition();
             relationToParent.y = -1f;
-            ControlFlowCodeBlock castedMyBlock = myCodeBlock as ControlFlowCodeBlock;
-            Assert.IsNotNull(castedMyBlock);
-            castedMyBlock.SetExitCodeBlock(collidedCodeBlock, Vector3.down);
+            (myCodeBlock as ControlFlowCodeBlock).SetExitCodeBlock(collidedCodeBlock, relationToParent);
         }
     }
 }

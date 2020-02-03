@@ -1504,7 +1504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a392d7825e4c8ae4dbcc177556edf14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleArgs: 02000000
+  compatibleArgs: 03000000
   myInstructionPosition: 0
 --- !u!33 &845902595
 MeshFilter:
@@ -1954,7 +1954,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a392d7825e4c8ae4dbcc177556edf14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleArgs: 02000000
+  compatibleArgs: 03000000
   myInstructionPosition: 0
 --- !u!33 &1191504363
 MeshFilter:
@@ -2074,7 +2074,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1208556483}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.6199999, z: 0}
+  m_LocalPosition: {x: -0.25, y: -0.6199999, z: 0}
   m_LocalScale: {x: 0.98, y: 0.98, z: 0.98}
   m_Children: []
   m_Father: {fileID: 456814856}
@@ -2092,7 +2092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f081c060a8513b34ebd4e33e7f100509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleArgs: 01000000
+  compatibleArgs: 02000000
 --- !u!33 &1208556486
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2490,7 +2490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 836210421a2ee814eafba66341f67d5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleArgs: 01000000
+  compatibleArgs: 02000000
 --- !u!65 &1260496652
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2686,7 +2686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 836210421a2ee814eafba66341f67d5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleArgs: 01000000
+  compatibleArgs: 02000000
 --- !u!65 &1286174366
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2759,7 +2759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a392d7825e4c8ae4dbcc177556edf14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleArgs: 02000000
+  compatibleArgs: 03000000
   myInstructionPosition: 0
 --- !u!33 &1340798678
 MeshFilter:
@@ -2865,7 +2865,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a392d7825e4c8ae4dbcc177556edf14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleArgs: 03000000
+  compatibleArgs: 04000000
   myInstructionPosition: 1
 --- !u!33 &1383739173
 MeshFilter:
@@ -3420,7 +3420,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652556857}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.6199999, z: 0}
+  m_LocalPosition: {x: -0.25, y: -0.6199999, z: 0}
   m_LocalScale: {x: 0.98, y: 0.98, z: 0.98}
   m_Children: []
   m_Father: {fileID: 1752739732}
@@ -3438,7 +3438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f081c060a8513b34ebd4e33e7f100509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleArgs: 01000000
+  compatibleArgs: 02000000
 --- !u!33 &1652556860
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3948,7 +3948,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 836210421a2ee814eafba66341f67d5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleArgs: 01000000
+  compatibleArgs: 02000000
 --- !u!65 &1746514130
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4265,7 +4265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a392d7825e4c8ae4dbcc177556edf14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleArgs: 03000000
+  compatibleArgs: 04000000
   myInstructionPosition: 0
 --- !u!33 &1899218067
 MeshFilter:
@@ -4403,7 +4403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 836210421a2ee814eafba66341f67d5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleArgs: 01000000
+  compatibleArgs: 02000000
 --- !u!65 &1911159064
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4476,7 +4476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 836210421a2ee814eafba66341f67d5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleArgs: 01000000
+  compatibleArgs: 02000000
 --- !u!33 &1916723983
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4550,7 +4550,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2010224070}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.6199999, z: 0}
+  m_LocalPosition: {x: -0.25, y: -0.6199999, z: 0}
   m_LocalScale: {x: 0.98, y: 0.98, z: 0.98}
   m_Children: []
   m_Father: {fileID: 1226208003}
@@ -4568,7 +4568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f081c060a8513b34ebd4e33e7f100509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleArgs: 01000000
+  compatibleArgs: 02000000
 --- !u!33 &2010224073
 MeshFilter:
   m_ObjectHideFlags: 0

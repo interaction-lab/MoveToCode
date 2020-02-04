@@ -58,7 +58,7 @@ namespace MoveToCode {
             return meshOutline;
         }
 
-        public void ToggleOutline(bool on) {
+        public virtual void ToggleOutline(bool on) {
             if (on) {
                 GetMeshOutline().OutlineWidth = 0.05f;
             }

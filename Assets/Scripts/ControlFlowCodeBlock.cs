@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Microsoft.MixedReality.Toolkit.Utilities;
+using UnityEngine;
 
 namespace MoveToCode {
     public abstract class ControlFlowCodeBlock : InstructionCodeBlock {
@@ -29,6 +30,22 @@ namespace MoveToCode {
 
         public void AlertInstructionChanged() {
             GetMyCodeBlockObjectMesh().AlertInstructionChanged();
+        }
+
+        // protected overriden methods
+        protected override void SetupMeshOutline() {
+            // set up on object mesh instead
+            if (outlineMaterial == null) {
+                outlineMaterial = Resources.Load<Material>(ResourcePathConstants.OutlineCodeBlockMaterial) as Material;
+            }
+            GetMyCodeBlockObjectMesh().SetUpMeshOutline(outlineMaterial);
+        }
+
+        public override void ToggleOutline(bool on) {
+            if (!GetMyCodeBlockObjectMesh().IsOutlineSetUp()) {
+                SetupMeshOutline();
+            }
+            GetMyCodeBlockObjectMesh().ToggleOutline(on);
         }
 
 

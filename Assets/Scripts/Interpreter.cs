@@ -22,10 +22,9 @@ namespace MoveToCode {
             instructionStack.Clear();
             lastInstructionReturn = null;
             curInstruction = StartCodeBlock.instance.GetMyInstruction();
-            curInstruction.GetCodeBlock().ToggleOutline(true);
+            StartCodeBlock.instance.ToggleOutline(true);
             CodeBlockManager.instance.ResetAllCodeBlockInternalState();
             // this will also reset memory later
-            // this will also reset all instruction states as well
         }
 
         public void RunNextInstruction() {
@@ -53,6 +52,7 @@ namespace MoveToCode {
             }
             if (curInstruction == null) {
                 Debug.LogWarning("CODE COMPLETED, not sure what to implement here yet");
+                StartCodeBlock.instance.ToggleOutline(true);
             }
             else {
                 curInstruction?.GetCodeBlock()?.ToggleOutline(true);

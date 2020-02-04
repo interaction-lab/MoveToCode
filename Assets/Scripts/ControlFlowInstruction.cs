@@ -30,14 +30,6 @@ namespace MoveToCode {
             exitInstruction = iIn;
         }
 
-        public int FindExitChainSize() {
-            Instruction runner = GetExitInstruction();
-            if (runner != null) {
-                return runner.GetCodeBlock().FindChainSize() + 1;
-            }
-            return 0;
-        }
-
         public override List<Type> GetArgCompatibilityAtPos(int pos) {
             return new List<Type> { typeof(ConditionalInstruction) };
         }

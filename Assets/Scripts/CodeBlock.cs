@@ -187,10 +187,11 @@ namespace MoveToCode {
                 ControlFlowInstruction cfi = runner as ControlFlowInstruction;
                 if (cfi != null) { // this is to deal with big chains of control flow blocks changing at once
                     size += runner.GetCodeBlock().FindChainSize();
-                    // need to find size of exitinstuction
-                    size += cfi.FindExitChainSize();
+                    runner = cfi.GetExitInstruction();
                 }
-                runner = runner.GetNextInstruction();
+                else {
+                    runner = runner.GetNextInstruction();
+                }
             }
             return size;
         }

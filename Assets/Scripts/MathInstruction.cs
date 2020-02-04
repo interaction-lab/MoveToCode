@@ -1,4 +1,7 @@
-﻿namespace MoveToCode {
+﻿using System;
+using System.Collections.Generic;
+
+namespace MoveToCode {
     public abstract class MathInstruction : Instruction {
         protected float leftNum, rightNum;
 
@@ -15,6 +18,10 @@
 
         public override string ToString() {
             return string.Join("", argumentList[0]?.ToString(), " ", GetMathSymbol(), " ", argumentList[1]?.ToString());
+        }
+
+        public override List<Type> GetArgCompatibilityAtPos(int pos) {
+            return new List<Type> { typeof(INumberDataType) };
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace MoveToCode {
     public class PrintInstruction : StandAloneInstruction {
@@ -25,6 +27,10 @@ namespace MoveToCode {
 
         public override string ToString() {
             return string.Join("", "Print: ", argumentList[0]?.ToString());
+        }
+
+        public override List<Type> GetArgCompatibilityAtPos(int pos) {
+            return new List<Type> { typeof(IArgument) };
         }
     }
 }

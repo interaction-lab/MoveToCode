@@ -1,12 +1,13 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
 
 namespace MoveToCode {
-    public class InstructionSnapCollider : SnapCollider {
-        public override void DoSnapAction(CodeBlock myCodeBlock, CodeBlock collidedCodeBlock) {
-            // maybe quadrant round for snapping instructions due to if statements?
-            Vector3 relationToParent = transform.localPosition + collidedCodeBlock.GetSnapToParentPosition();
-            relationToParent.y = -1f;
-            myCodeBlock.SetNextCodeBlock(collidedCodeBlock, relationToParent);
+    public abstract class InstructionSnapCollider : SnapCollider {
+        protected override List<Type> GetMyCompatibleArgTypes() {
+            if (myCompatibleArgTypes == null) {
+                myCompatibleArgTypes = new List<Type> { typeof(StandAloneInstruction) };
+            }
+            return myCompatibleArgTypes;
         }
     }
 }

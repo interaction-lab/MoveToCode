@@ -1,4 +1,7 @@
-﻿namespace MoveToCode {
+﻿using System;
+using System.Collections.Generic;
+
+namespace MoveToCode {
     public abstract class ConditionalInstruction : Instruction {
         protected IDataType leftArg, rightArg;
 
@@ -19,6 +22,10 @@
                 GetConditionalSymbol(),
                 " ",
                 argumentList[1]?.ToString());
+        }
+
+        public override List<Type> GetArgCompatibilityAtPos(int pos) {
+            return new List<Type> { typeof(IDataType) };
         }
     }
 }

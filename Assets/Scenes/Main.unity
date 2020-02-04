@@ -949,8 +949,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a392d7825e4c8ae4dbcc177556edf14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleArgs: 04000000
-  myInstructionPosition: 1
+  myArgumentPosition: 1
 --- !u!33 &601421845
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1098,8 +1097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a392d7825e4c8ae4dbcc177556edf14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleArgs: 00000000
-  myInstructionPosition: 0
+  myArgumentPosition: 0
 --- !u!33 &700449526
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1504,8 +1502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a392d7825e4c8ae4dbcc177556edf14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleArgs: 03000000
-  myInstructionPosition: 0
+  myArgumentPosition: 0
 --- !u!33 &845902595
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1822,7 +1819,7 @@ GameObject:
   - component: {fileID: 1013094711}
   - component: {fileID: 1013094710}
   m_Layer: 0
-  m_Name: InstructionDown
+  m_Name: NextInstructionDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1851,10 +1848,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1013094708}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 836210421a2ee814eafba66341f67d5f, type: 3}
+  m_Script: {fileID: 11500000, guid: c8d4faa03947ce248a4555cabac8f819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleArgs: 02000000
 --- !u!33 &1013094711
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2210,8 +2206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a392d7825e4c8ae4dbcc177556edf14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleArgs: 03000000
-  myInstructionPosition: 0
+  myArgumentPosition: 0
 --- !u!33 &1191504363
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2348,7 +2343,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f081c060a8513b34ebd4e33e7f100509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleArgs: 02000000
 --- !u!33 &1208556486
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2669,7 +2663,7 @@ GameObject:
   - component: {fileID: 1260496649}
   - component: {fileID: 1260496651}
   m_Layer: 0
-  m_Name: InstructionDown
+  m_Name: NextInstructionDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2743,10 +2737,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1260496647}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 836210421a2ee814eafba66341f67d5f, type: 3}
+  m_Script: {fileID: 11500000, guid: c8d4faa03947ce248a4555cabac8f819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleArgs: 02000000
 --- !u!65 &1260496652
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2861,11 +2854,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1286174362}
   - component: {fileID: 1286174366}
-  - component: {fileID: 1286174365}
   - component: {fileID: 1286174364}
   - component: {fileID: 1286174363}
+  - component: {fileID: 1286174365}
   m_Layer: 0
-  m_Name: InstructionDown
+  m_Name: NextInstructionDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2939,10 +2932,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1286174361}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 836210421a2ee814eafba66341f67d5f, type: 3}
+  m_Script: {fileID: 11500000, guid: c8d4faa03947ce248a4555cabac8f819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleArgs: 02000000
 --- !u!65 &1286174366
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3015,8 +3007,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a392d7825e4c8ae4dbcc177556edf14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleArgs: 03000000
-  myInstructionPosition: 0
+  myArgumentPosition: 0
 --- !u!33 &1340798678
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3121,8 +3112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a392d7825e4c8ae4dbcc177556edf14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleArgs: 04000000
-  myInstructionPosition: 1
+  myArgumentPosition: 1
 --- !u!33 &1383739173
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3227,8 +3217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a392d7825e4c8ae4dbcc177556edf14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleArgs: 04000000
-  myInstructionPosition: 0
+  myArgumentPosition: 0
 --- !u!33 &1471627628
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3694,7 +3683,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f081c060a8513b34ebd4e33e7f100509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleArgs: 02000000
 --- !u!33 &1652556860
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3812,8 +3800,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a392d7825e4c8ae4dbcc177556edf14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleArgs: 00000000
-  myInstructionPosition: 0
+  myArgumentPosition: 0
 --- !u!33 &1654289696
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4233,7 +4220,7 @@ GameObject:
   - component: {fileID: 1746514127}
   - component: {fileID: 1746514129}
   m_Layer: 0
-  m_Name: InstructionDown
+  m_Name: NextInstructionDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4307,10 +4294,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1746514125}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 836210421a2ee814eafba66341f67d5f, type: 3}
+  m_Script: {fileID: 11500000, guid: c8d4faa03947ce248a4555cabac8f819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleArgs: 02000000
 --- !u!65 &1746514130
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4627,8 +4613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a392d7825e4c8ae4dbcc177556edf14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleArgs: 04000000
-  myInstructionPosition: 0
+  myArgumentPosition: 0
 --- !u!33 &1899218067
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4688,7 +4673,7 @@ GameObject:
   - component: {fileID: 1911159061}
   - component: {fileID: 1911159063}
   m_Layer: 0
-  m_Name: InstructionDown
+  m_Name: NextInstructionDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4762,10 +4747,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1911159059}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 836210421a2ee814eafba66341f67d5f, type: 3}
+  m_Script: {fileID: 11500000, guid: c8d4faa03947ce248a4555cabac8f819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleArgs: 02000000
 --- !u!65 &1911159064
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4793,7 +4777,7 @@ GameObject:
   - component: {fileID: 1916723983}
   - component: {fileID: 1916723982}
   m_Layer: 0
-  m_Name: InstructionDown
+  m_Name: NextInstructionDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4835,10 +4819,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1916723979}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 836210421a2ee814eafba66341f67d5f, type: 3}
+  m_Script: {fileID: 11500000, guid: c8d4faa03947ce248a4555cabac8f819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleArgs: 02000000
 --- !u!33 &1916723983
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4930,7 +4913,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f081c060a8513b34ebd4e33e7f100509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleArgs: 02000000
 --- !u!33 &2010224073
 MeshFilter:
   m_ObjectHideFlags: 0

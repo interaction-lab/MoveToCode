@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace MoveToCode {
     public class StartInstruction : Instruction {
@@ -16,6 +19,11 @@ namespace MoveToCode {
 
         public override string ToString() {
             return "START";
+        }
+
+        public override List<Type> GetArgCompatibilityAtPos(int pos) {
+            Assert.IsTrue(false); // This should never have an arg
+            return new List<Type> { };
         }
     }
 }

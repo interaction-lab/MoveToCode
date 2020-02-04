@@ -11,7 +11,6 @@ namespace MoveToCode {
         static Material outlineMaterial;
         MeshRenderer meshRend;
         MeshOutline meshOutline;
-        bool disabledForResnapFix = false;
 
         private void Awake() {
             meshRend = GetComponent<MeshRenderer>();
@@ -79,47 +78,16 @@ namespace MoveToCode {
         }
 
         // Compatability
-        public IARGSNAPTYPES[] compatibleArgs;
+        // Now moved to instruction level
+        // It is a list but most every arg allows only 1 type
+        protected abstract List<Type> GetMyCompatibleArgTypes();
         protected List<Type> myCompatibleArgTypes;
-        public enum IARGSNAPTYPES {
-            Any,
-            Instruction,
-            StandAloneInstruction,
-            ConditionalInstruction,
-            IDataType,
-            INumberDataType,
-            NULL,
-        }
-        static Dictionary<IARGSNAPTYPES, Type> argCompatibleTypeLookUp;
-        public Dictionary<IARGSNAPTYPES, Type> GetArgCompatibleTypeLookUp() {
-            if (argCompatibleTypeLookUp == null) {
-                argCompatibleTypeLookUp = new Dictionary<IARGSNAPTYPES, Type>();
-                argCompatibleTypeLookUp.Add(IARGSNAPTYPES.Any, typeof(IArgument));
-                argCompatibleTypeLookUp.Add(IARGSNAPTYPES.Instruction, typeof(Instruction));
-                argCompatibleTypeLookUp.Add(IARGSNAPTYPES.StandAloneInstruction, typeof(StandAloneInstruction));
-                argCompatibleTypeLookUp.Add(IARGSNAPTYPES.ConditionalInstruction, typeof(ConditionalInstruction));
-                argCompatibleTypeLookUp.Add(IARGSNAPTYPES.IDataType, typeof(IDataType));
-                argCompatibleTypeLookUp.Add(IARGSNAPTYPES.INumberDataType, typeof(INumberDataType));
-                argCompatibleTypeLookUp.Add(IARGSNAPTYPES.NULL, null);
-            }
-            return argCompatibleTypeLookUp;
-        }
 
         public bool HasCompatibleType(IArgument argIn) {
             Type typeToTry = argIn as Variable != null ?
                             (argIn as Variable).GetMyData().GetType() :
                             argIn?.GetType();
             return CheckArgCompatibleType(typeToTry);
-        }
-
-        public List<Type> GetMyCompatibleArgTypes() {
-            if (myCompatibleArgTypes == null) {
-                myCompatibleArgTypes = new List<Type>();
-                foreach (IARGSNAPTYPES iastp in compatibleArgs) {
-                    myCompatibleArgTypes.Add(GetArgCompatibleTypeLookUp()[iastp]);
-                }
-            }
-            return myCompatibleArgTypes;
         }
 
         private bool CheckArgCompatibleType(Type argTypeIn) {

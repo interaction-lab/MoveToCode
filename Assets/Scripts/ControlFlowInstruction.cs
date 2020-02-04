@@ -1,4 +1,7 @@
-﻿namespace MoveToCode {
+﻿using System;
+using System.Collections.Generic;
+
+namespace MoveToCode {
     public abstract class ControlFlowInstruction : StandAloneInstruction {
         protected bool conditionIsTrue;
         protected bool exitInstructionAddedToStack;
@@ -33,6 +36,10 @@
                 return runner.GetCodeBlock().FindChainSize() + 1;
             }
             return 0;
+        }
+
+        public override List<Type> GetArgCompatibilityAtPos(int pos) {
+            return new List<Type> { typeof(ConditionalInstruction) };
         }
 
     }

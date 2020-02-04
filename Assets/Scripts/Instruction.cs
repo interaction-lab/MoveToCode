@@ -6,12 +6,12 @@ namespace MoveToCode {
 
         Instruction nextInstruction;
         protected List<IArgument> argumentList = new List<IArgument>();
-        protected HashSet<Type> compatibileArgumentTypes;
         protected CodeBlock myCodeBlock;
 
         public abstract InstructionReturnValue RunInstruction();
         public abstract void EvaluateArgumentList();
         public abstract int GetNumArguments();
+        public abstract List<Type> GetArgCompatibilityAtPos(int pos);
 
         // public methods
         public Instruction() {

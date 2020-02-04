@@ -12,5 +12,9 @@ namespace MoveToCode {
             }
             throw new InvalidOperationException("Trying to compare String to a non String Data Type");
         }
+
+        public override string ToString() {
+            return string.Join("", "\"", base.ToString(), "\"");
+        }
     }
 }

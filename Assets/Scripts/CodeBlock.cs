@@ -315,7 +315,9 @@ namespace MoveToCode {
                 textMesh = GetComponentInChildren<TextMeshPro>(true);
             }
             if (textMesh == null) {
-                GameObject codeBlockTextGameObject = Instantiate(Resources.Load<GameObject>(ResourcePathConstants.CodeBlockTextPrefab), transform) as GameObject;
+                GameObject codeBlockTextGameObject = Instantiate(
+                    Resources.Load<GameObject>(ResourcePathConstants.CodeBlockTextPrefab), transform) as GameObject;
+                //codeBlockTextGameObject.transform.localPosition = -GetSnapToParentPosition() + new Vector3(0, 0, -0.6f);
                 StartCoroutine(UpdateTextNextFrame());
             }
             else {

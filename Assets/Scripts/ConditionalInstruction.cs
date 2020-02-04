@@ -25,7 +25,7 @@ namespace MoveToCode {
         }
 
         public override List<Type> GetArgCompatibilityAtPos(int pos) {
-            return new List<Type> { typeof(IDataType) };
+            return new List<Type> { typeof(IDataType), typeof(MathInstruction) };
         }
     }
 }

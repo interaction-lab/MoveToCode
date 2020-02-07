@@ -6,6 +6,7 @@ namespace MoveToCode {
         public int myArgumentPosition = 0;
 
         public override void DoSnapAction(CodeBlock myCodeBlock, CodeBlock collidedCodeBlock) {
+            // check if block
             myCodeBlock.SetArgumentBlockAt(collidedCodeBlock, myArgumentPosition, transform.localPosition);
         }
 

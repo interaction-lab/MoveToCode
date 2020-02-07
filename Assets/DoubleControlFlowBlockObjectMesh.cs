@@ -33,10 +33,11 @@ namespace MoveToCode {
         }
 
         public override void SetUpMeshOutline(Material outlineMaterial) {
-            List<MeshOutline> temp = GetMeshOutlines();
-            for (int i = 0; i < temp.Count; ++i) {
-                temp[i] = AddOutlineToObject(temp[i].gameObject, outlineMaterial);
-            }
+            AddOutlineToObject(top.gameObject, ref topOutline, outlineMaterial);
+            AddOutlineToObject(sideTop.gameObject, ref sideTopOutline, outlineMaterial);
+            AddOutlineToObject(middle.gameObject, ref middleOutline, outlineMaterial);
+            AddOutlineToObject(sideBottom.gameObject, ref sideBottomOutline, outlineMaterial);
+            AddOutlineToObject(bottom.gameObject, ref bottomOutline, outlineMaterial);
         }
 
         public override bool IsOutlineSetUp() {
@@ -94,12 +95,11 @@ namespace MoveToCode {
             bottom.localPosition = scaler;
         }
 
-        private MeshOutline AddOutlineToObject(GameObject ob, Material outlineMaterial) {
-            MeshOutline mo = ob.AddComponent(typeof(MeshOutline)) as MeshOutline;
+        private void AddOutlineToObject(GameObject ob, ref MeshOutline mo, Material outlineMaterial) {
+            mo = ob.AddComponent(typeof(MeshOutline)) as MeshOutline;
             mo.OutlineMaterial = outlineMaterial;
             mo.OutlineWidth = 0.05f;
             mo.enabled = false;
-            return mo;
         }
 
         private List<MeshOutline> GetMeshOutlines() {

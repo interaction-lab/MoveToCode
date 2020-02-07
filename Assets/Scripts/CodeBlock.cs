@@ -59,12 +59,7 @@ namespace MoveToCode {
         }
 
         public virtual void ToggleOutline(bool on) {
-            if (on) {
-                GetMeshOutline().OutlineWidth = 0.05f;
-            }
-            else {
-                GetMeshOutline().OutlineWidth = 0.0f;
-            }
+            GetMeshOutline().enabled = on;
         }
 
         // Start Up

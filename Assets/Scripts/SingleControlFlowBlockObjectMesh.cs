@@ -25,15 +25,8 @@ namespace MoveToCode {
         }
 
         public override void ToggleOutline(bool on) {
-            if (on) {
-                foreach (MeshOutline mo in GetMeshOutlines()) {
-                    ToggleOn(mo);
-                }
-            }
-            else {
-                foreach (MeshOutline mo in GetMeshOutlines()) {
-                    ToggleOff(mo);
-                }
+            foreach (MeshOutline mo in GetMeshOutlines()) {
+                mo.enabled = on;
             }
         }
 
@@ -76,15 +69,8 @@ namespace MoveToCode {
         private void AddOutlineToObject(GameObject ob, ref MeshOutline mo, Material outlineMaterial) {
             mo = ob.AddComponent(typeof(MeshOutline)) as MeshOutline;
             mo.OutlineMaterial = outlineMaterial;
-            ToggleOff(mo);
-        }
-
-        private void ToggleOn(MeshOutline mo) {
             mo.OutlineWidth = 0.05f;
-        }
-
-        private void ToggleOff(MeshOutline mo) {
-            mo.OutlineWidth = 0.00f;
+            mo.enabled = false;
         }
 
         private List<MeshOutline> GetMeshOutlines() {

@@ -15,39 +15,31 @@ limitations under the License.
 
 using UnityEngine;
 
-namespace RosSharp.RosBridgeClient
-{
-    public class PoseStampedPublisher : Publisher<Messages.Geometry.PoseStamped>
-    {
+namespace RosSharp.RosBridgeClient {
+    public class PoseStampedPublisher : Publisher<Messages.Geometry.PoseStamped> {
         public Transform PublishedTransform;
         public string FrameId = "Unity";
 
         private Messages.Geometry.PoseStamped message;
 
-        protected override void Start()
-        {
+        protected override void Start() {
             base.Start();
             InitializeMessage();
         }
 
-        private void FixedUpdate()
-        {
+        private void FixedUpdate() {
             UpdateMessage();
         }
 
-        private void InitializeMessage()
-        {
-            message = new Messages.Geometry.PoseStamped
-            {
-                header = new Messages.Standard.Header()
-                {
+        private void InitializeMessage() {
+            message = new Messages.Geometry.PoseStamped {
+                header = new Messages.Standard.Header() {
                     frame_id = FrameId
                 }
             };
         }
 
-        private void UpdateMessage()
-        {
+        private void UpdateMessage() {
             message.header.Update();
             message.pose.position = GetGeometryPoint(PublishedTransform.position.Unity2Ros());
             message.pose.orientation = GetGeometryQuaternion(PublishedTransform.rotation.Unity2Ros());
@@ -55,8 +47,7 @@ namespace RosSharp.RosBridgeClient
             Publish(message);
         }
 
-        private Messages.Geometry.Point GetGeometryPoint(Vector3 position)
-        {
+        private Messages.Geometry.Point GetGeometryPoint(Vector3 position) {
             Messages.Geometry.Point geometryPoint = new Messages.Geometry.Point();
             geometryPoint.x = position.x;
             geometryPoint.y = position.y;
@@ -64,8 +55,7 @@ namespace RosSharp.RosBridgeClient
             return geometryPoint;
         }
 
-        private Messages.Geometry.Quaternion GetGeometryQuaternion(Quaternion quaternion)
-        {
+        private Messages.Geometry.Quaternion GetGeometryQuaternion(Quaternion quaternion) {
             Messages.Geometry.Quaternion geometryQuaternion = new Messages.Geometry.Quaternion();
             geometryQuaternion.x = quaternion.x;
             geometryQuaternion.y = quaternion.y;

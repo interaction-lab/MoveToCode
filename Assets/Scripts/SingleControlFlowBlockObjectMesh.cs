@@ -13,7 +13,6 @@ namespace MoveToCode {
             top = transform.GetChild(0);
             side = transform.GetChild(1);
             bottom = transform.GetChild(2);
-            topOutline = sideOutline = bottomOutline = null;
         }
 
         public override void AlertInstructionChanged() {

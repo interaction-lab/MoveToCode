@@ -1,5 +1,5 @@
 ﻿namespace MoveToCode {
-    public class WhileInstruction : ControlFlowInstruction {
+    public class WhileInstruction : SingleControlFlowInstruction {
 
         public override InstructionReturnValue RunInstruction() {
             if (!exitInstructionAddedToStack) {

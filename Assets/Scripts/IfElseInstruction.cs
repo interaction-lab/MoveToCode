@@ -1,5 +1,5 @@
 ﻿namespace MoveToCode {
-    public class IfInstruction : SingleControlFlowInstruction {
+    public class IfElseInstruction : DoubleControlFlowInstruction {
 
         public override InstructionReturnValue RunInstruction() {
             Interpreter.instance.AddToInstructionStack(GetExitInstruction());
@@ -7,11 +7,13 @@
             if (conditionIsTrue) {
                 return new InstructionReturnValue(null, GetNextInstruction());
             }
-            return null; // should go to endif
+            else {
+                return new InstructionReturnValue(null, argumentList[1].GetCodeBlock().GetMyInstruction());
+            }
         }
 
         public override string ToString() {
-            return string.Join("", "If: ", argumentList[0]?.ToString());
+            return string.Join("", "If/Else: ", argumentList[0]?.ToString());
         }
     }
 }

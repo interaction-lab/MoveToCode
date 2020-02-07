@@ -175,8 +175,19 @@ namespace MoveToCode {
         }
 
         public int FindChainSize() {
+            return FindChainSize(this);
+        }
+
+        public int FindChainSizeOfArgIndex(int indexIn) {
+            return FindChainSize(argumentCodeBlocks[indexIn]) + GetBlockVerticalSize();
+        }
+
+        public int FindChainSize(CodeBlock cbIn) {
+            if (cbIn == null) {
+                return 0;
+            }
             int size = 0;
-            Instruction runner = GetMyInstruction().GetNextInstruction();
+            Instruction runner = cbIn.GetMyInstruction().GetNextInstruction();
             while (runner != null) {
                 size += runner.GetCodeBlock().GetBlockVerticalSize();
                 ControlFlowInstruction cfi = runner as ControlFlowInstruction;
@@ -276,6 +287,7 @@ namespace MoveToCode {
 
         private void SetArgumentAt(IArgument newArg, int position) {
             GetMyInstruction().SetArgumentAt(newArg, position);
+            UpdateControlFlowSizes(); // this is because we are about to make else an argument
         }
 
         private void RemoveNextCodeBlock() {

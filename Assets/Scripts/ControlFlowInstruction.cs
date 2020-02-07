@@ -15,10 +15,6 @@ namespace MoveToCode {
             conditionIsTrue = (argumentList[0] as ConditionalInstruction)?.RunInstruction().GetReturnDataVal().GetValue();
         }
 
-        public override int GetNumArguments() {
-            return 1;
-        }
-
         public ControlFlowInstruction() {
             exitInstructionAddedToStack = false;
         }
@@ -26,12 +22,9 @@ namespace MoveToCode {
         public Instruction GetExitInstruction() {
             return exitInstruction;
         }
+
         public void SetExitInstruction(Instruction iIn) {
             exitInstruction = iIn;
-        }
-
-        public override List<Type> GetArgCompatibilityAtPos(int pos) {
-            return new List<Type> { typeof(ConditionalInstruction) };
         }
 
     }

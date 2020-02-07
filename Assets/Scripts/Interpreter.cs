@@ -51,7 +51,6 @@ namespace MoveToCode {
                     instructionStack.Pop();
             }
             if (curInstruction == null) {
-                Debug.LogWarning("CODE COMPLETED, not sure what to implement here yet");
                 StartCodeBlock.instance.ToggleOutline(true);
             }
             else {

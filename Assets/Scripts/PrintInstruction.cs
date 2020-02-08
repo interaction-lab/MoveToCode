@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace MoveToCode {
     public class PrintInstruction : StandAloneInstruction {
-
         string output;
 
         public PrintInstruction(IArgument argIn) {
@@ -21,7 +20,7 @@ namespace MoveToCode {
 
         public override InstructionReturnValue RunInstruction() {
             EvaluateArgumentList();
-            Debug.Log(output);
+            ConsoleManager.instance.AddLine(output);
             return new InstructionReturnValue(null, GetNextInstruction());
         }
 

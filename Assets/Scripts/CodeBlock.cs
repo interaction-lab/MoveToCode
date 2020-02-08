@@ -293,7 +293,7 @@ namespace MoveToCode {
         private void RemoveNextCodeBlock() {
             SetNextInstruction(null);
             if (nextCodeBlock != null) {
-                nextCodeBlock.transform.localPosition = new Vector3(1.05f, 1.05f, 0); // TODO: This Placement
+                nextCodeBlock.transform.localPosition = nextCodeBlock.transform.localPosition + new Vector3(0.25f, 0.25f, 1.25f); // TODO: This Placement
                 nextCodeBlock.transform.SetParent(CodeBlockManager.instance.transform);
                 nextCodeBlock = null;
             }
@@ -302,7 +302,7 @@ namespace MoveToCode {
         private void RemoveArgumentAt(int position) {
             SetArgumentAt(null, position);
             if (argumentCodeBlocks[position] != null) {
-                argumentCodeBlocks[position].transform.localPosition = new Vector3(2.05f, 1.05f, 0); // TODO: This Placement
+                argumentCodeBlocks[position].transform.localPosition = argumentCodeBlocks[position].transform.localPosition + new Vector3(0.25f, 0.25f, 1.25f); // TODO: This Placement
                 argumentCodeBlocks[position].transform.SetParent(CodeBlockManager.instance.transform);
                 argumentCodeBlocks[position] = null;
             }

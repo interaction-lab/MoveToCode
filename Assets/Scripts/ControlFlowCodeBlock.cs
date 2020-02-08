@@ -61,7 +61,7 @@ namespace MoveToCode {
         private void RemoveCurrentExitCodeBlock() {
             SetExitInstruction(null);
             if (exitCodeBlock != null) {
-                exitCodeBlock.transform.localPosition = new Vector3(1.05f, 1.05f, 0); // TODO: This Placement
+                exitCodeBlock.transform.localPosition = exitCodeBlock.transform.localPosition + new Vector3(0.25f, 0.25f, 1.25f); // TODO: This Placement
                 exitCodeBlock.transform.SetParent(CodeBlockManager.instance.transform);
                 exitCodeBlock = null;
             }

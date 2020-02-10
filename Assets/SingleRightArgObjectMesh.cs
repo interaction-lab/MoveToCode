@@ -6,9 +6,10 @@ namespace MoveToCode {
     public class SingleRightArgObjectMesh : CodeBlockObjectMesh {
         public override void AlertInstructionSizeChanged() {
             ResizeInstruction();
-            GetMyCodeBlock().
+            GetMyCodeBlock().AlertParentCodeBlockOfSizeChange();
         }
 
+        // do we want to keep an internal size of this... or just recalc everyt time.. probably recalc
         public override int GetBlockHorizontalSize() {
             throw new System.NotImplementedException();
         }

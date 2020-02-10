@@ -125,6 +125,13 @@ namespace MoveToCode {
             parentCodeBlock.UpdateText();
         }
 
+        public void AlertParentCodeBlockOfSizeChange() {
+            CodeBlock parentCodeBlock = FindParentCodeBlock();
+            if (parentCodeBlock != null) {
+                parentCodeBlock.GetCodeBlockObjectMesh().AlertInstructionSizeChanged();
+            }
+        }
+
         // Private Helpers
         // If you find yourself making these public, 
         // then you should reconsider what you are doing

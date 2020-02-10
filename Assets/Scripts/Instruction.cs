@@ -11,7 +11,6 @@ namespace MoveToCode {
 
         public abstract InstructionReturnValue RunInstruction();
         public abstract void EvaluateArgumentList();
-        public abstract int GetNumArguments();
         public abstract void SetUpArgPosToCompatability();
         public abstract void SetUpArgDescriptionList();
 

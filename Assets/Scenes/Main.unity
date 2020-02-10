@@ -4737,7 +4737,7 @@ GameObject:
   - component: {fileID: 1526475286}
   - component: {fileID: 1526475287}
   m_Layer: 0
-  m_Name: SnapColliders
+  m_Name: ObjectMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

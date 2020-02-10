@@ -17,6 +17,7 @@ namespace MoveToCode {
         ManipulationHandler manipHandler;
         CodeBlockObjectMesh codeBlockObjectMesh;
         SnapColliderGroup snapColliders;
+        CodeBlockArgumentList codeBlockArgumentList;
 
         // IDK yet
         CodeBlockSnap codeBlockSnap;
@@ -39,13 +40,6 @@ namespace MoveToCode {
             myBlockInternalArg.ResestInternalState();
         }
 
-        // MeshOutlines
-
-
-        public virtual void ToggleOutline(bool on) {
-            GetMeshOutline().enabled = on;
-        }
-
         // Start Up
         private void Awake() {
             // Set up collision
@@ -65,18 +59,14 @@ namespace MoveToCode {
             SetMyBlockInternalArg();
             CodeBlockManager.instance.RegisterCodeBlock(this);
 
+            // ArgListManager set up
+            codeBlockArgumentList = gameObject.AddComponent<CodeBlockArgumentList>();
+            codeBlockArgumentList.SetUp(this);
+
             UpdateText();
         }
 
-        // Public Methods
-
-
-        public Instruction GetMyInstruction() {
-            return myBlockInternalArg as Instruction;
-        }
-        public IDataType GetMyData() {
-            return myBlockInternalArg as IDataType;
-        }
+        // Public Methods      
         public IArgument GetMyInternalIArgument() {
             return myBlockInternalArg;
         }
@@ -90,35 +80,15 @@ namespace MoveToCode {
             return snapColliders;
         }
 
-        public List<IArgument> GetArgumentAt(int position) {
-            return GetMeshObject().
-        }
-
-
-
-        public void SetNextCodeBlock(CodeBlock newInstructionCodeBlock, Vector3 newLocalPosition) {
-            Assert.IsTrue(IsInstructionCodeBlock());
-            RemoveNextCodeBlock();
-            newInstructionCodeBlock?.RemoveFromParentBlock();
-            AddNewNextCodeBlock(newInstructionCodeBlock, newLocalPosition);
-        }
-
         public void SetArgumentBlockAt(CodeBlock newArgumentCodeBlock, int argPosition, Vector3 newLocalPosition) {
-            Assert.IsTrue(IsInstructionCodeBlock());
-            RemoveArgumentAt(argPosition);
-            newArgumentCodeBlock?.RemoveFromParentBlock();
-            AddNewArgumentAt(newArgumentCodeBlock, argPosition, newLocalPosition);
+            codeBlockArgumentList.SetArgCodeBlockAt(newArgumentCodeBlock, argPosition, newLocalPosition);
             UpdateText();
-        }
-
-        public bool IsMyNextInstruction(Instruction iIn) {
-            return GetMyInstruction()?.GetNextInstruction() == iIn;
         }
 
         public int GetPositionOfArgument(IArgument iArgIn) {
             int index = 0;
-            foreach (CodeBlock codeBlock in argumentCodeBlocks) {
-                if (codeBlock?.GetArgumentValueOfCodeBlock() == iArgIn) {
+            foreach (IArgument ia in codeBlockArgumentList.GetArgListAsIArguments()) {
+                if (ia == iArgIn) {
                     return index;
                 }
                 ++index;
@@ -127,6 +97,8 @@ namespace MoveToCode {
             return -1; // Will never get here, put so VS stops complaining
         }
 
+
+        // Chain size
         public int FindChainSize() {
             return FindChainSize(this);
         }
@@ -158,37 +130,20 @@ namespace MoveToCode {
 
 
         // Note: This is slightly inefficienct approach but makes it so you don't have to keep track of as much
-        // TODO add in endifinstructions to this
+
         public void RemoveFromParentBlock() {
-            CodeBlock parentCodeBlock = transform.parent?.GetComponent<CodeBlock>();
-            ControlFlowCodeBlock parentAsControlFlowBlock = parentCodeBlock as ControlFlowCodeBlock;
+            CodeBlock parentCodeBlock = FindParentCodeBlock();
             if (parentCodeBlock != null) {
-                if (IsInstructionCodeBlock() && parentCodeBlock.IsMyNextInstruction(GetMyInstruction())) {
-                    parentCodeBlock.SetNextCodeBlock(null, Vector3.zero);
-                }
-                else if (parentAsControlFlowBlock != null &&
-                    parentAsControlFlowBlock.IsMyExitInstruction(GetMyInstruction())) {
-                    parentAsControlFlowBlock.SetExitCodeBlock(null, Vector3.zero);
-                }
-                else {
-                    parentCodeBlock.RemoveArgumentAt(
-                        parentCodeBlock.GetPositionOfArgument(
-                            GetArgumentValueOfCodeBlock()));
-                }
-                parentCodeBlock.UpdateText();
+                parentCodeBlock.RemoveArgumentAt(
+     parentCodeBlock.GetPositionOfArgument(
+         GetArgumentValueOfCodeBlock()));
             }
+            parentCodeBlock.UpdateText();
         }
 
         // Private Helpers
         // If you find yourself making these public, 
         // then you should reconsider what you are doing
-        private void AddNewNextCodeBlock(CodeBlock newCodeBlock, Vector3 newLocalPosition) {
-            nextCodeBlock = newCodeBlock;
-            if (newCodeBlock) {
-                newCodeBlock.transform.SnapToParent(transform, newLocalPosition);
-            }
-            SetNextInstruction(newCodeBlock?.GetMyInstruction());
-        }
 
         private void AddNewArgumentAt(CodeBlock newArgumentCodeBlock, int position, Vector3 newLocalPosition) {
             try {

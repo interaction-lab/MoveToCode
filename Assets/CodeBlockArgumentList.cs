@@ -28,19 +28,33 @@ namespace MoveToCode {
             }
         }
 
-        public void SetArgCodeBlockAt(CodeBlock cbIn, int argPosition, Vector3 newLocalPosition) {
+        public void SetArgCodeBlockAt(CodeBlock newArgumentCodeBlock, int pos, Vector3 newLocalPosition) {
             // set and remove here
-            RemoveArgumentAt(argPosition);
-            newArgumentCodeBlock?.RemoveFromParentBlock();
-            AddNewArgumentAt(newArgumentCodeBlock, argPosition, newLocalPosition);
-            GetArgListCodeBlocks()[pos] = cbIn;
+            RemoveArgumentAt(pos); // this should be here
+            newArgumentCodeBlock?.RemoveFromParentBlock(); // this should be in codeblock
+            AddNewArgumentAt(newArgumentCodeBlock, pos, newLocalPosition);
+            GetArgListCodeBlocks()[pos] = newArgumentCodeBlock;
         }
 
         public int GetNumArguments() {
             return myCodeBlock.GetMyInternalIArgument().GetNumArguments();
         }
 
+        // Private methods, reconsider if you need to make these public
+        private void AddNewArgumentAt(CodeBlock newArgumentCodeBlock, int pos, Vector3 newLocalPosition) {
+            if (newArgumentCodeBlock) {
+                newArgumentCodeBlock.transform.SnapToParent(transform, newLocalPosition);
+            }
+            GetArgListCodeBlocks()[pos] = newArgumentCodeBlock;
+        }
 
+        private void RemoveArgumentAt(int position) {
+            if (GetArgListCodeBlocks()[position] != null) {
+                argList[position].transform.localPosition = argList[position].transform.localPosition + new Vector3(0.25f, 0.25f, 1.25f); // TODO: This Placement
+                argList[position].transform.SetParent(CodeBlockManager.instance.transform);
+                argList[position] = null;
+            }
+        }
 
     }
 }

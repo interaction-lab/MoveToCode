@@ -98,45 +98,11 @@ namespace MoveToCode {
         }
 
 
-        // Chain size
-        public int FindChainSize() {
-            return FindChainSize(this);
-        }
-
-        public int FindChainSizeOfArgIndex(int indexIn) {
-            return FindChainSize(argumentCodeBlocks[indexIn]) + GetBlockVerticalSize();
-        }
-
-        public int FindChainSize(CodeBlock cbIn) {
-            if (cbIn == null) {
-                return 0;
-            }
-            int size = 0;
-            Instruction runner = cbIn.GetMyInstruction().GetNextInstruction();
-            while (runner != null) {
-                size += runner.GetCodeBlock().GetBlockVerticalSize();
-                ControlFlowInstruction cfi = runner as ControlFlowInstruction;
-                if (cfi != null) { // this is to deal with big chains of control flow blocks changing at once
-                    size += runner.GetCodeBlock().FindChainSize();
-                    runner = cfi.GetExitInstruction();
-                }
-                else {
-                    runner = runner.GetNextInstruction();
-                }
-            }
-            return size;
-        }
-
-
-
         // Note: This is slightly inefficienct approach but makes it so you don't have to keep track of as much
-
         public void RemoveFromParentBlock() {
             CodeBlock parentCodeBlock = FindParentCodeBlock();
             if (parentCodeBlock != null) {
-                parentCodeBlock.RemoveArgumentAt(
-     parentCodeBlock.GetPositionOfArgument(
-         GetArgumentValueOfCodeBlock()));
+                parentCodeBlock.SetArgumentBlockAt(null, parentCodeBlock.GetPositionOfArgument(GetInternalIArg()), Vector3.zero);
             }
             parentCodeBlock.UpdateText();
         }
@@ -144,20 +110,6 @@ namespace MoveToCode {
         // Private Helpers
         // If you find yourself making these public, 
         // then you should reconsider what you are doing
-
-        private void AddNewArgumentAt(CodeBlock newArgumentCodeBlock, int position, Vector3 newLocalPosition) {
-            try {
-                GetMyInstruction().SetArgumentAt(newArgumentCodeBlock?.GetArgumentValueOfCodeBlock(), position);
-                if (newArgumentCodeBlock) {
-                    newArgumentCodeBlock.transform.SnapToParent(transform, newLocalPosition);
-                }
-                argumentCodeBlocks[position] = newArgumentCodeBlock;
-            }
-            catch (Exception ex) {
-                Debug.LogWarning(ex.ToString());
-            }
-        }
-
         private CodeBlock FindParentCodeBlock() {
             Transform upRunner = transform;
             while (upRunner.GetComponent<CodeBlockManager>() == null) {
@@ -169,6 +121,7 @@ namespace MoveToCode {
             return null;
         }
 
+        // CONTROL FLOW SIZES, these should be moved out to object meshes
         private void UpdateParentControlFlowSizes() {
             CodeBlock parentBlock = FindParentCodeBlock();
             ControlFlowCodeBlock parentAsControl = parentBlock as ControlFlowCodeBlock;
@@ -186,38 +139,6 @@ namespace MoveToCode {
                 asControl.AlertInstructionChanged();
             }
             UpdateParentControlFlowSizes();
-        }
-
-        private void SetNextInstruction(Instruction iIn) {
-            GetMyInstruction().SetNextInstruction(iIn);
-            UpdateControlFlowSizes();
-        }
-
-        private void SetArgumentAt(IArgument newArg, int position) {
-            GetMyInstruction().SetArgumentAt(newArg, position);
-            UpdateControlFlowSizes(); // this is because we are about to make else an argument
-        }
-
-        private void RemoveNextCodeBlock() {
-            SetNextInstruction(null);
-            if (nextCodeBlock != null) {
-                nextCodeBlock.transform.localPosition = nextCodeBlock.transform.localPosition + new Vector3(0.25f, 0.25f, 1.25f); // TODO: This Placement
-                nextCodeBlock.transform.SetParent(CodeBlockManager.instance.transform);
-                nextCodeBlock = null;
-            }
-        }
-
-        private void RemoveArgumentAt(int position) {
-            SetArgumentAt(null, position);
-            if (argumentCodeBlocks[position] != null) {
-                argumentCodeBlocks[position].transform.localPosition = argumentCodeBlocks[position].transform.localPosition + new Vector3(0.25f, 0.25f, 1.25f); // TODO: This Placement
-                argumentCodeBlocks[position].transform.SetParent(CodeBlockManager.instance.transform);
-                argumentCodeBlocks[position] = null;
-            }
-        }
-
-        private IArgument GetArgumentValueOfCodeBlock() {
-            return myBlockInternalArg;
         }
 
         // This is needed to wait for the gameobject to spawn

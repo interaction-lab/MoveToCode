@@ -1,4 +1,5 @@
 ﻿using Microsoft.MixedReality.Toolkit.UI;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -68,6 +69,10 @@ namespace MoveToCode {
             return myBlockInternalArg;
         }
 
+        public CodeBlockSnap GetCodeBlockSnap() {
+            return codeBlockSnap;
+        }
+
         // this should be from object mesh
         //public IEnumerable GetAllAttachedCodeBlocks() { // this should just be from the object mesh
         public SnapColliderGroup GetSnapColliders() {
@@ -94,6 +99,7 @@ namespace MoveToCode {
             codeBlockArgumentList.SetArgCodeBlockAt(newArgumentCodeBlock, argPosition, newLocalPosition);
             UpdateText();
         }
+
         public List<CodeBlock> GetArgumentListAsCodeBlocks() {
             return codeBlockArgumentList.GetArgListCodeBlocks();
         }
@@ -102,6 +108,9 @@ namespace MoveToCode {
             return codeBlockArgumentList.GetArgListAsIArguments();
         }
 
+        public List<Type> GetArgCompatabilityAt(int pos) {
+            return (GetMyInternalIArgument() as Instruction).GetArgCompatibilityAtPos(pos);
+        }
 
         // Note: This is slightly inefficienct approach but makes it so you don't have to keep track of as much
         public void RemoveFromParentBlock() {

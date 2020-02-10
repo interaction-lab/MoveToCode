@@ -5,7 +5,10 @@ using UnityEngine;
 
 namespace MoveToCode {
     public class SnapCollider : MonoBehaviour {
-        protected CodeBlockSnap myCodeBlockSnap, collisionCodeBlockSnap;
+        public int myArgumentPosition = 0;
+
+        List<Type> myCompatibleArgTypes;
+        CodeBlockSnap collisionCodeBlockSnap;
 
         static Material outlineMaterial;
         MeshRenderer meshRend;
@@ -34,7 +37,7 @@ namespace MoveToCode {
             return meshOutline;
         }
 
-        // still need to do a backup for double collision for this
+        // Todo: rewire snap colliding
         private void OnTriggerEnter(Collider collision) {
             collisionCodeBlockSnap = collision.transform.GetComponent<CodeBlockSnap>();
             if (collisionCodeBlockSnap == CodeBlockSnap.currentlyDraggingCBS) {
@@ -54,13 +57,7 @@ namespace MoveToCode {
         }
 
         CodeBlockSnap GetMyCodeBlockSnap() {
-            if (myCodeBlockSnap == null) {
-                myCodeBlockSnap = transform.parent.parent.GetComponent<CodeBlockSnap>();
-            }
-            if (myCodeBlockSnap == null) {
-                myCodeBlockSnap = transform.parent.parent.parent.GetComponent<CodeBlockSnap>(); // TODO: this is so jank, need fix for object mesh abstraction on all instructions
-            }
-            return myCodeBlockSnap;
+            return GetMyCodeBlock().GetCodeBlockSnap();
         }
 
         private void OnEnable() {
@@ -77,23 +74,16 @@ namespace MoveToCode {
             }
         }
 
-        // Compatability
-        // Now moved to instruction level
-        // It is a list but most every arg allows only 1 type
         public void DoSnapAction(CodeBlock myCodeBlock, CodeBlock collidedCodeBlock) {
-            // check if block
             myCodeBlock.SetArgumentBlockAt(collidedCodeBlock, myArgumentPosition, transform.localPosition);
         }
 
         protected List<Type> GetMyCompatibleArgTypes() {
-            // grab instruction and get arg compatibility
-            // how should I store the compatibility of the instructions in
             if (myCompatibleArgTypes == null) {
-                myCompatibleArgTypes = GetMyCodeBlock().GetMyInstruction().GetArgCompatibilityAtPos(myArgumentPosition);
+                myCompatibleArgTypes = GetMyCodeBlock().GetArgCompatabilityAt(myArgumentPosition);
             }
             return myCompatibleArgTypes;
         }
-        protected List<Type> myCompatibleArgTypes;
 
         public bool HasCompatibleType(IArgument argIn) {
             Type typeToTry = argIn as Variable != null ?

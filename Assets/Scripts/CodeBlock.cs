@@ -1,7 +1,4 @@
-﻿using Microsoft.MixedReality.Toolkit.Input;
-using Microsoft.MixedReality.Toolkit.UI;
-using Microsoft.MixedReality.Toolkit.Utilities;
-using System;
+﻿using Microsoft.MixedReality.Toolkit.UI;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -80,11 +77,6 @@ namespace MoveToCode {
             return snapColliders;
         }
 
-        public void SetArgumentBlockAt(CodeBlock newArgumentCodeBlock, int argPosition, Vector3 newLocalPosition) {
-            codeBlockArgumentList.SetArgCodeBlockAt(newArgumentCodeBlock, argPosition, newLocalPosition);
-            UpdateText();
-        }
-
         public int GetPositionOfArgument(IArgument iArgIn) {
             int index = 0;
             foreach (IArgument ia in codeBlockArgumentList.GetArgListAsIArguments()) {
@@ -95,6 +87,19 @@ namespace MoveToCode {
             }
             Assert.IsTrue(false); // Should be able to find argument, must call IsMyNextInstruction first
             return -1; // Will never get here, put so VS stops complaining
+        }
+
+        // CodeBlockArgumentList relay functions
+        public void SetArgumentBlockAt(CodeBlock newArgumentCodeBlock, int argPosition, Vector3 newLocalPosition) {
+            codeBlockArgumentList.SetArgCodeBlockAt(newArgumentCodeBlock, argPosition, newLocalPosition);
+            UpdateText();
+        }
+        public List<CodeBlock> GetArgumentListAsCodeBlocks() {
+            return codeBlockArgumentList.GetArgListCodeBlocks();
+        }
+
+        public List<IArgument> GetArgumentListAsIArgs() {
+            return codeBlockArgumentList.GetArgListAsIArguments();
         }
 
 
@@ -161,7 +166,6 @@ namespace MoveToCode {
                 textMesh.SetText(ToString());
                 textMesh.enabled = false;
                 textMesh.enabled = true;
-                FindParentCodeBlock()?.UpdateText();
             }
         }
 

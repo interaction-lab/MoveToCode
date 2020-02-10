@@ -22,10 +22,12 @@ namespace MoveToCode {
             return GetArgListCodeBlocks()[pos].GetMyInternalIArgument();
         }
 
-        public IEnumerable GetArgListAsIArguments() {
+        public List<IArgument> GetArgListAsIArguments() {
+            List<IArgument> result = new List<IArgument>(GetNumArguments());
             for (int i = 0; i < GetNumArguments(); ++i) {
-                yield return GetArgAsIArgumentAt(i);
+                result[i] = GetArgAsIArgumentAt(i);
             }
+            return result;
         }
 
         public void SetArgCodeBlockAt(CodeBlock newArgumentCodeBlock, int pos, Vector3 newLocalPosition) {

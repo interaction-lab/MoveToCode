@@ -35,8 +35,8 @@ namespace MoveToCode {
             return argPosToCompatability[pos];
         }
 
-        public void List<IArgument> GetArgumentList(){
-            return GetCodeBlock().GetArgumentList();
+        public List<IArgument> GetArgumentListAsIArgs() {
+            return GetCodeBlock().GetArgumentListAsIArgs();
         }
 
         public List<string> GetArgListDescription() {

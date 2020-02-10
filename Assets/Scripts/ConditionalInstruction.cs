@@ -17,11 +17,7 @@ namespace MoveToCode {
         }
 
         public override string ToString() {
-            return string.Join("", argumentList[0]?.ToString(),
-                " ",
-                GetConditionalSymbol(),
-                " ",
-                argumentList[1]?.ToString());
+            return GetConditionalSymbol();
         }
 
         public override List<Type> GetArgCompatibilityAtPos(int pos) {

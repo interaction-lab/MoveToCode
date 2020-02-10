@@ -9,15 +9,12 @@ using UnityEngine.Assertions;
 
 namespace MoveToCode {
     public abstract class CodeBlock : MonoBehaviour {
-        // Defintely keep
         protected IArgument myBlockInternalArg;
         TextMeshPro textMesh;
         ManipulationHandler manipHandler;
         CodeBlockObjectMesh codeBlockObjectMesh;
         SnapColliderGroup snapColliders;
         CodeBlockArgumentList codeBlockArgumentList;
-
-        // IDK yet
         CodeBlockSnap codeBlockSnap;
         Rigidbody rigidBody;
 
@@ -71,6 +68,13 @@ namespace MoveToCode {
 
         public CodeBlockSnap GetCodeBlockSnap() {
             return codeBlockSnap;
+        }
+
+        public CodeBlockObjectMesh GetCodeBlockObjectMesh() {
+            if (codeBlockObjectMesh == null) {
+                codeBlockObjectMesh = GetComponentInChildren<CodeBlockObjectMesh>();
+            }
+            return codeBlockObjectMesh;
         }
 
         // this should be from object mesh

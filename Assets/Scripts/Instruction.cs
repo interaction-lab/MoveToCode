@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace MoveToCode {
     public abstract class Instruction : IArgument {
-
         protected List<List<Type>> argPosToCompatability;
         protected List<string> argDescriptionList;
 

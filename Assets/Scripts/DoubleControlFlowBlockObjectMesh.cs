@@ -18,7 +18,7 @@ namespace MoveToCode {
             bottom = transform.GetChild(4);
         }
 
-        public override void AlertInstructionChanged() {
+        public override void AlertInstructionSizeChanged() {
             ResizeMeshes();
         }
 

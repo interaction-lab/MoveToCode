@@ -29,7 +29,7 @@ namespace MoveToCode {
         }
 
         public void AlertInstructionChanged() {
-            GetMyCodeBlockObjectMesh().AlertInstructionChanged();
+            GetMyCodeBlockObjectMesh().AlertInstructionSizeChanged();
         }
 
         // protected overriden methods

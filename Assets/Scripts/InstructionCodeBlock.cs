@@ -8,6 +8,7 @@
             return FindChainSize(this);
         }
 
+        // get all chain args should be control flow override
         public int FindChainSizeOfArgIndex(int indexIn) {
             return FindChainSize(codeBlockArgumentList[indexIn]) + GetBlockVerticalSize();
         }

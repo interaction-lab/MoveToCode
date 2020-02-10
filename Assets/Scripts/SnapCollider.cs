@@ -14,7 +14,6 @@ namespace MoveToCode {
         MeshRenderer meshRend;
         MeshOutline meshOutline;
 
-
         private void Awake() {
             meshRend = GetComponent<MeshRenderer>();
             meshRend.enabled = false;

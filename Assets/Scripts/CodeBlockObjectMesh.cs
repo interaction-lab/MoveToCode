@@ -7,33 +7,47 @@ namespace MoveToCode {
         protected CodeBlock myCodeBlock;
         protected List<MeshOutline> meshOutlineList;
         protected static Material outlineMaterial;
+        protected SnapColliderGroup snapColliderGroup;
 
         // Set up
         public CodeBlockObjectMesh() {
-            SetUpObjectMesh();
+            SetUpObject();
             SetUpMeshOutlineList();
+            ConfigureOutlines();
         }
-        public abstract void SetUpObjectMesh();
+        public abstract void SetUpObject();
         public abstract void SetUpMeshOutlineList();
-
+        public void ConfigureOutlines() {
+            foreach (MeshOutline mo in meshOutlineList) {
+                mo.OutlineMaterial = GetOutlineMaterial();
+                mo.OutlineWidth = 0.05f;
+                mo.enabled = false;
+            }
+        }
 
         // Action change
-        public abstract void SnapArgAtPosition(CodeBlock cbIn, int pos);
         public CodeBlock GetMyCodeBlock() {
             if (myCodeBlock == null) {
                 myCodeBlock = transform.parent.GetComponent<CodeBlock>(); // object mesh should always be right below codeblock in heirarchy
             }
             return myCodeBlock;
         }
+        public SnapColliderGroup GetSnapColliderGroup() {
+            if (snapColliderGroup == null) {
+                snapColliderGroup = GetComponent<SnapColliderGroup>();
+            }
+            return snapColliderGroup;
+        }
+
         public void AlertInstructionSizeChanged() {
-            ResizeInstruction();
+            ResizeObjectMesh();
             GetMyCodeBlock().AlertParentCodeBlockOfSizeChange();
         }
 
         // This is for resizing needs
         public abstract float GetBlockVerticalSize();
         public abstract float GetBlockHorizontalSize();
-        public abstract void ResizeInstruction();
+        public abstract void ResizeObjectMesh();
 
         // Mesh outline
         public void ToggleOutline(bool on) {

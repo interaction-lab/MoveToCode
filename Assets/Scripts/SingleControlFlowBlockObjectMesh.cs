@@ -4,23 +4,31 @@ using UnityEngine;
 
 namespace MoveToCode {
     public class SingleControlFlowBlockObjectMesh : CodeBlockObjectMesh {
-        Transform top, side, bottom;
+        Transform top, side, bot;
 
-        // private methods
-
-        private int FindChainSize() {
-            return transform.parent.GetComponent<CodeBlock>().FindChainSize();
+        public override void SetUpObject() {
+            top = transform.GetChild(0);
+            side = transform.GetChild(1);
+            bot = transform.GetChild(2);
         }
 
-        private int GetMyVerticalSize() {
-            return transform.parent.GetComponent<CodeBlock>().GetBlockVerticalSize();
+        public override void SetUpMeshOutlineList() {
+            meshOutlineList = new List<MeshOutline>() { top.gameObject.AddComponent<MeshOutline>() };
         }
 
-        private void ResizeMeshes() {
-            int chainSize = FindChainSize(); // Also need trailing size of things within, make this within chain
+        public override float GetBlockVerticalSize() {
+            return FindChainSize(GetMyCodeBlock().GetArgAsIArgumentAt(0)) + 2;
+        }
+
+        public override float GetBlockHorizontalSize() {
+            return 3f;  // todo fix this later
+        }
+
+        public override void ResizeObjectMesh() {
+            float verticalSize = GetBlockVerticalSize();
 
             Vector3 scaler = side.localScale;
-            scaler.y = chainSize + GetMyVerticalSize();
+            scaler.y = verticalSize;
             side.localScale = scaler;
 
             scaler = side.localPosition;
@@ -28,47 +36,9 @@ namespace MoveToCode {
             side.localPosition = scaler;
 
             // need to move down bottom also
-            scaler = bottom.localPosition;
-            scaler.y = -chainSize - 2;
-            bottom.localPosition = scaler;
-        }
-
-        private void AddOutlineToObject(GameObject ob, ref MeshOutline mo, Material outlineMaterial) {
-            mo = ob.AddComponent(typeof(MeshOutline)) as MeshOutline;
-            mo.OutlineMaterial = outlineMaterial;
-            mo.OutlineWidth = 0.05f;
-            mo.enabled = false;
-        }
-
-        private List<MeshOutline> GetMeshOutlines() {
-            if (outlines == null) {
-                outlines = new List<MeshOutline>() { topOutline, sideOutline, bottomOutline };
-            }
-            return outlines;
-        }
-
-        public override void SetUpObjectMesh() {
-            throw new System.NotImplementedException();
-        }
-
-        public override void SetUpMeshOutlineList() {
-            throw new System.NotImplementedException();
-        }
-
-        public override void SnapArgAtPosition(CodeBlock cbIn, int pos) {
-            throw new System.NotImplementedException();
-        }
-
-        public override float GetBlockVerticalSize() {
-            throw new System.NotImplementedException();
-        }
-
-        public override float GetBlockHorizontalSize() {
-            throw new System.NotImplementedException();
-        }
-
-        public override void ResizeInstruction() {
-            throw new System.NotImplementedException();
+            scaler = bot.localPosition;
+            scaler.y = -verticalSize;
+            bot.localPosition = scaler;
         }
 
         // chain size

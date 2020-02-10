@@ -45,6 +45,8 @@ namespace MoveToCode {
             return myCodeBlock;
         }
 
+        // this should be register/deregister
+        // resize based upon arg list?
         private List<SnapCollider> GetSnapColliders() {
             if (snapColliders == null) {
                 if (GetComponent<CodeBlockObjectMesh>()) {

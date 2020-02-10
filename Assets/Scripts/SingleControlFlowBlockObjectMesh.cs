@@ -5,41 +5,9 @@ using UnityEngine;
 namespace MoveToCode {
     public class SingleControlFlowBlockObjectMesh : CodeBlockObjectMesh {
         Transform top, side, bottom;
-#pragma warning disable 0649 // disable outline warning
-        MeshOutline topOutline, sideOutline, bottomOutline;
-        List<MeshOutline> outlines;
-
-        private void Awake() {
-            top = transform.GetChild(0);
-            side = transform.GetChild(1);
-            bottom = transform.GetChild(2);
-        }
-
-        public override void AlertInstructionSizeChanged() {
-            ResizeMeshes();
-        }
-
-        public override Transform GetExitInstructionParentTransform() {
-            return bottom;
-        }
-
-        public override void ToggleOutline(bool on) {
-            foreach (MeshOutline mo in GetMeshOutlines()) {
-                mo.enabled = on;
-            }
-        }
-
-        public override void SetUpMeshOutline(Material outlineMaterial) {
-            AddOutlineToObject(top.gameObject, ref topOutline, outlineMaterial);
-            AddOutlineToObject(side.gameObject, ref sideOutline, outlineMaterial);
-            AddOutlineToObject(bottom.gameObject, ref bottomOutline, outlineMaterial);
-        }
-
-        public override bool IsOutlineSetUp() {
-            return topOutline != null;
-        }
 
         // private methods
+
         private int FindChainSize() {
             return transform.parent.GetComponent<CodeBlock>().FindChainSize();
         }
@@ -78,5 +46,31 @@ namespace MoveToCode {
             }
             return outlines;
         }
+
+        public override void SetUpObjectMesh() {
+            throw new System.NotImplementedException();
+        }
+
+        public override void SetUpMeshOutlineList() {
+            throw new System.NotImplementedException();
+        }
+
+        public override void SnapArgAtPosition(CodeBlock cbIn, int pos) {
+            throw new System.NotImplementedException();
+        }
+
+        public override float GetBlockVerticalSize() {
+            throw new System.NotImplementedException();
+        }
+
+        public override float GetBlockHorizontalSize() {
+            throw new System.NotImplementedException();
+        }
+
+        public override void ResizeInstruction() {
+            throw new System.NotImplementedException();
+        }
+
+        // chain size
     }
 }

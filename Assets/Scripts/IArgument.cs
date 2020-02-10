@@ -1,9 +1,18 @@
 ﻿namespace MoveToCode {
     public abstract class IArgument {
+        CodeBlock myCodeBlock;
+
         public abstract IDataType EvaluateArgument();
-        public abstract CodeBlock GetCodeBlock();
-        public abstract void SetCodeBlock(CodeBlock codeBlock);
         public virtual void ResestInternalState() { }
         public abstract int GetNumArguments();
+
+        public CodeBlock GetCodeBlock() {
+            return myCodeBlock;
+        }
+
+        public IArgument(CodeBlock cbIn) {
+            myCodeBlock = cbIn;
+        }
+
     }
 }

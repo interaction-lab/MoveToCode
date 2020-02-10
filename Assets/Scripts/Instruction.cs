@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Assertions;
 
 namespace MoveToCode {
     public abstract class Instruction : IArgument {
-        protected CodeBlock myCodeBlock;
+
         protected List<List<Type>> argPosToCompatability;
         protected List<string> argDescriptionList;
 
@@ -15,14 +14,7 @@ namespace MoveToCode {
         public abstract void SetUpArgDescriptionList();
 
         // public methods, all codeblocks should create instructions with themself
-        public Instruction(CodeBlock cbIn) {
-            myCodeBlock = cbIn;
-        }
-
-        public override CodeBlock GetCodeBlock() {
-            Assert.IsNotNull(myCodeBlock);
-            return myCodeBlock;
-        }
+        public Instruction(CodeBlock cbIn) : base(cbIn) { }
 
         public override IDataType EvaluateArgument() {
             return RunInstruction().GetReturnDataVal();
@@ -33,6 +25,10 @@ namespace MoveToCode {
                 SetUpArgPosToCompatability();
             }
             return argPosToCompatability[pos];
+        }
+
+        public IArgument GetArgumentAt(int pos) {
+            return GetArgumentListAsIArgs()[pos];
         }
 
         public List<IArgument> GetArgumentListAsIArgs() {

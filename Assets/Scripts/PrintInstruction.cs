@@ -5,12 +5,12 @@ namespace MoveToCode {
     public class PrintInstruction : StandAloneInstruction {
         string output;
 
-        public PrintInstruction(IArgument argIn) {
-            SetArgumentAt(argIn, 1);
+        public PrintInstruction(CodeBlock cbIn) : base(cbIn) {
+
         }
 
         public override void EvaluateArgumentList() {
-            output = argumentList[1]?.EvaluateArgument()?.GetValue()?.ToString();
+            output = GetArgumentAt(1)?.EvaluateArgument()?.GetValue()?.ToString();
         }
 
         public override int GetNumArguments() {
@@ -38,6 +38,18 @@ namespace MoveToCode {
 
         public override List<string> GetArgListDescription() {
             return new List<string> { "NextInstruction", "Arg0 (Thing that is printed" };
+        }
+
+        public override void SetUpArgPosToCompatability() {
+            throw new NotImplementedException();
+        }
+
+        public override void SetUpArgDescriptionList() {
+            throw new NotImplementedException();
+        }
+
+        public override void SetCodeBlock(CodeBlock codeBlock) {
+            throw new NotImplementedException();
         }
     }
 }

@@ -23,13 +23,12 @@ namespace MoveToCode {
             CodeBlockManager.instance.DisableCollidersCompatibleCodeBlock(GetMyCodeBlock());
         }
 
-
         // Private methods
         private void SetCollidersAndChildrenState(bool desiredActiveState) {
             foreach (SnapCollider sc in GetSnapColliders()) {
                 sc.gameObject.SetActive(desiredActiveState);
             }
-            foreach (CodeBlock c in GetMyCodeBlock().GetAllAttachedCodeBlocks()) {
+            foreach (CodeBlock c in GetMyCodeBlock().GetArgumentListAsCodeBlocks()) {
                 if (desiredActiveState) {
                     c.GetSnapColliders()?.EnableAllCollidersAndChildrenColliders();
                 }

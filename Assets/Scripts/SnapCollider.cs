@@ -1,16 +1,16 @@
 ﻿using Microsoft.MixedReality.Toolkit.Utilities;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace MoveToCode {
-    public abstract class SnapCollider : MonoBehaviour {
+    public class SnapCollider : MonoBehaviour {
         protected CodeBlockSnap myCodeBlockSnap, collisionCodeBlockSnap;
-        public abstract void DoSnapAction(CodeBlock myCodeBlock, CodeBlock collidedCodeBlock);
+
         static Material outlineMaterial;
         MeshRenderer meshRend;
         MeshOutline meshOutline;
+
 
         private void Awake() {
             meshRend = GetComponent<MeshRenderer>();
@@ -32,6 +32,10 @@ namespace MoveToCode {
                 meshOutline.OutlineMaterial = outlineMaterial;
             }
             return meshOutline;
+        }
+
+        public void DoSnapAction(CodeBlock myCodeBlock, CodeBlock collidedCodeBlock) {
+
         }
 
         // still need to do a backup for double collision for this

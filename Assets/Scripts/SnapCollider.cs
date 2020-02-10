@@ -22,7 +22,7 @@ namespace MoveToCode {
             GetMyCodeBlockSnap();
         }
 
-        // Collision/outline
+        // Collision/outline // this needs to be moved to object mesh idk wait is this the snapcolliders?
         public MeshOutline GetMeshOutline() {
             if (outlineMaterial == null) {
                 outlineMaterial = Resources.Load<Material>(ResourcePathConstants.OutlineSnapColliderMaterial) as Material;
@@ -32,10 +32,6 @@ namespace MoveToCode {
                 meshOutline.OutlineMaterial = outlineMaterial;
             }
             return meshOutline;
-        }
-
-        public void DoSnapAction(CodeBlock myCodeBlock, CodeBlock collidedCodeBlock) {
-
         }
 
         // still need to do a backup for double collision for this
@@ -84,7 +80,19 @@ namespace MoveToCode {
         // Compatability
         // Now moved to instruction level
         // It is a list but most every arg allows only 1 type
-        protected abstract List<Type> GetMyCompatibleArgTypes();
+        public void DoSnapAction(CodeBlock myCodeBlock, CodeBlock collidedCodeBlock) {
+            // check if block
+            myCodeBlock.SetArgumentBlockAt(collidedCodeBlock, myArgumentPosition, transform.localPosition);
+        }
+
+        protected List<Type> GetMyCompatibleArgTypes() {
+            // grab instruction and get arg compatibility
+            // how should I store the compatibility of the instructions in
+            if (myCompatibleArgTypes == null) {
+                myCompatibleArgTypes = GetMyCodeBlock().GetMyInstruction().GetArgCompatibilityAtPos(myArgumentPosition);
+            }
+            return myCompatibleArgTypes;
+        }
         protected List<Type> myCompatibleArgTypes;
 
         public bool HasCompatibleType(IArgument argIn) {

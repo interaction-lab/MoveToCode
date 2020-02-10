@@ -11,22 +11,22 @@ using UnityEngine.Assertions;
 
 namespace MoveToCode {
     public abstract class CodeBlock : MonoBehaviour {
+        // Defintely keep
         protected IArgument myBlockInternalArg;
-        CodeBlock nextCodeBlock;
-        List<CodeBlock> argumentCodeBlocks;
         TextMeshPro textMesh;
         ManipulationHandler manipHandler;
-        NearInteractionGrabbable nearInteractionGrabbable;
+        CodeBlockObjectMesh codeBlockObjectMesh;
+        SnapColliderGroup snapColliders;
+
+        // IDK yet
         CodeBlockSnap codeBlockSnap;
         Rigidbody rigidBody;
-        SnapColliderGroup snapColliders;
-        protected BaseMeshOutline meshOutline;
-        protected static Material outlineMaterial;
 
         // Abstract Methods
         protected abstract void SetMyBlockInternalArg();
 
         // Virtual methods, made for control blocks really
+        // this should really be handled by object mesh
         public virtual int GetBlockVerticalSize() {
             return 1;
         }
@@ -40,23 +40,7 @@ namespace MoveToCode {
         }
 
         // MeshOutlines
-        protected virtual void SetupMeshOutline() {
-            if (outlineMaterial == null) {
-                outlineMaterial = Resources.Load<Material>(ResourcePathConstants.OutlineCodeBlockMaterial) as Material;
-            }
-            if (meshOutline == null) {
-                meshOutline = gameObject.AddComponent(typeof(MeshOutline)) as MeshOutline;
-                meshOutline.OutlineMaterial = outlineMaterial;
-                meshOutline.OutlineWidth = 0.05f;
-            }
-        }
 
-        protected BaseMeshOutline GetMeshOutline() {
-            if (meshOutline == null) {
-                SetupMeshOutline();
-            }
-            return meshOutline;
-        }
 
         public virtual void ToggleOutline(bool on) {
             GetMeshOutline().enabled = on;
@@ -72,35 +56,20 @@ namespace MoveToCode {
 
             // MRTK components to add
             manipHandler = gameObject.AddComponent(typeof(ManipulationHandler)) as ManipulationHandler;
-            nearInteractionGrabbable = gameObject.AddComponent(typeof(NearInteractionGrabbable)) as NearInteractionGrabbable;
 
             // Other components
             codeBlockSnap = gameObject.AddComponent(typeof(CodeBlockSnap)) as CodeBlockSnap;
             snapColliders = GetComponentInChildren<SnapColliderGroup>();
 
             // Setup
-            argumentCodeBlocks = new List<CodeBlock>();
             SetMyBlockInternalArg();
-            myBlockInternalArg.SetCodeBlock(this);
-            if (IsInstructionCodeBlock()) {
-                argumentCodeBlocks.Resize(GetMyInstruction().GetNumArguments());
-            }
-
             CodeBlockManager.instance.RegisterCodeBlock(this);
 
             UpdateText();
         }
 
         // Public Methods
-        public bool IsInstructionCodeBlock() {
-            return (this as InstructionCodeBlock) != null;
-        }
-        public bool IsDataCodeBlock() {
-            return (this as DataCodeBlock) != null;
-        }
-        public bool IsControlFlowCodeBlock() {
-            return (this as ControlFlowCodeBlock) != null;
-        }
+
 
         public Instruction GetMyInstruction() {
             return myBlockInternalArg as Instruction;
@@ -112,20 +81,8 @@ namespace MoveToCode {
             return myBlockInternalArg;
         }
 
-        public IEnumerable GetAllAttachedCodeBlocks() {
-            if (IsDataCodeBlock()) {
-                yield break;
-            }
-            if (GetMyInstruction().GetNextInstruction() != null) {
-                yield return GetMyInstruction().GetNextInstruction().GetCodeBlock();
-            }
-            for (int i = 0; i < argumentCodeBlocks.Count; ++i) {
-                if (argumentCodeBlocks[i] != null) {
-                    yield return argumentCodeBlocks[i];
-                }
-            }
-        }
-
+        // this should be from object mesh
+        //public IEnumerable GetAllAttachedCodeBlocks() { // this should just be from the object mesh
         public SnapColliderGroup GetSnapColliders() {
             if (snapColliders == null) {
                 snapColliders = GetComponentInChildren<SnapColliderGroup>();
@@ -133,15 +90,11 @@ namespace MoveToCode {
             return snapColliders;
         }
 
-        public IArgument GetArgumentAt(int position) {
-            return GetMyInstruction().GetArgumentAt(position);
+        public List<IArgument> GetArgumentAt(int position) {
+            return GetMeshObject().
         }
 
-        public void SetValueOfData(IDataType dTIn) {
-            Assert.IsTrue(IsDataCodeBlock());
-            GetMyData().SetValue(dTIn.GetValue());
-            UpdateText();
-        }
+
 
         public void SetNextCodeBlock(CodeBlock newInstructionCodeBlock, Vector3 newLocalPosition) {
             Assert.IsTrue(IsInstructionCodeBlock());

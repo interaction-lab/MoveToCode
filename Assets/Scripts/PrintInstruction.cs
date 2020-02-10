@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace MoveToCode {
     public class PrintInstruction : StandAloneInstruction {
         string output;
 
         public PrintInstruction(IArgument argIn) {
-            SetArgumentAt(argIn, 0);
+            SetArgumentAt(argIn, 1);
         }
 
         public override void EvaluateArgumentList() {
-            output = argumentList[0]?.EvaluateArgument()?.GetValue()?.ToString();
+            output = argumentList[1]?.EvaluateArgument()?.GetValue()?.ToString();
         }
 
         public override int GetNumArguments() {
-            return 1;
+            return 2;
         }
 
         public override InstructionReturnValue RunInstruction() {
@@ -25,11 +24,20 @@ namespace MoveToCode {
         }
 
         public override string ToString() {
-            return string.Join("", "Print: ", argumentList[0]?.ToString());
+            return "Print: ";
         }
 
         public override List<Type> GetArgCompatibilityAtPos(int pos) {
-            return new List<Type> { typeof(IArgument) };
+            if (pos == 0) {
+                return new List<Type> { typeof(StandAloneInstruction) };
+            }
+            else {
+                return new List<Type> { typeof(IDataType) };
+            }
+        }
+
+        public override List<string> GetArgListDescription() {
+            return new List<string> { "NextInstruction", "Arg0 (Thing that is printed" };
         }
     }
 }

@@ -150,26 +150,6 @@ namespace MoveToCode {
             return null;
         }
 
-        // CONTROL FLOW SIZES, these should be moved out to object meshes
-        private void UpdateParentControlFlowSizes() {
-            CodeBlock parentBlock = FindParentCodeBlock();
-            ControlFlowCodeBlock parentAsControl = parentBlock as ControlFlowCodeBlock;
-            if (parentAsControl != null) {
-                parentAsControl.UpdateControlFlowSizes();
-            }
-            else if (parentBlock != null) {
-                parentBlock.UpdateParentControlFlowSizes();
-            }
-        }
-
-        private void UpdateControlFlowSizes() {
-            ControlFlowCodeBlock asControl = this as ControlFlowCodeBlock;
-            if (asControl != null) {
-                asControl.AlertInstructionChanged();
-            }
-            UpdateParentControlFlowSizes();
-        }
-
         // This is needed to wait for the gameobject to spawn
         private IEnumerator UpdateTextNextFrame() {
             yield return new WaitForEndOfFrame();

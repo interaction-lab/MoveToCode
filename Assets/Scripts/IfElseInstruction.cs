@@ -1,6 +1,8 @@
 ﻿namespace MoveToCode {
     public class IfElseInstruction : DoubleControlFlowInstruction {
 
+        public IfElseInstruction(CodeBlock cbIn) : base(cbIn) { }
+
         public override InstructionReturnValue RunInstruction() {
             Interpreter.instance.AddToInstructionStack(GetExitInstruction());
             EvaluateArgumentList();
@@ -8,12 +10,12 @@
                 return new InstructionReturnValue(null, GetNextInstruction());
             }
             else {
-                return new InstructionReturnValue(null, argumentList[1].GetCodeBlock().GetMyInstruction());
+                return new InstructionReturnValue(null, (GetArgumentAt(2) as StandAloneInstruction));
             }
         }
 
         public override string ToString() {
-            return string.Join("", "If/Else: ", argumentList[0]?.ToString());
+            return "If/Else: ";
         }
     }
 }

@@ -4,20 +4,14 @@
         protected CodeBlock myCodeBlock;
         public abstract bool IsSameDataTypeAndEqualTo(IDataType otherVal);
 
+        public IDataType(CodeBlock cbIn) : base(cbIn) { }
+
         public override IDataType EvaluateArgument() {
             return this;
         }
 
-        public override CodeBlock GetCodeBlock() {
-            return myCodeBlock;
-        }
-
         public virtual dynamic GetValue() {
             return value;
-        }
-
-        public override void SetCodeBlock(CodeBlock codeBlock) {
-            myCodeBlock = codeBlock;
         }
 
         public virtual void SetValue(dynamic valIn) {
@@ -26,6 +20,10 @@
 
         public override string ToString() {
             return GetValue().ToString();
+        }
+
+        public override int GetNumArguments() {
+            return 0;
         }
     }
 }

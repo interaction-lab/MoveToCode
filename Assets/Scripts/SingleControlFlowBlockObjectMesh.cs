@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace MoveToCode {
-    public class SingleControlFlowBlockObjectMesh : CodeBlockObjectMesh {
+    public class SingleControlFlowBlockObjectMesh : ControlFlowBlockObjectMesh {
         Transform top, side, bot;
 
         public override void SetUpObject() {
@@ -40,7 +40,5 @@ namespace MoveToCode {
             scaler.y = -verticalSize;
             bot.localPosition = scaler;
         }
-
-        // chain size
     }
 }

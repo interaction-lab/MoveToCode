@@ -116,6 +116,10 @@ namespace MoveToCode {
             return (GetMyInternalIArgument() as Instruction).GetArgCompatibilityAtPos(pos);
         }
 
+        public IArgument GetArgAsIArgumentAt(int pos) {
+            return codeBlockArgumentList.GetArgAsIArgumentAt(pos);
+        }
+
         // Note: This is slightly inefficienct approach but makes it so you don't have to keep track of as much
         public void RemoveFromParentBlock() {
             CodeBlock parentCodeBlock = FindParentCodeBlock();

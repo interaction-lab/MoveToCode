@@ -3,69 +3,55 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace MoveToCode {
-    public class DoubleControlFlowBlockObjectMesh : CodeBlockObjectMesh {
-        Transform top, sideTop, middle, sideBottom, bottom;
-#pragma warning disable 0649 // disable outline warning
-        MeshOutline topOutline, sideTopOutline, middleOutline, sideBottomOutline, bottomOutline;
-        List<MeshOutline> outlines;
-        List<Transform> transforms;
+    public class DoubleControlFlowBlockObjectMesh : ControlFlowBlockObjectMesh {
+        Transform top, sideTop, mid, sideBot, bot;
 
-        private void Awake() {
+        public override void SetUpObject() {
             top = transform.GetChild(0);
             sideTop = transform.GetChild(1);
-            middle = transform.GetChild(2);
-            sideBottom = transform.GetChild(3);
-            bottom = transform.GetChild(4);
+            mid = transform.GetChild(2);
+            sideBot = transform.GetChild(3);
+            bot = transform.GetChild(4);
         }
 
-        public override void AlertInstructionSizeChanged() {
-            ResizeMeshes();
+        public override void SetUpMeshOutlineList() {
+            meshOutlineList = new List<MeshOutline>() {
+                 top.gameObject.AddComponent<MeshOutline>(),
+                 sideTop.gameObject.AddComponent<MeshOutline>(),
+                 mid.gameObject.AddComponent<MeshOutline>(),
+                 sideBot.gameObject.AddComponent<MeshOutline>(),
+                 bot.gameObject.AddComponent<MeshOutline>()
+                 };
         }
 
-        public override Transform GetExitInstructionParentTransform() {
-            return bottom;
+        public override float GetBlockVerticalSize() {
+            return FindTopVerticalSize() + FindBotVerticalSize() + 2;
         }
 
-        public override void ToggleOutline(bool on) {
-            foreach (MeshOutline mo in GetMeshOutlines()) {
-                mo.enabled = on;
-            }
+        public override float GetBlockHorizontalSize() {
+            return 3; // todo will do later
         }
 
-        public override void SetUpMeshOutline(Material outlineMaterial) {
-            AddOutlineToObject(top.gameObject, ref topOutline, outlineMaterial);
-            AddOutlineToObject(sideTop.gameObject, ref sideTopOutline, outlineMaterial);
-            AddOutlineToObject(middle.gameObject, ref middleOutline, outlineMaterial);
-            AddOutlineToObject(sideBottom.gameObject, ref sideBottomOutline, outlineMaterial);
-            AddOutlineToObject(bottom.gameObject, ref bottomOutline, outlineMaterial);
-        }
-
-        public override bool IsOutlineSetUp() {
-            return topOutline != null;
+        public override void ResizeObjectMesh() {
+            ResizeTop();
+            ResizeBot();
         }
 
         // private methods
-        private int FindChainSizeTop() {
-            return transform.parent.GetComponent<CodeBlock>().FindChainSize();
-        }
-        private int FindChainSizeBot() { // Jank fix for else
-            return transform.parent.GetComponent<CodeBlock>().FindChainSizeOfArgIndex(1);
+
+        private float FindTopVerticalSize() {
+            return FindChainSize(GetMyCodeBlock().GetArgAsIArgumentAt(0));
         }
 
-        private int GetMyVerticalSize() {
-            return transform.parent.GetComponent<CodeBlock>().GetBlockVerticalSize();
+        private float FindBotVerticalSize() {
+            return FindChainSize(GetMyCodeBlock().GetArgAsIArgumentAt(2));
         }
 
-        private void ResizeMeshes() {
-            ResizeTop();
-            ResizeBot();
-
-        }
         private void ResizeTop() {
-            int chainSize = FindChainSizeTop();
+            float topVertSize = FindTopVerticalSize();
 
             Vector3 scaler = sideTop.localScale;
-            scaler.y = chainSize + GetMyVerticalSize();
+            scaler.y = topVertSize;
             sideTop.localScale = scaler;
 
             scaler = sideTop.localPosition;
@@ -73,47 +59,26 @@ namespace MoveToCode {
             sideTop.localPosition = scaler;
 
             // need to move down bottom also
-            scaler = middle.localPosition;
-            scaler.y = -chainSize - 2;
-            middle.localPosition = scaler;
+            scaler = mid.localPosition;
+            scaler.y = -topVertSize;
+            mid.localPosition = scaler;
         }
 
         private void ResizeBot() {
-            int chainSize = FindChainSizeBot();
+            float botVertSize = FindBotVerticalSize();
 
-            Vector3 scaler = sideBottom.localScale;
-            scaler.y = chainSize + GetMyVerticalSize();
-            sideBottom.localScale = scaler;
+            Vector3 scaler = sideBot.localScale;
+            scaler.y = botVertSize;
+            sideBot.localScale = scaler;
 
-            scaler = sideBottom.localPosition;
-            scaler.y = -(sideBottom.localScale.y - 1) / 2; // here 
-            sideBottom.localPosition = scaler;
+            scaler = sideBot.localPosition;
+            scaler.y = -(sideBot.localScale.y - 1) / 2; // here 
+            sideBot.localPosition = scaler;
 
             // need to move down bottom also
-            scaler = bottom.localPosition;
-            scaler.y = -chainSize - 2;
-            bottom.localPosition = scaler;
-        }
-
-        private void AddOutlineToObject(GameObject ob, ref MeshOutline mo, Material outlineMaterial) {
-            mo = ob.AddComponent(typeof(MeshOutline)) as MeshOutline;
-            mo.OutlineMaterial = outlineMaterial;
-            mo.OutlineWidth = 0.05f;
-            mo.enabled = false;
-        }
-
-        private List<MeshOutline> GetMeshOutlines() {
-            if (outlines == null) {
-                outlines = new List<MeshOutline>() { topOutline, sideTopOutline, middleOutline, sideBottomOutline, bottomOutline };
-            }
-            return outlines;
-        }
-
-        private List<Transform> GetObjectTransforms() {
-            if (transforms == null) {
-                transforms = new List<Transform>() { top, sideTop, middle, sideBottom, bottom };
-            }
-            return transforms;
+            scaler = bot.localPosition;
+            scaler.y = -botVertSize;
+            bot.localPosition = scaler;
         }
     }
 }

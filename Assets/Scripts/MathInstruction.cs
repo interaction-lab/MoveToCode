@@ -23,5 +23,13 @@ namespace MoveToCode {
         public override List<Type> GetArgCompatibilityAtPos(int pos) {
             return new List<Type> { typeof(INumberDataType), typeof(MathInstruction) };
         }
+
+        public override void SetUpArgPosToCompatability() {
+            argPosToCompatability = new List<List<Type>>
+        }
+
+        public override void SetUpArgDescriptionList() {
+            throw new System.NotImplementedException();
+        }
     }
 }

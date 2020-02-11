@@ -3,20 +3,16 @@
 
         VariableCodeBlock myVariableCodeBlock;
 
+        public Variable(CodeBlock cbIn) : base(cbIn) {
+            myVariableCodeBlock = cbIn as VariableCodeBlock;
+        }
+
         public override IDataType EvaluateArgument() {
             return myVariableCodeBlock.GetVariableDataFromBlockCollection();
         }
 
-        public override CodeBlock GetCodeBlock() {
-            return myVariableCodeBlock;
-        }
-
         public override bool IsSameDataTypeAndEqualTo(IDataType otherVal) {
             return GetMyData().IsSameDataTypeAndEqualTo(otherVal);
-        }
-
-        public override void SetCodeBlock(CodeBlock codeBlock) {
-            myVariableCodeBlock = codeBlock as VariableCodeBlock;
         }
 
         public void SetValue(IDataType dIn) {

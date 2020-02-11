@@ -3,20 +3,13 @@ using System.Collections.Generic;
 
 namespace MoveToCode {
     public abstract class DoubleControlFlowInstruction : ControlFlowInstruction {
-        public override int GetNumArguments() {
-            return 2;
-        }
+        public DoubleControlFlowInstruction(CodeBlock cbIn) : base(cbIn) { }
 
-        public override List<Type> GetArgCompatibilityAtPos(int pos) {
-            if (pos == 0) {
-                return new List<Type> { typeof(ConditionalInstruction) };
-            }
-            else {
-                return new List<Type> { typeof(StandAloneInstruction) }; // TODO: this is hack for else instruction
-            }
+        public override int GetNumArguments() {
+            return 4;
+        }
+        protected override StandAloneInstruction GetExitInstruction() {
+            return GetArgumentAt(3) as StandAloneInstruction;
         }
     }
 }
-
-
-

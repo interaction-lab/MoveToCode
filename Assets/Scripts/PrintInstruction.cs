@@ -37,7 +37,7 @@ namespace MoveToCode {
         }
 
         public override void SetUpArgDescriptionList() {
-            argDescriptionList = new List<string> { "NextInstruction", "Arg0 (Thing that is printed)" };
+            argDescriptionList = new List<string> { "NextInstruction", "Thing that is printed" };
         }
     }
 }

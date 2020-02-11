@@ -7,21 +7,37 @@ namespace MoveToCode {
 
         public abstract string GetConditionalSymbol();
 
+        public ConditionalInstruction(CodeBlock cbIn) : base(cbIn) { }
+
         public override void EvaluateArgumentList() {
-            leftArg = argumentList[0]?.EvaluateArgument();
-            rightArg = argumentList[1]?.EvaluateArgument();
+            leftArg = GetArgumentAt(1)?.EvaluateArgument();
+            rightArg = GetArgumentAt(2)?.EvaluateArgument();
         }
 
         public override int GetNumArguments() {
-            return 2;
+            return 3;
         }
 
         public override string ToString() {
             return GetConditionalSymbol();
         }
 
-        public override List<Type> GetArgCompatibilityAtPos(int pos) {
-            return new List<Type> { typeof(IDataType), typeof(MathInstruction) };
+        public override void SetUpArgPosToCompatability() {
+            argPosToCompatability = new List<List<Type>> {
+                new List<Type>{
+                    typeof(StandAloneInstruction)
+                },
+                new List<Type> {
+                    typeof(IDataType), typeof(MathInstruction)
+                },
+                new List<Type> {
+                    typeof(IDataType), typeof(MathInstruction)
+                }
+            };
+        }
+
+        public override void SetUpArgDescriptionList() {
+            argDescriptionList = new List<string> { "NextInstruction", "Left side of condtional", "Right Side of Conditional" };
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿namespace MoveToCode {
     public class WhileInstruction : SingleControlFlowInstruction {
 
+        public WhileInstruction(CodeBlock cbIn) : base(cbIn) { }
+
         public override InstructionReturnValue RunInstruction() {
             if (!exitInstructionAddedToStack) {
                 Interpreter.instance.AddToInstructionStack(GetExitInstruction());
@@ -16,7 +18,8 @@
         }
 
         public override string ToString() {
-            return string.Join("", "While: ", argumentList[0]?.ToString());
+            return "While: ";
         }
+
     }
 }

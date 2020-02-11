@@ -7,29 +7,37 @@ namespace MoveToCode {
 
         public abstract string GetMathSymbol();
 
+        public MathInstruction(CodeBlock cbIn) : base(cbIn) { }
+
         public override void EvaluateArgumentList() {
-            leftNum = argumentList[0].EvaluateArgument().GetValue();
-            rightNum = argumentList[1].EvaluateArgument().GetValue();
+            leftNum = GetArgumentAt(1)?.EvaluateArgument().GetValue();
+            rightNum = GetArgumentAt(2)?.EvaluateArgument().GetValue();
         }
 
         public override int GetNumArguments() {
-            return 2;
+            return 3;
         }
 
         public override string ToString() {
-            return string.Join("", argumentList[0]?.ToString(), " ", GetMathSymbol(), " ", argumentList[1]?.ToString());
-        }
-
-        public override List<Type> GetArgCompatibilityAtPos(int pos) {
-            return new List<Type> { typeof(INumberDataType), typeof(MathInstruction) };
+            return GetMathSymbol();
         }
 
         public override void SetUpArgPosToCompatability() {
-            argPosToCompatability = new List<List<Type>>
+            argPosToCompatability = new List<List<Type>> {
+                new List<Type>{
+                    typeof(StandAloneInstruction)
+                },
+                new List<Type> {
+                    typeof(INumberDataType)
+                },
+                 new List<Type> {
+                    typeof(INumberDataType)
+                }
+            };
         }
 
         public override void SetUpArgDescriptionList() {
-            throw new System.NotImplementedException();
+            argDescriptionList = new List<string> { "NextInstruction", "Left number", "Right Number" };
         }
     }
 }

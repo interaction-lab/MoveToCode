@@ -12,6 +12,7 @@
 
         public IArgument(CodeBlock cbIn) {
             myCodeBlock = cbIn;
+            ResestInternalState();
         }
 
     }

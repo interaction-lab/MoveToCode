@@ -5,27 +5,35 @@ namespace MoveToCode {
     public abstract class ControlFlowInstruction : StandAloneInstruction {
         protected bool conditionIsTrue;
         protected bool exitInstructionAddedToStack;
-        protected Instruction exitInstruction;
+
+        protected abstract StandAloneInstruction GetExitInstruction();
+
+        public ControlFlowInstruction(CodeBlock cbIn) : base(cbIn) { }
 
         public override void ResestInternalState() {
             exitInstructionAddedToStack = false;
         }
 
         public override void EvaluateArgumentList() {
-            conditionIsTrue = (argumentList[0] as ConditionalInstruction)?.RunInstruction().GetReturnDataVal().GetValue();
+            conditionIsTrue = (GetArgumentAt(1) as ConditionalInstruction)?.RunInstruction().GetReturnDataVal().GetValue();
         }
 
-        public ControlFlowInstruction() {
-            exitInstructionAddedToStack = false;
+        public override void SetUpArgPosToCompatability() {
+            argPosToCompatability = new List<List<Type>> {
+                new List<Type>{
+                    typeof(StandAloneInstruction)
+                },
+                new List<Type> {
+                    typeof(ConditionalInstruction)
+                },
+                new List<Type> {
+                    typeof(StandAloneInstruction)
+                }
+            };
         }
 
-        public Instruction GetExitInstruction() {
-            return exitInstruction;
+        public override void SetUpArgDescriptionList() {
+            argDescriptionList = new List<string> { "NextInstruction", "Conditional Instruction", "Exit Instruction" };
         }
-
-        public void SetExitInstruction(Instruction iIn) {
-            exitInstruction = iIn;
-        }
-
     }
 }

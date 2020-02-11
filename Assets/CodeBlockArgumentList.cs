@@ -12,7 +12,7 @@ namespace MoveToCode {
 
         public List<CodeBlock> GetArgListCodeBlocks() {
             if (argList == null) {
-                argList = new List<CodeBlock>(GetNumArguments());
+                argList = new List<CodeBlock>(new CodeBlock[GetNumArguments()]);
             }
             return argList;
         }
@@ -22,7 +22,7 @@ namespace MoveToCode {
         }
 
         public List<IArgument> GetArgListAsIArguments() {
-            List<IArgument> result = new List<IArgument>(GetNumArguments());
+            List<IArgument> result = new List<IArgument>(new IArgument[GetNumArguments()]);
             for (int i = 0; i < GetNumArguments(); ++i) {
                 result[i] = GetArgAsIArgumentAt(i);
             }

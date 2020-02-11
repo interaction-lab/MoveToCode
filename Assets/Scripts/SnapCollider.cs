@@ -52,7 +52,7 @@ namespace MoveToCode {
         }
 
         public CodeBlock GetMyCodeBlock() {
-            return GetMyCodeBlockSnap().GetMyCodeBlock();
+            return transform.parent.parent.GetComponent<CodeBlockObjectMesh>().GetMyCodeBlock(); // TODO: this is mega hack, clean up when rewriting snap
         }
 
         CodeBlockSnap GetMyCodeBlockSnap() {

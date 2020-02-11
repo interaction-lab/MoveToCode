@@ -30,10 +30,10 @@ namespace MoveToCode {
             }
             foreach (CodeBlock c in GetMyCodeBlock().GetArgumentListAsCodeBlocks()) {
                 if (desiredActiveState) {
-                    c.GetSnapColliders()?.EnableAllCollidersAndChildrenColliders();
+                    c?.GetSnapColliders()?.EnableAllCollidersAndChildrenColliders();
                 }
                 else {
-                    c.GetSnapColliders()?.DisableAllCollidersAndChildrenColliders();
+                    c?.GetSnapColliders()?.DisableAllCollidersAndChildrenColliders();
                 }
             }
         }

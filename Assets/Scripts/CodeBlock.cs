@@ -130,7 +130,6 @@ namespace MoveToCode {
             if (parentCodeBlock != null) {
                 parentCodeBlock.SetArgumentBlockAt(null, parentCodeBlock.GetPositionOfArgument(GetMyInternalIArgument()), Vector3.zero);
             }
-            parentCodeBlock.UpdateText();
         }
 
         public void AlertParentCodeBlockOfSizeChange() {

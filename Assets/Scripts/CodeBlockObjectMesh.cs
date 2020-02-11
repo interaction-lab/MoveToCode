@@ -15,6 +15,7 @@ namespace MoveToCode {
             SetUpMeshOutlineList();
             ConfigureOutlines();
         }
+
         public abstract void SetUpObject();
         public abstract void SetUpMeshOutlineList();
         public void ConfigureOutlines() {
@@ -51,6 +52,8 @@ namespace MoveToCode {
 
         // Mesh outline
         public void ToggleOutline(bool on) {
+            if (meshOutlineList == null) // TODO: this is hack, fix for reset
+                return;
             foreach (MeshOutline mo in meshOutlineList) {
                 mo.enabled = on;
             }

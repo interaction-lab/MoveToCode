@@ -10,7 +10,7 @@ namespace MoveToCode {
         protected SnapColliderGroup snapColliderGroup;
 
         // Set up
-        public CodeBlockObjectMesh() {
+        void Awake() {
             SetUpObject();
             SetUpMeshOutlineList();
             ConfigureOutlines();

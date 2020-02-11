@@ -120,6 +120,10 @@ namespace MoveToCode {
             return codeBlockArgumentList.GetArgAsIArgumentAt(pos);
         }
 
+        public void ToggleOutline(bool on) {
+            GetCodeBlockObjectMesh().ToggleOutline(on);
+        }
+
         // Note: This is slightly inefficienct approach but makes it so you don't have to keep track of as much
         public void RemoveFromParentBlock() {
             CodeBlock parentCodeBlock = FindParentCodeBlock();

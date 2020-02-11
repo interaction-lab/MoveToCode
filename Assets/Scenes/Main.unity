@@ -606,8 +606,8 @@ GameObject:
   - component: {fileID: 258836634}
   - component: {fileID: 258836638}
   - component: {fileID: 258836637}
-  - component: {fileID: 258836636}
   - component: {fileID: 258836635}
+  - component: {fileID: 258836636}
   m_Layer: 0
   m_Name: Argument1
   m_TagString: Untagged
@@ -651,10 +651,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 258836633}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a392d7825e4c8ae4dbcc177556edf14a, type: 3}
+  m_Script: {fileID: 11500000, guid: 0064d2c807e4c7047a4189d5dd96702d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myArgumentPosition: 1
+  myArgumentPosition: 2
 --- !u!33 &258836637
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1318,7 +1318,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a392d7825e4c8ae4dbcc177556edf14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myArgumentPosition: 1
 --- !u!33 &601421845
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1787,7 +1786,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 226bd63b903637e408e91d6f906ae741, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  output: one
 --- !u!65 &832947821
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1963,7 +1961,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a392d7825e4c8ae4dbcc177556edf14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myArgumentPosition: 0
 --- !u!33 &845902595
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2101,7 +2098,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 226bd63b903637e408e91d6f906ae741, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  output: one
 --- !u!65 &852793315
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3320,7 +3316,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a392d7825e4c8ae4dbcc177556edf14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myArgumentPosition: 0
 --- !u!33 &1191504363
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4230,7 +4225,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a392d7825e4c8ae4dbcc177556edf14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myArgumentPosition: 0
 --- !u!33 &1340798678
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4335,7 +4329,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a392d7825e4c8ae4dbcc177556edf14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myArgumentPosition: 0
 --- !u!33 &1346853612
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4501,7 +4494,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a392d7825e4c8ae4dbcc177556edf14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myArgumentPosition: 0
 --- !u!33 &1471627628
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5392,7 +5384,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a392d7825e4c8ae4dbcc177556edf14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myArgumentPosition: 0
 --- !u!33 &1654289696
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5995,7 +5986,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 226bd63b903637e408e91d6f906ae741, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  output: 
 --- !u!1 &1746514125
 GameObject:
   m_ObjectHideFlags: 0
@@ -6540,7 +6530,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: beeede2cb8542ee47a25e8c00b4b84fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myArgumentPosition: 1
 --- !u!1 &1899054832
 GameObject:
   m_ObjectHideFlags: 0
@@ -6587,7 +6576,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a392d7825e4c8ae4dbcc177556edf14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myArgumentPosition: 0
 --- !u!65 &1899054835
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6657,7 +6645,6 @@ GameObject:
   - component: {fileID: 1899218064}
   - component: {fileID: 1899218068}
   - component: {fileID: 1899218067}
-  - component: {fileID: 1899218066}
   m_Layer: 0
   m_Name: Argument0
   m_TagString: Untagged
@@ -6679,19 +6666,6 @@ Transform:
   m_Father: {fileID: 1782431560}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1899218066
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1899218063}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a392d7825e4c8ae4dbcc177556edf14a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myArgumentPosition: 0
 --- !u!33 &1899218067
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -22,7 +22,7 @@ namespace MoveToCode {
             curInstruction?.GetCodeBlock()?.ToggleOutline(false);
             instructionStack.Clear();
             lastInstructionReturn = null;
-            curInstruction = StartCodeBlock.instance.GetMyInstruction();
+            curInstruction = StartCodeBlock.instance.GetMyInternalIArgument() as Instruction;
             StartCodeBlock.instance.ToggleOutline(true);
             CodeBlockManager.instance.ResetAllCodeBlockInternalState();
             // this will also reset memory later

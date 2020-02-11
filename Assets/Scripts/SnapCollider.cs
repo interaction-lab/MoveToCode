@@ -37,15 +37,19 @@ namespace MoveToCode {
         }
 
         // Todo: rewire snap colliding
+        private CodeBlockSnap GetCollidersCodeBlockSnap(Collider collision) {
+            return collision.transform.parent.parent.GetComponent<CodeBlockSnap>();
+        }
+
         private void OnTriggerEnter(Collider collision) {
-            collisionCodeBlockSnap = collision.transform.GetComponent<CodeBlockSnap>();
+            collisionCodeBlockSnap = GetCollidersCodeBlockSnap(collision); // TODO: mega hack, need to find codeblock snap of other
             if (collisionCodeBlockSnap == CodeBlockSnap.currentlyDraggingCBS) {
                 collisionCodeBlockSnap?.AddSnapColliderInContact(this);
             }
         }
 
         private void OnTriggerExit(Collider collision) {
-            collisionCodeBlockSnap = collision.transform.GetComponent<CodeBlockSnap>();
+            collisionCodeBlockSnap = GetCollidersCodeBlockSnap(collision);
             if (collisionCodeBlockSnap == CodeBlockSnap.currentlyDraggingCBS) {
                 collisionCodeBlockSnap?.RemoveAsCurSnapColliderInContact(this);
             }

@@ -16,7 +16,6 @@ namespace MoveToCode {
         SnapColliderGroup snapColliders;
         CodeBlockArgumentList codeBlockArgumentList;
         CodeBlockSnap codeBlockSnap;
-        Rigidbody rigidBody;
 
         // Abstract Methods
         protected abstract void SetMyBlockInternalArg();
@@ -37,12 +36,6 @@ namespace MoveToCode {
 
         // Start Up
         private void Awake() {
-            // Set up collision
-            rigidBody = gameObject.AddComponent(typeof(Rigidbody)) as Rigidbody;
-            rigidBody.isKinematic = true;
-            rigidBody.useGravity = false;
-            GetComponent<Collider>().isTrigger = true;
-
             // MRTK components to add
             manipHandler = gameObject.AddComponent(typeof(ManipulationHandler)) as ManipulationHandler;
 
@@ -120,8 +113,13 @@ namespace MoveToCode {
             return codeBlockArgumentList.GetArgAsIArgumentAt(pos);
         }
 
+        // Relay to object mesh
         public void ToggleOutline(bool on) {
             GetCodeBlockObjectMesh().ToggleOutline(on);
+        }
+
+        public void ToggleColliders(bool on) {
+            GetCodeBlockObjectMesh().ToggleColliders(on);
         }
 
         // Note: This is slightly inefficienct approach but makes it so you don't have to keep track of as much

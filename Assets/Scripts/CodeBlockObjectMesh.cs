@@ -23,6 +23,9 @@ namespace MoveToCode {
                 mo.OutlineMaterial = GetOutlineMaterial();
                 mo.OutlineWidth = 0.05f;
                 mo.enabled = false;
+                Rigidbody rigidBody = mo.gameObject.AddComponent<Rigidbody>();
+                rigidBody.isKinematic = true;
+                rigidBody.useGravity = false;
             }
         }
 
@@ -56,6 +59,14 @@ namespace MoveToCode {
                 return;
             foreach (MeshOutline mo in meshOutlineList) {
                 mo.enabled = on;
+            }
+        }
+
+        public void ToggleColliders(bool on) {
+            if (meshOutlineList == null) // TODO: this is hack, fix for reset
+                return;
+            foreach (MeshOutline mo in meshOutlineList) {
+                mo.gameObject.GetComponent<Collider>().enabled = on;
             }
         }
 

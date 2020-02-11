@@ -30,14 +30,14 @@ namespace MoveToCode {
             currentlyDraggingCBS = this;
             // Disable my collider, wait one frame, reenable
             // This allows for a "resnap" to same spot
-            StartCoroutine(DisableMyColliderForOneFrame());
+            //StartCoroutine(DisableMyColliderForOneFrame());
         }
 
         IEnumerator DisableMyColliderForOneFrame() {
-            Collider myCollider = GetComponent<Collider>();
-            myCollider.enabled = false;
+            // get meshoutline, disable colliders
+            GetMyCodeBlock().ToggleColliders(false);
             yield return new WaitForFixedUpdate();
-            myCollider.enabled = true;
+            GetMyCodeBlock().ToggleColliders(true);
         }
 
         public void AddSnapColliderInContact(SnapCollider sc) {

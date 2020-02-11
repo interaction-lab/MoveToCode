@@ -7,7 +7,7 @@ using UnityEngine;
 // only keep track of last collided instead, highlight it
 namespace MoveToCode {
     public class CodeBlockSnap : MonoBehaviour {
-        public static CodeBlockSnap currentlyDraggingCBS;
+        public static CodeBlockSnap currentlyDraggingCBS, lastDraggedCBS;
         CodeBlock myCodeBlock;
         ManipulationHandler manipulationHandler;
         SnapColliderGroup mySnapColliders;
@@ -64,6 +64,7 @@ namespace MoveToCode {
 
         void OnManipulationEnd(ManipulationEventData call) {
             currentlyDraggingCBS = null;
+            lastDraggedCBS = this;
             if (bestCandidateSnapCollider != null) {
                 bestCandidateSnapCollider.DoSnapAction(bestCandidateSnapCollider.GetMyCodeBlock(), GetMyCodeBlock());
             }

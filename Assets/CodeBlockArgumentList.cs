@@ -51,7 +51,9 @@ namespace MoveToCode {
 
         private void RemoveArgumentAt(int position) {
             if (GetArgListCodeBlocks()[position] != null) {
-                argList[position].transform.localPosition = argList[position].transform.localPosition + new Vector3(0.25f, 0.25f, 1.25f); // TODO: This Placement
+                if (CodeBlockSnap.currentlyDraggingCBS != myCodeBlock.GetCodeBlockSnap()) {
+                    argList[position].transform.localPosition = argList[position].transform.localPosition + new Vector3(0.25f, 0.25f, 1.25f); // TODO: This Placement
+                }
                 argList[position].transform.SetParent(CodeBlockManager.instance.transform);
                 argList[position] = null;
             }

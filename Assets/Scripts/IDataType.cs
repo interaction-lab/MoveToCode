@@ -5,6 +5,9 @@
         public abstract bool IsSameDataTypeAndEqualTo(IDataType otherVal);
 
         public IDataType(CodeBlock cbIn) : base(cbIn) { }
+        public IDataType(CodeBlock cbIn, dynamic valIn) : base(cbIn) {
+            SetValue(valIn);
+        }
 
         public override IDataType EvaluateArgument() {
             return this;

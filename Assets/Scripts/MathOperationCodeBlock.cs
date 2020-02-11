@@ -12,16 +12,16 @@
         protected override void SetMyBlockInternalArg() {
             switch (op) {
                 case OPERATION.ADD:
-                    myBlockInternalArg = new AdditionInstruction();
+                    myBlockInternalArg = new AdditionInstruction(this);
                     break;
                 case OPERATION.DIV:
-                    myBlockInternalArg = new DivisionInstruction();
+                    myBlockInternalArg = new DivisionInstruction(this);
                     break;
                 case OPERATION.MUL:
-                    myBlockInternalArg = new MultiplicationInstruction();
+                    myBlockInternalArg = new MultiplicationInstruction(this);
                     break;
                 case OPERATION.SUB:
-                    myBlockInternalArg = new SubtractionInstruction();
+                    myBlockInternalArg = new SubtractionInstruction(this);
                     break;
             }
 

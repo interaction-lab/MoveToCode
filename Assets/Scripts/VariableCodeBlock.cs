@@ -8,7 +8,7 @@ namespace MoveToCode {
 
         // add itself to a collection
         protected override void SetMyBlockInternalArg() {
-            myBlockInternalArg = new Variable();
+            myBlockInternalArg = new Variable(this);
         }
 
         public IDataType GetVariableDataFromBlockCollection() {

@@ -1,5 +1,5 @@
 ﻿namespace MoveToCode {
-    public abstract class ControlFlowCodeBlock : InstructionCodeBlock {
+    public abstract class ControlFlowCodeBlock : StandAloneInstructionCodeBlock {
 
     }
 }

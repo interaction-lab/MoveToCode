@@ -23,7 +23,7 @@
         }
 
         protected override void SetMyBlockInternalArg() {
-            myBlockInternalArg = new StartInstruction();
+            myBlockInternalArg = new StartInstruction(this);
         }
     }
 }

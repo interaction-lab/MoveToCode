@@ -124,7 +124,7 @@ namespace MoveToCode {
         public void RemoveFromParentBlock() {
             CodeBlock parentCodeBlock = FindParentCodeBlock();
             if (parentCodeBlock != null) {
-                parentCodeBlock.SetArgumentBlockAt(null, parentCodeBlock.GetPositionOfArgument(GetInternalIArg()), Vector3.zero);
+                parentCodeBlock.SetArgumentBlockAt(null, parentCodeBlock.GetPositionOfArgument(GetMyInternalIArgument()), Vector3.zero);
             }
             parentCodeBlock.UpdateText();
         }

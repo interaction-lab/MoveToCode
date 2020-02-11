@@ -4,7 +4,7 @@
         public string output = "DEFAULT";
 
         protected override void SetMyBlockInternalArg() {
-            myBlockInternalArg = new StringDataType(output);
+            myBlockInternalArg = new StringDataType(this, output);
         }
 
     }

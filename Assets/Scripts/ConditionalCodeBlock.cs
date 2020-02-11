@@ -10,10 +10,10 @@
         protected override void SetMyBlockInternalArg() {
             switch (op) {
                 case OPERATION.EQUALS:
-                    myBlockInternalArg = new EqualsConditionInstruction();
+                    myBlockInternalArg = new EqualsConditionInstruction(this);
                     break;
                 case OPERATION.NOTEQUALS:
-                    myBlockInternalArg = new NotEqualsConditionInstruction();
+                    myBlockInternalArg = new NotEqualsConditionInstruction(this);
                     break;
             }
 

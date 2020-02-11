@@ -2,10 +2,9 @@
 
 namespace MoveToCode {
     public class StringDataType : IDataType {
-        public StringDataType(string valIn) {
-            SetValue(valIn);
-        }
-
+        public StringDataType(CodeBlock cbIn) : base(cbIn) { }
+        public StringDataType(CodeBlock cbIn, string valIn) : base(cbIn, valIn) { }
+        public StringDataType(string valIn) : base(null, valIn) { }
         public override bool IsSameDataTypeAndEqualTo(IDataType otherVal) {
             if (otherVal is StringDataType) {
                 return (string)GetValue() == (string)otherVal.GetValue();

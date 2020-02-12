@@ -31,7 +31,7 @@ namespace MoveToCode {
                     typeof(StandAloneInstruction)
                 },
                 new List<Type> {
-                    typeof(IDataType)
+                    typeof(IDataType), typeof(MathInstruction), typeof(ConditionalInstruction)
                 }
             };
         }

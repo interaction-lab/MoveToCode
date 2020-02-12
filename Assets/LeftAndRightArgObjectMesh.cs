@@ -19,12 +19,13 @@ namespace MoveToCode {
         public override void SetUpMeshOutlineList() {
             meshOutlineList = new List<MeshOutline>() {
                 top.gameObject.AddComponent<MeshOutline>(),
+                argLeft.gameObject.AddComponent<MeshOutline>(),
                 argRight.gameObject.AddComponent<MeshOutline>()
                 };
         }
 
         public override float GetBlockHorizontalSize() {
-            return top.localScale.x + argRight.localScale.x;
+            return argRight.localScale.x + argLeft.localScale.x + 0.5f; // 0.5f is for top being cut off
         }
 
         public override float GetBlockVerticalSize() {
@@ -41,15 +42,15 @@ namespace MoveToCode {
         private void ResizeArgLeft() {
             // need to resize arg right based upon horizontal size of arg
             Vector3 rescale = origScaleArg;
-            Vector3 reposition = origPositionArgRight;
+            Vector3 reposition = origPositionArgLeft;
             float? horizontalSize = GetMyCodeBlock().GetArgAsCodeBlockAt(0)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
             if (horizontalSize != null) {
                 rescale.x = (float)horizontalSize;
                 // 
-                reposition.x = reposition.x + (rescale.x - 0.5f) / 2.0f;
+                reposition.x = reposition.x - (rescale.x - 0.5f) / 2.0f;
             }
-            argRight.localPosition = reposition;
-            argRight.localScale = rescale;
+            argLeft.localPosition = reposition;
+            argLeft.localScale = rescale;
         }
 
         private void ResizeArgRight() {

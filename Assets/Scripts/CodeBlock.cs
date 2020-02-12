@@ -1,4 +1,5 @@
-﻿using Microsoft.MixedReality.Toolkit.UI;
+﻿using Microsoft.MixedReality.Toolkit.Input;
+using Microsoft.MixedReality.Toolkit.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace MoveToCode {
         protected IArgument myBlockInternalArg;
         TextMeshPro textMesh;
         ManipulationHandler manipHandler;
+        NearInteractionGrabbable nearInteractionGrabbable;
         CodeBlockObjectMesh codeBlockObjectMesh;
         SnapColliderGroup snapColliders;
         CodeBlockArgumentList codeBlockArgumentList;
@@ -22,6 +24,7 @@ namespace MoveToCode {
 
         // Virtual methods, made for control blocks really
         // this should really be handled by object mesh
+        // TODO: delete this later
         public virtual int GetBlockVerticalSize() {
             return 1;
         }
@@ -37,10 +40,12 @@ namespace MoveToCode {
         // Start Up
         private void Awake() {
             // MRTK components to add
-            manipHandler = gameObject.AddComponent(typeof(ManipulationHandler)) as ManipulationHandler;
+            manipHandler = gameObject.AddComponent<ManipulationHandler>();
+            nearInteractionGrabbable = gameObject.AddComponent<NearInteractionGrabbable>();
+            manipHandler.TwoHandedManipulationType = ManipulationHandler.TwoHandedManipulation.MoveRotate;
 
             // Other components
-            codeBlockSnap = gameObject.AddComponent(typeof(CodeBlockSnap)) as CodeBlockSnap;
+            codeBlockSnap = gameObject.AddComponent<CodeBlockSnap>();
             snapColliders = GetComponentInChildren<SnapColliderGroup>();
 
             // Setup

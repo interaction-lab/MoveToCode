@@ -10,12 +10,12 @@ namespace MoveToCode {
         public ConditionalInstruction(CodeBlock cbIn) : base(cbIn) { }
 
         public override void EvaluateArgumentList() {
-            leftArg = GetArgumentAt(1)?.EvaluateArgument();
-            rightArg = GetArgumentAt(2)?.EvaluateArgument();
+            leftArg = GetArgumentAt(0)?.EvaluateArgument();
+            rightArg = GetArgumentAt(1)?.EvaluateArgument();
         }
 
         public override int GetNumArguments() {
-            return 3;
+            return 2;
         }
 
         public override string ToString() {
@@ -24,9 +24,6 @@ namespace MoveToCode {
 
         public override void SetUpArgPosToCompatability() {
             argPosToCompatability = new List<List<Type>> {
-                new List<Type>{
-                    typeof(StandAloneInstruction)
-                },
                 new List<Type> {
                     typeof(IDataType), typeof(MathInstruction)
                 },
@@ -37,7 +34,7 @@ namespace MoveToCode {
         }
 
         public override void SetUpArgDescriptionList() {
-            argDescriptionList = new List<string> { "NextInstruction", "Left side of condtional", "Right Side of Conditional" };
+            argDescriptionList = new List<string> { "Left side of condtional", "Right Side of Conditional" };
         }
     }
 }

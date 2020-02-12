@@ -29,11 +29,11 @@ namespace MoveToCode {
             return result;
         }
 
-        public void SetArgCodeBlockAt(CodeBlock newArgumentCodeBlock, int pos, Vector3 newLocalPosition) {
+        public void SetArgCodeBlockAt(CodeBlock newArgumentCodeBlock, int pos) {
             // set and remove here
             RemoveArgumentAt(pos); // this should be here
             newArgumentCodeBlock?.RemoveFromParentBlock(); // this should be in codeblock
-            AddNewArgumentAt(newArgumentCodeBlock, pos, newLocalPosition);
+            AddNewArgumentAt(newArgumentCodeBlock, pos);
             GetArgListCodeBlocks()[pos] = newArgumentCodeBlock;
         }
 
@@ -42,16 +42,13 @@ namespace MoveToCode {
         }
 
         // Private methods, reconsider if you need to make these public
-        private void AddNewArgumentAt(CodeBlock newArgumentCodeBlock, int pos, Vector3 newLocalPosition) {
-            if (newArgumentCodeBlock) {
-                newArgumentCodeBlock.transform.SnapToParent(transform, newLocalPosition);
-            }
+        private void AddNewArgumentAt(CodeBlock newArgumentCodeBlock, int pos) {
             GetArgListCodeBlocks()[pos] = newArgumentCodeBlock;
         }
 
         private void RemoveArgumentAt(int position) {
             if (GetArgListCodeBlocks()[position] != null) {
-                if (CodeBlockSnap.currentlyDraggingCBS != myCodeBlock.GetCodeBlockSnap()) {
+                if (CodeBlockSnap.lastDraggedCBS != myCodeBlock.GetCodeBlockSnap()) {
                     argList[position].transform.localPosition = argList[position].transform.localPosition + new Vector3(0.25f, 0.25f, 1.25f); // TODO: This Placement
                 }
                 argList[position].transform.SetParent(CodeBlockManager.instance.transform);

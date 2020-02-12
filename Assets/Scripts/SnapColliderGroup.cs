@@ -49,14 +49,9 @@ namespace MoveToCode {
         // resize based upon arg list?
         private List<SnapCollider> GetSnapColliders() {
             if (snapColliders == null) {
-                if (GetComponent<CodeBlockObjectMesh>()) {
-                    snapColliders = new List<SnapCollider>();
-                    foreach (Transform go in transform) {
-                        snapColliders.AddRange(go.GetComponentsInChildren<SnapCollider>());
-                    }
-                }
-                else {
-                    snapColliders = new List<SnapCollider>(transform.GetComponentsInChildren<SnapCollider>());
+                snapColliders = new List<SnapCollider>();
+                foreach (Transform go in transform) {
+                    snapColliders.AddRange(go.GetComponentsInChildren<SnapCollider>());
                 }
             }
             return snapColliders;

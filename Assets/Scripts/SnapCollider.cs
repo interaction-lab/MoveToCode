@@ -6,6 +6,7 @@ using UnityEngine;
 namespace MoveToCode {
     public class SnapCollider : MonoBehaviour {
         public int myArgumentPosition = 0;
+        public Vector3 snapPosition;
 
         List<Type> myCompatibleArgTypes;
         CodeBlockSnap collisionCodeBlockSnap;
@@ -78,7 +79,8 @@ namespace MoveToCode {
         }
 
         public void DoSnapAction(CodeBlock myCodeBlock, CodeBlock collidedCodeBlock) {
-            myCodeBlock.SetArgumentBlockAt(collidedCodeBlock, myArgumentPosition, transform.localPosition);
+            myCodeBlock.SetArgumentBlockAt(collidedCodeBlock, myArgumentPosition);
+            collidedCodeBlock.transform.SnapToParent(transform.parent, snapPosition); // TODO: fix but maybe not?
         }
 
         protected List<Type> GetMyCompatibleArgTypes() {

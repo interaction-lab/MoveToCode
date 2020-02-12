@@ -92,8 +92,8 @@ namespace MoveToCode {
         }
 
         // CodeBlockArgumentList relay functions
-        public void SetArgumentBlockAt(CodeBlock newArgumentCodeBlock, int argPosition, Vector3 newLocalPosition) {
-            codeBlockArgumentList.SetArgCodeBlockAt(newArgumentCodeBlock, argPosition, newLocalPosition);
+        public void SetArgumentBlockAt(CodeBlock newArgumentCodeBlock, int argPosition) {
+            codeBlockArgumentList.SetArgCodeBlockAt(newArgumentCodeBlock, argPosition);
             UpdateText();
         }
 
@@ -126,7 +126,7 @@ namespace MoveToCode {
         public void RemoveFromParentBlock() {
             CodeBlock parentCodeBlock = FindParentCodeBlock();
             if (parentCodeBlock != null) {
-                parentCodeBlock.SetArgumentBlockAt(null, parentCodeBlock.GetPositionOfArgument(GetMyInternalIArgument()), Vector3.zero);
+                parentCodeBlock.SetArgumentBlockAt(null, parentCodeBlock.GetPositionOfArgument(GetMyInternalIArgument()));
             }
         }
 

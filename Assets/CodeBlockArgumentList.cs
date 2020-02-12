@@ -18,7 +18,7 @@ namespace MoveToCode {
         }
 
         public IArgument GetArgAsIArgumentAt(int pos) {
-            return GetArgListCodeBlocks()[pos].GetMyInternalIArgument();
+            return GetArgListCodeBlocks()[pos]?.GetMyInternalIArgument();
         }
 
         public List<IArgument> GetArgListAsIArguments() {
@@ -30,11 +30,9 @@ namespace MoveToCode {
         }
 
         public void SetArgCodeBlockAt(CodeBlock newArgumentCodeBlock, int pos) {
-            // set and remove here
             RemoveArgumentAt(pos); // this should be here
             newArgumentCodeBlock?.RemoveFromParentBlock(); // this should be in codeblock
             AddNewArgumentAt(newArgumentCodeBlock, pos);
-            GetArgListCodeBlocks()[pos] = newArgumentCodeBlock;
         }
 
         public int GetNumArguments() {
@@ -49,7 +47,7 @@ namespace MoveToCode {
         private void RemoveArgumentAt(int position) {
             if (GetArgListCodeBlocks()[position] != null) {
                 if (CodeBlockSnap.lastDraggedCBS != myCodeBlock.GetCodeBlockSnap()) {
-                    argList[position].transform.localPosition = argList[position].transform.localPosition + new Vector3(0.25f, 0.25f, 1.25f); // TODO: This Placement
+                    argList[position].transform.localPosition = argList[position].transform.localPosition + new Vector3(0.25f, 0.25f, 1.25f);
                 }
                 argList[position].transform.SetParent(CodeBlockManager.instance.transform);
                 argList[position] = null;

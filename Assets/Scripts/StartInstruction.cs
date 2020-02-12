@@ -15,7 +15,7 @@ namespace MoveToCode {
         }
 
         public override InstructionReturnValue RunInstruction() {
-            Debug.Log("Code START");
+            ConsoleManager.instance.AddLine("START");
             return new InstructionReturnValue(null, GetArgumentAt(0) as StandAloneInstruction);
         }
 

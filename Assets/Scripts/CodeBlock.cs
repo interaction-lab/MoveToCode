@@ -109,6 +109,10 @@ namespace MoveToCode {
             return (GetMyInternalIArgument() as Instruction).GetArgCompatibilityAtPos(pos);
         }
 
+        public CodeBlock GetArgAsCodeBlockAt(int pos) {
+            return codeBlockArgumentList.GetArgAsCodeBlockAt(pos);
+        }
+
         public IArgument GetArgAsIArgumentAt(int pos) {
             return codeBlockArgumentList.GetArgAsIArgumentAt(pos);
         }
@@ -135,6 +139,10 @@ namespace MoveToCode {
             if (parentCodeBlock != null) {
                 parentCodeBlock.GetCodeBlockObjectMesh().AlertInstructionSizeChanged();
             }
+        }
+
+        public void AlertBlockOfArgAddedForSizeChange() {
+            GetCodeBlockObjectMesh().AlertInstructionSizeChanged();
         }
 
         // Private Helpers

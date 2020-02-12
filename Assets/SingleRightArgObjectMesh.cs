@@ -4,17 +4,25 @@ using UnityEngine;
 
 namespace MoveToCode {
     public class SingleRightArgObjectMesh : CodeBlockObjectMesh {
-        Transform top;
+        Transform top, argRight;
+        Vector3 origScaleArgRight;
+        Vector3 origPositionArgRight;
 
         public override void SetUpObject() {
             top = transform.GetChild(0);
+            argRight = transform.GetChild(1);
+            origScaleArgRight = argRight.localScale;
+            origPositionArgRight = argRight.localPosition;
         }
         public override void SetUpMeshOutlineList() {
-            meshOutlineList = new List<MeshOutline>() { top.gameObject.AddComponent<MeshOutline>() };
+            meshOutlineList = new List<MeshOutline>() {
+                top.gameObject.AddComponent<MeshOutline>(),
+                argRight.gameObject.AddComponent<MeshOutline>()
+                };
         }
 
         public override float GetBlockHorizontalSize() {
-            return transform.localScale.y;
+            return top.localScale.x + argRight.localScale.x;
         }
 
         public override float GetBlockVerticalSize() {
@@ -22,7 +30,17 @@ namespace MoveToCode {
         }
 
         public override void ResizeObjectMesh() {
-            return;//curenntly does nothing
+            // need to resize arg right based upon horizontal size of arg
+            Vector3 rescale = origScaleArgRight;
+            Vector3 reposition = origPositionArgRight;
+            float? horizontalSize = GetMyCodeBlock().GetArgAsCodeBlockAt(1)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
+            if (horizontalSize != null) {
+                rescale.x = (float)horizontalSize;
+                // 
+                reposition.x = reposition.x + (rescale.x - 0.5f) / 2.0f;
+            }
+            argRight.localPosition = reposition;
+            argRight.localScale = rescale;
         }
 
 

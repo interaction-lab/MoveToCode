@@ -13,7 +13,7 @@ namespace MoveToCode {
         }
 
         public override float GetBlockHorizontalSize() {
-            return transform.localScale.y;
+            return top.localScale.x;
         }
 
         public override float GetBlockVerticalSize() {

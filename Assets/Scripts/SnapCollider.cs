@@ -80,6 +80,7 @@ namespace MoveToCode {
 
         public void DoSnapAction(CodeBlock myCodeBlock, CodeBlock collidedCodeBlock) {
             myCodeBlock.SetArgumentBlockAt(collidedCodeBlock, myArgumentPosition);
+            transform.parent.parent.GetComponent<CodeBlockObjectMesh>().AlertInstructionSizeChanged();
             collidedCodeBlock.transform.SnapToParent(transform.parent, snapPosition); // TODO: fix but maybe not?
         }
 

@@ -17,8 +17,12 @@ namespace MoveToCode {
             return argList;
         }
 
+        public CodeBlock GetArgAsCodeBlockAt(int pos) {
+            return GetArgListCodeBlocks()[pos];
+        }
+
         public IArgument GetArgAsIArgumentAt(int pos) {
-            return GetArgListCodeBlocks()[pos]?.GetMyInternalIArgument();
+            return GetArgAsCodeBlockAt(pos)?.GetMyInternalIArgument();
         }
 
         public List<IArgument> GetArgListAsIArguments() {
@@ -33,6 +37,7 @@ namespace MoveToCode {
             RemoveArgumentAt(pos); // this should be here
             newArgumentCodeBlock?.RemoveFromParentBlock(); // this should be in codeblock
             AddNewArgumentAt(newArgumentCodeBlock, pos);
+            myCodeBlock.AlertBlockOfArgAddedForSizeChange();
         }
 
         public int GetNumArguments() {

@@ -29,6 +29,10 @@ namespace MoveToCode {
             return transform.localScale.y;
         }
 
+        public override Vector3 GetCenterPosition() {
+            return Vector3.zero; // todo later
+        }
+
         public override void ResizeObjectMesh() {
             // need to resize arg right based upon horizontal size of arg
             Vector3 rescale = origScaleArgRight;

@@ -51,6 +51,7 @@ namespace MoveToCode {
         // This is for resizing needs
         public abstract float GetBlockVerticalSize();
         public abstract float GetBlockHorizontalSize();
+        public abstract Vector3 GetCenterPosition();
         public abstract void ResizeObjectMesh();
 
         // Mesh outline

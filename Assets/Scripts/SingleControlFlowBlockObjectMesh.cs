@@ -24,6 +24,10 @@ namespace MoveToCode {
             return 3f;  // todo fix this later
         }
 
+        public override Vector3 GetCenterPosition() {
+            return Vector3.zero;
+        }
+
         public override void ResizeObjectMesh() {
             float verticalSize = GetBlockVerticalSize();
 

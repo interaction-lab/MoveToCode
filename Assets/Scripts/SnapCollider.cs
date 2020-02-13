@@ -79,9 +79,11 @@ namespace MoveToCode {
         }
 
         public void DoSnapAction(CodeBlock myCodeBlock, CodeBlock collidedCodeBlock) {
+            Vector3 centerPos = collidedCodeBlock.GetCodeBlockObjectMesh().GetCenterPosition();
             myCodeBlock.SetArgumentBlockAt(collidedCodeBlock, myArgumentPosition);
+            collidedCodeBlock.transform.SnapToParent(transform.parent, snapPosition - centerPos);
             transform.parent.parent.GetComponent<CodeBlockObjectMesh>().AlertInstructionSizeChanged();
-            collidedCodeBlock.transform.SnapToParent(transform.parent, snapPosition); // TODO: fix but maybe not?
+            // TODO: fix but maybe not?
         }
 
         protected List<Type> GetMyCompatibleArgTypes() {

@@ -23,5 +23,9 @@ namespace MoveToCode {
         public override void ResizeObjectMesh() {
             return;//curenntly does nothing
         }
+
+        public override Vector3 GetCenterPosition() {
+            return Vector3.zero;
+        }
     }
 }

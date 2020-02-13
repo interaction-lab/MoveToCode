@@ -47,6 +47,10 @@ namespace MoveToCode {
             return FindChainSize(GetMyCodeBlock().GetArgAsIArgumentAt(2));
         }
 
+        public override Vector3 GetCenterPosition() {
+            return Vector3.zero;// this needs to be remade
+        }
+
         private void ResizeTop() {
             float topVertSize = FindTopVerticalSize();
 
@@ -80,5 +84,7 @@ namespace MoveToCode {
             scaler.y = -botVertSize;
             bot.localPosition = scaler;
         }
+
+
     }
 }

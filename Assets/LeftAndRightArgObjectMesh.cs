@@ -32,6 +32,11 @@ namespace MoveToCode {
             return transform.localScale.y;
         }
 
+        public override Vector3 GetCenterPosition() {
+            Debug.Log(argLeft.localPosition + argRight.localPosition);
+            return (argRight.localPosition + argLeft.localPosition) / 2.0f;
+        }
+
         public override void ResizeObjectMesh() {
             ResizeArgLeft();
             ResizeArgRight();

@@ -46,7 +46,5 @@ namespace MoveToCode {
             argRight.localPosition = reposition;
             argRight.localScale = rescale;
         }
-
-
     }
 }

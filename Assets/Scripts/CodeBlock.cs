@@ -1,5 +1,4 @@
-﻿using Microsoft.MixedReality.Toolkit.Input;
-using Microsoft.MixedReality.Toolkit.UI;
+﻿using Microsoft.MixedReality.Toolkit.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,21 +19,6 @@ namespace MoveToCode {
 
         // Abstract Methods
         protected abstract void SetMyBlockInternalArg();
-
-        // Virtual methods, made for control blocks really
-        // this should really be handled by object mesh
-        // TODO: delete this later
-        public virtual int GetBlockVerticalSize() {
-            return 1;
-        }
-
-        public virtual Vector3 GetSnapToParentPosition() {
-            return Vector3.zero;
-        }
-
-        public void ResetInstructionInternalState() {
-            myBlockInternalArg.ResestInternalState();
-        }
 
         // Start Up
         private void Awake() {
@@ -118,6 +102,10 @@ namespace MoveToCode {
 
         public IArgument GetArgAsIArgumentAt(int pos) {
             return codeBlockArgumentList.GetArgAsIArgumentAt(pos);
+        }
+
+        public void ResetInstructionInternalState() {
+            myBlockInternalArg.ResestInternalState();
         }
 
         // Relay to object mesh

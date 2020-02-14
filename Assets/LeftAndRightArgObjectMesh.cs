@@ -25,16 +25,21 @@ namespace MoveToCode {
         }
 
         public override float GetBlockHorizontalSize() {
-            return argRight.localScale.x + argLeft.localScale.x + 0.5f; // 0.5f is for top being cut off
+            return argRight.localScale.x + argLeft.localScale.x + top.localScale.x; // 0.5f is for top being cut off
         }
 
         public override float GetBlockVerticalSize() {
             return transform.localScale.y;
         }
 
+        // left bounds minux right 
         public override Vector3 GetCenterPosition() {
-            Debug.Log(argLeft.localPosition + argRight.localPosition);
-            return (argRight.localPosition + argLeft.localPosition) / 2.0f;
+            Vector3 leftB = argLeft.localPosition;
+            leftB.x -= (argLeft.localScale.x / 2.0f);
+            Vector3 rightB = argRight.localPosition;
+            rightB.x += (argRight.localScale.x / 2.0f);
+
+            return (rightB + leftB) / 2.0f;
         }
 
         public override void ResizeObjectMesh() {

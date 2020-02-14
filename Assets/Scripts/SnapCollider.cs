@@ -81,8 +81,10 @@ namespace MoveToCode {
         public void DoSnapAction(CodeBlock myCodeBlock, CodeBlock collidedCodeBlock) {
             Vector3 centerPos = collidedCodeBlock.GetCodeBlockObjectMesh().GetCenterPosition();
             myCodeBlock.SetArgumentBlockAt(collidedCodeBlock, myArgumentPosition);
-            collidedCodeBlock.transform.SnapToParent(transform.parent, snapPosition - centerPos);
             transform.parent.parent.GetComponent<CodeBlockObjectMesh>().AlertInstructionSizeChanged();
+            centerPos.x = centerPos.x / transform.parent.localScale.x;
+            collidedCodeBlock.transform.SnapToParent(transform.parent, snapPosition - centerPos);
+
             // TODO: fix but maybe not?
         }
 

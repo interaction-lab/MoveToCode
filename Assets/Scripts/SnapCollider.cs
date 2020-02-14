@@ -84,8 +84,6 @@ namespace MoveToCode {
             transform.parent.parent.GetComponent<CodeBlockObjectMesh>().AlertInstructionSizeChanged();
             centerPos.x = centerPos.x / transform.parent.localScale.x;
             collidedCodeBlock.transform.SnapToParent(transform.parent, snapPosition - centerPos);
-
-            // TODO: fix but maybe not?
         }
 
         protected List<Type> GetMyCompatibleArgTypes() {

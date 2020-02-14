@@ -28,7 +28,7 @@ namespace MoveToCode {
         }
 
         public override float GetBlockVerticalSize() {
-            return side.localScale.y;
+            return GetSizeOfInsideInstructionChain() + GetSizeOfExitInstructionChain() + top.localScale.y + bot.localScale.y;
         }
 
         public override float GetBlockHorizontalSize() {
@@ -45,12 +45,11 @@ namespace MoveToCode {
         }
 
         // private helpers
-
         private float GetSizeOfInsideInstructionChain() {
             return FindChainSize(GetMyCodeBlock().GetArgAsIArgumentAt(0));
         }
         private float GetSizeOfExitInstructionChain() {
-            return FindChainSize(GetMyCodeBlock().GetArgAsIArgumentAt(2));
+            return FindChainSize(GetMyCodeBlock().GetArgAsIArgumentAt(2)) + 0.5f;
         }
 
         private void ResizeSide() {

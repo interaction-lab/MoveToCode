@@ -28,7 +28,7 @@ namespace MoveToCode {
         }
 
         public override float GetBlockVerticalSize() {
-            return FindChainSize(GetMyCodeBlock().GetArgAsIArgumentAt(0)) + top.localScale.y + bot.localScale.y;
+            return side.localScale.y;
         }
 
         public override float GetBlockHorizontalSize() {
@@ -41,25 +41,33 @@ namespace MoveToCode {
 
         public override void ResizeObjectMesh() {
             ResizeArgRight();
-            float verticalSize = GetBlockVerticalSize();
+            ResizeSide();
+        }
+
+        // private helpers
+
+        private float GetSizeOfInsideInstructionChain() {
+            return FindChainSize(GetMyCodeBlock().GetArgAsIArgumentAt(0));
+        }
+        private float GetSizeOfExitInstructionChain() {
+            return FindChainSize(GetMyCodeBlock().GetArgAsIArgumentAt(2));
+        }
+
+        private void ResizeSide() {
+            float internalSize = GetSizeOfInsideInstructionChain();
 
             Vector3 scaler = side.localScale;
-            scaler.y = verticalSize / 2.0f + 1;
+            scaler.y = internalSize + 1.5f;
             side.localScale = scaler;
 
             scaler = bot.localPosition;
-            scaler.y = -((verticalSize + 1) / 2.0f);
+            scaler.y = -(internalSize + 1f);
             bot.localPosition = scaler;
 
             scaler = side.localPosition;
             scaler.y = (top.localPosition.y + bot.localPosition.y) / 2.0f;
             side.localPosition = scaler;
-
-            // need to move down bottom also
-
         }
-
-        // private helpers
         private void ResizeArgRight() {
             Vector3 rescale = origScaleArgRight;
             Vector3 reposition = origPositionArgRight;

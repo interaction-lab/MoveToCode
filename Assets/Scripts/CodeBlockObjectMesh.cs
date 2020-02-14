@@ -54,6 +54,14 @@ namespace MoveToCode {
         public abstract Vector3 GetCenterPosition();
         public abstract void ResizeObjectMesh();
 
+        protected float FindChainSize(IArgument aIn) {
+            StandAloneInstruction sai = aIn as StandAloneInstruction;
+            if (sai != null) {
+                return sai.GetCodeBlock().GetCodeBlockObjectMesh().GetBlockVerticalSize(); // todo maybe make this cleaner?
+            }
+            return 0;
+        }
+
         // Mesh outline
         public void ToggleOutline(bool on) {
             if (meshOutlineList == null) // TODO: this is hack, fix for reset

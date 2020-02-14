@@ -54,7 +54,8 @@ namespace MoveToCode {
                 if (CodeBlockSnap.lastDraggedCBS != myCodeBlock.GetCodeBlockSnap()) {
                     argList[position].transform.localPosition = argList[position].transform.localPosition + new Vector3(0.25f, 1.1f, 1.25f);
                 }
-                argList[position].transform.SetParent(CodeBlockManager.instance.transform);
+                argList[position].transform.SnapToParent(CodeBlockManager.instance.transform);
+                argList[position].transform.localScale = Vector3.one;
                 argList[position] = null;
             }
         }

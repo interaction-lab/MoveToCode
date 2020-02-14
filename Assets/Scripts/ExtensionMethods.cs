@@ -27,6 +27,10 @@ namespace MoveToCode {
 
         // Transform Extensions
         // TODO: look into this with weird object scaling
+        public static void SnapToParent(this Transform t, Transform prospectiveParent) {
+            t.rotation = prospectiveParent.rotation;
+            t.SetParent(prospectiveParent);
+        }
         public static void SnapToParent(this Transform t, Transform prospectiveParent, Vector3 newLocalPosition) {
             t.rotation = prospectiveParent.rotation;
             t.SetParent(prospectiveParent);

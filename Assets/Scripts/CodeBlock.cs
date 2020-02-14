@@ -117,11 +117,11 @@ namespace MoveToCode {
             GetCodeBlockObjectMesh().ToggleColliders(on);
         }
 
-        // Note: This is slightly inefficienct approach but makes it so you don't have to keep track of as much
         public void RemoveFromParentBlock() {
             CodeBlock parentCodeBlock = FindParentCodeBlock();
             if (parentCodeBlock != null) {
                 parentCodeBlock.SetArgumentBlockAt(null, parentCodeBlock.GetPositionOfArgument(GetMyInternalIArgument()));
+                parentCodeBlock.AlertBlockOfArgAddedForSizeChange();
             }
         }
 

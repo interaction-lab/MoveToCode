@@ -25,7 +25,7 @@ namespace MoveToCode {
         }
 
         public override float GetBlockHorizontalSize() {
-            return argRight.localScale.x + argLeft.localScale.x + top.localScale.x; // 0.5f is for top being cut off
+            return argRight.localScale.x + argLeft.localScale.x + top.localScale.x;
         }
 
         public override float GetBlockVerticalSize() {
@@ -56,7 +56,6 @@ namespace MoveToCode {
             float? horizontalSize = GetMyCodeBlock().GetArgAsCodeBlockAt(0)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
             if (horizontalSize != null) {
                 rescale.x = (float)horizontalSize;
-                // 
                 reposition.x = reposition.x - (rescale.x - 0.5f) / 2.0f;
             }
             argLeft.localPosition = reposition;

@@ -34,7 +34,7 @@ namespace MoveToCode {
         }
 
         public void SetArgCodeBlockAt(CodeBlock newArgumentCodeBlock, int pos) {
-            RemoveArgumentAt(pos); // this should be here
+            RemoveArgumentAt(pos);
             newArgumentCodeBlock?.RemoveFromParentBlock(); // this should be in codeblock
             AddNewArgumentAt(newArgumentCodeBlock, pos);
             myCodeBlock.AlertBlockOfArgAddedForSizeChange();
@@ -42,6 +42,12 @@ namespace MoveToCode {
 
         public int GetNumArguments() {
             return myCodeBlock.GetMyInternalIArgument().GetNumArguments();
+        }
+
+        public void ResnapAllArgs() {
+            for (int i = 0; i < GetNumArguments(); ++i) {
+                SetArgCodeBlockAt(GetArgAsCodeBlockAt(i), i);
+            }
         }
 
         // Private methods, reconsider if you need to make these public

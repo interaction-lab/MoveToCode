@@ -24,17 +24,12 @@ namespace MoveToCode {
         }
 
         void OnManipulationStart(ManipulationEventData call) {
-            // enable all of the snap colliders that are ok
             mySnapColliders?.EnableAllCompatibleColliders();
             mySnapColliders?.DisableAllCollidersAndChildrenColliders();
             currentlyDraggingCBS = this;
-            // Disable my collider, wait one frame, reenable
-            // This allows for a "resnap" to same spot
-            //StartCoroutine(DisableMyColliderForOneFrame());
         }
 
         IEnumerator DisableMyColliderForOneFrame() {
-            // get meshoutline, disable colliders
             GetMyCodeBlock().ToggleColliders(false);
             yield return new WaitForFixedUpdate();
             GetMyCodeBlock().ToggleColliders(true);

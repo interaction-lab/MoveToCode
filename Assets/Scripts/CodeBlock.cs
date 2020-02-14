@@ -79,6 +79,10 @@ namespace MoveToCode {
         }
 
         // CodeBlockArgumentList relay functions
+        public void ResnapAllArgs() {
+            codeBlockArgumentList.ResnapAllArgs();
+        }
+
         public void SetArgumentBlockAt(CodeBlock newArgumentCodeBlock, int argPosition) {
             codeBlockArgumentList.SetArgCodeBlockAt(newArgumentCodeBlock, argPosition);
             UpdateText();
@@ -121,7 +125,6 @@ namespace MoveToCode {
             CodeBlock parentCodeBlock = FindParentCodeBlock();
             if (parentCodeBlock != null) {
                 parentCodeBlock.SetArgumentBlockAt(null, parentCodeBlock.GetPositionOfArgument(GetMyInternalIArgument()));
-                parentCodeBlock.AlertBlockOfArgAddedForSizeChange();
             }
         }
 
@@ -133,7 +136,9 @@ namespace MoveToCode {
         }
 
         public void AlertBlockOfArgAddedForSizeChange() {
-            GetCodeBlockObjectMesh().AlertInstructionSizeChanged();
+            ResnapAllArgs();
+            GetCodeBlockObjectMesh().ResizeObjectMesh();
+            AlertParentCodeBlockOfSizeChange();
         }
 
         // Private Helpers

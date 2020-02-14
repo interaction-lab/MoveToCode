@@ -70,9 +70,9 @@ namespace MoveToCode {
         private void ResizeArgRight() {
             Vector3 rescale = origScaleArgRight;
             Vector3 reposition = origPositionArgRight;
-            float? horizontalSize = GetMyCodeBlock().GetArgAsCodeBlockAt(1)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
-            if (horizontalSize != null) {
-                rescale.x = (float)horizontalSize;
+            CodeBlockObjectMesh obMesh = GetMyCodeBlock().GetArgAsCodeBlockAt(1)?.GetCodeBlockObjectMesh();
+            if (obMesh != null) {
+                rescale.x = obMesh.GetBlockHorizontalSize();
                 reposition.x = reposition.x + (rescale.x - 0.5f) / 2.0f;
             }
             argRight.localPosition = reposition;

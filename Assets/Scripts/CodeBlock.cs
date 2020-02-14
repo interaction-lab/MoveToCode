@@ -136,7 +136,6 @@ namespace MoveToCode {
         }
 
         public void AlertBlockOfArgAddedForSizeChange() {
-            ResnapAllArgs();
             GetCodeBlockObjectMesh().ResizeObjectMesh();
             AlertParentCodeBlockOfSizeChange();
         }
@@ -144,7 +143,7 @@ namespace MoveToCode {
         // Private Helpers
         // If you find yourself making these public, 
         // then you should reconsider what you are doing
-        private CodeBlock FindParentCodeBlock() {
+        public CodeBlock FindParentCodeBlock() {
             Transform upRunner = transform;
             while (upRunner.GetComponent<CodeBlockManager>() == null) {
                 upRunner = upRunner.parent;

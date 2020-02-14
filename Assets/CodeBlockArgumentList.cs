@@ -35,9 +35,8 @@ namespace MoveToCode {
 
         public void SetArgCodeBlockAt(CodeBlock newArgumentCodeBlock, int pos) {
             RemoveArgumentAt(pos);
-            newArgumentCodeBlock?.RemoveFromParentBlock(); // this should be in codeblock
+            newArgumentCodeBlock?.RemoveFromParentBlock();
             AddNewArgumentAt(newArgumentCodeBlock, pos);
-            myCodeBlock.AlertBlockOfArgAddedForSizeChange();
         }
 
         public int GetNumArguments() {
@@ -60,9 +59,12 @@ namespace MoveToCode {
                 if (CodeBlockSnap.lastDraggedCBS != myCodeBlock.GetCodeBlockSnap()) {
                     argList[position].transform.localPosition = argList[position].transform.localPosition + new Vector3(0.25f, 1.1f, 1.25f);
                 }
+                CodeBlock parent = myCodeBlock.FindParentCodeBlock();
                 argList[position].transform.SnapToParent(CodeBlockManager.instance.transform);
                 argList[position].transform.localScale = Vector3.one;
                 argList[position] = null;
+                myCodeBlock.GetCodeBlockObjectMesh().ResizeObjectMesh();
+                parent?.ResnapAllArgs();
             }
         }
 

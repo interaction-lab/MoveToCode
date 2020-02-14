@@ -28,7 +28,7 @@ namespace MoveToCode {
         }
 
         public override float GetBlockVerticalSize() {
-            return FindChainSize(GetMyCodeBlock().GetArgAsIArgumentAt(0)) + 2;
+            return FindChainSize(GetMyCodeBlock().GetArgAsIArgumentAt(0)) + top.localScale.y + bot.localScale.y;
         }
 
         public override float GetBlockHorizontalSize() {
@@ -44,17 +44,19 @@ namespace MoveToCode {
             float verticalSize = GetBlockVerticalSize();
 
             Vector3 scaler = side.localScale;
-            scaler.y = verticalSize;
+            scaler.y = verticalSize / 2.0f + 1;
             side.localScale = scaler;
 
+            scaler = bot.localPosition;
+            scaler.y = -((verticalSize + 1) / 2.0f);
+            bot.localPosition = scaler;
+
             scaler = side.localPosition;
-            scaler.y = -(side.localScale.y - 1) / 2;
+            scaler.y = (top.localPosition.y + bot.localPosition.y) / 2.0f;
             side.localPosition = scaler;
 
             // need to move down bottom also
-            scaler = bot.localPosition;
-            scaler.y = -verticalSize;
-            bot.localPosition = scaler;
+
         }
 
         // private helpers

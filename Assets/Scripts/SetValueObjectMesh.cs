@@ -71,7 +71,7 @@ namespace MoveToCode {
         }
 
         public override Vector3 GetCenterPosition() {
-            return new Vector3(-0.5f, 0, 0f);
+            return new Vector3(0.25f, 0, 0f);
         }
 
         protected override void ResizeObjectMesh() {

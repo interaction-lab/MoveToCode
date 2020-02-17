@@ -1,7 +1,4 @@
-﻿
-using UnityEngine;
-
-namespace MoveToCode {
+﻿namespace MoveToCode {
     public class VariableCodeBlock : DataCodeBlock {
 
         VariableBlockCollection parentVariableBlockCollection;

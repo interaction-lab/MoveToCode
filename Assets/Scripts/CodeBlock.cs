@@ -16,6 +16,7 @@ namespace MoveToCode {
         SnapColliderGroup snapColliders;
         CodeBlockArgumentList codeBlockArgumentList;
         CodeBlockSnap codeBlockSnap;
+        GameObject codeBlockTextGameObject;
 
         // Abstract Methods
         protected abstract void SetMyBlockInternalArg();
@@ -150,16 +151,16 @@ namespace MoveToCode {
 
         private void UpdateText() {
             if (textMesh == null) {
-                textMesh = GetComponentInChildren<TextMeshPro>(true);
+                textMesh = codeBlockTextGameObject?.GetComponent<TextMeshPro>();
             }
             if (textMesh == null) {
-                GameObject codeBlockTextGameObject = Instantiate(
+                codeBlockTextGameObject = Instantiate(
                     Resources.Load<GameObject>(ResourcePathConstants.CodeBlockTextPrefab), transform) as GameObject;
-                //codeBlockTextGameObject.transform.localPosition = -GetSnapToParentPosition() + new Vector3(0, 0, -0.6f);
                 StartCoroutine(UpdateTextNextFrame());
             }
             else {
                 textMesh.SetText(ToString());
+                // Forces text update
                 textMesh.enabled = false;
                 textMesh.enabled = true;
             }

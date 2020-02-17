@@ -5,24 +5,30 @@ using UnityEngine;
 namespace MoveToCode {
     public class MemoryManager : Singleton<MemoryManager> {
 
-        // Variable Block Collection Should be it's own prefab
-        // Memory manager will create these
-        // From this collection, clicking it will spawn a new variable code block
-        // Think like Scratch variables
-
         Canvas myCanvas;
 
         Dictionary<string, VariableBlockCollection> variables;
-
-        private void Awake() {
-            variables = new Dictionary<string, VariableBlockCollection>();
-        }
 
         public Canvas GetCanvas() {
             if (myCanvas == null) {
                 myCanvas = GetComponentInChildren<Canvas>();
             }
             return myCanvas;
+        }
+
+        public Dictionary<string, VariableBlockCollection> GetVariables() {
+            if (variables == null) {
+                variables = new Dictionary<string, VariableBlockCollection>();
+            }
+            return variables;
+        }
+
+        public List<string> GetVariableNames() {
+            return new List<string>(variables.Keys);
+        }
+
+        public void RemoveVariable(string name) {
+            GetVariables().Remove(name); // TODO: get this to also remove all block collections?
         }
 
         public void AddNewVariableCodeBlock(string varName, IDataType dIn = null) {
@@ -32,8 +38,11 @@ namespace MoveToCode {
 
             go.transform.SetParent(GetCanvas().transform);
             go.transform.localScale = Vector3.one;
+
+            GetVariables().Add(varName, go.GetComponent<VariableBlockCollection>());
         }
 
+        // TODO: Make this much better
         public void SpawnVariableCB() {
             AddNewVariableCodeBlock("potato", new IntDataType(4));
         }

@@ -128,18 +128,6 @@ namespace MoveToCode {
             }
         }
 
-        public void AlertParentCodeBlockOfSizeChange() {
-            CodeBlock parentCodeBlock = FindParentCodeBlock();
-            if (parentCodeBlock != null) {
-                parentCodeBlock.GetCodeBlockObjectMesh().AlertInstructionSizeChanged();
-            }
-        }
-
-        public void AlertBlockOfArgAddedForSizeChange() {
-            GetCodeBlockObjectMesh().ResizeObjectMesh();
-            AlertParentCodeBlockOfSizeChange();
-        }
-
         // Private Helpers
         // If you find yourself making these public, 
         // then you should reconsider what you are doing

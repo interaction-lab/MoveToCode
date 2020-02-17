@@ -20,7 +20,7 @@ namespace MoveToCode {
             return transform.localScale.y;
         }
 
-        public override void ResizeObjectMesh() {
+        protected override void ResizeObjectMesh() {
             return;//curenntly does nothing
         }
 

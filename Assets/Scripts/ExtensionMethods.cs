@@ -36,5 +36,14 @@ namespace MoveToCode {
             t.SetParent(prospectiveParent);
             t.localPosition = newLocalPosition;
         }
+        public static void SnapToCodeBlockManager(this Transform t) {
+            SnapToParent(t, CodeBlockManager.instance.transform);
+            t.localScale = Vector3.one;
+        }
+        public static void ResetCodeBlockSize(this Transform t) {
+            Transform origParent = t.parent;
+            SnapToCodeBlockManager(t);
+            SnapToParent(t, origParent);
+        }
     }
 }

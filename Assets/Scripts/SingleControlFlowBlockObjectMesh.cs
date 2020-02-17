@@ -39,7 +39,7 @@ namespace MoveToCode {
             return Vector3.zero; // maybe this is right?
         }
 
-        public override void ResizeObjectMesh() {
+        protected override void ResizeObjectMesh() {
             ResizeArgRight();
             ResizeSide();
         }

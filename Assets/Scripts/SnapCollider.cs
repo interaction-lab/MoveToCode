@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace MoveToCode {
     public class SnapCollider : MonoBehaviour {
@@ -79,12 +80,15 @@ namespace MoveToCode {
         }
 
         public void DoSnapAction(CodeBlock myCodeBlock, CodeBlock collidedCodeBlock) {
-            Vector3 centerPos = collidedCodeBlock.GetCodeBlockObjectMesh().GetCenterPosition();
+            Transform parentTransform = transform.parent;
+
+            // parent will resize accordingly
             myCodeBlock.SetArgumentBlockAt(collidedCodeBlock, myArgumentPosition);
-            transform.parent.parent.GetComponent<CodeBlockObjectMesh>().AlertInstructionSizeChanged();
-            centerPos.x = centerPos.x / transform.parent.localScale.x;
-            collidedCodeBlock.transform.SnapToParent(transform.parent, snapPosition - centerPos);
-            myCodeBlock.AlertBlockOfArgAddedForSizeChange();
+
+            // now snap to correct position
+            Vector3 centerPos = collidedCodeBlock.GetCodeBlockObjectMesh().GetCenterPosition();
+            centerPos.x = centerPos.x / parentTransform.localScale.x;
+            collidedCodeBlock.transform.SnapToParent(parentTransform, snapPosition - centerPos);
         }
 
         protected List<Type> GetMyCompatibleArgTypes() {

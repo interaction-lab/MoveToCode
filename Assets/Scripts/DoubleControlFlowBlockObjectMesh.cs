@@ -32,7 +32,7 @@ namespace MoveToCode {
             return 3; // todo will do later
         }
 
-        public override void ResizeObjectMesh() {
+        protected override void ResizeObjectMesh() {
             ResizeTop();
             ResizeBot();
         }

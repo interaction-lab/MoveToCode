@@ -42,7 +42,7 @@ namespace MoveToCode {
             return (rightB + leftB) / 2.0f;
         }
 
-        public override void ResizeObjectMesh() {
+        protected override void ResizeObjectMesh() {
             ResizeArgLeft();
             ResizeArgRight();
         }

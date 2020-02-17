@@ -33,7 +33,7 @@ namespace MoveToCode {
             return Vector3.zero; // todo later
         }
 
-        public override void ResizeObjectMesh() {
+        protected override void ResizeObjectMesh() {
             // need to resize arg right based upon horizontal size of arg
             Vector3 rescale = origScaleArgRight;
             Vector3 reposition = origPositionArgRight;

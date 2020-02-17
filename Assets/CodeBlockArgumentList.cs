@@ -52,6 +52,9 @@ namespace MoveToCode {
         // Private methods, reconsider if you need to make these public
         private void AddNewArgumentAt(CodeBlock newArgumentCodeBlock, int pos) {
             GetArgListCodeBlocks()[pos] = newArgumentCodeBlock;
+            if (newArgumentCodeBlock != null) {
+                myCodeBlock.GetCodeBlockObjectMesh().ResizeChain();
+            }
         }
 
         private void RemoveArgumentAt(int position) {
@@ -59,12 +62,9 @@ namespace MoveToCode {
                 if (CodeBlockSnap.lastDraggedCBS != myCodeBlock.GetCodeBlockSnap()) {
                     argList[position].transform.localPosition = argList[position].transform.localPosition + new Vector3(0.25f, 1.1f, 1.25f);
                 }
-                CodeBlock parent = myCodeBlock.FindParentCodeBlock();
-                argList[position].transform.SnapToParent(CodeBlockManager.instance.transform);
-                argList[position].transform.localScale = Vector3.one;
+                argList[position].transform.SnapToCodeBlockManager();
                 argList[position] = null;
-                myCodeBlock.GetCodeBlockObjectMesh().ResizeObjectMesh();
-                parent?.ResnapAllArgs();
+                myCodeBlock.GetCodeBlockObjectMesh().ResizeChain();
             }
         }
 

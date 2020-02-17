@@ -1,6 +1,7 @@
 ﻿using Microsoft.MixedReality.Toolkit.Utilities;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace MoveToCode {
     public abstract class CodeBlockObjectMesh : MonoBehaviour {
@@ -14,6 +15,7 @@ namespace MoveToCode {
             SetUpObject();
             SetUpMeshOutlineList();
             ConfigureOutlines();
+            Assert.IsTrue(transform.localScale == Vector3.one);
         }
 
         public abstract void SetUpObject();
@@ -34,6 +36,8 @@ namespace MoveToCode {
             if (myCodeBlock == null) {
                 myCodeBlock = transform.parent.GetComponent<CodeBlock>(); // object mesh should always be right below codeblock in heirarchy
             }
+            Assert.IsTrue(transform.localScale == Vector3.one);
+
             return myCodeBlock;
         }
         public SnapColliderGroup GetSnapColliderGroup() {
@@ -43,16 +47,31 @@ namespace MoveToCode {
             return snapColliderGroup;
         }
 
-        public void AlertInstructionSizeChanged() {
-            ResizeObjectMesh();
-            GetMyCodeBlock().AlertParentCodeBlockOfSizeChange();
-        }
-
         // This is for resizing needs
         public abstract float GetBlockVerticalSize();
         public abstract float GetBlockHorizontalSize();
         public abstract Vector3 GetCenterPosition();
-        public abstract void ResizeObjectMesh();
+        protected abstract void ResizeObjectMesh();
+
+        public void ResizeChain() {
+            // resize up
+            CodeBlock parentBlock = GetMyCodeBlock().FindParentCodeBlock();
+            if (parentBlock != null) {
+                ResizeObjectMesh();
+                parentBlock.GetCodeBlockObjectMesh().ResizeChain();
+            }
+            else {
+                ChainResizeDown();
+            }
+        }
+
+        public void ChainResizeDown() {
+            ResizeObjectMesh();
+            foreach (CodeBlock c in GetMyCodeBlock().GetArgumentListAsCodeBlocks()) {
+                c?.transform.ResetCodeBlockSize();
+                c?.GetCodeBlockObjectMesh().ChainResizeDown();
+            }
+        }
 
         protected float FindChainSize(IArgument aIn) {
             StandAloneInstruction sai = aIn as StandAloneInstruction;

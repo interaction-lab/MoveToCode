@@ -4,12 +4,9 @@ using System.Collections.Generic;
 namespace MoveToCode {
     public class SetVariableInstruction : StandAloneInstruction {
 
-        dynamic valueToChangeTo;
-
         public SetVariableInstruction(CodeBlock cbIn) : base(cbIn) { }
 
         public override void EvaluateArgumentList() {
-            valueToChangeTo = GetArgumentAt(2)?.EvaluateArgument()?.GetValue();
         }
 
         public override int GetNumArguments() {
@@ -18,7 +15,7 @@ namespace MoveToCode {
 
         public override InstructionReturnValue RunInstruction() {
             EvaluateArgumentList();
-            (GetArgumentAt(1) as Variable).SetValue(valueToChangeTo);
+            (GetArgumentAt(1) as Variable).SetValue(GetArgumentAt(2)?.EvaluateArgument());
             return new InstructionReturnValue(null, GetNextInstruction());
         }
 

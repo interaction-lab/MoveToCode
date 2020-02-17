@@ -18,6 +18,7 @@
         public void SetValue(IDataType dIn) {
             myVariableCodeBlock.SetVariableValueFromBlockCollection(dIn);
         }
+
         public override dynamic GetValue() {
             return GetMyData().GetValue();
         }

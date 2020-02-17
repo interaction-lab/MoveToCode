@@ -31,9 +31,11 @@ namespace MoveToCode {
         public void RunNextInstruction() {
             if (!CodeIsRunning()) {
                 ResetCodeState();
-                MemoryManager.instance.SaveMemoryState();
             }
             else {
+                if (curInstruction == StartCodeBlock.instance.GetMyInternalIArgument() as Instruction) {
+                    MemoryManager.instance.SaveMemoryState();
+                }
                 try {
                     lastInstructionReturn = curInstruction.RunInstruction();
                     UpdateCurInstruction();

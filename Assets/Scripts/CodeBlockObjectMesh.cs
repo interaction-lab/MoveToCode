@@ -77,7 +77,7 @@ namespace MoveToCode {
         }
 
         public void Recenter() {
-            Transform parentTransform = myCodeBlock.transform.parent;
+            Transform parentTransform = GetMyCodeBlock().transform.parent;
             if (parentTransform == CodeBlockManager.instance.transform) {
                 return;
             }

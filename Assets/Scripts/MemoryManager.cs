@@ -9,7 +9,6 @@ namespace MoveToCode {
         // Memory manager will create these
         // From this collection, clicking it will spawn a new variable code block
         // Think like Scratch variables
-        public GameObject variableBlockCollection;
 
         Canvas myCanvas;
 
@@ -27,7 +26,7 @@ namespace MoveToCode {
         }
 
         public void AddNewVariableCodeBlock(string varName, IDataType dIn = null) {
-            GameObject go = Instantiate(variableBlockCollection, CodeBlockManager.instance.transform.position, Quaternion.identity) as GameObject;
+            GameObject go = Instantiate(Resources.Load<GameObject>(ResourcePathConstants.VariableCodeBlockCollectionPrefab), CodeBlockManager.instance.transform.position, Quaternion.identity) as GameObject;
             go.GetComponent<VariableBlockCollection>().SetVariableName(varName);
             go.GetComponent<VariableBlockCollection>().SetVariableValue(dIn);
 

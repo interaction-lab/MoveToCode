@@ -8,6 +8,11 @@ namespace MoveToCode {
         Canvas myCanvas;
 
         Dictionary<string, VariableBlockCollection> variables;
+        Dictionary<string, IDataType> variableSaveState;
+
+        private void Awake() {
+            GetVariables();
+        }
 
         public Canvas GetCanvas() {
             if (myCanvas == null) {
@@ -24,7 +29,30 @@ namespace MoveToCode {
         }
 
         public List<string> GetVariableNames() {
-            return new List<string>(variables.Keys);
+            return new List<string>(GetVariables().Keys);
+        }
+
+        public Dictionary<string, IDataType> GetVariableSaveState() {
+            if (variableSaveState == null) {
+                variableSaveState = new Dictionary<string, IDataType>();
+            }
+            return variableSaveState;
+        }
+
+        public void SaveMemoryState() {
+            GetVariableSaveState().Clear();
+            foreach (string varName in GetVariableNames()) {
+                GetVariableSaveState()[varName] = GetVariables()[varName].GetVariableValueFromBlockCollection();
+            }
+        }
+
+        public void ResetMemoryState() {
+            if (GetVariableSaveState().Empty()) {
+                return;
+            }
+            foreach (string varName in GetVariableNames()) {
+                GetVariables()[varName].SetVariableValue(GetVariableSaveState()[varName]);
+            }
         }
 
         public void RemoveVariable(string name) {
@@ -39,7 +67,7 @@ namespace MoveToCode {
             go.transform.SetParent(GetCanvas().transform);
             go.transform.localScale = Vector3.one;
 
-            GetVariables().Add(varName, go.GetComponent<VariableBlockCollection>());
+            GetVariables()[varName] = go.GetComponent<VariableBlockCollection>();
         }
 
         // TODO: Make this much better

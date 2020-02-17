@@ -25,21 +25,24 @@ namespace MoveToCode {
             curInstruction = StartCodeBlock.instance.GetMyInternalIArgument() as Instruction;
             StartCodeBlock.instance.ToggleOutline(true);
             CodeBlockManager.instance.ResetAllCodeBlockInternalState();
-            // this will also reset memory later
+            MemoryManager.instance.ResetMemoryState();
         }
 
         public void RunNextInstruction() {
             if (!CodeIsRunning()) {
                 ResetCodeState();
+                MemoryManager.instance.SaveMemoryState();
             }
-            try {
-                lastInstructionReturn = curInstruction.RunInstruction();
-                UpdateCurInstruction();
-            }
-            catch (Exception ex) {
-                Debug.LogWarning("Exception caught while running code: ");
-                Debug.LogWarning(ex.ToString());
-                ResetCodeState();
+            else {
+                try {
+                    lastInstructionReturn = curInstruction.RunInstruction();
+                    UpdateCurInstruction();
+                }
+                catch (Exception ex) {
+                    Debug.LogWarning("Exception caught while running code: ");
+                    Debug.LogWarning(ex.ToString());
+                    ResetCodeState();
+                }
             }
         }
 

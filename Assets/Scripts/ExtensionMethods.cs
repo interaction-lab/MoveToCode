@@ -25,6 +25,12 @@ namespace MoveToCode {
             return h.Count == 0;
         }
 
+        // Dictionary Extensions
+        public static bool Empty<T, V>(this Dictionary<T, V> h) {
+            return h.Count == 0;
+        }
+
+
         // Transform Extensions
         // TODO: look into this with weird object scaling
         public static void SnapToParent(this Transform t, Transform prospectiveParent) {
@@ -45,5 +51,6 @@ namespace MoveToCode {
             SnapToCodeBlockManager(t);
             SnapToParent(t, origParent);
         }
+
     }
 }

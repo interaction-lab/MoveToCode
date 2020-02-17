@@ -12,6 +12,8 @@ namespace MoveToCode {
 
         private void Awake() {
             ResetCodeState();
+            RunNextInstruction();
+            RunNextInstruction(); // attempt to start code in same state as having run before
         }
 
         public void ResetCodeState() {

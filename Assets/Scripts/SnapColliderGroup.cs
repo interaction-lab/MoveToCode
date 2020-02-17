@@ -45,8 +45,7 @@ namespace MoveToCode {
             return myCodeBlock;
         }
 
-        // this should be register/deregister
-        // resize based upon arg list?
+        // TODO: this should be register/deregister
         private List<SnapCollider> GetSnapColliders() {
             if (snapColliders == null) {
                 snapColliders = new List<SnapCollider>();

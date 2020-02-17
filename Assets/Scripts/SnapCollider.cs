@@ -99,10 +99,12 @@ namespace MoveToCode {
         }
 
         public bool HasCompatibleType(IArgument argIn) {
-            Type typeToTry = argIn as Variable != null ?
-                            (argIn as Variable).GetMyData().GetType() :
-                            argIn?.GetType();
-            return CheckArgCompatibleType(typeToTry);
+            if (argIn as Variable != null) {
+                if (CheckArgCompatibleType((argIn as Variable).GetMyData().GetType())) {
+                    return true;
+                }
+            }
+            return CheckArgCompatibleType(argIn?.GetType());
         }
 
         private bool CheckArgCompatibleType(Type argTypeIn) {

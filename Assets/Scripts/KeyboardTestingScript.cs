@@ -1,4 +1,6 @@
-﻿using MoveToCode;
+﻿using Microsoft.MixedReality.Toolkit;
+using Microsoft.MixedReality.Toolkit.Input;
+using MoveToCode;
 using RosSharp.RosBridgeClient;
 using UnityEngine;
 
@@ -10,6 +12,7 @@ public class KeyboardTestingScript : MonoBehaviour {
     SubtractionInstruction st;
 
     public CodeBlock pb1, pb2, pb3, dt1, dt2, dt3, subCB;
+    public static string colname = "object";
 
     void Start() {
         // Need to redo codeblock structure/adding args
@@ -21,6 +24,7 @@ public class KeyboardTestingScript : MonoBehaviour {
          pi.SetNextInstruction(p2);
          pi.SetArgumentAt(st, 0);*/
         //Interpreter.instance.AddToInstructionStack(pb1.GetMyInstruction());
+        LoggingManager.instance.AddLogColumn(colname, "");
     }
 
 
@@ -28,8 +32,9 @@ public class KeyboardTestingScript : MonoBehaviour {
     void Update() {
         if (Input.GetKeyDown(KeyCode.Alpha0)) {
             Interpreter.instance.RunNextInstruction();
-
         }
+
+        // use full name usually
 
     }
 }

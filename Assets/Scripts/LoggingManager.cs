@@ -95,6 +95,7 @@ namespace MoveToCode {
 
             streamWriter.WriteLine(string.Join(",", "Time", string.Join(",", columnNames)));
             streamWriter.Close();
+            Debug.Log("Logged data to: " + filePath);
         }
 
         // Write out columns, will be at end of file

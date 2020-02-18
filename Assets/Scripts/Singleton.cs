@@ -44,7 +44,6 @@ namespace MoveToCode {
             }
         }
 
-
         private void OnApplicationQuit() {
             m_ShuttingDown = true;
         }

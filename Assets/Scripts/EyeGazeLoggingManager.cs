@@ -6,14 +6,14 @@ namespace MoveToCode {
         static string objectColName = "EyeGazeObject", eyeGazeLocColNameX = "EyeGazeLocationX",
             eyeGazeLocColNameY = "EyeGazeLocationY", eyeGazeLocColNameZ = "EyeGazeLocationZ";
 
-        private void Start() {
+        void Start() {
             LoggingManager.instance.AddLogColumn(objectColName, "");
             LoggingManager.instance.AddLogColumn(eyeGazeLocColNameX, "");
             LoggingManager.instance.AddLogColumn(eyeGazeLocColNameY, "");
             LoggingManager.instance.AddLogColumn(eyeGazeLocColNameZ, "");
         }
 
-        private void Update() {
+        void Update() {
             if (CoreServices.InputSystem.EyeGazeProvider.GazeTarget != null) {
                 LoggingManager.instance.UpdateLogColumn(objectColName, CoreServices.InputSystem.EyeGazeProvider.GazeTarget.name);
                 LoggingManager.instance.UpdateLogColumn(eyeGazeLocColNameX, CoreServices.InputSystem.EyeGazeProvider.HitPosition.x.ToString());

@@ -31,8 +31,6 @@ namespace MoveToCode {
             if (logData) {
                 Debug.Log("Currently logging data: " + logData.ToString());
                 csvFilename = System.DateTime.Now.ToString().Replace(' ', '_').Replace('\\', '_').Replace('/', '_').Replace(':', '-') + ".csv";
-                columnLookup = new Dictionary<string, int>();
-                row = new List<string>();
                 filePath = Path.Combine(Application.persistentDataPath, csvFilename);
                 Debug.Log(filePath);
                 streamWriter = new StreamWriter(new FileStream(filePath, FileMode.Create)); ;
@@ -43,6 +41,20 @@ namespace MoveToCode {
         }
 
 
+        public Dictionary<string, int> GetColumnLookUp() {
+            if (columnLookup == null) {
+                columnLookup = new Dictionary<string, int>();
+            }
+            return columnLookup;
+        }
+
+        public List<string> GetRow() {
+            if (row == null) {
+                row = new List<string>();
+            }
+            return row;
+        }
+
         /// <summary>
         /// Adds key to rowLookup, updates the value
         /// </summary>
@@ -50,9 +62,9 @@ namespace MoveToCode {
         /// <param name="value">Value for Column</param>
         /// <returns>True if key not already in row, false otherwise</returns>
         public bool AddLogColumn(string key, string value) {
-            bool isNewColumn = !columnLookup.ContainsKey(key);
+            bool isNewColumn = !GetColumnLookUp().ContainsKey(key);
             if (isNewColumn) {
-                columnLookup[key] = row.Count;
+                columnLookup[key] = GetRow().Count;
                 row.Add(value);
             }
             UpdateLogColumn(key, value);

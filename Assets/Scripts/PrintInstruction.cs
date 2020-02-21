@@ -8,7 +8,7 @@ namespace MoveToCode {
         public PrintInstruction(CodeBlock cbIn) : base(cbIn) { }
 
         public override void EvaluateArgumentList() {
-            output = GetArgumentAt(1)?.EvaluateArgument()?.GetValue()?.ToString();
+            output = GetArgumentAt(1)?.EvaluateArgument()?.ToString();
         }
 
         public override int GetNumArguments() {

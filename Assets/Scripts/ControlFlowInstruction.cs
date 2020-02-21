@@ -15,7 +15,10 @@ namespace MoveToCode {
         }
 
         public override void EvaluateArgumentList() {
-            conditionIsTrue = (GetArgumentAt(1) as ConditionalInstruction)?.RunInstruction().GetReturnDataVal().GetValue();
+            IDataType d = (GetArgumentAt(1) as ConditionalInstruction)?.RunInstruction().GetReturnDataVal();
+            if (d != null) {
+                conditionIsTrue = (bool)d.GetValue();
+            }
         }
 
         public override void SetUpArgPosToCompatability() {

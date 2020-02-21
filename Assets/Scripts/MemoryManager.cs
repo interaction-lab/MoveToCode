@@ -72,7 +72,7 @@ namespace MoveToCode {
 
         // TODO: Make this much better
         public void SpawnVariableCB() {
-            AddNewVariableCodeBlock("potato", new IntDataType(4));
+            AddNewVariableCodeBlock("potato", new IntDataType(null, 4));
         }
 
     }

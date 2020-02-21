@@ -10,8 +10,10 @@ namespace MoveToCode {
         public MathInstruction(CodeBlock cbIn) : base(cbIn) { }
 
         public override void EvaluateArgumentList() {
-            leftNum = GetArgumentAt(0)?.EvaluateArgument().GetValue();
-            rightNum = GetArgumentAt(1)?.EvaluateArgument().GetValue();
+            if (GetArgumentAt(0) != null && GetArgumentAt(1) != null) {
+                leftNum = (float)Convert.ChangeType(GetArgumentAt(0).EvaluateArgument().GetValue(), typeof(float));
+                rightNum = (float)Convert.ChangeType(GetArgumentAt(0).EvaluateArgument().GetValue(), typeof(float));
+            }
         }
 
         public override int GetNumArguments() {

@@ -3,8 +3,9 @@
 namespace MoveToCode {
     public class StringDataType : IDataType {
         public StringDataType(CodeBlock cbIn) : base(cbIn) { }
-        public StringDataType(CodeBlock cbIn, string valIn) : base(cbIn, valIn) { }
-        public StringDataType(string valIn) : base(null, valIn) { }
+        public StringDataType(CodeBlock cbIn, string valIn) : base(cbIn) {
+            SetValue(valIn);
+        }
         public override bool IsSameDataTypeAndEqualTo(IDataType otherVal) {
             if (otherVal is StringDataType) {
                 return (string)GetValue() == (string)otherVal.GetValue();
@@ -14,6 +15,10 @@ namespace MoveToCode {
 
         public override string ToString() {
             return string.Join("", "\"", base.ToString(), "\"");
+        }
+
+        public override Type GetCastType() {
+            return typeof(string);
         }
     }
 }

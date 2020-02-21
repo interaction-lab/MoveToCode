@@ -1,4 +1,6 @@
-﻿namespace MoveToCode {
+﻿using System;
+
+namespace MoveToCode {
     public class Variable : IDataType {
 
         VariableCodeBlock myVariableCodeBlock;
@@ -19,7 +21,7 @@
             myVariableCodeBlock.SetVariableValueFromBlockCollection(dIn);
         }
 
-        public override dynamic GetValue() {
+        public override object GetValue() {
             return GetMyData().GetValue();
         }
         public IDataType GetMyData() {
@@ -28,6 +30,10 @@
 
         public override string ToString() {
             return myVariableCodeBlock.GetVariableNameFromBlockCollection();
+        }
+
+        public override Type GetCastType() {
+            return GetMyData().GetCastType();
         }
     }
 }

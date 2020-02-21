@@ -5,7 +5,7 @@
 
         public override InstructionReturnValue RunInstruction() {
             EvaluateArgumentList();
-            return new InstructionReturnValue(new BoolDataType(!leftArg.IsSameDataTypeAndEqualTo(rightArg)), null);
+            return new InstructionReturnValue(new BoolDataType(null, !leftArg.IsSameDataTypeAndEqualTo(rightArg)), null);
         }
 
         public override string GetConditionalSymbol() {

@@ -4,7 +4,7 @@
         public int output;
 
         protected override void SetMyBlockInternalArg() {
-            myBlockInternalArg = new IntDataType(output);
+            myBlockInternalArg = new IntDataType(this, output);
         }
     }
 }

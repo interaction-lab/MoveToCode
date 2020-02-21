@@ -20,6 +20,7 @@ namespace RosSharp.RosBridgeClient {
         public Vector3 desiredLinearPose;
         public Quaternion desiredAngularPose;
         public string FrameId = "map";
+        public Transform trans;
 
         private Messages.Geometry.PoseStamped message;
 
@@ -39,10 +40,11 @@ namespace RosSharp.RosBridgeClient {
 
         private void PublishMessage() {
             message.header.Update();
-            message.pose.position = GetGeometryPoint(desiredLinearPose.Unity2Ros());
-            message.pose.orientation = GetGeometryQuaternion(desiredAngularPose.Unity2Ros());
+            message.pose.position = GetGeometryPoint(trans.position.Unity2Ros());
+            message.pose.orientation = GetGeometryQuaternion(trans.rotation.Unity2Ros());
 
             Publish(message);
+            Debug.Log(message);
         }
 
         public void PublishPosition() {

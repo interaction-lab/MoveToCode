@@ -536,7 +536,7 @@ PlayerSettings:
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
   scriptingDefineSymbols:
-    14: master;DOTNETWINRT_PRESENT
+    14: release;DOTNETWINRT_PRESENT
   platformArchitecture:
     iOS: 1
   scriptingBackend:
@@ -553,7 +553,7 @@ PlayerSettings:
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   metroPackageName: Template_3D
-  metroPackageVersion: 
+  metroPackageVersion: 1.0.1.0
   metroCertificatePath: Assets\WSATestCertificate.pfx
   metroCertificatePassword: 
   metroCertificateSubject: DefaultCompany

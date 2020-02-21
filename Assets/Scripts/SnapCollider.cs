@@ -38,7 +38,6 @@ namespace MoveToCode {
             return meshOutline;
         }
 
-        // Todo: rewire snap colliding
         private CodeBlockSnap GetCollidersCodeBlockSnap(Collider collision) {
             return collision.transform.parent.parent.GetComponent<CodeBlockSnap>();
         }
@@ -83,6 +82,8 @@ namespace MoveToCode {
             Transform parentTransform = transform.parent;
 
             // parent will resize accordingly
+            // unspap log?
+
             myCodeBlock.SetArgumentBlockAt(collidedCodeBlock, myArgumentPosition);
 
             // now snap to correct position

@@ -17,8 +17,9 @@ using UnityEngine;
 
 namespace RosSharp.RosBridgeClient {
     public class PoseStampedPublisher : Publisher<Messages.Geometry.PoseStamped> {
-        public Transform PublishedTransform;
-        public string FrameId = "Unity";
+        public Vector3 desiredLinearPose;
+        public Quaternion desiredAngularPose;
+        public string FrameId = "map";
 
         private Messages.Geometry.PoseStamped message;
 
@@ -27,9 +28,6 @@ namespace RosSharp.RosBridgeClient {
             InitializeMessage();
         }
 
-        private void FixedUpdate() {
-            UpdateMessage();
-        }
 
         private void InitializeMessage() {
             message = new Messages.Geometry.PoseStamped {
@@ -39,13 +37,24 @@ namespace RosSharp.RosBridgeClient {
             };
         }
 
-        private void UpdateMessage() {
+        private void PublishMessage() {
             message.header.Update();
-            message.pose.position = GetGeometryPoint(PublishedTransform.position.Unity2Ros());
-            message.pose.orientation = GetGeometryQuaternion(PublishedTransform.rotation.Unity2Ros());
+            message.pose.position = GetGeometryPoint(desiredLinearPose.Unity2Ros());
+            message.pose.orientation = GetGeometryQuaternion(desiredAngularPose.Unity2Ros());
 
             Publish(message);
         }
+
+        public void PublishPosition() {
+            PublishMessage();
+        }
+
+        public void PublishPosition(Vector3 lin, Quaternion ang) {
+            desiredLinearPose = lin;
+            desiredAngularPose = ang;
+            PublishMessage();
+        }
+
 
         private Messages.Geometry.Point GetGeometryPoint(Vector3 position) {
             Messages.Geometry.Point geometryPoint = new Messages.Geometry.Point();

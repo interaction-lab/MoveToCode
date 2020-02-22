@@ -12,7 +12,7 @@ namespace MoveToCode {
         }
 
         private void LogManipulationStart(ManipulationEventData arg0) {
-            LoggingManager.instance.UpdateLogColumn(ManipulationLoggingManager.GetColName(), name);
+            LoggingManager.instance.UpdateLogColumn(ManipulationLoggingManager.GetColName(), gameObject.TryGetCodeBlockNameOfGameObject());
         }
     }
 }

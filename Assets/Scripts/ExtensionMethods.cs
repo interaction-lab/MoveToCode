@@ -32,7 +32,6 @@ namespace MoveToCode {
 
 
         // Transform Extensions
-        // TODO: look into this with weird object scaling
         public static void SnapToParent(this Transform t, Transform prospectiveParent) {
             t.rotation = prospectiveParent.rotation;
             t.SetParent(prospectiveParent);
@@ -50,6 +49,20 @@ namespace MoveToCode {
             Transform origParent = t.parent;
             SnapToCodeBlockManager(t);
             SnapToParent(t, origParent);
+        }
+
+        // Gameobject Extensions
+        public static string TryGetCodeBlockNameOfGameObject(this GameObject go) {
+            // check object mesh
+            CodeBlockObjectMesh cbom = go.GetComponentInParent<CodeBlockObjectMesh>();
+            if (cbom != null) {
+                return cbom.GetMyCodeBlock().name;
+            }
+            SnapCollider sc = go.GetComponent<SnapCollider>();
+            if (sc != null) {
+                return sc.GetMyCodeBlock().name;
+            }
+            return go.name;
         }
 
     }

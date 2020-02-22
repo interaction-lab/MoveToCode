@@ -15,7 +15,7 @@ namespace MoveToCode {
 
         void Update() {
             if (CoreServices.InputSystem.EyeGazeProvider.GazeTarget != null) {
-                LoggingManager.instance.UpdateLogColumn(objectColName, CoreServices.InputSystem.EyeGazeProvider.GazeTarget.name);
+                LoggingManager.instance.UpdateLogColumn(objectColName, CoreServices.InputSystem.EyeGazeProvider.GazeTarget.TryGetCodeBlockNameOfGameObject());
                 LoggingManager.instance.UpdateLogColumn(eyeGazeLocColNameX, CoreServices.InputSystem.EyeGazeProvider.HitPosition.x.ToString());
                 LoggingManager.instance.UpdateLogColumn(eyeGazeLocColNameY, CoreServices.InputSystem.EyeGazeProvider.HitPosition.y.ToString());
                 LoggingManager.instance.UpdateLogColumn(eyeGazeLocColNameZ, CoreServices.InputSystem.EyeGazeProvider.HitPosition.z.ToString());

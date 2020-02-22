@@ -29,7 +29,6 @@ namespace MoveToCode {
         }
 
         public void RunNextInstruction() {
-            Debug.Log("Run");
             if (!CodeIsRunning()) {
                 ResetCodeState();
             }

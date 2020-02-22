@@ -7,7 +7,7 @@ namespace MoveToCode {
 
         public override bool IsSameDataTypeAndEqualTo(IDataType otherVal) {
             if (otherVal is INumberDataType) {
-                return Mathf.Approximately((float)GetValue(), (float)otherVal.GetValue());
+                return Mathf.Approximately((float)Convert.ChangeType(GetValue(), GetCastType()), (float)Convert.ChangeType(otherVal.GetValue(), otherVal.GetCastType()));
             }
             throw new InvalidOperationException("Trying to compare a Number Type to a non Number Data Type");
         }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.MixedReality.Toolkit.UI;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MoveToCode {
@@ -53,7 +54,6 @@ namespace MoveToCode {
 
         // Gameobject Extensions
         public static string TryGetNiceNameOfObjectForLogging(this GameObject go) {
-            // check object mesh
             CodeBlockObjectMesh cbom = go.GetComponentInParent<CodeBlockObjectMesh>();
             if (cbom != null) {
                 return cbom.GetMyCodeBlock().name;
@@ -62,6 +62,11 @@ namespace MoveToCode {
             if (sc != null) {
                 return sc.GetMyCodeBlock().name;
             }
+            PressableButtonHoloLens2 pbh2 = go.GetComponentInParent<PressableButtonHoloLens2>();
+            if (pbh2 != null) {
+                return pbh2.name;
+            }
+
             return go.name;
         }
 

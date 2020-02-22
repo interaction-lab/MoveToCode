@@ -1,7 +1,5 @@
 ﻿using Microsoft.MixedReality.Toolkit.UI;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 namespace MoveToCode {
     public class ManipulationLoggingManager : Singleton<ManipulationLoggingManager> {
         static string manipColName = "ManipulatingObject";

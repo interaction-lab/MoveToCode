@@ -6,16 +6,16 @@ namespace MoveToCode {
     public class ManipulationLogger : MonoBehaviour {
 
         ManipulationHandler manipHandler;
-        PressableButtonHoloLens2 pressButton;
+        Interactable pressButton;
 
         void Start() {
             manipHandler = GetComponent<ManipulationHandler>();
             if (manipHandler != null) {
                 manipHandler.OnManipulationStarted.AddListener(LogManipulationStart);
             }
-            pressButton = GetComponent<PressableButtonHoloLens2>();
+            pressButton = GetComponent<Interactable>();
             if (pressButton != null) {
-                pressButton.ButtonPressed.AddListener(LogManipulationStartButtonPress);
+                pressButton.OnClick.AddListener(LogManipulationStartButtonPress);
             }
         }
 

@@ -56,11 +56,12 @@ namespace MoveToCode {
                     null :
                     instructionStack.Pop();
             }
-            if (curInstruction == null) {
-                StartCodeBlock.instance.ToggleOutline(true);
+            if (curInstruction != null) {
+                curInstruction.GetCodeBlock().ToggleOutline(true);
             }
             else {
-                curInstruction?.GetCodeBlock()?.ToggleOutline(true);
+                // We know code finished here
+                ConsoleManager.instance.AddLine("Finished, press play to reset");
             }
         }
 

@@ -13,12 +13,7 @@ namespace MoveToCode {
         }
 
         public static float TurnValToFloat(IDataType dIn) {
-            if (dIn.GetCastType() == typeof(int)) {
-                return (int)dIn.GetValue();
-            }
-            else {
-                return (float)dIn.GetValue();
-            }
+            return Convert.ToSingle(dIn.GetValue());
         }
     }
 }

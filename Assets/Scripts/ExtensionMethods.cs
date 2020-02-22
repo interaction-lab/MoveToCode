@@ -52,7 +52,7 @@ namespace MoveToCode {
         }
 
         // Gameobject Extensions
-        public static string TryGetCodeBlockNameOfGameObject(this GameObject go) {
+        public static string TryGetNiceNameOfObjectForLogging(this GameObject go) {
             // check object mesh
             CodeBlockObjectMesh cbom = go.GetComponentInParent<CodeBlockObjectMesh>();
             if (cbom != null) {

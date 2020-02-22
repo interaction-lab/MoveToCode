@@ -8,8 +8,6 @@ namespace MoveToCode {
         public InstructionReturnValue lastInstructionReturn;
         public Instruction curInstruction;
 
-        Color lastColor;
-
         private void Awake() {
             ResetCodeState();
             RunNextInstruction();
@@ -31,6 +29,7 @@ namespace MoveToCode {
         }
 
         public void RunNextInstruction() {
+            Debug.Log("Run");
             if (!CodeIsRunning()) {
                 ResetCodeState();
             }

@@ -15,6 +15,9 @@ namespace MoveToCode {
             yield return null;
             foreach (var go in FindObjectsOfType<ManipulationHandler>()) {
                 go.gameObject.AddComponent<ManipulationLogger>();
+            } // also need to add to buttons
+            foreach (var go in FindObjectsOfType<PressableButtonHoloLens2>()) {
+                go.gameObject.AddComponent<ManipulationLogger>();
             }
         }
 

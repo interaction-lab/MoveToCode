@@ -40,7 +40,7 @@ namespace MoveToCode {
         }
 
         public string GetCleanedMainText() {
-            return GetMainText().Replace(finishedString, "").ReplaceFirst("START", "");
+            return GetMainText().Replace(finishedString, "").ReplaceFirst(StartInstruction.startString, "");
         }
 
         public string GetMainText() {

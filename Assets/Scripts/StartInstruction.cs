@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace MoveToCode {
     public class StartInstruction : Instruction {
+        public static string startString = "START";
 
         public StartInstruction(CodeBlock cbIn) : base(cbIn) { }
 
@@ -15,7 +16,7 @@ namespace MoveToCode {
         }
 
         public override InstructionReturnValue RunInstruction() {
-            ConsoleManager.instance.AddLine("START");
+            ConsoleManager.instance.AddLine(startString);
             return new InstructionReturnValue(null, GetArgumentAt(0) as StandAloneInstruction);
         }
 

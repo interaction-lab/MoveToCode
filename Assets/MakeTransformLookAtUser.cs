@@ -5,9 +5,9 @@ namespace MoveToCode {
     public class MakeTransformLookAtUser : MonoBehaviour {
         public AnimationCurve animCurve;
 
-        IEnumerator SlowTurn() {
+        IEnumerator Turn() {
             Quaternion start = transform.rotation, goal = Quaternion.LookRotation(Camera.main.transform.forward);
-            float curTime = 0f, totalTime = 2.0f;
+            float curTime = 0f, totalTime = 0.5f;
 
             while (curTime < totalTime) {
                 float percent = curTime / totalTime;
@@ -17,8 +17,7 @@ namespace MoveToCode {
             }
         }
         public void LookAtUser() {
-            Debug.Log("Turn");
-            StartCoroutine(SlowTurn());
+            StartCoroutine(Turn());
         }
     }
 }

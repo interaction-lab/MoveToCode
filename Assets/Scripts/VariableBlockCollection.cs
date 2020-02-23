@@ -8,7 +8,6 @@ namespace MoveToCode {
         HashSet<VariableCodeBlock> variableCodeBlockSet;
         IDataType myData;
         string variableName;
-        public GameObject variableBlock;
 
         private void Awake() {
             variableCodeBlockSet = new HashSet<VariableCodeBlock>();

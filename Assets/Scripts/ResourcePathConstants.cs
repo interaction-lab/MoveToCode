@@ -7,9 +7,12 @@ namespace MoveToCode {
 
         // Prefabs
         public static string PrefabFolder = "Prefabs/";
-        public static string VariableCodeBlockPrefab = PrefabFolder + "VariableCodeBlock";
-        public static string CodeBlockTextPrefab = PrefabFolder + "CodeBlockText";
-        public static string VariableCodeBlockCollectionPrefab = PrefabFolder + "VariableCodeBlockCollection";
+        public static string CodeBlockPrefabFolder = PrefabFolder + "CodeBlockPrefabFolder/";
+        public static string ExercisePrefabFolder = PrefabFolder + "ExercisePrefabFolder/";
+
+        public static string VariableCodeBlockPrefab = CodeBlockPrefabFolder + "VariableCodeBlock";
+        public static string CodeBlockTextPrefab = CodeBlockPrefabFolder + "CodeBlockText";
+        public static string VariableCodeBlockCollectionPrefab = CodeBlockPrefabFolder + "VariableCodeBlockCollection";
 
         // Materials
         public static string MaterialFolder = "Materials/";

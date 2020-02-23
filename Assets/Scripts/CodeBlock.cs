@@ -80,10 +80,6 @@ namespace MoveToCode {
         }
 
         // CodeBlockArgumentList relay functions
-        public void ResnapAllArgs() {
-            codeBlockArgumentList.ResnapAllArgs();
-        }
-
         public void SetArgumentBlockAt(CodeBlock newArgumentCodeBlock, int argPosition) {
             codeBlockArgumentList.SetArgCodeBlockAt(newArgumentCodeBlock, argPosition);
             UpdateText();

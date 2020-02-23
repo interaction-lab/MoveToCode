@@ -43,22 +43,32 @@ namespace MoveToCode {
             return myCodeBlock.GetMyInternalIArgument().GetNumArguments();
         }
 
-        public void ResnapAllArgs() {
-            for (int i = 0; i < GetNumArguments(); ++i) {
-                SetArgCodeBlockAt(GetArgAsCodeBlockAt(i), i);
-            }
-        }
-
         // Private methods, reconsider if you need to make these public
-        private void AddNewArgumentAt(CodeBlock newArgumentCodeBlock, int pos) {
-            GetArgListCodeBlocks()[pos] = newArgumentCodeBlock;
+        private void AddNewArgumentAt(CodeBlock newArgumentCodeBlock, int position) {
+            GetArgListCodeBlocks()[position] = newArgumentCodeBlock;
             if (newArgumentCodeBlock != null) {
+                LoggingManager.instance.UpdateLogColumn(SnapLoggingManager.GetSnapToColName(),
+                                                         string.Join("",
+                                                         "Add ",
+                                                         argList[position].name,
+                                                         " to ",
+                                                         myCodeBlock.name,
+                                                         " at ",
+                                                         position.ToString()));
                 myCodeBlock.GetCodeBlockObjectMesh().ResizeChain();
             }
         }
 
         private void RemoveArgumentAt(int position) {
             if (GetArgListCodeBlocks()[position] != null) {
+                LoggingManager.instance.UpdateLogColumn(SnapLoggingManager.GetSnapRemoveFromColName(),
+                                                         string.Join("",
+                                                         "Remove ",
+                                                         argList[position].name,
+                                                         " from ",
+                                                         myCodeBlock.name,
+                                                         " at ",
+                                                         position.ToString()));
                 if (CodeBlockSnap.lastDraggedCBS != myCodeBlock.GetCodeBlockSnap()) {
                     argList[position].transform.localPosition = argList[position].transform.localPosition + new Vector3(0.25f, 1.1f, 1.25f);
                 }

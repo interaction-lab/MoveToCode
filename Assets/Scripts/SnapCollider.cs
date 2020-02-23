@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Assertions;
 
 namespace MoveToCode {
     public class SnapCollider : MonoBehaviour {
@@ -80,13 +79,7 @@ namespace MoveToCode {
 
         public void DoSnapAction(CodeBlock myCodeBlock, CodeBlock collidedCodeBlock) {
             Transform parentTransform = transform.parent;
-
-            // parent will resize accordingly
-            // unspap log?
-
             myCodeBlock.SetArgumentBlockAt(collidedCodeBlock, myArgumentPosition);
-
-            // now snap to correct position
             Vector3 centerPos = collidedCodeBlock.GetCodeBlockObjectMesh().GetCenterPosition();
             centerPos.x = centerPos.x / parentTransform.localScale.x;
             collidedCodeBlock.transform.SnapToParent(parentTransform, snapPosition - centerPos);

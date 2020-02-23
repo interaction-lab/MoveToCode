@@ -1,15 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿namespace MoveToCode {
+    public class SnapLoggingManager : Singleton<SnapLoggingManager> {
+        static string snapToColName = "SnapTo", snapRemoveFromColName = "SnapRemoveFrom";
 
-public class SnapLoggingManager : MonoBehaviour {
-    // Start is called before the first frame update
-    void Start() {
+        private void Start() {
+            LoggingManager.instance.AddLogColumn(snapToColName, "");
+            LoggingManager.instance.AddLogColumn(snapRemoveFromColName, "");
+        }
 
-    }
-
-    // Update is called once per frame
-    void Update() {
-
+        public static string GetSnapToColName() {
+            return snapToColName;
+        }
+        public static string GetSnapRemoveFromColName() {
+            return snapRemoveFromColName;
+        }
     }
 }

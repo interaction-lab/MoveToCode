@@ -19,7 +19,7 @@
         }
 
         public override string ToString() {
-            return "START";
+            return StartInstruction.startString;
         }
 
         protected override void SetMyBlockInternalArg() {

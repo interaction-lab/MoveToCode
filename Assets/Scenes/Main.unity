@@ -2746,6 +2746,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2125387814}
   - component: {fileID: 2125387815}
+  - component: {fileID: 2125387817}
+  - component: {fileID: 2125387816}
   m_Layer: 0
   m_Name: CodeBlocks
   m_TagString: Untagged
@@ -2782,6 +2784,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bba947b868294f64aa3dd2d49eb5eb44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2125387816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125387813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a8030b9b811f614ab913f06f611c181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2125387817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125387813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1a508445c8a81442a30343ce95a1691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  consoleStringGoal: '"Hello World"'
 --- !u!1 &2127256765
 GameObject:
   m_ObjectHideFlags: 0

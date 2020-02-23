@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace MoveToCode {
     public class StartInstruction : Instruction {
-        public static string startString = "START";
+        public static string startString = "Code Start";
 
         public StartInstruction(CodeBlock cbIn) : base(cbIn) { }
 
@@ -21,7 +21,7 @@ namespace MoveToCode {
         }
 
         public override string ToString() {
-            return "START";
+            return startString;
         }
 
         public override void SetUpArgPosToCompatability() {

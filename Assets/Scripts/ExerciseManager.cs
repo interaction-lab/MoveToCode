@@ -4,10 +4,14 @@ using UnityEngine;
 
 namespace MoveToCode {
     public class ExerciseManager : Singleton<ExerciseManager> {
+        Exercise curExercise;
+
+        private void Start() {
+            curExercise = GetComponent<Exercise>();
+        }
 
         public void AlertCodeFinished() {
-            // Check if correct
-            Debug.Log(ConsoleManager.instance.GetCleanedMainText());
+            Debug.Log(curExercise.IsExerciseCorrect());
         }
     }
 }

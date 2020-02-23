@@ -2,6 +2,8 @@
 namespace MoveToCode {
     public class ConsoleManager : Singleton<ConsoleManager> {
         TextMeshProUGUI mainConsole, headerConsole;
+        public static string finishedString = "Finished, press play to reset";
+
 
         void Awake() {
             ClearConsole();
@@ -37,8 +39,16 @@ namespace MoveToCode {
             return GetHeaderConsole().text;
         }
 
+        public string GetCleanedMainText() {
+            return GetMainText().Replace(finishedString, "").ReplaceFirst("START", "");
+        }
+
         public string GetMainText() {
             return GetMainConsole().text;
+        }
+
+        public void AddFinishLine() {
+            AddLine(finishedString);
         }
     }
 }

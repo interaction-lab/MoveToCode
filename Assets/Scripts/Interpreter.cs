@@ -60,8 +60,8 @@ namespace MoveToCode {
                 curInstruction.GetCodeBlock().ToggleOutline(true);
             }
             else {
-                // We know code finished here
-                ConsoleManager.instance.AddLine("Finished, press play to reset");
+                ExerciseManager.instance.AlertCodeFinished();
+                ConsoleManager.instance.AddFinishLine();
             }
         }
 

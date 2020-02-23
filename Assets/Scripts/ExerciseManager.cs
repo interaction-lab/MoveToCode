@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExerciseManager : MonoBehaviour {
-    // Start is called before the first frame update
-    void Start() {
+namespace MoveToCode {
+    public class ExerciseManager : Singleton<ExerciseManager> {
 
-    }
-
-    // Update is called once per frame
-    void Update() {
-
+        public void AlertCodeFinished() {
+            // Check if correct
+            Debug.Log(ConsoleManager.instance.GetCleanedMainText());
+        }
     }
 }

@@ -28,6 +28,9 @@ namespace MoveToCode {
             else {
                 initialized = true;
             }
+#if WINDOWS_UWP
+            logData = true;
+#endif
             if (logData) {
                 Debug.Log("Currently logging data: " + logData.ToString());
                 csvFilename = System.DateTime.Now.ToString().Replace(' ', '_').Replace('\\', '_').Replace('/', '_').Replace(':', '-') + ".csv";
@@ -36,7 +39,7 @@ namespace MoveToCode {
                 streamWriter = new StreamWriter(new FileStream(filePath, FileMode.Create)); ;
             }
             else {
-                Debug.LogError("NOT LOGGING DATA");
+                Debug.LogWarning("NOT LOGGING DATA, data is autologged when deployed to the Hololens 2 but not by default for the Unity editor. If you want logging, check the \"logData\" public box of the LoggingManager component");
             }
         }
 

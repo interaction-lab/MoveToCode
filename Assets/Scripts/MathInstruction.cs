@@ -12,7 +12,7 @@ namespace MoveToCode {
         public override void EvaluateArgumentList() {
             if (GetArgumentAt(0) != null && GetArgumentAt(1) != null) {
                 leftNum = (float)Convert.ChangeType(GetArgumentAt(0).EvaluateArgument().GetValue(), typeof(float));
-                rightNum = (float)Convert.ChangeType(GetArgumentAt(0).EvaluateArgument().GetValue(), typeof(float));
+                rightNum = (float)Convert.ChangeType(GetArgumentAt(1).EvaluateArgument().GetValue(), typeof(float));
             }
         }
 
@@ -27,10 +27,10 @@ namespace MoveToCode {
         public override void SetUpArgPosToCompatability() {
             argPosToCompatability = new List<List<Type>> {
                 new List<Type> {
-                    typeof(INumberDataType)
+                    typeof(INumberDataType), typeof(MathInstruction)
                 },
                  new List<Type> {
-                    typeof(INumberDataType)
+                    typeof(INumberDataType), typeof(MathInstruction)
                 }
             };
         }

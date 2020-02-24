@@ -25,14 +25,12 @@ namespace MoveToCode {
             if (aos == null) {
                 aos = go.AddComponent<AudioSource>();
             }
-            StartCoroutine(NextFrame(aos, ac));
+            StartCoroutine(PlayNextFrame(aos, ac));
         }
 
-        IEnumerator NextFrame(AudioSource aos, AudioClip ac) {
+        IEnumerator PlayNextFrame(AudioSource aos, AudioClip ac) {
             yield return new WaitForEndOfFrame();
-            Debug.Log(ac);
             aos.PlayOneShot(ac, 1.0f);
-            Debug.Log("played");
         }
     }
 }

@@ -55,6 +55,7 @@ namespace MoveToCode {
                                                          myCodeBlock.name,
                                                          " at ",
                                                          position.ToString()));
+                AudioManager.instance.PlaySoundAtObject(gameObject, AudioManager.snapAudioClip);
                 myCodeBlock.GetCodeBlockObjectMesh().ResizeChain();
             }
         }
@@ -69,6 +70,7 @@ namespace MoveToCode {
                                                          myCodeBlock.name,
                                                          " at ",
                                                          position.ToString()));
+                AudioManager.instance.PlaySoundAtObject(gameObject, AudioManager.popAudioClip);
                 if (CodeBlockSnap.lastDraggedCBS != myCodeBlock.GetCodeBlockSnap()) {
                     argList[position].transform.localPosition = argList[position].transform.localPosition + new Vector3(0.25f, 1.1f, 1.25f);
                 }

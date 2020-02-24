@@ -20,7 +20,7 @@ namespace MoveToCode {
             }
         }
 
-        private void UnsnapAllBlockFromBlockManager() {
+        public void UnsnapAllBlockFromBlockManager() {
             StartCodeBlock.instance.SetArgumentBlockAt(null, 0); // unsnap
             foreach (CodeBlock cb in CodeBlockManager.instance.GetAllCodeBlocks()) {
                 if (cb != StartCodeBlock.instance) {
@@ -30,13 +30,7 @@ namespace MoveToCode {
         }
 
         private void OnEnable() {
-            Debug.Log(name + " enabled");
             SnapAllBlocksToBlockManager();
-        }
-
-        private void OnDisable() {
-            Debug.Log(name + " disabled");
-            UnsnapAllBlockFromBlockManager();
         }
 
 

@@ -106,14 +106,11 @@ namespace MoveToCode {
 
         private void OnEnable() {
             meshRend.enabled = true;
-            CodeBlockManager.instance.RegisterSnapCollider(this);
+            //CodeBlockManager.instance.RegisterSnapCollider(this);
         }
 
         private void OnDisable() {
             meshRend.enabled = false;
-            if (CodeBlockManager.instance != null && CodeBlockManager.instance.isActiveAndEnabled) {
-                CodeBlockManager.instance.DeregisterSnapCollider(this);
-            }
         }
 
         private void OnDestroy() {

@@ -20,7 +20,7 @@ namespace MoveToCode {
             exerciseList = new List<Exercise>();
             foreach (Exercise ex in GetComponentsInChildren<Exercise>(true)) {
                 exerciseList.Add(ex);
-                ex.enabled = false;
+                ex.gameObject.SetActive(false);
             }
         }
 
@@ -37,6 +37,7 @@ namespace MoveToCode {
         }
 
         private void CycleNewExercise() {
+            curExercise.UnsnapAllBlockFromBlockManager();
             ToggleCurrentExercise(false);
             curExercisePos += 1 % exerciseList.Count; // TODO: add a free play at the end
             curExercise = exerciseList[curExercisePos];
@@ -44,13 +45,7 @@ namespace MoveToCode {
         }
 
         private void ToggleCurrentExercise(bool desiredActiveState) {
-            if (!desiredActiveState) {
-                curExercise.enabled = false;
-            }
             curExercise.gameObject.SetActive(desiredActiveState);
-            if (desiredActiveState) {
-                curExercise.enabled = true;
-            }
         }
     }
 }

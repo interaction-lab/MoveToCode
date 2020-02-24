@@ -9,10 +9,13 @@ namespace MoveToCode {
 
         Exercise curExercise;
         List<Exercise> exerciseList;
-        int curExercisePos = 0;
+        public int curExercisePos = 0;
         bool lastExerciseCompleted = false;
 
         private void Awake() {
+#if WINDOWS_UWP
+            curExercisePos = 0;
+#endif
             SetUpExerciseList();
             curExercise = exerciseList[curExercisePos];
             ToggleCurrentExercise(true);

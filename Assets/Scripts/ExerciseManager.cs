@@ -34,6 +34,7 @@ namespace MoveToCode {
         public void AlertCodeFinished() {
             if (curExercise != null) { // This if is to guard against initializing interpreter
                 if (curExercise.IsExerciseCorrect()) {
+                    AudioManager.instance.PlaySoundAtObject(Camera.main.gameObject, AudioManager.correctAudioClip);
                     LoggingManager.instance.UpdateLogColumn(exerciseSubmissionResultCol, "Correct");
                     lastExerciseCompleted = true;
                 }
@@ -51,6 +52,7 @@ namespace MoveToCode {
         }
 
         private void CycleNewExercise() {
+            lastExerciseCompleted = false;
             curExercise.UnsnapAllBlockFromBlockManager();
             ToggleCurrentExercise(false);
             curExercisePos += 1;

@@ -18,5 +18,14 @@ namespace MoveToCode {
         public static string MaterialFolder = "Materials/";
         public static string OutlineSnapColliderMaterial = MaterialFolder + "OutlineSnapCollider";
         public static string OutlineCodeBlockMaterial = MaterialFolder + "OutlineCodeBlock";
+
+        // Audio
+        public static string AudioFolder = "Audio/";
+        public static string CorrectSound = AudioFolder + "correct";
+        public static string IncorrectSound = AudioFolder + "incorrect";
+        public static string PoofSound = AudioFolder + "poof";
+        public static string PopSound = AudioFolder + "pop";
+        public static string SnapSound = AudioFolder + "snap";
+        public static string SpawnSound = AudioFolder + "spawn";
     }
 }

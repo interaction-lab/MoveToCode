@@ -9,8 +9,6 @@ namespace MoveToCode {
         public string consoleStringGoal;
 
         public bool IsExerciseCorrect() {
-            Debug.Log(ConsoleManager.instance.GetCleanedMainText());
-            Debug.Log(consoleStringGoal);
             return ConsoleManager.instance.GetCleanedMainText() == consoleStringGoal;
         }
 

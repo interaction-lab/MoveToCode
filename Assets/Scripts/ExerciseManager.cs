@@ -5,6 +5,8 @@ using UnityEngine;
 
 namespace MoveToCode {
     public class ExerciseManager : Singleton<ExerciseManager> {
+        public static string curExcersieCol = "CurExercise", exerciseSubmissionResultCol = "ExerciseSubmissionResult";
+
         Exercise curExercise;
         List<Exercise> exerciseList;
         int curExercisePos = 0;
@@ -14,6 +16,8 @@ namespace MoveToCode {
             SetUpExerciseList();
             curExercise = exerciseList[curExercisePos];
             ToggleCurrentExercise(true);
+            LoggingManager.instance.AddLogColumn(curExcersieCol, curExercisePos.ToString());
+            LoggingManager.instance.AddLogColumn(exerciseSubmissionResultCol, "");
         }
 
         private void SetUpExerciseList() {
@@ -25,8 +29,15 @@ namespace MoveToCode {
         }
 
         public void AlertCodeFinished() {
-            if (curExercise != null && curExercise.IsExerciseCorrect()) {
-                lastExerciseCompleted = true;
+            if (curExercise != null) { // This if is to guard against initializing interpreter
+                if (curExercise.IsExerciseCorrect()) {
+                    LoggingManager.instance.UpdateLogColumn(exerciseSubmissionResultCol, "Correct");
+                    lastExerciseCompleted = true;
+                }
+                else {
+                    LoggingManager.instance.UpdateLogColumn(exerciseSubmissionResultCol, "InCorrect");
+                }
+
             }
         }
 
@@ -39,11 +50,12 @@ namespace MoveToCode {
         private void CycleNewExercise() {
             curExercise.UnsnapAllBlockFromBlockManager();
             ToggleCurrentExercise(false);
-            curExercisePos += 1; // TODO: add a free play at the end
+            curExercisePos += 1;
             if (curExercisePos == exerciseList.Count) {
                 InitiateFreePlay();
             }
             else {
+                LoggingManager.instance.UpdateLogColumn(curExcersieCol, curExercisePos.ToString());
                 curExercise = exerciseList[curExercisePos];
                 ToggleCurrentExercise(true);
             }

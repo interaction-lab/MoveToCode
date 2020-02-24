@@ -39,9 +39,18 @@ namespace MoveToCode {
         private void CycleNewExercise() {
             curExercise.UnsnapAllBlockFromBlockManager();
             ToggleCurrentExercise(false);
-            curExercisePos += 1 % exerciseList.Count; // TODO: add a free play at the end
-            curExercise = exerciseList[curExercisePos];
-            ToggleCurrentExercise(true);
+            curExercisePos += 1; // TODO: add a free play at the end
+            if (curExercisePos == exerciseList.Count) {
+                InitiateFreePlay();
+            }
+            else {
+                curExercise = exerciseList[curExercisePos];
+                ToggleCurrentExercise(true);
+            }
+        }
+
+        private void InitiateFreePlay() {
+            Debug.Log("Free play woould be initiated");
         }
 
         private void ToggleCurrentExercise(bool desiredActiveState) {

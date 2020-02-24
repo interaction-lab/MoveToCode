@@ -7,11 +7,13 @@ namespace MoveToCode {
         Stack<Instruction> instructionStack = new Stack<Instruction>();
         public InstructionReturnValue lastInstructionReturn;
         public Instruction curInstruction;
+        public static string instructionRunCol = "InstructionRun";
 
         private void Awake() {
             ResetCodeState();
             RunNextInstruction();
             RunNextInstruction(); // attempt to start code in same state as having run before
+            LoggingManager.instance.AddLogColumn(instructionRunCol, "");
         }
 
         public void ResetCodeState() {
@@ -38,6 +40,7 @@ namespace MoveToCode {
                     MemoryManager.instance.SaveMemoryState();
                 }
                 try {
+                    LoggingManager.instance.UpdateLogColumn(instructionRunCol, curInstruction?.ToString());
                     lastInstructionReturn = curInstruction.RunInstruction();
                     UpdateCurInstruction();
                 }

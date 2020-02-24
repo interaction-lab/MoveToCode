@@ -166,8 +166,18 @@ namespace MoveToCode {
             return myBlockInternalArg.ToString();
         }
 
+        private void OnEnable() {
+            CodeBlockManager.instance.RegisterCodeBlock(this);
+        }
+
         private void OnDestroy() {
-            if (CodeBlockManager.instance && CodeBlockManager.instance.isActiveAndEnabled) {
+            if (CodeBlockManager.instance != null && CodeBlockManager.instance.isActiveAndEnabled) {
+                CodeBlockManager.instance.DeregisterCodeBlock(this);
+            }
+        }
+
+        private void OnDisable() {
+            if (CodeBlockManager.instance != null && CodeBlockManager.instance.isActiveAndEnabled) {
                 CodeBlockManager.instance.DeregisterCodeBlock(this);
             }
         }

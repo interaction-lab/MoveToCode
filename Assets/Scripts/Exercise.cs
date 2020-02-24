@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,5 +13,32 @@ namespace MoveToCode {
             Debug.Log(consoleStringGoal);
             return ConsoleManager.instance.GetCleanedMainText() == consoleStringGoal;
         }
+
+        private void SnapAllBlocksToBlockManager() {
+            foreach (CodeBlock cb in GetComponentsInChildren<CodeBlock>()) {
+                cb.transform.SnapToCodeBlockManager();
+            }
+        }
+
+        private void UnsnapAllBlockFromBlockManager() {
+            StartCodeBlock.instance.SetArgumentBlockAt(null, 0); // unsnap
+            foreach (CodeBlock cb in CodeBlockManager.instance.GetAllCodeBlocks()) {
+                if (cb != StartCodeBlock.instance) {
+                    cb.transform.SnapToParent(transform);
+                }
+            }
+        }
+
+        private void OnEnable() {
+            Debug.Log(name + " enabled");
+            SnapAllBlocksToBlockManager();
+        }
+
+        private void OnDisable() {
+            Debug.Log(name + " disabled");
+            UnsnapAllBlockFromBlockManager();
+        }
+
+
     }
 }

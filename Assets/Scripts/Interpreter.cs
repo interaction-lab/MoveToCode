@@ -18,6 +18,7 @@ namespace MoveToCode {
             if (instructionStack == null) {
                 instructionStack = new Stack<Instruction>();
             }
+            ExerciseManager.instance.AlertCodeReset();
             ConsoleManager.instance.ClearConsole();
             curInstruction?.GetCodeBlock()?.ToggleOutline(false);
             instructionStack.Clear();

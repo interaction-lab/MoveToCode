@@ -63,19 +63,7 @@ namespace MoveToCode {
             return GetMyCodeBlock().GetCodeBlockSnap();
         }
 
-        private void OnEnable() {
-            meshRend.enabled = true;
-        }
 
-        private void OnDisable() {
-            meshRend.enabled = false;
-        }
-
-        private void OnDestroy() {
-            if (CodeBlockManager.instance && CodeBlockManager.instance.isActiveAndEnabled) {
-                CodeBlockManager.instance.DeregisterSnapCollider(this);
-            }
-        }
 
         public void DoSnapAction(CodeBlock myCodeBlock, CodeBlock collidedCodeBlock) {
             Transform parentTransform = transform.parent;
@@ -113,6 +101,25 @@ namespace MoveToCode {
                 }
             }
             return false;
+        }
+
+
+        private void OnEnable() {
+            meshRend.enabled = true;
+            CodeBlockManager.instance.RegisterSnapCollider(this);
+        }
+
+        private void OnDisable() {
+            meshRend.enabled = false;
+            if (CodeBlockManager.instance != null && CodeBlockManager.instance.isActiveAndEnabled) {
+                CodeBlockManager.instance.DeregisterSnapCollider(this);
+            }
+        }
+
+        private void OnDestroy() {
+            if (CodeBlockManager.instance != null && CodeBlockManager.instance.isActiveAndEnabled) {
+                CodeBlockManager.instance.DeregisterSnapCollider(this);
+            }
         }
     }
 }

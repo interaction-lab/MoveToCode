@@ -9,7 +9,7 @@
         }
 
         public override string GetConditionalSymbol() {
-            return "!=";
+            return "NOT = TO";
         }
 
     }

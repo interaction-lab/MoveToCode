@@ -79,5 +79,22 @@ namespace MoveToCode {
             return go.name;
         }
 
+        public static CodeBlock GetDestructableCodeBlockObject(this GameObject go) {
+            CodeBlock result = null;
+            CodeBlockObjectMesh cbom = go.GetComponentInParent<CodeBlockObjectMesh>();
+            if (cbom != null) {
+                result = cbom.GetMyCodeBlock();
+            }
+            SnapCollider sc = go.GetComponent<SnapCollider>();
+            if (sc != null) {
+                result = sc.GetMyCodeBlock();
+            }
+            // StartCodeBlock is indestructible
+            if (result == StartCodeBlock.instance) {
+                result = null;
+            }
+            return result;
+        }
+
     }
 }

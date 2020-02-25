@@ -24,8 +24,11 @@ namespace MoveToCode {
             AudioSource aos = go.GetComponent<AudioSource>();
             if (aos == null) {
                 aos = go.AddComponent<AudioSource>();
+                aos.spatialize = true;
+                aos.spatialBlend = 1.0f;
             }
-            StartCoroutine(PlayNextFrame(aos, ac));
+            aos.PlayOneShot(ac, 0.5f);
+            //StartCoroutine(PlayNextFrame(aos, ac));
         }
 
         IEnumerator PlayNextFrame(AudioSource aos, AudioClip ac) {

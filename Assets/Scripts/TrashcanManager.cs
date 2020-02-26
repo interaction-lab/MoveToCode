@@ -40,6 +40,7 @@ namespace MoveToCode {
 
         private void CheckIfStillInCollision(ManipulationEventData arg0) {
             if (currentlyColliding) {
+                AudioManager.instance.PlaySoundAtObject(gameObject, AudioManager.poofAudioClip);
                 StartCoroutine(Shake());
                 particleSystemDummyObject.GetComponent<ParticleSystem>().Play();
                 codeBlockInCollision.GetComponent<ManipulationHandler>().OnManipulationEnded.RemoveListener(CheckIfStillInCollision);

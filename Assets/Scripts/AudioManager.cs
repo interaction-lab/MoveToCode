@@ -5,6 +5,8 @@ namespace MoveToCode {
     public class AudioManager : Singleton<AudioManager> {
         public static AudioClip correctAudioClip, incorrectAudioClip, poofAudioClip, popAudioClip, snapAudioClip, spwanAudioClip;
 
+        static string audioLogCol = "AudioPlayed";
+
         void Awake() {
             correctAudioClip = Resources.Load<AudioClip>(ResourcePathConstants.CorrectSound);
             incorrectAudioClip = Resources.Load<AudioClip>(ResourcePathConstants.IncorrectSound);
@@ -12,6 +14,7 @@ namespace MoveToCode {
             popAudioClip = Resources.Load<AudioClip>(ResourcePathConstants.PopSound);
             snapAudioClip = Resources.Load<AudioClip>(ResourcePathConstants.SnapSound);
             spwanAudioClip = Resources.Load<AudioClip>(ResourcePathConstants.SpawnSound);
+            LoggingManager.instance.AddLogColumn(audioLogCol, "");
         }
 
         public void PlaySoundAtObject(Transform tran, AudioClip ac) {
@@ -26,12 +29,7 @@ namespace MoveToCode {
                 aos.spatialBlend = 1.0f;
             }
             aos.PlayOneShot(ac, 0.5f);
-            //StartCoroutine(PlayNextFrame(aos, ac));
-        }
-
-        IEnumerator PlayNextFrame(AudioSource aos, AudioClip ac) {
-            yield return new WaitForEndOfFrame();
-            aos.PlayOneShot(ac, 1.0f);
+            LoggingManager.instance.UpdateLogColumn(audioLogCol, ac.name);
         }
     }
 }

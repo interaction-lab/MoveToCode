@@ -11,12 +11,12 @@ public class KeyboardTestingScript : MonoBehaviour {
             Interpreter.instance.RunNextInstruction();
         }
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
-
-            FindObjectOfType<KuriEmoteStringPublisher>().PubRandomPositive();
+            Debug.Log(Time.time);
+            //FindObjectOfType<KuriEmoteStringPublisher>().PubRandomPositive();
         }
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
 
-            FindObjectOfType<KuriEmoteStringPublisher>().PubRandomNegative();
+            //FindObjectOfType<KuriEmoteStringPublisher>().PubRandomNegative();
         }
 
     }

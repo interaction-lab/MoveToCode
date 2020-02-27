@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace MoveToCode {
     public class TrashcanManager : Singleton<TrashcanManager> {
+        static string trashcanCol = "deletedObj";
         public AnimationCurve animCurve;
         public Vector3 shakeMagnitude;
         MeshOutline meshOutline;
@@ -15,6 +16,7 @@ namespace MoveToCode {
         void Awake() {
             meshOutline = GetComponent<MeshOutline>();
             particleSystemDummyObject = transform.GetChild(0).gameObject;
+            LoggingManager.instance.AddLogColumn(trashcanCol, "");
         }
 
         void OnTriggerEnter(Collider other) {
@@ -40,6 +42,7 @@ namespace MoveToCode {
         private void CheckIfStillInCollision(ManipulationEventData arg0) {
             if (currentlyColliding) {
                 AudioManager.instance.PlaySoundAtObject(gameObject, AudioManager.poofAudioClip);
+                LoggingManager.instance.UpdateLogColumn(trashcanCol, codeBlockInCollision.name);
                 StartCoroutine(Shake());
                 particleSystemDummyObject.GetComponent<ParticleSystem>().Play();
                 codeBlockInCollision.GetComponent<ManipulationHandler>().OnManipulationEnded.RemoveListener(CheckIfStillInCollision);

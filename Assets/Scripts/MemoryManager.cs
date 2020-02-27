@@ -9,6 +9,7 @@ namespace MoveToCode {
 
         Dictionary<string, VariableBlockCollection> variables;
         Dictionary<string, IDataType> variableSaveState;
+        float scaleForSetting = 0.1f;
 
         private void Awake() {
             GetVariables();
@@ -30,6 +31,10 @@ namespace MoveToCode {
 
         public List<string> GetVariableNames() {
             return new List<string>(GetVariables().Keys);
+        }
+
+        public int GetNumVariables() {
+            return GetVariableNames().Count;
         }
 
         public Dictionary<string, IDataType> GetVariableSaveState() {
@@ -74,14 +79,10 @@ namespace MoveToCode {
             go.GetComponent<VariableBlockCollection>().SetVariableName(varName);
             go.GetComponent<VariableBlockCollection>().SetVariableValue(dIn);
 
-            go.transform.SetParent(GetCanvas().transform);
-            go.transform.localScale = Vector3.one;
+            go.transform.SnapToParent(GetCanvas().transform, Vector3.down * GetNumVariables() * scaleForSetting);
 
             GetVariables()[varName] = go.GetComponent<VariableBlockCollection>();
         }
-
-
-
 
     }
 }

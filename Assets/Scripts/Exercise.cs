@@ -39,5 +39,10 @@ namespace MoveToCode {
                     new IntDataType(null, values[i]));
             }
         }
+
+        internal void CleanUp() {
+            UnsnapAllBlockFromBlockManager();
+            MemoryManager.instance.RemoveAllVariables();
+        }
     }
 }

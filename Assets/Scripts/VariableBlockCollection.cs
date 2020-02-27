@@ -4,14 +4,14 @@ using UnityEngine;
 
 namespace MoveToCode {
     public class VariableBlockCollection : MonoBehaviour {
-        TextMeshProUGUI textMesh;
+        TextMeshPro textMesh;
         HashSet<VariableCodeBlock> variableCodeBlockSet;
         IDataType myData;
         string variableName;
 
         private void Awake() {
             variableCodeBlockSet = new HashSet<VariableCodeBlock>();
-            textMesh = GetComponentInChildren<TextMeshProUGUI>();
+            textMesh = transform.GetChild(3).GetComponentInChildren<TextMeshPro>();
             UpdateText();
         }
 
@@ -31,7 +31,7 @@ namespace MoveToCode {
         public void CreateNewVariableBlock() {
             GameObject go = Instantiate(Resources.Load<GameObject>(ResourcePathConstants.VariableCodeBlockPrefab), CodeBlockManager.instance.transform) as GameObject;
             go.GetComponent<VariableCodeBlock>().SetParentBlockCollection(this);
-            go.transform.position = transform.position + Vector3.back;
+            go.transform.position = transform.position + Vector3.back * 0.05f;
         }
 
         public void AddCodeBlock(VariableCodeBlock cbIn) {

@@ -41,5 +41,9 @@ namespace MoveToCode {
         public override void SetUpArgDescriptionList() {
             argDescriptionList = new List<string> { "NextInstruction", "Variable to be changed", "New variable value" };
         }
+
+        public override string DescriptiveInstructionToString() {
+            return string.Join("", "Set ", GetArgumentAt(1)?.DescriptiveInstructionToString(), " to ", GetArgumentAt(2)?.DescriptiveInstructionToString());
+        }
     }
 }

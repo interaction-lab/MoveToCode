@@ -36,5 +36,9 @@ namespace MoveToCode {
         public override void SetUpArgDescriptionList() {
             argDescriptionList = new List<string> { "Left side of condtional", "Right Side of Conditional" };
         }
+
+        public override string DescriptiveInstructionToString() {
+            return string.Join("", GetArgumentAt(0)?.DescriptiveInstructionToString(), " ", GetConditionalSymbol(), " ", GetArgumentAt(1)?.DescriptiveInstructionToString());
+        }
     }
 }

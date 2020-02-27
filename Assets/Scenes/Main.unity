@@ -266,7 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daeb46a6e7ffe2342a0bc78f9a59cd44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  logData: 1
+  logData: 0
 --- !u!4 &39108126
 Transform:
   m_ObjectHideFlags: 0
@@ -1094,7 +1094,7 @@ Transform:
   - {fileID: 1049456438}
   - {fileID: 1908096063}
   m_Father: {fileID: 1706335398}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &351704811
 MonoBehaviour:
@@ -2271,7 +2271,7 @@ Transform:
   - {fileID: 1232676582}
   - {fileID: 1218171651}
   m_Father: {fileID: 1706335398}
-  m_RootOrder: 6
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &923277384
 MonoBehaviour:
@@ -2404,7 +2404,7 @@ Transform:
   - {fileID: 1533209695}
   - {fileID: 2060749122}
   m_Father: {fileID: 1706335398}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &958217973
 MonoBehaviour:
@@ -3129,7 +3129,7 @@ Transform:
   - {fileID: 1388898069}
   - {fileID: 1940850077}
   m_Father: {fileID: 1706335398}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1180737057
 MonoBehaviour:
@@ -3708,7 +3708,7 @@ Transform:
   - {fileID: 1481392566}
   - {fileID: 1987313734}
   m_Father: {fileID: 1706335398}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1263160917
 MonoBehaviour:
@@ -4707,12 +4707,12 @@ Transform:
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children:
   - {fileID: 270212278}
+  - {fileID: 923277383}
   - {fileID: 1180737056}
   - {fileID: 958217972}
   - {fileID: 1875823385}
   - {fileID: 1263160916}
   - {fileID: 351704810}
-  - {fileID: 923277383}
   m_Father: {fileID: 223377336}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4728,7 +4728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8030b9b811f614ab913f06f611c181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curExercisePos: 5
+  curExercisePos: 0
 --- !u!4 &1710312768 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3828739441442808839, guid: 9d4fb95003569de428fba011a79f6f10,
@@ -5134,7 +5134,7 @@ Transform:
   - {fileID: 929097634}
   - {fileID: 165175328}
   m_Father: {fileID: 1706335398}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1875823386
 MonoBehaviour:

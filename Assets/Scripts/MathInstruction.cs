@@ -38,5 +38,9 @@ namespace MoveToCode {
         public override void SetUpArgDescriptionList() {
             argDescriptionList = new List<string> { "Left number", "Right Number" };
         }
+
+        public override string DescriptiveInstructionToString() {
+            return string.Join("", GetArgumentAt(0)?.DescriptiveInstructionToString(), " ", GetMathSymbol(), " ", GetArgumentAt(1)?.DescriptiveInstructionToString());
+        }
     }
 }

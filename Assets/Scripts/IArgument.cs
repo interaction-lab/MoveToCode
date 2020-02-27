@@ -5,6 +5,7 @@
         public abstract IDataType EvaluateArgument();
         public virtual void ResestInternalState() { }
         public abstract int GetNumArguments();
+        public abstract string DescriptiveInstructionToString();
 
         public CodeBlock GetCodeBlock() {
             return myCodeBlock;
@@ -14,6 +15,5 @@
             myCodeBlock = cbIn;
             ResestInternalState();
         }
-
     }
 }

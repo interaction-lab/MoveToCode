@@ -17,5 +17,9 @@
         public override string ToString() {
             return "If/Else: ";
         }
+
+        public override string DescriptiveInstructionToString() {
+            return ToString(); // TODO fix one day
+        }
     }
 }

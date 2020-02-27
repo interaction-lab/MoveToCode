@@ -36,5 +36,9 @@ namespace MoveToCode {
         public T ConvertObject<T>(object input) {
             return (T)Convert.ChangeType(input, typeof(T));
         }
+
+        public override string DescriptiveInstructionToString() {
+            return ToString();
+        }
     }
 }

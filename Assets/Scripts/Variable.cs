@@ -29,7 +29,7 @@ namespace MoveToCode {
         }
 
         public override string ToString() {
-            return myVariableCodeBlock.GetVariableNameFromBlockCollection();
+            return string.Join("", myVariableCodeBlock.GetVariableNameFromBlockCollection(), " : ", myVariableCodeBlock.GetVariableDataFromBlockCollection().DescriptiveInstructionToString());
         }
 
         public override Type GetCastType() {

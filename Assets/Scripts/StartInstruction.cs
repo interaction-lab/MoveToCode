@@ -35,5 +35,9 @@ namespace MoveToCode {
         public override void SetUpArgDescriptionList() {
             argDescriptionList = new List<string> { "NextInstruction" };
         }
+
+        public override string DescriptiveInstructionToString() {
+            return ToString();
+        }
     }
 }

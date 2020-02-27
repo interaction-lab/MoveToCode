@@ -39,5 +39,9 @@ namespace MoveToCode {
         public override void SetUpArgDescriptionList() {
             argDescriptionList = new List<string> { "NextInstruction", "Thing that is printed" };
         }
+
+        public override string DescriptiveInstructionToString() {
+            return string.Join("", ToString(), GetArgumentAt(1)?.DescriptiveInstructionToString());
+        }
     }
 }

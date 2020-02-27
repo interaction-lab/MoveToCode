@@ -40,7 +40,7 @@ namespace MoveToCode {
                     MemoryManager.instance.SaveMemoryState();
                 }
                 try {
-                    LoggingManager.instance.UpdateLogColumn(instructionRunCol, curInstruction?.ToString());
+                    LoggingManager.instance.UpdateLogColumn(instructionRunCol, curInstruction?.DescriptiveInstructionToString());
                     lastInstructionReturn = curInstruction.RunInstruction();
                     UpdateCurInstruction();
                 }

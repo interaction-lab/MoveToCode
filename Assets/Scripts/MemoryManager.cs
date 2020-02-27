@@ -9,10 +9,12 @@ namespace MoveToCode {
 
         Dictionary<string, VariableBlockCollection> variables;
         Dictionary<string, IDataType> variableSaveState;
+        Transform memoryHeader;
         float scaleForSetting = 0.1f;
 
         private void Awake() {
             GetVariables();
+            memoryHeader = GetCanvas().transform.GetChild(0);
         }
 
         public Canvas GetCanvas() {
@@ -67,6 +69,9 @@ namespace MoveToCode {
         public void RemoveVariable(string name) {
             Destroy(GetVariables()[name].gameObject);
             GetVariables().Remove(name); // TODO: get this to also remove all block collections?
+            if (GetNumVariables() == 0) {
+                memoryHeader.gameObject.SetActive(false);
+            }
         }
 
         public void RemoveAllVariables() {
@@ -86,6 +91,9 @@ namespace MoveToCode {
             go.transform.SnapToParent(GetCanvas().transform, Vector3.down * GetNumVariables() * scaleForSetting);
 
             GetVariables()[varName] = go.GetComponent<VariableBlockCollection>();
+            if (!memoryHeader.gameObject.activeSelf) {
+                memoryHeader.gameObject.SetActive(true);
+            }
         }
 
     }

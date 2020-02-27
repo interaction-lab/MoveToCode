@@ -56,7 +56,17 @@ namespace MoveToCode {
         }
 
         public void RemoveVariable(string name) {
+            Destroy(GetVariables()[name].gameObject);
             GetVariables().Remove(name); // TODO: get this to also remove all block collections?
+        }
+
+        public void RemoveAllVariables() {
+            if (GetVariableSaveState().Empty()) {
+                return;
+            }
+            foreach (string varName in GetVariableNames()) {
+                RemoveVariable(varName);
+            }
         }
 
         public void AddNewVariableCodeBlock(string varName, IDataType dIn = null) {
@@ -70,10 +80,8 @@ namespace MoveToCode {
             GetVariables()[varName] = go.GetComponent<VariableBlockCollection>();
         }
 
-        // TODO: Make this much better
-        public void SpawnVariableCB() {
-            AddNewVariableCodeBlock("potato", new IntDataType(null, 4));
-        }
+
+
 
     }
 }

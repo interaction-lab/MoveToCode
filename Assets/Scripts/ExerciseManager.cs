@@ -55,6 +55,7 @@ namespace MoveToCode {
         private void CycleNewExercise() {
             lastExerciseCompleted = false;
             curExercise.UnsnapAllBlockFromBlockManager();
+            MemoryManager.instance.RemoveAllVariables();
             ToggleCurrentExercise(false);
             curExercisePos += 1;
             if (curExercisePos == exerciseList.Count) {

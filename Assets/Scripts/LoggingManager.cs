@@ -94,9 +94,8 @@ namespace MoveToCode {
         }
 
         private void FixedUpdate() {
-            WriteRowToCSV(); // Wirte a row each fixed update
+            WriteRowToCSV();
         }
-
 
         public void FinishLogging(bool hasQuit = false) {
             if (!logData) {

@@ -1,16 +1,22 @@
 ﻿using System;
 using UnityEngine;
-
+using UnityEngine.Assertions;
 
 namespace MoveToCode {
     public class Exercise : MonoBehaviour {
         public string consoleStringGoal;
         public string[] varNames;
         public int[] values;
+        public int[] finalVariableGoalValues;
 
 
         public bool IsExerciseCorrect() {
-            return ConsoleManager.instance.GetCleanedMainText() == consoleStringGoal;
+            bool result = true;
+            for (int i = 0; i < varNames.Length; ++i) {
+                result &= ((int)MemoryManager.instance.GetVariableValue(varNames[i]).GetValue()) == finalVariableGoalValues[i];
+            }
+            result &= ConsoleManager.instance.GetCleanedMainText() == consoleStringGoal;
+            return result;
         }
 
         private void SnapAllBlocksToBlockManager() {
@@ -29,6 +35,7 @@ namespace MoveToCode {
         }
 
         private void OnEnable() {
+            Assert.IsTrue(varNames.Length == values.Length && values.Length == finalVariableGoalValues.Length);
             SnapAllBlocksToBlockManager();
             AddAllVariables();
         }

@@ -925,6 +925,7 @@ MonoBehaviour:
   consoleStringGoal: '"Hello World"'
   varNames: []
   values: 
+  finalVariableGoalValues: 
 --- !u!1 &351704809
 GameObject:
   m_ObjectHideFlags: 0
@@ -976,6 +977,7 @@ MonoBehaviour:
   consoleStringGoal: True
   varNames: []
   values: 
+  finalVariableGoalValues: 
 --- !u!4 &434768644 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 257811355727027398, guid: c05362a0194eef748b0f801c2e5c77a9,
@@ -2151,8 +2153,8 @@ MonoBehaviour:
   consoleStringGoal: 5
   varNames:
   - Var1
-  - Var2
-  values: f9fffffff7ffffff
+  values: f9ffffff
+  finalVariableGoalValues: 
 --- !u!1001 &929097633
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2284,6 +2286,7 @@ MonoBehaviour:
   consoleStringGoal: 11
   varNames: []
   values: 
+  finalVariableGoalValues: 
 --- !u!1001 &1024577215
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3008,6 +3011,7 @@ MonoBehaviour:
   consoleStringGoal: 1
   varNames: []
   values: 
+  finalVariableGoalValues: 
 --- !u!1 &1216611657
 GameObject:
   m_ObjectHideFlags: 0
@@ -3586,6 +3590,7 @@ MonoBehaviour:
   consoleStringGoal: True
   varNames: []
   values: 
+  finalVariableGoalValues: 
 --- !u!1001 &1279726262
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4856,6 +4861,7 @@ MonoBehaviour:
   consoleStringGoal: 2
   varNames: []
   values: 
+  finalVariableGoalValues: 
 --- !u!1 &1886654699
 GameObject:
   m_ObjectHideFlags: 0

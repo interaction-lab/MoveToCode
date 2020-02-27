@@ -33,6 +33,10 @@ namespace MoveToCode {
             return new List<string>(GetVariables().Keys);
         }
 
+        public IDataType GetVariableValue(string name) {
+            return GetVariables()[name].GetVariableValueFromBlockCollection();
+        }
+
         public int GetNumVariables() {
             return GetVariableNames().Count;
         }

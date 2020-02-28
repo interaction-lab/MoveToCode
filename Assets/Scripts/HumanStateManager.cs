@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace MoveToCode {
     public class HumanStateManager : Singleton<HumanStateManager> {
-        public float time_window;
+        public float timeWindow;
         float curiosity_t, movement_t, curiosity_max = 0.01f, movement_max = 0.01f;
         Queue<float> infoSeekingActionQueue;
         Queue<Vector3> headposeQueue;
@@ -31,7 +31,7 @@ namespace MoveToCode {
         }
 
         public int GetTimeQueueSizeNormalized() {
-            return (int)(time_window / Time.deltaTime);
+            return (int)(timeWindow / Time.deltaTime);
         }
 
         public void UpdateKC() { // LoggingManager calls update, might need better way

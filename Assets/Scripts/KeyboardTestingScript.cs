@@ -12,7 +12,7 @@ public class KeyboardTestingScript : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
             Debug.Log(Time.time);
-            //FindObjectOfType<KuriEmoteStringPublisher>().PubRandomPositive();
+            HumanStateManager.instance.DebugLogData();
         }
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
 

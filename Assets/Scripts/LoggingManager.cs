@@ -79,6 +79,10 @@ namespace MoveToCode {
             Assert.AreEqual(columnLookup.Keys.Count, row.Count);
         }
 
+        public string GetValueInRowAt(string key) {
+            return row[columnLookup[key]];
+        }
+
         void ResetRow() {
             for (int i = 0; i < row.Count; ++i) {
                 row[i] = "";
@@ -90,6 +94,7 @@ namespace MoveToCode {
                 return;
             }
             streamWriter.WriteLine(string.Join(",", Time.time.ToString(), string.Join(",", row)));
+            HumanStateManager.instance.UpdateKC();
             ResetRow();
         }
 

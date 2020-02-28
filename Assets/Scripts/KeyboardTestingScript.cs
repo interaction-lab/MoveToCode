@@ -11,8 +11,7 @@ public class KeyboardTestingScript : MonoBehaviour {
             Interpreter.instance.RunNextInstruction();
         }
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
-            Debug.Log(Time.time);
-            HumanStateManager.instance.DebugLogData();
+            MenuManager.instance.FakePressPlay();
         }
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
 

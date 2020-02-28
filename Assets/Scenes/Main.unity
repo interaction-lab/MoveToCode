@@ -266,7 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daeb46a6e7ffe2342a0bc78f9a59cd44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  logData: 1
+  logData: 0
 --- !u!4 &39108126
 Transform:
   m_ObjectHideFlags: 0
@@ -1022,6 +1022,8 @@ GameObject:
   m_Component:
   - component: {fileID: 270212278}
   - component: {fileID: 270212279}
+  - component: {fileID: 270212281}
+  - component: {fileID: 270212280}
   m_Layer: 0
   m_Name: ExerciseHelloWorld
   m_TagString: Untagged
@@ -1059,8 +1061,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   consoleStringGoal: '"Hello World"'
   varNames: []
-  values: 
+  initialVariableValues: 
   finalVariableGoalValues: 
+--- !u!114 &270212280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270212277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e1817c09946ba948a29f0638289cd51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snapFrom: []
+  snapTo: []
+  withAction: 
+--- !u!114 &270212281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270212277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2451476dcf3c74f814a1e40a4b82ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &351704809
 GameObject:
   m_ObjectHideFlags: 0
@@ -1111,7 +1140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   consoleStringGoal: True
   varNames: []
-  values: 
+  initialVariableValues: 
   finalVariableGoalValues: 
 --- !u!4 &434768644 stripped
 Transform:
@@ -1832,6 +1861,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 584438853}
+  - {fileID: 741588996}
   m_Father: {fileID: 223377336}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1847,7 +1877,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d76eccb850124f644baa3d949508d147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  robotKC: 0.5
+  robotKC: 0.1
 --- !u!4 &671810406 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5335814774712488528, guid: dddf9b2e6c0fcd546b30a826b21b6e2b,
@@ -1898,6 +1928,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeWindow: 10
+--- !u!1 &741588995
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 741588996}
+  m_Layer: 0
+  m_Name: KuriCurPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &741588996
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741588995}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 648124168}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &778971552
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2158,6 +2218,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e86e60bfecc65240a2537a19c5a4a52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MRTKButtonPress: {fileID: 8300000, guid: 40ae713ddf420714bbc1a3b5c3f2eac1, type: 3}
+  MRTKButtonUnpress: {fileID: 8300000, guid: 40ae713ddf420714bbc1a3b5c3f2eac1, type: 3}
 --- !u!1 &912476375
 GameObject:
   m_ObjectHideFlags: 0
@@ -2250,7 +2312,7 @@ MonoBehaviour:
   consoleStringGoal: 5
   varNames:
   - Var1
-  values: f9ffffff
+  initialVariableValues: 
   finalVariableGoalValues: 05000000
 --- !u!1001 &929097633
 PrefabInstance:
@@ -2382,7 +2444,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   consoleStringGoal: 11
   varNames: []
-  values: 
+  initialVariableValues: 
   finalVariableGoalValues: 
 --- !u!1001 &1024577215
 PrefabInstance:
@@ -3107,7 +3169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   consoleStringGoal: 1
   varNames: []
-  values: 
+  initialVariableValues: 
   finalVariableGoalValues: 
 --- !u!1 &1216611657
 GameObject:
@@ -3118,6 +3180,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1216611658}
+  - component: {fileID: 1216611659}
   m_Layer: 0
   m_Name: MenuManager
   m_TagString: Untagged
@@ -3141,6 +3204,18 @@ Transform:
   m_Father: {fileID: 223377336}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1216611659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1216611657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d92c85a4cf14d474fb266c34eded3b9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1218171650
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3557,7 +3632,7 @@ GameObject:
   - component: {fileID: 1256886805}
   - component: {fileID: 1256886804}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: GrabbablePanelBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3685,7 +3760,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   consoleStringGoal: True
   varNames: []
-  values: 
+  initialVariableValues: 
   finalVariableGoalValues: 
 --- !u!1001 &1279726262
 PrefabInstance:
@@ -4401,8 +4476,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1504993765}
   - component: {fileID: 1504993766}
-  - component: {fileID: 1504993770}
   - component: {fileID: 1504993767}
+  - component: {fileID: 1504993770}
   - component: {fileID: 1504993769}
   m_Layer: 0
   m_Name: ROS
@@ -4461,14 +4536,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1504993764}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6cd27ba95adab14d85c327244d65eb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Topic: /laser_amcl_basic_pose
-  TimeStep: 0.1
-  PublishedTransform: {fileID: 0}
+  TimeStep: 0.5
+  PublishedTransform: {fileID: 741588996}
 --- !u!114 &1504993770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5552,7 +5627,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   consoleStringGoal: 2
   varNames: []
-  values: 
+  initialVariableValues: 
   finalVariableGoalValues: 
 --- !u!1 &1886654699
 GameObject:

@@ -18,6 +18,7 @@ namespace MoveToCode {
         public static string MaterialFolder = "Materials/";
         public static string OutlineSnapColliderMaterial = MaterialFolder + "OutlineSnapCollider";
         public static string OutlineCodeBlockMaterial = MaterialFolder + "OutlineCodeBlock";
+        public static string FakeButtonPressParticleMaterial = MaterialFolder + "FakeButtonPressParticle";
 
         // Audio
         public static string AudioFolder = "Audio/";

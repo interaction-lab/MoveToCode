@@ -9,14 +9,16 @@ namespace MoveToCode {
         static string rISACol = "robotISA";
 
         KuriEmoteStringPublisher kuriEmoteStringPublisher;
+        PoseStampedPublisher poseStampPublisher;
         float timeSinceLastAction, timeWindow;
 
-        Transform kuriPoseTransform;
+        Transform kuriGoalPoseTransform, kuriCurPoseTransform;
 
         private void Awake() {
             timeWindow = HumanStateManager.instance.timeWindow;
             timeSinceLastAction = 0;
             kuriEmoteStringPublisher = FindObjectOfType<KuriEmoteStringPublisher>();
+            poseStampPublisher = FindObjectOfType<PoseStampedPublisher>();
             LoggingManager.instance.AddLogColumn(rISACol, "");
         }
 
@@ -25,11 +27,18 @@ namespace MoveToCode {
             timeSinceLastAction += Time.deltaTime;
         }
 
-        public Transform GetKuriPoseTransform() {
-            if (kuriPoseTransform == null) {
-                kuriPoseTransform = transform.GetChild(0);
+        public Transform GetKuriGoalPoseTransform() {
+            if (kuriGoalPoseTransform == null) {
+                kuriGoalPoseTransform = transform.GetChild(0);
             }
-            return kuriPoseTransform;
+            return kuriGoalPoseTransform;
+        }
+
+        public Transform GetKuriCurPoseTransform() {
+            if (kuriCurPoseTransform == null) {
+                kuriCurPoseTransform = transform.GetChild(1);
+            }
+            return kuriCurPoseTransform;
         }
 
         public void AlertActionMade() {
@@ -62,16 +71,19 @@ namespace MoveToCode {
 
         public void SayAndDoPositiveAffect() {
             Debug.Log("Positive affect");
+            poseStampPublisher?.PubTurnTowardUser();
             kuriEmoteStringPublisher?.PubRandomPositive();
             AlertActionMade();
         }
 
         public void SayExerciseGoal(Exercise ex) {
+            poseStampPublisher?.PubTurnTowardUser();
             Debug.Log("Say " + ex.ToString());
             AlertActionMade();
         }
 
         public void DoVirtualTaskAssistAndScafflding(Exercise ex) {
+            poseStampPublisher?.PubTurnTowardUser();
             Debug.Log("Virtual task assist and scaffold " + ex.ToString());
             AlertActionMade();
         }

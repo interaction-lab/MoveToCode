@@ -6,9 +6,8 @@ namespace MoveToCode {
     public class Exercise : MonoBehaviour {
         public string consoleStringGoal;
         public string[] varNames;
-        public int[] values;
+        public int[] initialVariableValues;
         public int[] finalVariableGoalValues;
-
 
         public bool IsExerciseCorrect() {
             bool result = true;
@@ -35,7 +34,7 @@ namespace MoveToCode {
         }
 
         private void OnEnable() {
-            Assert.IsTrue(varNames.Length == values.Length && values.Length == finalVariableGoalValues.Length);
+            Assert.IsTrue(varNames.Length == initialVariableValues.Length && initialVariableValues.Length == finalVariableGoalValues.Length);
             SnapAllBlocksToBlockManager();
             AddAllVariables();
         }
@@ -43,7 +42,7 @@ namespace MoveToCode {
         private void AddAllVariables() {
             for (int i = 0; i < varNames.Length; ++i) {
                 MemoryManager.instance.AddNewVariableCodeBlock(varNames[i],
-                    new IntDataType(null, values[i]));
+                    new IntDataType(null, initialVariableValues[i]));
             }
         }
 

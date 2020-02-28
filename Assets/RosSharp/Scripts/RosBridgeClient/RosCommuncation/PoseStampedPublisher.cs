@@ -62,6 +62,12 @@ namespace RosSharp.RosBridgeClient {
             PublishMessage();
         }
 
+        public void TurnTowardUser() {
+            Quaternion rotationGoal = Quaternion.LookRotation(Camera.main.transform.forward);
+            Vector3 curPos = KuriManager.instance.GetKuriPoseTransform().position;
+            PublishPosition(curPos, rotationGoal);
+        }
+
 
         private Messages.Geometry.Point GetGeometryPoint(Vector3 position) {
             Messages.Geometry.Point geometryPoint = new Messages.Geometry.Point();

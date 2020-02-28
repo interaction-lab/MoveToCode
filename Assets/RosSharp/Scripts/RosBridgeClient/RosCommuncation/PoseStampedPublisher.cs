@@ -13,6 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using MoveToCode;
 using UnityEngine;
 
 namespace RosSharp.RosBridgeClient {
@@ -22,11 +23,14 @@ namespace RosSharp.RosBridgeClient {
         public string FrameId = "map";
         public Transform trans;
 
+        static string poseGoalCol = "poseGoalSent";
+
         private Messages.Geometry.PoseStamped message;
 
         protected override void Start() {
             base.Start();
             InitializeMessage();
+            LoggingManager.instance.AddLogColumn(poseGoalCol, "");
         }
 
 
@@ -44,7 +48,8 @@ namespace RosSharp.RosBridgeClient {
             message.pose.orientation = GetGeometryQuaternion(trans.rotation.Unity2Ros());
 
             Publish(message);
-            Debug.Log(message);
+            LoggingManager.instance.UpdateLogColumn(poseGoalCol,
+                string.Join(";", trans.position.ToString("F3"), trans.rotation.ToString("F3")));
         }
 
         public void PublishPosition() {

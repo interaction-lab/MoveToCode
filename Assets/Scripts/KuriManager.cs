@@ -9,14 +9,11 @@ namespace MoveToCode {
         static string rISACol = "robotISA";
 
         KuriEmoteStringPublisher kuriEmoteStringPublisher;
-        bool doingAction, moveAroundNext;
         float timeSinceLastAction, timeWindow;
 
         private void Awake() {
             timeWindow = HumanStateManager.instance.timeWindow;
             timeSinceLastAction = 0;
-            doingAction = false;
-            moveAroundNext = true;
             kuriEmoteStringPublisher = FindObjectOfType<KuriEmoteStringPublisher>();
             LoggingManager.instance.AddLogColumn(rISACol, "");
         }
@@ -36,13 +33,8 @@ namespace MoveToCode {
             }
             float kctS = HumanStateManager.instance.GetKCt();
             if (kctS < robotKC) {
-                if (moveAroundNext) {
-                    TakeMovementAction();
-                }
-                else {
-                    TakeISAAction();
-                }
-                moveAroundNext = !moveAroundNext;
+                TakeMovementAction();
+                TakeISAAction();
             }
             else {
                 kuriEmoteStringPublisher?.PubRandomPositive();

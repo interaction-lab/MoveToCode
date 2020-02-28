@@ -16,6 +16,7 @@ namespace MoveToCode {
                 curTime += Time.deltaTime;
             }
         }
+
         public void LookAtUser() {
             StartCoroutine(Turn());
         }

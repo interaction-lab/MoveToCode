@@ -80,13 +80,13 @@ namespace MoveToCode {
 
         public void SayExerciseGoal() {
             poseStampPublisher?.PubTurnTowardUser();
-            Debug.Log("Say ");
+            KuriTextManager.instance.Addline(ExerciseManager.instance.GetCurExercise().GetGoalString(), KuriTextManager.PRIORITY.high);
             AlertActionMade();
         }
 
-        public void DoVirtualTaskAssistAndScafflding() {
+        public void DoScaffoldingDialogue() {
             poseStampPublisher?.PubTurnTowardUser();
-            Debug.Log("Virtual task assist and scaffold ");
+            ExerciseManager.instance.GetCurExercise().GetComponent<ExerciseScaffolding>().SayNextScaffold();
             AlertActionMade();
         }
     }

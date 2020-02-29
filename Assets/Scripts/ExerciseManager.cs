@@ -43,7 +43,7 @@ namespace MoveToCode {
                     lastExerciseCompleted = true;
                 }
                 else {
-                    KuriManager.instance.DoVirtualTaskAssistAndScafflding();
+                    KuriManager.instance.DoScaffoldingDialogue();
                     LoggingManager.instance.UpdateLogColumn(exerciseSubmissionResultCol, "InCorrect");
                 }
 

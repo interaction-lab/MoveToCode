@@ -5,6 +5,7 @@ using UnityEngine.Assertions;
 namespace MoveToCode {
     public class Exercise : MonoBehaviour {
         public string consoleStringGoal;
+        public string kuriGoalString;
         public string[] varNames;
         public int[] initialVariableValues;
         public int[] finalVariableGoalValues;
@@ -49,6 +50,10 @@ namespace MoveToCode {
         internal void CleanUp() {
             UnsnapAllBlockFromBlockManager();
             MemoryManager.instance.RemoveAllVariables();
+        }
+
+        public string GetGoalString() {
+            return kuriGoalString;
         }
     }
 }

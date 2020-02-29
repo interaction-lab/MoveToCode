@@ -82,7 +82,10 @@ namespace MoveToCode {
 
         public void SayExerciseGoal() {
             poseStampPublisher?.PubTurnTowardUser();
-            KuriTextManager.instance.Addline(ExerciseManager.instance.GetCurExercise().GetGoalString(), KuriTextManager.PRIORITY.high);
+            KuriTextManager.instance.Addline(string.Join("",
+                "Goal: ",
+                ExerciseManager.instance.GetCurExercise().GetGoalString()),
+                KuriTextManager.PRIORITY.high);
             AlertActionMade();
         }
 

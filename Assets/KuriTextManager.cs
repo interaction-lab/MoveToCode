@@ -20,7 +20,7 @@ namespace MoveToCode {
             }
         }
 
-        public float textTypingTime = 0.05f;
+        float textTypingTime = 0.05f;
         static string textLogCol = "KuriDialogue";
         enum COMMANDS {
             add,

@@ -31,8 +31,7 @@ namespace MoveToCode {
             }
         }
 
-        public Exercise GetCurExercise()
-        {
+        public Exercise GetCurExercise() {
             return curExercise;
         }
 

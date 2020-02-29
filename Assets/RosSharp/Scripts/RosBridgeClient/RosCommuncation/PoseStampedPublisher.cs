@@ -60,6 +60,12 @@ namespace RosSharp.RosBridgeClient {
             desiredLinearPose = lin;
             desiredAngularPose = ang;
             PublishMessage();
+            LoggingManager.instance.UpdateLogColumn(poseGoalCol,
+               string.Join(";", trans.position.ToString("F3"), trans.rotation.ToString("F3")));
+        }
+
+        public void PublishPosition(Transform t) {
+            PublishPosition(t.position, t.rotation);
         }
 
         public void PubTurnTowardUser() {

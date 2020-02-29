@@ -61,13 +61,15 @@ namespace MoveToCode {
         }
 
         private void TakeISAAction() {
-            Debug.Log("ISA action taken");
-            string actionString = ExerciseManager.instance.GetCurExercise().GetComponent<ExerciseInformationSeekingActions>().DoISAAction() ;
+            string actionString = ExerciseManager.instance.GetCurExercise().GetComponent<ExerciseInformationSeekingActions>().DoISAAction();
             LoggingManager.instance.UpdateLogColumn(rISACol, actionString);
         }
 
         private void TakeMovementAction() {
             Debug.Log("Movement action taken");
+            kuriGoalPoseTransform.position = ExerciseInformationSeekingActions.goOfFocus.transform.position;
+            kuriGoalPoseTransform.rotation = Quaternion.LookRotation(ExerciseInformationSeekingActions.goOfFocus.transform.forward);
+            poseStampPublisher.PublishPosition(kuriGoalPoseTransform);
         }
 
         public void SayAndDoPositiveAffect() {

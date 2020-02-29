@@ -13,11 +13,13 @@ namespace MoveToCode {
             SNAPATTHREE
         }
         public SNAPACTIONS[] withAction;
-        
+
+        public static GameObject goOfFocus;
 
         public string DoISAAction() {
             // press play button
-            //MenuManager.instance.FakePressPlay();
+            MenuManager.instance.FakePressPlay();
+            goOfFocus = MenuManager.instance.GetPlayButton().gameObject;
             // snap action
             //SnapNextFromTo();
             // move start block action
@@ -29,44 +31,36 @@ namespace MoveToCode {
             return "";
         }
 
-        string SpawnVariable()
-        {
+        string SpawnVariable() {
             string[] varNames = GetComponent<Exercise>().varNames;
-            if(varNames.Length == 0)
-            {
+            if (varNames.Length == 0) {
                 return "";
             }
             string varToSpawn = varNames[Random.Range(0, varNames.Length)];
-            FakePressButton fpb =  MemoryManager.instance.GetVariables()[varToSpawn].GetComponent<FakePressButton>();
-            if(fpb == null)
-            {
+            FakePressButton fpb = MemoryManager.instance.GetVariables()[varToSpawn].GetComponent<FakePressButton>();
+            if (fpb == null) {
                 fpb = MemoryManager.instance.GetVariables()[varToSpawn].gameObject.AddComponent<FakePressButton>();
             }
             fpb.PressButton();
             return string.Join("", "Var Made ", varToSpawn);
         }
 
-        string SnapNextSnapISA()
-        {
+        string SnapNextSnapISA() {
             Assert.IsTrue(snapChild.Length == snapParent.Length && snapParent.Length == withAction.Length);
             int index = FindNextSnapIndex();
-            if (index == -1)
-            {
+            if (index == -1) {
                 return "";
             }
             return PerformFakeSnapAction(index);
         }
 
-        public int ConvertSnapActionToIntPos(SNAPACTIONS sa)
-        {
+        public int ConvertSnapActionToIntPos(SNAPACTIONS sa) {
             return (int)sa - 1;
         }
 
-        private string PerformFakeSnapAction(int actionIndex)
-        {
+        private string PerformFakeSnapAction(int actionIndex) {
             int snapArgIndex = ConvertSnapActionToIntPos(withAction[actionIndex]);
-            if (withAction[actionIndex] != SNAPACTIONS.REMOVE)
-            {
+            if (withAction[actionIndex] != SNAPACTIONS.REMOVE) {
                 snapParent[actionIndex].GetSnapColliders().GetSnapColliderAtPos(snapArgIndex).DoSnapAction(snapParent[actionIndex], snapChild[actionIndex], false);
                 return string.Join("",
                                 "Add ",
@@ -76,8 +70,7 @@ namespace MoveToCode {
                                 " at ",
                                 snapArgIndex.ToString());
             }
-            else
-            {
+            else {
                 int childIndex = GetChildArgPos(actionIndex);
                 snapParent[actionIndex].SetArgumentBlockAt(null, childIndex, false);
                 return string.Join("",
@@ -90,26 +83,19 @@ namespace MoveToCode {
             }
         }
 
-        private int GetChildArgPos(int index)
-        {
+        private int GetChildArgPos(int index) {
             return snapParent[index].GetPositionOfArgument(snapChild[index].GetMyInternalIArgument());
         }
 
-        private int FindNextSnapIndex()
-        {
-            for (int actionIndex = 0; actionIndex < snapChild.Length; ++actionIndex)
-            {
-                if (withAction[actionIndex] != SNAPACTIONS.REMOVE)
-                {
-                    if (GetChildArgPos(actionIndex) == -1)
-                    {
+        private int FindNextSnapIndex() {
+            for (int actionIndex = 0; actionIndex < snapChild.Length; ++actionIndex) {
+                if (withAction[actionIndex] != SNAPACTIONS.REMOVE) {
+                    if (GetChildArgPos(actionIndex) == -1) {
                         return actionIndex;
                     }
                 }
-                else
-                {
-                    if (GetChildArgPos(actionIndex) != -1)
-                    {
+                else {
+                    if (GetChildArgPos(actionIndex) != -1) {
                         return actionIndex;
                     }
                 }

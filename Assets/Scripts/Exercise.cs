@@ -37,6 +37,8 @@ namespace MoveToCode {
             Assert.IsTrue(varNames.Length == initialVariableValues.Length && initialVariableValues.Length == finalVariableGoalValues.Length);
             SnapAllBlocksToBlockManager();
             AddAllVariables();
+            KuriTextManager.instance.Clear(KuriTextManager.PRIORITY.high);
+            KuriManager.instance.SayExerciseGoal();
         }
 
         private void AddAllVariables() {

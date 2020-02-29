@@ -19,6 +19,8 @@ namespace MoveToCode {
             timeSinceLastAction = 0;
             kuriEmoteStringPublisher = FindObjectOfType<KuriEmoteStringPublisher>();
             poseStampPublisher = FindObjectOfType<PoseStampedPublisher>();
+            kuriGoalPoseTransform = transform.GetChild(0);
+            kuriCurPoseTransform = transform.GetChild(1);
             LoggingManager.instance.AddLogColumn(rISACol, "");
         }
 
@@ -51,8 +53,8 @@ namespace MoveToCode {
             }
             float kctS = HumanStateManager.instance.GetKCt();
             if (kctS < robotKC) {
-                TakeMovementAction();
                 TakeISAAction();
+                TakeMovementAction();
             }
             else {
                 kuriEmoteStringPublisher?.PubRandomPositive();
@@ -69,7 +71,7 @@ namespace MoveToCode {
             Debug.Log("Movement action taken");
             kuriGoalPoseTransform.position = ExerciseInformationSeekingActions.goOfFocus.transform.position;
             kuriGoalPoseTransform.rotation = Quaternion.LookRotation(ExerciseInformationSeekingActions.goOfFocus.transform.forward);
-            poseStampPublisher.PublishPosition(kuriGoalPoseTransform);
+            poseStampPublisher?.PublishPosition(kuriGoalPoseTransform);
         }
 
         public void SayAndDoPositiveAffect() {

@@ -1157,7 +1157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consoleStringGoal: '"Hello World"'
-  kuriGoalString: 
+  kuriGoalString: Print "Hello World"
   varNames: []
   initialVariableValues: 
   finalVariableGoalValues: 

@@ -36,7 +36,7 @@ namespace MoveToCode {
         Queue<TextCommand> highPriorityCommands;
         int curCommandNum, ticketCommandNum;
 
-        private void Start() {
+        void Setup() {
             commandQueue = new Queue<TextCommand>();
             highPriorityCommands = new Queue<TextCommand>();
             kuriTextMesh = transform.GetChild(0).GetComponentInChildren<TextMeshProUGUI>();
@@ -45,13 +45,27 @@ namespace MoveToCode {
             LoggingManager.instance.AddLogColumn(textLogCol, "");
         }
 
+        Queue<TextCommand> GetCommandQueue() {
+            if (commandQueue == null) {
+                Setup();
+            }
+            return commandQueue;
+        }
+
+        Queue<TextCommand> GetHighPriorityQueue() {
+            if (commandQueue == null) {
+                Setup();
+            }
+            return commandQueue;
+        }
+
         public void Addline(string lIn = "", PRIORITY pIn = PRIORITY.low) {
-            commandQueue.Enqueue(new TextCommand(COMMANDS.add, pIn, string.Join("", lIn, "\n")));
+            GetCommandQueue().Enqueue(new TextCommand(COMMANDS.add, pIn, string.Join("", lIn, "\n")));
             StartCoroutine(ProcessText(ticketCommandNum++));
         }
 
         public void Clear(PRIORITY pIn = PRIORITY.low) {
-            commandQueue.Enqueue(new TextCommand(COMMANDS.erase, pIn, ""));
+            GetCommandQueue().Enqueue(new TextCommand(COMMANDS.erase, pIn, ""));
             StartCoroutine(ProcessText(ticketCommandNum++));
         }
 

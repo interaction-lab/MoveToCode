@@ -6,7 +6,7 @@ namespace MoveToCode {
         int curScaffold = 0;
 
         public void SayNextScaffold() {
-            if (curScaffold > scafoldDialogue.Length) {
+            if (curScaffold >= scafoldDialogue.Length) {
                 KuriManager.instance.SayAndDoPositiveAffect();
                 return;
             }

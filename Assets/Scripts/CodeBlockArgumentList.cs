@@ -33,10 +33,10 @@ namespace MoveToCode {
             return result;
         }
 
-        public void SetArgCodeBlockAt(CodeBlock newArgumentCodeBlock, int pos) {
-            RemoveArgumentAt(pos);
+        public void SetArgCodeBlockAt(CodeBlock newArgumentCodeBlock, int pos, bool humanDidIt) {
+            RemoveArgumentAt(pos, humanDidIt);
             newArgumentCodeBlock?.RemoveFromParentBlock();
-            AddNewArgumentAt(newArgumentCodeBlock, pos);
+            AddNewArgumentAt(newArgumentCodeBlock, pos, humanDidIt);
         }
 
         public int GetNumArguments() {
@@ -44,32 +44,38 @@ namespace MoveToCode {
         }
 
         // Private methods, reconsider if you need to make these public
-        private void AddNewArgumentAt(CodeBlock newArgumentCodeBlock, int position) {
+        private void AddNewArgumentAt(CodeBlock newArgumentCodeBlock, int position, bool humanDidIt) {
             GetArgListCodeBlocks()[position] = newArgumentCodeBlock;
             if (newArgumentCodeBlock != null) {
-                LoggingManager.instance.UpdateLogColumn(SnapLoggingManager.GetSnapToColName(),
-                                                         string.Join("",
-                                                         "Add ",
-                                                         argList[position].name,
-                                                         " to ",
-                                                         myCodeBlock.name,
-                                                         " at ",
-                                                         position.ToString()));
+                if (humanDidIt)
+                {
+                    LoggingManager.instance.UpdateLogColumn(SnapLoggingManager.GetSnapToColName(),
+                                                             string.Join("",
+                                                             "Add ",
+                                                             argList[position].name,
+                                                             " to ",
+                                                             myCodeBlock.name,
+                                                             " at ",
+                                                             position.ToString()));
+                }
                 AudioManager.instance.PlaySoundAtObject(gameObject, AudioManager.snapAudioClip);
                 myCodeBlock.GetCodeBlockObjectMesh().ResizeChain();
             }
         }
 
-        private void RemoveArgumentAt(int position) {
+        private void RemoveArgumentAt(int position, bool humanDidIt) {
             if (GetArgListCodeBlocks()[position] != null) {
-                LoggingManager.instance.UpdateLogColumn(SnapLoggingManager.GetSnapRemoveFromColName(),
-                                                         string.Join("",
-                                                         "Remove ",
-                                                         argList[position].name,
-                                                         " from ",
-                                                         myCodeBlock.name,
-                                                         " at ",
-                                                         position.ToString()));
+                if (humanDidIt)
+                {
+                    LoggingManager.instance.UpdateLogColumn(SnapLoggingManager.GetSnapRemoveFromColName(),
+                                                             string.Join("",
+                                                             "Remove ",
+                                                             argList[position].name,
+                                                             " from ",
+                                                             myCodeBlock.name,
+                                                             " at ",
+                                                             position.ToString()));
+                }
                 AudioManager.instance.PlaySoundAtObject(gameObject, AudioManager.popAudioClip);
                 if (CodeBlockSnap.lastDraggedCBS != myCodeBlock.GetCodeBlockSnap()) {
                     argList[position].transform.localPosition = argList[position].transform.localPosition + new Vector3(0.25f, 1.1f, 1.25f);

@@ -45,12 +45,22 @@ namespace MoveToCode {
             return myCodeBlock;
         }
 
+        public SnapCollider GetSnapColliderAtPos(int pos)
+        {
+            return GetSnapColliders()[pos];
+        }
+
         // TODO: this should be register/deregister
         private List<SnapCollider> GetSnapColliders() {
             if (snapColliders == null) {
                 snapColliders = new List<SnapCollider>();
+                snapColliders.Resize(GetMyCodeBlock().GetMyInternalIArgument().GetNumArguments());
                 foreach (Transform go in transform) {
-                    snapColliders.AddRange(go.GetComponentsInChildren<SnapCollider>());
+                    SnapCollider sc = go.GetComponentInChildren<SnapCollider>(true);
+                    if (sc != null)
+                    {
+                        snapColliders[sc.myArgumentPosition] = sc;
+                    }
                 }
             }
             return snapColliders;

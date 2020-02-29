@@ -63,11 +63,10 @@ namespace MoveToCode {
             return GetMyCodeBlock().GetCodeBlockSnap();
         }
 
-
-
-        public void DoSnapAction(CodeBlock myCodeBlock, CodeBlock collidedCodeBlock) {
+        // TODO: humanDidIt is such a hack
+        public void DoSnapAction(CodeBlock myCodeBlock, CodeBlock collidedCodeBlock, bool humanDidIt=true) {
             Transform parentTransform = transform.parent;
-            myCodeBlock.SetArgumentBlockAt(collidedCodeBlock, myArgumentPosition);
+            myCodeBlock.SetArgumentBlockAt(collidedCodeBlock, myArgumentPosition, humanDidIt);
             Vector3 centerPos = collidedCodeBlock.GetCodeBlockObjectMesh().GetCenterPosition();
             centerPos.x = centerPos.x / parentTransform.localScale.x;
             collidedCodeBlock.transform.SnapToParent(parentTransform, snapPosition - centerPos);

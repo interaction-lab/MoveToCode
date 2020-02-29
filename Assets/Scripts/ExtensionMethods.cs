@@ -95,11 +95,5 @@ namespace MoveToCode {
             }
             return result;
         }
-
-        // PressableHololens2Button
-        public static void FakePressHololens2Button(this PressableButtonHoloLens2 pbh2) {
-            pbh2.GetComponent<Interactable>().TriggerOnClick();
-        }
-
     }
 }

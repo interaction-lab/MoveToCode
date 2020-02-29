@@ -72,6 +72,10 @@ namespace MoveToCode {
             else if (LoggingManager.instance.GetValueInRowAt(SnapLoggingManager.GetSnapToColName()) != "") {
                 result = 1;
             }
+            else if (LoggingManager.instance.GetValueInRowAt(SnapLoggingManager.GetSnapRemoveFromColName()) != "")
+            {
+                result = 1;
+            }
             curiosity_t += result;
             if (curiosity_t > curiosity_max) {
                 curiosity_max = curiosity_t;

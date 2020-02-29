@@ -69,19 +69,20 @@ namespace MoveToCode {
 
         public int GetPositionOfArgument(IArgument iArgIn) {
             int index = 0;
-            foreach (IArgument ia in codeBlockArgumentList.GetArgListAsIArguments()) {
-                if (ia == iArgIn) {
+            foreach (IArgument ia in codeBlockArgumentList.GetArgListAsIArguments())
+            {
+                if (ia == iArgIn)
+                {
                     return index;
                 }
                 ++index;
             }
-            Assert.IsTrue(false); // Should be able to find argument, must call IsMyNextInstruction first
-            return -1; // Will never get here, put so VS stops complaining
+            return -1;
         }
 
         // CodeBlockArgumentList relay functions
-        public void SetArgumentBlockAt(CodeBlock newArgumentCodeBlock, int argPosition) {
-            codeBlockArgumentList.SetArgCodeBlockAt(newArgumentCodeBlock, argPosition);
+        public void SetArgumentBlockAt(CodeBlock newArgumentCodeBlock, int argPosition, bool humanDidIt) {
+            codeBlockArgumentList.SetArgCodeBlockAt(newArgumentCodeBlock, argPosition, humanDidIt);
             UpdateText();
         }
 

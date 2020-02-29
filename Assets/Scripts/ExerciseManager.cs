@@ -31,6 +31,11 @@ namespace MoveToCode {
             }
         }
 
+        public Exercise GetCurExercise()
+        {
+            return curExercise;
+        }
+
         public void AlertCodeFinished() {
             if (curExercise != null) { // This if is to guard against initializing interpreter
                 if (curExercise.IsExerciseCorrect()) {
@@ -39,7 +44,7 @@ namespace MoveToCode {
                     lastExerciseCompleted = true;
                 }
                 else {
-                    KuriManager.instance.DoVirtualTaskAssistAndScafflding(curExercise);
+                    KuriManager.instance.DoVirtualTaskAssistAndScafflding();
                     LoggingManager.instance.UpdateLogColumn(exerciseSubmissionResultCol, "InCorrect");
                 }
 

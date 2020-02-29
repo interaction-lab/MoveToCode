@@ -62,7 +62,8 @@ namespace MoveToCode {
 
         private void TakeISAAction() {
             Debug.Log("ISA action taken");
-            LoggingManager.instance.UpdateLogColumn(rISACol, "action");
+            string actionString = ExerciseManager.instance.GetCurExercise().GetComponent<ExerciseInformationSeekingActions>().DoISAAction() ;
+            LoggingManager.instance.UpdateLogColumn(rISACol, actionString);
         }
 
         private void TakeMovementAction() {
@@ -70,21 +71,20 @@ namespace MoveToCode {
         }
 
         public void SayAndDoPositiveAffect() {
-            Debug.Log("Positive affect");
             poseStampPublisher?.PubTurnTowardUser();
             kuriEmoteStringPublisher?.PubRandomPositive();
             AlertActionMade();
         }
 
-        public void SayExerciseGoal(Exercise ex) {
+        public void SayExerciseGoal() {
             poseStampPublisher?.PubTurnTowardUser();
-            Debug.Log("Say " + ex.ToString());
+            Debug.Log("Say ");
             AlertActionMade();
         }
 
-        public void DoVirtualTaskAssistAndScafflding(Exercise ex) {
+        public void DoVirtualTaskAssistAndScafflding() {
             poseStampPublisher?.PubTurnTowardUser();
-            Debug.Log("Virtual task assist and scaffold " + ex.ToString());
+            Debug.Log("Virtual task assist and scaffold ");
             AlertActionMade();
         }
     }

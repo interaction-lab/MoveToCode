@@ -69,10 +69,8 @@ namespace MoveToCode {
 
         public int GetPositionOfArgument(IArgument iArgIn) {
             int index = 0;
-            foreach (IArgument ia in codeBlockArgumentList.GetArgListAsIArguments())
-            {
-                if (ia == iArgIn)
-                {
+            foreach (IArgument ia in codeBlockArgumentList.GetArgListAsIArguments()) {
+                if (ia == iArgIn) {
                     return index;
                 }
                 ++index;
@@ -119,10 +117,10 @@ namespace MoveToCode {
             GetCodeBlockObjectMesh().ToggleColliders(on);
         }
 
-        public void RemoveFromParentBlock() {
+        public void RemoveFromParentBlock(bool humanDidIt) {
             CodeBlock parentCodeBlock = FindParentCodeBlock();
             if (parentCodeBlock != null) {
-                parentCodeBlock.SetArgumentBlockAt(null, parentCodeBlock.GetPositionOfArgument(GetMyInternalIArgument()));
+                parentCodeBlock.SetArgumentBlockAt(null, parentCodeBlock.GetPositionOfArgument(GetMyInternalIArgument()), humanDidIt);
             }
         }
 

@@ -72,7 +72,7 @@ namespace MoveToCode {
             }
             else {
                 // Remove when dragged away
-                myCodeBlock.RemoveFromParentBlock();
+                myCodeBlock.RemoveFromParentBlock(true);
             }
             mySnapColliders?.DisableAllCompatibleColliders();
             GetCurSnapCollidersInContact().Clear();

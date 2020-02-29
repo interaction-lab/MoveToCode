@@ -35,7 +35,7 @@ namespace MoveToCode {
 
         public void SetArgCodeBlockAt(CodeBlock newArgumentCodeBlock, int pos, bool humanDidIt) {
             RemoveArgumentAt(pos, humanDidIt);
-            newArgumentCodeBlock?.RemoveFromParentBlock();
+            newArgumentCodeBlock?.RemoveFromParentBlock(humanDidIt);
             AddNewArgumentAt(newArgumentCodeBlock, pos, humanDidIt);
         }
 
@@ -47,8 +47,7 @@ namespace MoveToCode {
         private void AddNewArgumentAt(CodeBlock newArgumentCodeBlock, int position, bool humanDidIt) {
             GetArgListCodeBlocks()[position] = newArgumentCodeBlock;
             if (newArgumentCodeBlock != null) {
-                if (humanDidIt)
-                {
+                if (humanDidIt) {
                     LoggingManager.instance.UpdateLogColumn(SnapLoggingManager.GetSnapToColName(),
                                                              string.Join("",
                                                              "Add ",
@@ -65,8 +64,7 @@ namespace MoveToCode {
 
         private void RemoveArgumentAt(int position, bool humanDidIt) {
             if (GetArgListCodeBlocks()[position] != null) {
-                if (humanDidIt)
-                {
+                if (humanDidIt) {
                     LoggingManager.instance.UpdateLogColumn(SnapLoggingManager.GetSnapRemoveFromColName(),
                                                              string.Join("",
                                                              "Remove ",

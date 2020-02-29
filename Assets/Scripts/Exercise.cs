@@ -25,7 +25,7 @@ namespace MoveToCode {
         }
 
         public void UnsnapAllBlockFromBlockManager() {
-            StartCodeBlock.instance.SetArgumentBlockAt(null, 0); // unsnap
+            StartCodeBlock.instance.SetArgumentBlockAt(null, 0, false); // unsnap
             foreach (CodeBlock cb in CodeBlockManager.instance.GetAllCodeBlocks()) {
                 if (cb != StartCodeBlock.instance) {
                     cb.transform.SnapToParent(transform);

@@ -1,21 +1,30 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MoveToCode {
     public class HumanStateManager : Singleton<HumanStateManager> {
         public float timeWindow;
-        float curiosity_t, movement_t, curiosity_max = 0.01f, movement_max = 0.01f;
+        float curiosity_t = 0f, movement_t = 0f, curiosity_average = 0f, movement_average = 0f, curiosity_SSE = 0f, movement_SSE = 0f;
         Queue<float> infoSeekingActionQueue;
         Queue<Vector3> headposeQueue;
         Vector3 lastHeadPoseEnqueued;
+        long totalTimeSteps = 0;
 
-        static string humanCurtCol = "humanCurt", humanMaxCurCol = "humanMaxCur", humanMovetCol = "humanMovet", humanMaxMoveCol = "humanMaxMove";
+        bool scoresAveragedOut = false;
+        static string humanCurtCol = "humanCurt", humanMovetCol = "humanMovet", humanMoveZScore = "humanMoveZScore", humanCurZScore = "humanCurZScore";
 
         private void Start() {
             LoggingManager.instance.AddLogColumn(humanCurtCol, "");
-            LoggingManager.instance.AddLogColumn(humanMaxCurCol, "");
+            LoggingManager.instance.AddLogColumn(humanMoveZScore, "");
             LoggingManager.instance.AddLogColumn(humanMovetCol, "");
-            LoggingManager.instance.AddLogColumn(humanMaxMoveCol, "");
+            LoggingManager.instance.AddLogColumn(humanCurZScore, "");
+            StartCoroutine(WaitForScoresToAverageOut());
+        }
+
+        IEnumerator WaitForScoresToAverageOut() {
+            yield return new WaitForSeconds(timeWindow / 10f);
+            scoresAveragedOut = true;
         }
 
         public Queue<float> GetInforSeekingActionQueue() {
@@ -34,15 +43,16 @@ namespace MoveToCode {
         }
 
         public float GetKCt() {
-            return 0.5f * (movement_t / movement_max) + 0.5f * (curiosity_t / curiosity_max);
+            return 0.5f * GetZScoreMovement() + 0.5f * GetZScoreCuriosity();
         }
 
         public int GetTimeQueueSizeNormalized() {
             return (int)(timeWindow / Time.deltaTime);
         }
 
-        public void UpdateKC() { // LoggingManager calls update, might need better way
+        public void UpdateKC() {
             int timeLength = GetTimeQueueSizeNormalized();
+            ++totalTimeSteps;
             UpdateCuriosity(timeLength);
             UpdateMovement(timeLength);
         }
@@ -54,20 +64,45 @@ namespace MoveToCode {
             Debug.Log("KCT " + GetKCt());
         }
 
+        public float GetZScoreMovement() {
+            return (movement_t - movement_average) / Mathf.Sqrt(GetMovementVariance());
+        }
+
+        public float GetMovementVariance() {
+            return movement_SSE / (totalTimeSteps - 1);
+        }
+
+        public float GetZScoreCuriosity() {
+            return (movement_t - movement_average) / Mathf.Sqrt(GetCuriosityVariance());
+        }
+
+        public float GetCuriosityVariance() {
+            return curiosity_SSE / (totalTimeSteps - 1);
+        }
+
         private void UpdateMovement(int len) {
             while (GetHeadPoseQueue().Count > len) {
                 Vector3 popped = headposeQueue.Dequeue();
                 movement_t -= Vector3.Distance(popped, headposeQueue.Peek());
             }
             Vector3 nextPos = Camera.main.transform.position;
-            movement_t += Vector3.Distance(nextPos, lastHeadPoseEnqueued);
-            if (movement_t > movement_max) {
-                movement_max = movement_t;
-                LoggingManager.instance.UpdateLogColumn(humanMaxMoveCol, movement_max.ToString("F3"));
-            }
+            float newDist = Vector3.Distance(nextPos, lastHeadPoseEnqueued);
+            movement_t += newDist;
+
+            float et = movement_t - movement_average;
+            movement_average += et / totalTimeSteps;
+            movement_SSE += et * (movement_t - movement_average);
+
             headposeQueue.Enqueue(nextPos);
             lastHeadPoseEnqueued = nextPos;
+
             LoggingManager.instance.UpdateLogColumn(humanMovetCol, movement_t.ToString("F3"));
+
+            if (scoresAveragedOut) {
+                float zMove = GetZScoreMovement();
+                LoggingManager.instance.UpdateLogColumn(humanMoveZScore, zMove.ToString("F3"));
+
+            }
         }
 
         private void UpdateCuriosity(int len) {
@@ -85,12 +120,19 @@ namespace MoveToCode {
                 result = 1;
             }
             curiosity_t += result;
-            if (curiosity_t > curiosity_max) {
-                curiosity_max = curiosity_t;
-                LoggingManager.instance.UpdateLogColumn(humanMaxCurCol, curiosity_max.ToString("F3"));
-            }
+
+            float et = curiosity_t - curiosity_average;
+            curiosity_average += et / totalTimeSteps;
+            curiosity_SSE += et * (curiosity_t - curiosity_average);
+
             infoSeekingActionQueue.Enqueue(result);
+
+
             LoggingManager.instance.UpdateLogColumn(humanCurtCol, curiosity_t.ToString("F3"));
+            if (scoresAveragedOut) {
+                float zCur = GetZScoreCuriosity();
+                LoggingManager.instance.UpdateLogColumn(humanCurZScore, zCur.ToString("F3"));
+            }
         }
 
 

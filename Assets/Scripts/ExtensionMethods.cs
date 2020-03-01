@@ -61,6 +61,10 @@ namespace MoveToCode {
             SnapToParent(t, origParent);
         }
 
+        public static void RotateTowardsUser(this Transform t) {
+            t.rotation = Quaternion.LookRotation(Camera.main.transform.forward);
+        }
+
         // Gameobject Extensions
         public static string TryGetNiceNameOfObjectForLogging(this GameObject go) {
             CodeBlockObjectMesh cbom = go.GetComponentInParent<CodeBlockObjectMesh>();

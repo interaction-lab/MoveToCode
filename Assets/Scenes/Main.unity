@@ -990,6 +990,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 87335188}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &94552660 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 257811355727027399, guid: c05362a0194eef748b0f801c2e5c77a9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1239000876}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0751d1292d3b8b344aae34150283e04a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &152280601
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1511,6 +1523,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 908921122}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &258801517 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5335814774712488529, guid: dddf9b2e6c0fcd546b30a826b21b6e2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1279726262}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 226bd63b903637e408e91d6f906ae741, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &270212277
 GameObject:
   m_ObjectHideFlags: 0
@@ -2968,6 +2992,18 @@ Transform:
   m_Father: {fileID: 648124168}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &587595296 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 438597427285650152, guid: 94705b48c2b7d1646bc29303de5ea6e8,
+    type: 3}
+  m_PrefabInstance: {fileID: 2060749121}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea56897a896679746a4789705b99df32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &602786164
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3133,6 +3169,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 605904415}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &633503632 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5335814774712488529, guid: dddf9b2e6c0fcd546b30a826b21b6e2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 605904415}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 226bd63b903637e408e91d6f906ae741, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &648124167
 GameObject:
   m_ObjectHideFlags: 0
@@ -3606,6 +3654,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &765316481 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 257811355727027399, guid: c05362a0194eef748b0f801c2e5c77a9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1024577215}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0751d1292d3b8b344aae34150283e04a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &778971552
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4866,8 +4926,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scafoldDialogue:
   - What adds up to 11?
-  - 
-  - 
+  - Try grabbing one of the numbers
+  - The addition block can be snapped to the print block
 --- !u!114 &958217975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4880,9 +4940,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e1817c09946ba948a29f0638289cd51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snapChild: []
-  snapParent: []
-  withAction: 
+  snapChild:
+  - {fileID: 958299769}
+  - {fileID: 765316481}
+  - {fileID: 587595296}
+  snapParent:
+  - {fileID: 587595296}
+  - {fileID: 587595296}
+  - {fileID: 633503632}
+  withAction: 000000000200000002000000
+--- !u!114 &958299769 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 257811355727027399, guid: c05362a0194eef748b0f801c2e5c77a9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1533209694}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0751d1292d3b8b344aae34150283e04a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &959404239 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2204069623020599746, guid: 3f1f46cbecbe08e46a303ccfdb5b498a,
@@ -6929,6 +7007,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1279726262}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1280756238 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 438597427285650152, guid: 94705b48c2b7d1646bc29303de5ea6e8,
+    type: 3}
+  m_PrefabInstance: {fileID: 165175327}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea56897a896679746a4789705b99df32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1311233444
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9001,8 +9091,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a508445c8a81442a30343ce95a1691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  consoleStringGoal: 2
-  kuriGoalString: 
+  consoleStringGoal: 6
+  kuriGoalString: Print 6
   varNames: []
   initialVariableValues: 
   finalVariableGoalValues: 
@@ -9018,7 +9108,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb2451476dcf3c74f814a1e40a4b82ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scafoldDialogue: []
+  scafoldDialogue:
+  - You don't need to use all of the blocks
+  - You can use math blocks inside of math blocks
+  - Order of operations matters
 --- !u!114 &1875823388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9031,9 +9124,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e1817c09946ba948a29f0638289cd51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snapChild: []
-  snapParent: []
-  withAction: 
+  snapChild:
+  - {fileID: 2083584181}
+  - {fileID: 94552660}
+  - {fileID: 1280756238}
+  snapParent:
+  - {fileID: 1280756238}
+  - {fileID: 2083584181}
+  - {fileID: 258801517}
+  withAction: 010000000100000002000000
 --- !u!1001 &1888252339
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10564,6 +10663,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 384486156}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2083584181 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 438597427285650152, guid: 94705b48c2b7d1646bc29303de5ea6e8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1848898232}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea56897a896679746a4789705b99df32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2125387813
 GameObject:
   m_ObjectHideFlags: 0

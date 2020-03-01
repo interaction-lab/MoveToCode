@@ -40,7 +40,6 @@ namespace MoveToCode {
             else {
                 result -= addition;
             }
-            Debug.Log(result);
             return result;
         }
     }

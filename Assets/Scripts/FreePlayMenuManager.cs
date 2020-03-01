@@ -51,9 +51,5 @@ namespace MoveToCode {
         public void InstanstiateWhileCodeBlock() {
             InstantiateBlock(whileBlock);
         }
-
-        public void RotateTowardUser() {
-            transform.RotateTowardsUser();
-        }
     }
 }

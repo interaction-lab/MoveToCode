@@ -109,5 +109,37 @@ namespace MoveToCode {
             ++curCommandNum;
         }
 
+        public enum TYPEOFAFFECT {
+            Encouragement,
+            Congratulation
+        }
+
+        Dictionary<TYPEOFAFFECT, string[]> positiveAffectiveDialogue = new Dictionary<TYPEOFAFFECT, string[]>
+        {
+            {
+                TYPEOFAFFECT.Congratulation,
+                new string[] {
+                "Well done!",
+                "Good job!",
+                "Great!",
+                "Excellent!",
+                "Very good!"
+                    }
+            },
+            {
+                TYPEOFAFFECT.Encouragement,
+                new string[] {
+                    "You can do this!",
+                    "Go ahead!",
+                    "Don't give up!",
+                    "Keey trying!"
+                }
+
+            }
+        };
+
+        public void SayRandomPositiveAffect(TYPEOFAFFECT toa) {
+            Addline(positiveAffectiveDialogue[toa][UnityEngine.Random.Range(0, positiveAffectiveDialogue[toa].Length)]);
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using RosSharp.RosBridgeClient;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MoveToCode {
@@ -74,9 +75,10 @@ namespace MoveToCode {
             poseStampPublisher?.PublishPosition(kuriGoalPoseTransform);
         }
 
-        public void SayAndDoPositiveAffect() {
+        public void SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT toa) {
             poseStampPublisher?.PubTurnTowardUser();
             kuriEmoteStringPublisher?.PubRandomPositive();
+            KuriTextManager.instance.SayRandomPositiveAffect(toa);
             AlertActionMade();
         }
 

@@ -1590,7 +1590,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb2451476dcf3c74f814a1e40a4b82ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scafoldDialogue: []
+  scafoldDialogue:
+  - 
+  - 
 --- !u!1001 &312415083
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4791,10 +4793,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fullInteractionTimeMinutes: 1
-  warmUpTimeMinutes: 0.2
-  kcCond:
-  - 0.1
-  - -0.1
+  warmUpTimeMinutes: 0
+  startKC: 1
+  numIntervals: 11
+  startLow: 1
 --- !u!1 &958217971
 GameObject:
   m_ObjectHideFlags: 0
@@ -4813,7 +4815,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &958217972
 Transform:
   m_ObjectHideFlags: 0

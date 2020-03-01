@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace MoveToCode {
     public class KuriManager : Singleton<KuriManager> {
-        [Range(0.0f, 1.0f)]
+        [Range(-3.0f, 3.0f)]
         public float robotKC;
 
         static string rISACol = "robotISA", robotKCLevel = "robotKCLevel";

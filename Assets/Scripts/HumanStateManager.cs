@@ -19,11 +19,11 @@ namespace MoveToCode {
             LoggingManager.instance.AddLogColumn(humanMoveZScore, "");
             LoggingManager.instance.AddLogColumn(humanMovetCol, "");
             LoggingManager.instance.AddLogColumn(humanCurZScore, "");
-            StartCoroutine(WaitForScoresToAverageOut());
+            //StartCoroutine(WaitForScoresToAverageOut());
         }
 
         IEnumerator WaitForScoresToAverageOut() {
-            yield return new WaitForSeconds(timeWindow / 10f);
+            yield return new WaitForSeconds(timeWindow);
             scoresAveragedOut = true;
         }
 
@@ -98,10 +98,9 @@ namespace MoveToCode {
 
             LoggingManager.instance.UpdateLogColumn(humanMovetCol, movement_t.ToString("F3"));
 
-            if (scoresAveragedOut) {
-                float zMove = GetZScoreMovement();
+            float zMove = GetZScoreMovement();
+            if (!float.IsInfinity(zMove) && !float.IsNaN(zMove)) {
                 LoggingManager.instance.UpdateLogColumn(humanMoveZScore, zMove.ToString("F3"));
-
             }
         }
 
@@ -129,8 +128,8 @@ namespace MoveToCode {
 
 
             LoggingManager.instance.UpdateLogColumn(humanCurtCol, curiosity_t.ToString("F3"));
-            if (scoresAveragedOut) {
-                float zCur = GetZScoreCuriosity();
+            float zCur = GetZScoreCuriosity();
+            if (!float.IsInfinity(zCur) && !float.IsNaN(zCur)) {
                 LoggingManager.instance.UpdateLogColumn(humanCurZScore, zCur.ToString("F3"));
             }
         }

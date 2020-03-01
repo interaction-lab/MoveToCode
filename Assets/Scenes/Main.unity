@@ -4769,8 +4769,8 @@ MonoBehaviour:
   fullInteractionTimeMinutes: 1
   warmUpTimeMinutes: 0.2
   kcCond:
-  - 0.05
-  - 0.2
+  - 0.1
+  - -0.1
 --- !u!1 &958217971
 GameObject:
   m_ObjectHideFlags: 0

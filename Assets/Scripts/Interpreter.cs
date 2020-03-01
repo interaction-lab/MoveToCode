@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,10 @@ namespace MoveToCode {
         public InstructionReturnValue lastInstructionReturn;
         public Instruction curInstruction;
         public static string instructionRunCol = "InstructionRun";
+        int numInstructionsRun = 0;
+        public int instructionRunLimit = 30;
+        bool fullSteppingCode = false;
+        public float stepSpeed = 0.5f;
 
         private void Awake() {
             ResetCodeState();
@@ -18,6 +23,7 @@ namespace MoveToCode {
             if (instructionStack == null) {
                 instructionStack = new Stack<Instruction>();
             }
+            fullSteppingCode = false;
             ExerciseManager.instance.AlertCodeReset();
             ConsoleManager.instance.ClearConsole();
             curInstruction?.GetCodeBlock()?.ToggleOutline(false);
@@ -27,6 +33,7 @@ namespace MoveToCode {
             StartCodeBlock.instance.ToggleOutline(true);
             CodeBlockManager.instance.ResetAllCodeBlockInternalState();
             MemoryManager.instance.ResetMemoryState();
+            numInstructionsRun = 0;
         }
 
         public void RunNextInstruction() {
@@ -38,9 +45,13 @@ namespace MoveToCode {
                     MemoryManager.instance.SaveMemoryState();
                 }
                 try {
+                    ++numInstructionsRun;
                     LoggingManager.instance.UpdateLogColumn(instructionRunCol, curInstruction?.DescriptiveInstructionToString());
                     lastInstructionReturn = curInstruction.RunInstruction();
                     UpdateCurInstruction();
+                    if (numInstructionsRun > instructionRunLimit) {
+                        throw new Exception("Too man instructions run, maybe an infinite loop?");
+                    }
                 }
                 catch (Exception ex) {
                     Debug.LogWarning("Exception caught while running code: ");
@@ -65,6 +76,22 @@ namespace MoveToCode {
                 ExerciseManager.instance.AlertCodeFinished();
                 ConsoleManager.instance.AddFinishLine();
             }
+        }
+
+        public void FullStepCode() {
+            StartCoroutine(StepThroughCode());
+        }
+
+        IEnumerator StepThroughCode() {
+            if (fullSteppingCode) {
+                yield break;
+            }
+            fullSteppingCode = true;
+            while (fullSteppingCode && CodeIsRunning()) {
+                RunNextInstruction();
+                yield return new WaitForSeconds(stepSpeed);
+            }
+            fullSteppingCode = false;
         }
 
         public bool CodeIsRunning() {

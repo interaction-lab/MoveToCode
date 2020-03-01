@@ -21,10 +21,11 @@ namespace MoveToCode {
 
         }
 
-        public void InstantiateBlock(GameObject block) {
+        public GameObject InstantiateBlock(GameObject block) {
             GameObject go = Instantiate(block);
             go.transform.position = transform.position;
             go.transform.SnapToCodeBlockManager();
+            return go;
         }
 
         public void InstanstiatePrintCodeBlock() {
@@ -37,7 +38,8 @@ namespace MoveToCode {
             InstantiateBlock(ifBlock);
         }
         public void InstanstiateIntCodeBlock() {
-            InstantiateBlock(intBlock);
+            GameObject go = InstantiateBlock(intBlock);
+            (go.GetComponent<IntCodeBlock>().GetMyInternalIArgument() as IntDataType).SetValue(Random.Range(-5, 5));
         }
         public void InstanstiateMathCodeBlock() {
             InstantiateBlock(mathBlock);
@@ -50,6 +52,9 @@ namespace MoveToCode {
         }
         public void InstanstiateWhileCodeBlock() {
             InstantiateBlock(whileBlock);
+        }
+        public void InstantiateVariableBlockCollection() {
+            MemoryManager.instance.AddNewVariableCodeBlock(string.Join("", "Var", MemoryManager.instance.GetNumVariables().ToString()), new IntDataType(null, 0));
         }
     }
 }

@@ -44,7 +44,9 @@ namespace MoveToCode {
                 AudioManager.instance.PlaySoundAtObject(gameObject, AudioManager.poofAudioClip);
                 LoggingManager.instance.UpdateLogColumn(trashcanCol, codeBlockInCollision.name);
                 StartCoroutine(Shake());
-                particleSystemDummyObject.GetComponent<ParticleSystem>().Play();
+                ParticleSystem ps = particleSystemDummyObject.GetComponent<ParticleSystem>();
+                ps.GetComponent<ParticleSystemRenderer>().material = codeBlockInCollision.GetCodeBlockMaterial();
+                ps.Play();
                 codeBlockInCollision.GetComponent<ManipulationHandler>().OnManipulationEnded.RemoveListener(CheckIfStillInCollision);
                 codeBlockInCollision.gameObject.SetActive(false);
             }

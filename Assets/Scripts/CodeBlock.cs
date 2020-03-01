@@ -58,6 +58,10 @@ namespace MoveToCode {
             return codeBlockObjectMesh;
         }
 
+        public Material GetCodeBlockMaterial() {
+            return GetCodeBlockObjectMesh().transform.GetChild(0).GetComponent<MeshRenderer>().material;
+        }
+
         // this should be from object mesh
         //public IEnumerable GetAllAttachedCodeBlocks() { // this should just be from the object mesh
         public SnapColliderGroup GetSnapColliders() {

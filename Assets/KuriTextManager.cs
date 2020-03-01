@@ -34,6 +34,8 @@ namespace MoveToCode {
         TextMeshProUGUI kuriTextMesh;
         Queue<TextCommand> commandQueue;
         Queue<TextCommand> highPriorityCommands;
+        AudioSource audioSource;
+        AudioClip computerNoiseClip;
         int curCommandNum, ticketCommandNum;
 
         void Setup() {
@@ -43,6 +45,12 @@ namespace MoveToCode {
             curCommandNum = 0;
             ticketCommandNum = curCommandNum;
             LoggingManager.instance.AddLogColumn(textLogCol, "");
+            computerNoiseClip = Resources.Load<AudioClip>(ResourcePathConstants.ComputerNoises);
+            audioSource = GetComponent<AudioSource>();
+            audioSource.clip = computerNoiseClip;
+            audioSource.spatialBlend = 1;
+            audioSource.loop = true;
+            audioSource.volume = 0.1f;
         }
 
         Queue<TextCommand> GetCommandQueue() {
@@ -78,10 +86,12 @@ namespace MoveToCode {
                 if (processTuple.priority == PRIORITY.high) {
                     highPriorityCommands.Enqueue(processTuple);
                 }
+                audioSource.Play();
                 foreach (char letter in processTuple.text) {
                     kuriTextMesh.text += letter;
                     yield return new WaitForSeconds(textTypingTime);
                 }
+                audioSource.Pause();
             }
             else if (processTuple.commandType == COMMANDS.erase) {
                 kuriTextMesh.text = "";

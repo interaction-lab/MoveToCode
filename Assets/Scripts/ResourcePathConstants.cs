@@ -28,5 +28,6 @@ namespace MoveToCode {
         public static string PopSound = AudioFolder + "pop";
         public static string SnapSound = AudioFolder + "snap";
         public static string SpawnSound = AudioFolder + "spawn";
+        public static string ComputerNoises = AudioFolder + "ComputerNoises";
     }
 }

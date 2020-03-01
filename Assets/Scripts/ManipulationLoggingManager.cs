@@ -12,10 +12,14 @@ namespace MoveToCode {
         IEnumerator AddLoggersToManipulationHandlers() {
             yield return null;
             foreach (var go in FindObjectsOfType<ManipulationHandler>()) {
-                go.gameObject.AddComponent<ManipulationLogger>();
+                if (go.GetComponent<ManipulationLogger>() == null) {
+                    go.gameObject.AddComponent<ManipulationLogger>();
+                }
             }
             foreach (var go in FindObjectsOfType<PressableButtonHoloLens2>()) {
-                go.gameObject.AddComponent<ManipulationLogger>();
+                if (go.GetComponent<ManipulationLogger>() == null) {
+                    go.gameObject.AddComponent<ManipulationLogger>();
+                }
             }
         }
 

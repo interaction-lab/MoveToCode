@@ -12,6 +12,9 @@ namespace MoveToCode {
         private void Awake() {
             variableCodeBlockSet = new HashSet<VariableCodeBlock>();
             textMesh = transform.GetChild(3).GetComponentInChildren<TextMeshPro>();
+            if (GetComponent<ManipulationLogger>() == null) {
+                gameObject.AddComponent<ManipulationLogger>();
+            }
             UpdateText();
         }
 

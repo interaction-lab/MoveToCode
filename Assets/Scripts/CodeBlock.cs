@@ -39,6 +39,10 @@ namespace MoveToCode {
             codeBlockArgumentList = gameObject.AddComponent<CodeBlockArgumentList>();
             codeBlockArgumentList.SetUp(this);
 
+            if (GetComponent<ManipulationLogger>() == null) {
+                gameObject.AddComponent<ManipulationLogger>();
+            }
+
             UpdateText();
         }
 

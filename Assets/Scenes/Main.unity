@@ -1306,6 +1306,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0.128}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &226310094 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5335814774712488529, guid: dddf9b2e6c0fcd546b30a826b21b6e2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1388898068}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 226bd63b903637e408e91d6f906ae741, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &242194656
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2912,6 +2924,18 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
+--- !u!114 &584239309 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3828739441442808834, guid: 9d4fb95003569de428fba011a79f6f10,
+    type: 3}
+  m_PrefabInstance: {fileID: 3828739443129887047}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 471219409ecddf746b5253acfc085f84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &584438849
 GameObject:
   m_ObjectHideFlags: 0
@@ -4789,7 +4813,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &958217972
 Transform:
   m_ObjectHideFlags: 0
@@ -4822,7 +4846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consoleStringGoal: 11
-  kuriGoalString: 
+  kuriGoalString: Print 11
   varNames: []
   initialVariableValues: 
   finalVariableGoalValues: 
@@ -4838,7 +4862,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb2451476dcf3c74f814a1e40a4b82ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scafoldDialogue: []
+  scafoldDialogue:
+  - What adds up to 11?
+  - 
+  - 
 --- !u!114 &958217975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6124,7 +6151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consoleStringGoal: 1
-  kuriGoalString: 
+  kuriGoalString: Print 1
   varNames: []
   initialVariableValues: 
   finalVariableGoalValues: 
@@ -6140,7 +6167,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb2451476dcf3c74f814a1e40a4b82ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scafoldDialogue: []
+  scafoldDialogue:
+  - Try grabbing the 1 sphere
+  - Connect the print block to the start block
+  - Make sure the 1 is in the print block
 --- !u!114 &1180737059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6153,9 +6183,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e1817c09946ba948a29f0638289cd51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snapChild: []
-  snapParent: []
-  withAction: 
+  snapChild:
+  - {fileID: 1210489289}
+  - {fileID: 226310094}
+  snapParent:
+  - {fileID: 226310094}
+  - {fileID: 584239309}
+  withAction: 0200000001000000
+--- !u!114 &1210489289 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 257811355727027399, guid: c05362a0194eef748b0f801c2e5c77a9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1940850076}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0751d1292d3b8b344aae34150283e04a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1216611657
 GameObject:
   m_ObjectHideFlags: 0

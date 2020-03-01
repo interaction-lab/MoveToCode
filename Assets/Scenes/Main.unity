@@ -376,7 +376,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 223377336}
-  m_RootOrder: 4
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &39108127
 MonoBehaviour:
@@ -873,14 +873,14 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1504993765}
+  - {fileID: 912476376}
   - {fileID: 2125387814}
   - {fileID: 1216611658}
   - {fileID: 1706335398}
-  - {fileID: 39108126}
-  - {fileID: 912476376}
   - {fileID: 648124168}
   - {fileID: 685376449}
   - {fileID: 912260987}
+  - {fileID: 39108126}
   - {fileID: 5240440084594346040}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -1119,8 +1119,8 @@ GameObject:
   m_Component:
   - component: {fileID: 270212278}
   - component: {fileID: 270212279}
-  - component: {fileID: 270212281}
   - component: {fileID: 270212280}
+  - component: {fileID: 270212281}
   m_Layer: 0
   m_Name: ExerciseHelloWorld
   m_TagString: Untagged
@@ -1199,6 +1199,8 @@ GameObject:
   m_Component:
   - component: {fileID: 351704810}
   - component: {fileID: 351704811}
+  - component: {fileID: 351704813}
+  - component: {fileID: 351704812}
   m_Layer: 0
   m_Name: ExerciseNotEquals
   m_TagString: Untagged
@@ -1242,6 +1244,34 @@ MonoBehaviour:
   varNames: []
   initialVariableValues: 
   finalVariableGoalValues: 
+--- !u!114 &351704812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351704809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2451476dcf3c74f814a1e40a4b82ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scafoldDialogue: []
+--- !u!114 &351704813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351704809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e1817c09946ba948a29f0638289cd51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snapChild: []
+  snapParent: []
+  withAction: 
 --- !u!4 &434768644 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 257811355727027398, guid: c05362a0194eef748b0f801c2e5c77a9,
@@ -2183,7 +2213,7 @@ Transform:
   - {fileID: 584438853}
   - {fileID: 741588996}
   m_Father: {fileID: 223377336}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &648124169
 MonoBehaviour:
@@ -2239,7 +2269,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 223377336}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &685376450
 MonoBehaviour:
@@ -2861,7 +2891,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 223377336}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &912260988
 MonoBehaviour:
@@ -2906,7 +2936,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 223377336}
-  m_RootOrder: 5
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &912476377
 MonoBehaviour:
@@ -2932,6 +2962,8 @@ GameObject:
   m_Component:
   - component: {fileID: 923277383}
   - component: {fileID: 923277384}
+  - component: {fileID: 923277386}
+  - component: {fileID: 923277385}
   m_Layer: 0
   m_Name: ExerciseVariableSet
   m_TagString: Untagged
@@ -2974,6 +3006,34 @@ MonoBehaviour:
   - Var1
   initialVariableValues: 
   finalVariableGoalValues: 05000000
+--- !u!114 &923277385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 923277382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2451476dcf3c74f814a1e40a4b82ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scafoldDialogue: []
+--- !u!114 &923277386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 923277382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e1817c09946ba948a29f0638289cd51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snapChild: []
+  snapParent: []
+  withAction: 
 --- !u!1001 &929097633
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3064,6 +3124,8 @@ GameObject:
   m_Component:
   - component: {fileID: 958217972}
   - component: {fileID: 958217973}
+  - component: {fileID: 958217975}
+  - component: {fileID: 958217974}
   m_Layer: 0
   m_Name: ExerciseMathAdd
   m_TagString: Untagged
@@ -3107,6 +3169,34 @@ MonoBehaviour:
   varNames: []
   initialVariableValues: 
   finalVariableGoalValues: 
+--- !u!114 &958217974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958217971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2451476dcf3c74f814a1e40a4b82ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scafoldDialogue: []
+--- !u!114 &958217975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958217971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e1817c09946ba948a29f0638289cd51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snapChild: []
+  snapParent: []
+  withAction: 
 --- !u!1001 &1024577215
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4018,6 +4108,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1180737056}
   - component: {fileID: 1180737057}
+  - component: {fileID: 1180737059}
+  - component: {fileID: 1180737058}
   m_Layer: 0
   m_Name: ExercisePrintOne
   m_TagString: Untagged
@@ -4058,6 +4150,34 @@ MonoBehaviour:
   varNames: []
   initialVariableValues: 
   finalVariableGoalValues: 
+--- !u!114 &1180737058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180737055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2451476dcf3c74f814a1e40a4b82ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scafoldDialogue: []
+--- !u!114 &1180737059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180737055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e1817c09946ba948a29f0638289cd51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snapChild: []
+  snapParent: []
+  withAction: 
 --- !u!1 &1216611657
 GameObject:
   m_ObjectHideFlags: 0
@@ -4089,7 +4209,7 @@ Transform:
   - {fileID: 449588959}
   - {fileID: 2127256766}
   m_Father: {fileID: 223377336}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1216611659
 MonoBehaviour:
@@ -4607,6 +4727,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1263160916}
   - component: {fileID: 1263160917}
+  - component: {fileID: 1263160919}
+  - component: {fileID: 1263160918}
   m_Layer: 0
   m_Name: ExerciseEquals
   m_TagString: Untagged
@@ -4650,6 +4772,34 @@ MonoBehaviour:
   varNames: []
   initialVariableValues: 
   finalVariableGoalValues: 
+--- !u!114 &1263160918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263160915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2451476dcf3c74f814a1e40a4b82ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scafoldDialogue: []
+--- !u!114 &1263160919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263160915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e1817c09946ba948a29f0638289cd51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snapChild: []
+  snapParent: []
+  withAction: 
 --- !u!1001 &1279726262
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6141,7 +6291,7 @@ Transform:
   - {fileID: 351704810}
   - {fileID: 923277383}
   m_Father: {fileID: 223377336}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1706335399
 MonoBehaviour:
@@ -6757,6 +6907,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1875823385}
   - component: {fileID: 1875823386}
+  - component: {fileID: 1875823388}
+  - component: {fileID: 1875823387}
   m_Layer: 0
   m_Name: ExerciseMathMultiple
   m_TagString: Untagged
@@ -6802,6 +6954,34 @@ MonoBehaviour:
   varNames: []
   initialVariableValues: 
   finalVariableGoalValues: 
+--- !u!114 &1875823387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875823384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2451476dcf3c74f814a1e40a4b82ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scafoldDialogue: []
+--- !u!114 &1875823388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875823384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e1817c09946ba948a29f0638289cd51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snapChild: []
+  snapParent: []
+  withAction: 
 --- !u!1001 &1908096062
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7594,7 +7774,7 @@ Transform:
   m_Children:
   - {fileID: 1710312768}
   m_Father: {fileID: 223377336}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2125387815
 MonoBehaviour:

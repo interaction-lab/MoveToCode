@@ -2,6 +2,8 @@
 using UnityEngine.Assertions;
 
 namespace MoveToCode {
+    [RequireComponent(typeof(ExerciseInformationSeekingActions))]
+    [RequireComponent(typeof(ExerciseScaffolding))]
     public class Exercise : MonoBehaviour {
         public string consoleStringGoal;
         public string kuriGoalString;

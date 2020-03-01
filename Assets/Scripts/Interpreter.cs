@@ -54,7 +54,11 @@ namespace MoveToCode {
                     }
                 }
                 catch (Exception ex) {
-                    Debug.LogWarning("Exception caught while running code: ");
+                    string lineToAdd = ex.ToString();
+                    if (lineToAdd.Contains("NULL")) {
+                        lineToAdd = "Instruction Block Incomplete";
+                    }
+                    ConsoleManager.instance.AddLine(string.Join("", lineToAdd, ", Code Resetting"));
                     Debug.LogWarning(ex.ToString());
                     ResetCodeState();
                 }

@@ -119,12 +119,12 @@ namespace MoveToCode {
             {
                 TYPEOFAFFECT.Congratulation,
                 new string[] {
-                "Well done!",
-                "Good job!",
-                "Great!",
-                "Excellent!",
-                "Very good!"
-                    }
+                    "Well done!",
+                    "Good job!",
+                    "Great!",
+                    "Excellent!",
+                    "Very good!"
+                }
             },
             {
                 TYPEOFAFFECT.Encouragement,

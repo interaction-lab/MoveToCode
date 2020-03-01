@@ -1,5 +1,4 @@
 ﻿using RosSharp.RosBridgeClient;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace MoveToCode {
@@ -7,7 +6,7 @@ namespace MoveToCode {
         [Range(0.0f, 1.0f)]
         public float robotKC;
 
-        static string rISACol = "robotISA";
+        static string rISACol = "robotISA", robotKCLevel = "robotKCLevel";
 
         KuriEmoteStringPublisher kuriEmoteStringPublisher;
         PoseStampedPublisher poseStampPublisher;
@@ -23,6 +22,12 @@ namespace MoveToCode {
             kuriGoalPoseTransform = transform.GetChild(0);
             kuriCurPoseTransform = transform.GetChild(1);
             LoggingManager.instance.AddLogColumn(rISACol, "");
+            LoggingManager.instance.AddLogColumn(robotKCLevel, "");
+        }
+
+        public void SetKC(float kcRIn) {
+            robotKC = kcRIn;
+            LoggingManager.instance.UpdateLogColumn(robotKCLevel, robotKC.ToString("F3"));
         }
 
         private void Update() {

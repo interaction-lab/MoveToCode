@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace MoveToCode {
@@ -10,6 +8,15 @@ namespace MoveToCode {
         Queue<float> infoSeekingActionQueue;
         Queue<Vector3> headposeQueue;
         Vector3 lastHeadPoseEnqueued;
+
+        static string humanCurtCol = "humanCurt", humanMaxCurCol = "humanMaxCur", humanMovetCol = "humanMovet", humanMaxMoveCol = "humanMaxMove";
+
+        private void Start() {
+            LoggingManager.instance.AddLogColumn(humanCurtCol, "");
+            LoggingManager.instance.AddLogColumn(humanMaxCurCol, "");
+            LoggingManager.instance.AddLogColumn(humanMovetCol, "");
+            LoggingManager.instance.AddLogColumn(humanMaxMoveCol, "");
+        }
 
         public Queue<float> GetInforSeekingActionQueue() {
             if (infoSeekingActionQueue == null) {
@@ -56,9 +63,11 @@ namespace MoveToCode {
             movement_t += Vector3.Distance(nextPos, lastHeadPoseEnqueued);
             if (movement_t > movement_max) {
                 movement_max = movement_t;
+                LoggingManager.instance.UpdateLogColumn(humanMaxMoveCol, movement_max.ToString("F3"));
             }
             headposeQueue.Enqueue(nextPos);
             lastHeadPoseEnqueued = nextPos;
+            LoggingManager.instance.UpdateLogColumn(humanMovetCol, movement_t.ToString("F3"));
         }
 
         private void UpdateCuriosity(int len) {
@@ -72,15 +81,16 @@ namespace MoveToCode {
             else if (LoggingManager.instance.GetValueInRowAt(SnapLoggingManager.GetSnapToColName()) != "") {
                 result = 1;
             }
-            else if (LoggingManager.instance.GetValueInRowAt(SnapLoggingManager.GetSnapRemoveFromColName()) != "")
-            {
+            else if (LoggingManager.instance.GetValueInRowAt(SnapLoggingManager.GetSnapRemoveFromColName()) != "") {
                 result = 1;
             }
             curiosity_t += result;
             if (curiosity_t > curiosity_max) {
                 curiosity_max = curiosity_t;
+                LoggingManager.instance.UpdateLogColumn(humanMaxCurCol, curiosity_max.ToString("F3"));
             }
             infoSeekingActionQueue.Enqueue(result);
+            LoggingManager.instance.UpdateLogColumn(humanCurtCol, curiosity_t.ToString("F3"));
         }
 
 

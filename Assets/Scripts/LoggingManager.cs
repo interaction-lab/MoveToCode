@@ -93,8 +93,8 @@ namespace MoveToCode {
             if (!logData) {
                 return;
             }
+            HumanStateManager.instance.UpdateKC(); // TODO: this is hack
             streamWriter.WriteLine(string.Join(",", Time.time.ToString(), string.Join(",", row)));
-            HumanStateManager.instance.UpdateKC();
             ResetRow();
         }
 

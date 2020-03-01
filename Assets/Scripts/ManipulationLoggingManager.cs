@@ -1,5 +1,7 @@
 ﻿using Microsoft.MixedReality.Toolkit.UI;
 using System.Collections;
+using UnityEngine;
+
 namespace MoveToCode {
     public class ManipulationLoggingManager : Singleton<ManipulationLoggingManager> {
         static string manipColName = "ManipulatingObject";
@@ -11,12 +13,12 @@ namespace MoveToCode {
 
         IEnumerator AddLoggersToManipulationHandlers() {
             yield return null;
-            foreach (var go in FindObjectsOfType<ManipulationHandler>()) {
+            foreach (var go in Resources.FindObjectsOfTypeAll(typeof(ManipulationHandler)) as ManipulationHandler[]) {
                 if (go.GetComponent<ManipulationLogger>() == null) {
                     go.gameObject.AddComponent<ManipulationLogger>();
                 }
             }
-            foreach (var go in FindObjectsOfType<PressableButtonHoloLens2>()) {
+            foreach (var go in Resources.FindObjectsOfTypeAll(typeof(PressableButtonHoloLens2)) as PressableButtonHoloLens2[]) {
                 if (go.GetComponent<ManipulationLogger>() == null) {
                     go.gameObject.AddComponent<ManipulationLogger>();
                 }

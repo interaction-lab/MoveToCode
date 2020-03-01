@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7440800412470431853}
   - component: {fileID: 316800719}
   - component: {fileID: 2034987663884019302}
+  - component: {fileID: 114483049217899534}
   m_Layer: 0
   m_Name: PressableButtonHoloLens2Unplated
   m_TagString: Untagged
@@ -486,6 +487,18 @@ MonoBehaviour:
   localCenter: {x: 0, y: 0, z: -0.008}
   bounds: {x: 0.032, y: 0.032}
   touchableCollider: {fileID: 316800722}
+--- !u!114 &114483049217899534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316800718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fed2de112fda78547a9b01cacbbd9837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &937783100
 GameObject:
   m_ObjectHideFlags: 0
@@ -1282,6 +1295,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8608155427408040960}
     m_Modifications:
+    - target: {fileID: 37140855218128509, guid: f6511fe07b2d805478799a9830eb472b,
+        type: 3}
+      propertyPath: m_Name
+      value: LabelPlate
+      objectReference: {fileID: 0}
     - target: {fileID: 1141850491143745692, guid: f6511fe07b2d805478799a9830eb472b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1336,11 +1354,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 37140855218128509, guid: f6511fe07b2d805478799a9830eb472b,
-        type: 3}
-      propertyPath: m_Name
-      value: LabelPlate
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6511fe07b2d805478799a9830eb472b, type: 3}

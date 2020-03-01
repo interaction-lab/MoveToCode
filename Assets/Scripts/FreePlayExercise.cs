@@ -2,17 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FreePlayExercise : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+namespace MoveToCode {
+    public class FreePlayExercise : Exercise {
+        private void OnEnable() {
+            kuriGoalString = "This is freePlay, feel free to explore";
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        }
     }
 }

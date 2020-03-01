@@ -16,7 +16,7 @@ namespace MoveToCode {
                 text = tIn;
             }
             public override string ToString() {
-                return string.Join("", "C: ", commandType.ToString(), " P: ", priority.ToString(), " T: ", text);
+                return string.Join("", "C: ", commandType.ToString(), " P: ", priority.ToString(), " T: ", text.Replace("\n", ""));
             }
         }
 
@@ -82,6 +82,9 @@ namespace MoveToCode {
 
             TextCommand processTuple = commandQueue.Peek();
             commandQueue.Dequeue();
+
+            LoggingManager.instance.UpdateLogColumn(textLogCol, processTuple.ToString());
+
             if (processTuple.commandType == COMMANDS.add) {
                 if (processTuple.priority == PRIORITY.high) {
                     highPriorityCommands.Enqueue(processTuple);
@@ -104,7 +107,7 @@ namespace MoveToCode {
                     highPriorityCommands.Clear();
                 }
             }
-            LoggingManager.instance.UpdateLogColumn(textLogCol, processTuple.ToString());
+
 
             ++curCommandNum;
         }

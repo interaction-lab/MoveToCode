@@ -4,7 +4,7 @@ using UnityEngine;
 namespace MoveToCode {
     public class InteractionManager : Singleton<InteractionManager> {
         public float fullInteractionTimeMinutes, warmUpTimeMinutes;
-        public float[] kcCond;
+        public float[] kcCond = { 0, 0 };
         bool kcState;
 
         private void Start() {
@@ -25,9 +25,9 @@ namespace MoveToCode {
 
         // TODO: might make this into my choice before hand
         public float ChooseKCR() {
-            int choice = UnityEngine.Random.Range(0, kcCond.Length);
+            int choice = Random.Range(0, kcCond.Length);
             float result = kcCond[choice];
-            kcCond[choice] = kcCond[choice % kcCond.Length];
+            kcCond[choice] = kcCond[(choice + 1) % kcCond.Length];
             return result;
         }
     }

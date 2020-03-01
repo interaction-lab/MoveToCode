@@ -83,6 +83,7 @@ namespace MoveToCode {
         public void SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT toa) {
             poseStampPublisher?.PubTurnTowardUser();
             kuriEmoteStringPublisher?.PubRandomPositive();
+            KuriTextManager.instance.Clear(KuriTextManager.PRIORITY.low);
             KuriTextManager.instance.SayRandomPositiveAffect(toa);
             AlertActionMade();
         }

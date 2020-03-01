@@ -18,8 +18,7 @@ namespace MoveToCode {
             setVarBlock = Resources.Load<GameObject>(ResourcePathConstants.SetVariableCodeBlockPrefab);
             stringBlock = Resources.Load<GameObject>(ResourcePathConstants.StringCodeBlockPrefab);
             whileBlock = Resources.Load<GameObject>(ResourcePathConstants.WhileCodeBlockPrefab);
-            printBlock = Resources.Load<GameObject>(ResourcePathConstants.PrintCodeBlockPrefab);
-            printBlock = Resources.Load<GameObject>(ResourcePathConstants.PrintCodeBlockPrefab);
+
         }
 
         public void InstantiateBlock(GameObject block) {
@@ -44,7 +43,7 @@ namespace MoveToCode {
             InstantiateBlock(mathBlock);
         }
         public void InstanstiateSetVariableCodeBlock() {
-            InstantiateBlock(printBlock);
+            InstantiateBlock(setVarBlock);
         }
         public void InstanstiateStringCodeBlock() {
             InstantiateBlock(stringBlock);

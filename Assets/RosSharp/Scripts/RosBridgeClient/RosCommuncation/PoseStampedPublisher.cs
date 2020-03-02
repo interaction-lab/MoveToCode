@@ -18,13 +18,8 @@ using UnityEngine;
 
 namespace RosSharp.RosBridgeClient {
     public class PoseStampedPublisher : Publisher<Messages.Geometry.PoseStamped> {
-        public Vector3 desiredLinearPose;
-        public Quaternion desiredAngularPose;
         public string FrameId = "map";
-        public Transform trans;
-
         static string poseGoalCol = "poseGoalSent";
-
         private Messages.Geometry.PoseStamped message;
 
         protected override void Start() {
@@ -32,7 +27,6 @@ namespace RosSharp.RosBridgeClient {
             InitializeMessage();
             LoggingManager.instance.AddLogColumn(poseGoalCol, "");
         }
-
 
         private void InitializeMessage() {
             message = new Messages.Geometry.PoseStamped {
@@ -42,26 +36,18 @@ namespace RosSharp.RosBridgeClient {
             };
         }
 
-        private void PublishMessage() {
+        private void PublishMessage(Vector3 lin, Quaternion ang) {
             message.header.Update();
-            message.pose.position = GetGeometryPoint(trans.position.Unity2Ros());
-            message.pose.orientation = GetGeometryQuaternion(trans.rotation.Unity2Ros());
+            message.pose.position = GetGeometryPoint(lin.Unity2Ros());
+            message.pose.orientation = GetGeometryQuaternion(ang.Unity2Ros());
 
             Publish(message);
             LoggingManager.instance.UpdateLogColumn(poseGoalCol,
-                string.Join(";", trans.position.ToString("F3"), trans.rotation.ToString("F3")));
-        }
-
-        public void PublishPosition() {
-            PublishMessage();
+                string.Join(";", lin.ToString("F3"), ang.ToString("F3")));
         }
 
         public void PublishPosition(Vector3 lin, Quaternion ang) {
-            desiredLinearPose = lin;
-            desiredAngularPose = ang;
-            PublishMessage();
-            LoggingManager.instance.UpdateLogColumn(poseGoalCol,
-               string.Join(";", trans.position.ToString("F3"), trans.rotation.ToString("F3")));
+            PublishMessage(lin, ang);
         }
 
         public void PublishPosition(Transform t) {

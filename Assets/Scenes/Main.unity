@@ -4897,7 +4897,7 @@ MonoBehaviour:
   fullInteractionTimeMinutes: 1
   warmUpTimeMinutes: 0
   startKC: 1
-  numIntervals: 11
+  numIntervals: 2
   startLow: 1
 --- !u!1 &958217971
 GameObject:

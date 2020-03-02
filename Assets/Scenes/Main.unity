@@ -591,6 +591,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 51471737}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &51471739 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5335814774712488529, guid: dddf9b2e6c0fcd546b30a826b21b6e2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 51471737}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 226bd63b903637e408e91d6f906ae741, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &55276362
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1599,9 +1611,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e1817c09946ba948a29f0638289cd51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snapChild: []
-  snapParent: []
-  withAction: 
+  snapChild:
+  - {fileID: 1788853475}
+  - {fileID: 51471739}
+  snapParent:
+  - {fileID: 51471739}
+  - {fileID: 584239309}
+  withAction: 0200000001000000
 --- !u!114 &270212281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1615,8 +1631,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scafoldDialogue:
-  - 
-  - 
+  - Try grabbing the blue sphere
+  - Attach the blue Sphere to the print block
+  - Attach the print block to the start block
 --- !u!1001 &312415083
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1892,7 +1909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consoleStringGoal: True
-  kuriGoalString: 
+  kuriGoalString: Print True
   varNames: []
   initialVariableValues: 
   finalVariableGoalValues: 
@@ -1908,7 +1925,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb2451476dcf3c74f814a1e40a4b82ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scafoldDialogue: []
+  scafoldDialogue:
+  - The purple block now checks if they are not equal
 --- !u!114 &351704813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1921,9 +1939,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e1817c09946ba948a29f0638289cd51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snapChild: []
-  snapParent: []
-  withAction: 
+  snapChild:
+  - {fileID: 1908096064}
+  - {fileID: 1049456439}
+  snapParent:
+  - {fileID: 1049456439}
+  - {fileID: 1219873126}
+  withAction: 0100000002000000
 --- !u!4 &355508224 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2204069623020599746, guid: 3f1f46cbecbe08e46a303ccfdb5b498a,
@@ -3079,6 +3101,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 602786164}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &602786166 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2110378778300613843, guid: ce8993180f01aa64abc2b2ef4f980f60,
+    type: 3}
+  m_PrefabInstance: {fileID: 602786164}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2db8c5b2a27f994997f043cada94eda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &605904415
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4696,10 +4730,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consoleStringGoal: 5
-  kuriGoalString: 
+  kuriGoalString: Set Var1 to 5 and print it
   varNames:
   - Var1
-  initialVariableValues: 
+  initialVariableValues: 09000000
   finalVariableGoalValues: 05000000
 --- !u!114 &923277385
 MonoBehaviour:
@@ -4713,7 +4747,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb2451476dcf3c74f814a1e40a4b82ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scafoldDialogue: []
+  scafoldDialogue:
+  - Press the Var1 button on the red memory panel
+  - Make sure to set the variable first
 --- !u!114 &923277386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4726,9 +4762,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e1817c09946ba948a29f0638289cd51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snapChild: []
-  snapParent: []
-  withAction: 
+  snapChild:
+  - {fileID: 602786166}
+  - {fileID: 1218171652}
+  - {fileID: 1218171652}
+  snapParent:
+  - {fileID: 584239309}
+  - {fileID: 602786166}
+  - {fileID: 1232676583}
+  withAction: 010000000300000000000000
 --- !u!1001 &929097633
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5653,6 +5695,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1049456437}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1049456439 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4929860365483950077, guid: 00f6ddabaa4eed149853592bec687f35,
+    type: 3}
+  m_PrefabInstance: {fileID: 1049456437}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b301ea177ce402341b11f24ef9eef83f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1103285061
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6418,6 +6472,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1218171650}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1218171652 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 257811355727027399, guid: c05362a0194eef748b0f801c2e5c77a9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1218171650}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0751d1292d3b8b344aae34150283e04a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1219873124
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6508,6 +6574,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1219873124}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1219873126 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5335814774712488529, guid: dddf9b2e6c0fcd546b30a826b21b6e2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1219873124}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 226bd63b903637e408e91d6f906ae741, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1232676581
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6598,6 +6676,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1232676581}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1232676583 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5335814774712488529, guid: dddf9b2e6c0fcd546b30a826b21b6e2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1232676581}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 226bd63b903637e408e91d6f906ae741, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1239000876
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6885,7 +6975,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consoleStringGoal: True
-  kuriGoalString: 
+  kuriGoalString: Print True
   varNames: []
   initialVariableValues: 
   finalVariableGoalValues: 
@@ -6901,7 +6991,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb2451476dcf3c74f814a1e40a4b82ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scafoldDialogue: []
+  scafoldDialogue:
+  - The result of the purple block is True or false
+  - The purple block checks if they are equal or not
 --- !u!114 &1263160919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6914,9 +7006,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e1817c09946ba948a29f0638289cd51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snapChild: []
-  snapParent: []
-  withAction: 
+  snapChild:
+  - {fileID: 1485042481}
+  - {fileID: 1644774805}
+  snapParent:
+  - {fileID: 1988759692}
+  - {fileID: 1988759692}
+  withAction: 0100000002000000
 --- !u!1001 &1279726262
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7633,6 +7729,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c05362a0194eef748b0f801c2e5c77a9, type: 3}
+--- !u!114 &1485042481 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 257811355727027399, guid: c05362a0194eef748b0f801c2e5c77a9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1485042480}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0751d1292d3b8b344aae34150283e04a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1490484358 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2204069623020599746, guid: 3f1f46cbecbe08e46a303ccfdb5b498a,
@@ -7658,7 +7766,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1504993765
 Transform:
   m_ObjectHideFlags: 0
@@ -8262,6 +8370,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c05362a0194eef748b0f801c2e5c77a9, type: 3}
+--- !u!114 &1644774805 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 257811355727027399, guid: c05362a0194eef748b0f801c2e5c77a9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1644774804}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0751d1292d3b8b344aae34150283e04a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1700647546
 GameObject:
   m_ObjectHideFlags: 0
@@ -8947,6 +9067,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1788853473}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1788853475 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4501335314643936304, guid: 78a4ff0a40ceb764ab8cc91f3fb5921e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1788853473}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dceddbd3196d754b97e9b135c525589, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1805447509 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2204069623020599746, guid: 3f1f46cbecbe08e46a303ccfdb5b498a,
@@ -9313,6 +9445,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1908096062}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1908096064 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 257811355727027399, guid: c05362a0194eef748b0f801c2e5c77a9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1908096062}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0751d1292d3b8b344aae34150283e04a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1925195918
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10269,6 +10413,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00f6ddabaa4eed149853592bec687f35, type: 3}
+--- !u!114 &1988759692 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4929860365483950077, guid: 00f6ddabaa4eed149853592bec687f35,
+    type: 3}
+  m_PrefabInstance: {fileID: 1988759691}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b301ea177ce402341b11f24ef9eef83f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2022208059
 PrefabInstance:
   m_ObjectHideFlags: 0

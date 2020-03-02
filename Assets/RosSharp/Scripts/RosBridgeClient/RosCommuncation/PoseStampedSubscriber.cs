@@ -46,7 +46,6 @@ namespace RosSharp.RosBridgeClient {
         private void ProcessMessage() {
             PublishedTransform.position = position;
             PublishedTransform.rotation = rotation;
-            PublishedTransform.GetComponent<MoveToCode.MakeTransformLookAtUser>().LookAtUser();
         }
 
         private Vector3 GetPosition(Messages.Geometry.PoseStamped message) {

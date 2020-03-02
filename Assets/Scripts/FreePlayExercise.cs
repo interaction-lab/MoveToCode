@@ -1,12 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace MoveToCode {
     public class FreePlayExercise : Exercise {
-        private void OnEnable() {
+        protected override void OnEnable() {
             kuriGoalString = "This is freePlay, feel free to explore";
-
+            consoleStringGoal = "IMPOSSIBLE";
+            Resources.FindObjectsOfTypeAll<FreePlayMenuManager>()[0].gameObject.SetActive(true);
+            Debug.Log(FreePlayMenuManager.instance.name);
+            base.OnEnable();
+            Debug.Log("run");
         }
     }
 }

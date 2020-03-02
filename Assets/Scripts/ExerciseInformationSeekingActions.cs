@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace MoveToCode {
@@ -17,19 +18,26 @@ namespace MoveToCode {
         public static GameObject goOfFocus;
 
         public virtual string DoISAAction() {
+            int probRange = 10;
             string result = "";
             int count = 0;
+            if (GetComponent<Exercise>() as FreePlayExercise != null) {
+                probRange = 20;
+            }
             while (result == "" && count < 5) {
-                int rand = Random.Range(0, 10);
+                int rand = Random.Range(0, probRange);
                 if (rand < 4) {
                     result = SnapNextSnapISA();
                 }
                 else if (rand < 8) {
                     result = SpawnVariable();
                 }
-                else {
+                else if (rand < 10) {
                     MenuManager.instance.FakePressPlay();
                     goOfFocus = MenuManager.instance.GetPlayButton().gameObject;
+                }
+                else {
+                    FreePlayMenuManager.instance.FakePressRandomButton();
                 }
             }
             return result;

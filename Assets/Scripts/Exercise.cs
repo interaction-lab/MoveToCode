@@ -37,12 +37,13 @@ namespace MoveToCode {
             }
         }
 
-        private void OnEnable() {
+        protected virtual void OnEnable() {
             Assert.IsTrue(varNames.Length == initialVariableValues.Length && initialVariableValues.Length == finalVariableGoalValues.Length);
             SnapAllBlocksToBlockManager();
             AddAllVariables();
             KuriTextManager.instance.Clear(KuriTextManager.PRIORITY.high);
             KuriManager.instance.SayExerciseGoal();
+            Debug.Log("run2");
         }
 
         private void AddAllVariables() {

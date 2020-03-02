@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using Microsoft.MixedReality.Toolkit.UI;
+using UnityEngine;
 namespace MoveToCode {
     public class FreePlayMenuManager : Singleton<FreePlayMenuManager> {
 
         GameObject printBlock, conditionBlock, ifBlock, intBlock, mathBlock, setVarBlock, stringBlock, whileBlock;
-
+        PressableButtonHoloLens2[] pressableButtons;
 
         private void Awake() {
             Setup();
@@ -18,7 +19,6 @@ namespace MoveToCode {
             setVarBlock = Resources.Load<GameObject>(ResourcePathConstants.SetVariableCodeBlockPrefab);
             stringBlock = Resources.Load<GameObject>(ResourcePathConstants.StringCodeBlockPrefab);
             whileBlock = Resources.Load<GameObject>(ResourcePathConstants.WhileCodeBlockPrefab);
-
         }
 
         public GameObject InstantiateBlock(GameObject block) {
@@ -26,6 +26,19 @@ namespace MoveToCode {
             go.transform.position = transform.position;
             go.transform.SnapToCodeBlockManager();
             return go;
+        }
+
+        public void TurnMenuOn() {
+            gameObject.SetActive(true);
+        }
+
+        public void FakePressRandomButton() {
+            PressableButtonHoloLens2 button = pressableButtons[Random.Range(0, pressableButtons.Length)];
+            FakePressButton fbp = button.GetComponent<FakePressButton>();
+            if (fbp == null) {
+                fbp = button.gameObject.AddComponent<FakePressButton>();
+            }
+            fbp.PressButton();
         }
 
         public void InstanstiatePrintCodeBlock() {

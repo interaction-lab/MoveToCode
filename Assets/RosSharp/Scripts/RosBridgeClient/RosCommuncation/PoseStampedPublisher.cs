@@ -21,11 +21,13 @@ namespace RosSharp.RosBridgeClient {
         public string FrameId = "map";
         static string poseGoalCol = "poseGoalSent";
         private Messages.Geometry.PoseStamped message;
+        bool initialized = false;
 
         protected override void Start() {
             base.Start();
             InitializeMessage();
             LoggingManager.instance.AddLogColumn(poseGoalCol, "");
+            initialized = true;
         }
 
         private void InitializeMessage() {
@@ -37,6 +39,9 @@ namespace RosSharp.RosBridgeClient {
         }
 
         private void PublishMessage(Vector3 lin, Quaternion ang) {
+            if (!initialized) {
+                return;
+            }
             message.header.Update();
             message.pose.position = GetGeometryPoint(lin.Unity2Ros());
             message.pose.orientation = GetGeometryQuaternion(ang.Unity2Ros());

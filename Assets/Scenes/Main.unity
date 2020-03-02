@@ -7838,10 +7838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Topic: /move_base_simple/goal
-  desiredLinearPose: {x: 0, y: 0, z: 0}
-  desiredAngularPose: {x: 0, y: 0, z: 0, w: 0}
   FrameId: map
-  trans: {fileID: 584438853}
 --- !u!1001 &1533209694
 PrefabInstance:
   m_ObjectHideFlags: 0

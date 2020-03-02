@@ -78,7 +78,6 @@ namespace MoveToCode {
 
         IEnumerator ProcessText(int myCommandNum) {
             yield return new WaitUntil(() => curCommandNum == myCommandNum);
-            GetComponent<MakeTransformLookAtUser>().LookAtUser();
 
             TextCommand processTuple = commandQueue.Peek();
             commandQueue.Dequeue();

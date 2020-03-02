@@ -94,7 +94,8 @@ namespace MoveToCode {
                 return;
             }
             HumanStateManager.instance.UpdateKC();
-            streamWriter.WriteLine(string.Join(",", Time.time.ToString(), string.Join(",", row)));
+            List<string> rowDuplicate = new List<string>(row);
+            streamWriter.WriteLine(string.Join(",", Time.time.ToString(), string.Join(",", rowDuplicate)));
             ResetRow();
         }
 

@@ -33,14 +33,13 @@ namespace MoveToCode {
         }
 
         IEnumerator StartRoutine() {
-            // inStartUp = true;
+            inStartUp = true;
             yield return null;
-            // yield return new WaitForSeconds(1);
-            // kuriEmoteStringPublisher?.PublishAction(KuriEmoteStringPublisher.EMOTIONS.close_eyes);
-            //  poseStampPublisher?.PubTurnTowardUser();
-            //yield return new WaitForSeconds(InteractionManager.instance.MinToSeconds(InteractionManager.instance.warmUpTimeMinutes) - 1f);
-            //  kuriEmoteStringPublisher?.PublishAction(KuriEmoteStringPublisher.EMOTIONS.happy);
-            //  inStartUp = false;
+            yield return new WaitForSeconds(3);
+            kuriEmoteStringPublisher?.PublishAction(KuriEmoteStringPublisher.EMOTIONS.close_eyes);
+            yield return new WaitForSeconds(InteractionManager.instance.MinToSeconds(InteractionManager.instance.warmUpTimeMinutes) - 3f);
+            kuriEmoteStringPublisher?.PublishAction(KuriEmoteStringPublisher.EMOTIONS.happy);
+            inStartUp = false;
         }
 
         public void SetKC(float kcRIn) {
@@ -49,10 +48,9 @@ namespace MoveToCode {
         }
 
         private void Update() {
-            // if (inStartUp) {
-            //     Debug.Log("in start");
-            //     return;
-            //  }
+            if (inStartUp) {
+                return;
+            }
             Tick();
             timeSinceLastAction += Time.deltaTime;
         }

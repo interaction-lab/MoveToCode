@@ -1,8 +1,10 @@
-﻿namespace MoveToCode {
+﻿using UnityEngine;
+namespace MoveToCode {
     public class StartCodeBlock : InstructionCodeBlock {
         public static StartCodeBlock m_Instance;
         private static bool m_ShuttingDown = false;
         private static object m_Lock = new object();
+        public Vector3 startPos;
 
         public static StartCodeBlock instance {
             get {
@@ -16,6 +18,13 @@
                     return m_Instance;
                 }
             }
+        }
+
+        public Vector3 GetStartPos() {
+            if (startPos == null) {
+                startPos = transform.position;
+            }
+            return startPos;
         }
 
         public override string ToString() {

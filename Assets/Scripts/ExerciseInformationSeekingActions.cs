@@ -16,7 +16,7 @@ namespace MoveToCode {
 
         public static GameObject goOfFocus;
 
-        public string DoISAAction() {
+        public virtual string DoISAAction() {
             string result = "";
             int count = 0;
             while (result == "" && count < 5) {

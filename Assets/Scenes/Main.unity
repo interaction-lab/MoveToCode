@@ -7766,7 +7766,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1504993765
 Transform:
   m_ObjectHideFlags: 0
@@ -7839,6 +7839,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Topic: /move_base_simple/goal
   FrameId: map
+  offset: {x: 0, y: 0, z: 0.5}
 --- !u!1001 &1533209694
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -74,7 +74,6 @@ namespace MoveToCode {
         }
 
         private void TakeMovementAction() {
-            Debug.Log("Movement action taken");
             kuriGoalPoseTransform.position = ExerciseInformationSeekingActions.goOfFocus.transform.position;
             kuriGoalPoseTransform.rotation = Quaternion.LookRotation(ExerciseInformationSeekingActions.goOfFocus.transform.forward);
             poseStampPublisher?.PublishPosition(kuriGoalPoseTransform);

@@ -22,6 +22,7 @@ namespace RosSharp.RosBridgeClient {
         static string poseGoalCol = "poseGoalSent";
         private Messages.Geometry.PoseStamped message;
         bool initialized = false;
+        public Vector3 offset;
 
         protected override void Start() {
             base.Start();
@@ -42,6 +43,7 @@ namespace RosSharp.RosBridgeClient {
             if (!initialized) {
                 return;
             }
+            lin = lin + offset;
             message.header.Update();
             message.pose.position = GetGeometryPoint(lin.Unity2Ros());
             message.pose.orientation = GetGeometryQuaternion(ang.Unity2Ros());

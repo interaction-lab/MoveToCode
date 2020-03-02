@@ -27,7 +27,7 @@ namespace RosSharp.RosBridgeClient {
         protected override void Start() {
             base.Start();
             InitializeMessage();
-            LoggingManager.instance.AddLogColumn(poseGoalCol, "");
+            //LoggingManager.instance.AddLogColumn(poseGoalCol, "");
             initialized = true;
         }
 
@@ -48,9 +48,9 @@ namespace RosSharp.RosBridgeClient {
             message.pose.position = GetGeometryPoint(lin.Unity2Ros());
             message.pose.orientation = GetGeometryQuaternion(ang.Unity2Ros());
 
-            Publish(message);
-            LoggingManager.instance.UpdateLogColumn(poseGoalCol,
-                string.Join(";", lin.ToString("F3").Replace(',', ';'), ang.ToString("F3").Replace(',', ';')));
+            //Publish(message);
+            //LoggingManager.instance.UpdateLogColumn(poseGoalCol,
+            //    string.Join(";", lin.ToString("F3").Replace(',', ';'), ang.ToString("F3").Replace(',', ';')));
         }
 
         public void PublishPosition(Vector3 lin, Quaternion ang) {

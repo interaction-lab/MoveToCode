@@ -22,8 +22,9 @@ namespace MoveToCode {
 
         private void SnapAllBlocksToBlockManager() {
             foreach (CodeBlock cb in GetComponentsInChildren<CodeBlock>()) {
-                cb.transform.position = StartCodeBlock.instance.transform.position + (cb.transform.position - StartCodeBlock.instance.GetStartPos());
+                Vector3 diff = (cb.transform.position - StartCodeBlock.instance.GetStartPos());
                 cb.transform.SnapToCodeBlockManager();
+                cb.transform.position = StartCodeBlock.instance.transform.position + diff;
             }
         }
 

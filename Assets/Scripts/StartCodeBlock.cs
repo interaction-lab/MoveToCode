@@ -21,7 +21,7 @@ namespace MoveToCode {
         }
 
         public Vector3 GetStartPos() {
-            if (startPos == null) {
+            if (startPos == Vector3.zero) {
                 startPos = transform.position;
             }
             return startPos;

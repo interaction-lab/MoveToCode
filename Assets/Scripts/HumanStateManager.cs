@@ -11,7 +11,6 @@ namespace MoveToCode {
         Vector3 lastHeadPoseEnqueued;
         long totalTimeSteps = 0;
 
-        bool scoresAveragedOut = false;
         static string humanCurtCol = "humanCurt", humanMovetCol = "humanMovet", humanMoveZScore = "humanMoveZScore", humanCurZScore = "humanCurZScore";
 
         private void Start() {
@@ -24,7 +23,6 @@ namespace MoveToCode {
 
         IEnumerator WaitForScoresToAverageOut() {
             yield return new WaitForSeconds(timeWindow);
-            scoresAveragedOut = true;
         }
 
         public Queue<float> GetInforSeekingActionQueue() {

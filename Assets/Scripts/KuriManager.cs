@@ -1,4 +1,5 @@
 ﻿using RosSharp.RosBridgeClient;
+using System.Collections;
 using UnityEngine;
 
 namespace MoveToCode {
@@ -14,6 +15,8 @@ namespace MoveToCode {
 
         Transform kuriGoalPoseTransform, kuriCurPoseTransform;
 
+        bool inStartUp;
+
         private void Awake() {
             timeWindow = HumanStateManager.instance.timeWindow;
             timeSinceLastAction = 0;
@@ -25,12 +28,29 @@ namespace MoveToCode {
             LoggingManager.instance.AddLogColumn(robotKCLevel, "");
         }
 
+        private void Start() {
+            StartCoroutine(StartRoutine());
+        }
+
+        IEnumerator StartRoutine() {
+            inStartUp = true;
+            yield return new WaitForSeconds(5);
+            kuriEmoteStringPublisher?.PublishAction(KuriEmoteStringPublisher.EMOTIONS.close_eyes);
+            poseStampPublisher?.PubTurnTowardUser();
+            yield return new WaitForSeconds(InteractionManager.instance.MinToSeconds(InteractionManager.instance.warmUpTimeMinutes) - 6f);
+            kuriEmoteStringPublisher?.PublishAction(KuriEmoteStringPublisher.EMOTIONS.happy);
+            inStartUp = false;
+        }
+
         public void SetKC(float kcRIn) {
             robotKC = kcRIn;
             LoggingManager.instance.UpdateLogColumn(robotKCLevel, robotKC.ToString("F3"));
         }
 
         private void Update() {
+            if (inStartUp) {
+                return;
+            }
             Tick();
             timeSinceLastAction += Time.deltaTime;
         }

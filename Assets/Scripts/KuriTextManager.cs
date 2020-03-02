@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -50,7 +49,7 @@ namespace MoveToCode {
             audioSource.clip = computerNoiseClip;
             audioSource.spatialBlend = 1;
             audioSource.loop = true;
-            audioSource.volume = 0.1f;
+            audioSource.volume = 0.05f;
         }
 
         Queue<TextCommand> GetCommandQueue() {

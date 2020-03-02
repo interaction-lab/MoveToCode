@@ -3178,7 +3178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c78149086eaff5439ffe528177bac5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeWindow: 20
+  timeWindow: 5
 --- !u!4 &689636195 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2204069623020599746, guid: 3f1f46cbecbe08e46a303ccfdb5b498a,
@@ -4835,7 +4835,7 @@ MonoBehaviour:
   warmUpTimeMinutes: 0.2
   startKC: 1
   numIntervals: 2
-  startLow: 1
+  startLow: 0
 --- !u!1 &958217971
 GameObject:
   m_ObjectHideFlags: 0
@@ -15724,32 +15724,32 @@ PrefabInstance:
     - target: {fileID: 3828739441442808839, guid: 9d4fb95003569de428fba011a79f6f10,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.2490374
       objectReference: {fileID: 0}
     - target: {fileID: 3828739441442808839, guid: 9d4fb95003569de428fba011a79f6f10,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.25616837
       objectReference: {fileID: 0}
     - target: {fileID: 3828739441442808839, guid: 9d4fb95003569de428fba011a79f6f10,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.31932032
       objectReference: {fileID: 0}
     - target: {fileID: 3828739441442808839, guid: 9d4fb95003569de428fba011a79f6f10,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.000000013325802
       objectReference: {fileID: 0}
     - target: {fileID: 3828739441442808839, guid: 9d4fb95003569de428fba011a79f6f10,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.0000000136452565
       objectReference: {fileID: 0}
     - target: {fileID: 3828739441442808839, guid: 9d4fb95003569de428fba011a79f6f10,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.0000000088392165
       objectReference: {fileID: 0}
     - target: {fileID: 3828739441442808839, guid: 9d4fb95003569de428fba011a79f6f10,
         type: 3}

@@ -14,7 +14,7 @@ public class KeyboardTestingScript : MonoBehaviour {
             MenuManager.instance.FakePressPlay();
         }
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
-
+            HumanStateManager.instance.DebugLogData();
             //FindObjectOfType<KuriEmoteStringPublisher>().PubRandomNegative();
         }
 

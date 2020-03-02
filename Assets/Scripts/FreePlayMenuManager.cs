@@ -32,13 +32,18 @@ namespace MoveToCode {
             gameObject.SetActive(true);
         }
 
-        public void FakePressRandomButton() {
+        public string FakePressRandomButton() {
+            if (pressableButtons == null) {
+                pressableButtons = GetComponentsInChildren<PressableButtonHoloLens2>();
+            }
             PressableButtonHoloLens2 button = pressableButtons[Random.Range(0, pressableButtons.Length)];
             FakePressButton fbp = button.GetComponent<FakePressButton>();
             if (fbp == null) {
                 fbp = button.gameObject.AddComponent<FakePressButton>();
             }
-            fbp.PressButton();
+            Debug.Log(fbp);
+            Debug.Log(pressableButtons.Length);
+            return fbp.PressButton();
         }
 
         public void InstanstiatePrintCodeBlock() {

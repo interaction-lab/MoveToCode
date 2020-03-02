@@ -18,6 +18,7 @@ namespace MoveToCode {
         public static GameObject goOfFocus;
 
         public virtual string DoISAAction() {
+            Debug.Log("ISA");
             int probRange = 10;
             string result = "";
             int count = 0;
@@ -33,13 +34,15 @@ namespace MoveToCode {
                     result = SpawnVariable();
                 }
                 else if (rand < 10) {
-                    MenuManager.instance.FakePressPlay();
+                    result = MenuManager.instance.FakePressPlay();
                     goOfFocus = MenuManager.instance.GetPlayButton().gameObject;
                 }
                 else {
-                    FreePlayMenuManager.instance.FakePressRandomButton();
+                    result = FreePlayMenuManager.instance.FakePressRandomButton();
                 }
+                ++count;
             }
+            Debug.Log(result);
             return result;
         }
 
@@ -53,8 +56,7 @@ namespace MoveToCode {
             if (fpb == null) {
                 fpb = MemoryManager.instance.GetVariables()[varToSpawn].gameObject.AddComponent<FakePressButton>();
             }
-            fpb.PressButton();
-            return string.Join("", "Var Made ", varToSpawn);
+            return fpb.PressButton();
         }
 
         string SnapNextSnapISA() {

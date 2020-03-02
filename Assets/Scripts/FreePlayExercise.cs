@@ -6,9 +6,7 @@ namespace MoveToCode {
             kuriGoalString = "This is freePlay, feel free to explore";
             consoleStringGoal = "IMPOSSIBLE";
             Resources.FindObjectsOfTypeAll<FreePlayMenuManager>()[0].gameObject.SetActive(true);
-            Debug.Log(FreePlayMenuManager.instance.name);
             base.OnEnable();
-            Debug.Log("run");
         }
     }
 }

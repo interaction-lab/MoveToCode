@@ -90,10 +90,11 @@ namespace MoveToCode {
         }
 
         void WriteRowToCSV() {
+            HumanStateManager.instance.UpdateKC();
             if (!logData) {
                 return;
             }
-            HumanStateManager.instance.UpdateKC();
+
             List<string> rowDuplicate = new List<string>(row);
             streamWriter.WriteLine(string.Join(",", Time.time.ToString(), string.Join(",", rowDuplicate)));
             ResetRow();

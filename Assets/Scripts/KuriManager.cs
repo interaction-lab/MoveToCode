@@ -33,13 +33,14 @@ namespace MoveToCode {
         }
 
         IEnumerator StartRoutine() {
-            inStartUp = true;
-            yield return new WaitForSeconds(5);
-            kuriEmoteStringPublisher?.PublishAction(KuriEmoteStringPublisher.EMOTIONS.close_eyes);
-            poseStampPublisher?.PubTurnTowardUser();
-            yield return new WaitForSeconds(InteractionManager.instance.MinToSeconds(InteractionManager.instance.warmUpTimeMinutes) - 6f);
-            kuriEmoteStringPublisher?.PublishAction(KuriEmoteStringPublisher.EMOTIONS.happy);
-            inStartUp = false;
+            // inStartUp = true;
+            yield return null;
+            // yield return new WaitForSeconds(1);
+            // kuriEmoteStringPublisher?.PublishAction(KuriEmoteStringPublisher.EMOTIONS.close_eyes);
+            //  poseStampPublisher?.PubTurnTowardUser();
+            //yield return new WaitForSeconds(InteractionManager.instance.MinToSeconds(InteractionManager.instance.warmUpTimeMinutes) - 1f);
+            //  kuriEmoteStringPublisher?.PublishAction(KuriEmoteStringPublisher.EMOTIONS.happy);
+            //  inStartUp = false;
         }
 
         public void SetKC(float kcRIn) {
@@ -48,9 +49,10 @@ namespace MoveToCode {
         }
 
         private void Update() {
-            if (inStartUp) {
-                return;
-            }
+            // if (inStartUp) {
+            //     Debug.Log("in start");
+            //     return;
+            //  }
             Tick();
             timeSinceLastAction += Time.deltaTime;
         }
@@ -77,6 +79,7 @@ namespace MoveToCode {
             if (timeSinceLastAction < timeWindow) {
                 return;
             }
+            HumanStateManager.instance.DebugLogData();
             float kctS = HumanStateManager.instance.GetKCt();
             if (kctS < robotKC) {
                 TakeISAAction();

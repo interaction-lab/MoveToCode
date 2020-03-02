@@ -16,8 +16,7 @@ namespace MoveToCode {
             if (fakePressButton == null) {
                 fakePressButton = GetPlayButton().gameObject.AddComponent<FakePressButton>();
             }
-            fakePressButton.PressButton();
-            return "Press Play";
+            return fakePressButton.PressButton();
         }
     }
 }

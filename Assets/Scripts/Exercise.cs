@@ -43,7 +43,6 @@ namespace MoveToCode {
             AddAllVariables();
             KuriTextManager.instance.Clear(KuriTextManager.PRIORITY.high);
             KuriManager.instance.SayExerciseGoal();
-            Debug.Log("run2");
         }
 
         private void AddAllVariables() {

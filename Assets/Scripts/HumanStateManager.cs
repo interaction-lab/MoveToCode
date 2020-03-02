@@ -9,7 +9,7 @@ namespace MoveToCode {
         Queue<float> infoSeekingActionQueue;
         Queue<Vector3> headposeQueue;
         Vector3 lastHeadPoseEnqueued;
-        long totalTimeSteps = 0;
+        long totalTimeSteps = 1;
 
         static string humanCurtCol = "humanCurt", humanMovetCol = "humanMovet", humanMoveZScore = "humanMoveZScore", humanCurZScore = "humanCurZScore";
 
@@ -56,10 +56,11 @@ namespace MoveToCode {
         }
 
         public void DebugLogData() {
-            Debug.Log("C " + curiosity_t.ToString());
-            Debug.Log("M " + movement_t.ToString());
+            Debug.Log("C " + GetZScoreCuriosity().ToString());
+            Debug.Log("M " + GetZScoreMovement().ToString());
             Debug.Log("T " + GetTimeQueueSizeNormalized().ToString());
             Debug.Log("KCT " + GetKCt());
+            Debug.Log("movement_t " + movement_t.ToString());
         }
 
         public float GetZScoreMovement() {

@@ -48,7 +48,7 @@ namespace RosSharp.RosBridgeClient {
 
             Publish(message);
             LoggingManager.instance.UpdateLogColumn(poseGoalCol,
-                string.Join(";", lin.ToString("F3"), ang.ToString("F3")));
+                string.Join(";", lin.ToString("F3").Replace(',', ';'), ang.ToString("F3").Replace(',', ';')));
         }
 
         public void PublishPosition(Vector3 lin, Quaternion ang) {

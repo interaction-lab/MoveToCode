@@ -17,18 +17,22 @@ namespace MoveToCode {
         public static GameObject goOfFocus;
 
         public string DoISAAction() {
-            // press play button
-            MenuManager.instance.FakePressPlay();
-            goOfFocus = MenuManager.instance.GetPlayButton().gameObject;
-            // snap action
-            //SnapNextFromTo();
-            // move start block action
-            // make new variable
-            //SpawnVariable();
-
-            // spawn new codeblock
-            // TODO: Freeplay exercise must be done first
-            return "";
+            string result = "";
+            int count = 0;
+            while (result == "" && count < 5) {
+                int rand = Random.Range(0, 10);
+                if (rand < 4) {
+                    result = SnapNextSnapISA();
+                }
+                else if (rand < 8) {
+                    result = SpawnVariable();
+                }
+                else {
+                    MenuManager.instance.FakePressPlay();
+                    goOfFocus = MenuManager.instance.GetPlayButton().gameObject;
+                }
+            }
+            return result;
         }
 
         string SpawnVariable() {

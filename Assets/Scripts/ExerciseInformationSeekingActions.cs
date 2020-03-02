@@ -18,7 +18,6 @@ namespace MoveToCode {
         public static GameObject goOfFocus;
 
         public virtual string DoISAAction() {
-            Debug.Log("ISA");
             int probRange = 10;
             string result = "";
             int count = 0;
@@ -42,7 +41,7 @@ namespace MoveToCode {
                 }
                 ++count;
             }
-            Debug.Log(result);
+
             return result;
         }
 

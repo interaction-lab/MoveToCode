@@ -41,8 +41,6 @@ namespace MoveToCode {
             if (fbp == null) {
                 fbp = button.gameObject.AddComponent<FakePressButton>();
             }
-            Debug.Log(fbp);
-            Debug.Log(pressableButtons.Length);
             return fbp.PressButton();
         }
 

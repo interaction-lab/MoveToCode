@@ -82,7 +82,7 @@ namespace MoveToCode {
             float kctS = HumanStateManager.instance.GetKCt();
             if (kctS < robotKC) {
                 TakeISAAction();
-                TakeMovementAction();
+                //TakeMovementAction();
             }
             else {
                 kuriEmoteStringPublisher?.PubRandomPositive();

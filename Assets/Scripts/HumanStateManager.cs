@@ -64,6 +64,9 @@ namespace MoveToCode {
         }
 
         public float GetZScoreMovement() {
+            if (GetMovementVariance() == 0) {
+                return 0;
+            }
             return (movement_t - movement_average) / Mathf.Sqrt(GetMovementVariance());
         }
 
@@ -72,6 +75,9 @@ namespace MoveToCode {
         }
 
         public float GetZScoreCuriosity() {
+            if (GetCuriosityVariance() == 0) {
+                return 0;
+            }
             return (curiosity_t - curiosity_average) / Mathf.Sqrt(GetCuriosityVariance());
         }
 

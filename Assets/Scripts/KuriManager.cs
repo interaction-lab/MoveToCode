@@ -79,7 +79,6 @@ namespace MoveToCode {
             if (timeSinceLastAction < timeWindow) {
                 return;
             }
-            HumanStateManager.instance.DebugLogData();
             float kctS = HumanStateManager.instance.GetKCt();
             if (kctS < robotKC) {
                 TakeISAAction();

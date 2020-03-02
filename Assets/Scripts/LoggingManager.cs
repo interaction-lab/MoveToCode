@@ -94,7 +94,6 @@ namespace MoveToCode {
             if (!logData) {
                 return;
             }
-
             List<string> rowDuplicate = new List<string>(row);
             streamWriter.WriteLine(string.Join(",", Time.time.ToString(), string.Join(",", rowDuplicate)));
             ResetRow();

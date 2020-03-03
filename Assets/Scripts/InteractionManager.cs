@@ -32,7 +32,7 @@ namespace MoveToCode {
 
         public float ChooseKCRAtInterval(int atInterval) {
             float result = startKC;
-            float addition = atInterval * (2.0f / (numIntervals - 1));
+            float addition = atInterval * (1.0f / (numIntervals - 1));
             if (startLow) {
                 result = -startKC;
                 result += addition;

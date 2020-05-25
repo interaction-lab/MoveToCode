@@ -70,8 +70,7 @@ namespace MoveToCode {
         public void InstanstiateWhileCodeBlock() {
             InstantiateBlock(whileBlock);
         }
-        public void InstanstiateCharCodeBlock()
-        {
+        public void InstanstiateCharCodeBlock() {
             GameObject go = InstantiateBlock(charBlock);
             (go.GetComponent<CharCodeBlock>().GetMyInternalIArgument() as CharDataType).SetValue(Random.Range('a', 'z'));
         }

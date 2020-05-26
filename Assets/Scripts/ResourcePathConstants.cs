@@ -21,6 +21,7 @@ namespace MoveToCode {
         public static string SetVariableCodeBlockPrefab = CodeBlockPrefabFolder + "SetVariableCodeBlock";
         public static string StringCodeBlockPrefab = CodeBlockPrefabFolder + "StringCodeBlock";
         public static string WhileCodeBlockPrefab = CodeBlockPrefabFolder + "WhileCodeBlock";
+        public static string CharCodeBlockPrefab = CodeBlockPrefabFolder + "CharCodeBlock";
 
         // Materials
         public static string MaterialFolder = "Materials/";

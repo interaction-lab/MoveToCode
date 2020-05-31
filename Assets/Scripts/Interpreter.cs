@@ -105,5 +105,16 @@ namespace MoveToCode {
         public void AddToInstructionStack(Instruction iIn) {
             instructionStack.Push(iIn);
         }
+
+        public void LogCurInstruction()
+        {
+            if (curInstruction != null)
+                ConsoleManager.instance.AddLine(curInstruction?.DescriptiveInstructionToString());
+            else
+                ConsoleManager.instance.AddLine("no more instructions left.");
+            Debug.Log("logging current instruction");
+           // UpdateCurInstruction();
+            curInstruction = curInstruction.RunInstruction().GetNextInstruction();
+        }
     }
-}
+}             

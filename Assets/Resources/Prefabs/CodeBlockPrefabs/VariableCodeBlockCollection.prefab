@@ -246,6 +246,7 @@ GameObject:
   - component: {fileID: 2604330573712938099}
   - component: {fileID: 4042484947559337178}
   - component: {fileID: 2604330573712938097}
+  - component: {fileID: 114588090415063768}
   m_Layer: 0
   m_Name: VariableCodeBlockCollection
   m_TagString: Untagged
@@ -727,6 +728,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7731db4e5107e04fb4ee1609a6d4fce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114588090415063768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2604330573712938098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fed2de112fda78547a9b01cacbbd9837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2604330574300431744

@@ -1,11 +1,10 @@
 ﻿namespace MoveToCode {
 
     public class ArrayCodeBlock : DataCodeBlock {
-        public int size = 3;
+        public static int arraySize = 3;
 
         protected override void SetMyBlockInternalArg() {
-            myBlockInternalArg = new ArrayDataStructure(this, size);
+            myBlockInternalArg = new ArrayDataStructure(this, arraySize);
         }
-
     }
 }

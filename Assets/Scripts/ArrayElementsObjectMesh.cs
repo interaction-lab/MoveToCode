@@ -12,11 +12,12 @@ namespace MoveToCode {
         //Transform top, argLeft, argRight;
         Vector3 origScaleArg;
         //Vector3 origPositionArgLeft, origPositionArgRight;
-        List<Vector3> origPositionElements;
+        //List<Vector3> origPositionElements;
+        Vector3[] origPositionElements;
 
         public override void SetUpObject() {
             numElements = 3; //TODO: do something about this
-            
+           
             //set numElements
             //top = transform.GetChild(0);
             for(int i = 0; i < numElements; i++) {
@@ -30,6 +31,7 @@ namespace MoveToCode {
 
             numElements = this.transform.childCount;
             elements = new Transform[numElements];
+            origPositionElements = new Vector3[numElements];
             for(int i = 0; i < elements.Length; i++) {
                 elements[i] = transform.GetChild(i);
             }
@@ -43,7 +45,8 @@ namespace MoveToCode {
                 elements[i].localPosition = new Vector3(elements[i - 1].localPosition.x + 0.5f, elements[i - 1].localPosition.y, elements[i - 1].localPosition.z);
             }
             for(int i = 0; i < numElements; i++) {
-                origPositionElements.Add(elements[i].localPosition);
+                //origPositionElements.Add(elements[i].localPosition);
+                origPositionElements[i] = elements[i].localPosition;
             }
         }
 
@@ -64,7 +67,7 @@ namespace MoveToCode {
                 elements[i].localPosition = new Vector3(elements[i - 1].localPosition.x + 0.5f, elements[i - 1].localPosition.y, elements[i - 1].localPosition.z);
             }
             for (int i = 0; i < numElements; i++) {
-                origPositionElements.Add(elements[i].localPosition);
+                //origPositionElements.Add(elements[i].localPosition);
             } 
         }
 
@@ -122,8 +125,8 @@ namespace MoveToCode {
             // need to resize arg right based upon horizontal size of arg
             Vector3 rescale = origScaleArg;
             //List<Vector3> reposition = origPositionElements;
-            Vector3[] reposition = origPositionElements.ToArray();
-            for(int i = 0; i < origPositionElements.Count; i++) {
+            Vector3[] reposition = origPositionElements;//.ToArray();
+            for(int i = 0; i < origPositionElements.Length; i++) {
                 float? horizontalSize = GetMyCodeBlock().GetArgAsCodeBlockAt(i)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
                 if (horizontalSize != null) {
                     rescale.x = (float)horizontalSize;

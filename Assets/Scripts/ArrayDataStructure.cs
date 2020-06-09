@@ -30,7 +30,8 @@ namespace MoveToCode {
         }
 
         public override object GetValue() {
-            throw new InvalidOperationException("Trying to get a value from the array without specifying an index");
+            return 0;
+            //throw new InvalidOperationException("Trying to get a value from the array without specifying an index");
         }
 
         public override int GetNumArguments() {

@@ -16,65 +16,59 @@ namespace MoveToCode {
         Vector3[] origPositionElements;
 
         public override void SetUpObject() {
-            numElements = 3; //TODO: do something about this
-           
-            //set numElements
-            //top = transform.GetChild(0);
-            for(int i = 0; i < numElements; i++) {
-                GameObject ElementGameObject = Instantiate(
-                    Resources.Load<GameObject>(ResourcePathConstants.ElementCodeBlockPrefab), GetMyCodeBlock().transform) as GameObject;
-                ElementGameObject.transform.SnapToParent(this.transform);
-                ElementGameObject.SetActive(true);
-            }
+            numElements = (this.transform.parent.GetComponent<ArrayCodeBlock>().GetMyInternalIArgument() as ArrayDataStructure).GetSize();
+            SetUpElements();
+            AddSnapColliderGroupScript();
+            RepositionElements();
+        }
 
-            //StartCoroutine(UpdateElementsNextFrame());
-
-            numElements = this.transform.childCount;
+        private void SetUpElements() {
             elements = new Transform[numElements];
-            origPositionElements = new Vector3[numElements];
-            for(int i = 0; i < elements.Length; i++) {
+            InstantiateElements();
+            //Fill elements array with elements' transforms
+            for (int i = 0; i < elements.Length; i++) {
                 elements[i] = transform.GetChild(i);
             }
-            //argLeft = transform.GetChild(1);
-            //argRight = transform.GetChild(2);
-            //origScaleArg = argRight.localScale;
-            origScaleArg = elements[elements.Length-1].localScale;
-            //origPositionArgLeft = argLeft.localPosition;
-            //origPositionArgRight = argRight.localPosition;
-            for(int i = 1; i< numElements; i++) {
-                elements[i].localPosition = new Vector3(elements[i - 1].localPosition.x + 0.5f, elements[i - 1].localPosition.y, elements[i - 1].localPosition.z);
-            }
-            for(int i = 0; i < numElements; i++) {
-                //origPositionElements.Add(elements[i].localPosition);
+            SetOriginalScale();
+            SetUpOriginalPositions();
+            SetElementArgPositions();
+        }
+
+        private void SetUpOriginalPositions() {
+            origPositionElements = new Vector3[numElements];
+            for (int i = 0; i < numElements; i++) {
                 origPositionElements[i] = elements[i].localPosition;
             }
         }
 
-        private void UpdateElements() {
-            Debug.Log("got here!");
-            numElements = this.transform.childCount;
-            elements = new Transform[numElements];
-            for (int i = 0; i < elements.Length; i++) {
-                elements[i] = transform.GetChild(i);
-            }
-            //argLeft = transform.GetChild(1);
-            //argRight = transform.GetChild(2);
-            //origScaleArg = argRight.localScale;
+        private void SetOriginalScale() {
             origScaleArg = elements[elements.Length - 1].localScale;
-            //origPositionArgLeft = argLeft.localPosition;
-            //origPositionArgRight = argRight.localPosition;
+        }
+
+        private void SetElementArgPositions() {
+            for(int i = 0; i < numElements; i++) {
+                elements[i].GetChild(0).GetComponent<SnapCollider>().SetMyArgumentPosition(i);
+            }
+        }
+
+        private void InstantiateElements() {
+            for (int i = 0; i < numElements; i++) {
+                GameObject ElementGameObject = Instantiate(
+                    Resources.Load<GameObject>(ResourcePathConstants.ElementCodeBlockPrefab), GetMyCodeBlock().transform) as GameObject;
+                ElementGameObject.SetActive(false);
+                ElementGameObject.transform.SnapToParent(this.transform);
+                ElementGameObject.SetActive(true);
+            }
+        }
+
+        private void RepositionElements() {
             for (int i = 1; i < numElements; i++) {
                 elements[i].localPosition = new Vector3(elements[i - 1].localPosition.x + 0.5f, elements[i - 1].localPosition.y, elements[i - 1].localPosition.z);
             }
-            for (int i = 0; i < numElements; i++) {
-                //origPositionElements.Add(elements[i].localPosition);
-            } 
         }
 
-        // This is needed to wait for the gameobject to spawn
-        private IEnumerator UpdateElementsNextFrame() {
-            yield return new WaitForEndOfFrame();
-            UpdateElements();
+        private void AddSnapColliderGroupScript() {
+            transform.gameObject.AddComponent<SnapColliderGroup>();
         }
 
         public override void SetUpMeshOutlineList() {
@@ -86,7 +80,7 @@ namespace MoveToCode {
             meshOutlineList = new List<MeshOutline>() { };
             //meshOutlineList.Add(top.gameObject.AddComponent<MeshOutline>());
             for (int i = 0; i < elements.Length; i++) {
-                elements[i].gameObject.AddComponent<MeshOutline>();
+                meshOutlineList.Add(elements[i].gameObject.AddComponent<MeshOutline>());
             }
         }
 
@@ -121,8 +115,9 @@ namespace MoveToCode {
 
         // private methods
 
+        //TODO: Fix this
         private void ResizeElements() {
-            // need to resize arg right based upon horizontal size of arg
+            /*// need to resize arg right based upon horizontal size of arg
             Vector3 rescale = origScaleArg;
             //List<Vector3> reposition = origPositionElements;
             Vector3[] reposition = origPositionElements;//.ToArray();
@@ -135,7 +130,7 @@ namespace MoveToCode {
                 elements[i].localPosition = reposition[i];
                 elements[i].localScale = rescale;
             }
-            //Vector3 reposition = origPositionArgLeft;
+            //Vector3 reposition = origPositionArgLeft;*/
         }
 
         /*private void ResizeArgLeft() {

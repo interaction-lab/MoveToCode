@@ -7,8 +7,8 @@ namespace MoveToCode {
         int size;
         IDataType[] internalArray;
         Type arrayType;
-        List<List<Type>> argPosToCompatability;
-        List<string> argDescriptionList;
+        //List<List<Type>> argPosToCompatability;
+        //List<string> argDescriptionList;
 
         public ArrayDataStructure(CodeBlock cbIn) : base(cbIn) { }
         public ArrayDataStructure(CodeBlock cbIn, int size) : base(cbIn) {
@@ -71,7 +71,7 @@ namespace MoveToCode {
             }
         }
 
-        public void EvaluateArgumentList() {
+        public override void EvaluateArgumentList() {
             for(int i = 0; i < size; i++) {
                 internalArray[i] = GetArgumentAt(i)?.EvaluateArgument().GetValue() as IDataType;
             }
@@ -86,33 +86,27 @@ namespace MoveToCode {
             return internalArray[index];
         }
 
-        public List<Type> GetArgCompatibilityAtPos(int pos) {
-            if (argPosToCompatability == null) {
-                SetUpArgPosToCompatability();
-            }
-            return argPosToCompatability[pos];
-        }
 
-        public IArgument GetArgumentAt(int pos) {
+        /*public IArgument GetArgumentAt(int pos) {
             return GetArgumentListAsIArgs()[pos];
-        }
+        }*/
 
-        public List<IArgument> GetArgumentListAsIArgs() {
+        /*public List<IArgument> GetArgumentListAsIArgs() {
             return GetCodeBlock().GetArgumentListAsIArgs();
-        }
+        }*/
 
-        public List<string> GetArgListDescription() {
+        /*public List<string> GetArgListDescription() {
             if (argDescriptionList == null) {
                 SetUpArgDescriptionList();
             }
             return argDescriptionList;
-        }
+        }*/
 
-        public void SetUpArgPosToCompatability() {
+        public override void SetUpArgPosToCompatability() {
             argPosToCompatability = new List<List<Type>> { };
             for (int i = 0; i < GetSize(); i++) {
                 argPosToCompatability.Add(new List<Type> {
-                    arrayType
+                    typeof(IDataType)
                 });
             }
             /*argPosToCompatability = new List<List<Type>> {
@@ -126,11 +120,11 @@ namespace MoveToCode {
         }
 
         //TODO: Fix this
-        public void SetUpArgDescriptionList() {
+        public override void SetUpArgDescriptionList() {
             argDescriptionList = new List<string> { "Left side of condtional", "Right Side of Conditional" };
         }
 
-
+        //TODO: Fix this
         public override Type GetCastType() {
             return typeof(int);
         }

@@ -117,5 +117,9 @@ namespace MoveToCode {
                 CodeBlockManager.instance.DeregisterSnapCollider(this);
             }
         }
+
+        public void SetMyArgumentPosition(int position) {
+            myArgumentPosition = position;
+        }
     }
 }

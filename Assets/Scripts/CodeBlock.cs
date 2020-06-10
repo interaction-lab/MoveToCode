@@ -101,7 +101,7 @@ namespace MoveToCode {
         }
 
         public List<Type> GetArgCompatabilityAt(int pos) {
-            return (GetMyInternalIArgument() as Instruction).GetArgCompatibilityAtPos(pos);
+            return (GetMyInternalIArgument() as IArgument).GetArgCompatibilityAtPos(pos);
         }
 
         public CodeBlock GetArgAsCodeBlockAt(int pos) {

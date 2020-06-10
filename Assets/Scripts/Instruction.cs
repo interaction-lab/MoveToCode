@@ -4,13 +4,8 @@ using UnityEngine;
 
 namespace MoveToCode {
     public abstract class Instruction : IArgument {
-        protected List<List<Type>> argPosToCompatability;
-        protected List<string> argDescriptionList;
 
         public abstract InstructionReturnValue RunInstruction();
-        public abstract void EvaluateArgumentList();
-        public abstract void SetUpArgPosToCompatability();
-        public abstract void SetUpArgDescriptionList();
 
         // public methods, all codeblocks should create instructions with themself
         public Instruction(CodeBlock cbIn) : base(cbIn) { }
@@ -18,7 +13,7 @@ namespace MoveToCode {
         public override IDataType EvaluateArgument() {
             return RunInstruction().GetReturnDataVal();
         }
-
+        /*
         public List<Type> GetArgCompatibilityAtPos(int pos) {
             if (argPosToCompatability == null) {
                 SetUpArgPosToCompatability();
@@ -48,5 +43,6 @@ namespace MoveToCode {
                 ++i;
             }
         }
+    }*/
     }
 }

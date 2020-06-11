@@ -79,12 +79,8 @@ namespace MoveToCode {
         public void InstantiateVariableBlockCollection() {
             MemoryManager.instance.AddNewVariableCodeBlock(string.Join("", "Var", MemoryManager.instance.GetNumVariables().ToString()), new IntDataType(null, 0));
         }
-        public void InstantiateArrayCodeBlock(int numElements) {
+        public void InstantiateArrayCodeBlock() {
             InstantiateBlock(arrayBlock);
-            /*for (int i = 0; i < numElements; i++) {
-                GameObject go = InstantiateBlock(elementBlock);
-                go.transform.SnapToParent(arrayGameObject.transform.GetChild(0));
-            }*/
         }
     }
 }

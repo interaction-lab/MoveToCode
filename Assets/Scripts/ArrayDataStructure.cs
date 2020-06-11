@@ -7,8 +7,6 @@ namespace MoveToCode {
         int size;
         IDataType[] internalArray;
         Type arrayType;
-        //List<List<Type>> argPosToCompatability;
-        //List<string> argDescriptionList;
 
         public ArrayDataStructure(CodeBlock cbIn) : base(cbIn) { }
         public ArrayDataStructure(CodeBlock cbIn, int size) : base(cbIn) {
@@ -39,7 +37,7 @@ namespace MoveToCode {
         }
 
         //set length of array, should only be called in constructor
-        public void SetSize(int sizeIn) {
+        private void SetSize(int sizeIn) {
             size = sizeIn;
             internalArray = new IDataType[size];
         }
@@ -58,14 +56,15 @@ namespace MoveToCode {
             return true;
         }
 
-        public void SetValueAtIndex(int index, IDataType valIn) {
+        public void SetValueAtIndex(int index) {
             //first input sets the type of array
             if(Empty()) {
-                arrayType = valIn.GetType();
+                internalArray[index] = GetArgumentAt(index).EvaluateArgument();
+                arrayType = internalArray[index].GetType();
                 SetUpArgPosToCompatability();
             }
             if(index < size) {
-                internalArray[index] = valIn;
+                internalArray[index] = GetArgumentAt(index).EvaluateArgument();
             } else {
                 throw new InvalidOperationException("Trying to read beyond array length");
             }
@@ -75,32 +74,12 @@ namespace MoveToCode {
             for(int i = 0; i < size; i++) {
                 internalArray[i] = GetArgumentAt(i)?.EvaluateArgument().GetValue() as IDataType;
             }
-            /*if (GetArgumentAt(0) != null && GetArgumentAt(1) != null) {
-                leftNum = (float)Convert.ChangeType(GetArgumentAt(0).EvaluateArgument().GetValue(), typeof(float));
-                rightNum = (float)Convert.ChangeType(GetArgumentAt(1).EvaluateArgument().GetValue(), typeof(float));
-            }*/
         }
 
         //TODO: maybe operator overload instead?
         public IDataType GetValueAtIndex(int index) {
             return internalArray[index];
         }
-
-
-        /*public IArgument GetArgumentAt(int pos) {
-            return GetArgumentListAsIArgs()[pos];
-        }*/
-
-        /*public List<IArgument> GetArgumentListAsIArgs() {
-            return GetCodeBlock().GetArgumentListAsIArgs();
-        }*/
-
-        /*public List<string> GetArgListDescription() {
-            if (argDescriptionList == null) {
-                SetUpArgDescriptionList();
-            }
-            return argDescriptionList;
-        }*/
 
         public override void SetUpArgPosToCompatability() {
             argPosToCompatability = new List<List<Type>> { };
@@ -109,14 +88,6 @@ namespace MoveToCode {
                     typeof(IDataType)
                 });
             }
-            /*argPosToCompatability = new List<List<Type>> {
-                new List<Type> {
-                    typeof(IDataType), typeof(MathInstruction)
-                },
-                new List<Type> {
-                    typeof(IDataType), typeof(MathInstruction)
-                }
-            };*/
         }
 
         //TODO: Fix this

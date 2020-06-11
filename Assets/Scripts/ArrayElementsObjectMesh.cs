@@ -11,12 +11,9 @@ namespace MoveToCode {
         Vector3 origScaleArg;
         
         public override void SetUpObject() {
-            //numElements = (this.transform.parent.GetComponent<ArrayCodeBlock>().GetMyInternalIArgument() as ArrayDataStructure).GetSize();
-            numElements = 3;
+            numElements = (this.transform.parent.GetComponent<ArrayCodeBlock>().GetMyInternalIArgument() as ArrayDataStructure).GetSize();
             SetUpElements();
-            AddSnapColliderGroupScript();
             RepositionElements();
-            AddArrayCodeBlockScript();
         }
 
         private void SetUpElements() {
@@ -64,15 +61,13 @@ namespace MoveToCode {
             }
         }
 
-        private void AddSnapColliderGroupScript() {
+        private void AddSnapColliderGroupScriptToMesh() {
             transform.gameObject.AddComponent<SnapColliderGroup>();
         }
 
-        private void AddArrayCodeBlockScript() {
+        private void AddArrayCodeBlockScriptToCodeBlock() {
             transform.parent.gameObject.AddComponent<ArrayCodeBlock>();
         }
-
-        private void AddSnapColliderScriptToElements() { }
 
         public override void SetUpMeshOutlineList() {
             meshOutlineList = new List<MeshOutline>() { };

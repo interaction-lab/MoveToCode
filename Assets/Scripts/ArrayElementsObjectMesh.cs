@@ -17,8 +17,6 @@ namespace MoveToCode {
             AddSnapColliderGroupScript();
             RepositionElements();
             AddArrayCodeBlockScript();
-            //AddSnapCollidersToELements();
-            Debug.Log("here");
         }
 
         private void SetUpElements() {

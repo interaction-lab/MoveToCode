@@ -13,16 +13,11 @@ namespace MoveToCode {
             internalArray = new IDataType[mySize];
         }
 
-        //TODO: Fix this
         public override bool IsSameDataTypeAndEqualTo(IDataType otherVal) {
             if (otherVal is ArrayDataStructure) {
                 return (string)GetValue() == (string)(otherVal as ArrayDataStructure).GetValue();
             }
             throw new InvalidOperationException("Trying to compare Array to non Array");
-        }
-
-        public void SetValue(object valIn) {
-            throw new InvalidOperationException("Trying to set a value in the array without specifying an index");
         }
 
         public override object GetValue() {
@@ -38,7 +33,6 @@ namespace MoveToCode {
             mySize = sizeIn;
         }
 
-        //get size of array (not the number of elements of the array)
         public int GetSize() {
             return mySize;
         }
@@ -70,9 +64,11 @@ namespace MoveToCode {
             }
         }
 
-        //TODO: Fix this
         public override void SetUpArgDescriptionList() {
-            argDescriptionList = new List<string> { "Left side of condtional", "Right Side of Conditional" };
+            argDescriptionList = new List<string> { };
+            for(int i = 0; i < GetSize(); i++) {
+                argDescriptionList.Add("Element" + i.ToString());
+            }
         }
 
         public override string ToString() {

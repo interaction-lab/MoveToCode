@@ -12,7 +12,6 @@ namespace MoveToCode {
         public virtual void ResestInternalState() { }
         public abstract int GetNumArguments();
         public virtual string DescriptiveInstructionToString() { return ""; }
-
         public virtual void EvaluateArgumentList() { }
         public virtual void SetUpArgPosToCompatability() { }
         public virtual void SetUpArgDescriptionList() { }

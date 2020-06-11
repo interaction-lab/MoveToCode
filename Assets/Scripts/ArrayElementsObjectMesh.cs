@@ -16,59 +16,6 @@ namespace MoveToCode {
             RepositionElements();
         }
 
-        private void SetUpElements() {
-            elements = new Transform[numElements];
-            InstantiateElementsAsMeshChildren();
-            for (int i = 0; i < elements.Length; i++) {
-                elements[i] = transform.GetChild(i);
-            }
-            SetOriginalScale();
-            SetUpOriginalPositions();
-            SetElementArgPositions();
-        }
-
-        private void SetUpOriginalPositions() {
-            origPositionElements = new Vector3[numElements];
-            for (int i = 0; i < numElements; i++) {
-                origPositionElements[i] = elements[i].localPosition;
-            }
-        }
-
-        private void SetOriginalScale() {
-            origScaleArg = elements[elements.Length - 1].localScale;
-        }
-
-        private void SetElementArgPositions() {
-            for(int i = 0; i < numElements; i++) {
-                elements[i].GetChild(0).GetComponent<SnapCollider>().SetMyArgumentPosition(i);
-            }
-        }
-
-        private void InstantiateElementsAsMeshChildren() {
-            for (int i = 0; i < numElements; i++) {
-                GameObject ElementGameObject = Instantiate(
-                    //Resources.Load<GameObject>(ResourcePathConstants.ElementCodeBlockPrefab), GetMyCodeBlock().transform) as GameObject;
-                    Resources.Load<GameObject>(ResourcePathConstants.ElementCodeBlockPrefab), transform.parent) as GameObject;
-                ElementGameObject.SetActive(false);
-                ElementGameObject.transform.SnapToParent(this.transform);
-                ElementGameObject.SetActive(true);
-            }
-        }
-
-        private void RepositionElements() {
-            for (int i = 1; i < numElements; i++) {
-                elements[i].localPosition = new Vector3(elements[i - 1].localPosition.x + 0.5f, elements[i - 1].localPosition.y, elements[i - 1].localPosition.z);
-            }
-        }
-
-        private void AddSnapColliderGroupScriptToMesh() {
-            transform.gameObject.AddComponent<SnapColliderGroup>();
-        }
-
-        private void AddArrayCodeBlockScriptToCodeBlock() {
-            transform.parent.gameObject.AddComponent<ArrayCodeBlock>();
-        }
-
         public override void SetUpMeshOutlineList() {
             meshOutlineList = new List<MeshOutline>() { };
             for (int i = 0; i < elements.Length; i++) {
@@ -118,6 +65,50 @@ namespace MoveToCode {
                 elements[i].localPosition = reposition[i];
                 elements[i].localScale = rescale;
             }*/
+        }
+
+        private void SetUpElements() {
+            elements = new Transform[numElements];
+            InstantiateElementsAsMeshChildren();
+            for (int i = 0; i < elements.Length; i++) {
+                elements[i] = transform.GetChild(i);
+            }
+            SetOriginalScale();
+            SetUpOriginalPositions();
+            SetElementArgPositions();
+        }
+
+        private void SetUpOriginalPositions() {
+            origPositionElements = new Vector3[numElements];
+            for (int i = 0; i < numElements; i++) {
+                origPositionElements[i] = elements[i].localPosition;
+            }
+        }
+
+        private void SetOriginalScale() {
+            origScaleArg = elements[elements.Length - 1].localScale;
+        }
+
+        private void SetElementArgPositions() {
+            for (int i = 0; i < numElements; i++) {
+                elements[i].GetChild(0).GetComponent<SnapCollider>().SetMyArgumentPosition(i);
+            }
+        }
+
+        private void InstantiateElementsAsMeshChildren() {
+            for (int i = 0; i < numElements; i++) {
+                GameObject ElementGameObject = Instantiate(
+                    Resources.Load<GameObject>(ResourcePathConstants.ElementCodeBlockPrefab), transform.parent) as GameObject;
+                ElementGameObject.SetActive(false);
+                ElementGameObject.transform.SnapToParent(this.transform);
+                ElementGameObject.SetActive(true);
+            }
+        }
+
+        private void RepositionElements() {
+            for (int i = 1; i < numElements; i++) {
+                elements[i].localPosition = new Vector3(elements[i - 1].localPosition.x + 0.5f, elements[i - 1].localPosition.y, elements[i - 1].localPosition.z);
+            }
         }
     }
 }

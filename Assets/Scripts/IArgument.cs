@@ -11,7 +11,7 @@ namespace MoveToCode {
         public abstract IDataType EvaluateArgument();
         public virtual void ResestInternalState() { }
         public abstract int GetNumArguments();
-        public abstract string DescriptiveInstructionToString();
+        public virtual string DescriptiveInstructionToString() { return ""; }
 
         public virtual void EvaluateArgumentList() { }
         public virtual void SetUpArgPosToCompatability() { }
@@ -25,10 +25,6 @@ namespace MoveToCode {
             myCodeBlock = cbIn;
             ResestInternalState();
         }
-
-        /*public override IDataType EvaluateArgument() {
-            return RunInstruction().GetReturnDataVal();
-        }*/
 
         public List<Type> GetArgCompatibilityAtPos(int pos) {
             if (argPosToCompatability == null) {

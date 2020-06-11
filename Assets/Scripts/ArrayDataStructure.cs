@@ -4,81 +4,61 @@ using UnityEngine;
 
 namespace MoveToCode {
     public class ArrayDataStructure : IDataType {
-        int size;
+        int mySize;
         IDataType[] internalArray;
-        Type arrayType;
 
         public ArrayDataStructure(CodeBlock cbIn) : base(cbIn) { }
         public ArrayDataStructure(CodeBlock cbIn, int size) : base(cbIn) {
-            //SetValue(valIn);
             SetSize(size);
-            arrayType = typeof(int); //default
+            internalArray = new IDataType[mySize];
         }
 
         //TODO: Fix this
         public override bool IsSameDataTypeAndEqualTo(IDataType otherVal) {
             if (otherVal is ArrayDataStructure) {
-                return (string)GetValue() == (string)otherVal.GetValue();
+                return (string)GetValue() == (string)(otherVal as ArrayDataStructure).GetValue();
             }
             throw new InvalidOperationException("Trying to compare Array to non Array");
         }
 
-        public override void SetValue(object valIn) {
+        public void SetValue(object valIn) {
             throw new InvalidOperationException("Trying to set a value in the array without specifying an index");
         }
 
         public override object GetValue() {
-            return 0;
-            //throw new InvalidOperationException("Trying to get a value from the array without specifying an index");
+            return internalArray;
         }
 
         public override int GetNumArguments() {
-            return internalArray.Length;
+            return GetSize();
         }
 
         //set length of array, should only be called in constructor
         private void SetSize(int sizeIn) {
-            size = sizeIn;
-            internalArray = new IDataType[size];
+            mySize = sizeIn;
         }
 
         //get size of array (not the number of elements of the array)
         public int GetSize() {
-            return size;
-        }
-
-        public bool Empty() {
-            for(int i = 0; i < size; i++) {
-                if(internalArray[i] != null) {
-                    return false;
-                }
-            }
-            return true;
+            return mySize;
         }
 
         public void SetValueAtIndex(int index) {
-            //first input sets the type of array
-            if(Empty()) {
-                internalArray[index] = GetArgumentAt(index).EvaluateArgument();
-                arrayType = internalArray[index].GetType();
-                SetUpArgPosToCompatability();
-            }
-            if(index < size) {
+            if(index < mySize) {
                 internalArray[index] = GetArgumentAt(index).EvaluateArgument();
             } else {
                 throw new InvalidOperationException("Trying to read beyond array length");
             }
         }
 
-        public override void EvaluateArgumentList() {
-            for(int i = 0; i < size; i++) {
-                internalArray[i] = GetArgumentAt(i)?.EvaluateArgument().GetValue() as IDataType;
-            }
-        }
-
-        //TODO: maybe operator overload instead?
         public IDataType GetValueAtIndex(int index) {
             return internalArray[index];
+        }
+
+        public override void EvaluateArgumentList() {
+            for(int i = 0; i < mySize; i++) {
+                internalArray[i] = GetArgumentAt(i)?.EvaluateArgument() as BasicDataType;
+            }
         }
 
         public override void SetUpArgPosToCompatability() {
@@ -95,9 +75,12 @@ namespace MoveToCode {
             argDescriptionList = new List<string> { "Left side of condtional", "Right Side of Conditional" };
         }
 
-        //TODO: Fix this
+        public override string ToString() {
+            return "";
+        }
+
         public override Type GetCastType() {
-            return typeof(int);
+            return typeof(Array);
         }
     }
 }

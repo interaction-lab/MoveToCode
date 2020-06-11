@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 
 namespace MoveToCode {
-    public abstract class ConditionalInstruction : Instruction {
+    public abstract class ArrayIndexInstruction : Instruction {
         protected IDataType leftArg, rightArg;
 
-        public abstract string GetConditionalSymbol();
+        public string GetIndexSymbol() {
+            return "[]";
+        }
 
-        public ConditionalInstruction(CodeBlock cbIn) : base(cbIn) { }
+        public ArrayIndexInstruction(CodeBlock cbIn) : base(cbIn) { }
 
         public override void EvaluateArgumentList() {
             leftArg = GetArgumentAt(0)?.EvaluateArgument();
@@ -19,16 +21,16 @@ namespace MoveToCode {
         }
 
         public override string ToString() {
-            return GetConditionalSymbol();
+            return GetIndexSymbol();
         }
 
         public override void SetUpArgPosToCompatability() {
             argPosToCompatability = new List<List<Type>> {
                 new List<Type> {
-                    typeof(BasicDataType), typeof(MathInstruction)
+                    typeof(IDataType), typeof(MathInstruction)
                 },
                 new List<Type> {
-                    typeof(BasicDataType), typeof(MathInstruction)
+                    typeof(IDataType), typeof(MathInstruction)
                 }
             };
         }
@@ -38,7 +40,7 @@ namespace MoveToCode {
         }
 
         public override string DescriptiveInstructionToString() {
-            return string.Join("", GetArgumentAt(0)?.DescriptiveInstructionToString(), " ", GetConditionalSymbol(), " ", GetArgumentAt(1)?.DescriptiveInstructionToString());
+            return string.Join("", GetArgumentAt(0)?.DescriptiveInstructionToString(), " ", GetIndexSymbol(), " ", GetArgumentAt(1)?.DescriptiveInstructionToString());
         }
     }
 }

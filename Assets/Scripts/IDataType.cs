@@ -8,37 +8,16 @@ namespace MoveToCode {
 
         public IDataType(CodeBlock cbIn) : base(cbIn) { }
 
-
-        public override IDataType EvaluateArgument() {
-            return this;
-        }
-
         public virtual object GetValue() {
             return value;
-        }
-
-        public virtual void SetValue(object valIn) {
-            value = valIn;
-        }
-
-        public override string ToString() {
-            return Convert.ChangeType(GetValue(), GetCastType()).ToString();
         }
 
         public override int GetNumArguments() {
             return 0;
         }
 
-        public T CastObject<T>(object input) {
-            return (T)input;
-        }
-
-        public T ConvertObject<T>(object input) {
-            return (T)Convert.ChangeType(input, typeof(T));
-        }
-
-        public override string DescriptiveInstructionToString() {
-            return ToString();
+        public override IDataType EvaluateArgument() {
+            return this;
         }
     }
 }

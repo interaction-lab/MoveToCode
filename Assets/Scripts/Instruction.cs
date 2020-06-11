@@ -13,36 +13,5 @@ namespace MoveToCode {
         public override IDataType EvaluateArgument() {
             return RunInstruction().GetReturnDataVal();
         }
-        /*
-        public List<Type> GetArgCompatibilityAtPos(int pos) {
-            if (argPosToCompatability == null) {
-                SetUpArgPosToCompatability();
-            }
-            return argPosToCompatability[pos];
-        }
-
-        public IArgument GetArgumentAt(int pos) {
-            return GetArgumentListAsIArgs()[pos];
-        }
-
-        public List<IArgument> GetArgumentListAsIArgs() {
-            return GetCodeBlock().GetArgumentListAsIArgs();
-        }
-
-        public List<string> GetArgListDescription() {
-            if (argDescriptionList == null) {
-                SetUpArgDescriptionList();
-            }
-            return argDescriptionList;
-        }
-
-        public void PrintArgDescriptions() {
-            int i = 0;
-            foreach (string s in GetArgListDescription()) {
-                Debug.Log(string.Join("", "Arg[", i.ToString(), "] = ", s));
-                ++i;
-            }
-        }
-    }*/
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 namespace MoveToCode {
     public class FreePlayMenuManager : Singleton<FreePlayMenuManager> {
 
-        GameObject printBlock, conditionBlock, ifBlock, intBlock, mathBlock, setVarBlock, stringBlock, whileBlock, charBlock;
+        GameObject printBlock, conditionBlock, ifBlock, intBlock, mathBlock, setVarBlock, stringBlock, whileBlock, charBlock, arrayBlock, elementBlock;
         PressableButtonHoloLens2[] pressableButtons;
 
         private void Awake() {
@@ -20,6 +20,8 @@ namespace MoveToCode {
             stringBlock = Resources.Load<GameObject>(ResourcePathConstants.StringCodeBlockPrefab);
             whileBlock = Resources.Load<GameObject>(ResourcePathConstants.WhileCodeBlockPrefab);
             charBlock = Resources.Load<GameObject>(ResourcePathConstants.CharCodeBlockPrefab);
+            arrayBlock = Resources.Load<GameObject>(ResourcePathConstants.ArrayCodeBlockPrefab);
+            elementBlock = Resources.Load<GameObject>(ResourcePathConstants.ElementCodeBlockPrefab);
         }
 
         public GameObject InstantiateBlock(GameObject block) {
@@ -76,6 +78,9 @@ namespace MoveToCode {
         }
         public void InstantiateVariableBlockCollection() {
             MemoryManager.instance.AddNewVariableCodeBlock(string.Join("", "Var", MemoryManager.instance.GetNumVariables().ToString()), new IntDataType(null, 0));
+        }
+        public void InstantiateArrayCodeBlock() {
+            InstantiateBlock(arrayBlock);
         }
     }
 }

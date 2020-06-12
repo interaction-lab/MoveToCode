@@ -56,11 +56,11 @@ namespace MoveToCode {
         }
 
         public CodeBlock GetMyCodeBlock() {
-            return transform.parent.parent.GetComponent<CodeBlockObjectMesh>().GetMyCodeBlock(); // TODO: this is mega hack, clean up when rewriting snap
+            return transform.parent.parent?.GetComponent<CodeBlockObjectMesh>().GetMyCodeBlock(); // TODO: this is mega hack, clean up when rewriting snap
         }
 
         CodeBlockSnap GetMyCodeBlockSnap() {
-            return GetMyCodeBlock().GetCodeBlockSnap();
+            return GetMyCodeBlock()?.GetCodeBlockSnap();
         }
 
         // TODO: humanDidIt is such a hack
@@ -116,6 +116,10 @@ namespace MoveToCode {
             if (CodeBlockManager.instance != null && CodeBlockManager.instance.isActiveAndEnabled) {
                 CodeBlockManager.instance.DeregisterSnapCollider(this);
             }
+        }
+
+        public void SetMyArgumentPosition(int position) {
+            myArgumentPosition = position;
         }
     }
 }

@@ -1,14 +1,14 @@
 ﻿using System;
 
 namespace MoveToCode {
-    public class StringDataType : IDataType {
+    public class StringDataType : BasicDataType {
         public StringDataType(CodeBlock cbIn) : base(cbIn) { }
         public StringDataType(CodeBlock cbIn, string valIn) : base(cbIn) {
             SetValue(valIn);
         }
         public override bool IsSameDataTypeAndEqualTo(IDataType otherVal) {
             if (otherVal is StringDataType) {
-                return (string)GetValue() == (string)otherVal.GetValue();
+                return (string)GetValue() == (string)(otherVal as StringDataType).GetValue();
             }
             throw new InvalidOperationException("Trying to compare String to a non String Data Type");
         }

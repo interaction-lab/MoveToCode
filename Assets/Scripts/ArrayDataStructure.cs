@@ -12,7 +12,7 @@ namespace MoveToCode {
         public ArrayDataStructure(CodeBlock cbIn) : base(cbIn) { }
         public ArrayDataStructure(CodeBlock cbIn, int size) : base(cbIn) {
             SetSize(size);
-            myType = null;
+            SetType(null);
             internalArray = new IDataType[mySize];
         }
 
@@ -44,8 +44,8 @@ namespace MoveToCode {
             return numFilledElements;
         }
 
-        public void SetType() {
-
+        private void SetType(Type inType) {
+            myType = inType;
         }
 
         public void SetValueAtIndex(int index) {
@@ -66,11 +66,8 @@ namespace MoveToCode {
                 if (GetArgumentAt(i) != null) {
                     internalArray[i] = GetArgumentAt(i).EvaluateArgument() as BasicDataType;
                     numFilledElements++;
-                    myType = internalArray[i].GetType();
+                    SetType(internalArray[i].GetType());
                 }
-            }
-            if(GetNumFilledElements() == 0) {
-                myType = null;
             }
         }
 

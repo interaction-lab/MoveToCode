@@ -29,13 +29,13 @@ namespace MoveToCode {
 
         private void UpdateText() {
 
-            if (rightBracketTextMesh == null) {
+            if (rightBracketTextMesh == null && leftBracketTextMesh == null) {
                 InstantiateBracketText();
                 RepositionBracketText();
                 RescaleBracketText();
                 StartCoroutine(UpdateTextNextFrame());
             }
-            if (rightBracketTextMesh == null) {
+            if (rightBracketTextMesh == null && leftBracketTextMesh == null) {
                 leftBracketTextMesh = leftBracket.GetChild(0).GetComponent<TextMeshPro>();
                 rightBracketTextMesh = rightBracket.GetChild(0).GetComponent<TextMeshPro>();
             } else {

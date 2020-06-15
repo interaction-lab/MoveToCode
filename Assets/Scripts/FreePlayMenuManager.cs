@@ -3,7 +3,8 @@ using UnityEngine;
 namespace MoveToCode {
     public class FreePlayMenuManager : Singleton<FreePlayMenuManager> {
 
-        GameObject printBlock, conditionBlock, ifBlock, intBlock, mathBlock, setVarBlock, stringBlock, whileBlock, charBlock, arrayBlock, elementBlock;
+        GameObject printBlock, conditionBlock, ifBlock, intBlock, mathBlock, setVarBlock, stringBlock, whileBlock, charBlock,
+        arrayBlock, floatArrayBlock, stringArrayBlock, charArrayBlock, boolArrayBlock, elementBlock;
         PressableButtonHoloLens2[] pressableButtons;
 
         private void Awake() {
@@ -21,6 +22,10 @@ namespace MoveToCode {
             whileBlock = Resources.Load<GameObject>(ResourcePathConstants.WhileCodeBlockPrefab);
             charBlock = Resources.Load<GameObject>(ResourcePathConstants.CharCodeBlockPrefab);
             arrayBlock = Resources.Load<GameObject>(ResourcePathConstants.ArrayCodeBlockPrefab);
+            floatArrayBlock = Resources.Load<GameObject>(ResourcePathConstants.ArrayCodeBlockPrefab);
+            stringArrayBlock = Resources.Load<GameObject>(ResourcePathConstants.ArrayCodeBlockPrefab);
+            charArrayBlock = Resources.Load<GameObject>(ResourcePathConstants.ArrayCodeBlockPrefab);
+            boolArrayBlock = Resources.Load<GameObject>(ResourcePathConstants.ArrayCodeBlockPrefab);
             elementBlock = Resources.Load<GameObject>(ResourcePathConstants.ElementCodeBlockPrefab);
         }
 
@@ -79,8 +84,24 @@ namespace MoveToCode {
         public void InstantiateVariableBlockCollection() {
             MemoryManager.instance.AddNewVariableCodeBlock(string.Join("", "Var", MemoryManager.instance.GetNumVariables().ToString()), new IntDataType(null, 0));
         }
-        public void InstantiateArrayCodeBlock() {
-            InstantiateBlock(arrayBlock);
+        public void InstantiateArrayCodeBlock(ArrayCodeBlock.ARRAYTYPE arrType) {
+            GameObject go = InstantiateBlock(arrayBlock);
+            go.GetComponent<ArrayCodeBlock>().SetArrayType(arrType);
+        }
+        public void InstantiateIntArrayCodeBlock() {
+            InstantiateArrayCodeBlock(ArrayCodeBlock.ARRAYTYPE.INT);
+        }
+        public void InstantiateFloatArrayCodeBlock() {
+            InstantiateArrayCodeBlock(ArrayCodeBlock.ARRAYTYPE.FLOAT);
+        }
+        public void InstantiateStringArrayCodeBlock() {
+            InstantiateArrayCodeBlock(ArrayCodeBlock.ARRAYTYPE.STRING);
+        }
+        public void InstantiateCharArrayCodeBlock() {
+            InstantiateArrayCodeBlock(ArrayCodeBlock.ARRAYTYPE.CHAR);
+        }
+        public void InstantiateBoolArrayCodeBlock() {
+            InstantiateArrayCodeBlock(ArrayCodeBlock.ARRAYTYPE.BOOL);
         }
     }
 }

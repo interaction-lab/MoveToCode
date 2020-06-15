@@ -6,10 +6,12 @@ namespace MoveToCode {
     public class ArrayDataStructure : IDataType {
         int mySize;
         IDataType[] internalArray;
+        Type myType;
 
         public ArrayDataStructure(CodeBlock cbIn) : base(cbIn) { }
-        public ArrayDataStructure(CodeBlock cbIn, int size) : base(cbIn) {
+        public ArrayDataStructure(CodeBlock cbIn, int size, Type arrType) : base(cbIn) {
             SetSize(size);
+            myType = arrType;
             internalArray = new IDataType[mySize];
         }
 
@@ -59,7 +61,7 @@ namespace MoveToCode {
             argPosToCompatability = new List<List<Type>> { };
             for (int i = 0; i < GetSize(); i++) {
                 argPosToCompatability.Add(new List<Type> {
-                    typeof(IDataType)
+                    myType
                 });
             }
         }

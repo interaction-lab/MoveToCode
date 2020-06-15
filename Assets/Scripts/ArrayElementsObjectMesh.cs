@@ -50,22 +50,7 @@ namespace MoveToCode {
 
         // private methods
 
-        //TODO: Fix this
-        private void ResizeElements() {
-            /*// need to resize arg right based upon horizontal size of arg
-            Vector3 rescale = origScaleArg;
-            //List<Vector3> reposition = origPositionElements;
-            Vector3[] reposition = origPositionElements;//.ToArray();
-            for(int i = 0; i < origPositionElements.Length; i++) {
-                float? horizontalSize = GetMyCodeBlock().GetArgAsCodeBlockAt(i)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
-                if (horizontalSize != null) {
-                    rescale.x = (float)horizontalSize;
-                    reposition[i].x = reposition[i].x - (rescale.x - 0.5f) / 2.0f;
-                }
-                elements[i].localPosition = reposition[i];
-                elements[i].localScale = rescale;
-            }*/
-        }
+        private void ResizeElements() { }
 
         private void SetUpElements() {
             elements = new Transform[numElements];

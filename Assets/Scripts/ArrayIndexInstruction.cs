@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 
 namespace MoveToCode {
-    public abstract class ArrayIndexInstruction : Instruction {
+    public class ArrayIndexInstruction : Instruction {
         protected ArrayDataStructure arr;
         protected IntDataType index;
+        int indexVal;
+        object arrValAtIndex;
 
         public ArrayIndexInstruction(CodeBlock cbIn) : base(cbIn) { }
 
@@ -17,10 +19,22 @@ namespace MoveToCode {
             index = GetArgumentAt(1)?.EvaluateArgument() as IntDataType;
         }
 
-        /*public override InstructionReturnValue RunInstruction() {
+        public override InstructionReturnValue RunInstruction() {
             EvaluateArgumentList();
-            return new InstructionReturnValue(new IDataType(null, index.GetValue())), null);
-        }*/
+            indexVal = (int)index.GetValue();
+            arrValAtIndex = arr.GetValueAtIndex(indexVal);
+            if (arr.GetArrayType() == typeof(IntDataType)) {
+                return new InstructionReturnValue(new IntDataType(null, (int)arrValAtIndex), null);
+            } else if (arr.GetArrayType() == typeof(FloatDataType)) {
+                return new InstructionReturnValue(new FloatDataType((float)arrValAtIndex), null);
+            } else if (arr.GetArrayType() == typeof(StringDataType)) {
+                return new InstructionReturnValue(new StringDataType(null, (string)arrValAtIndex), null);
+            } else if (arr.GetArrayType() == typeof(CharDataType)) {
+                return new InstructionReturnValue(new CharDataType(null, (char)arrValAtIndex), null);
+            } else {
+                return new InstructionReturnValue(new BoolDataType(null, (bool)arrValAtIndex), null);
+            }
+        }
 
         public override int GetNumArguments() {
             return 2;

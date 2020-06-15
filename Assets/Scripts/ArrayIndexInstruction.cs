@@ -15,6 +15,7 @@ namespace MoveToCode {
                 arr = null;
             } else {
                 arr = GetArgumentAt(0)?.EvaluateArgument() as ArrayDataStructure;
+                arr.EvaluateArgumentList();
             }
             index = GetArgumentAt(1)?.EvaluateArgument() as IntDataType;
         }

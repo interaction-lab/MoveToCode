@@ -25,10 +25,10 @@ namespace MoveToCode {
         public override void SetUpArgPosToCompatability() {
             argPosToCompatability = new List<List<Type>> {
                 new List<Type> {
-                    typeof(BasicDataType), typeof(MathInstruction)
+                    typeof(BasicDataType), typeof(MathInstruction), typeof(ArrayIndexInstruction)
                 },
                 new List<Type> {
-                    typeof(BasicDataType), typeof(MathInstruction)
+                    typeof(BasicDataType), typeof(MathInstruction), typeof(ArrayIndexInstruction)
                 }
             };
         }

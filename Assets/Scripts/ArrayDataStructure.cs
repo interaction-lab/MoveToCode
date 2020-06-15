@@ -77,7 +77,6 @@ namespace MoveToCode {
 
         public override List<Type> GetArgCompatibilityAtPos(int pos) {
             EvaluateArgumentList();
-            //Debug.Log(numFilledElements);
             if (argPosToCompatability == null || GetNumFilledElements() == 1) {
                 SetUpArgPosToCompatability();
             }

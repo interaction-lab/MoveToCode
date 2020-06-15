@@ -8,7 +8,7 @@ namespace MoveToCode {
         Transform[] elements;
         Vector3[] origPositionElements;
         int numElements;
-        Vector3 origScaleArg;
+        Vector3[] origScaleElements;
         
         public override void SetUpObject() {
             numElements = (this.transform.parent.GetComponent<ArrayCodeBlock>().GetMyInternalIArgument() as ArrayDataStructure).GetSize();
@@ -52,13 +52,17 @@ namespace MoveToCode {
 
         private void ResizeElements() { }
 
+        private float GetElementBlockHorizontalAddition(int index) {
+            return (elements[index].localPosition.x - origPositionElements[index].x) * 2.0f;
+        }
+
         private void SetUpElements() {
             elements = new Transform[numElements];
             InstantiateElementsAsMeshChildren();
             for (int i = 0; i < elements.Length; i++) {
                 elements[i] = transform.GetChild(i);
             }
-            SetOriginalScale();
+            SetUpOriginalScale();
             SetUpOriginalPositions();
             SetElementArgPositions();
         }
@@ -70,8 +74,11 @@ namespace MoveToCode {
             }
         }
 
-        private void SetOriginalScale() {
-            origScaleArg = elements[elements.Length - 1].localScale;
+        private void SetUpOriginalScale() {
+            origScaleElements = new Vector3[numElements];
+            for(int i = 0; i <  numElements; i++) {
+                origScaleElements[i] = elements[i].localScale;
+            }
         }
 
         private void SetElementArgPositions() {
@@ -92,7 +99,8 @@ namespace MoveToCode {
 
         private void RepositionElements() {
             for (int i = 1; i < numElements; i++) {
-                elements[i].localPosition = new Vector3(elements[i - 1].localPosition.x + 0.5f, elements[i - 1].localPosition.y, elements[i - 1].localPosition.z);
+                elements[i].localPosition =
+                    new Vector3(elements[i - 1].localPosition.x + 0.5f, elements[i - 1].localPosition.y, elements[i - 1].localPosition.z);
             }
         }
     }

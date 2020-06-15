@@ -61,7 +61,8 @@ namespace MoveToCode {
         private void RepositionBracketText() {
             Vector3 tmpRight = rightBrackCodeBlockTextGameObject.transform.localPosition;
             Vector3 tmpLeft = leftBrackCodeBlockTextGameObject.transform.localPosition;
-            tmpRight.x = tmpLeft.x = 0;
+            tmpRight.x = 0.25f;
+            tmpLeft.x = 0.25f;
             tmpRight.y = tmpLeft.y = -0.25f;
             rightBrackCodeBlockTextGameObject.transform.localPosition = tmpRight;
             leftBrackCodeBlockTextGameObject.transform.localPosition = tmpLeft;
@@ -76,10 +77,6 @@ namespace MoveToCode {
                 new Vector3(leftBrackCodeBlockTextGameObject.transform.localScale.x * 2.5f,
                 leftBrackCodeBlockTextGameObject.transform.localScale.y * 1.5f,
                 leftBrackCodeBlockTextGameObject.transform.localScale.z);
-        }
-
-        private void PositionBracketText() {
-
         }
 
         // This is needed to wait for the gameobject to spawn
@@ -161,9 +158,9 @@ namespace MoveToCode {
         }
 
         private void RepositionRightBracket() {
-            Vector3 reposition = origPosLeftBracket;
+            Vector3 reposition = origPosRightBracket;
             reposition.x += (GetVariableBlockHorizontalAddition() + GetIndexBlockHorizontalAddition());
-            leftBracket.localPosition = reposition;
+            rightBracket.localPosition = reposition;
         }
     }
 }

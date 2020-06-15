@@ -86,7 +86,6 @@ namespace MoveToCode {
         public override void SetUpArgPosToCompatability() {
             argPosToCompatability = new List<List<Type>> { };
             if(myType == null) {
-                Debug.Log("it's null");
                 for (int i = 0; i < GetSize(); i++) {
                     argPosToCompatability.Add(new List<Type> {
                     typeof(BasicDataType)

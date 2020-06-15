@@ -25,7 +25,7 @@ namespace MoveToCode {
             ResestInternalState();
         }
 
-        public List<Type> GetArgCompatibilityAtPos(int pos) {
+        public virtual List<Type> GetArgCompatibilityAtPos(int pos) {
             if (argPosToCompatability == null) {
                 SetUpArgPosToCompatability();
             }

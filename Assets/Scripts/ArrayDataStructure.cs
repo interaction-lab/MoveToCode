@@ -5,13 +5,14 @@ using UnityEngine;
 namespace MoveToCode {
     public class ArrayDataStructure : IDataType {
         int mySize;
+        int numFilledElements;
         IDataType[] internalArray;
         Type myType;
 
         public ArrayDataStructure(CodeBlock cbIn) : base(cbIn) { }
-        public ArrayDataStructure(CodeBlock cbIn, int size, Type arrType) : base(cbIn) {
+        public ArrayDataStructure(CodeBlock cbIn, int size) : base(cbIn) {
             SetSize(size);
-            myType = arrType;
+            myType = null;
             internalArray = new IDataType[mySize];
         }
 
@@ -39,6 +40,14 @@ namespace MoveToCode {
             return mySize;
         }
 
+        public int GetNumFilledElements() {
+            return numFilledElements;
+        }
+
+        public void SetType() {
+
+        }
+
         public void SetValueAtIndex(int index) {
             if(index < mySize) {
                 internalArray[index] = GetArgumentAt(index).EvaluateArgument();
@@ -52,17 +61,44 @@ namespace MoveToCode {
         }
 
         public override void EvaluateArgumentList() {
-            for(int i = 0; i < mySize; i++) {
-                internalArray[i] = GetArgumentAt(i)?.EvaluateArgument() as BasicDataType;
+            numFilledElements = 0;
+            for (int i = 0; i < mySize; i++) {
+                if (GetArgumentAt(i) != null) {
+                    internalArray[i] = GetArgumentAt(i).EvaluateArgument() as BasicDataType;
+                    numFilledElements++;
+                    myType = internalArray[i].GetType();
+                }
             }
+            if(GetNumFilledElements() == 0) {
+                myType = null;
+            }
+        }
+
+        public override List<Type> GetArgCompatibilityAtPos(int pos) {
+            EvaluateArgumentList();
+            //Debug.Log(numFilledElements);
+            if (argPosToCompatability == null || GetNumFilledElements() == 1) {
+                SetUpArgPosToCompatability();
+            }
+            return argPosToCompatability[pos];
         }
 
         public override void SetUpArgPosToCompatability() {
             argPosToCompatability = new List<List<Type>> { };
-            for (int i = 0; i < GetSize(); i++) {
-                argPosToCompatability.Add(new List<Type> {
+            if(myType == null) {
+                Debug.Log("it's null");
+                for (int i = 0; i < GetSize(); i++) {
+                    argPosToCompatability.Add(new List<Type> {
+                    typeof(BasicDataType)
+                    });
+                }
+            } else {
+                Debug.Log(myType.ToString());
+                for (int i = 0; i < GetSize(); i++) {
+                    argPosToCompatability.Add(new List<Type> {
                     myType
-                });
+                    });
+                }
             }
         }
 

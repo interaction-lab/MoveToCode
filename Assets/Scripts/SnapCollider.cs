@@ -75,6 +75,10 @@ namespace MoveToCode {
         protected List<Type> GetMyCompatibleArgTypes() {
             if (myCompatibleArgTypes == null) {
                 myCompatibleArgTypes = GetMyCodeBlock().GetArgCompatabilityAt(myArgumentPosition);
+            } else if (GetMyCodeBlock().GetType() == typeof(ArrayCodeBlock)) { //first input sets array type, could later be generalized for all data structures?
+                if((GetMyCodeBlock().GetMyInternalIArgument() as ArrayDataStructure).GetNumFilledElements() < 2) {
+                    myCompatibleArgTypes = GetMyCodeBlock().GetArgCompatabilityAt(myArgumentPosition);
+                }
             }
             return myCompatibleArgTypes;
         }

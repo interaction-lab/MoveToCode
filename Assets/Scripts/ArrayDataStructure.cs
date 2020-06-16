@@ -94,7 +94,6 @@ namespace MoveToCode {
                     });
                 }
             } else {
-                Debug.Log(myType.ToString());
                 for (int i = 0; i < GetSize(); i++) {
                     argPosToCompatability.Add(new List<Type> {
                     myType

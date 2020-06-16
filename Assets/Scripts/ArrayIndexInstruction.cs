@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace MoveToCode {
     public class ArrayIndexInstruction : Instruction {
@@ -31,7 +32,8 @@ namespace MoveToCode {
             } else if (arr.GetArrayType() == typeof(StringDataType)) {
                 return new InstructionReturnValue(new StringDataType(null, (string)arrValAtIndex), null);
             } else if (arr.GetArrayType() == typeof(CharDataType)) {
-                return new InstructionReturnValue(new CharDataType(null, (char)arrValAtIndex), null);
+                char c = Convert.ToChar(arrValAtIndex);
+                return new InstructionReturnValue(new CharDataType(null, c), null);
             } else {
                 return new InstructionReturnValue(new BoolDataType(null, (bool)arrValAtIndex), null);
             }

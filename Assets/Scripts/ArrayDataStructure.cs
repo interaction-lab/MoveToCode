@@ -71,6 +71,8 @@ namespace MoveToCode {
                     internalArray[i] = GetArgumentAt(i).EvaluateArgument() as BasicDataType;
                     numFilledElements++;
                     SetArrayType(internalArray[i].GetType());
+                } else {
+                    internalArray[i] = null;
                 }
             }
         }

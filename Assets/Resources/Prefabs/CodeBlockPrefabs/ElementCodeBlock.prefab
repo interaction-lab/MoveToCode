@@ -197,4 +197,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myArgumentPosition: 0
-  snapPosition: {x: 0, y: 0, z: 0}
+  snapPosition: {x: 0, y: 0, z: -0.25}

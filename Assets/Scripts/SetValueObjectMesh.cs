@@ -109,7 +109,6 @@ namespace MoveToCode {
             Vector3 rescale = origScaleValueTo;
             Vector3 reposition = origPosValueTo;
             float? horizontalSize = GetMyCodeBlock().GetArgAsCodeBlockAt(2)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
-            Debug.Log(horizontalSize);
             if (horizontalSize != null) {
                 rescale.x = (float)horizontalSize;
             }

@@ -69,7 +69,7 @@ namespace MoveToCode {
             for (int i = 0; i < mySize; i++) {
                 if (GetArgumentAt(i) != null) {
                     if(((GetArgumentAt(i).EvaluateArgument() as BasicDataType) != internalArray[i]) && internalArray[i] != null) {
-
+                        //do nothing
                     } else {
                         internalArray[i] = GetArgumentAt(i).EvaluateArgument() as BasicDataType;
                         numFilledElements++;

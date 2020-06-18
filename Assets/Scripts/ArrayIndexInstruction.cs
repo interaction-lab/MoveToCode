@@ -35,7 +35,8 @@ namespace MoveToCode {
                 char c = Convert.ToChar(arrValAtIndex);
                 return new InstructionReturnValue(new CharDataType(null, c), null);
             } else {
-                return new InstructionReturnValue(new BoolDataType(null, (bool)arrValAtIndex), null);
+                bool b = Convert.ToBoolean(arrValAtIndex);
+                return new InstructionReturnValue(new BoolDataType(null, b), null);
             }
         }
 

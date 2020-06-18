@@ -39,6 +39,12 @@ namespace MoveToCode {
             }
         }
 
+        public void SetArrayValue(IDataType valIn) {
+            EvaluateArgumentList();
+            indexVal = (int)index.GetValue();
+            arr.SetValueAtIndex(indexVal, valIn);
+        }
+
         public override int GetNumArguments() {
             return 2;
         }

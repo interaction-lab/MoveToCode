@@ -15,7 +15,11 @@ namespace MoveToCode {
 
         public override InstructionReturnValue RunInstruction() {
             EvaluateArgumentList();
-            (GetArgumentAt(1) as Variable).SetValue(GetArgumentAt(2)?.EvaluateArgument());
+            if(GetArgumentAt(1).GetType() == typeof(ArrayIndexInstruction)) {
+                (GetArgumentAt(1) as ArrayIndexInstruction).SetArrayValue(GetArgumentAt(2)?.EvaluateArgument());
+            } else {
+                (GetArgumentAt(1) as Variable).SetValue(GetArgumentAt(2)?.EvaluateArgument());
+            }
             return new InstructionReturnValue(null, GetNextInstruction());
         }
 
@@ -29,7 +33,7 @@ namespace MoveToCode {
                     typeof(StandAloneInstruction)
                 },
                 new List<Type> {
-                    typeof(Variable)
+                    typeof(Variable), typeof(ArrayIndexInstruction)
                 },
                 new List<Type> {
                     typeof(IDataType), typeof(MathInstruction), typeof(ConditionalInstruction), typeof(ArrayIndexInstruction)

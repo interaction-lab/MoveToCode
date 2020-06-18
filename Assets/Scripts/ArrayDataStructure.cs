@@ -52,9 +52,9 @@ namespace MoveToCode {
             return myType;
         }
 
-        public void SetValueAtIndex(int index) {
+        public void SetValueAtIndex(int index, IDataType valIn) {
             if(index < mySize) {
-                internalArray[index] = GetArgumentAt(index).EvaluateArgument();
+                internalArray[index] = valIn;
             } else {
                 throw new InvalidOperationException("Trying to read beyond array length");
             }
@@ -79,7 +79,7 @@ namespace MoveToCode {
 
         public override List<Type> GetArgCompatibilityAtPos(int pos) {
             EvaluateArgumentList();
-            if (argPosToCompatability == null || GetNumFilledElements() == 1) {
+            if (argPosToCompatability == null || GetNumFilledElements() <= 1) {
                 SetUpArgPosToCompatability();
             }
             return argPosToCompatability[pos];
@@ -87,7 +87,7 @@ namespace MoveToCode {
 
         public override void SetUpArgPosToCompatability() {
             argPosToCompatability = new List<List<Type>> { };
-            if(myType == null) {
+            if(myType == null || (myType != null && GetNumFilledElements() < 1)) {
                 for (int i = 0; i < GetSize(); i++) {
                     argPosToCompatability.Add(new List<Type> {
                     typeof(BasicDataType)

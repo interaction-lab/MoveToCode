@@ -61,8 +61,7 @@ namespace MoveToCode {
         private void RepositionBracketText() {
             Vector3 tmpRight = rightBrackCodeBlockTextGameObject.transform.localPosition;
             Vector3 tmpLeft = leftBrackCodeBlockTextGameObject.transform.localPosition;
-            tmpRight.x = 0.25f;
-            tmpLeft.x = 0.25f;
+            tmpRight.x = tmpLeft.x = 0.25f;
             tmpRight.y = tmpLeft.y = -0.25f;
             rightBrackCodeBlockTextGameObject.transform.localPosition = tmpRight;
             leftBrackCodeBlockTextGameObject.transform.localPosition = tmpLeft;

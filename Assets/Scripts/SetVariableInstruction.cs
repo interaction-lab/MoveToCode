@@ -32,7 +32,7 @@ namespace MoveToCode {
                     typeof(Variable)
                 },
                 new List<Type> {
-                    typeof(IDataType), typeof(MathInstruction), typeof(ConditionalInstruction)
+                    typeof(IDataType), typeof(MathInstruction), typeof(ConditionalInstruction), typeof(ArrayIndexInstruction)
                 }
             };
         }

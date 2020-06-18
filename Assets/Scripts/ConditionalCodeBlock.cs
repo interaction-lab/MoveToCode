@@ -16,7 +16,6 @@
                     myBlockInternalArg = new NotEqualsConditionInstruction(this);
                     break;
             }
-
         }
     }
 }

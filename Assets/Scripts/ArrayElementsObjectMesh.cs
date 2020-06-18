@@ -8,7 +8,7 @@ namespace MoveToCode {
         Transform[] elements;
         Vector3[] origPositionElements;
         int numElements;
-        Vector3 origScaleArg;
+        Vector3[] origScaleElements;
         
         public override void SetUpObject() {
             numElements = (this.transform.parent.GetComponent<ArrayCodeBlock>().GetMyInternalIArgument() as ArrayDataStructure).GetSize();
@@ -50,21 +50,10 @@ namespace MoveToCode {
 
         // private methods
 
-        //TODO: Fix this
-        private void ResizeElements() {
-            /*// need to resize arg right based upon horizontal size of arg
-            Vector3 rescale = origScaleArg;
-            //List<Vector3> reposition = origPositionElements;
-            Vector3[] reposition = origPositionElements;//.ToArray();
-            for(int i = 0; i < origPositionElements.Length; i++) {
-                float? horizontalSize = GetMyCodeBlock().GetArgAsCodeBlockAt(i)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
-                if (horizontalSize != null) {
-                    rescale.x = (float)horizontalSize;
-                    reposition[i].x = reposition[i].x - (rescale.x - 0.5f) / 2.0f;
-                }
-                elements[i].localPosition = reposition[i];
-                elements[i].localScale = rescale;
-            }*/
+        private void ResizeElements() { }
+
+        private float GetElementBlockHorizontalAddition(int index) {
+            return (elements[index].localPosition.x - origPositionElements[index].x) * 2.0f;
         }
 
         private void SetUpElements() {
@@ -73,7 +62,7 @@ namespace MoveToCode {
             for (int i = 0; i < elements.Length; i++) {
                 elements[i] = transform.GetChild(i);
             }
-            SetOriginalScale();
+            SetUpOriginalScale();
             SetUpOriginalPositions();
             SetElementArgPositions();
         }
@@ -85,8 +74,11 @@ namespace MoveToCode {
             }
         }
 
-        private void SetOriginalScale() {
-            origScaleArg = elements[elements.Length - 1].localScale;
+        private void SetUpOriginalScale() {
+            origScaleElements = new Vector3[numElements];
+            for(int i = 0; i <  numElements; i++) {
+                origScaleElements[i] = elements[i].localScale;
+            }
         }
 
         private void SetElementArgPositions() {
@@ -107,7 +99,8 @@ namespace MoveToCode {
 
         private void RepositionElements() {
             for (int i = 1; i < numElements; i++) {
-                elements[i].localPosition = new Vector3(elements[i - 1].localPosition.x + 0.5f, elements[i - 1].localPosition.y, elements[i - 1].localPosition.z);
+                elements[i].localPosition =
+                    new Vector3(elements[i - 1].localPosition.x + 0.5f, elements[i - 1].localPosition.y, elements[i - 1].localPosition.z);
             }
         }
     }

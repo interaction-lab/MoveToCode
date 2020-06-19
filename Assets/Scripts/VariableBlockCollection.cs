@@ -56,7 +56,8 @@ namespace MoveToCode {
                 for (int i = 0; i < (myData as ArrayDataStructure).GetSize(); i++) {
                     arrayText += (myData as ArrayDataStructure).GetValueAtIndex(i).ToString() + ", ";
                 }
-                return string.Join("", variableName, ": ", arrayText);
+                //return string.Join("", variableName, ":\n", "Array: ", (myData as ArrayDataStructure).GetSize());
+                return string.Join("", variableName, ":\n", arrayText);
             }
             return string.Join("", variableName, ": ", myData?.ToString());
         }

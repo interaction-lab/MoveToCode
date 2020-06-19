@@ -13,6 +13,7 @@ namespace MoveToCode {
         public ArrayDataStructure(CodeBlock cbIn, int size) : base(cbIn) {
             SetSize(size);
             SetArrayType(null);
+            SetNumFilledElements(0);
             internalArray = new IDataType[mySize];
         }
 
@@ -38,6 +39,10 @@ namespace MoveToCode {
 
         public int GetSize() {
             return mySize;
+        }
+
+        public void SetNumFilledElements(int elements) {
+            numFilledElements = elements;
         }
 
         public int GetNumFilledElements() {
@@ -67,16 +72,17 @@ namespace MoveToCode {
         public override void EvaluateArgumentList() {
             numFilledElements = 0;
             for (int i = 0; i < mySize; i++) {
-                if (GetArgumentAt(i) != null) {
-                    if(((GetArgumentAt(i).EvaluateArgument() as BasicDataType) != internalArray[i]) && internalArray[i] != null) {
+                if (GetArgumentAt(i)?.EvaluateArgument() == null) {
+                    internalArray[i] = null;
+                    
+                } else {
+                    if (((GetArgumentAt(i).EvaluateArgument() as BasicDataType) != internalArray[i]) && internalArray[i] != null) {
                         //do nothing
                     } else {
                         internalArray[i] = GetArgumentAt(i).EvaluateArgument() as BasicDataType;
-                        numFilledElements++;
                         SetArrayType(internalArray[i].GetType());
                     }
-                } else {
-                    internalArray[i] = null;
+                    numFilledElements++;
                 }
             }
         }
@@ -91,7 +97,7 @@ namespace MoveToCode {
 
         public override void SetUpArgPosToCompatability() {
             argPosToCompatability = new List<List<Type>> { };
-            if(myType == null || (myType != null && GetNumFilledElements() < 1)) {
+            if(myType == null || (GetNumFilledElements() < 1)) {
                 for (int i = 0; i < GetSize(); i++) {
                     argPosToCompatability.Add(new List<Type> {
                     typeof(BasicDataType)

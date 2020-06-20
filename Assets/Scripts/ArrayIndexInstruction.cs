@@ -24,8 +24,8 @@ namespace MoveToCode {
         public override InstructionReturnValue RunInstruction() {
             EvaluateArgumentList();
             indexVal = (int)index.GetValue();
-            arrValAtIndex = arr.GetValueAtIndex(indexVal);
-            if (arr.GetArrayType() == typeof(IntDataType)) {
+            arrValAtIndex = arr?.GetValueAtIndex(indexVal);
+            if (arr?.GetArrayType() == typeof(IntDataType)) {
                 return new InstructionReturnValue(new IntDataType(null, (int)arrValAtIndex), null);
             } else if (arr.GetArrayType() == typeof(FloatDataType)) {
                 return new InstructionReturnValue(new FloatDataType((float)arrValAtIndex), null);

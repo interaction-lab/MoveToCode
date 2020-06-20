@@ -16,8 +16,13 @@ namespace MoveToCode {
         public override InstructionReturnValue RunInstruction() {
             EvaluateArgumentList();
             if(GetArgumentAt(1).GetType() == typeof(ArrayIndexInstruction)) {
+                //set "variable"/element in array
                 (GetArgumentAt(1) as ArrayIndexInstruction).SetArrayValue(GetArgumentAt(2)?.EvaluateArgument());
+                //set the array
+                ((GetArgumentAt(1) as ArrayIndexInstruction).GetArgumentAt(0) as Variable)
+                    .SetValue((GetArgumentAt(1) as ArrayIndexInstruction).GetArgumentAt(0).EvaluateArgument() as ArrayDataStructure);
             } else {
+                //set regular variable (not in an array)
                 (GetArgumentAt(1) as Variable).SetValue(GetArgumentAt(2)?.EvaluateArgument());
             }
             return new InstructionReturnValue(null, GetNextInstruction());

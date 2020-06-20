@@ -74,7 +74,6 @@ namespace MoveToCode {
             for (int i = 0; i < mySize; i++) {
                 if (GetArgumentAt(i)?.EvaluateArgument() == null) {
                     internalArray[i] = null;
-                    
                 } else {
                     if (((GetArgumentAt(i).EvaluateArgument() as BasicDataType) != internalArray[i]) && internalArray[i] != null) {
                         //do nothing
@@ -116,6 +115,12 @@ namespace MoveToCode {
             argDescriptionList = new List<string> { };
             for(int i = 0; i < GetSize(); i++) {
                 argDescriptionList.Add("Element" + i.ToString());
+            }
+        }
+
+        public override void ResestInternalState() {
+            for (int i = 0; i < GetSize(); i++) {
+                internalArray[i] = null;
             }
         }
 

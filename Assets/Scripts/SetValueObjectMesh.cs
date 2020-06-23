@@ -111,8 +111,8 @@ namespace MoveToCode {
             float? horizontalSize = GetMyCodeBlock().GetArgAsCodeBlockAt(2)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
             if (horizontalSize != null) {
                 rescale.x = (float)horizontalSize;
-                reposition.x = reposition.x + (rescale.x - 0.5f) / 2.0f + GetVariableBlockHorizontalAddition();
             }
+            reposition.x = reposition.x + (rescale.x - 0.5f) / 2.0f + GetVariableBlockHorizontalAddition();
             valueTo.localPosition = reposition;
             valueTo.localScale = rescale;
         }

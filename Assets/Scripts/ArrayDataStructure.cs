@@ -13,6 +13,7 @@ namespace MoveToCode {
         public ArrayDataStructure(CodeBlock cbIn, int size) : base(cbIn) {
             SetSize(size);
             SetArrayType(null);
+            SetNumFilledElements(0);
             internalArray = new IDataType[mySize];
         }
 
@@ -40,6 +41,10 @@ namespace MoveToCode {
             return mySize;
         }
 
+        public void SetNumFilledElements(int elements) {
+            numFilledElements = elements;
+        }
+
         public int GetNumFilledElements() {
             return numFilledElements;
         }
@@ -52,9 +57,9 @@ namespace MoveToCode {
             return myType;
         }
 
-        public void SetValueAtIndex(int index) {
+        public void SetValueAtIndex(int index, IDataType valIn) {
             if(index < mySize) {
-                internalArray[index] = GetArgumentAt(index).EvaluateArgument();
+                internalArray[index] = valIn;
             } else {
                 throw new InvalidOperationException("Trying to read beyond array length");
             }
@@ -67,19 +72,23 @@ namespace MoveToCode {
         public override void EvaluateArgumentList() {
             numFilledElements = 0;
             for (int i = 0; i < mySize; i++) {
-                if (GetArgumentAt(i) != null) {
-                    internalArray[i] = GetArgumentAt(i).EvaluateArgument() as BasicDataType;
-                    numFilledElements++;
-                    SetArrayType(internalArray[i].GetType());
-                } else {
+                if (GetArgumentAt(i)?.EvaluateArgument() == null) {
                     internalArray[i] = null;
+                } else {
+                    if (((GetArgumentAt(i).EvaluateArgument() as BasicDataType) != internalArray[i]) && internalArray[i] != null) {
+                        //do nothing
+                    } else {
+                        internalArray[i] = GetArgumentAt(i).EvaluateArgument() as BasicDataType;
+                        SetArrayType(internalArray[i].GetType());
+                    }
+                    numFilledElements++;
                 }
             }
         }
 
         public override List<Type> GetArgCompatibilityAtPos(int pos) {
             EvaluateArgumentList();
-            if (argPosToCompatability == null || GetNumFilledElements() == 1) {
+            if (argPosToCompatability == null || GetNumFilledElements() <= 1) {
                 SetUpArgPosToCompatability();
             }
             return argPosToCompatability[pos];
@@ -87,7 +96,7 @@ namespace MoveToCode {
 
         public override void SetUpArgPosToCompatability() {
             argPosToCompatability = new List<List<Type>> { };
-            if(myType == null) {
+            if(myType == null || (GetNumFilledElements() < 1)) {
                 for (int i = 0; i < GetSize(); i++) {
                     argPosToCompatability.Add(new List<Type> {
                     typeof(BasicDataType)
@@ -106,6 +115,12 @@ namespace MoveToCode {
             argDescriptionList = new List<string> { };
             for(int i = 0; i < GetSize(); i++) {
                 argDescriptionList.Add("Element" + i.ToString());
+            }
+        }
+
+        public override void ResestInternalState() {
+            for (int i = 0; i < GetSize(); i++) {
+                internalArray[i] = null;
             }
         }
 

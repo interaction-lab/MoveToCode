@@ -24,8 +24,8 @@ namespace MoveToCode {
         public override InstructionReturnValue RunInstruction() {
             EvaluateArgumentList();
             indexVal = (int)index.GetValue();
-            arrValAtIndex = arr.GetValueAtIndex(indexVal);
-            if (arr.GetArrayType() == typeof(IntDataType)) {
+            arrValAtIndex = arr?.GetValueAtIndex(indexVal);
+            if (arr?.GetArrayType() == typeof(IntDataType)) {
                 return new InstructionReturnValue(new IntDataType(null, (int)arrValAtIndex), null);
             } else if (arr.GetArrayType() == typeof(FloatDataType)) {
                 return new InstructionReturnValue(new FloatDataType((float)arrValAtIndex), null);
@@ -35,8 +35,15 @@ namespace MoveToCode {
                 char c = Convert.ToChar(arrValAtIndex);
                 return new InstructionReturnValue(new CharDataType(null, c), null);
             } else {
-                return new InstructionReturnValue(new BoolDataType(null, (bool)arrValAtIndex), null);
+                bool b = Convert.ToBoolean(arrValAtIndex);
+                return new InstructionReturnValue(new BoolDataType(null, b), null);
             }
+        }
+
+        public void SetArrayValue(IDataType valIn) {
+            EvaluateArgumentList();
+            indexVal = (int)index.GetValue();
+            arr.SetValueAtIndex(indexVal, valIn);
         }
 
         public override int GetNumArguments() {

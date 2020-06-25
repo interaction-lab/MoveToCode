@@ -41,5 +41,8 @@ namespace MoveToCode {
         public static string SnapSound = AudioFolder + "snap";
         public static string SpawnSound = AudioFolder + "spawn";
         public static string ComputerNoises = AudioFolder + "ComputerNoises";
+
+        public static string SpeechFolder = AudioFolder + "PreloadSpeech/";
+        public static string SpeechCacheFolder = AudioFolder + "CacheSpeech/";
     }
 }

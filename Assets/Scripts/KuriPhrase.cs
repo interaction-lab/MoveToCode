@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 namespace MoveToCode {
     public class KuriPhrase {
         public enum USECASE {
@@ -13,9 +14,9 @@ namespace MoveToCode {
         public int id;
         public string lyric;
         public USECASE uc;
-        public string filepath; 
+        public string filepath;
 
-        void Play(AudioSource auds) {
+        public void Play(AudioSource auds) { // use audiosource bundled with KuriPhraseManager 
             AudioClip ac = Resources.Load<AudioClip>(filepath);
             auds.clip = ac;
             auds.Play();

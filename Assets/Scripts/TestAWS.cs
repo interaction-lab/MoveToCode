@@ -20,7 +20,7 @@ public class TestAWS : MonoBehaviour
         AudioSource audioSource = GetComponent<AudioSource>();
         
         try {
-            apc = new AmazonPollyClient("AKIAUTHIP3ELD5TBOOHO", "TZdPzUStylOlbqSI10YidqMRSta+bInm2Z69Wx7t", Amazon.RegionEndpoint.USWest1);
+            apc = new AmazonPollyClient("USER HERE", "PASSW HERE", Amazon.RegionEndpoint.USWest1);
         } catch (Exception e) {
             Debug.Log("Error Generating Polly client with credentials: " + e.Message);
         }

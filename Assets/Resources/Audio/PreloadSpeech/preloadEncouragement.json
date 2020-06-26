@@ -1,0 +1,26 @@
+[
+	{
+		"id": 0,
+		"lyric": "You can do this!",
+		"uc": 0,
+		"filepath": "Audio/Speech/Youcandothis"
+	},
+	{
+		"id": 1,
+		"lyric": "Go ahead!",
+		"uc": 0,
+		"filepath": "Audio/Speech/Goahead"
+	},
+	{
+		"id": 2,
+		"lyric": "Don't give up!",
+		"uc": 0,
+		"filepath": "Audio/Speech/Dontgiveup"
+	},
+	{
+		"id": 3,
+		"lyric": "Keep trying!",
+		"uc": 0,
+		"filepath": "Audio/Speech/Keeptrying"
+	}
+]

@@ -11,8 +11,8 @@ namespace MoveToCode {
     public class AWSPollyGetter : Singleton<AWSPollyGetter> {
         private const string APIPath = "Assets/Resources/PollyAPI1.txt";
 
-        private const string speakstyle = "pitch=\"high\" rate=\"120%\"";
-        private VoiceId speakvoice = VoiceId.Kimberly;
+        private const string speakstyle = "pitch=\"x-high\" rate=\"100%\"";
+        private VoiceId speakvoice = VoiceId.Joanna;
 
         private AmazonPollyClient apc;
         public bool isWorking = true;
@@ -47,15 +47,15 @@ namespace MoveToCode {
 
                 StringBuilder sb = new StringBuilder();
                 foreach (char c in lyric) { //TODO stop the spaghetti 
-                    if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || c == '_') {
+                    if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) {
                         sb.Append(c);
                     }
                 }
 
                 OnlineRequestPolly(sreq, sb.ToString());
-                return ResourcePathConstants.SpeechFolder + sb.ToString();
+                return ResourcePathConstants.SpeechCacheFolder + sb.ToString();
             } else { 
-                return "TODO fix states";
+                return "TODO fix states"; // TODO fix online/offline states 
             }
         }
 
@@ -63,7 +63,7 @@ namespace MoveToCode {
             SynthesizeSpeechResponse sres = apc.SynthesizeSpeech(sreq);
 
             try {
-                using (var fileStream = File.Create(@"Assets\Resources\Audio\Speech\" + name + ".mp3")) {
+                using (FileStream fileStream = File.Create(@"Assets\Resources\Audio\CacheSpeech\" + name + ".mp3")) {
                     sres.AudioStream.CopyTo(fileStream);
                     fileStream.Flush();
                     fileStream.Close();
@@ -75,6 +75,6 @@ namespace MoveToCode {
             }
         }
 
-        public bool getFunctioningState() { return isWorking; }
+        public bool GetFunctioningState() { return isWorking; }
     }
 }

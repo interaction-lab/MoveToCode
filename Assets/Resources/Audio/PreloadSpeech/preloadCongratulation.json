@@ -1,0 +1,32 @@
+[
+  {
+    "id": 4,
+    "lyric": "Well done!",
+    "uc": 1,
+    "filepath": "Audio/Speech/Welldone"
+  },
+  {
+    "id": 5,
+    "lyric": "Good job!",
+    "uc": 1,
+    "filepath": "Audio/Speech/Goodjob"
+  },
+  {
+    "id": 6,
+    "lyric": "Great!",
+    "uc": 1,
+    "filepath": "Audio/Speech/Great"
+  },
+  {
+    "id": 7,
+    "lyric": "Excellent!",
+    "uc": 1,
+    "filepath": "Audio/Speech/Excellent"
+  },
+  {
+    "id": 8,
+    "lyric": "Very good!",
+    "uc": 1,
+    "filepath": "Audio/Speech/Verygood"
+  }
+]

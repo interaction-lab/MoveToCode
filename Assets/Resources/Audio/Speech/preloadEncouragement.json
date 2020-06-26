@@ -2,15 +2,27 @@
   "preloadEncouragement": [
     {
       "id": 0,
-      "lyric": "Good Job!",
-      "uc": 1,
-      "filepath": "Audio/Speech/GoodJob"
+      "lyric": "You can do this!",
+      "uc": 0,
+      "filepath": "Audio/Speech/Youcandothis"
     },
     {
       "id": 1,
-      "lyric": "Nice job! You're a winner!",
-      "uc": 1,
-      "filepath": "Audio/Speech/JicejobYoureawiner"
+      "lyric": "Go ahead!",
+      "uc": 0,
+      "filepath": "Audio/Speech/Goahead"
+    },
+    {
+      "id": 2,
+      "lyric": "Don't give up!",
+      "uc": 0,
+      "filepath": "Audio/Speech/Dontgiveup"
+    },
+    {
+      "id": 3,
+      "lyric": "Keep trying!",
+      "uc": 0,
+      "filepath": "Audio/Speech/Keeptrying"
     }
   ]
 }

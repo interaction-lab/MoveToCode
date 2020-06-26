@@ -6,15 +6,19 @@ using Amazon.Polly.Model;
 using System.IO;
 using System;
 using System.Text;
+using MoveToCode;
+using UnityEditor;
 
 public class TestAWS : MonoBehaviour
 {
     private AmazonPollyClient apc;
     private SynthesizeSpeechResponse sres;
+    public String whatToSay;
     // Start is called before the first frame update
     void Start()
     {
         AudioSource audioSource = GetComponent<AudioSource>();
+        
         try {
             apc = new AmazonPollyClient("AKIAUTHIP3ELD5TBOOHO", "TZdPzUStylOlbqSI10YidqMRSta+bInm2Z69Wx7t", Amazon.RegionEndpoint.USWest1);
         } catch (Exception e) {
@@ -22,8 +26,9 @@ public class TestAWS : MonoBehaviour
         }
 
         SynthesizeSpeechRequest sreq = new SynthesizeSpeechRequest() {
-            Text = "Good Job!",
-            VoiceId = VoiceId.Joanna,
+            TextType = TextType.Ssml,
+            Text = "<speak><prosody pitch=\"high\" rate=\"120 % \">" + whatToSay + "</prosody></speak>",
+            VoiceId = VoiceId.Kimberly,
             OutputFormat = OutputFormat.Mp3
         };
         //TODO simplify try catches
@@ -51,10 +56,21 @@ public class TestAWS : MonoBehaviour
             Debug.Log("Error writing speech to file: " + e.Message);
         }
 
-        AudioClip audioClip = Resources.Load<AudioClip>("Audio/Speech/GoodJob.mp3");
-        audioSource.clip = audioClip;
-        audioSource.Play();
+        
+        StartCoroutine(Ffff(audioSource, sb.ToString()));
 
+    }
+
+    IEnumerator Ffff(AudioSource aaa, String name) {
+        yield return new WaitForSeconds(1);
+        AssetDatabase.Refresh(); //IMPORTANT
+        Debug.Log("Process start");
+        Debug.Log(ResourcePathConstants.SpeechFolder + name);
+        AudioClip audioClip = Resources.Load<AudioClip>(ResourcePathConstants.SpeechFolder + name);
+        aaa.clip = audioClip;
+        Debug.Log(audioClip == null);
+        aaa.Play();
+        Debug.Log("speech sound played");
     }
 
 }

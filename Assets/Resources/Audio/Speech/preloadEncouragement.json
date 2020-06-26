@@ -1,0 +1,16 @@
+{
+  "preloadEncouragement": [
+    {
+      "id": 0,
+      "lyric": "Good Job!",
+      "uc": 1,
+      "filepath": "Audio/Speech/GoodJob"
+    },
+    {
+      "id": 1,
+      "lyric": "Nice job! You're a winner!",
+      "uc": 1,
+      "filepath": "Audio/Speech/JicejobYoureawiner"
+    }
+  ]
+}

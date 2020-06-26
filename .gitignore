@@ -39,4 +39,8 @@ sysinfo.txt
 # Crashlytics generated file
 Assets/StreamingAssets/crashlytics-build.properties
 
+# Amazon Polly API Keys
+Assets/Resources/PollyAPI[0123456789].txt
+Assets/Resources/PollyAPI[0123456789].txt.meta
+
 UWP/

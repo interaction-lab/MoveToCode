@@ -14,7 +14,10 @@ namespace MoveToCode {
         private int idCount;
         public bool onlineMode = true;
 
-        public AudioSource audioSource; 
+
+        [HideInInspector] public AudioSource audioSource;
+
+        private KuriPhrase empty = new KuriPhrase(-1, "", KuriPhrase.USECASE.Other, "emptyfile");
         
         public KuriPhrase GetPhrase(string lyric) {
             foreach (KuriPhrase kp in phrases) {
@@ -24,36 +27,48 @@ namespace MoveToCode {
             }
             //if phrase does not exist yet
             if(apg.isWorking) {
-                string filepath = apg.PullPhrase(lyric);
+                string filepath;
+                try {
+                    filepath = apg.PullPhrase(lyric);
+                } catch(FileLoadException e) {
+                    KuriTextManager ktm = FindObjectOfType<KuriTextManager>();
+                    ktm.Addline(lyric);
+                    return empty; 
+                }
                 KuriPhrase newPhrase = new KuriPhrase(idCount, lyric, KuriPhrase.USECASE.Other, filepath);
                 idCount++;
                 AssetDatabase.Refresh(); //IMPORTANT
                 phrases.Add(newPhrase);
 
                 using (StreamWriter sw = new StreamWriter(
-                    File.Open("Assets/Resources/" + ResourcePathConstants.SpeechCacheFolder + "cachePhrase.json", FileMode.CreateNew))) {
+                    File.Open("Assets/Resources/" + ResourcePathConstants.SpeechCacheFolder + "cachePhrase.json", FileMode.Truncate))) {
                     sw.WriteLine(JsonConvert.SerializeObject(phrases, Formatting.None));
                     sw.Close();
                 };
 
                 return newPhrase;
             } else {
-                throw new System.Exception(); // TODO implement alternative text-only mode 
+                KuriTextManager ktm = FindObjectOfType<KuriTextManager>();
+                ktm.Addline(lyric);
+                return empty; 
             }
         }
 
         public KuriPhrase GetPhrase(KuriPhrase.USECASE ucase) {
             if(ucase != KuriPhrase.USECASE.Other) {
                 if(ucase == KuriPhrase.USECASE.Congratulation) {
-                    return preloadCongratulation[(int)(Random.value * preloadCongratulation.Count)];
+                    int temp = (int)(Random.value * preloadCongratulation.Count);
+                    Debug.Log(temp);
+                    return preloadCongratulation[temp];
+                    
                 } else if(ucase == KuriPhrase.USECASE.Encouragement) {
-                    return preloadEncouragement[(int)(Random.value * preloadCongratulation.Count)];
+                    return preloadEncouragement[(int)(Random.value * preloadEncouragement.Count)];
                 } else {
                     throw new System.Exception("You have some problem with the KuriPhrase.USECASE enum");
                 }
             } else {
                 Debug.LogWarning("Warning: \"other\" usecase phrase was specifically requested");
-                return phrases[0];
+                return empty;
             }
         }
 
@@ -76,9 +91,10 @@ namespace MoveToCode {
             try {
                 reader = new StreamReader("Assets/Resources/" + ResourcePathConstants.SpeechCacheFolder + "cachePhrase.json");
                 phrases = JsonConvert.DeserializeObject<List<KuriPhrase>>(reader.ReadToEnd());
-            } catch(FileNotFoundException e) {
+            } catch(FileNotFoundException e) { // no cached phrases
                 phrases = new List<KuriPhrase>();
             }
+
             audioSource = GetComponent<AudioSource>();
         }
         

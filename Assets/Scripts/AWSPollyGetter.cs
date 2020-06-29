@@ -37,7 +37,7 @@ namespace MoveToCode {
         }
 
         public string PullPhrase(string lyric) {
-            if (onlineState && isWorking) {
+            if (isWorking) {
                 SynthesizeSpeechRequest sreq = new SynthesizeSpeechRequest() {
                     TextType = TextType.Ssml,
                     Text = "<speak><prosody " + speakstyle + ">" + lyric + "</prosody></speak>",
@@ -51,27 +51,25 @@ namespace MoveToCode {
                         sb.Append(c);
                     }
                 }
+                try {
+                    OnlineRequestPolly(sreq, sb.ToString());
+                } catch(Exception e) {
+                    throw new FileLoadException();
+                }
 
-                OnlineRequestPolly(sreq, sb.ToString());
                 return ResourcePathConstants.SpeechCacheFolder + sb.ToString();
-            } else { 
-                return "TODO fix states"; // TODO fix online/offline states 
+            } else {
+                throw new FileLoadException();
             }
         }
 
         private void OnlineRequestPolly(SynthesizeSpeechRequest sreq, string name) {
             SynthesizeSpeechResponse sres = apc.SynthesizeSpeech(sreq);
-
-            try {
-                using (FileStream fileStream = File.Create(@"Assets\Resources\Audio\CacheSpeech\" + name + ".mp3")) {
-                    sres.AudioStream.CopyTo(fileStream);
-                    fileStream.Flush();
-                    fileStream.Close();
-                    Debug.Log("New speech file created succesfully");
-                }
-            }
-            catch (Exception e) {
-                Debug.Log("Error writing speech to file: " + e.Message);
+            using (FileStream fileStream = File.Create(@"Assets\Resources\Audio\CacheSpeech\" + name + ".mp3")) {
+                sres.AudioStream.CopyTo(fileStream);
+                fileStream.Flush();
+                fileStream.Close();
+                Debug.Log("New speech file created succesfully");
             }
         }
 

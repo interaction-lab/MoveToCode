@@ -22,7 +22,7 @@ namespace MoveToCode {
         }
 
         public override string ToString() {
-            return "Print: ";
+            return "print";
         }
 
         public override void SetUpArgPosToCompatability() {
@@ -31,8 +31,7 @@ namespace MoveToCode {
                     typeof(StandAloneInstruction)
                 },
                 new List<Type> {
-                    typeof(BasicDataType), typeof(MathInstruction),
-                    typeof(ConditionalInstruction), typeof(ArrayIndexInstruction)
+                    typeof(IDataType), typeof(MathInstruction), typeof(ConditionalInstruction)
                 }
             };
         }
@@ -42,7 +41,7 @@ namespace MoveToCode {
         }
 
         public override string DescriptiveInstructionToString() {
-            return string.Join("", ToString(), GetArgumentAt(1)?.DescriptiveInstructionToString());
+            return string.Join("", ToString()+"(", GetArgumentAt(1)?.DescriptiveInstructionToString()+")");
         }
     }
 }

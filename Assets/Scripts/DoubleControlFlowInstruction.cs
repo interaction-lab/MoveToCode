@@ -8,8 +8,23 @@ namespace MoveToCode {
         public override int GetNumArguments() {
             return 4;
         }
-        protected override StandAloneInstruction GetExitInstruction() {
+        public override StandAloneInstruction GetNextInstruction() {
             return GetArgumentAt(3) as StandAloneInstruction;
+        }
+        protected override StandAloneInstruction GetNestedInstruction() {
+            return GetArgumentAt(0) as StandAloneInstruction;
+        }
+        
+        protected override string GetNestedInstructionsAsString() {
+            string result = "";
+            StandAloneInstruction currInstruction = GetNestedInstruction();
+            while (currInstruction != null)
+            {
+                result += "\n\t" + ReplaceFirst(currInstruction.DescriptiveInstructionToString(), "\t", "\t\t"); //add nested instructions as tabbed, making sure tabs accumulate
+                currInstruction = currInstruction.GetNextInstruction();
+            }
+            return result;
+
         }
     }
 }

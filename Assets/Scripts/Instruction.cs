@@ -13,5 +13,12 @@ namespace MoveToCode {
         public override IDataType EvaluateArgument() {
             return RunInstruction().GetReturnDataVal();
         }
+
+        public string ReplaceFirst(string text, string find, string replace)
+        { //replace first occurence of 'find' with 'replace'
+            int pos = text.IndexOf(find);
+            if (pos < 0) return text;
+            return text.Substring(0, pos) + replace + text.Substring(pos + find.Length);
+        }
     }
 }

@@ -2,11 +2,11 @@
   <PropertyGroup>
     <MSBuildForUnityVersion>0.8.3</MSBuildForUnityVersion>
     
-    <MSBuildForUnityGeneratedOutputDirectory>E:\UnityProjects\MoveToCode\MSBuild\Projects</MSBuildForUnityGeneratedOutputDirectory>
-    <UnityProjectAssetsPath>E:\UnityProjects\MoveToCode\Assets</UnityProjectAssetsPath>
+    <MSBuildForUnityGeneratedOutputDirectory>D:\Code\SWE\Unity\MoveToCode\MSBuild\Projects</MSBuildForUnityGeneratedOutputDirectory>
+    <UnityProjectAssetsPath>D:\Code\SWE\Unity\MoveToCode\Assets</UnityProjectAssetsPath>
     <MSBuildForUnityDefaultOutputPath>$(UnityProjectAssetsPath)\Dependencies</MSBuildForUnityDefaultOutputPath>
     
-    <UnityCurrentPlatform>WSA</UnityCurrentPlatform>
+    <UnityCurrentPlatform>WindowsStandalone64</UnityCurrentPlatform>
     <UnityCurrentTargetFramework>net46</UnityCurrentTargetFramework>
     
     <UnityMajorVersion>2018</UnityMajorVersion>

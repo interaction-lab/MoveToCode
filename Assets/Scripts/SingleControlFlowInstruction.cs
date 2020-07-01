@@ -26,7 +26,7 @@ namespace MoveToCode {
         }
 
         public override string DescriptiveInstructionToString() {
-            return string.Join("", ToString(), GetArgumentAt(1)?.DescriptiveInstructionToString(), ": ", GetNestedInstructionsAsString());
+            return string.Join("", "<color=purple>", ToString(), "</color>", GetArgumentAt(1)?.DescriptiveInstructionToString(), ": ", GetNestedInstructionsAsString());
         }
     }
 }

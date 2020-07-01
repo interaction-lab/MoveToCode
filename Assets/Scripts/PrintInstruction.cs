@@ -29,7 +29,7 @@ namespace MoveToCode {
             argPosToCompatability = new List<List<Type>> {
                 new List<Type>{
                     typeof(StandAloneInstruction)
-                },
+                },            
                 new List<Type> {
                     typeof(IDataType), typeof(MathInstruction), typeof(ConditionalInstruction)
                 }
@@ -41,7 +41,7 @@ namespace MoveToCode {
         }
 
         public override string DescriptiveInstructionToString() {
-            return string.Join("", ToString()+"(", GetArgumentAt(1)?.DescriptiveInstructionToString()+")");
+            return string.Join("", "<color=purple>"+ToString()+"</color>(", GetArgumentAt(1)?.DescriptiveInstructionToString()+")");
         }
     }
 }

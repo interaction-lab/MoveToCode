@@ -68,8 +68,7 @@ namespace MoveToCode
             }
         }
 
-        public void RemoveAsCurSnapColliderInContact(SnapCollider sc)
-        {
+        public void RemoveAsCurSnapColliderInContact(SnapCollider sc) {
             GetCurSnapCollidersInContact().Remove(sc);
             if (sc == bestCandidateSnapCollider)
             {
@@ -77,17 +76,14 @@ namespace MoveToCode
             }
         }
 
-        void OnManipulationEnd(ManipulationEventData call)
-        { //let go of the block
+        void OnManipulationEnd(ManipulationEventData call) { //let go of the block
             currentlyDraggingCBS = null;
             lastDraggedCBS = this;
-            if (bestCandidateSnapCollider != null)
-            { // within grey zone; SNAP ON
+            if (bestCandidateSnapCollider != null){ // within grey zone; SNAP ON
                 bestCandidateSnapCollider.DoSnapAction(bestCandidateSnapCollider.GetMyCodeBlock(), GetMyCodeBlock());
                 Block2TextConsoleManager.instance.UpdateConsoleOnSnap(); //refresh the Block2Text console when you ADD a block 
             }
-            else
-            {// outside of grey zone; SNAP OFF 
+            else{// outside of grey zone; SNAP OFF 
                 // Remove when dragged away
                 myCodeBlock.RemoveFromParentBlock(true);
                 Block2TextConsoleManager.instance.UpdateConsoleOnSnap(); //refresh the Block2Text console when you REMOVE a block

@@ -13,7 +13,7 @@
         }
 
         public override string ToString() {
-            return "<color=purple>if</color> ";
+            return "if ";
         }
     }
 }

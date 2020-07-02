@@ -1,10 +1,10 @@
 ﻿namespace MoveToCode {
 
     public class IntCodeBlock : DataCodeBlock {
-        public int output;
+        //public int output;
 
         protected override void SetMyBlockInternalArg() {
-            myBlockInternalArg = new IntDataType(this, output);
+            myBlockInternalArg = new IntDataType(this, (int)output);
         }
     }
 }

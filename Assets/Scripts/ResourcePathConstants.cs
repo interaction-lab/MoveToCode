@@ -26,6 +26,11 @@ namespace MoveToCode {
         public static string ElementCodeBlockPrefab = CodeBlockPrefabFolder + "ElementCodeBlock";
         public static string ArrayIndexCodeBlockPrefab = CodeBlockPrefabFolder + "ArrayIndexCodeBlock";
 
+        public static string ExercisePrefab = PrefabFolder + "Exercise";
+
+        //temp address
+        public static string address = @"Exercises/0_HelloWorld.json";
+
         // Materials
         public static string MaterialFolder = "Materials/";
         public static string OutlineSnapColliderMaterial = MaterialFolder + "OutlineSnapCollider";

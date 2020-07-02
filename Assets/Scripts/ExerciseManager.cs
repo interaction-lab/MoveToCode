@@ -21,9 +21,13 @@ namespace MoveToCode {
 #endif
             SetupCodeBlockDictionary();
             //Instantiate exercises
-            Exercise helloWorld = JsonUtility.FromJson<Exercise>(@"Resources/Exercises/0_HelloWorld");
+            GameObject HWExercise = Instantiate(
+                    Resources.Load<GameObject>(ResourcePathConstants.ExercisePrefab), transform.parent) as GameObject;
+            HWExercise.GetComponent<Exercise>().SetExerciseInternals(ResourcePathConstants.address);
+            //@"Resources/Exercises/0_HelloWorld.json"
+            HWExercise.transform.SnapToParent(transform);
             exerciseList = new List<Exercise>();
-            exerciseList.Add(helloWorld);
+            exerciseList.Add(HWExercise.GetComponent<Exercise>());
 
             //SetUpExerciseList();
             curExercise = exerciseList[curExercisePos];
@@ -49,7 +53,7 @@ namespace MoveToCode {
 
         public void AlertCodeFinished() {
             if (curExercise != null) { // This if is to guard against initializing interpreter
-                if (curExercise.IsExerciseCorrect()) {
+                if (curExercise.GetExerciseInternals().IsExerciseCorrect()) {
                     KuriManager.instance.SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT.Congratulation);
                     LoggingManager.instance.UpdateLogColumn(exerciseSubmissionResultCol, "Correct");
                     lastExerciseCompleted = true;
@@ -69,7 +73,7 @@ namespace MoveToCode {
 
         private void CycleNewExercise() {
             lastExerciseCompleted = false;
-            curExercise.CleanUp();
+            curExercise.GetExerciseInternals().CleanUp();
             ToggleCurrentExercise(false);
             curExercisePos += 1;
             if (curExercisePos == exerciseList.Count) {
@@ -91,17 +95,18 @@ namespace MoveToCode {
         }
 
         private void SetupCodeBlockDictionary() {
-            codeBlockDictionary.Add(typeof(PrintCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.PrintCodeBlockPrefab));
-            codeBlockDictionary.Add(typeof(ConditionalCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.ConditionBlockPrefab));
-            codeBlockDictionary.Add(typeof(IfCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.IfCodeBlockPrefab));
-            codeBlockDictionary.Add(typeof(IntCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.IntCodeBlockPrefab));
-            codeBlockDictionary.Add(typeof(MathOperationCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.MathCodeBlockPrefab));
-            codeBlockDictionary.Add(typeof(SetVariableCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.SetVariableCodeBlockPrefab));
-            codeBlockDictionary.Add(typeof(StringCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.StringCodeBlockPrefab));
-            codeBlockDictionary.Add(typeof(WhileCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.WhileCodeBlockPrefab));
-            codeBlockDictionary.Add(typeof(CharCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.CharCodeBlockPrefab));
-            codeBlockDictionary.Add(typeof(ArrayCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.ArrayCodeBlockPrefab));
-            codeBlockDictionary.Add(typeof(ArrayIndexCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.ArrayIndexCodeBlockPrefab));
+            codeBlockDictionary = new Dictionary<Type, GameObject>();
+            codeBlockDictionary.Add(typeof(PrintCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.PrintCodeBlockPrefab) as GameObject);
+            codeBlockDictionary.Add(typeof(ConditionalCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.ConditionBlockPrefab) as GameObject);
+            codeBlockDictionary.Add(typeof(IfCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.IfCodeBlockPrefab) as GameObject);
+            codeBlockDictionary.Add(typeof(IntCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.IntCodeBlockPrefab) as GameObject);
+            codeBlockDictionary.Add(typeof(MathOperationCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.MathCodeBlockPrefab) as GameObject);
+            codeBlockDictionary.Add(typeof(SetVariableCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.SetVariableCodeBlockPrefab) as GameObject);
+            codeBlockDictionary.Add(typeof(StringCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.StringCodeBlockPrefab) as GameObject);
+            codeBlockDictionary.Add(typeof(WhileCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.WhileCodeBlockPrefab) as GameObject);
+            codeBlockDictionary.Add(typeof(CharCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.CharCodeBlockPrefab) as GameObject);
+            codeBlockDictionary.Add(typeof(ArrayCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.ArrayCodeBlockPrefab) as GameObject);
+            codeBlockDictionary.Add(typeof(ArrayIndexCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.ArrayIndexCodeBlockPrefab) as GameObject);
             
         }
     }

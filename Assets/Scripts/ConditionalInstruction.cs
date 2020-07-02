@@ -6,6 +6,7 @@ namespace MoveToCode {
         protected IDataType leftArg, rightArg;
 
         public abstract string GetConditionalSymbol();
+        public abstract string GetCodeString();
 
         public ConditionalInstruction(CodeBlock cbIn) : base(cbIn) { }
 
@@ -34,11 +35,11 @@ namespace MoveToCode {
         }
 
         public override void SetUpArgDescriptionList() {
-            argDescriptionList = new List<string> { "Left side of condtional", "Right Side of Conditional" };
+            argDescriptionList = new List<string> { "Left side of conditional", "Right Side of Conditional" };
         }
 
         public override string DescriptiveInstructionToString() {
-            return string.Join("", GetArgumentAt(0)?.DescriptiveInstructionToString(), " ", GetConditionalSymbol(), " ", GetArgumentAt(1)?.DescriptiveInstructionToString());
+            return string.Join("", GetArgumentAt(0)?.DescriptiveInstructionToString(), " ", GetCodeString(), " ", GetArgumentAt(1)?.DescriptiveInstructionToString());
         }
     }
 }

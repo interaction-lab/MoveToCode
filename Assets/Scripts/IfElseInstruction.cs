@@ -4,10 +4,10 @@
         public IfElseInstruction(CodeBlock cbIn) : base(cbIn) { }
 
         public override InstructionReturnValue RunInstruction() {
-            Interpreter.instance.AddToInstructionStack(GetExitInstruction());
+            Interpreter.instance.AddToInstructionStack(GetNextInstruction());
             EvaluateArgumentList();
             if (conditionIsTrue) {
-                return new InstructionReturnValue(null, GetNextInstruction());
+                return new InstructionReturnValue(null, GetNestedInstruction());
             }
             else {
                 return new InstructionReturnValue(null, (GetArgumentAt(2) as StandAloneInstruction));

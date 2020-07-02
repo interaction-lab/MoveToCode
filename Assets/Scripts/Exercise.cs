@@ -11,6 +11,23 @@ namespace MoveToCode {
         public int[] initialVariableValues;
         public int[] finalVariableGoalValues;
 
+        //public string[] codeBlocks;
+        public CodeBlock[] codeBlocks;
+        public ExerciseScaffolding exScaffold;
+
+        //GameObject[] codeBlockObjects;
+        
+
+        //instantiate all of its parts (codeblocks needed for the exercise)
+        private void InstantiateCodeBlocksAsExerciseChildren() {
+            for (int i = 0; i < codeBlocks.Length; i++) {
+                GameObject codeBlockGameObject = Instantiate(
+                    ExerciseManager.codeBlockDictionary[codeBlocks[i].GetType()]) as GameObject;
+                //codeBlockGameObject.transform.SnapToParent(this.transform);
+                codeBlockGameObject.transform.SetParent(transform);
+            }
+        }
+
         public bool IsExerciseCorrect() {
             bool result = true;
             for (int i = 0; i < varNames.Length; ++i) {

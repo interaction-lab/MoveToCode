@@ -1,0 +1,23 @@
+{
+  "Exercise": {
+    "consoleStringGoal": "\"Hello World\"",
+    "kuriGoalString": "Print \"Hello World\"",
+    "varNames": [],
+    "initialVariableValues": [],
+    "finalVariableGoalValues": []
+  },
+
+  "ExerciseInformationSeekingActions": {
+    "snapChild": [],
+    "snapParent": [],
+    "withAction": []
+  },
+
+  "ExerciseScaffolding": {
+    "scafoldDialogue": [
+      "Try grabbing the blue sphere",
+      "Attach the blue Sphere to the print block",
+      "Attach the print block to the start block"
+    ]
+  }
+}

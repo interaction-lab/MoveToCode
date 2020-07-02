@@ -9313,7 +9313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8030b9b811f614ab913f06f611c181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curExercisePos: 7
+  curExercisePos: 0
 --- !u!4 &1710312768 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3828739441442808839, guid: 9d4fb95003569de428fba011a79f6f10,

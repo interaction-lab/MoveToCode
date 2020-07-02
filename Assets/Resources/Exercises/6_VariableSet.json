@@ -1,0 +1,7 @@
+{
+  "consoleStringGoal": "5",
+  "kuriGoalString": "Set Var1 to 5 and print it",
+  "varNames": [ "Var1" ],
+  "initialVariableValues": [ 9 ],
+  "finalVariableGoalValues": [ 5 ]
+}

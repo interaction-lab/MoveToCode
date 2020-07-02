@@ -8,7 +8,6 @@ using Newtonsoft.Json;
 namespace MoveToCode {
     public class ExerciseManager : Singleton<ExerciseManager> {
         public static string curExcersieCol = "CurExercise", exerciseSubmissionResultCol = "ExerciseSubmissionResult";
-        //public static Dictionary<string, GameObject> codeBlockDictionary;
         public static Dictionary<Type, GameObject> codeBlockDictionary;
 
         Exercise curExercise;
@@ -21,9 +20,12 @@ namespace MoveToCode {
             curExercisePos = 0;
 #endif
             SetupCodeBlockDictionary();
-            //Instantiate elements
+            //Instantiate exercises
+            Exercise helloWorld = JsonUtility.FromJson<Exercise>(@"Resources/Exercises/0_HelloWorld");
+            exerciseList = new List<Exercise>();
+            exerciseList.Add(helloWorld);
 
-            SetUpExerciseList();
+            //SetUpExerciseList();
             curExercise = exerciseList[curExercisePos];
             ToggleCurrentExercise(true);
             LoggingManager.instance.AddLogColumn(curExcersieCol, curExercisePos.ToString());
@@ -35,8 +37,9 @@ namespace MoveToCode {
             foreach (Exercise ex in GetComponentsInChildren<Exercise>(true)) {
                 exerciseList.Add(ex);
                 ex.gameObject.SetActive(false);
-                string json = JsonUtility.ToJson(ex);
-                Debug.Log(json);
+                //string json = JsonUtility.ToJson(ex);
+                //JsonUtility.FromJson<Exercise>(@"sdf");
+                //Debug.Log(json);
             }
         }
 
@@ -88,19 +91,6 @@ namespace MoveToCode {
         }
 
         private void SetupCodeBlockDictionary() {
-            /*
-            codeBlockDictionary.Add("printBlock", Resources.Load<GameObject>(ResourcePathConstants.PrintCodeBlockPrefab));
-            codeBlockDictionary.Add("conditionBlock", Resources.Load<GameObject>(ResourcePathConstants.PrintCodeBlockPrefab));
-            codeBlockDictionary.Add("ifBlock", Resources.Load<GameObject>(ResourcePathConstants.PrintCodeBlockPrefab));
-            codeBlockDictionary.Add("intBlock", Resources.Load<GameObject>(ResourcePathConstants.PrintCodeBlockPrefab));
-            codeBlockDictionary.Add("mathBlock", Resources.Load<GameObject>(ResourcePathConstants.PrintCodeBlockPrefab));
-            codeBlockDictionary.Add("setVarBlock", Resources.Load<GameObject>(ResourcePathConstants.PrintCodeBlockPrefab));
-            codeBlockDictionary.Add("stringBlock", Resources.Load<GameObject>(ResourcePathConstants.PrintCodeBlockPrefab));
-            codeBlockDictionary.Add("whileBlock", Resources.Load<GameObject>(ResourcePathConstants.PrintCodeBlockPrefab));
-            codeBlockDictionary.Add("charBlock", Resources.Load<GameObject>(ResourcePathConstants.PrintCodeBlockPrefab));
-            codeBlockDictionary.Add("arrayBlock", Resources.Load<GameObject>(ResourcePathConstants.PrintCodeBlockPrefab));
-            codeBlockDictionary.Add("arrayIndexBlock", Resources.Load<GameObject>(ResourcePathConstants.PrintCodeBlockPrefab));
-            */
             codeBlockDictionary.Add(typeof(PrintCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.PrintCodeBlockPrefab));
             codeBlockDictionary.Add(typeof(ConditionalCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.ConditionBlockPrefab));
             codeBlockDictionary.Add(typeof(IfCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.IfCodeBlockPrefab));
@@ -112,6 +102,7 @@ namespace MoveToCode {
             codeBlockDictionary.Add(typeof(CharCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.CharCodeBlockPrefab));
             codeBlockDictionary.Add(typeof(ArrayCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.ArrayCodeBlockPrefab));
             codeBlockDictionary.Add(typeof(ArrayIndexCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.ArrayIndexCodeBlockPrefab));
+            
         }
     }
 }

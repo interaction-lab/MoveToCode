@@ -4,7 +4,7 @@ using UnityEngine.Assertions;
 namespace MoveToCode {
     //[RequireComponent(typeof(ExerciseInformationSeekingActions))]
     //[RequireComponent(typeof(ExerciseScaffolding))]
-    public class Exercise : MonoBehaviour {
+    public class ExerciseInternals : MonoBehaviour {
         public string consoleStringGoal { get; set; }
         public string kuriGoalString { get; set; }
         public string[] varNames { get; set; }
@@ -13,25 +13,12 @@ namespace MoveToCode {
 
         public CodeBlock[] exerciseCodeBlocks;
 
-        /*public void AppendScripts() {
-            AppendScaffoldingScript();
-            AppendInfoSeekingActionsScript();
-        }
-        
-        private void AppendScaffoldingScript() {
-
-        }
-
-        private void AppendInfoSeekingActionsScript() {
-
-        }*/
-
         //instantiate all of its parts (codeblocks needed for the exercise)
         public void InstantiateCodeBlocksAsExerciseChildren() {
             for (int i = 0; i < exerciseCodeBlocks.Length; i++) {
                 GameObject codeBlockGameObject = Instantiate(ExerciseManager.codeBlockDictionary[exerciseCodeBlocks[i].GetType()]) as GameObject;
 
-                if(exerciseCodeBlocks[i].GetType() == typeof(IDataType)) {
+                if (exerciseCodeBlocks[i].GetType() == typeof(IDataType)) {
                     (codeBlockGameObject.GetComponent(exerciseCodeBlocks[i].GetType()) as CodeBlock).ChangeMyBlockInternalArg(
                         (exerciseCodeBlocks[i].GetMyInternalIArgument() as IDataType), exerciseCodeBlocks[i].output);
                 }
@@ -66,6 +53,7 @@ namespace MoveToCode {
         }
 
         protected virtual void OnEnable() {
+            InstantiateCodeBlocksAsExerciseChildren();
             Assert.IsTrue(varNames.Length == initialVariableValues.Length && initialVariableValues.Length == finalVariableGoalValues.Length);
             SnapAllBlocksToBlockManager();
             AddAllVariables();

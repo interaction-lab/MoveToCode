@@ -11,6 +11,7 @@ namespace MoveToCode {
 
         public ArrayDataStructure(CodeBlock cbIn) : base(cbIn) { }
         public ArrayDataStructure(CodeBlock cbIn, int size) : base(cbIn) {
+            //SetValue(size); //Probably should reconfigure this
             SetSize(size);
             SetArrayType(null);
             SetNumFilledElements(0);
@@ -19,10 +20,14 @@ namespace MoveToCode {
 
         public override bool IsSameDataTypeAndEqualTo(IDataType otherVal) {
             if (otherVal is ArrayDataStructure) {
-                return (string)GetValue() == (string)(otherVal as ArrayDataStructure).GetValue();
+                return GetValue() == (otherVal as ArrayDataStructure).GetValue();
             }
             throw new InvalidOperationException("Trying to compare Array to non Array");
         }
+
+        /*public override void SetValue(object valIn) {
+            value = (int)valIn;
+        }*/
 
         public override object GetValue() {
             return internalArray;

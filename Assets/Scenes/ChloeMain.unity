@@ -1709,11 +1709,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a508445c8a81442a30343ce95a1691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  consoleStringGoal: '"Hello World"'
-  kuriGoalString: Print "Hello World"
-  varNames: []
-  initialVariableValues: 
-  finalVariableGoalValues: 
+  codeBlocks: []
+  exScaffold: {fileID: 0}
 --- !u!114 &270212280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2023,11 +2020,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a508445c8a81442a30343ce95a1691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  consoleStringGoal: True
-  kuriGoalString: Print True
-  varNames: []
-  initialVariableValues: 
-  finalVariableGoalValues: 
+  codeBlocks: []
+  exScaffold: {fileID: 0}
 --- !u!114 &351704812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2589,11 +2583,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2cee343094e8b8418d0125fb32a307f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  consoleStringGoal: 
-  kuriGoalString: 
-  varNames: []
-  initialVariableValues: 
-  finalVariableGoalValues: 
+  codeBlocks: []
+  exScaffold: {fileID: 0}
 --- !u!1001 &452166890
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5243,12 +5234,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a508445c8a81442a30343ce95a1691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  consoleStringGoal: 5
-  kuriGoalString: Set Var1 to 5 and print it
-  varNames:
-  - Var1
-  initialVariableValues: 09000000
-  finalVariableGoalValues: 05000000
+  codeBlocks: []
+  exScaffold: {fileID: 0}
 --- !u!114 &923277385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5463,11 +5450,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a508445c8a81442a30343ce95a1691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  consoleStringGoal: 11
-  kuriGoalString: Print 11
-  varNames: []
-  initialVariableValues: 
-  finalVariableGoalValues: 
+  codeBlocks: []
+  exScaffold: {fileID: 0}
 --- !u!114 &958217974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6801,11 +6785,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a508445c8a81442a30343ce95a1691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  consoleStringGoal: 1
-  kuriGoalString: Print 1
-  varNames: []
-  initialVariableValues: 
-  finalVariableGoalValues: 
+  codeBlocks: []
+  exScaffold: {fileID: 0}
 --- !u!114 &1180737058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7492,11 +7473,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a508445c8a81442a30343ce95a1691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  consoleStringGoal: True
-  kuriGoalString: Print True
-  varNames: []
-  initialVariableValues: 
-  finalVariableGoalValues: 
+  codeBlocks: []
+  exScaffold: {fileID: 0}
 --- !u!114 &1263160918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10066,11 +10044,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a508445c8a81442a30343ce95a1691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  consoleStringGoal: 6
-  kuriGoalString: Print 6
-  varNames: []
-  initialVariableValues: 
-  finalVariableGoalValues: 
+  codeBlocks: []
+  exScaffold: {fileID: 0}
 --- !u!114 &1875823387
 MonoBehaviour:
   m_ObjectHideFlags: 0

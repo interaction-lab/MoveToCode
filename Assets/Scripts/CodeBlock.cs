@@ -18,6 +18,9 @@ namespace MoveToCode {
         CodeBlockSnap codeBlockSnap;
         GameObject codeBlockTextGameObject;
 
+        //data type "value"
+        public object output = 0;
+
         // Abstract Methods
         protected abstract void SetMyBlockInternalArg();
 
@@ -46,7 +49,13 @@ namespace MoveToCode {
             UpdateText();
         }
 
-        // Public Methods      
+        // Public Methods
+        
+        public void ChangeMyBlockInternalArg(IDataType newInternalArg, object newOutput) {
+            output = newOutput;
+            myBlockInternalArg = newInternalArg;
+        }
+
         public IArgument GetMyInternalIArgument() {
             return myBlockInternalArg;
         }

@@ -2,10 +2,10 @@
 
     public class ArrayCodeBlock : DataCodeBlock {
 
-        public int arraySize = 3;
+        //public int arraySize = 3;
 
         protected override void SetMyBlockInternalArg() {
-            myBlockInternalArg = new ArrayDataStructure(this, arraySize);
+            myBlockInternalArg = new ArrayDataStructure(this, (int)output);
         }
     }
 }

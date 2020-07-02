@@ -1,4 +1,4 @@
-{
+/*{
   "Exercise": {
     "consoleStringGoal": "\"Hello World\"",
     "kuriGoalString": "Print \"Hello World\"",
@@ -20,4 +20,26 @@
       "Attach the print block to the start block"
     ]
   }
-}
+}*/
+
+/*
+  {
+  "consoleStringGoal": "\"Hello World\"",
+  "kuriGoalString": "Print \"Hello World\"",
+  "varNames": [],
+  "initialVariableValues": [],
+  "finalVariableGoalValues": [],
+  "codeBlocks": [
+    { "PrintCodeBlock": {} },
+    { "StringCodeBlock": { "output": "Hello World" } }
+  ],
+
+  "exScaffold": {
+    "scafoldDialogue": [
+      "Try grabbing the blue sphere",
+      "Attach the blue Sphere to the print block",
+      "Attach the print block to the start block"
+    ]
+  }
+},
+*/

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System.Linq;
 using Newtonsoft.Json;
 
 namespace MoveToCode {
@@ -22,8 +23,11 @@ namespace MoveToCode {
             curExercisePos = 0;
 #endif
             SetupCodeBlockDictionary();
-            fileEntries = Directory.GetFiles(targetDirectory);
-            SetUpCurExercise(0);
+            fileEntries = Directory.GetFiles(targetDirectory).Where(s => s.EndsWith(".json")).ToArray();
+            /*for (int i = 0; i < fileEntries.Length; i++) {
+                Debug.Log(fileEntries[i]);
+            }*/
+            SetUpCurExercise(curExercisePos);
             ToggleCurrentExercise(true);
             LoggingManager.instance.AddLogColumn(curExcersieCol, curExercisePos.ToString());
             LoggingManager.instance.AddLogColumn(exerciseSubmissionResultCol, "");
@@ -87,6 +91,7 @@ namespace MoveToCode {
             else {
                 LoggingManager.instance.UpdateLogColumn(curExcersieCol, curExercisePos.ToString());
                 //curExercise = exerciseList[curExercisePos];
+                Debug.Log(curExercisePos);
                 SetUpCurExercise(curExercisePos);
                 ToggleCurrentExercise(true);
             }

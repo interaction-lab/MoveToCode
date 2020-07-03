@@ -14,7 +14,6 @@ namespace MoveToCode {
         public void SetupExercise(string json) {
             //read in json
             var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
-            Debug.Log(json);
             SetExerciseInternals(JsonConvert.DeserializeObject<ExerciseInternals>(json, settings));
             Debug.Log(myExerciseInternals.GetExerciseBlocks()[0].codeBlockID);
             InstantiateCodeBlocksAsExerciseChildren();
@@ -29,6 +28,7 @@ namespace MoveToCode {
         }
 
         public void SetExerciseInternals(object exIn) {
+            myExerciseInternals = new ExerciseInternals();
             myExerciseInternals = exIn as ExerciseInternals;
         }
 

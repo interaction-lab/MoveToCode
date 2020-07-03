@@ -44,5 +44,12 @@ namespace MoveToCode {
 
         public static string SpeechFolder = AudioFolder + "PreloadSpeech/";
         public static string SpeechCacheFolder = AudioFolder + "CacheSpeech/";
+
+        public static string CongratulationPhrases = SpeechFolder + "preloadCongratulation";
+        public static string EncouragementPhrases = SpeechFolder + "preloadEncouragement";
+        public static string CachePhrases = SpeechCacheFolder + "cachePhrase";
+
+        // AWS Credentials
+        public static string AWSPollyAPI = "PollyAPI1";
     }
 }

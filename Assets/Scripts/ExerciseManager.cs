@@ -24,14 +24,23 @@ namespace MoveToCode {
 
             string json = Resources.Load<TextAsset>("Exercises/0_HelloWorld").ToString();
 
+            /*ExerciseInternals bob = new ExerciseInternals();
+            bob.exerciseCodeBlocks = new CodeBlock[5];
+            //bob.exerciseCodeBlocks[0] = print;
+            //string jsona = JsonUtility.ToJson(bob);
+            var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
+            var jsona = JsonConvert.SerializeObject(bob, settings);
+            //Pokemon deserialized = JsonConvert.DeserializeObject<Pokemon>(json, settings);
+            Debug.Log(jsona);*/
+
             //ExerciseInternals bob = new ExerciseInternals();
             //ExerciseInternals bob = JsonUtility.FromJson<ExerciseInternals>(json);
             //string jsona = JsonUtility.ToJson(bob);
             //Debug.Log(jsona);
 
-            
 
-            
+
+
 
             //Instantiate exercises
             GameObject HWExercise = Instantiate(

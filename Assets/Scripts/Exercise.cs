@@ -15,8 +15,16 @@ namespace MoveToCode {
             //var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
             //myExerciseInternals = JsonConvert.DeserializeObject<ExerciseInternals>(address, settings);
             //Debug.Log(myExerciseInternals.consoleStringGoal);
+
+            /*
             myExerciseInternals = JsonUtility.FromJson<ExerciseInternals>(address);
-            Debug.Log(myExerciseInternals.consoleStringGoal);
+            Debug.Log(myExerciseInternals.exerciseCodeBlocks[0].GetType().Name);
+            Debug.Log(myExerciseInternals.kuriGoalString);
+            */
+            var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
+            myExerciseInternals = JsonConvert.DeserializeObject<ExerciseInternals>(address, settings);
+            Debug.Log(myExerciseInternals.kuriGoalString);
+
             InstantiateCodeBlocksAsExerciseChildren();
             Assert.IsTrue(myExerciseInternals.varNames.Length == myExerciseInternals.initialVariableValues.Length && myExerciseInternals.initialVariableValues.Length == myExerciseInternals.finalVariableGoalValues.Length);
             SnapAllBlocksToBlockManager();

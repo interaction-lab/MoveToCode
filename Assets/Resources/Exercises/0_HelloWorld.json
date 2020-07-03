@@ -1,20 +1,13 @@
 {
-  "$type": "MoveToCode.Exercise, MoveToCode",
   "consoleStringGoal": "\"Hello World\"",
   "kuriGoalString": "Print \"Hello World\"",
   "varNames": [],
   "initialVariableValues": [],
   "finalVariableGoalValues": [],
-  "exerciseCodeBlocks": {
-    "$type": "MoveToCode.CodeBlock[], MoveToCode",
-    "$values": [
-      {
-        "$type": "MoveToCode.PrintCodeBlock, MoveToCode"
-      },
-      {
-        "$type": "MoveToCode.StringCodeBlock, MoveToCode",
-        "output": "Hello World"
-      }
-    ]
-  }
+  "myExerciseBlocks": [
+    {
+      "$type": "MoveToCode.PrintCodeBlock, MoveToCode"
+    }
+  ]
+
 }

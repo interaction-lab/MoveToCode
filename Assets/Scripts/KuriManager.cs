@@ -111,7 +111,7 @@ namespace MoveToCode {
             poseStampPublisher?.PubTurnTowardUser();
             KuriTextManager.instance.Addline(string.Join("",
                 "Goal: ",
-                ExerciseManager.instance.GetCurExercise().GetExerciseInternals().GetGoalString()),
+                ExerciseManager.instance.GetCurExercise().GetGoalString()),
                 KuriTextManager.PRIORITY.high);
             AlertActionMade();
         }

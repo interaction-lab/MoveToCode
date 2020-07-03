@@ -20,10 +20,27 @@ namespace MoveToCode {
             curExercisePos = 0;
 #endif
             SetupCodeBlockDictionary();
+            //string json = Resources.Load<TextAsset>("Exercises/0_HelloWorld").ToString();
+
+            string json = Resources.Load<TextAsset>("Exercises/0_HelloWorld").ToString();
+
+            //ExerciseInternals bob = new ExerciseInternals();
+            //ExerciseInternals bob = JsonUtility.FromJson<ExerciseInternals>(json);
+            //string jsona = JsonUtility.ToJson(bob);
+            //Debug.Log(jsona);
+
+            
+
+            
+
             //Instantiate exercises
             GameObject HWExercise = Instantiate(
                     Resources.Load<GameObject>(ResourcePathConstants.ExercisePrefab), transform.parent) as GameObject;
-            HWExercise.GetComponent<Exercise>().SetExerciseInternals(ResourcePathConstants.address);
+
+            //string jsona = JsonUtility.ToJson(HWExercise.GetComponent<Exercise>());
+            //Debug.Log(json);
+
+            HWExercise.GetComponent<Exercise>().SetExerciseInternals(json);
             //@"Resources/Exercises/0_HelloWorld.json"
             HWExercise.transform.SnapToParent(transform);
             exerciseList = new List<Exercise>();
@@ -53,7 +70,7 @@ namespace MoveToCode {
 
         public void AlertCodeFinished() {
             if (curExercise != null) { // This if is to guard against initializing interpreter
-                if (curExercise.GetExerciseInternals().IsExerciseCorrect()) {
+                if (curExercise.IsExerciseCorrect()) {
                     KuriManager.instance.SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT.Congratulation);
                     LoggingManager.instance.UpdateLogColumn(exerciseSubmissionResultCol, "Correct");
                     lastExerciseCompleted = true;
@@ -73,7 +90,7 @@ namespace MoveToCode {
 
         private void CycleNewExercise() {
             lastExerciseCompleted = false;
-            curExercise.GetExerciseInternals().CleanUp();
+            curExercise.CleanUp();
             ToggleCurrentExercise(false);
             curExercisePos += 1;
             if (curExercisePos == exerciseList.Count) {

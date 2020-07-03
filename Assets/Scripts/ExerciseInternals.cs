@@ -12,6 +12,27 @@ namespace MoveToCode {
         public string[] varNames;
         public int[] initialVariableValues;
         public int[] finalVariableGoalValues;
-        public CodeBlock[] exerciseCodeBlocks;
+        public Pair[] exerciseBlocks;
+
+
+        public string GetConsoleStringGoal() {
+            return consoleStringGoal;
+        }
+
+        public string GetKuriGoalString() {
+            return kuriGoalString;
+        }
+
+        public int[] GetInitialVariableValues() {
+            return initialVariableValues;
+        }
+
+        public int[] GetFinalVariableGoalValues() {
+            return finalVariableGoalValues;
+        }
+
+        public Pair[] GetExerciseBlocks() {
+            return exerciseBlocks;
+        }
     }
 }

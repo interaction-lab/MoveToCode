@@ -3,6 +3,7 @@
     public class ArrayCodeBlock : DataCodeBlock {
 
         //public int arraySize = 3;
+        public int output = 3;
 
         protected override void SetMyBlockInternalArg() {
             myBlockInternalArg = new ArrayDataStructure(this, (int)output);

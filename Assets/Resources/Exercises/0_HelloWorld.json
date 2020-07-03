@@ -2,11 +2,21 @@
   "$type": "MoveToCode.ExerciseInternals, Assembly-CSharp",
   "consoleStringGoal": "\"Hello World\"",
   "kuriGoalString": "Print \"Hello World\"",
-  "varNames": null,
-  "initialVariableValues": null,
-  "finalVariableGoalValues": null,
-  "exerciseCodeBlocks": {
-    "$type": "MoveToCode.CodeBlock[], Assembly-CSharp",
-    "$values": [ null, null, null, null, null ]
+  "varNames": [],
+  "initialVariableValues": [],
+  "finalVariableGoalValues": [],
+  "exerciseBlocks": {
+    "$type": "MoveToCode.Pair[], Assembly-CSharp",
+    "$values": [
+      {
+        "$type": "MoveToCode.Pair, Assembly-CSharp",
+        "codeBlockID": "Print"
+      },
+      {
+        "$type": "MoveToCode.Pair, Assembly-CSharp",
+        "codeBlockID": "String",
+        "output": "Hello World"
+      }
+    ]
   }
 }

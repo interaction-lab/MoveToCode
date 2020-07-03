@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 namespace MoveToCode {
     public class ExerciseManager : Singleton<ExerciseManager> {
         public static string curExcersieCol = "CurExercise", exerciseSubmissionResultCol = "ExerciseSubmissionResult";
-        public static Dictionary<Type, GameObject> codeBlockDictionary;
+        public static Dictionary<string, GameObject> codeBlockDictionary;
 
         Exercise curExercise;
         List<Exercise> exerciseList;
@@ -45,13 +45,9 @@ namespace MoveToCode {
             //Instantiate exercises
             GameObject HWExercise = Instantiate(
                     Resources.Load<GameObject>(ResourcePathConstants.ExercisePrefab), transform.parent) as GameObject;
-
-            //string jsona = JsonUtility.ToJson(HWExercise.GetComponent<Exercise>());
-            //Debug.Log(json);
-
-            HWExercise.GetComponent<Exercise>().SetExerciseInternals(json);
-            //@"Resources/Exercises/0_HelloWorld.json"
             HWExercise.transform.SnapToParent(transform);
+            HWExercise.GetComponent<Exercise>().SetExerciseInternals(json);
+            
             exerciseList = new List<Exercise>();
             exerciseList.Add(HWExercise.GetComponent<Exercise>());
 
@@ -121,18 +117,18 @@ namespace MoveToCode {
         }
 
         private void SetupCodeBlockDictionary() {
-            codeBlockDictionary = new Dictionary<Type, GameObject>();
-            codeBlockDictionary.Add(typeof(PrintCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.PrintCodeBlockPrefab) as GameObject);
-            codeBlockDictionary.Add(typeof(ConditionalCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.ConditionBlockPrefab) as GameObject);
-            codeBlockDictionary.Add(typeof(IfCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.IfCodeBlockPrefab) as GameObject);
-            codeBlockDictionary.Add(typeof(IntCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.IntCodeBlockPrefab) as GameObject);
-            codeBlockDictionary.Add(typeof(MathOperationCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.MathCodeBlockPrefab) as GameObject);
-            codeBlockDictionary.Add(typeof(SetVariableCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.SetVariableCodeBlockPrefab) as GameObject);
-            codeBlockDictionary.Add(typeof(StringCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.StringCodeBlockPrefab) as GameObject);
-            codeBlockDictionary.Add(typeof(WhileCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.WhileCodeBlockPrefab) as GameObject);
-            codeBlockDictionary.Add(typeof(CharCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.CharCodeBlockPrefab) as GameObject);
-            codeBlockDictionary.Add(typeof(ArrayCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.ArrayCodeBlockPrefab) as GameObject);
-            codeBlockDictionary.Add(typeof(ArrayIndexCodeBlock), Resources.Load<GameObject>(ResourcePathConstants.ArrayIndexCodeBlockPrefab) as GameObject);
+            codeBlockDictionary = new Dictionary<string, GameObject>();
+            codeBlockDictionary.Add("Print", Resources.Load<GameObject>(ResourcePathConstants.PrintCodeBlockPrefab));
+            codeBlockDictionary.Add("Conditional", Resources.Load<GameObject>(ResourcePathConstants.ConditionBlockPrefab));
+            codeBlockDictionary.Add("If", Resources.Load<GameObject>(ResourcePathConstants.IfCodeBlockPrefab));
+            codeBlockDictionary.Add("Int", Resources.Load<GameObject>(ResourcePathConstants.IntCodeBlockPrefab));
+            codeBlockDictionary.Add("Math", Resources.Load<GameObject>(ResourcePathConstants.MathCodeBlockPrefab));
+            codeBlockDictionary.Add("SetVar", Resources.Load<GameObject>(ResourcePathConstants.SetVariableCodeBlockPrefab));
+            codeBlockDictionary.Add("String", Resources.Load<GameObject>(ResourcePathConstants.StringCodeBlockPrefab));
+            codeBlockDictionary.Add("While", Resources.Load<GameObject>(ResourcePathConstants.WhileCodeBlockPrefab));
+            codeBlockDictionary.Add("Char", Resources.Load<GameObject>(ResourcePathConstants.CharCodeBlockPrefab));
+            codeBlockDictionary.Add("Array", Resources.Load<GameObject>(ResourcePathConstants.ArrayCodeBlockPrefab));
+            codeBlockDictionary.Add("ArrayIndex", Resources.Load<GameObject>(ResourcePathConstants.ArrayIndexCodeBlockPrefab));
             
         }
     }

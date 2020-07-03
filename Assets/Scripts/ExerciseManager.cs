@@ -25,27 +25,27 @@ namespace MoveToCode {
 
             targetDirectory = @"Assets/Resources/ExerciseJsons";
             fileEntries = Directory.GetFiles(targetDirectory);
-            
-            string json = File.ReadAllText(fileEntries[0]);
 
-            //Instantiate exercises
-            GameObject currExercise = Instantiate(
-                    Resources.Load<GameObject>(ResourcePathConstants.ExercisePrefab), transform.parent) as GameObject;
-            currExercise.transform.SnapToParent(transform);
-            currExercise.GetComponent<Exercise>().SetupExercise(json);
+            SetUpExercise(0);
             
             //exerciseList = new List<Exercise>();
             //exerciseList.Add(currExercise.GetComponent<Exercise>());
 
             //SetUpExerciseList();
-            curExercise = exerciseList[curExercisePos];
+            //curExercise = exerciseList[curExercisePos];
             ToggleCurrentExercise(true);
             LoggingManager.instance.AddLogColumn(curExcersieCol, curExercisePos.ToString());
             LoggingManager.instance.AddLogColumn(exerciseSubmissionResultCol, "");
         }
 
         private void SetUpExercise(int exerciseNum) {
-
+            string json = File.ReadAllText(fileEntries[exerciseNum]);
+            //Instantiate exercise
+            GameObject exGO = Instantiate(
+                    Resources.Load<GameObject>(ResourcePathConstants.ExercisePrefab), transform.parent) as GameObject;
+            exGO.transform.SnapToParent(transform);
+            exGO.GetComponent<Exercise>().SetupExercise(json);
+            curExercise = exGO.GetComponent<Exercise>();
         }
 
         private void SetUpExerciseList() {

@@ -9,6 +9,8 @@ namespace MoveToCode {
     public class ExerciseManager : Singleton<ExerciseManager> {
         public static string curExcersieCol = "CurExercise", exerciseSubmissionResultCol = "ExerciseSubmissionResult";
         public static Dictionary<string, GameObject> codeBlockDictionary;
+        string[] fileEntries;
+        string targetDirectory;
 
         Exercise curExercise;
         List<Exercise> exerciseList;
@@ -19,6 +21,9 @@ namespace MoveToCode {
 #if WINDOWS_UWP
             curExercisePos = 0;
 #endif
+            //targetDirectory = Resources.Load<TextAsset>(ResourcePathConstants.ExerciseJsonFolder).ToString();
+            //fileEntries = Directory.GetFiles(targetDirectory);
+            //Debug.Log(fileEntries[0].ToString());
             SetupCodeBlockDictionary();
             string json = Resources.Load<TextAsset>(ResourcePathConstants.ExerciseJsonFolder + "0_HelloWorld").ToString();
 

@@ -9,11 +9,9 @@
     "$type": "MoveToCode.Pair[], Assembly-CSharp",
     "$values": [
       {
-        "$type": "MoveToCode.Pair, Assembly-CSharp",
         "codeBlockID": "Print"
       },
       {
-        "$type": "MoveToCode.Pair, Assembly-CSharp",
         "codeBlockID": "String",
         "value": "Hello World"
       }

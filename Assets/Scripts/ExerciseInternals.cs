@@ -23,6 +23,10 @@ namespace MoveToCode {
             return kuriGoalString;
         }
 
+        public string[] GetVarNames() {
+            return varNames;
+        }
+
         public int[] GetInitialVariableValues() {
             return initialVariableValues;
         }

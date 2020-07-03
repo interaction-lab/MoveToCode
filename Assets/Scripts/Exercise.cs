@@ -14,20 +14,21 @@ namespace MoveToCode {
         public void SetupExercise(string json) {
             //read in json
             var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
-            myExerciseInternals = JsonConvert.DeserializeObject<ExerciseInternals>(json, settings);
-
+            SetExerciseInternals(myExerciseInternals = JsonConvert.DeserializeObject<ExerciseInternals>(json, settings));
+            
             InstantiateCodeBlocksAsExerciseChildren();
-            Assert.IsTrue(myExerciseInternals.varNames.Length == myExerciseInternals.GetInitialVariableValues().Length && myExerciseInternals.GetInitialVariableValues().Length == myExerciseInternals.GetFinalVariableGoalValues().Length);
+            Assert.IsTrue(myExerciseInternals.GetVarNames().Length == myExerciseInternals.GetInitialVariableValues().Length && myExerciseInternals.GetInitialVariableValues().Length == myExerciseInternals.GetFinalVariableGoalValues().Length);
             SnapAllBlocksToBlockManager();
             AddAllVariables();
+        }
+
+        public void SetUpKuriInExercise() {
             KuriTextManager.instance.Clear(KuriTextManager.PRIORITY.high);
             KuriManager.instance.SayExerciseGoal();
         }
 
         public void SetExerciseInternals(object exIn) {
             myExerciseInternals = exIn as ExerciseInternals;
-
-
         }
 
         public ExerciseInternals GetExerciseInternals() {
@@ -48,12 +49,14 @@ namespace MoveToCode {
 
         public bool IsExerciseCorrect() {
             bool result = true;
-            for (int i = 0; i < myExerciseInternals.varNames.Length; ++i) {
+            /*for (int i = 0; i < myExerciseInternals.varNames.Length; ++i) {
                 result &= ((int)MemoryManager.instance.GetVariableValue(myExerciseInternals.varNames[i]).GetValue()) == myExerciseInternals.finalVariableGoalValues[i];
             }
-            result &= ConsoleManager.instance.GetCleanedMainText() == myExerciseInternals.consoleStringGoal;
+            result &= ConsoleManager.instance.GetCleanedMainText() == myExerciseInternals.consoleStringGoal;*/
             return result;
         }
+
+
 
         private void SnapAllBlocksToBlockManager() {
             foreach (CodeBlock cb in GetComponentsInChildren<CodeBlock>()) {
@@ -87,7 +90,6 @@ namespace MoveToCode {
         }
 
         public string GetGoalString() {
-            Debug.Log(myExerciseInternals.GetKuriGoalString());
             return myExerciseInternals.GetKuriGoalString();
         }
 

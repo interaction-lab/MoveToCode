@@ -14,8 +14,9 @@ namespace MoveToCode {
         public void SetupExercise(string json) {
             //read in json
             var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
-            SetExerciseInternals(myExerciseInternals = JsonConvert.DeserializeObject<ExerciseInternals>(json, settings));
-            
+            Debug.Log(json);
+            SetExerciseInternals(JsonConvert.DeserializeObject<ExerciseInternals>(json, settings));
+            Debug.Log(myExerciseInternals.GetExerciseBlocks()[0].codeBlockID);
             InstantiateCodeBlocksAsExerciseChildren();
             Assert.IsTrue(myExerciseInternals.GetVarNames().Length == myExerciseInternals.GetInitialVariableValues().Length && myExerciseInternals.GetInitialVariableValues().Length == myExerciseInternals.GetFinalVariableGoalValues().Length);
             SnapAllBlocksToBlockManager();
@@ -36,14 +37,13 @@ namespace MoveToCode {
         }
 
         public void InstantiateCodeBlocksAsExerciseChildren() {
-            for (int i = 0; i < myExerciseInternals.exerciseBlocks.Length; i++) {
+            for (int i = 0; i < myExerciseInternals.GetExerciseBlocks().Length; i++) {
                 string id = myExerciseInternals.GetExerciseBlocks()[i].codeBlockID;
                 object value = myExerciseInternals.GetExerciseBlocks()[i].value;
-                Debug.Log(ExerciseManager.codeBlockDictionary[id]);
                 GameObject codeBlockGameObject = Instantiate(
                     ExerciseManager.codeBlockDictionary[id], transform) as GameObject;
                 (codeBlockGameObject.GetComponent<CodeBlock>().GetMyInternalIArgument() as IDataType)?.SetValue(value);
-                codeBlockGameObject.transform.localPosition = new Vector3(-1.0f, -0.6048422f, 0.5010774f); //TODO: actually place these blocks somewhere decent
+                codeBlockGameObject.transform.localPosition = new Vector3(-1.0f, -0.6048422f, 0.2010774f); //TODO: actually place these blocks somewhere decent
             }
         }
 

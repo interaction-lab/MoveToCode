@@ -9,8 +9,8 @@ namespace MoveToCode {
     public class ExerciseManager : Singleton<ExerciseManager> {
         public static string curExcersieCol = "CurExercise", exerciseSubmissionResultCol = "ExerciseSubmissionResult";
         public static Dictionary<string, GameObject> codeBlockDictionary;
+        string targetDirectory = @"Assets/Resources/ExerciseJsons";
         string[] fileEntries;
-        string targetDirectory;
 
         Exercise curExercise;
         List<Exercise> exerciseList;
@@ -22,16 +22,16 @@ namespace MoveToCode {
             curExercisePos = 0;
 #endif
             SetupCodeBlockDictionary();
-            targetDirectory = @"Assets/Resources/ExerciseJsons";
             fileEntries = Directory.GetFiles(targetDirectory);
-            SetUpExercise(0);
+            SetUpCurExercise(0);
             ToggleCurrentExercise(true);
             LoggingManager.instance.AddLogColumn(curExcersieCol, curExercisePos.ToString());
             LoggingManager.instance.AddLogColumn(exerciseSubmissionResultCol, "");
         }
 
-        private void SetUpExercise(int exerciseNum) {
+        private void SetUpCurExercise(int exerciseNum) {
             string json = File.ReadAllText(fileEntries[exerciseNum]);
+
             //Instantiate exercise
             GameObject exGO = Instantiate(
                     Resources.Load<GameObject>(ResourcePathConstants.ExercisePrefab), transform.parent) as GameObject;
@@ -87,7 +87,7 @@ namespace MoveToCode {
             else {
                 LoggingManager.instance.UpdateLogColumn(curExcersieCol, curExercisePos.ToString());
                 //curExercise = exerciseList[curExercisePos];
-                SetUpExercise(curExercisePos);
+                SetUpCurExercise(curExercisePos);
                 ToggleCurrentExercise(true);
             }
         }

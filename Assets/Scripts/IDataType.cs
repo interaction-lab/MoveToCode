@@ -8,6 +8,10 @@ namespace MoveToCode {
 
         public IDataType(CodeBlock cbIn) : base(cbIn) { }
 
+        public virtual void SetValue(object valIn) {
+            value = valIn;
+        }
+
         public virtual object GetValue() {
             return value;
         }

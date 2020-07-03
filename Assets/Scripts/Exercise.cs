@@ -24,8 +24,6 @@ namespace MoveToCode {
 
             var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
             myExerciseInternals = JsonConvert.DeserializeObject<ExerciseInternals>(address, settings);
-            Debug.Log(myExerciseInternals.kuriGoalString);
-            Debug.Log(myExerciseInternals.GetExerciseBlocks()[0].codeBlockID);
 
             InstantiateCodeBlocksAsExerciseChildren();
             Assert.IsTrue(myExerciseInternals.varNames.Length == myExerciseInternals.GetInitialVariableValues().Length && myExerciseInternals.GetInitialVariableValues().Length == myExerciseInternals.GetFinalVariableGoalValues().Length);
@@ -42,14 +40,16 @@ namespace MoveToCode {
         public void InstantiateCodeBlocksAsExerciseChildren() {
             for (int i = 0; i < myExerciseInternals.exerciseBlocks.Length; i++) {
                 string id = myExerciseInternals.GetExerciseBlocks()[i].codeBlockID;
+                object value = myExerciseInternals.GetExerciseBlocks()[i].value;
                 Debug.Log(ExerciseManager.codeBlockDictionary[id]);
                 GameObject codeBlockGameObject = Instantiate(
                     ExerciseManager.codeBlockDictionary[id], transform) as GameObject;
 
-                /*if (myExerciseInternals.exerciseBlocks[i].GetType() == typeof(IDataType)) {
-                    (codeBlockGameObject.GetComponent(myExerciseInternals.exerciseBlocks[i].GetType()) as CodeBlock).ChangeMyBlockInternalArg(
-                        (myExerciseInternals.exerciseBlocks[i].GetMyInternalIArgument() as IDataType), myExerciseInternals.exerciseCodeBlocks[i].output);
-                }*/
+                (codeBlockGameObject.GetComponent<CodeBlock>().GetMyInternalIArgument() as BasicDataType)?.SetValue(value);
+
+                
+                codeBlockGameObject.transform.localPosition = new Vector3(1.047f, -0.2561684f, 0.6f);
+
                 //codeBlockGameObject.transform.SnapToParent(transform);
             }
         }

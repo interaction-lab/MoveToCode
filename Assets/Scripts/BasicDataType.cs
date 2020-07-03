@@ -4,10 +4,6 @@ namespace MoveToCode {
 
         public BasicDataType(CodeBlock cbIn) : base(cbIn) { }
 
-        public virtual void SetValue(object valIn) {
-            value = valIn;
-        }
-
         public override string ToString() {
             return Convert.ChangeType(GetValue(), GetCastType()).ToString();
         }

@@ -45,7 +45,7 @@ namespace MoveToCode {
                 GameObject codeBlockGameObject = Instantiate(
                     ExerciseManager.codeBlockDictionary[id], transform) as GameObject;
 
-                (codeBlockGameObject.GetComponent<CodeBlock>().GetMyInternalIArgument() as BasicDataType)?.SetValue(value);
+                (codeBlockGameObject.GetComponent<CodeBlock>().GetMyInternalIArgument() as IDataType)?.SetValue(value);
 
                 
                 codeBlockGameObject.transform.localPosition = new Vector3(1.047f, -0.2561684f, 0.6f);

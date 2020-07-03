@@ -11,17 +11,8 @@ namespace MoveToCode {
 
         public Exercise() { }
 
-        public void SetExerciseInternals(string address) {
-            //var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
-            //myExerciseInternals = JsonConvert.DeserializeObject<ExerciseInternals>(address, settings);
-            //Debug.Log(myExerciseInternals.consoleStringGoal);
-
-            /*
-            myExerciseInternals = JsonUtility.FromJson<ExerciseInternals>(address);
-            Debug.Log(myExerciseInternals.exerciseCodeBlocks[0].GetType().Name);
-            Debug.Log(myExerciseInternals.kuriGoalString);
-            */
-
+        public void SetupExercise(string address) {
+            //read in json
             var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
             myExerciseInternals = JsonConvert.DeserializeObject<ExerciseInternals>(address, settings);
 
@@ -31,6 +22,12 @@ namespace MoveToCode {
             AddAllVariables();
             KuriTextManager.instance.Clear(KuriTextManager.PRIORITY.high);
             KuriManager.instance.SayExerciseGoal();
+        }
+
+        public void SetExerciseInternals(object exIn) {
+            myExerciseInternals = exIn as ExerciseInternals;
+
+
         }
 
         public ExerciseInternals GetExerciseInternals() {
@@ -44,13 +41,8 @@ namespace MoveToCode {
                 Debug.Log(ExerciseManager.codeBlockDictionary[id]);
                 GameObject codeBlockGameObject = Instantiate(
                     ExerciseManager.codeBlockDictionary[id], transform) as GameObject;
-
                 (codeBlockGameObject.GetComponent<CodeBlock>().GetMyInternalIArgument() as IDataType)?.SetValue(value);
-
-                
-                codeBlockGameObject.transform.localPosition = new Vector3(1.047f, -0.2561684f, 0.6f);
-
-                //codeBlockGameObject.transform.SnapToParent(transform);
+                codeBlockGameObject.transform.localPosition = new Vector3(-1.0f, -0.6048422f, 0.5010774f); //TODO: actually place these blocks somewhere decent
             }
         }
 
@@ -95,7 +87,8 @@ namespace MoveToCode {
         }
 
         public string GetGoalString() {
-            return myExerciseInternals.kuriGoalString;
+            Debug.Log(myExerciseInternals.GetKuriGoalString());
+            return myExerciseInternals.GetKuriGoalString();
         }
 
     }

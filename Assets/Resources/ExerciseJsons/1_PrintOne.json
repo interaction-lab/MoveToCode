@@ -1,0 +1,20 @@
+{
+  "$type": "MoveToCode.ExerciseInternals, Assembly-CSharp",
+  "consoleStringGoal": "1",
+  "kuriGoalString": "Print 1",
+  "varNames": [],
+  "initialVariableValues": [],
+  "finalVariableGoalValues": [],
+  "exerciseBlocks": {
+    "$type": "MoveToCode.Pair[], Assembly-CSharp",
+    "$values": [
+      {
+        "codeBlockID": "Print"
+      },
+      {
+        "codeBlockID": "Int",
+        "value": "1"
+      }
+    ]
+  }
+}

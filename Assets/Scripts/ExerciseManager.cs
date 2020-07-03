@@ -20,16 +20,16 @@ namespace MoveToCode {
             curExercisePos = 0;
 #endif
             SetupCodeBlockDictionary();
-            string json = Resources.Load<TextAsset>("Exercises/0_HelloWorld").ToString();
+            string json = Resources.Load<TextAsset>(ResourcePathConstants.ExerciseJsonFolder + "0_HelloWorld").ToString();
 
             //Instantiate exercises
-            GameObject HWExercise = Instantiate(
+            GameObject currExercise = Instantiate(
                     Resources.Load<GameObject>(ResourcePathConstants.ExercisePrefab), transform.parent) as GameObject;
-            HWExercise.transform.SnapToParent(transform);
-            HWExercise.GetComponent<Exercise>().SetExerciseInternals(json);
+            currExercise.transform.SnapToParent(transform);
+            currExercise.GetComponent<Exercise>().SetupExercise(json);
             
             exerciseList = new List<Exercise>();
-            exerciseList.Add(HWExercise.GetComponent<Exercise>());
+            exerciseList.Add(currExercise.GetComponent<Exercise>());
 
             //SetUpExerciseList();
             curExercise = exerciseList[curExercisePos];

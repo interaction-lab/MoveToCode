@@ -21,12 +21,12 @@ namespace MoveToCode {
 #if WINDOWS_UWP
             curExercisePos = 0;
 #endif
-            //targetDirectory = Resources.Load<TextAsset>(ResourcePathConstants.ExerciseJsonFolder).ToString();
-            //fileEntries = Directory.GetFiles(targetDirectory);
-            //Debug.Log(fileEntries[0].ToString());
+            targetDirectory = @"Assets/Resources/ExerciseJsons";
+            fileEntries = Directory.GetFiles(targetDirectory);
+            
             SetupCodeBlockDictionary();
-            string json = Resources.Load<TextAsset>(ResourcePathConstants.ExerciseJsonFolder + "0_HelloWorld").ToString();
-
+            string json = Resources.Load<TextAsset>(ResourcePathConstants.ExerciseJsonFolder + "1_PrintOne").ToString();
+            Debug.Log(json);
             //Instantiate exercises
             GameObject currExercise = Instantiate(
                     Resources.Load<GameObject>(ResourcePathConstants.ExercisePrefab), transform.parent) as GameObject;

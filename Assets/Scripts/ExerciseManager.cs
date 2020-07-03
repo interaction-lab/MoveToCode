@@ -21,26 +21,31 @@ namespace MoveToCode {
 #if WINDOWS_UWP
             curExercisePos = 0;
 #endif
+            SetupCodeBlockDictionary();
+
             targetDirectory = @"Assets/Resources/ExerciseJsons";
             fileEntries = Directory.GetFiles(targetDirectory);
             
-            SetupCodeBlockDictionary();
-            string json = Resources.Load<TextAsset>(ResourcePathConstants.ExerciseJsonFolder + "1_PrintOne").ToString();
-            Debug.Log(json);
+            string json = File.ReadAllText(fileEntries[0]);
+
             //Instantiate exercises
             GameObject currExercise = Instantiate(
                     Resources.Load<GameObject>(ResourcePathConstants.ExercisePrefab), transform.parent) as GameObject;
             currExercise.transform.SnapToParent(transform);
             currExercise.GetComponent<Exercise>().SetupExercise(json);
             
-            exerciseList = new List<Exercise>();
-            exerciseList.Add(currExercise.GetComponent<Exercise>());
+            //exerciseList = new List<Exercise>();
+            //exerciseList.Add(currExercise.GetComponent<Exercise>());
 
             //SetUpExerciseList();
             curExercise = exerciseList[curExercisePos];
             ToggleCurrentExercise(true);
             LoggingManager.instance.AddLogColumn(curExcersieCol, curExercisePos.ToString());
             LoggingManager.instance.AddLogColumn(exerciseSubmissionResultCol, "");
+        }
+
+        private void SetUpExercise(int exerciseNum) {
+
         }
 
         private void SetUpExerciseList() {
@@ -88,7 +93,8 @@ namespace MoveToCode {
             }
             else {
                 LoggingManager.instance.UpdateLogColumn(curExcersieCol, curExercisePos.ToString());
-                curExercise = exerciseList[curExercisePos];
+                //curExercise = exerciseList[curExercisePos];
+                SetUpExercise(curExercisePos);
                 ToggleCurrentExercise(true);
             }
         }

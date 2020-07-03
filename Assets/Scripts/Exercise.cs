@@ -11,10 +11,10 @@ namespace MoveToCode {
 
         public Exercise() { }
 
-        public void SetupExercise(string address) {
+        public void SetupExercise(string json) {
             //read in json
             var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
-            myExerciseInternals = JsonConvert.DeserializeObject<ExerciseInternals>(address, settings);
+            myExerciseInternals = JsonConvert.DeserializeObject<ExerciseInternals>(json, settings);
 
             InstantiateCodeBlocksAsExerciseChildren();
             Assert.IsTrue(myExerciseInternals.varNames.Length == myExerciseInternals.GetInitialVariableValues().Length && myExerciseInternals.GetInitialVariableValues().Length == myExerciseInternals.GetFinalVariableGoalValues().Length);

@@ -3,5 +3,20 @@
   "kuriGoalString": "Set Var1 to 5 and print it",
   "varNames": [ "Var1" ],
   "initialVariableValues": [ 9 ],
-  "finalVariableGoalValues": [ 5 ]
+  "finalVariableGoalValues": [ 5 ],
+  "exerciseBlocks": {
+    "$type": "MoveToCode.Pair[], Assembly-CSharp",
+    "$values": [
+      {
+        "codeBlockID": "Print"
+      },
+      {
+        "codeBlockID": "SetVar"
+      },
+      {
+        "codeBlockID": "Int",
+        "value": "5"
+      }
+    ]
+  }
 }

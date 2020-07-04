@@ -20,6 +20,7 @@ namespace MoveToCode {
             curExercisePos = 0;
 #endif
             SetupCodeBlockDictionary();
+            SetUpExerciseList();
             fileEntries = Directory.GetFiles(targetDirectory).Where(s => s.EndsWith(".json")).ToArray();
             SetUpCurExercise(curExercisePos);
             ToggleCurrentExercise(true);
@@ -37,17 +38,6 @@ namespace MoveToCode {
             exGO.GetComponent<Exercise>().SetupExercise(json);
             curExercise = exGO.GetComponent<Exercise>();
             exGO.GetComponent<Exercise>().SetUpKuriInExercise();
-        }
-
-        private void SetUpExerciseList() {
-            exerciseList = new List<Exercise>();
-            foreach (Exercise ex in GetComponentsInChildren<Exercise>(true)) {
-                exerciseList.Add(ex);
-                ex.gameObject.SetActive(false);
-                //string json = JsonUtility.ToJson(ex);
-                //JsonUtility.FromJson<Exercise>(@"sdf");
-                //Debug.Log(json);
-            }
         }
 
         public Exercise GetCurExercise() {
@@ -84,7 +74,6 @@ namespace MoveToCode {
             }
             else {
                 LoggingManager.instance.UpdateLogColumn(curExcersieCol, curExercisePos.ToString());
-                //curExercise = exerciseList[curExercisePos];
                 Debug.Log(curExercisePos);
                 SetUpCurExercise(curExercisePos);
                 ToggleCurrentExercise(true);
@@ -93,6 +82,8 @@ namespace MoveToCode {
 
         private void InitiateFreePlay() {
             Debug.Log("Free play woould be initiated");
+            curExercise = exerciseList[0];
+            ToggleCurrentExercise(true);
         }
 
         private void ToggleCurrentExercise(bool desiredActiveState) {
@@ -112,6 +103,15 @@ namespace MoveToCode {
             codeBlockDictionary.Add("Char", Resources.Load<GameObject>(ResourcePathConstants.CharCodeBlockPrefab));
             codeBlockDictionary.Add("Array", Resources.Load<GameObject>(ResourcePathConstants.ArrayCodeBlockPrefab));
             codeBlockDictionary.Add("ArrayIndex", Resources.Load<GameObject>(ResourcePathConstants.ArrayIndexCodeBlockPrefab));
+            codeBlockDictionary.Add("Variable", Resources.Load<GameObject>(ResourcePathConstants.VariableCodeBlockPrefab));
+        }
+
+        private void SetUpExerciseList() {
+            exerciseList = new List<Exercise>();
+            foreach (Exercise ex in GetComponentsInChildren<Exercise>(true)) {
+                exerciseList.Add(ex);
+                ex.gameObject.SetActive(false);
+            }
         }
     }
 }

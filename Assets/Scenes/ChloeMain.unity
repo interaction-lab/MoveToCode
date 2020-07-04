@@ -5825,7 +5825,7 @@ GameObject:
   m_Component:
   - component: {fileID: 998773125}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: OldExercises-unused
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9307,7 +9307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8030b9b811f614ab913f06f611c181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curExercisePos: 0
+  curExercisePos: 6
 --- !u!4 &1710312768 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3828739441442808839, guid: 9d4fb95003569de428fba011a79f6f10,

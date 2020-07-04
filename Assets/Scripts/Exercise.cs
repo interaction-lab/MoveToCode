@@ -30,7 +30,6 @@ namespace MoveToCode {
         }
 
         public void SetExerciseInternals(object exIn) {
-            myExerciseInternals = new ExerciseInternals();
             myExerciseInternals = exIn as ExerciseInternals;
         }
 
@@ -68,9 +67,15 @@ namespace MoveToCode {
         public bool IsExerciseCorrect() {
             bool result = true;
             for (int i = 0; i < myExerciseInternals.GetVarNames().Length; ++i) {
-                result &= ((int)MemoryManager.instance.GetVariableValue(myExerciseInternals.GetVarNames()[i]).GetValue()) as object == myExerciseInternals.GetFinalVariableGoalValues()[i];
+                Type a = typeof(object);
+                result &= (MemoryManager.instance.GetVariableValue(myExerciseInternals.GetVarNames()[i]).GetValue() as int?) == (myExerciseInternals.GetFinalVariableGoalValues()[i] as int?);
+                //Debug.Log()
+                Debug.Log(MemoryManager.instance.GetVariableValue(myExerciseInternals.GetVarNames()[i]).GetValue());
+                Debug.Log(myExerciseInternals.GetFinalVariableGoalValues()[i]);
+                Debug.Log(result);
             }
             result &= ConsoleManager.instance.GetCleanedMainText() == myExerciseInternals.GetConsoleStringGoal();
+            Debug.Log(result);
             return result;
         }
 
@@ -101,7 +106,9 @@ namespace MoveToCode {
             }
         }
 
-        protected virtual void OnEnable() { }
+        protected virtual void OnEnable() {
+            myExerciseInternals = new ExerciseInternals();
+        }
 
         private void AddAllVariables() {
             for (int i = 0; i < myExerciseInternals.GetVarNames().Length; ++i) {

@@ -16,7 +16,9 @@ namespace MoveToCode {
             //read in json
             var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
             SetExerciseInternals(JsonConvert.DeserializeObject<ExerciseInternals>(json, settings));
-            InstantiateCodeBlocksAsExerciseChildren();
+            
+            //create code blocks
+            InstantiateCodeBlocks();
             Assert.IsTrue(myExerciseInternals.GetVarNames().Length == myExerciseInternals.GetInitialVariableValues().Length && myExerciseInternals.GetInitialVariableValues().Length == myExerciseInternals.GetFinalVariableGoalValues().Length);
             SnapAllBlocksToBlockManager();
             AddAllVariables();
@@ -36,22 +38,20 @@ namespace MoveToCode {
             return myExerciseInternals;
         }
 
-        public void InstantiateCodeBlocksAsExerciseChildren() {
+        public void InstantiateCodeBlocks() {
             for (int i = 0; i < myExerciseInternals.GetExerciseBlocks().Length; i++) {
 
                 string id = myExerciseInternals.GetExerciseBlocks()[i].codeBlockID;
                 object value = myExerciseInternals.GetExerciseBlocks()[i].value;
 
                 //set math operation
-                if (ExerciseManager.codeBlockDictionary[id] == Resources.Load<GameObject>(ResourcePathConstants.MathCodeBlockPrefab)) {
-                    Resources.Load<GameObject>(ResourcePathConstants.MathCodeBlockPrefab).GetComponent<MathOperationCodeBlock>().
-                        SetOperation((MathOperationCodeBlock.OPERATION)Enum.Parse(typeof(MathOperationCodeBlock.OPERATION), value as string));
-                }
-
+                if (ExerciseManager.codeBlockDictionary[id] ==
+                    Resources.Load<GameObject>(ResourcePathConstants.MathCodeBlockPrefab)) {
+                    SetMathOp(value);
                 //set conditional operation
-                if (ExerciseManager.codeBlockDictionary[id] == Resources.Load<GameObject>(ResourcePathConstants.ConditionBlockPrefab)) {
-                    Resources.Load<GameObject>(ResourcePathConstants.ConditionBlockPrefab).GetComponent<ConditionalCodeBlock>().
-                        SetOperation((ConditionalCodeBlock.OPERATION)Enum.Parse(typeof(ConditionalCodeBlock.OPERATION), value as string));
+                } else if (ExerciseManager.codeBlockDictionary[id] == 
+                    Resources.Load<GameObject>(ResourcePathConstants.ConditionBlockPrefab)) {
+                    SetConditionalOp(value);
                 }
 
                 //instantiate block
@@ -70,6 +70,15 @@ namespace MoveToCode {
             return result;
         }
 
+        private void SetMathOp(object valIn) {
+            Resources.Load<GameObject>(ResourcePathConstants.MathCodeBlockPrefab).GetComponent<MathOperationCodeBlock>().
+                        SetOperation((MathOperationCodeBlock.OPERATION)Enum.Parse(typeof(MathOperationCodeBlock.OPERATION), valIn as string));
+        }
+
+        private void SetConditionalOp(object valIn) {
+            Resources.Load<GameObject>(ResourcePathConstants.ConditionBlockPrefab).GetComponent<ConditionalCodeBlock>().
+                        SetOperation((ConditionalCodeBlock.OPERATION)Enum.Parse(typeof(ConditionalCodeBlock.OPERATION), valIn as string));
+        }
 
         private void SnapAllBlocksToBlockManager() {
             foreach (CodeBlock cb in GetComponentsInChildren<CodeBlock>()) {

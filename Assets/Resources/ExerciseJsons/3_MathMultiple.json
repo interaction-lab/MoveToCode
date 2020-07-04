@@ -1,7 +1,40 @@
 {
+  "$type": "MoveToCode.ExerciseInternals, Assembly-CSharp",
   "consoleStringGoal": "6",
   "kuriGoalString": "Print 6",
   "varNames": [],
   "initialVariableValues": [],
-  "finalVariableGoalValues": []
+  "finalVariableGoalValues": [],
+  "exerciseBlocks": {
+    "$type": "MoveToCode.Pair[], Assembly-CSharp",
+    "$values": [
+      {
+        "codeBlockID": "Print"
+      },
+      {
+        "codeBlockID": "Math",
+        "value": "ADD"
+      },
+      {
+        "codeBlockID": "Math",
+        "value": "ADD"
+      },
+      {
+        "codeBlockID": "Math",
+        "value": "SUB"
+      },
+      {
+        "codeBlockID": "Int",
+        "value": "7"
+      },
+      {
+        "codeBlockID": "Int",
+        "value": "4"
+      },
+      {
+        "codeBlockID": "Int",
+        "value": "5"
+      }
+    ]
+  }
 }

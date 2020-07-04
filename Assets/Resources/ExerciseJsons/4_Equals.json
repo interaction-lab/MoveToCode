@@ -1,7 +1,32 @@
 {
+  "$type": "MoveToCode.ExerciseInternals, Assembly-CSharp",
   "consoleStringGoal": "True",
   "kuriGoalString": "Print True",
   "varNames": [],
   "initialVariableValues": [],
-  "finalVariableGoalValues": []
+  "finalVariableGoalValues": [],
+  "exerciseBlocks": {
+    "$type": "MoveToCode.Pair[], Assembly-CSharp",
+    "$values": [
+      {
+        "codeBlockID": "Print"
+      },
+      {
+        "codeBlockID": "Conditional",
+        "value": "EQUALS"
+      },
+      {
+        "codeBlockID": "Int",
+        "value": "5"
+      },
+      {
+        "codeBlockID": "Int",
+        "value": "5"
+      },
+      {
+        "codeBlockID": "Int",
+        "value": "7"
+      }
+    ]
+  }
 }

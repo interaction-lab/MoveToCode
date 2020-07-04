@@ -61,12 +61,16 @@ namespace MoveToCode {
                 //set data type value
                 (codeBlockGameObject.GetComponent<CodeBlock>().GetMyInternalIArgument() as IDataType)?.SetValue(value);
 
-                codeBlockGameObject.transform.localPosition = new Vector3(-1.0f, -0.6048422f, 0.2010774f); //TODO: actually place these blocks somewhere decent
+                codeBlockGameObject.transform.localPosition = new Vector3(-1.0f, -0.6048422f, 0.2010774f); //TODO: this is bad
             }
         }
 
         public bool IsExerciseCorrect() {
             bool result = true;
+            for (int i = 0; i < myExerciseInternals.GetVarNames().Length; ++i) {
+                result &= ((int)MemoryManager.instance.GetVariableValue(myExerciseInternals.GetVarNames()[i]).GetValue()) as object == myExerciseInternals.GetFinalVariableGoalValues()[i];
+            }
+            result &= ConsoleManager.instance.GetCleanedMainText() == myExerciseInternals.GetConsoleStringGoal();
             return result;
         }
 
@@ -100,9 +104,9 @@ namespace MoveToCode {
         protected virtual void OnEnable() { }
 
         private void AddAllVariables() {
-            for (int i = 0; i < myExerciseInternals.varNames.Length; ++i) {
-                MemoryManager.instance.AddNewVariableCodeBlock(myExerciseInternals.varNames[i],
-                    new IntDataType(null, myExerciseInternals.initialVariableValues[i]));
+            for (int i = 0; i < myExerciseInternals.GetVarNames().Length; ++i) {
+                MemoryManager.instance.AddNewVariableCodeBlock(myExerciseInternals.GetVarNames()[i],
+                    new IntDataType(null, myExerciseInternals.GetInitialVariableValues()[i]));
             }
         }
 

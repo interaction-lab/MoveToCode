@@ -13,7 +13,7 @@ namespace MoveToCode {
         public int[] initialVariableValues;
         public object[] finalVariableGoalValues;
         public Pair[] exerciseBlocks;
-
+        public string[] scaffoldDialogue;
 
         public string GetConsoleStringGoal() {
             return consoleStringGoal;
@@ -21,6 +21,14 @@ namespace MoveToCode {
 
         public string GetKuriGoalString() {
             return kuriGoalString;
+        }
+
+        public void SetConsoleStringGoal(string goal) {
+            consoleStringGoal = goal;
+        }
+
+        public void SetKuriGoalString(string goal) {
+            kuriGoalString = goal;
         }
 
         public string[] GetVarNames() {
@@ -37,6 +45,10 @@ namespace MoveToCode {
 
         public Pair[] GetExerciseBlocks() {
             return exerciseBlocks;
+        }
+
+        public string[] GetscaffoldDialogue() {
+            return scaffoldDialogue;
         }
     }
 }

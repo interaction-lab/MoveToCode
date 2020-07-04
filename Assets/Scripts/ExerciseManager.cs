@@ -22,7 +22,11 @@ namespace MoveToCode {
             SetupCodeBlockDictionary();
             SetUpExerciseList();
             fileEntries = Directory.GetFiles(targetDirectory).Where(s => s.EndsWith(".json")).ToArray();
-            SetUpCurExercise(curExercisePos);
+            if(curExercisePos < fileEntries.Length) {
+                SetUpCurExercise(curExercisePos);
+            } else {
+                InitiateFreePlay();
+            }
             ToggleCurrentExercise(true);
             LoggingManager.instance.AddLogColumn(curExcersieCol, curExercisePos.ToString());
             LoggingManager.instance.AddLogColumn(exerciseSubmissionResultCol, "");
@@ -38,6 +42,8 @@ namespace MoveToCode {
             exGO.GetComponent<Exercise>().SetupExercise(json);
             curExercise = exGO.GetComponent<Exercise>();
             exGO.GetComponent<Exercise>().SetUpKuriInExercise();
+            exGO.AddComponent<ExerciseScaffolding>().SetScaffoldDialogue(
+                curExercise.GetExerciseInternals().GetscaffoldDialogue());
         }
 
         public Exercise GetCurExercise() {

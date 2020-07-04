@@ -1,5 +1,5 @@
 {
-  "consoleStringGoal": "5",
+  "consoleStringGoal": "",
   "kuriGoalString": "Set the array in numerical order",
   "varNames": [ "Var1" ],
   "initialVariableValues": [ 0 ],

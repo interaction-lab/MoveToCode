@@ -45,7 +45,13 @@ namespace MoveToCode {
                 //set math operation
                 if (ExerciseManager.codeBlockDictionary[id] == Resources.Load<GameObject>(ResourcePathConstants.MathCodeBlockPrefab)) {
                     Resources.Load<GameObject>(ResourcePathConstants.MathCodeBlockPrefab).GetComponent<MathOperationCodeBlock>().
-                        SetOperation((MathOperationCodeBlock.OPERATION) Enum.Parse(typeof(MathOperationCodeBlock.OPERATION), value as string));
+                        SetOperation((MathOperationCodeBlock.OPERATION)Enum.Parse(typeof(MathOperationCodeBlock.OPERATION), value as string));
+                }
+
+                //set conditional operation
+                if (ExerciseManager.codeBlockDictionary[id] == Resources.Load<GameObject>(ResourcePathConstants.ConditionBlockPrefab)) {
+                    Resources.Load<GameObject>(ResourcePathConstants.ConditionBlockPrefab).GetComponent<ConditionalCodeBlock>().
+                        SetOperation((ConditionalCodeBlock.OPERATION)Enum.Parse(typeof(ConditionalCodeBlock.OPERATION), value as string));
                 }
 
                 //instantiate block

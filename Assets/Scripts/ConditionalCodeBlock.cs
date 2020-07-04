@@ -17,5 +17,9 @@
                     break;
             }
         }
+
+        public void SetOperation(OPERATION opIn) {
+            op = opIn;
+        }
     }
 }

@@ -8,13 +8,14 @@ namespace MoveToCode
     public class Block2TextConsoleManager : Singleton<Block2TextConsoleManager>
     {
         StandAloneInstruction curInstruction;
-     
 
-        public void UpdateConsoleOnSnap() //every time a block is snapped, the console is updated with code/text
-        {
+        void Awake() {
+            ClearConsole();
+        }
+
+        public void UpdateConsoleOnSnap() {//every time a block is snapped, the console is updated with code/text     
             Block2TextConsoleManager.instance.ClearConsole();
             curInstruction = StartCodeBlock.instance.GetMyInternalIArgument() as StandAloneInstruction;
-
             while (curInstruction != null){
                 Block2TextConsoleManager.instance.AddLine(curInstruction?.DescriptiveInstructionToString());
                 curInstruction = curInstruction.GetNextInstruction();
@@ -26,21 +27,15 @@ namespace MoveToCode
         TextMeshProUGUI mainConsole, headerConsole;
         public static string finishedString = "Code Finished";
 
-        void Awake(){
-            ClearConsole();
-        }
-
         public TextMeshProUGUI GetHeaderConsole() {
-            if (headerConsole == null)
-            {
+            if (headerConsole == null) {
                 headerConsole = transform.GetChild(0).GetComponent<TextMeshProUGUI>();
             }
             return headerConsole;
         }
 
         public TextMeshProUGUI GetMainConsole() {
-            if (mainConsole == null)
-            {
+            if (mainConsole == null) {
                 mainConsole = transform.GetChild(1).GetComponent<TextMeshProUGUI>();
             }
             return mainConsole;
@@ -73,10 +68,5 @@ namespace MoveToCode
         public void AddFinishLine() {
             AddLine(finishedString);
         }
-        /* end of copied code from ConsoleManager*/
-
-      // Block2TextConsoleManager.instance.AddLine("no more instructions left.");
-        
     }
-
 }

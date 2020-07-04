@@ -21,7 +21,7 @@ namespace MoveToCode {
 
         }
 
-        public override StandAloneInstruction GetNextInstruction(){ //overriding Next
+        public override StandAloneInstruction GetNextInstruction(){ 
             return GetArgumentAt(2) as StandAloneInstruction;
         }
 

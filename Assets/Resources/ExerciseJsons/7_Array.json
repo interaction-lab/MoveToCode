@@ -8,9 +8,6 @@
     "$type": "MoveToCode.Pair[], Assembly-CSharp",
     "$values": [
       {
-        "codeBlockID": "Print"
-      },
-      {
         "codeBlockID": "SetVar"
       },
       {

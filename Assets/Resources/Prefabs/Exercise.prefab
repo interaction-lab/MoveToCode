@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2892587618348163276}
   - component: {fileID: 6886323250442978669}
-  - component: {fileID: 114104143760691990}
   m_Layer: 0
   m_Name: Exercise
   m_TagString: Untagged
@@ -44,16 +43,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a508445c8a81442a30343ce95a1691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114104143760691990
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6778737056554276848}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb2451476dcf3c74f814a1e40a4b82ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scafoldDialogue: []

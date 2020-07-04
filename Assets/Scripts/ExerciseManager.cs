@@ -42,6 +42,8 @@ namespace MoveToCode {
             exGO.GetComponent<Exercise>().SetupExercise(json);
             curExercise = exGO.GetComponent<Exercise>();
             exGO.GetComponent<Exercise>().SetUpKuriInExercise();
+
+            //Add scaffoldDialogue
             exGO.AddComponent<ExerciseScaffolding>().SetScaffoldDialogue(
                 curExercise.GetExerciseInternals().GetscaffoldDialogue());
         }

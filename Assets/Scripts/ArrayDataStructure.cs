@@ -11,7 +11,7 @@ namespace MoveToCode {
 
         public ArrayDataStructure(CodeBlock cbIn) : base(cbIn) { }
         public ArrayDataStructure(CodeBlock cbIn, int size) : base(cbIn) {
-            SetValue(size); //Probably should reconfigure this
+            SetValue(size); //TODO: Probably should reconfigure this
             SetSize(size);
             SetArrayType(null);
             SetNumFilledElements(0);

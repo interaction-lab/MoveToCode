@@ -11,7 +11,7 @@ namespace MoveToCode {
         public string kuriGoalString;
         public string[] varNames;
         public int[] initialVariableValues;
-        public int[] finalVariableGoalValues;
+        public object[] finalVariableGoalValues;
         public Pair[] exerciseBlocks;
 
 
@@ -31,7 +31,7 @@ namespace MoveToCode {
             return initialVariableValues;
         }
 
-        public int[] GetFinalVariableGoalValues() {
+        public object[] GetFinalVariableGoalValues() {
             return finalVariableGoalValues;
         }
 

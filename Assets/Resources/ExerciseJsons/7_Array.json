@@ -1,0 +1,33 @@
+{
+  "consoleStringGoal": "5",
+  "kuriGoalString": "Set the array in numerical order",
+  "varNames": [ "Var1" ],
+  "initialVariableValues": [ 0 ],
+  "finalVariableGoalValues": [ [ 1, 2, 3 ] ],
+  "exerciseBlocks": {
+    "$type": "MoveToCode.Pair[], Assembly-CSharp",
+    "$values": [
+      {
+        "codeBlockID": "Print"
+      },
+      {
+        "codeBlockID": "SetVar"
+      },
+      {
+        "codeBlockID": "Array"
+      },
+      {
+        "codeBlockID": "Int",
+        "value": 1
+      },
+      {
+        "codeBlockID": "Int",
+        "value": 2
+      },
+      {
+        "codeBlockID": "Int",
+        "value": 3
+      }
+    ]
+  }
+}

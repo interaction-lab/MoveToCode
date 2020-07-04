@@ -29,5 +29,10 @@
         "value": 3
       }
     ]
-  }
+  },
+  "scaffoldDialogue": [
+    "You don't need to use all of the blocks",
+    "You can use math blocks inside of math blocks",
+    "Order of operations matters"
+  ]
 }

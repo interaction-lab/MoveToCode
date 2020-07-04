@@ -28,5 +28,9 @@
         "value": "7"
       }
     ]
-  }
+  },
+  "scaffoldDialogue": [
+    "The result of the purple block is True or false",
+    "The purple block checks if they are equal or not"
+  ]
 }

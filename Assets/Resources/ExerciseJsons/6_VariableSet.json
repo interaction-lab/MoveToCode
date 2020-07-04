@@ -18,5 +18,9 @@
         "value": "5"
       }
     ]
-  }
+  },
+  "scaffoldDialogue": [
+    "Press the Var1 button on the red memory panel",
+    "Make sure to set the variable first"
+  ]
 }

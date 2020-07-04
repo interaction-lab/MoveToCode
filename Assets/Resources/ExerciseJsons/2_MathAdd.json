@@ -28,5 +28,10 @@
         "value": "5"
       }
     ]
-  }
+  },
+  "scaffoldDialogue": [
+    "What adds up to 11?",
+    "Try grabbing one of the numbers",
+    "The addition block can be snapped to the print block"
+  ]
 }

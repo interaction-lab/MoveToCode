@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Linq;
-using Newtonsoft.Json;
 
 namespace MoveToCode {
     public class ExerciseManager : Singleton<ExerciseManager> {
@@ -24,9 +21,6 @@ namespace MoveToCode {
 #endif
             SetupCodeBlockDictionary();
             fileEntries = Directory.GetFiles(targetDirectory).Where(s => s.EndsWith(".json")).ToArray();
-            /*for (int i = 0; i < fileEntries.Length; i++) {
-                Debug.Log(fileEntries[i]);
-            }*/
             SetUpCurExercise(curExercisePos);
             ToggleCurrentExercise(true);
             LoggingManager.instance.AddLogColumn(curExcersieCol, curExercisePos.ToString());

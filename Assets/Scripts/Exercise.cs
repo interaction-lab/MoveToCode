@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Assertions;
 using Newtonsoft.Json;
+using System;
 
 namespace MoveToCode {
     //[RequireComponent(typeof(ExerciseInformationSeekingActions))]
@@ -15,7 +16,6 @@ namespace MoveToCode {
             //read in json
             var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
             SetExerciseInternals(JsonConvert.DeserializeObject<ExerciseInternals>(json, settings));
-            Debug.Log(myExerciseInternals.GetExerciseBlocks()[0].codeBlockID);
             InstantiateCodeBlocksAsExerciseChildren();
             Assert.IsTrue(myExerciseInternals.GetVarNames().Length == myExerciseInternals.GetInitialVariableValues().Length && myExerciseInternals.GetInitialVariableValues().Length == myExerciseInternals.GetFinalVariableGoalValues().Length);
             SnapAllBlocksToBlockManager();
@@ -38,24 +38,31 @@ namespace MoveToCode {
 
         public void InstantiateCodeBlocksAsExerciseChildren() {
             for (int i = 0; i < myExerciseInternals.GetExerciseBlocks().Length; i++) {
+
                 string id = myExerciseInternals.GetExerciseBlocks()[i].codeBlockID;
                 object value = myExerciseInternals.GetExerciseBlocks()[i].value;
+
+                //set math operation
+                if (ExerciseManager.codeBlockDictionary[id] == Resources.Load<GameObject>(ResourcePathConstants.MathCodeBlockPrefab)) {
+                    Resources.Load<GameObject>(ResourcePathConstants.MathCodeBlockPrefab).GetComponent<MathOperationCodeBlock>().
+                        SetOperation((MathOperationCodeBlock.OPERATION) Enum.Parse(typeof(MathOperationCodeBlock.OPERATION), value as string));
+                }
+
+                //instantiate block
                 GameObject codeBlockGameObject = Instantiate(
                     ExerciseManager.codeBlockDictionary[id], transform) as GameObject;
+
+                //set data type value
                 (codeBlockGameObject.GetComponent<CodeBlock>().GetMyInternalIArgument() as IDataType)?.SetValue(value);
+
                 codeBlockGameObject.transform.localPosition = new Vector3(-1.0f, -0.6048422f, 0.2010774f); //TODO: actually place these blocks somewhere decent
             }
         }
 
         public bool IsExerciseCorrect() {
             bool result = true;
-            /*for (int i = 0; i < myExerciseInternals.varNames.Length; ++i) {
-                result &= ((int)MemoryManager.instance.GetVariableValue(myExerciseInternals.varNames[i]).GetValue()) == myExerciseInternals.finalVariableGoalValues[i];
-            }
-            result &= ConsoleManager.instance.GetCleanedMainText() == myExerciseInternals.consoleStringGoal;*/
             return result;
         }
-
 
 
         private void SnapAllBlocksToBlockManager() {

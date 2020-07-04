@@ -12,6 +12,18 @@
         "codeBlockID": "Print"
       },
       {
+        "codeBlockID": "Math",
+        "value": "ADD"
+      },
+      {
+        "codeBlockID": "Int",
+        "value": "1"
+      },
+      {
+        "codeBlockID": "Int",
+        "value": "1"
+      },
+      {
         "codeBlockID": "Int",
         "value": "1"
       }

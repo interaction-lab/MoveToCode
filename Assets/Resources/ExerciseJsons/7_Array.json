@@ -28,8 +28,7 @@
     ]
   },
   "scaffoldDialogue": [
-    "You don't need to use all of the blocks",
-    "You can use math blocks inside of math blocks",
-    "Order of operations matters"
+    "Place the integers into the array slots",
+    "Place the array as the right argument of the Set Variable block"
   ]
 }

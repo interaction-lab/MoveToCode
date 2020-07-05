@@ -34,22 +34,25 @@ namespace MoveToCode {
 
         private void SetUpCurExercise(int exerciseNum) {
             string json = File.ReadAllText(fileEntries[exerciseNum]);
-
-            //Instantiate exercise
-            GameObject exGO = Instantiate(
-                    Resources.Load<GameObject>(ResourcePathConstants.ExercisePrefab), transform.parent) as GameObject;
-            exGO.transform.SnapToParent(transform);
-            exGO.GetComponent<Exercise>().SetupExercise(json);
-            curExercise = exGO.GetComponent<Exercise>();
-            exGO.GetComponent<Exercise>().SetUpKuriInExercise();
-
+            GameObject exercise = InstantiateExercise(json);
             //Add scaffoldDialogue
-            exGO.AddComponent<ExerciseScaffolding>().SetScaffoldDialogue(
+            exercise.AddComponent<ExerciseScaffolding>().SetScaffoldDialogue(
                 curExercise.GetExerciseInternals().GetscaffoldDialogue());
+            //TODO: add ExerciseInformationSeekingActions
         }
 
         public Exercise GetCurExercise() {
             return curExercise;
+        }
+
+        public GameObject InstantiateExercise(string jsonString) {
+            GameObject exGO = Instantiate(
+                Resources.Load<GameObject>(ResourcePathConstants.ExercisePrefab), transform.parent) as GameObject;
+            exGO.transform.SnapToParent(transform);
+            exGO.GetComponent<Exercise>().SetupExercise(jsonString);
+            curExercise = exGO.GetComponent<Exercise>();
+            exGO.GetComponent<Exercise>().SetUpKuriInExercise();
+            return exGO;
         }
 
         public void AlertCodeFinished() {

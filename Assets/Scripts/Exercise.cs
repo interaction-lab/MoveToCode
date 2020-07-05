@@ -69,12 +69,8 @@ namespace MoveToCode {
             for (int i = 0; i < myExerciseInternals.GetVarNames().Length; ++i) {
                 result &= (MemoryManager.instance.GetVariableValue(myExerciseInternals.GetVarNames()[i]).GetValue() as int?) == (myExerciseInternals.GetFinalVariableGoalValues()[i] as int?) ||
                     (MemoryManager.instance.GetVariableValue(myExerciseInternals.GetVarNames()[i]).GetValue() as Array) == (myExerciseInternals.GetFinalVariableGoalValues()[i] as Array);
-                Debug.Log(MemoryManager.instance.GetVariableValue(myExerciseInternals.GetVarNames()[i]).GetValue() as Array);
-                Debug.Log(myExerciseInternals.GetFinalVariableGoalValues()[i]);
-                Debug.Log(result);
             }
             result &= ConsoleManager.instance.GetCleanedMainText() == myExerciseInternals.GetConsoleStringGoal();
-            Debug.Log(result);
             return result;
         }
 

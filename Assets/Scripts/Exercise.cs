@@ -4,8 +4,6 @@ using Newtonsoft.Json;
 using System;
 
 namespace MoveToCode {
-    //[RequireComponent(typeof(ExerciseInformationSeekingActions))]
-    //[RequireComponent(typeof(ExerciseScaffolding))]
     public class Exercise : MonoBehaviour {
 
         public ExerciseInternals myExerciseInternals;

@@ -53,7 +53,7 @@ namespace MoveToCode {
         }
 
         public void AlertCodeFinished() {
-            if (curExercise != null) { // This if is to guard against initializing interpreter
+            if (curExercise != null && curExercise.GetType() != typeof(FreePlayExercise)) { // This if is to guard against initializing interpreter
                 if (curExercise.IsExerciseCorrect()) {
                     KuriManager.instance.SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT.Congratulation);
                     LoggingManager.instance.UpdateLogColumn(exerciseSubmissionResultCol, "Correct");

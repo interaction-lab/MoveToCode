@@ -60,7 +60,7 @@ namespace MoveToCode {
                 (codeBlockGameObject.GetComponent<CodeBlock>().GetMyInternalIArgument() as IDataType)?.SetValue(value);
 
                 //set block positions
-                codeBlockGameObject.transform.localPosition = new Vector3(-1.0f, -i/5f - 0.5f, 0.20f); //TODO: this is bad but it kind of works
+                codeBlockGameObject.transform.localPosition = new Vector3(-1.0f, -i/5f - 0.5f, 0.20f); //TODO: this is bad but it kind of works for positioning
             }
         }
 

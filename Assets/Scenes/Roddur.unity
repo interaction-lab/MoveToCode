@@ -353,7 +353,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 680072158}
+      objectReference: {fileID: 0}
     - target: {fileID: 8779034279059886464, guid: 3f1f46cbecbe08e46a303ccfdb5b498a,
         type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -3499,7 +3499,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 680072156}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83297e16193d2f747aec63d08b86092a, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a6f1096e3f67664eaeca67f6f5874b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &685376448
@@ -9940,7 +9940,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Yeehaw
+  m_text: Yeehaw <color=green>sup</color>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -10009,10 +10009,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 32.36092, w: -20.629189}
   m_textInfo:
     textComponent: {fileID: 1882657832}
-    characterCount: 6
+    characterCount: 10
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 1
+    spaceCount: 1
+    wordCount: 2
     linkCount: 0
     lineCount: 1
     pageCount: 1

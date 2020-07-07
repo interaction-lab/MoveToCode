@@ -89,6 +89,11 @@ Nuget.config*
 Assets/MixedRealityToolkit.Providers/WindowsMixedReality/Shared/DotNetAdapter/.bin/
 Assets/MixedRealityToolkit.Providers/WindowsMixedReality/Shared/DotNetAdapter/.obj/
 
+# Other
+UWP/
+
+MSBuildForUnity.Common.props
+
 # ========================= #
 #     vscode	            # 
 # ========================= #

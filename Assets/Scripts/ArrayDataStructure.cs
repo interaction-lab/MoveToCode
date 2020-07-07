@@ -11,7 +11,6 @@ namespace MoveToCode {
 
         public ArrayDataStructure(CodeBlock cbIn) : base(cbIn) { }
         public ArrayDataStructure(CodeBlock cbIn, int size) : base(cbIn) {
-            SetValue(size); //TODO: Probably should reconfigure this
             SetSize(size);
             SetArrayType(null);
             SetNumFilledElements(0);
@@ -25,10 +24,6 @@ namespace MoveToCode {
             throw new InvalidOperationException("Trying to compare Array to non Array");
         }
 
-        /*public override void SetValue(object valIn) {
-            value = (int)valIn;
-        }*/
-
         public override object GetValue() {
             return internalArray;
         }
@@ -39,6 +34,7 @@ namespace MoveToCode {
 
         //set length of array, should only be called in constructor
         private void SetSize(int sizeIn) {
+            SetValue(sizeIn);
             mySize = sizeIn;
         }
 
@@ -63,7 +59,7 @@ namespace MoveToCode {
         }
 
         public void SetValueAtIndex(int index, IDataType valIn) {
-            if(index < mySize) {
+            if(index < GetSize()) {
                 internalArray[index] = valIn;
             } else {
                 throw new InvalidOperationException("Trying to read beyond array length");

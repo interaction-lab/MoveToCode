@@ -40,3 +40,5 @@ sysinfo.txt
 Assets/StreamingAssets/crashlytics-build.properties
 
 UWP/
+
+MSBuildForUnity.Common.props

@@ -11,5 +11,9 @@
         public override string GetConditionalSymbol() {
             return "= TO";
         }
+
+        public override string GetCodeString() {
+            return "==";
+        }
     }
 }

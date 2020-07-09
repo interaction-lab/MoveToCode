@@ -89,10 +89,16 @@ Nuget.config*
 Assets/MixedRealityToolkit.Providers/WindowsMixedReality/Shared/DotNetAdapter/.bin/
 Assets/MixedRealityToolkit.Providers/WindowsMixedReality/Shared/DotNetAdapter/.obj/
 
+# Other
+UWP/
+
+MSBuildForUnity.Common.props
+
 # ========================= #
 #     vscode	            # 
 # ========================= #
 .vscode/
+
 
 # Amazon Polly API Keys
 Assets/Resources/PollyAPI[0123456789].txt

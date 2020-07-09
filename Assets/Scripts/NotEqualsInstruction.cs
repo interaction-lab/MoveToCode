@@ -12,5 +12,8 @@
             return "NOT = TO";
         }
 
+        public override string GetCodeString() {
+            return "!=";
+        }
     }
 }

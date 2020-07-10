@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/Resources/ExerciseJsons.meta
-guid: 6348fbc3b2471cf49a1438751aac0e94
-=======
-guid: 2e3bdd655d62a2b43b83ef68521ad668
->>>>>>> a3f8f4e54b09fa7df978b6120c1f3102e53d0f7c:Assets/Packages.meta
+guid: ba48d6dcf4b03154d9843714010f8c0c
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

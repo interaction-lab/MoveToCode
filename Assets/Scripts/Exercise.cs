@@ -82,12 +82,11 @@ namespace MoveToCode {
             float topRightY = ConsoleManager.instance.transform.position.y - 1;
             float topRightZ = ConsoleManager.instance.transform.position.z - 1;
 
-            //top right block
-            codeBlockGameObjectList[0].transform.localPosition = new Vector3(topRightX, topRightY, topRightZ);
-
             float prevX = topRightX, prevY = topRightY;
-            for (int i = 1; i < codeBlockGameObjectList.Count; i++) {
-                if (i % numBlocksInSpawnCol == 0) {
+            for (int i = 0; i < codeBlockGameObjectList.Count; i++) {
+                if (i == 0) {
+                    codeBlockGameObjectList[i].transform.localPosition = new Vector3(prevX, prevY, topRightZ);
+                } else if (i % numBlocksInSpawnCol == 0) {
                     prevY = topRightY;
                     codeBlockGameObjectList[i].transform.localPosition = new Vector3(prevX -= 0.5f, prevY, topRightZ);
                 } else {

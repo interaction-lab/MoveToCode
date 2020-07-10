@@ -7,7 +7,11 @@ namespace MoveToCode {
         public char output = '0';
 
         protected override void SetMyBlockInternalArg() {
-            myBlockInternalArg = new CharDataType(this, Convert.ToChar(output));
+            myBlockInternalArg = new CharDataType(this, output);
+        }
+
+        public override void SetOutput(object value) {
+            output = Convert.ToChar(value);
         }
     }
 }

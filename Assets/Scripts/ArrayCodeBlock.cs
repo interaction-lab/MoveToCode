@@ -1,4 +1,6 @@
-﻿namespace MoveToCode {
+﻿using System;
+
+namespace MoveToCode {
 
     public class ArrayCodeBlock : DataCodeBlock {
 
@@ -11,6 +13,10 @@
 
         public void SetArraySize(int size) {
             arraySize = size;
+        }
+
+        public override void SetOutput(object size) {
+            arraySize = Int32.Parse(size.ToString());
         }
     }
 }

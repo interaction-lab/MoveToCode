@@ -34,7 +34,6 @@ namespace MoveToCode {
 
         //set length of array, should only be called in constructor
         private void SetSize(int sizeIn) {
-            SetValue(sizeIn);
             mySize = sizeIn;
         }
 

@@ -3,9 +3,6 @@ using UnityEngine.Assertions;
 using System;
 
 namespace MoveToCode {
-    //[RequireComponent(typeof(ExerciseInformationSeekingActions))]
-    //[RequireComponent(typeof(ExerciseScaffolding))]
-
     public class ExerciseInternals {
         public string consoleStringGoal;
         public string kuriGoalString;

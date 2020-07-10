@@ -45,11 +45,13 @@ namespace MoveToCode {
                 if (ExerciseManager.codeBlockDictionary[id] ==
                     Resources.Load<GameObject>(ResourcePathConstants.MathCodeBlockPrefab)) {
                     SetMathOp(value);
-
                 //set conditional operation
                 } else if (ExerciseManager.codeBlockDictionary[id] == 
                     Resources.Load<GameObject>(ResourcePathConstants.ConditionBlockPrefab)) {
                     SetConditionalOp(value);
+                } else if (ExerciseManager.codeBlockDictionary[id] ==
+                    Resources.Load<GameObject>(ResourcePathConstants.ArrayCodeBlockPrefab)) {
+                    SetArraySize(value);
                 }
 
                 //instantiate block
@@ -57,7 +59,7 @@ namespace MoveToCode {
                     ExerciseManager.codeBlockDictionary[id], transform) as GameObject;
 
                 //set data type value
-                (codeBlockGameObject.GetComponent<CodeBlock>().GetMyInternalIArgument() as IDataType)?.SetValue(value);
+                (codeBlockGameObject.GetComponent<CodeBlock>().GetMyInternalIArgument() as BasicDataType)?.SetValue(value);
 
                 //set block positions
                 codeBlockGameObject.transform.localPosition = new Vector3(-1.0f, -i/5f - 0.5f, 0.20f); //TODO: this is bad but it kind of works for positioning
@@ -82,6 +84,11 @@ namespace MoveToCode {
         private void SetConditionalOp(object valIn) {
             Resources.Load<GameObject>(ResourcePathConstants.ConditionBlockPrefab).GetComponent<ConditionalCodeBlock>().
                         SetOperation((ConditionalCodeBlock.OPERATION)Enum.Parse(typeof(ConditionalCodeBlock.OPERATION), valIn as string));
+        }
+
+        private void SetArraySize(object valIn) {
+            Resources.Load<GameObject>(ResourcePathConstants.ArrayCodeBlockPrefab).GetComponent<ArrayCodeBlock>().
+                        SetArraySize(Int32.Parse(valIn.ToString()));
         }
 
         private void SnapAllBlocksToBlockManager() {

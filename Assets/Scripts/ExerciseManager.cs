@@ -85,7 +85,6 @@ namespace MoveToCode {
             }
             else {
                 LoggingManager.instance.UpdateLogColumn(curExcersieCol, curExercisePos.ToString());
-                Debug.Log(curExercisePos);
                 SetUpCurExercise(curExercisePos);
                 ToggleCurrentExercise(true);
             }

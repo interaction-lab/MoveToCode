@@ -11,7 +11,8 @@
         "codeBlockID": "SetVar"
       },
       {
-        "codeBlockID": "Array"
+        "codeBlockID": "Array",
+        "value":  3
       },
       {
         "codeBlockID": "Int",

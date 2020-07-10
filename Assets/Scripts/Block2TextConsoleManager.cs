@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 namespace MoveToCode
 {
-
+    //temporarily disabled incompatible functions with ChloeMain.unity
     public class Block2TextConsoleManager : Singleton<Block2TextConsoleManager>
     {
         StandAloneInstruction curInstruction;
@@ -36,21 +36,21 @@ namespace MoveToCode
 
         public TextMeshProUGUI GetMainConsole() {
             if (mainConsole == null) {
-                mainConsole = transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+                //mainConsole = transform.GetChild(1).GetComponent<TextMeshProUGUI>();
             }
             return mainConsole;
         }
 
         public void ClearConsole() {
-            GetMainConsole().text = "";
+            //GetMainConsole().text = "";
         }
 
         public void SetHeaderText(string t) {
-            GetHeaderConsole().text = t;
+            //GetHeaderConsole().text = t;
         }
 
         public void AddLine(string lineToAdd){
-            GetMainConsole().text = string.Join("", GetMainConsole().text, lineToAdd, "\n");
+            //GetMainConsole().text = string.Join("", GetMainConsole().text, lineToAdd, "\n");
         }
 
         public string GetHeaderText() {

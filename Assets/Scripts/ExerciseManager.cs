@@ -6,7 +6,7 @@ using System.Linq;
 namespace MoveToCode {
     public class ExerciseManager : Singleton<ExerciseManager> {
         public static string curExcersieCol = "CurExercise", exerciseSubmissionResultCol = "ExerciseSubmissionResult";
-        public static Dictionary<string, GameObject> codeBlockDictionary;
+        //public static Dictionary<string, GameObject> codeBlockDictionary;
         string targetDirectory = @"Assets/Resources/ExerciseJsons";
         string[] fileEntries;
 
@@ -19,7 +19,7 @@ namespace MoveToCode {
 #if WINDOWS_UWP
             curExercisePos = 0;
 #endif
-            SetupCodeBlockDictionary();
+            //SetupCodeBlockDictionary();
             SetUpExerciseList();
             fileEntries = Directory.GetFiles(targetDirectory).Where(s => s.EndsWith(".json")).ToArray();
             if(curExercisePos < fileEntries.Length) {
@@ -100,7 +100,7 @@ namespace MoveToCode {
             curExercise.gameObject.SetActive(desiredActiveState);
         }
 
-        private void SetupCodeBlockDictionary() {
+        /*private void SetupCodeBlockDictionary() {
             codeBlockDictionary = new Dictionary<string, GameObject>();
             codeBlockDictionary.Add("Print", Resources.Load<GameObject>(ResourcePathConstants.PrintCodeBlockPrefab));
             codeBlockDictionary.Add("Conditional", Resources.Load<GameObject>(ResourcePathConstants.ConditionBlockPrefab));
@@ -114,7 +114,7 @@ namespace MoveToCode {
             codeBlockDictionary.Add("Array", Resources.Load<GameObject>(ResourcePathConstants.ArrayCodeBlockPrefab));
             codeBlockDictionary.Add("ArrayIndex", Resources.Load<GameObject>(ResourcePathConstants.ArrayIndexCodeBlockPrefab));
             codeBlockDictionary.Add("Variable", Resources.Load<GameObject>(ResourcePathConstants.VariableCodeBlockPrefab));
-        }
+        }*/
 
         private void SetUpExerciseList() {
             exerciseList = new List<Exercise>();

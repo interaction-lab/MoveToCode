@@ -42,20 +42,21 @@ namespace MoveToCode {
                 object value = myExerciseInternals.GetExerciseBlocks()[i].value;
 
                 //set math operation
-                if (ExerciseManager.codeBlockDictionary[id] ==
+                if (ResourcePathConstants.codeBlockDictionary[id] ==
                     Resources.Load<GameObject>(ResourcePathConstants.MathCodeBlockPrefab)) {
-                    SetMathOp(value);
+                    SetMathOp(ResourcePathConstants.codeBlockDictionary[id], value);
                 //set conditional operation
-                } else if (ExerciseManager.codeBlockDictionary[id] == 
+                } else if (ResourcePathConstants.codeBlockDictionary[id] == 
                     Resources.Load<GameObject>(ResourcePathConstants.ConditionBlockPrefab)) {
-                    SetConditionalOp(value);
+                    SetConditionalOp(ResourcePathConstants.codeBlockDictionary[id], value);
+                //set data value
                 } else if (value != null) {
-                    SetDataValue(ExerciseManager.codeBlockDictionary[id], value);
+                    SetDataValue(ResourcePathConstants.codeBlockDictionary[id], value);
                 }
 
                 //instantiate block
                 GameObject codeBlockGameObject = Instantiate(
-                    ExerciseManager.codeBlockDictionary[id], transform) as GameObject;
+                    ResourcePathConstants.codeBlockDictionary[id], transform) as GameObject;
 
                 //set block positions
                 codeBlockGameObject.transform.localPosition = new Vector3(-1.0f, -i/5f - 0.5f, 0.20f); //TODO: this is bad but it kind of works for positioning
@@ -72,14 +73,12 @@ namespace MoveToCode {
             return result;
         }
 
-        private void SetMathOp(object valIn) {
-            Resources.Load<GameObject>(ResourcePathConstants.MathCodeBlockPrefab).GetComponent<MathOperationCodeBlock>().
-                        SetOperation((MathOperationCodeBlock.OPERATION)Enum.Parse(typeof(MathOperationCodeBlock.OPERATION), valIn as string));
+        private void SetMathOp(GameObject prefab, object valIn) {
+            prefab.GetComponent<MathOperationCodeBlock>().SetOperation((MathOperationCodeBlock.OPERATION)Enum.Parse(typeof(MathOperationCodeBlock.OPERATION), valIn as string));
         }
 
-        private void SetConditionalOp(object valIn) {
-            Resources.Load<GameObject>(ResourcePathConstants.ConditionBlockPrefab).GetComponent<ConditionalCodeBlock>().
-                        SetOperation((ConditionalCodeBlock.OPERATION)Enum.Parse(typeof(ConditionalCodeBlock.OPERATION), valIn as string));
+        private void SetConditionalOp(GameObject prefab, object valIn) {
+            prefab.GetComponent<ConditionalCodeBlock>().SetOperation((ConditionalCodeBlock.OPERATION)Enum.Parse(typeof(ConditionalCodeBlock.OPERATION), valIn as string));
         }
 
         private void SetDataValue(GameObject prefab, object valIn) {

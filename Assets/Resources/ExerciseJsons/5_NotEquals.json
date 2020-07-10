@@ -1,12 +1,10 @@
 {
-  "$type": "MoveToCode.ExerciseInternals, Assembly-CSharp",
   "consoleStringGoal": "True",
   "kuriGoalString": "Print True",
   "varNames": [],
   "initialVariableValues": [],
   "finalVariableGoalValues": [],
   "exerciseBlocks": {
-    "$type": "MoveToCode.Pair[], Assembly-CSharp",
     "$values": [
       {
         "codeBlockID": "Print"

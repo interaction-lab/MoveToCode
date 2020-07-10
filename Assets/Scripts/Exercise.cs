@@ -2,9 +2,13 @@
 using UnityEngine.Assertions;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 
 namespace MoveToCode {
     public class Exercise : MonoBehaviour {
+
+        List<GameObject> codeBlockGameObjectList;
+        int numBlocksInSpawnCol = 4; //number of blocks in a single column when blocks are instantiated 
 
         public ExerciseInternals myExerciseInternals;
 
@@ -17,6 +21,7 @@ namespace MoveToCode {
             
             //create code blocks
             InstantiateCodeBlocks();
+            RepositionCodeBlocks();
             Assert.IsTrue(myExerciseInternals.GetVarNames().Length == myExerciseInternals.GetInitialVariableValues().Length && myExerciseInternals.GetInitialVariableValues().Length == myExerciseInternals.GetFinalVariableGoalValues().Length);
             SnapAllBlocksToBlockManager();
             AddAllVariables();
@@ -36,6 +41,7 @@ namespace MoveToCode {
         }
 
         public void InstantiateCodeBlocks() {
+            codeBlockGameObjectList = new List<GameObject>();
             for (int i = 0; i < myExerciseInternals.GetExerciseBlocks().Length; i++) {
 
                 string id = myExerciseInternals.GetExerciseBlocks()[i].codeBlockID;
@@ -55,11 +61,8 @@ namespace MoveToCode {
                 }
 
                 //instantiate block
-                GameObject codeBlockGameObject = Instantiate(
-                    ResourcePathConstants.codeBlockDictionary[id], transform) as GameObject;
-
-                //set block positions
-                codeBlockGameObject.transform.localPosition = new Vector3(-1.0f, -i/5f - 0.5f, 0.20f); //TODO: this is bad but it kind of works for positioning
+                GameObject codeBlockGameObject = Instantiate(ResourcePathConstants.codeBlockDictionary[id], transform) as GameObject;
+                codeBlockGameObjectList.Add(codeBlockGameObject);
             }
         }
 
@@ -73,12 +76,34 @@ namespace MoveToCode {
             return result;
         }
 
+        private void RepositionCodeBlocks() {
+            //coordinates of top right block in codeblock grid spawn space
+            float topRightX = ConsoleManager.instance.transform.position.x - 1.25f;
+            float topRightY = ConsoleManager.instance.transform.position.y - 1;
+            float topRightZ = ConsoleManager.instance.transform.position.z - 1;
+
+            //top right block
+            codeBlockGameObjectList[0].transform.localPosition = new Vector3(topRightX, topRightY, topRightZ);
+
+            float prevX = topRightX, prevY = topRightY;
+            for (int i = 1; i < codeBlockGameObjectList.Count; i++) {
+                if (i % numBlocksInSpawnCol == 0) {
+                    prevY = topRightY;
+                    codeBlockGameObjectList[i].transform.localPosition = new Vector3(prevX -= 0.5f, prevY, topRightZ);
+                } else {
+                    codeBlockGameObjectList[i].transform.localPosition = new Vector3(prevX, prevY -= 0.25f, topRightZ);
+                }
+            }
+        }
+
         private void SetMathOp(GameObject prefab, object valIn) {
-            prefab.GetComponent<MathOperationCodeBlock>().SetOperation((MathOperationCodeBlock.OPERATION)Enum.Parse(typeof(MathOperationCodeBlock.OPERATION), valIn as string));
+            prefab.GetComponent<MathOperationCodeBlock>().SetOperation(
+                (MathOperationCodeBlock.OPERATION)Enum.Parse(typeof(MathOperationCodeBlock.OPERATION), valIn as string));
         }
 
         private void SetConditionalOp(GameObject prefab, object valIn) {
-            prefab.GetComponent<ConditionalCodeBlock>().SetOperation((ConditionalCodeBlock.OPERATION)Enum.Parse(typeof(ConditionalCodeBlock.OPERATION), valIn as string));
+            prefab.GetComponent<ConditionalCodeBlock>().SetOperation(
+                (ConditionalCodeBlock.OPERATION)Enum.Parse(typeof(ConditionalCodeBlock.OPERATION), valIn as string));
         }
 
         private void SetDataValue(GameObject prefab, object valIn) {

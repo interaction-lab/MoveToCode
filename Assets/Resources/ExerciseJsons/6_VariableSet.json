@@ -5,7 +5,6 @@
   "initialVariableValues": [ 9 ],
   "finalVariableGoalValues": [ 5 ],
   "exerciseBlocks": {
-    "$type": "MoveToCode.Pair[], Assembly-CSharp",
     "$values": [
       {
         "codeBlockID": "Print"

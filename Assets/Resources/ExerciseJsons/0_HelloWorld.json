@@ -1,12 +1,10 @@
 {
-  "$type": "MoveToCode.ExerciseInternals, Assembly-CSharp",
   "consoleStringGoal": "\"Hello World\"",
   "kuriGoalString": "Print \"Hello World\"",
   "varNames": [],
   "initialVariableValues": [],
   "finalVariableGoalValues": [],
   "exerciseBlocks": {
-    "$type": "MoveToCode.Pair[], Assembly-CSharp",
     "$values": [
       {
         "codeBlockID": "Print"

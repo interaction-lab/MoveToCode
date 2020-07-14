@@ -138,9 +138,9 @@ namespace MoveToCode {
         // then you should reconsider what you are doing
         public CodeBlock FindParentCodeBlock() {
             Transform upRunner = transform;
-            while (upRunner.GetComponent<CodeBlockManager>() == null) {
-                upRunner = upRunner.parent;
-                if (upRunner.GetComponent<CodeBlock>()) {
+            while (upRunner?.GetComponent<CodeBlockManager>() == null) {
+                upRunner = upRunner?.parent;
+                if (upRunner?.GetComponent<CodeBlock>()) {
                     return upRunner.GetComponent<CodeBlock>();
                 }
             }

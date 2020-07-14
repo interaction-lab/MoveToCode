@@ -117,7 +117,7 @@ namespace MoveToCode {
             }
         }
 
-        private void UnsnapAllBlockFromBlockManager() {
+        public void UnsnapAllBlockFromBlockManager() {
             StartCodeBlock.instance.SetArgumentBlockAt(null, 0, false); // unsnap
             foreach (CodeBlock cb in CodeBlockManager.instance.GetAllCodeBlocks()) {
                 if (cb != StartCodeBlock.instance) {

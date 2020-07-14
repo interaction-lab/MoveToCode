@@ -1,0 +1,35 @@
+{
+  "consoleStringGoal": "11",
+  "kuriGoalString": "Print 11",
+  "varNames": [],
+  "initialVariableValues": [],
+  "finalVariableGoalValues": [],
+  "exerciseBlocks": {
+    "$values": [
+      {
+        "codeBlockID": "Print"
+      },
+      {
+        "codeBlockID": "Math",
+        "value": "ADD"
+      },
+      {
+        "codeBlockID": "Int",
+        "value": "7"
+      },
+      {
+        "codeBlockID": "Int",
+        "value": "4"
+      },
+      {
+        "codeBlockID": "Int",
+        "value": "5"
+      }
+    ]
+  },
+  "scaffoldDialogue": [
+    "What adds up to 11?",
+    "Try grabbing one of the numbers",
+    "The addition block can be snapped to the print block"
+  ]
+}

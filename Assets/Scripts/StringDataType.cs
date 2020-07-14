@@ -6,6 +6,7 @@ namespace MoveToCode {
         public StringDataType(CodeBlock cbIn, string valIn) : base(cbIn) {
             SetValue(valIn);
         }
+
         public override bool IsSameDataTypeAndEqualTo(IDataType otherVal) {
             if (otherVal is StringDataType) {
                 return (string)GetValue() == (string)(otherVal as StringDataType).GetValue();

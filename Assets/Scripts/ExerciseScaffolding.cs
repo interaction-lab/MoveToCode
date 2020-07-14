@@ -13,5 +13,8 @@ namespace MoveToCode {
             KuriTextManager.instance.Addline(scafoldDialogue[curScaffold++]);
         }
 
+        public void SetScaffoldDialogue(string [] dialogue) {
+            scafoldDialogue = dialogue;
+        }
     }
 }

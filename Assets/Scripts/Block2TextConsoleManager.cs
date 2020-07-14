@@ -4,7 +4,6 @@ using UnityEngine;
 using TMPro;
 namespace MoveToCode
 {
-
     public class Block2TextConsoleManager : Singleton<Block2TextConsoleManager>
     {
         StandAloneInstruction curInstruction;

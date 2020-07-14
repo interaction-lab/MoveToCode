@@ -1,0 +1,23 @@
+{
+  "consoleStringGoal": "1",
+  "kuriGoalString": "Print 1",
+  "varNames": [],
+  "initialVariableValues": [],
+  "finalVariableGoalValues": [],
+  "exerciseBlocks": {
+    "$values": [
+      {
+        "codeBlockID": "Print"
+      },
+      {
+        "codeBlockID": "Int",
+        "value": "1"
+      }
+    ]
+  },
+  "scaffoldDialogue": [
+    "Try grabbing the blue sphere",
+    "Attach the blue Sphere to the print block",
+    "Make sure the 1 is in the print block"
+  ]
+}

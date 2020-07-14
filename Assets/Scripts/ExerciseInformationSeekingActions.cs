@@ -46,7 +46,7 @@ namespace MoveToCode {
         }
 
         string SpawnVariable() {
-            string[] varNames = GetComponent<Exercise>().varNames;
+            string[] varNames = GetComponent<Exercise>().GetExerciseInternals().GetVarNames();
             if (varNames.Length == 0) {
                 return "";
             }

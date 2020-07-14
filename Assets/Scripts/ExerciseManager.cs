@@ -1,14 +1,16 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+using System.Linq;
 
 namespace MoveToCode {
     public class ExerciseManager : Singleton<ExerciseManager> {
         public static string curExcersieCol = "CurExercise", exerciseSubmissionResultCol = "ExerciseSubmissionResult";
+        string targetDirectory = @"Assets/Resources/ExerciseJsons";
+        string[] fileEntries;
 
         Exercise curExercise;
-        List<Exercise> exerciseList;
+        Exercise FreePlay;
         public int curExercisePos = 0;
         bool lastExerciseCompleted = false;
 
@@ -16,27 +18,43 @@ namespace MoveToCode {
 #if WINDOWS_UWP
             curExercisePos = 0;
 #endif
-            SetUpExerciseList();
-            curExercise = exerciseList[curExercisePos];
+            SetUpFreePlayExercise();
+            fileEntries = Directory.GetFiles(targetDirectory).Where(s => s.EndsWith(".json")).ToArray();
+            if(curExercisePos < fileEntries.Length) {
+                SetUpCurExercise(curExercisePos);
+            } else {
+                InitiateFreePlay();
+            }
             ToggleCurrentExercise(true);
             LoggingManager.instance.AddLogColumn(curExcersieCol, curExercisePos.ToString());
             LoggingManager.instance.AddLogColumn(exerciseSubmissionResultCol, "");
         }
 
-        private void SetUpExerciseList() {
-            exerciseList = new List<Exercise>();
-            foreach (Exercise ex in GetComponentsInChildren<Exercise>(true)) {
-                exerciseList.Add(ex);
-                ex.gameObject.SetActive(false);
-            }
+        private void SetUpCurExercise(int exerciseNum) {
+            string json = File.ReadAllText(fileEntries[exerciseNum]);
+            GameObject exercise = InstantiateExercise(json);
+            //Add scaffoldDialogue
+            exercise.AddComponent<ExerciseScaffolding>().SetScaffoldDialogue(
+                curExercise.GetExerciseInternals().GetscaffoldDialogue());
+            //TODO: add ExerciseInformationSeekingActions
         }
 
         public Exercise GetCurExercise() {
             return curExercise;
         }
 
+        public GameObject InstantiateExercise(string jsonString) {
+            GameObject exGO = Instantiate(
+                Resources.Load<GameObject>(ResourcePathConstants.ExercisePrefab), transform.parent) as GameObject;
+            exGO.transform.SnapToParent(transform);
+            exGO.GetComponent<Exercise>().SetupExercise(jsonString);
+            curExercise = exGO.GetComponent<Exercise>();
+            exGO.GetComponent<Exercise>().SetUpKuriInExercise();
+            return exGO;
+        }
+
         public void AlertCodeFinished() {
-            if (curExercise != null) { // This if is to guard against initializing interpreter
+            if (curExercise != null && curExercise != FreePlay) { // This if is to guard against initializing interpreter
                 if (curExercise.IsExerciseCorrect()) {
                     KuriManager.instance.SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT.Congratulation);
                     LoggingManager.instance.UpdateLogColumn(exerciseSubmissionResultCol, "Correct");
@@ -60,22 +78,29 @@ namespace MoveToCode {
             curExercise.CleanUp();
             ToggleCurrentExercise(false);
             curExercisePos += 1;
-            if (curExercisePos == exerciseList.Count) {
+            if (curExercisePos == fileEntries.Length) {
                 InitiateFreePlay();
             }
             else {
                 LoggingManager.instance.UpdateLogColumn(curExcersieCol, curExercisePos.ToString());
-                curExercise = exerciseList[curExercisePos];
+                SetUpCurExercise(curExercisePos);
                 ToggleCurrentExercise(true);
             }
         }
 
         private void InitiateFreePlay() {
             Debug.Log("Free play woould be initiated");
+            curExercise = FreePlay;
+            ToggleCurrentExercise(true);
         }
 
         private void ToggleCurrentExercise(bool desiredActiveState) {
             curExercise.gameObject.SetActive(desiredActiveState);
+        }
+
+        private void SetUpFreePlayExercise() {
+            FreePlay = GetComponentsInChildren<Exercise>(true)[0];
+            FreePlay.gameObject.SetActive(false);
         }
     }
 }

@@ -10,6 +10,10 @@ namespace MoveToCode {
             return Convert.ChangeType(GetValue(), GetCastType()).ToString();
         }
 
+        public override string DescriptiveInstructionToString() {
+            return ToString();
+        }
+
         public override int GetNumArguments() {
             return 0;
         }

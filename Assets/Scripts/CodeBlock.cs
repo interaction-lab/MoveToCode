@@ -17,6 +17,7 @@ namespace MoveToCode {
         CodeBlockArgumentList codeBlockArgumentList;
         CodeBlockSnap codeBlockSnap;
         GameObject codeBlockTextGameObject;
+        bool isMenuBlock;
 
         // Abstract Methods
         protected abstract void SetMyBlockInternalArg();
@@ -42,6 +43,8 @@ namespace MoveToCode {
             if (GetComponent<ManipulationLogger>() == null) {
                 gameObject.AddComponent<ManipulationLogger>();
             }
+
+            isMenuBlock = false;
 
             UpdateText();
         }
@@ -131,6 +134,14 @@ namespace MoveToCode {
             if (parentCodeBlock != null) {
                 parentCodeBlock.SetArgumentBlockAt(null, parentCodeBlock.GetPositionOfArgument(GetMyInternalIArgument()), humanDidIt);
             }
+        }
+
+        public void SetIsMenuBlock(bool option) {
+            isMenuBlock = option;
+        }
+
+        public bool GetIsMenuBlock() {
+            return isMenuBlock;
         }
 
         // Private Helpers

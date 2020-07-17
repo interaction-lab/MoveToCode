@@ -24,13 +24,11 @@ namespace MoveToCode {
         }
 
         public void InstantiateBlocksInFamily() {
-            foreach (GameObject cb in blocksInFamily) {
-                
-            }
-            for(int i = 0; i < blocksInFamily.Length; i++) {
+            for (int i = 0; i < blocksInFamily.Length; i++) {
                 GameObject go = Instantiate(blocksInFamily[i]);
-                go.transform.position = new Vector3(transform.position.x, transform.position.y + 0.1f - i/5f, transform.position.z);
+                go.transform.position = new Vector3(transform.position.x, transform.position.y + 0.1f - i / 5f, transform.position.z);
                 go.AddComponent<CloneOnDrag>().SetCodeBlockType(blocksInFamily[i]);
+                go.GetComponent<CodeBlock>().SetIsMenuBlock(true);
                 go.transform.SnapToParent(transform);
                 go.transform.localScale = Vector3.one;
             }

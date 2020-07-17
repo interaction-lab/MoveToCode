@@ -17,7 +17,7 @@ namespace MoveToCode {
         }
 
         public override float GetBlockVerticalSize() {
-            return transform.localScale.y;
+            return top.localScale.y;
         }
 
         protected override void ResizeObjectMesh() {

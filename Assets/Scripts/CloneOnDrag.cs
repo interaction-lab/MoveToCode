@@ -26,10 +26,11 @@ namespace MoveToCode {
             codeBlockType = cb;
         }
 
-        public void OnTriggerEnter() {
-            Debug.Log("qwerty");
+        void OnTriggerEnter(Collider other) {
+            //Debug.Log("qwerty");
+            //Destroy(gameObject);
             //if(cloneCol.GetComponent<CodeBlock>() == codeBlockType.GetComponent<CodeBlock>()) {
-                stillInContactWithOriginal = true;
+            stillInContactWithOriginal = true;
             //}
             if (cloneRenderer != null) {
                 foreach (Material mat in cloneRenderer.materials) {
@@ -38,7 +39,7 @@ namespace MoveToCode {
             }
         }
 
-        public void OnTriggerExit(Collider cloneCol) {
+        void OnTriggerExit(Collider cloneCol) {
             if (cloneCol.GetComponent<CodeBlock>() == codeBlockType.GetComponent<CodeBlock>()) {
                 //Destroy(gameObject);
                 stillInContactWithOriginal = false;
@@ -58,14 +59,15 @@ namespace MoveToCode {
         public void OnEnable() {
             manipulationHandler = GetComponent<ManipulationHandler>();
             manipulationHandler.OnManipulationStarted.AddListener(StartedMotion);
-            //manipulationHandler.OnManipulationEnded.AddListener(StoppedMotion);
-            //Destroy(GetComponent<CodeBlockSnap>());
-            //Destroy(GetComponent<CodeBlockArgumentList>());
+            manipulationHandler.OnManipulationEnded.AddListener(StoppedMotion);
         }
 
-        /*private void StoppedMotion(ManipulationEventData arg0) {
-            Debug.Log("asdf");
-            if (stillInContactWithOriginal) {
+        private void StoppedMotion(ManipulationEventData arg0) {
+            //delete block if placed back on shelf
+            if(blockStillInMenu) {
+                Destroy(gameObject);
+            }
+            /*if (stillInContactWithOriginal) {
                 
                 Destroy(gameObject);
             } else {
@@ -73,7 +75,7 @@ namespace MoveToCode {
                 transform.gameObject.AddComponent<CodeBlockSnap>();
                 transform.SnapToCodeBlockManager();
                 blockStillInMenu = false;
-            }
+            }*/
             if (cloneRenderer != null) {
                 foreach (Material mat in cloneRenderer.materials) {
                     mat.SetFloat("_Outline", 0f);
@@ -84,23 +86,15 @@ namespace MoveToCode {
                     mat.SetFloat("_Outline", 0f);
                 }
             }
-        }*/
+        }
 
         private void StartedMotion(ManipulationEventData arg0) {
-            if (blockStillInMenu) {
+            if (transform.GetComponent<CodeBlock>().GetIsMenuBlock()) {
                 transform.GetComponent<CodeBlock>().SetIsMenuBlock(false);
                 clone = InstantiateBlock(codeBlockType, startingPosition);
                 clone.GetComponent<CodeBlock>().SetIsMenuBlock(true);
                 cloneRenderer = clone.GetComponent<MeshRenderer>();
                 transform.SnapToCodeBlockManager();
-
-                
-
-                //menu block replaced by clone
-                //Destroy(clone.GetComponent<CodeBlockSnap>());
-                Destroy(transform.GetComponent<CloneOnDrag>());
-                //transform.gameObject.AddComponent<CodeBlockArgumentList>();
-                //transform.gameObject.AddComponent<CodeBlockSnap>();
             }
         }
 
@@ -116,6 +110,10 @@ namespace MoveToCode {
             }*/
 
             return go;
+        }
+
+        public void SetBlockStillInMenu(bool option) {
+            blockStillInMenu = option;
         }
     }
 }

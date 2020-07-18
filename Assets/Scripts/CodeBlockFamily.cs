@@ -29,7 +29,7 @@ namespace MoveToCode {
             for (int i = 0; i < blocksInFamily.Length; i++) {
                 GameObject go = Instantiate(blocksInFamily[i]);
                 //Vector3 currBlockSize = GetBlockSize(go);
-                go.transform.position = new Vector3(shelfMeshRenderer.bounds.center.x, shelfMeshRenderer.bounds.extents.y - 0.25f - i * GetBlockHeight(go)/3, transform.position.z);
+                go.transform.position = new Vector3(shelfMeshRenderer.bounds.center.x, shelfMeshRenderer.bounds.extents.y - 0.25f - i * GetBlockHeight(go)/2.5f, transform.position.z);
                 
                 //set codeblocks as blocks in menu
                 go.AddComponent<CloneOnDrag>().SetCodeBlockType(blocksInFamily[i]);
@@ -54,7 +54,6 @@ namespace MoveToCode {
 
         private float GetBlockHeight(GameObject goIn) {
             float height = goIn.GetComponentInChildren<CodeBlockObjectMesh>().GetBlockVerticalSize();
-            Debug.Log(height);
             return height;
         }
     }

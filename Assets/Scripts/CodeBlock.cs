@@ -17,7 +17,7 @@ namespace MoveToCode {
         CodeBlockArgumentList codeBlockArgumentList;
         CodeBlockSnap codeBlockSnap;
         GameObject codeBlockTextGameObject;
-        public bool isMenuBlock;
+        bool isMenuBlock;
 
         // Abstract Methods
         protected abstract void SetMyBlockInternalArg();

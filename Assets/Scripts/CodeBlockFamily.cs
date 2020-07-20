@@ -16,7 +16,7 @@ namespace MoveToCode {
         }
 
         private void Start() {
-            AddBlocksToFamily();
+            AddVariantBlocksToFamily();
             InstantiateBlocksInFamily();
         }
 
@@ -28,41 +28,24 @@ namespace MoveToCode {
             gameObject.SetActive(false);
         }
 
-        private void AddBlocksToFamily() {
+        private void AddVariantBlocksToFamily() {
             if (blocksInFamily[0].GetComponent<ConditionalCodeBlock>() != null) {
                 for (int i = 1; i < System.Enum.GetNames(typeof(ConditionalCodeBlock.OPERATION)).Length; i++) {
-                    //blocksInFamily.Add(blocksInFamily[0].GetComponent<);
-                    SetConditionalOperation(blocksInFamily[0], i);
-                    GameObject go = Instantiate(blocksInFamily[0]);
-                    SetBlockPosition(go, 0, i);
+                    blocksInFamily.Add(blocksInFamily[0]);
                 }
             } else if (blocksInFamily[0].GetComponent<MathOperationCodeBlock>() != null) {
                 for (int i = 1; i < System.Enum.GetNames(typeof(MathOperationCodeBlock.OPERATION)).Length; i++) {
-                    SetMathOperation(blocksInFamily[0], i);
-                    GameObject go = Instantiate(blocksInFamily[0]);
-                    SetBlockPosition(go, 0, i);
+                    blocksInFamily.Add(blocksInFamily[0]);
                 }
             }
         }
 
-        public void InstantiateBlocksInFamily() {
-            if (blocksInFamily[0].GetComponent<ConditionalCodeBlock>() != null) {
-                for (int i = 0; i < System.Enum.GetNames(typeof(ConditionalCodeBlock.OPERATION)).Length; i++) {
-                    SetConditionalOperation(blocksInFamily[0], i);
-                    GameObject go = Instantiate(blocksInFamily[0]);
-                    SetBlockPosition(go, 0, i);
-                }
-            } else if (blocksInFamily[0].GetComponent<MathOperationCodeBlock>() != null) {
-                for (int i = 0; i < System.Enum.GetNames(typeof(MathOperationCodeBlock.OPERATION)).Length; i++) {
-                    SetMathOperation(blocksInFamily[0], i);
-                    GameObject go = Instantiate(blocksInFamily[0]);
-                    SetBlockPosition(go, 0, i);
-                }
-            } else {
-                for (int i = 0; i < blocksInFamily.Count; i++) {
-                    GameObject go = Instantiate(blocksInFamily[i]);
-                    SetBlockPosition(go, i, i);
-                }
+        private void InstantiateBlocksInFamily() {
+            for (int i = 0; i < blocksInFamily.Count; i++) {
+                SetMathOperation(blocksInFamily[0], i);
+                SetConditionalOperation(blocksInFamily[0], i);
+                GameObject go = Instantiate(blocksInFamily[i]);
+                SetBlockPosition(go, i, i);
             }
         }
 
@@ -80,16 +63,11 @@ namespace MoveToCode {
         }
 
         private void SetMathOperation(GameObject block, int index) {
-            block.GetComponent<MathOperationCodeBlock>().SetOperation((MathOperationCodeBlock.OPERATION)index);
+            block.GetComponent<MathOperationCodeBlock>()?.SetOperation((MathOperationCodeBlock.OPERATION)index);
         }
 
         private void SetConditionalOperation(GameObject block, int index) {
-            block.GetComponent<ConditionalCodeBlock>().SetOperation((ConditionalCodeBlock.OPERATION)index);
-        }
-
-        private float GetBlockHeight(GameObject goIn) {
-            float height = goIn.GetComponentInChildren<CodeBlockObjectMesh>().GetBlockVerticalSize();
-            return height;
+            block.GetComponent<ConditionalCodeBlock>()?.SetOperation((ConditionalCodeBlock.OPERATION)index);
         }
     }
 }

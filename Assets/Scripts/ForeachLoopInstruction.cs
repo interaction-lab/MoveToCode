@@ -10,6 +10,10 @@ namespace MoveToCode {
             currPosInArray = 0;
         }
 
+        public override int GetNumArguments() {
+            return 4;
+        }
+
         public override InstructionReturnValue RunInstruction() {
             if (!exitInstructionAddedToStack) {
                 Interpreter.instance.AddToInstructionStack(GetNextInstruction());
@@ -27,9 +31,13 @@ namespace MoveToCode {
         }
 
         public override void EvaluateArgumentList() {
-            Variable d = GetArgumentAt(1) as Variable;
-            if (d != null && d.GetMyData().GetType() == typeof(ArrayDataStructure)) {
-                conditionIsTrue = currPosInArray < (d.GetMyData() as ArrayDataStructure).GetSize();
+            Variable leftArg = GetArgumentAt(1) as Variable;
+            Variable rightArg = GetArgumentAt(2) as Variable;
+            if (rightArg != null && rightArg.GetMyData().GetType() == typeof(ArrayDataStructure)) {
+                conditionIsTrue = currPosInArray < (rightArg.GetMyData() as ArrayDataStructure).GetSize();
+                if(conditionIsTrue) {
+                    leftArg.SetValue(((rightArg.GetMyData() as ArrayDataStructure).GetValue() as IDataType[])[currPosInArray]);
+                }
             }
         }
 
@@ -39,7 +47,10 @@ namespace MoveToCode {
                     typeof(StandAloneInstruction)
                 },
                 new List<Type> {
-                    typeof(IDataType)
+                    typeof(Variable)
+                },
+                new List<Type> {
+                    typeof(Variable)
                 },
                 new List<Type> {
                     typeof(StandAloneInstruction)
@@ -48,7 +59,7 @@ namespace MoveToCode {
         }
 
         public override string ToString() {
-            return "foreach value in ";
+            return "foreach \nvar ";
         }
     }
 }

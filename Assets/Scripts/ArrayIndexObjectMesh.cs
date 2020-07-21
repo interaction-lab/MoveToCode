@@ -28,7 +28,6 @@ namespace MoveToCode {
         }
 
         private void UpdateText() {
-
             if (rightBracketTextMesh == null && leftBracketTextMesh == null) {
                 InstantiateBracketText();
                 RepositionBracketText();

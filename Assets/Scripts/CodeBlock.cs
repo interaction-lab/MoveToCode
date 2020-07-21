@@ -17,7 +17,6 @@ namespace MoveToCode {
         CodeBlockArgumentList codeBlockArgumentList;
         CodeBlockSnap codeBlockSnap;
         GameObject codeBlockTextGameObject;
-        CloneOnDrag cloneOnDrag;
         bool isMenuBlock;
 
         // Abstract Methods
@@ -44,7 +43,7 @@ namespace MoveToCode {
             if (GetComponent<ManipulationLogger>() == null) {
                 gameObject.AddComponent<ManipulationLogger>();
             }
-
+            
             isMenuBlock = false;
 
             UpdateText();

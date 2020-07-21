@@ -9,9 +9,8 @@ namespace MoveToCode {
         GameObject codeBlockType;
         bool blockStillInMenu;
 
-        private void Awake() {
+        private void Start() {
             startingPosition = transform.position;
-            blockStillInMenu = true;
         }
 
         private void OnEnable() {
@@ -48,7 +47,7 @@ namespace MoveToCode {
 
         private GameObject InstantiateBlock(GameObject block, Vector3 spawnPos) {
             GameObject go = Instantiate(block, spawnPos, Quaternion.identity);
-            go.AddComponent<CloneOnDrag>().SetCodeBlockType(codeBlockType);
+            go.GetComponent<CloneOnDrag>().SetCodeBlockType(codeBlockType);
             go.transform.SetParent(transform.parent);
             go.transform.localScale = Vector3.one;
             return go;

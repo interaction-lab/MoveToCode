@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace MoveToCode {
     public class ForeachLoopInstruction : SingleControlFlowInstruction {
-        private int currPosInArray;
+        private int currIdxInArray;
 
         public ForeachLoopInstruction(CodeBlock cbIn) : base(cbIn) {
-            currPosInArray = 0;
+            currIdxInArray = 0;
         }
 
         public override int GetNumArguments() {
@@ -22,11 +22,11 @@ namespace MoveToCode {
             EvaluateArgumentList();
             if (conditionIsTrue) {
                 // put me on top of stack for when foreach loop ends
-                currPosInArray++;
+                currIdxInArray++;
                 Interpreter.instance.AddToInstructionStack(this);
                 return new InstructionReturnValue(null, GetNestedInstruction());
             }
-            currPosInArray = 0;
+            currIdxInArray = 0;
             return null; // done with loop
         }
 
@@ -34,9 +34,9 @@ namespace MoveToCode {
             Variable leftArg = GetArgumentAt(1) as Variable;
             Variable rightArg = GetArgumentAt(2) as Variable;
             if (rightArg != null && rightArg.GetMyData().GetType() == typeof(ArrayDataStructure)) {
-                conditionIsTrue = currPosInArray < (rightArg.GetMyData() as ArrayDataStructure).GetSize();
+                conditionIsTrue = currIdxInArray < (rightArg.GetMyData() as ArrayDataStructure).GetSize();
                 if(conditionIsTrue) {
-                    leftArg.SetValue(((rightArg.GetMyData() as ArrayDataStructure).GetValue() as IDataType[])[currPosInArray]);
+                    leftArg.SetValue(((rightArg.GetMyData() as ArrayDataStructure).GetValue() as IDataType[])[currIdxInArray]);
                 }
             }
         }

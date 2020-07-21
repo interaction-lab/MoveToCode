@@ -16,6 +16,8 @@ namespace MoveToCode {
             if (blockCol.GetComponentInParent<CodeBlock>() != null && !blockCol.GetComponentInParent<CodeBlock>().GetIsMenuBlock()) {
                 blockCol.GetComponentInParent<CloneOnDrag>().SetBlockStillInMenu(true);
                 EnableShelfOutline();
+            } else {
+                blockCol.GetComponentInParent<CloneOnDrag>().SetBlockStillInMenu(false);
             }
         }
 

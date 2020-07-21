@@ -56,7 +56,7 @@ namespace MoveToCode {
                     transform.position.z);
 
             //set codeblocks as blocks in menu
-            block.AddComponent<CloneOnDrag>().SetCodeBlockType(blocksInFamily[index]);
+            block.GetComponent<CloneOnDrag>().SetCodeBlockType(blocksInFamily[index]);
             block.GetComponent<CodeBlock>().SetIsMenuBlock(true);
             block.transform.SnapToParent(transform);
             block.transform.localScale = Vector3.one;

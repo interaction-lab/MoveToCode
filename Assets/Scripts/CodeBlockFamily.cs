@@ -52,7 +52,7 @@ namespace MoveToCode {
         private void SetBlockPosition(GameObject block, int index) {
             block.transform.position = new Vector3(
                     shelfMeshRenderer.bounds.center.x,
-                    shelfMeshRenderer.bounds.extents.y - 0.25f - index * shelfMeshRenderer.bounds.size.y / (blocksInFamily.Count + 1),
+                    shelfMeshRenderer.bounds.extents.y - 0.2f - index * shelfMeshRenderer.bounds.size.y / (blocksInFamily.Count + 0.25f),
                     transform.position.z);
 
             //set codeblocks as blocks in menu

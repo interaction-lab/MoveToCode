@@ -7973,7 +7973,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1147929548}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.698, y: -0.822, z: 0.025}
+  m_LocalPosition: {x: -0.698, y: -0.743, z: 0.025}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children:
   - {fileID: 1506932004}
@@ -10283,7 +10283,7 @@ GameObject:
   - component: {fileID: 1506932009}
   - component: {fileID: 1506932008}
   - component: {fileID: 1506932010}
-  - component: {fileID: 1506932011}
+  - component: {fileID: 1506932012}
   m_Layer: 0
   m_Name: Shelf
   m_TagString: Untagged
@@ -10299,8 +10299,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1506932003}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.44, z: 0.5}
-  m_LocalScale: {x: 2.75, y: 5, z: 0.25}
+  m_LocalPosition: {x: 0, y: -1.52, z: 0.5}
+  m_LocalScale: {x: 2.75, y: 5.5, z: 0.25}
   m_Children: []
   m_Father: {fileID: 1147929549}
   m_RootOrder: 0
@@ -10391,13 +10391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5f683c2377b903418a9dd4d28a6d5ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  shakeMagnitude: {x: 0, y: 0, z: 0}
+  blockInContactWithShelf: 0
 --- !u!114 &1506932010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10412,7 +10406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineMaterial: {fileID: 2100000, guid: 2869998e25270db429b9ba04a256a2f2, type: 2}
   outlineWidth: 0.01
---- !u!114 &1506932011
+--- !u!114 &1506932012
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10421,33 +10415,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 1506932003}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03daa81ea5f685f4ebf6e32038d058ca, type: 3}
+  m_Script: {fileID: 11500000, guid: 1410eac1ae94b4d4492a09cc368e152c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hostTransform: {fileID: 0}
-  manipulationType: 2
-  twoHandedManipulationType: 5
-  allowFarManipulation: 1
-  oneHandRotationModeNear: 6
-  oneHandRotationModeFar: 6
-  releaseBehavior: 3
-  constraintOnRotation: 0
-  useLocalSpaceForConstraint: 0
-  constraintOnMovement: 0
-  smoothingActive: 1
-  smoothingAmountOneHandManip: 0.001
-  OnManipulationStarted:
+  states: {fileID: 11400000, guid: 5eac1712038236e4b8ffdb3893804fe1, type: 2}
+  InputActionId: 0
+  isGlobal: 0
+  Dimensions: 1
+  dimensionIndex: 0
+  startDimensionIndex: 0
+  CanSelect: 1
+  CanDeselect: 1
+  VoiceCommand: 
+  voiceRequiresFocus: 1
+  profiles:
+  - Target: {fileID: 0}
+    Themes:
+    - {fileID: 0}
+  OnClick:
     m_PersistentCalls:
       m_Calls: []
-  OnManipulationEnded:
-    m_PersistentCalls:
-      m_Calls: []
-  OnHoverEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  OnHoverExited:
-    m_PersistentCalls:
-      m_Calls: []
+  Events: []
+  enabledOnStart: 1
 --- !u!1001 &1533209694
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12360,6 +12349,7 @@ MonoBehaviour:
   blocksInFamily:
   - {fileID: 2446032068517754002, guid: 921691e8825a9b24f9cf14a2949088b9, type: 3}
   - {fileID: 5984162907770358224, guid: d836d999a66aa5d43b726216a6ff5f1a, type: 3}
+  - {fileID: 5984162907770358224, guid: 5094d6d31eb88e64facb42b395118804, type: 3}
 --- !u!4 &1870461798 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2204069623020599746, guid: 3f1f46cbecbe08e46a303ccfdb5b498a,

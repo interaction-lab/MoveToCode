@@ -39,6 +39,7 @@ namespace MoveToCode {
         private void StartedMotion(ManipulationEventData arg0) {
             if (transform.GetComponent<CodeBlock>().GetIsMenuBlock()) {
                 transform.GetComponent<CodeBlock>().SetIsMenuBlock(false);
+                CopyOperationOntoClonePrefab();
                 clone = InstantiateBlock(codeBlockType, startingPosition);
                 clone.GetComponent<CodeBlock>().SetIsMenuBlock(true);
                 transform.SnapToCodeBlockManager();
@@ -51,6 +52,22 @@ namespace MoveToCode {
             go.transform.SetParent(transform.parent);
             go.transform.localScale = Vector3.one;
             return go;
+        }
+
+        private void CopyMathOperation(GameObject block, MathOperationCodeBlock.OPERATION op) {
+            block.GetComponent<MathOperationCodeBlock>()?.SetOperation(op);
+        }
+
+        private void CopyConditionalOperation(GameObject block, ConditionalCodeBlock.OPERATION op) {
+            block.GetComponent<ConditionalCodeBlock>()?.SetOperation(op);
+        }
+
+        private void CopyOperationOntoClonePrefab() {
+            if (codeBlockType.GetComponent<MathOperationCodeBlock>() != null) {
+                CopyMathOperation(codeBlockType, gameObject.GetComponent<MathOperationCodeBlock>().op);
+            } else if (codeBlockType.GetComponent<ConditionalCodeBlock>() != null) {
+                CopyConditionalOperation(codeBlockType, gameObject.GetComponent<ConditionalCodeBlock>().op);
+            }
         }
     }
 }

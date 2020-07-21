@@ -1,14 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Microsoft.MixedReality.Toolkit.UI;
+using Microsoft.MixedReality.Toolkit.Utilities;
+using System.Collections;
 using UnityEngine;
 
 namespace MoveToCode {
     public class Shelf : Singleton<Shelf> {
         public bool blockInContactWithShelf;
+        MeshOutline outline;
 
-        private void OnTriggerEnter(Collider blockCol) {
+        private void Awake() {
+            outline = GetComponent<MeshOutline>();
+            outline.enabled = false;
+        }
+
+        private void OnTriggerStay(Collider blockCol) {
             if (blockCol.GetComponentInParent<CodeBlock>() != null && !blockCol.GetComponentInParent<CodeBlock>().GetIsMenuBlock()) {
                 blockCol.GetComponentInParent<CloneOnDrag>().SetBlockStillInMenu(true);
+                EnableShelfOutline();
             }
         }
 
@@ -16,6 +24,15 @@ namespace MoveToCode {
             if (blockCol.GetComponentInParent<CodeBlock>() != null && !blockCol.GetComponentInParent<CodeBlock>().GetIsMenuBlock()) {
                 blockCol.GetComponentInParent<CloneOnDrag>().SetBlockStillInMenu(false);
             }
+            DisableShelfOutline();
+        }
+
+        public void EnableShelfOutline() {
+            outline.enabled = true;
+        }
+
+        public void DisableShelfOutline() {
+            outline.enabled = false;
         }
     }
 }

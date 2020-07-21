@@ -45,14 +45,14 @@ namespace MoveToCode {
                 SetMathOperation(blocksInFamily[0], i);
                 SetConditionalOperation(blocksInFamily[0], i);
                 GameObject go = Instantiate(blocksInFamily[i]);
-                SetBlockPosition(go, i, i);
+                SetBlockPosition(go, i);
             }
         }
 
-        private void SetBlockPosition(GameObject block, int index, int blockNum) {
+        private void SetBlockPosition(GameObject block, int index) {
             block.transform.position = new Vector3(
                     shelfMeshRenderer.bounds.center.x,
-                    shelfMeshRenderer.bounds.extents.y - 0.25f - blockNum * shelfMeshRenderer.bounds.size.y / (blocksInFamily.Count + 1),
+                    shelfMeshRenderer.bounds.extents.y - 0.25f - index * shelfMeshRenderer.bounds.size.y / (blocksInFamily.Count + 1),
                     transform.position.z);
 
             //set codeblocks as blocks in menu

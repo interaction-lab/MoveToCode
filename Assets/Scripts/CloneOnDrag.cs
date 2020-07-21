@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Microsoft.MixedReality.Toolkit.UI;
+﻿using Microsoft.MixedReality.Toolkit.UI;
 using UnityEngine;
 
 namespace MoveToCode {
@@ -17,20 +14,25 @@ namespace MoveToCode {
             blockStillInMenu = true;
         }
 
-        public void SetCodeBlockType(GameObject cb) {
-            codeBlockType = cb;
-        }
-
-        public void OnEnable() {
+        private void OnEnable() {
             manipulationHandler = GetComponent<ManipulationHandler>();
             manipulationHandler.OnManipulationStarted.AddListener(StartedMotion);
             manipulationHandler.OnManipulationEnded.AddListener(StoppedMotion);
         }
 
+        public void SetCodeBlockType(GameObject cb) {
+            codeBlockType = cb;
+        }
+
+        public void SetBlockStillInMenu(bool option) {
+            blockStillInMenu = option;
+        }
+
         private void StoppedMotion(ManipulationEventData arg0) {
             //delete block if still on shelf/placed back on shelf
             if(blockStillInMenu) {
-                Destroy(gameObject);
+                Shelf.instance.DisableShelfOutline();
+                gameObject.SetActive(false);
             }
         }
 
@@ -49,10 +51,6 @@ namespace MoveToCode {
             go.transform.SetParent(transform.parent);
             go.transform.localScale = Vector3.one;
             return go;
-        }
-
-        public void SetBlockStillInMenu(bool option) {
-            blockStillInMenu = option;
         }
     }
 }

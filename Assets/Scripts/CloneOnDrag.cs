@@ -29,7 +29,7 @@ namespace MoveToCode {
         }
 
         private void StoppedMotion(ManipulationEventData arg0) {
-            //delete block if still on shelf/placed back on shelf
+            //deactivate block if still on shelf/placed back on shelf
             if(blockStillInMenu) {
                 Shelf.instance.DisableShelfOutline();
                 gameObject.SetActive(false);

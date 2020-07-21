@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace MoveToCode {
     public class Shelf : Singleton<Shelf> {
-        public bool blockInContactWithShelf;
         MeshOutline outline;
 
         private void Awake() {

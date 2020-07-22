@@ -32,7 +32,7 @@ namespace MoveToCode {
         }
 
         public override float GetBlockVerticalSize() {
-            return transform.localScale.y;
+            return elements[0].localScale.y;
         }
 
         // left bounds minus right 

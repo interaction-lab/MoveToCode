@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Microsoft.MixedReality.Toolkit.UI;
+﻿using Microsoft.MixedReality.Toolkit.UI;
 using UnityEngine;
 
 namespace MoveToCode {
@@ -10,85 +7,67 @@ namespace MoveToCode {
         Vector3 startingPosition;
         GameObject clone;
         GameObject codeBlockType;
-        bool stillInContactWithOriginal;
         bool blockStillInMenu;
 
-        private MeshRenderer renderer;
-        private MeshRenderer cloneRenderer;
-
-        private void Awake() {
+        private void Start() {
             startingPosition = transform.position;
-            blockStillInMenu = true;
-            renderer = GetComponent<MeshRenderer>();
+        }
+
+        private void OnEnable() {
+            manipulationHandler = GetComponent<ManipulationHandler>();
+            manipulationHandler.OnManipulationStarted.AddListener(StartedMotion);
+            manipulationHandler.OnManipulationEnded.AddListener(StoppedMotion);
         }
 
         public void SetCodeBlockType(GameObject cb) {
             codeBlockType = cb;
         }
 
-        public void OnTriggerEnter() {
-            stillInContactWithOriginal = true;
-            if (cloneRenderer != null) {
-                foreach (Material mat in cloneRenderer.materials) {
-                    mat.SetFloat("_Outline", 0.15f);
-                }
-            }
-        }
-
-        public void OnTriggerExit() {
-            stillInContactWithOriginal = false;
-            if (cloneRenderer != null) {
-                foreach (Material mat in cloneRenderer.materials) {
-                    mat.SetFloat("_Outline", 0f);
-                }
-            }
-            if (renderer != null) {
-                foreach (Material mat in renderer.materials) {
-                    mat.SetFloat("_Outline", 0f);
-                }
-            }
-        }
-
-        public void OnEnable() {
-            manipulationHandler = GetComponent<ManipulationHandler>();
-            manipulationHandler.OnManipulationStarted.AddListener(StartedMotion);
-            manipulationHandler.OnManipulationEnded.AddListener(StoppedMotion);
+        public void SetBlockStillInMenu(bool option) {
+            blockStillInMenu = option;
         }
 
         private void StoppedMotion(ManipulationEventData arg0) {
-            if (stillInContactWithOriginal) {
-                Destroy(gameObject);
-            } else {
-                transform.SnapToCodeBlockManager();
-                blockStillInMenu = false;
-            }
-            if (cloneRenderer != null) {
-                foreach (Material mat in cloneRenderer.materials) {
-                    mat.SetFloat("_Outline", 0f);
-                }
-            }
-            if (renderer != null) {
-                foreach (Material mat in renderer.materials) {
-                    mat.SetFloat("_Outline", 0f);
-                }
+            //deactivate block if still on shelf/placed back on shelf
+            if(blockStillInMenu) {
+                Shelf.instance.DisableShelfOutline();
+                gameObject.SetActive(false);
             }
         }
 
         private void StartedMotion(ManipulationEventData arg0) {
-            if (blockStillInMenu) {
+            if (transform.GetComponent<CodeBlock>().GetIsMenuBlock()) {
+                transform.GetComponent<CodeBlock>().SetIsMenuBlock(false);
+                //cannot directly clone gameobject because CodeBlock components are attached after instantiation
+                CopyOperationOntoClonePrefab();
                 clone = InstantiateBlock(codeBlockType, startingPosition);
-                cloneRenderer = clone.GetComponent<MeshRenderer>();
+                clone.GetComponent<CodeBlock>().SetIsMenuBlock(true);
                 transform.SnapToCodeBlockManager();
-                Destroy(transform.GetComponent<CloneOnDrag>());
             }
         }
 
         private GameObject InstantiateBlock(GameObject block, Vector3 spawnPos) {
             GameObject go = Instantiate(block, spawnPos, Quaternion.identity);
-            go.AddComponent<CloneOnDrag>().SetCodeBlockType(codeBlockType);
+            go.GetComponent<CloneOnDrag>().SetCodeBlockType(codeBlockType);
             go.transform.SetParent(transform.parent);
             go.transform.localScale = Vector3.one;
             return go;
+        }
+
+        private void CopyMathOperation(GameObject block, MathOperationCodeBlock.OPERATION op) {
+            block.GetComponent<MathOperationCodeBlock>()?.SetOperation(op);
+        }
+
+        private void CopyConditionalOperation(GameObject block, ConditionalCodeBlock.OPERATION op) {
+            block.GetComponent<ConditionalCodeBlock>()?.SetOperation(op);
+        }
+
+        private void CopyOperationOntoClonePrefab() {
+            if (codeBlockType.GetComponent<MathOperationCodeBlock>() != null) {
+                CopyMathOperation(codeBlockType, gameObject.GetComponent<MathOperationCodeBlock>().op);
+            } else if (codeBlockType.GetComponent<ConditionalCodeBlock>() != null) {
+                CopyConditionalOperation(codeBlockType, gameObject.GetComponent<ConditionalCodeBlock>().op);
+            }
         }
     }
 }

@@ -38,6 +38,7 @@ namespace MoveToCode {
         private void StartedMotion(ManipulationEventData arg0) {
             if (transform.GetComponent<CodeBlock>().GetIsMenuBlock()) {
                 transform.GetComponent<CodeBlock>().SetIsMenuBlock(false);
+                //cannot directly clone gameobject because CodeBlock components are attached after instantiation
                 CopyOperationOntoClonePrefab();
                 clone = InstantiateBlock(codeBlockType, startingPosition);
                 clone.GetComponent<CodeBlock>().SetIsMenuBlock(true);

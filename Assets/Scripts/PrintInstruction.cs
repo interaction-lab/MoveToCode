@@ -21,10 +21,6 @@ namespace MoveToCode {
             return new InstructionReturnValue(null, GetNextInstruction());
         }
 
-        public override string ToString() {
-            return "print";
-        }
-
         public override void SetUpArgPosToCompatability() {
             argPosToCompatability = new List<List<Type>> {
                 new List<Type>{
@@ -38,6 +34,10 @@ namespace MoveToCode {
 
         public override void SetUpArgDescriptionList() {
             argDescriptionList = new List<string> { "NextInstruction", "Thing that is printed" };
+        }
+
+        public override string ToString() {
+            return "print";
         }
 
         public override string DescriptiveInstructionToString() {

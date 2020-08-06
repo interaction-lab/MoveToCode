@@ -14,7 +14,11 @@ namespace MoveToCode {
         }
 
         public override string ToString() {
-            return string.Join("", "\"", base.ToString(), "\"");
+            return string.Join("",  base.ToString());
+        }
+
+        public override string DescriptiveInstructionToString() {
+            return "<color=yellow>\""+ ToString() + "\"</color>";
         }
 
         public override Type GetCastType() {

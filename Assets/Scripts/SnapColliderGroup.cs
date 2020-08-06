@@ -54,7 +54,7 @@ namespace MoveToCode {
         private List<SnapCollider> GetSnapColliders() {
             if (snapColliders == null) {
                 snapColliders = new List<SnapCollider>();
-                snapColliders.Resize(GetMyCodeBlock().GetMyInternalIArgument().GetNumArguments());
+                snapColliders.Resize(GetMyCodeBlock().GetMyIArgument().GetNumArguments());
                 foreach (Transform go in transform) {
                     SnapCollider sc = go.GetComponentInChildren<SnapCollider>(true);
                     if (sc != null)

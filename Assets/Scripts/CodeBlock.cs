@@ -47,7 +47,7 @@ namespace MoveToCode {
         }
 
         // Public Methods      
-        public IArgument GetMyInternalIArgument() {
+        public IArgument GetMyIArgument() {
             return myBlockInternalArg;
         }
 
@@ -101,7 +101,7 @@ namespace MoveToCode {
         }
 
         public List<Type> GetArgCompatabilityAt(int pos) {
-            return (GetMyInternalIArgument() as IArgument).GetArgCompatibilityAtPos(pos);
+            return (GetMyIArgument() as IArgument).GetArgCompatibilityAtPos(pos);
         }
 
         public CodeBlock GetArgAsCodeBlockAt(int pos) {
@@ -128,7 +128,7 @@ namespace MoveToCode {
         public void RemoveFromParentBlock(bool humanDidIt) {
             CodeBlock parentCodeBlock = FindParentCodeBlock();
             if (parentCodeBlock != null) {
-                parentCodeBlock.SetArgumentBlockAt(null, parentCodeBlock.GetPositionOfArgument(GetMyInternalIArgument()), humanDidIt);
+                parentCodeBlock.SetArgumentBlockAt(null, parentCodeBlock.GetPositionOfArgument(GetMyIArgument()), humanDidIt);
             }
         }
 

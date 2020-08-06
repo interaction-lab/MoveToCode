@@ -97,7 +97,7 @@ namespace MoveToCode {
         }
 
         private int GetChildArgPos(int index) {
-            return snapParent[index].GetPositionOfArgument(snapChild[index].GetMyInternalIArgument());
+            return snapParent[index].GetPositionOfArgument(snapChild[index].GetMyIArgument());
         }
 
         private int FindNextSnapIndex() {

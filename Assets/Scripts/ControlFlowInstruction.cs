@@ -6,7 +6,7 @@ namespace MoveToCode{
         protected bool conditionIsTrue;
         protected bool exitInstructionAddedToStack;
 
-        protected abstract StandAloneInstruction GetNestedInstruction(); //exit -> nested
+        protected abstract StandAloneInstruction GetNestedInstruction(); 
         protected abstract string GetNestedInstructionsAsString();
 
         public ControlFlowInstruction(CodeBlock cbIn) : base(cbIn) { }

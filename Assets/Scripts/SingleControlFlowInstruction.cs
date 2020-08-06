@@ -14,7 +14,7 @@ namespace MoveToCode {
             string result = "";
             StandAloneInstruction currInstruction = GetNestedInstruction();
             while (currInstruction != null){
-                result += "\n\t" + currInstruction.DescriptiveInstructionToString().Replace("\n\t", "\n\t\t"); //add nested instructions with accumulated tabbing
+                result += "\n    " + currInstruction.DescriptiveInstructionToString().Replace("\n    ", "\n        "); //add nested instructions with accumulated tabbing
                 currInstruction = currInstruction.GetNextInstruction();
             }
             return result;

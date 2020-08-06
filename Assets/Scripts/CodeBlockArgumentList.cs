@@ -22,7 +22,7 @@ namespace MoveToCode {
         }
 
         public IArgument GetArgAsIArgumentAt(int pos) {
-            return GetArgAsCodeBlockAt(pos)?.GetMyInternalIArgument();
+            return GetArgAsCodeBlockAt(pos)?.GetMyIArgument();
         }
 
         public List<IArgument> GetArgListAsIArguments() {
@@ -40,7 +40,7 @@ namespace MoveToCode {
         }
 
         public int GetNumArguments() {
-            return myCodeBlock.GetMyInternalIArgument().GetNumArguments();
+            return myCodeBlock.GetMyIArgument().GetNumArguments();
         }
 
         // Private methods, reconsider if you need to make these public

@@ -58,7 +58,7 @@ namespace MoveToCode {
         }
         public void InstanstiateIntCodeBlock() {
             GameObject go = InstantiateBlock(intBlock);
-            (go.GetComponent<IntCodeBlock>().GetMyInternalIArgument() as IntDataType).SetValue(Random.Range(-5, 5));
+            (go.GetComponent<IntCodeBlock>().GetMyIArgument() as IntDataType).SetValue(Random.Range(-5, 5));
         }
         public void InstanstiateMathCodeBlock() {
             InstantiateBlock(mathBlock);
@@ -74,7 +74,7 @@ namespace MoveToCode {
         }
         public void InstanstiateCharCodeBlock() {
             GameObject go = InstantiateBlock(charBlock);
-            (go.GetComponent<CharCodeBlock>().GetMyInternalIArgument() as CharDataType).SetValue(Random.Range('a', 'z'));
+            (go.GetComponent<CharCodeBlock>().GetMyIArgument() as CharDataType).SetValue(Random.Range('a', 'z'));
         }
         public void InstantiateVariableBlockCollection() {
             MemoryManager.instance.AddNewVariableCodeBlock(string.Join("", "Var", MemoryManager.instance.GetNumVariables().ToString()), new IntDataType(null, 0));

@@ -32,13 +32,15 @@ namespace MoveToCode {
             return argPosToCompatability[pos];
         }
 
+        public List<IArgument> GetArgumentListAsIArgs() {
+            return GetCodeBlock().GetArgumentListAsIArgs();
+        }
+
         public IArgument GetArgumentAt(int pos) {
             return GetArgumentListAsIArgs()[pos];
         }
 
-        public List<IArgument> GetArgumentListAsIArgs() {
-            return GetCodeBlock().GetArgumentListAsIArgs();
-        }
+     
 
         public List<string> GetArgListDescription() {
             if (argDescriptionList == null) {

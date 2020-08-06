@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace MoveToCode {
     public abstract class Instruction : IArgument {
-
         public abstract InstructionReturnValue RunInstruction();
 
         // public methods, all codeblocks should create instructions with themself
@@ -13,7 +12,5 @@ namespace MoveToCode {
         public override IDataType EvaluateArgument() {
             return RunInstruction().GetReturnDataVal();
         }
-
-      
     }
 }

@@ -17,6 +17,8 @@ namespace MoveToCode {
         CodeBlockArgumentList codeBlockArgumentList;
         CodeBlockSnap codeBlockSnap;
         GameObject codeBlockTextGameObject;
+        CloneOnDrag dragScript;
+        bool isMenuBlock;
 
         // Abstract Methods
         protected abstract void SetMyBlockInternalArg();
@@ -43,10 +45,13 @@ namespace MoveToCode {
                 gameObject.AddComponent<ManipulationLogger>();
             }
 
+            dragScript = gameObject.AddComponent<CloneOnDrag>();
+
             UpdateText();
         }
 
-        // Public Methods      
+        // Public Methods
+
         public IArgument GetMyInternalIArgument() {
             return myBlockInternalArg;
         }
@@ -132,14 +137,22 @@ namespace MoveToCode {
             }
         }
 
+        public void SetIsMenuBlock(bool option) {
+            isMenuBlock = option;
+        }
+
+        public bool GetIsMenuBlock() {
+            return isMenuBlock;
+        }
+
         // Private Helpers
         // If you find yourself making these public, 
         // then you should reconsider what you are doing
         public CodeBlock FindParentCodeBlock() {
             Transform upRunner = transform;
-            while (upRunner.GetComponent<CodeBlockManager>() == null) {
-                upRunner = upRunner.parent;
-                if (upRunner.GetComponent<CodeBlock>()) {
+            while (upRunner?.GetComponent<CodeBlockManager>() == null) {
+                upRunner = upRunner?.parent;
+                if (upRunner?.GetComponent<CodeBlock>()) {
                     return upRunner.GetComponent<CodeBlock>();
                 }
             }

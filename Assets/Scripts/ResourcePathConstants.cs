@@ -7,8 +7,8 @@ namespace MoveToCode {
 
         // Prefabs
         public static string PrefabFolder = "Prefabs/";
+        public static string ExerciseJsonFolder = "ExerciseJsons/";
         public static string CodeBlockPrefabFolder = PrefabFolder + "CodeBlockPrefabs/";
-        public static string ExercisePrefabFolder = PrefabFolder + "ExercisePrefabs/";
 
         public static string VariableCodeBlockPrefab = CodeBlockPrefabFolder + "VariableCodeBlock";
         public static string CodeBlockTextPrefab = CodeBlockPrefabFolder + "CodeBlockText";
@@ -26,6 +26,23 @@ namespace MoveToCode {
         public static string ElementCodeBlockPrefab = CodeBlockPrefabFolder + "ElementCodeBlock";
         public static string ArrayIndexCodeBlockPrefab = CodeBlockPrefabFolder + "ArrayIndexCodeBlock";
 
+        public static string ExercisePrefab = PrefabFolder + "Exercise";
+
+        public static Dictionary<string, GameObject> codeBlockDictionary = new Dictionary<string, GameObject> {
+            {"Print", Resources.Load<GameObject>(PrintCodeBlockPrefab)},
+            {"Conditional", Resources.Load<GameObject>(ConditionBlockPrefab)},
+            {"If", Resources.Load<GameObject>(IfCodeBlockPrefab)},
+            {"Int", Resources.Load<GameObject>(IntCodeBlockPrefab)},
+            {"Math", Resources.Load<GameObject>(MathCodeBlockPrefab)},
+            {"SetVar", Resources.Load<GameObject>(SetVariableCodeBlockPrefab)},
+            {"String", Resources.Load<GameObject>(StringCodeBlockPrefab)},
+            {"While", Resources.Load<GameObject>(WhileCodeBlockPrefab)},
+            {"Char", Resources.Load<GameObject>(CharCodeBlockPrefab)},
+            {"Array", Resources.Load<GameObject>(ArrayCodeBlockPrefab)},
+            {"ArrayIndex", Resources.Load<GameObject>(ArrayIndexCodeBlockPrefab)},
+            {"Variable", Resources.Load<GameObject>(VariableCodeBlockPrefab)}
+        };
+
         // Materials
         public static string MaterialFolder = "Materials/";
         public static string OutlineSnapColliderMaterial = MaterialFolder + "OutlineSnapCollider";
@@ -41,5 +58,15 @@ namespace MoveToCode {
         public static string SnapSound = AudioFolder + "snap";
         public static string SpawnSound = AudioFolder + "spawn";
         public static string ComputerNoises = AudioFolder + "ComputerNoises";
+
+        public static string SpeechFolder = AudioFolder + "PreloadSpeech/";
+        public static string SpeechCacheFolder = AudioFolder + "CacheSpeech/";
+
+        public static string CongratulationPhrases = SpeechFolder + "preloadCongratulation";
+        public static string EncouragementPhrases = SpeechFolder + "preloadEncouragement";
+        public static string CachePhrases = SpeechCacheFolder + "cachePhrase";
+
+        // AWS Credentials
+        public static string AWSPollyAPI = "PollyAPI1";
     }
 }

@@ -1,0 +1,33 @@
+{
+  "consoleStringGoal": "True",
+  "kuriGoalString": "Print True",
+  "varNames": [],
+  "initialVariableValues": [],
+  "finalVariableGoalValues": [],
+  "exerciseBlocks": {
+    "$values": [
+      {
+        "codeBlockID": "Print"
+      },
+      {
+        "codeBlockID": "Conditional",
+        "value": "NOTEQUALS"
+      },
+      {
+        "codeBlockID": "Int",
+        "value": "5"
+      },
+      {
+        "codeBlockID": "Int",
+        "value": "5"
+      },
+      {
+        "codeBlockID": "Int",
+        "value": "7"
+      }
+    ]
+  },
+  "scaffoldDialogue": [
+    "The purple block now checks if they are not equal"
+  ]
+}

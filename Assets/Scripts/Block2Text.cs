@@ -2,23 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MoveToCode
-{
+namespace MoveToCode{
+    public class Block2Text : Singleton<Block2Text> {
 
-    public class Block2Text : Singleton<Block2Text>
-    {
-
-    
-        void Start()
-        {
-         
-
-        }
-
-        void Update() 
-        {
-           
-        }
     }
 
 }

@@ -1,0 +1,43 @@
+{
+  "consoleStringGoal": "6",
+  "kuriGoalString": "Print 6",
+  "varNames": [],
+  "initialVariableValues": [],
+  "finalVariableGoalValues": [],
+  "exerciseBlocks": {
+    "$values": [
+      {
+        "codeBlockID": "Print"
+      },
+      {
+        "codeBlockID": "Math",
+        "value": "ADD"
+      },
+      {
+        "codeBlockID": "Math",
+        "value": "ADD"
+      },
+      {
+        "codeBlockID": "Math",
+        "value": "SUB"
+      },
+      {
+        "codeBlockID": "Int",
+        "value": "7"
+      },
+      {
+        "codeBlockID": "Int",
+        "value": "4"
+      },
+      {
+        "codeBlockID": "Int",
+        "value": "5"
+      }
+    ]
+  },
+  "scaffoldDialogue": [
+    "You don't need to use all of the blocks",
+    "You can use math blocks inside of math blocks",
+    "Order of operations matters"
+  ]
+}

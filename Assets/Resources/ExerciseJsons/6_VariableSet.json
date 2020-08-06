@@ -1,0 +1,25 @@
+{
+  "consoleStringGoal": "5",
+  "kuriGoalString": "Set Var1 to 5 and print it",
+  "varNames": [ "Var1" ],
+  "initialVariableValues": [ 9 ],
+  "finalVariableGoalValues": [ 5 ],
+  "exerciseBlocks": {
+    "$values": [
+      {
+        "codeBlockID": "Print"
+      },
+      {
+        "codeBlockID": "SetVar"
+      },
+      {
+        "codeBlockID": "Int",
+        "value": "5"
+      }
+    ]
+  },
+  "scaffoldDialogue": [
+    "Press the Var1 button on the red memory panel",
+    "Make sure to set the variable first"
+  ]
+}

@@ -5,10 +5,8 @@ using System.Linq;
 using UnityEngine;
 
 // only keep track of last collided instead, highlight it
-namespace MoveToCode
-{
-    public class CodeBlockSnap : MonoBehaviour
-    {
+namespace MoveToCode {
+    public class CodeBlockSnap : MonoBehaviour {
         public static CodeBlockSnap currentlyDraggingCBS, lastDraggedCBS;
         CodeBlock myCodeBlock;
         ManipulationHandler manipulationHandler;
@@ -16,8 +14,7 @@ namespace MoveToCode
         HashSet<SnapCollider> curSnapCollidersInContact;
         SnapCollider bestCandidateSnapCollider;
 
-        private void Awake()
-        {
+        private void Awake() {
             myCodeBlock = GetComponent<CodeBlock>();
             manipulationHandler = GetComponent<ManipulationHandler>();
             manipulationHandler.OnManipulationStarted.AddListener(OnManipulationStart);
@@ -26,8 +23,7 @@ namespace MoveToCode
 
         }
 
-        public HashSet<SnapCollider> GetCurSnapCollidersInContact()
-        {
+        public HashSet<SnapCollider> GetCurSnapCollidersInContact() {
             if (curSnapCollidersInContact == null)
             {
                 curSnapCollidersInContact = new HashSet<SnapCollider>();
@@ -35,34 +31,28 @@ namespace MoveToCode
             return curSnapCollidersInContact;
         }
 
-        void OnManipulationStart(ManipulationEventData call)
-        {
+        void OnManipulationStart(ManipulationEventData call) { 
             mySnapColliders?.EnableAllCompatibleColliders();
             mySnapColliders?.DisableAllCollidersAndChildrenColliders();
             currentlyDraggingCBS = this;
         }
 
-        IEnumerator DisableMyColliderForOneFrame()
-        {
+        IEnumerator DisableMyColliderForOneFrame(){
             GetMyCodeBlock().ToggleColliders(false);
             yield return new WaitForFixedUpdate();
             GetMyCodeBlock().ToggleColliders(true);
         }
 
-        public void AddSnapColliderInContact(SnapCollider sc)
-        {
-            if (bestCandidateSnapCollider != null)
-            {
+        public void AddSnapColliderInContact(SnapCollider sc) {
+            if (bestCandidateSnapCollider != null)  {
                 bestCandidateSnapCollider.GetMeshOutline().enabled = false;
             }
             bestCandidateSnapCollider = sc;
-            if (bestCandidateSnapCollider != null)
-            {
+            if (bestCandidateSnapCollider != null)  {
                 bestCandidateSnapCollider.GetMeshOutline().enabled = true;
                 GetCurSnapCollidersInContact().Add(bestCandidateSnapCollider);
             }
-            else if (!GetCurSnapCollidersInContact().Empty())
-            {
+            else if (!GetCurSnapCollidersInContact().Empty())   {
                 bestCandidateSnapCollider = curSnapCollidersInContact.ElementAt(0);
                 bestCandidateSnapCollider.GetMeshOutline().enabled = true;
             }
@@ -70,8 +60,7 @@ namespace MoveToCode
 
         public void RemoveAsCurSnapColliderInContact(SnapCollider sc) {
             GetCurSnapCollidersInContact().Remove(sc);
-            if (sc == bestCandidateSnapCollider)
-            {
+            if (sc == bestCandidateSnapCollider)  {
                 AddSnapColliderInContact(null);
             }
         }
@@ -93,20 +82,16 @@ namespace MoveToCode
             AddSnapColliderInContact(null);
         }
 
-        public CodeBlock GetMyCodeBlock()
-        {
+        public CodeBlock GetMyCodeBlock() {
             return myCodeBlock;
         }
 
-        private void OnEnable()
-        {
+        private void OnEnable()   {
             AddSnapColliderInContact(null);
         }
 
-        private void OnDisable()
-        {
+        private void OnDisable()   {
             AddSnapColliderInContact(null);
         }
-
     }
 }

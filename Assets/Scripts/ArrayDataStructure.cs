@@ -19,7 +19,7 @@ namespace MoveToCode {
 
         public override bool IsSameDataTypeAndEqualTo(IDataType otherVal) {
             if (otherVal is ArrayDataStructure) {
-                return (string)GetValue() == (string)(otherVal as ArrayDataStructure).GetValue();
+                return GetValue() == (otherVal as ArrayDataStructure).GetValue();
             }
             throw new InvalidOperationException("Trying to compare Array to non Array");
         }
@@ -58,7 +58,7 @@ namespace MoveToCode {
         }
 
         public void SetValueAtIndex(int index, IDataType valIn) {
-            if(index < mySize) {
+            if(index < GetSize()) {
                 internalArray[index] = valIn;
             } else {
                 throw new InvalidOperationException("Trying to read beyond array length");

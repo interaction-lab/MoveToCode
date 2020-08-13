@@ -75,41 +75,67 @@ namespace MoveToCode {
             return snapColliders;
         }
 
-        public int GetPositionOfArgument(IArgument iArgIn) {
-            int index = 0;
-            foreach (IArgument ia in codeBlockArgumentList.GetArgListAsIArguments()) {
-                if (ia == iArgIn) {
-                    return index;
-                }
-                ++index;
+        //public int GetPositionOfArgument(IArgument iArgIn) {      SHOULDN'T NEED THIS TRASH LINEAR SEARCH ANYMORE
+        //    int index = 0;
+        //    foreach (IArgument ia in codeBlockArgumentList.GetArgDictAsIArgs()) {
+        //        if (ia == iArgIn) {
+        //            return index;
+        //        }
+        //        ++index;
+        //    }
+        //    return -1;
+        //}
+        public IArg GetArgDescriptionOfArg(IArgument iArgIn) {
+            foreach (KeyValuePair<IArg, IArgument> kvp in codeBlockArgumentList.GetArgDictAsIArgs()) {
+                if (kvp.Value == iArgIn)
+                    return kvp.Key;
             }
-            return -1;
+            return IArg.NotFound;
         }
 
         // CodeBlockArgumentList relay functions
-        public void SetArgumentBlockAt(CodeBlock newArgumentCodeBlock, int argPosition, bool humanDidIt) {
-            codeBlockArgumentList.SetArgCodeBlockAt(newArgumentCodeBlock, argPosition, humanDidIt);
-            UpdateText();
+        //public void SetArgumentBlockAt(CodeBlock newArgumentCodeBlock, int argPosition, bool humanDidIt) {
+        //    codeBlockArgumentList.SetArgCodeBlockAt(newArgumentCodeBlock, argPosition, humanDidIt);
+        //    UpdateText();
+        //}
+        public void SetArgumentBlock(IArg argDescription, CodeBlock newArg, bool humanDidIt) {
+            codeBlockArgumentList.SetArg(argDescription, newArg, humanDidIt);
         }
 
-        public List<CodeBlock> GetArgumentListAsCodeBlocks() {
-            return codeBlockArgumentList.GetArgListCodeBlocks();
+
+        //public List<CodeBlock> GetArgumentListAsCodeBlocks() {
+        //    return codeBlockArgumentList.GetArgListCodeBlocks();
+        //}
+        public Dictionary<IArg, CodeBlock> GetArgDictAsCodeBlocks() {
+            return codeBlockArgumentList.GetArgDictAsCodeBlocks();
         }
 
-        public List<IArgument> GetArgumentListAsIArgs() {
-            return codeBlockArgumentList.GetArgListAsIArguments();
+        //public List<IArgument> GetArgumentListAsIArgs() {
+        //    return codeBlockArgumentList.GetArgListAsIArguments();
+        //}
+        public Dictionary<IArg, IArgument> GetArgDictAsIArgs() {
+            return codeBlockArgumentList.GetArgDictAsIArgs();
         }
 
-        public List<Type> GetArgCompatabilityAt(int pos) {
-            return (GetMyIArgument() as IArgument).GetArgCompatibilityAtPos(pos);
+        //public List<Type> GetArgCompatabilityAt(int pos) {
+        //    return (GetMyIArgument() as IArgument).GetArgCompatibilityAtPos(pos);
+        //}
+        public HashSet<Type> GetArgCompatibility(IArg argDescription) {
+            return GetMyIArgument().GetArgCompatibility(argDescription);
         }
 
-        public CodeBlock GetArgAsCodeBlockAt(int pos) {
-            return codeBlockArgumentList.GetArgAsCodeBlockAt(pos);
+        //public CodeBlock GetArgAsCodeBlockAt(int pos) {
+        //    return codeBlockArgumentList.GetArgAsCodeBlockAt(pos);
+        //}
+        public CodeBlock GetArgAsCodeBlock(IArg argDescription) {
+            return codeBlockArgumentList.GetArgAsCodeBlock(argDescription);
         }
 
-        public IArgument GetArgAsIArgumentAt(int pos) {
-            return codeBlockArgumentList.GetArgAsIArgumentAt(pos);
+        //public IArgument GetArgAsIArgumentAt(int pos) {
+        //    return codeBlockArgumentList.GetArgAsIArgumentAt(pos);
+        //}
+        public IArgument GetArgAsIArg(IArg argDescription) {
+            return codeBlockArgumentList.GetArgAsIArg(argDescription);
         }
 
         public void ResetInstructionInternalState() {
@@ -128,7 +154,7 @@ namespace MoveToCode {
         public void RemoveFromParentBlock(bool humanDidIt) {
             CodeBlock parentCodeBlock = FindParentCodeBlock();
             if (parentCodeBlock != null) {
-                parentCodeBlock.SetArgumentBlockAt(null, parentCodeBlock.GetPositionOfArgument(GetMyIArgument()), humanDidIt);
+                parentCodeBlock.SetArgumentBlock(parentCodeBlock.GetArgDescriptionOfArg(GetMyIArgument()), null,humanDidIt);
             }
         }
 

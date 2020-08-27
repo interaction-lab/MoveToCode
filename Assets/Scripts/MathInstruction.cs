@@ -10,9 +10,9 @@ namespace MoveToCode {
         public MathInstruction(CodeBlock cbIn) : base(cbIn) { }
 
         public override void EvaluateArgumentList() {
-            if (GetArgumentAt(0) != null && GetArgumentAt(1) != null) {
-                leftNum = (float)Convert.ChangeType(GetArgumentAt(0).EvaluateArgument().GetValue(), typeof(float));
-                rightNum = (float)Convert.ChangeType(GetArgumentAt(1).EvaluateArgument().GetValue(), typeof(float));
+            if (GetArgument(IARG.LeftNumber) != null && GetArgument(IARG.RightNumber) != null) {
+                leftNum = (float)Convert.ChangeType(GetArgument(IARG.LeftNumber).EvaluateArgument().GetValue(), typeof(float));
+                rightNum = (float)Convert.ChangeType(GetArgument(IARG.RightNumber).EvaluateArgument().GetValue(), typeof(float));
             }
         }
 
@@ -24,23 +24,28 @@ namespace MoveToCode {
             return GetMathSymbol();
         }
 
-        public override void SetUpArgPosToCompatability() {
-            argPosToCompatability = new List<List<Type>> {
-                new List<Type> {
-                    typeof(INumberDataType), typeof(MathInstruction)
-                },
-                 new List<Type> {
-                    typeof(INumberDataType), typeof(MathInstruction)
-                }
+        //public override void SetUpArgPosToCompatability() {
+        //    argPosToCompatability = new List<List<Type>> {
+        //        new List<Type> {
+        //            typeof(INumberDataType), typeof(MathInstruction)
+        //        },
+        //         new List<Type> {
+        //            typeof(INumberDataType), typeof(MathInstruction)
+        //        }
+        //    };
+        //}
+        //public override void SetUpArgDescriptionList() {
+        //    argDescriptionList = new List<string> { "Left number", "Right Number" };
+        //}
+        public override void SetUpArgCompatabilityDict() {
+            argCompatabilityDict = new Dictionary<IARG, HashSet<Type>> {
+                { IARG.LeftNumber, new HashSet<Type> {  typeof(INumberDataType), typeof(MathInstruction) }  },
+                { IARG.RightNumber, new HashSet<Type> {  typeof(INumberDataType), typeof(MathInstruction) }  }
             };
         }
 
-        public override void SetUpArgDescriptionList() {
-            argDescriptionList = new List<string> { "Left number", "Right Number" };
-        }
-
         public override string DescriptiveInstructionToString() {
-            return string.Join("", GetArgumentAt(0)?.DescriptiveInstructionToString(), " ", GetMathSymbol(), " ", GetArgumentAt(1)?.DescriptiveInstructionToString());
+            return string.Join("", GetArgument(IARG.LeftNumber)?.DescriptiveInstructionToString(), " ", GetMathSymbol(), " ", GetArgument(IARG.RightNumber)?.DescriptiveInstructionToString());
         }
     }
 }

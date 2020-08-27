@@ -75,40 +75,33 @@ namespace MoveToCode {
             int snapArgIndex = ConvertSnapActionToIntPos(withAction[actionIndex]);
             if (withAction[actionIndex] != SNAPACTIONS.REMOVE) {
                 snapParent[actionIndex].GetSnapColliders().GetSnapColliderAtPos(snapArgIndex).DoSnapAction(snapParent[actionIndex], snapChild[actionIndex], false);
-                return string.Join("",
-                                "Add ",
-                                snapChild[actionIndex].name,
-                                " from ",
-                                snapParent[actionIndex].name,
-                                " at ",
-                                snapArgIndex.ToString());
+                return string.Join("", "Add ", snapChild[actionIndex].name,
+                                    " from ", snapParent[actionIndex].name,
+                                     " at ", snapArgIndex.ToString());
             }
             else {
-                int childIndex = GetChildArgPos(actionIndex);
-                snapParent[actionIndex].SetArgumentBlockAt(null, childIndex, false);
-                return string.Join("",
-                                "Remove ",
-                                snapChild[actionIndex].name,
-                                " from ",
-                                snapParent[actionIndex].name,
-                                " at ",
-                                childIndex.ToString());
+                IARG childArg = GetChildArg(actionIndex);
+                
+                snapParent[actionIndex].SetArg(childArg, null, false);
+                return string.Join("","Remove ", snapChild[actionIndex].name,
+                                      " from ", snapParent[actionIndex].name,
+                                      " at ", childArg.ToString());
             }
         }
 
-        private int GetChildArgPos(int index) {
-            return snapParent[index].GetPositionOfArgument(snapChild[index].GetMyIArgument());
+        private IARG GetChildArg(int index) {
+            return snapParent[index].GetArgDescriptionOfArg(snapChild[index].GetMyIArgument());
         }
 
         private int FindNextSnapIndex() {
             for (int actionIndex = 0; actionIndex < snapChild.Length; ++actionIndex) {
                 if (withAction[actionIndex] != SNAPACTIONS.REMOVE) {
-                    if (GetChildArgPos(actionIndex) == -1) {
+                    if (GetChildArg(actionIndex) == IARG.NotFound) {
                         return actionIndex;
                     }
                 }
                 else {
-                    if (GetChildArgPos(actionIndex) != -1) {
+                    if (GetChildArg(actionIndex) != IARG.NotFound) {
                         return actionIndex;
                     }
                 }

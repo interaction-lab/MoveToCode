@@ -10,7 +10,7 @@
                 return new InstructionReturnValue(null, GetNestedInstruction());
             }
             else {
-                return new InstructionReturnValue(null, (GetArgumentAt(2) as StandAloneInstruction));
+                return new InstructionReturnValue(null, (GetArgument(IARG.Next) as StandAloneInstruction));
             }
         }
 

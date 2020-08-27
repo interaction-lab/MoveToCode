@@ -85,12 +85,12 @@ namespace MoveToCode {
         //    }
         //    return -1;
         //}
-        public IArg GetArgDescriptionOfArg(IArgument iArgIn) {
-            foreach (KeyValuePair<IArg, IArgument> kvp in codeBlockArgumentList.GetArgDictAsIArgs()) {
+        public IARG GetArgDescriptionOfArg(IArgument iArgIn) {
+            foreach (KeyValuePair<IARG, IArgument> kvp in codeBlockArgumentList.GetArgDictAsIArgs()) {
                 if (kvp.Value == iArgIn)
                     return kvp.Key;
             }
-            return IArg.NotFound;
+            return IARG.NotFound;
         }
 
         // CodeBlockArgumentList relay functions
@@ -98,43 +98,48 @@ namespace MoveToCode {
         //    codeBlockArgumentList.SetArgCodeBlockAt(newArgumentCodeBlock, argPosition, humanDidIt);
         //    UpdateText();
         //}
-        public void SetArgumentBlock(IArg argDescription, CodeBlock newArg, bool humanDidIt) {
+        public void SetArg(IARG argDescription, CodeBlock newArg, bool humanDidIt) {
             codeBlockArgumentList.SetArg(argDescription, newArg, humanDidIt);
+        }
+
+        //literally only for ArrayCodeBlock, I know it's ugly shut up
+        public void SetArrayArg(int pos, CodeBlock block, bool humanDidIt) {
+            codeBlockArgumentList.SetArrayArg(pos, block, humanDidIt);
         }
 
 
         //public List<CodeBlock> GetArgumentListAsCodeBlocks() {
         //    return codeBlockArgumentList.GetArgListCodeBlocks();
         //}
-        public Dictionary<IArg, CodeBlock> GetArgDictAsCodeBlocks() {
+        public Dictionary<IARG, CodeBlock> GetArgDictAsCodeBlocks() {
             return codeBlockArgumentList.GetArgDictAsCodeBlocks();
         }
 
         //public List<IArgument> GetArgumentListAsIArgs() {
         //    return codeBlockArgumentList.GetArgListAsIArguments();
         //}
-        public Dictionary<IArg, IArgument> GetArgDictAsIArgs() {
+        public Dictionary<IARG, IArgument> GetArgDictAsIArgs() {
             return codeBlockArgumentList.GetArgDictAsIArgs();
         }
 
         //public List<Type> GetArgCompatabilityAt(int pos) {
         //    return (GetMyIArgument() as IArgument).GetArgCompatibilityAtPos(pos);
         //}
-        public HashSet<Type> GetArgCompatibility(IArg argDescription) {
+        public HashSet<Type> GetArgCompatibility(IARG argDescription) {
             return GetMyIArgument().GetArgCompatibility(argDescription);
         }
 
         //public CodeBlock GetArgAsCodeBlockAt(int pos) {
         //    return codeBlockArgumentList.GetArgAsCodeBlockAt(pos);
         //}
-        public CodeBlock GetArgAsCodeBlock(IArg argDescription) {
+        public CodeBlock GetArgAsCodeBlock(IARG argDescription) {
             return codeBlockArgumentList.GetArgAsCodeBlock(argDescription);
         }
 
         //public IArgument GetArgAsIArgumentAt(int pos) {
         //    return codeBlockArgumentList.GetArgAsIArgumentAt(pos);
         //}
-        public IArgument GetArgAsIArg(IArg argDescription) {
+        public IArgument GetArgAsIArg(IARG argDescription) {
             return codeBlockArgumentList.GetArgAsIArg(argDescription);
         }
 
@@ -154,7 +159,7 @@ namespace MoveToCode {
         public void RemoveFromParentBlock(bool humanDidIt) {
             CodeBlock parentCodeBlock = FindParentCodeBlock();
             if (parentCodeBlock != null) {
-                parentCodeBlock.SetArgumentBlock(parentCodeBlock.GetArgDescriptionOfArg(GetMyIArgument()), null,humanDidIt);
+                parentCodeBlock.SetArg(parentCodeBlock.GetArgDescriptionOfArg(GetMyIArgument()), null,humanDidIt);
             }
         }
 

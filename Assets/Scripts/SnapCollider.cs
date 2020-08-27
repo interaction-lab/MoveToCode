@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace MoveToCode {
     public class SnapCollider : MonoBehaviour {
-        public int myArgumentPosition = 0;
+        public int myArgumentPosition = 0; //only used for Arrays
         public Vector3 snapPosition;
 
-        List<Type> myCompatibleArgTypes;
+        HashSet<Type> myCompatibleArgTypes;
         CodeBlockSnap collisionCodeBlockSnap;
 
         static Material outlineMaterial;
@@ -66,17 +66,21 @@ namespace MoveToCode {
         // TODO: humanDidIt is such a hack
         public void DoSnapAction(CodeBlock myCodeBlock, CodeBlock collidedCodeBlock, bool humanDidIt=true) {
             Transform parentTransform = transform.parent;
-            myCodeBlock.SetArgumentBlockAt(collidedCodeBlock, myArgumentPosition, humanDidIt);
+            if (myCodeBlock.GetType() == typeof(ArrayCodeBlock)) //Array codeblocks are the only special exception
+                myCodeBlock.SetArrayArg(myArgumentPosition, collidedCodeBlock, humanDidIt);
+            else //myArgumentPosition is always 0 otherwise which is IArg.Next
+                myCodeBlock.SetArg(IARG.Next, collidedCodeBlock, humanDidIt); 
+
             Vector3 centerPos = collidedCodeBlock.GetCodeBlockObjectMesh().GetCenterPosition();
             centerPos.x = centerPos.x / parentTransform.localScale.x;
             collidedCodeBlock.transform.SnapToParent(parentTransform, snapPosition - centerPos);
         }
 
-        protected List<Type> GetMyCompatibleArgTypes() {
+        protected HashSet<Type> GetMyCompatibleArgTypes() {
             if (myCompatibleArgTypes == null) {
-                myCompatibleArgTypes = GetMyCodeBlock().GetArgCompatabilityAt(myArgumentPosition);
+                myCompatibleArgTypes = GetMyCodeBlock().GetArgCompatibility(IARG.Next); //TODO: its not just Next...
             } else if (GetMyCodeBlock().GetType() == typeof(ArrayCodeBlock)) { //first input sets array type, could later be generalized for all data structures?
-                myCompatibleArgTypes = GetMyCodeBlock().GetArgCompatabilityAt(myArgumentPosition);
+                myCompatibleArgTypes = GetMyCodeBlock().GetArgCompatibility(IARG.ArrayElement);
             }
             return myCompatibleArgTypes;
         }
@@ -91,6 +95,7 @@ namespace MoveToCode {
         }
 
         private bool CheckArgCompatibleType(Type argTypeIn) {
+            if (GetMyCompatibleArgTypes() == null || GetMyCompatibleArgTypes().Count == 0) return true; 
             foreach (Type T in GetMyCompatibleArgTypes()) {
                 if (T == null) {
                     if (argTypeIn == null) {

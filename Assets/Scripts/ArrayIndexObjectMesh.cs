@@ -121,7 +121,7 @@ namespace MoveToCode {
         private void ResizeVariable() {
             Vector3 rescale = origScaleVariable;
             Vector3 reposition = origPosVariable;
-            float? horizontalSize = GetMyCodeBlock().GetArgAsCodeBlockAt(0)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
+            float? horizontalSize = GetMyCodeBlock().GetArgAsCodeBlock(IARG.Array)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
             if (horizontalSize != null) {
                 rescale.x = (float)horizontalSize;
                 reposition.x = reposition.x + (rescale.x - 0.5f) / 2.0f;
@@ -147,7 +147,7 @@ namespace MoveToCode {
         private void ResizeIndex() {
             Vector3 rescale = origScaleIndex;
             Vector3 reposition = origPosIndex;
-            float? horizontalSize = GetMyCodeBlock().GetArgAsCodeBlockAt(1)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
+            float? horizontalSize = GetMyCodeBlock().GetArgAsCodeBlock(IARG.ArrayElement)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
             if (horizontalSize != null) {
                 rescale.x = (float)horizontalSize;
                 reposition.x = reposition.x + (rescale.x - 0.5f) / 2.0f + GetVariableBlockHorizontalAddition();

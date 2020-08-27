@@ -3,20 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace MoveToCode {
-    public enum IArg {        
+    public enum IARG {        
         Next,
+        Array,
+        Value,
         Nested,
+        Variable,
         NotFound,
         Printable,
+        LeftNumber,
+        RightNumber,
         Conditional,
         ArrayElement,
         LeftOfConditional,
-        RightOfConditional
+        RightOfConditional,
     }
 
     public abstract class IArgument {
         CodeBlock myCodeBlock;
-        protected Dictionary<IArg, HashSet<Type>> argCompatabilityDict;
+        protected Dictionary<IARG, HashSet<Type>> argCompatabilityDict;
         //protected List<List<Type>> argPosToCompatability; 
         //protected List<string> argDescriptionList; 
 
@@ -45,8 +50,12 @@ namespace MoveToCode {
         //    }
         //    return argPosToCompatability[pos];
         //}
-        public virtual HashSet<Type> GetArgCompatibility(IArg argDescription) {
-            return argCompatabilityDict[argDescription];
+        public virtual HashSet<Type> GetArgCompatibility(IARG argDescription) {
+            if (argCompatabilityDict == null) 
+                SetUpArgCompatabilityDict();
+            if (argCompatabilityDict.ContainsKey(argDescription))
+                return argCompatabilityDict[argDescription];
+            return null;
         }
 
 
@@ -54,15 +63,17 @@ namespace MoveToCode {
         //public List<IArgument> GetArgumentListAsIArgs() {
         //    return GetCodeBlock().GetArgumentListAsIArgs();
         //}
-        public Dictionary<IArg, IArgument> GetArgDictAsIArgs() {
-            return GetCodeBlock().GetArgDictAsIArgs();
+        public Dictionary<IARG, IArgument> GetArgDictAsIArgs() {
+            return GetCodeBlock()?.GetArgDictAsIArgs();
         }
 
         //public IArgument GetArgumentAt(int pos) {
         //    return GetArgumentListAsIArgs()[pos];
         //}
-        public IArgument GetArgument(IArg argDescription) {
-            return GetArgDictAsIArgs()[argDescription];
+        public IArgument GetArgument(IARG argDescription) {
+            if ((bool)GetArgDictAsIArgs()?.ContainsKey(argDescription))
+                return GetArgDictAsIArgs()[argDescription];
+            return null;
         }
 
 

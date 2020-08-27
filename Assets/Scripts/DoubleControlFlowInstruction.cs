@@ -9,10 +9,10 @@ namespace MoveToCode {
             return 4;
         }
         public override StandAloneInstruction GetNextInstruction() {
-            return GetArgumentAt(3) as StandAloneInstruction;
+            return GetArgument(IARG.Next) as StandAloneInstruction;
         }
         protected override StandAloneInstruction GetNestedInstruction() {
-            return GetArgumentAt(0) as StandAloneInstruction;
+            return GetArgument(IARG.Nested) as StandAloneInstruction;
         }
         
         protected override string GetNestedInstructionsAsString() {
@@ -20,7 +20,7 @@ namespace MoveToCode {
             StandAloneInstruction currInstruction = GetNestedInstruction();
             while (currInstruction != null)
             {
-                result += "\n\t" + currInstruction.DescriptiveInstructionToString().Replace("\n\t", "\n\t\t"); //add nested instructions with accumulated tabbing
+                result += "\n    " + currInstruction.DescriptiveInstructionToString().Replace("\n    ", "\n        "); //add nested instructions with accumulated tabbing
                 currInstruction = currInstruction.GetNextInstruction();
             }
             return result;

@@ -2,7 +2,9 @@
     public class ConditionalCodeBlock : InstructionCodeBlock {
         public enum OPERATION {
             EQUALS,
-            NOTEQUALS
+            NOTEQUALS,
+            LESSTHAN,
+            GREATERTHAN
         }
 
         public OPERATION op;
@@ -15,7 +17,17 @@
                 case OPERATION.NOTEQUALS:
                     myBlockInternalArg = new NotEqualsConditionInstruction(this);
                     break;
+                case OPERATION.LESSTHAN:
+                    myBlockInternalArg = new LessThanConditionInstruction(this);
+                    break;
+                case OPERATION.GREATERTHAN:
+                    myBlockInternalArg = new GreaterThanConditionInstruction(this);
+                    break;
             }
+        }
+
+        public void SetOperation(OPERATION opIn) {
+            op = opIn;
         }
     }
 }

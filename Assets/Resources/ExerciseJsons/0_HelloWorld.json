@@ -1,0 +1,23 @@
+{
+  "consoleStringGoal": "\"Hello World\"",
+  "kuriGoalString": "Print \"Hello World\"",
+  "varNames": [],
+  "initialVariableValues": [],
+  "finalVariableGoalValues": [],
+  "exerciseBlocks": {
+    "$values": [
+      {
+        "codeBlockID": "Print"
+      },
+      {
+        "codeBlockID": "String",
+        "value": "Hello World"
+      }
+    ]
+  },
+  "scaffoldDialogue": [
+    "Try grabbing the blue sphere",
+    "Attach the blue Sphere to the print block",
+    "Attach the print block to the start block"
+  ]
+}

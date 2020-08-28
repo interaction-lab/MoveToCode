@@ -98,3 +98,11 @@ MSBuildForUnity.Common.props
 #     vscode	            # 
 # ========================= #
 .vscode/
+
+
+# Amazon Polly API Keys
+Assets/Resources/PollyAPI[0123456789].txt
+Assets/Resources/PollyAPI[0123456789].txt.meta
+
+# Speech Cache
+Assets/Resources/Audio/CacheSpeech/*

@@ -43,7 +43,7 @@ namespace MoveToCode {
         private void SetCompatibleColliderState(CodeBlock cIn, bool desiredActiveState) {
             IArgument internalArg = cIn.GetMyIArgument();
             foreach (SnapCollider sc in GetAllSnapColliders()) {
-                if (sc.HasCompatibleType(internalArg)) {
+                if (sc.HasCompatibleType(internalArg) && !sc.GetMyCodeBlock().GetIsMenuBlock()) {
                     sc.gameObject.SetActive(desiredActiveState);
                 }
             }

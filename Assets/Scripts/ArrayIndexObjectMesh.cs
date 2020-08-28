@@ -28,7 +28,6 @@ namespace MoveToCode {
         }
 
         private void UpdateText() {
-
             if (rightBracketTextMesh == null && leftBracketTextMesh == null) {
                 InstantiateBracketText();
                 RepositionBracketText();
@@ -99,7 +98,7 @@ namespace MoveToCode {
         }
 
         public override float GetBlockVerticalSize() {
-            return transform.localScale.y;
+            return variable.localScale.y;
         }
 
         public override Vector3 GetCenterPosition() {

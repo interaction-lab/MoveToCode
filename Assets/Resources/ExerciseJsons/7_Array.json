@@ -1,0 +1,34 @@
+{
+  "consoleStringGoal": "",
+  "kuriGoalString": "Set the array in numerical order",
+  "varNames": [ "Var1" ],
+  "initialVariableValues": [ 0 ],
+  "finalVariableGoalValues": [ [ 1, 2, 3 ] ],
+  "exerciseBlocks": {
+    "$values": [
+      {
+        "codeBlockID": "SetVar"
+      },
+      {
+        "codeBlockID": "Array",
+        "value":  3
+      },
+      {
+        "codeBlockID": "Int",
+        "value": 1
+      },
+      {
+        "codeBlockID": "Int",
+        "value": 2
+      },
+      {
+        "codeBlockID": "Int",
+        "value": 3
+      }
+    ]
+  },
+  "scaffoldDialogue": [
+    "Place the integers into the array slots",
+    "Place the array as the right argument of the Set Variable block"
+  ]
+}

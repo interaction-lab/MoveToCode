@@ -51,12 +51,5 @@ namespace MoveToCode {
             return "foreach \nvar ";
         }
 
-        protected override StandAloneInstruction GetNestedInstruction() {
-            throw new NotImplementedException();
-        }
-
-        protected override string GetNestedInstructionsAsString() {
-
-        }
     }
 }

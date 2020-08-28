@@ -66,13 +66,9 @@ namespace MoveToCode {
             }
         }
 
-        public object GetCurrent
-
         public object GetValueAtIndex(int index) {
             return internalArray[index].GetValue();
         }
-
-
 
         public override HashSet<Type> GetArgCompatibility(IARG argDescription) {
             EvaluateArgumentList();

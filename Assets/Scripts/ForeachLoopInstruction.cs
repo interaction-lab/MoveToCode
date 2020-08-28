@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace MoveToCode {
-    public class ForeachLoopInstruction : SingleControlFlowInstruction {
+    public class ForeachLoopInstruction : ControlFlowInstruction {
         private int currIdxInArray;
 
         public ForeachLoopInstruction(CodeBlock cbIn) : base(cbIn) {
@@ -21,45 +20,43 @@ namespace MoveToCode {
             }
             EvaluateArgumentList();
             if (conditionIsTrue) {
-                // put me on top of stack for when foreach loop ends
                 currIdxInArray++;
                 Interpreter.instance.AddToInstructionStack(this);
                 return new InstructionReturnValue(null, GetNestedInstruction());
             }
             currIdxInArray = 0;
-            return null; // done with loop
+            return null;
         }
 
         public override void EvaluateArgumentList() {
-            Variable leftArg = GetArgumentAt(1) as Variable;
-            Variable rightArg = GetArgumentAt(2) as Variable;
-            if (rightArg != null && rightArg.GetMyData().GetType() == typeof(ArrayDataStructure)) {
-                conditionIsTrue = currIdxInArray < (rightArg.GetMyData() as ArrayDataStructure).GetSize();
-                if(conditionIsTrue) {
-                    leftArg.SetValue(((rightArg.GetMyData() as ArrayDataStructure).GetValue() as IDataType[])[currIdxInArray]);
-                }
+            Variable iteratorVar = GetArgument(IARG.Variable) as Variable;
+            ArrayDataStructure dataStructureVar = GetArgument(IARG.ArrayDataStructure) as ArrayDataStructure;
+            if (dataStructureVar != null && currIdxInArray < dataStructureVar.GetSize()) {
+                iteratorVar.SetValue(dataStructureVar.GetValueAtIndex(currIdxInArray));
             }
         }
 
-        public override void SetUpArgPosToCompatability() {
-            argPosToCompatability = new List<List<Type>> {
-                new List<Type>{
-                    typeof(StandAloneInstruction)
-                },
-                new List<Type> {
-                    typeof(Variable)
-                },
-                new List<Type> {
-                    typeof(Variable)
-                },
-                new List<Type> {
-                    typeof(StandAloneInstruction)
-                }
+
+        public override void SetUpArgCompatabilityDict() {
+            argCompatabilityDict = new Dictionary<IARG, HashSet<Type>> {
+                { IARG.Nested, new HashSet<Type> { typeof(StandAloneInstruction) }  },
+                { IARG.Variable, new HashSet<Type> {  typeof(Variable) }  },
+                { IARG.ArrayDataStructure, new HashSet<Type> {  typeof(ArrayDataStructure) }  },
+                { IARG.Next, new HashSet<Type> { typeof(StandAloneInstruction) }  }
             };
         }
 
+
         public override string ToString() {
             return "foreach \nvar ";
+        }
+
+        protected override StandAloneInstruction GetNestedInstruction() {
+            throw new NotImplementedException();
+        }
+
+        protected override string GetNestedInstructionsAsString() {
+
         }
     }
 }

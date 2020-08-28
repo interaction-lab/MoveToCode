@@ -7,22 +7,14 @@ namespace MoveToCode {
         public override int GetNumArguments() {
             return 3;
         }
-        protected override StandAloneInstruction GetNestedInstruction() { 
-            return GetArgument(IARG.Nested) as StandAloneInstruction;
-        }
-        protected override string GetNestedInstructionsAsString(){
-            string result = "";
-            StandAloneInstruction currInstruction = GetNestedInstruction();
-            while (currInstruction != null){
-                result += "\n    " + currInstruction.DescriptiveInstructionToString().Replace("\n    ", "\n        "); //add nested instructions with accumulated tabbing
-                currInstruction = currInstruction.GetNextInstruction();
-            }
-            return result;
 
-        }
 
-        public override StandAloneInstruction GetNextInstruction(){ 
-            return GetArgument(IARG.Next) as StandAloneInstruction;
+        public override void SetUpArgCompatabilityDict() {
+            argCompatabilityDict = new Dictionary<IARG, HashSet<Type>> {
+                { IARG.Nested, new HashSet<Type> { typeof(StandAloneInstruction) }  },
+                { IARG.Conditional, new HashSet<Type> {  typeof(ConditionalInstruction) }  },
+                { IARG.Next, new HashSet<Type> { typeof(StandAloneInstruction) }  }
+            };
         }
 
         public override string DescriptiveInstructionToString() {

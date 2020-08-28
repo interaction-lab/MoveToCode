@@ -1,51 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace MoveToCode{
+﻿namespace MoveToCode {
     public abstract class ControlFlowInstruction : StandAloneInstruction {
         protected bool conditionIsTrue;
         protected bool exitInstructionAddedToStack;
 
-        protected abstract StandAloneInstruction GetNestedInstruction(); 
-        protected abstract string GetNestedInstructionsAsString();
-
         public ControlFlowInstruction(CodeBlock cbIn) : base(cbIn) { }
 
-        public override void ResestInternalState()   {
+        public override void ResestInternalState() {
             exitInstructionAddedToStack = false;
         }
 
         public override void EvaluateArgumentList() {
             IDataType d = (GetArgument(IARG.Conditional) as ConditionalInstruction)?.RunInstruction().GetReturnDataVal();
-            if (d != null)
-            {
+            if (d != null) {
                 conditionIsTrue = (bool)d.GetValue();
             }
         }
 
-        //public override void SetUpArgPosToCompatability() {
-        //    argPosToCompatability = new List<List<Type>> {
-        //        new List<Type>{
-        //            typeof(StandAloneInstruction)
-        //        },
-        //        new List<Type> {
-        //            typeof(ConditionalInstruction)
-        //        },
-        //        new List<Type> {
-        //            typeof(StandAloneInstruction)
-        //        }
-        //    };
-        //}
+        protected string GetNestedInstructionsAsString() {
+            string result = "";
+            StandAloneInstruction currInstruction = GetNestedInstruction();
+            while (currInstruction != null) {
+                result = AddNestedInstructionTabbing(result, currInstruction);
+                currInstruction = currInstruction.GetNextInstruction();
+            }
+            return result;
+        }
 
-        //public override void SetUpArgDescriptionList() {
-        //    argDescriptionList = new List<string> { "Nested Instruction", "Conditional Instruction", "Next Instruction" }; //next->nested, exit->next
-        //}
-        public override void SetUpArgCompatabilityDict() {
-            argCompatabilityDict = new Dictionary<IARG, HashSet<Type>> {
-                { IARG.Nested, new HashSet<Type> { typeof(StandAloneInstruction) }  },
-                { IARG.Conditional, new HashSet<Type> {  typeof(ConditionalInstruction) }  },
-                { IARG.Next, new HashSet<Type> { typeof(StandAloneInstruction) }  }
-            };
+        protected StandAloneInstruction GetNestedInstruction() {
+            return GetArgument(IARG.Nested) as StandAloneInstruction;
+        }
+
+        private string AddNestedInstructionTabbing(string result, Instruction currInstruction) {
+            return string.Join("",
+                result,
+                "\n    ",
+                currInstruction.DescriptiveInstructionToString()
+                    .Replace("\n    ", "\n        "));
+        }
+
+        public override StandAloneInstruction GetNextInstruction() {
+            return GetArgument(IARG.Next) as StandAloneInstruction;
         }
     }
 }

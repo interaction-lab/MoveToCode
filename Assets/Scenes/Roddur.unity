@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1103,7 +1103,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 1239000876}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0751d1292d3b8b344aae34150283e04a, type: 3}
   m_Name: 
@@ -1688,11 +1688,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a508445c8a81442a30343ce95a1691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  consoleStringGoal: '"Hello World"'
-  kuriGoalString: Print "Hello World"
-  varNames: []
-  initialVariableValues: 
-  finalVariableGoalValues: 
 --- !u!114 &270212280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2002,11 +1997,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a508445c8a81442a30343ce95a1691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  consoleStringGoal: True
-  kuriGoalString: Print True
-  varNames: []
-  initialVariableValues: 
-  finalVariableGoalValues: 
 --- !u!114 &351704812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2568,11 +2558,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2cee343094e8b8418d0125fb32a307f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  consoleStringGoal: 
-  kuriGoalString: 
-  varNames: []
-  initialVariableValues: 
-  finalVariableGoalValues: 
 --- !u!1001 &452166890
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3414,7 +3399,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &648124168
 Transform:
   m_ObjectHideFlags: 0
@@ -3438,7 +3423,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 648124167}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d76eccb850124f644baa3d949508d147, type: 3}
   m_Name: 
@@ -4000,7 +3985,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 1024577215}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0751d1292d3b8b344aae34150283e04a, type: 3}
   m_Name: 
@@ -5034,12 +5019,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a508445c8a81442a30343ce95a1691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  consoleStringGoal: 5
-  kuriGoalString: Set Var1 to 5 and print it
-  varNames:
-  - Var1
-  initialVariableValues: 09000000
-  finalVariableGoalValues: 05000000
 --- !u!114 &923277385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5254,11 +5233,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a508445c8a81442a30343ce95a1691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  consoleStringGoal: 11
-  kuriGoalString: Print 11
-  varNames: []
-  initialVariableValues: 
-  finalVariableGoalValues: 
 --- !u!114 &958217974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5303,7 +5277,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 1533209694}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0751d1292d3b8b344aae34150283e04a, type: 3}
   m_Name: 
@@ -6589,11 +6563,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a508445c8a81442a30343ce95a1691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  consoleStringGoal: 1
-  kuriGoalString: Print 1
-  varNames: []
-  initialVariableValues: 
-  finalVariableGoalValues: 
 --- !u!114 &1180737058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6636,7 +6605,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 1940850076}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0751d1292d3b8b344aae34150283e04a, type: 3}
   m_Name: 
@@ -6785,7 +6754,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 1218171650}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0751d1292d3b8b344aae34150283e04a, type: 3}
   m_Name: 
@@ -7280,11 +7249,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a508445c8a81442a30343ce95a1691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  consoleStringGoal: True
-  kuriGoalString: Print True
-  varNames: []
-  initialVariableValues: 
-  finalVariableGoalValues: 
 --- !u!114 &1263160918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8042,7 +8006,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 1485042480}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0751d1292d3b8b344aae34150283e04a, type: 3}
   m_Name: 
@@ -8778,7 +8742,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 1644774804}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0751d1292d3b8b344aae34150283e04a, type: 3}
   m_Name: 
@@ -9842,11 +9806,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a508445c8a81442a30343ce95a1691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  consoleStringGoal: 6
-  kuriGoalString: Print 6
-  varNames: []
-  initialVariableValues: 
-  finalVariableGoalValues: 
 --- !u!114 &1875823387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10175,7 +10134,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 1908096062}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0751d1292d3b8b344aae34150283e04a, type: 3}
   m_Name: 

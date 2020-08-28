@@ -11,7 +11,7 @@ namespace MoveToCode {
         Vector3[] origScaleElements;
         
         public override void SetUpObject() {
-            numElements = (this.transform.parent.GetComponent<ArrayCodeBlock>().GetMyInternalIArgument() as ArrayDataStructure).GetSize();
+            numElements = (this.transform.parent.GetComponent<ArrayCodeBlock>().GetMyIArgument() as ArrayDataStructure).GetSize();
             SetUpElements();
             RepositionElements();
         }

@@ -6,7 +6,7 @@
         // Standard is that first instruction is next instruction
         // This might change when we chain arguments for flow
         public virtual StandAloneInstruction GetNextInstruction() {
-            return GetArgumentAt(0) as StandAloneInstruction;
+            return GetArgument(IARG.Next) as StandAloneInstruction;
         }
     }
 }

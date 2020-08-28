@@ -72,50 +72,74 @@ namespace MoveToCode {
         public override void EvaluateArgumentList() {
             numFilledElements = 0;
             for (int i = 0; i < mySize; i++) {
-                if (GetArgumentAt(i)?.EvaluateArgument() == null) {
+                // below:  GetArgumentAt(i) -> myCodeBlock.GetArgDictAsIArgs() 
+
+                //if (GetArgumentAt(i)?.EvaluateArgument() == null) {
+                //    internalArray[i] = null;
+                //} else {
+                //    if (((GetArgumentAt(i).EvaluateArgument() as BasicDataType) != internalArray[i]) && internalArray[i] != null) {
+                //        //do nothing
+                //    } else {
+                //        internalArray[i] = GetArgumentAt(i).EvaluateArgument() as BasicDataType;
+                //        SetArrayType(internalArray[i].GetType());
+                //    }
+                //    numFilledElements++;
+                //}
+
+                if (internalArray[i]?.EvaluateArgument() == null) {
                     internalArray[i] = null;
-                } else {
-                    if (((GetArgumentAt(i).EvaluateArgument() as BasicDataType) != internalArray[i]) && internalArray[i] != null) {
+                }
+                else {
+                    if (((internalArray[i].EvaluateArgument() as BasicDataType) != internalArray[i]) && internalArray[i] != null) {
                         //do nothing
-                    } else {
-                        internalArray[i] = GetArgumentAt(i).EvaluateArgument() as BasicDataType;
+                    }
+                    else {
+                        internalArray[i] = internalArray[i].EvaluateArgument() as BasicDataType;
                         SetArrayType(internalArray[i].GetType());
                     }
                     numFilledElements++;
                 }
+
+
+
             }
         }
 
-        public override List<Type> GetArgCompatibilityAtPos(int pos) {
+        public override HashSet<Type> GetArgCompatibility(IARG argDescription) {
             EvaluateArgumentList();
-            if (argPosToCompatability == null || GetNumFilledElements() <= 1) {
-                SetUpArgPosToCompatability();
+            if (argCompatabilityDict == null || GetNumFilledElements() <= 1) {
+                SetUpArgCompatabilityDict();
             }
-            return argPosToCompatability[pos];
+            return argCompatabilityDict[argDescription];
         }
 
-        public override void SetUpArgPosToCompatability() {
-            argPosToCompatability = new List<List<Type>> { };
-            if(myType == null || (GetNumFilledElements() < 1)) {
-                for (int i = 0; i < GetSize(); i++) {
-                    argPosToCompatability.Add(new List<Type> {
-                    typeof(BasicDataType)
-                    });
-                }
-            } else {
-                for (int i = 0; i < GetSize(); i++) {
-                    argPosToCompatability.Add(new List<Type> {
-                    myType
-                    });
-                }
-            }
-        }
+        //public override void SetUpArgPosToCompatability() {
+        //    argPosToCompatability = new List<List<Type>> { };
+        //    if(myType == null || (GetNumFilledElements() < 1)) {
+        //        for (int i = 0; i < GetSize(); i++) {
+        //            argPosToCompatability.Add(new List<Type> {
+        //            typeof(BasicDataType)
+        //            });
+        //        }
+        //    } else {
+        //        for (int i = 0; i < GetSize(); i++) {
+        //            argPosToCompatability.Add(new List<Type> {
+        //            myType
+        //            });
+        //        }
+        //    }
+        //}
 
-        public override void SetUpArgDescriptionList() {
-            argDescriptionList = new List<string> { };
-            for(int i = 0; i < GetSize(); i++) {
-                argDescriptionList.Add("Element" + i.ToString());
-            }
+        //public override void SetUpArgDescriptionList() {
+        //    argDescriptionList = new List<string> { };
+        //    for(int i = 0; i < GetSize(); i++) {
+        //        argDescriptionList.Add("Element" + i.ToString());
+        //    }
+        //}
+        public override void SetUpArgCompatabilityDict() { //TODO: do I have to worry about nullity, BasicDataType vs. myType?
+            argCompatabilityDict = new Dictionary<IARG, HashSet<Type>> {
+                { IARG.ArrayElement, new HashSet<Type> { typeof(BasicDataType), myType }  }
+            };
         }
 
         public override void ResestInternalState() {

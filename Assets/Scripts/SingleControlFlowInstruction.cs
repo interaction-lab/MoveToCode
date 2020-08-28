@@ -8,13 +8,13 @@ namespace MoveToCode {
             return 3;
         }
         protected override StandAloneInstruction GetNestedInstruction() { 
-            return GetArgumentAt(0) as StandAloneInstruction;
+            return GetArgument(IARG.Nested) as StandAloneInstruction;
         }
         protected override string GetNestedInstructionsAsString(){
             string result = "";
             StandAloneInstruction currInstruction = GetNestedInstruction();
             while (currInstruction != null){
-                result += "\n\t" + currInstruction.DescriptiveInstructionToString().Replace("\n\t", "\n\t\t"); //add nested instructions with accumulated tabbing
+                result += "\n    " + currInstruction.DescriptiveInstructionToString().Replace("\n    ", "\n        "); //add nested instructions with accumulated tabbing
                 currInstruction = currInstruction.GetNextInstruction();
             }
             return result;
@@ -22,11 +22,11 @@ namespace MoveToCode {
         }
 
         public override StandAloneInstruction GetNextInstruction(){ 
-            return GetArgumentAt(2) as StandAloneInstruction;
+            return GetArgument(IARG.Next) as StandAloneInstruction;
         }
 
         public override string DescriptiveInstructionToString() {
-            return string.Join("", "<color=purple>", ToString(), "</color>", GetArgumentAt(1)?.DescriptiveInstructionToString(), ": ", GetNestedInstructionsAsString());
+            return string.Join("", "<color=purple>", ToString(), "</color>", GetArgument(IARG.Conditional)?.DescriptiveInstructionToString(), ": ", GetNestedInstructionsAsString());
         }
     }
 }

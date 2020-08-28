@@ -6,7 +6,7 @@ namespace MoveToCode{
         protected bool conditionIsTrue;
         protected bool exitInstructionAddedToStack;
 
-        protected abstract StandAloneInstruction GetNestedInstruction(); //exit -> nested
+        protected abstract StandAloneInstruction GetNestedInstruction(); 
         protected abstract string GetNestedInstructionsAsString();
 
         public ControlFlowInstruction(CodeBlock cbIn) : base(cbIn) { }
@@ -16,29 +16,36 @@ namespace MoveToCode{
         }
 
         public override void EvaluateArgumentList() {
-            IDataType d = (GetArgumentAt(1) as ConditionalInstruction)?.RunInstruction().GetReturnDataVal();
+            IDataType d = (GetArgument(IARG.Conditional) as ConditionalInstruction)?.RunInstruction().GetReturnDataVal();
             if (d != null)
             {
                 conditionIsTrue = (bool)d.GetValue();
             }
         }
 
-        public override void SetUpArgPosToCompatability() {
-            argPosToCompatability = new List<List<Type>> {
-                new List<Type>{
-                    typeof(StandAloneInstruction)
-                },
-                new List<Type> {
-                    typeof(ConditionalInstruction)
-                },
-                new List<Type> {
-                    typeof(StandAloneInstruction)
-                }
-            };
-        }
+        //public override void SetUpArgPosToCompatability() {
+        //    argPosToCompatability = new List<List<Type>> {
+        //        new List<Type>{
+        //            typeof(StandAloneInstruction)
+        //        },
+        //        new List<Type> {
+        //            typeof(ConditionalInstruction)
+        //        },
+        //        new List<Type> {
+        //            typeof(StandAloneInstruction)
+        //        }
+        //    };
+        //}
 
-        public override void SetUpArgDescriptionList() {
-            argDescriptionList = new List<string> { "Nested Instruction", "Conditional Instruction", "Next Instruction" }; //next->nested, exit->next
+        //public override void SetUpArgDescriptionList() {
+        //    argDescriptionList = new List<string> { "Nested Instruction", "Conditional Instruction", "Next Instruction" }; //next->nested, exit->next
+        //}
+        public override void SetUpArgCompatabilityDict() {
+            argCompatabilityDict = new Dictionary<IARG, HashSet<Type>> {
+                { IARG.Nested, new HashSet<Type> { typeof(StandAloneInstruction) }  },
+                { IARG.Conditional, new HashSet<Type> {  typeof(ConditionalInstruction) }  },
+                { IARG.Next, new HashSet<Type> { typeof(StandAloneInstruction) }  }
+            };
         }
     }
 }

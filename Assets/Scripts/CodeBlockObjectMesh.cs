@@ -67,11 +67,11 @@ namespace MoveToCode {
 
         public void ChainResizeDown() {
             ResizeObjectMesh();
-            foreach (CodeBlock c in GetMyCodeBlock().GetArgumentListAsCodeBlocks()) {
-                if (c != null) {
-                    c.transform.ResetCodeBlockSize();
-                    c.GetCodeBlockObjectMesh().Recenter();
-                    c.GetCodeBlockObjectMesh().ChainResizeDown();
+            foreach (KeyValuePair<IARG, CodeBlock> kvp in GetMyCodeBlock().GetArgDictAsCodeBlocks()) {
+                if (kvp.Value != null) {
+                    kvp.Value.transform.ResetCodeBlockSize();
+                    kvp.Value.GetCodeBlockObjectMesh().Recenter();
+                    kvp.Value.GetCodeBlockObjectMesh().ChainResizeDown();
                 }
             }
         }

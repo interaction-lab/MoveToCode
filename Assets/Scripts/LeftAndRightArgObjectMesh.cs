@@ -53,8 +53,12 @@ namespace MoveToCode {
             // need to resize arg right based upon horizontal size of arg
             Vector3 rescale = origScaleArg;
             Vector3 reposition = origPositionArgLeft;
-            float? horizontalSize = GetMyCodeBlock().GetArgAsCodeBlockAt(0)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
-            if (horizontalSize != null) {
+            float horizontalSize = -1.0f;
+            if (GetMyCodeBlock().GetType() == typeof(ConditionalCodeBlock))
+                horizontalSize = (float)GetMyCodeBlock().GetArgAsCodeBlock(IARG.LeftOfConditional)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
+            else //Math
+                horizontalSize = (float)GetMyCodeBlock().GetArgAsCodeBlock(IARG.LeftNumber)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
+            if (horizontalSize != -1.0f) {
                 rescale.x = (float)horizontalSize;
                 reposition.x = reposition.x - (rescale.x - 0.5f) / 2.0f;
             }
@@ -66,8 +70,12 @@ namespace MoveToCode {
             // need to resize arg right based upon horizontal size of arg
             Vector3 rescale = origScaleArg;
             Vector3 reposition = origPositionArgRight;
-            float? horizontalSize = GetMyCodeBlock().GetArgAsCodeBlockAt(1)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
-            if (horizontalSize != null) {
+            float horizontalSize = -1.0f;
+            if (GetMyCodeBlock().GetType() == typeof(ConditionalCodeBlock))
+                horizontalSize = (float)GetMyCodeBlock().GetArgAsCodeBlock(IARG.RightOfConditional)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
+            else //Math
+                horizontalSize = (float)GetMyCodeBlock().GetArgAsCodeBlock(IARG.RightNumber)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
+            if (horizontalSize != -1.0f) {
                 rescale.x = (float)horizontalSize;
                 // 
                 reposition.x = reposition.x + (rescale.x - 0.5f) / 2.0f;

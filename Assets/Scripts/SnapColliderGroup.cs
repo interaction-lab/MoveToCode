@@ -28,12 +28,12 @@ namespace MoveToCode {
             foreach (SnapCollider sc in GetSnapColliders()) {
                 sc.gameObject.SetActive(desiredActiveState);
             }
-            foreach (CodeBlock c in GetMyCodeBlock().GetArgumentListAsCodeBlocks()) {
+            foreach (KeyValuePair<IARG, CodeBlock> kvp in GetMyCodeBlock().GetArgDictAsCodeBlocks()) {
                 if (desiredActiveState) {
-                    c?.GetSnapColliders()?.EnableAllCollidersAndChildrenColliders();
+                    kvp.Value.GetSnapColliders()?.EnableAllCollidersAndChildrenColliders();
                 }
                 else {
-                    c?.GetSnapColliders()?.DisableAllCollidersAndChildrenColliders();
+                    kvp.Value?.GetSnapColliders()?.DisableAllCollidersAndChildrenColliders();
                 }
             }
         }
@@ -54,7 +54,7 @@ namespace MoveToCode {
         private List<SnapCollider> GetSnapColliders() {
             if (snapColliders == null) {
                 snapColliders = new List<SnapCollider>();
-                snapColliders.Resize(GetMyCodeBlock().GetMyInternalIArgument().GetNumArguments());
+                snapColliders.Resize(GetMyCodeBlock().GetMyIArgument().GetNumArguments());
                 foreach (Transform go in transform) {
                     SnapCollider sc = go.GetComponentInChildren<SnapCollider>(true);
                     if (sc != null)

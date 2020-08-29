@@ -10,11 +10,11 @@ namespace MoveToCode {
         }
 
         public override InstructionReturnValue RunInstruction() {
-            if (!exitInstructionAddedToStack) {
+            if (!nextInstructionAddedToStack) {
                 Interpreter.instance.AddToInstructionStack(GetNextInstruction());
-                exitInstructionAddedToStack = true;
+                nextInstructionAddedToStack = true;
             }
-            EvaluateArgumentList();
+            EvaluateArgumentsOfInstruction();
             if (conditionIsTrue) {
                 currIdxInArray++;
                 Interpreter.instance.AddToInstructionStack(this);
@@ -24,7 +24,7 @@ namespace MoveToCode {
             return null;
         }
 
-        public override void EvaluateArgumentList() {
+        public override void EvaluateArgumentsOfInstruction() {
             Variable iteratorVar = GetArgument(SNAPCOLTYPEDESCRIPTION.Variable) as Variable;
             ArrayDataStructure dataStructureVar = GetArgument(SNAPCOLTYPEDESCRIPTION.ArrayDataStructure) as ArrayDataStructure;
             if (dataStructureVar != null && currIdxInArray < dataStructureVar.GetSize()) {
@@ -34,6 +34,10 @@ namespace MoveToCode {
 
         public override string ToString() {
             return "foreach \nvar ";
+        }
+
+        public override string DescriptiveInstructionToString() {
+            return "foreach still under development";
         }
 
     }

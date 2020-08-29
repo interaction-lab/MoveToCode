@@ -1,15 +1,15 @@
 ﻿namespace MoveToCode {
     public abstract class ControlFlowInstruction : StandAloneInstruction {
         protected bool conditionIsTrue;
-        protected bool exitInstructionAddedToStack;
+        protected bool nextInstructionAddedToStack;
 
         public ControlFlowInstruction(CodeBlock cbIn) : base(cbIn) { }
 
         public override void ResestInternalState() {
-            exitInstructionAddedToStack = false;
+            nextInstructionAddedToStack = false;
         }
 
-        public override void EvaluateArgumentList() {
+        public override void EvaluateArgumentsOfInstruction() {
             IDataType d = (GetArgument(SNAPCOLTYPEDESCRIPTION.Conditional) as ConditionalInstruction)?.RunInstruction().GetReturnDataVal();
             if (d != null) {
                 conditionIsTrue = (bool)d.GetValue();

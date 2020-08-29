@@ -4,11 +4,11 @@
         public WhileInstruction(CodeBlock cbIn) : base(cbIn) { }
 
         public override InstructionReturnValue RunInstruction() {
-            if (!exitInstructionAddedToStack) {
+            if (!nextInstructionAddedToStack) {
                 Interpreter.instance.AddToInstructionStack(GetNextInstruction());
-                exitInstructionAddedToStack = true;
+                nextInstructionAddedToStack = true;
             }
-            EvaluateArgumentList();
+            EvaluateArgumentsOfInstruction();
             if (conditionIsTrue) {
                 Interpreter.instance.AddToInstructionStack(this);
                 return new InstructionReturnValue(null, GetNestedInstruction());

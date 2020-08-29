@@ -7,13 +7,13 @@ namespace MoveToCode {
 
         public PrintInstruction(CodeBlock cbIn) : base(cbIn) { }
 
-        public override void EvaluateArgumentList() {
+        public override void EvaluateArgumentsOfInstruction() {
             output = GetArgument(SNAPCOLTYPEDESCRIPTION.Printable)?.EvaluateArgument()?.ToString();
         }
 
 
         public override InstructionReturnValue RunInstruction() {
-            EvaluateArgumentList();
+            EvaluateArgumentsOfInstruction();
             ConsoleManager.instance.AddLine(output);
             return new InstructionReturnValue(null, GetNextInstruction());
         }

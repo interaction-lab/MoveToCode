@@ -3,8 +3,6 @@
 
         public StandAloneInstruction(CodeBlock cbIn) : base(cbIn) { }
 
-        // Standard is that first instruction is next instruction
-        // This might change when we chain arguments for flow
         public virtual StandAloneInstruction GetNextInstruction() {
             return GetArgument(SNAPCOLTYPEDESCRIPTION.Next) as StandAloneInstruction;
         }

@@ -6,11 +6,11 @@ namespace MoveToCode {
 
         public SetVariableInstruction(CodeBlock cbIn) : base(cbIn) { }
 
-        public override void EvaluateArgumentList() {
+        public override void EvaluateArgumentsOfInstruction() {
         }
 
         public override InstructionReturnValue RunInstruction() {
-            EvaluateArgumentList();
+            EvaluateArgumentsOfInstruction();
             if (GetArgument(SNAPCOLTYPEDESCRIPTION.Variable).GetType() == typeof(ArrayIndexInstruction)) {
                 //set "variable"/element in array
                 (GetArgument(SNAPCOLTYPEDESCRIPTION.Variable) as ArrayIndexInstruction).SetArrayValue(GetArgument(SNAPCOLTYPEDESCRIPTION.Value)?.EvaluateArgument());

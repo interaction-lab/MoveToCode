@@ -7,7 +7,7 @@
 
         public ConditionalInstruction(CodeBlock cbIn) : base(cbIn) { }
 
-        public override void EvaluateArgumentList() {
+        public override void EvaluateArgumentsOfInstruction() {
             leftArg = GetArgument(SNAPCOLTYPEDESCRIPTION.LeftOfConditional)?.EvaluateArgument();
             rightArg = GetArgument(SNAPCOLTYPEDESCRIPTION.RightOfConditional)?.EvaluateArgument();
         }

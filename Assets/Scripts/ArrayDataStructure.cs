@@ -82,6 +82,10 @@ namespace MoveToCode {
         public override Type GetCastType() {
             return typeof(Array);
         }
+
+        public override string DescriptiveInstructionToString() {
+            return "Arrary under development";
+        }
     }
 }
 

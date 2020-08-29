@@ -50,14 +50,14 @@ namespace MoveToCode {
         }
 
         public override string ToString() {
-            if(myData?.GetType() == typeof(ArrayDataStructure)) {
+            /*if(myData?.GetType() == typeof(ArrayDataStructure)) {
                 string arrayText = "";
-                (myData as ArrayDataStructure).EvaluateArgumentList();
+                (myData as ArrayDataStructure).EvaluateArgumentsOfInstruction();
                 for (int i = 0; i < (myData as ArrayDataStructure).GetSize(); i++) {
                     arrayText += (myData as ArrayDataStructure).GetValueAtIndex(i).ToString() + ", ";
                 }
                 return string.Join("", variableName, ":\n", arrayText);
-            }
+            }*/
             return string.Join("", variableName, ": ", myData?.ToString());
         }
     }

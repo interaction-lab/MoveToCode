@@ -4,8 +4,8 @@
         public IfInstruction(CodeBlock cbIn) : base(cbIn) { }
 
         public override InstructionReturnValue RunInstruction() {
-            Interpreter.instance.AddToInstructionStack(GetNextInstruction()); 
-            EvaluateArgumentList();
+            Interpreter.instance.AddToInstructionStack(GetNextInstruction());
+            EvaluateArgumentsOfInstruction();
             if (conditionIsTrue) {
                 return new InstructionReturnValue(null, GetNestedInstruction());
             }

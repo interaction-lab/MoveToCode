@@ -5,7 +5,7 @@
 
         public override InstructionReturnValue RunInstruction() {
             Interpreter.instance.AddToInstructionStack(GetNextInstruction());
-            EvaluateArgumentList();
+            EvaluateArgumentsOfInstruction();
             if (conditionIsTrue) {
                 return new InstructionReturnValue(null, GetNestedInstruction());
             }

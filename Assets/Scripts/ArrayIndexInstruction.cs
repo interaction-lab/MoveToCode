@@ -11,19 +11,19 @@ namespace MoveToCode {
 
         public ArrayIndexInstruction(CodeBlock cbIn) : base(cbIn) { }
 
-        public override void EvaluateArgumentList() {
+        public override void EvaluateArgumentsOfInstruction() {
             if (GetArgument(SNAPCOLTYPEDESCRIPTION.Array)?.EvaluateArgument().GetType() != typeof(ArrayDataStructure)) {
                 arr = null;
             }
             else {
                 arr = GetArgument(SNAPCOLTYPEDESCRIPTION.Array)?.EvaluateArgument() as ArrayDataStructure;
-                arr.EvaluateArgumentList();
+                //arr.EvaluateArgumentsOfInstruction();
             }
             index = GetArgument(SNAPCOLTYPEDESCRIPTION.ArrayElement)?.EvaluateArgument() as IntDataType;
         }
 
         public override InstructionReturnValue RunInstruction() {
-            EvaluateArgumentList();
+            EvaluateArgumentsOfInstruction();
             indexVal = (int)index.GetValue();
             arrValAtIndex = arr?.GetValueAtIndex(indexVal);
             if (arr?.GetArrayType() == typeof(IntDataType)) {
@@ -46,7 +46,7 @@ namespace MoveToCode {
         }
 
         public void SetArrayValue(IDataType valIn) {
-            EvaluateArgumentList();
+            EvaluateArgumentsOfInstruction();
             indexVal = (int)index.GetValue();
             arr.SetValueAtIndex(indexVal, valIn);
         }

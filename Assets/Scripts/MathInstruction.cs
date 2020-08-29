@@ -9,7 +9,7 @@ namespace MoveToCode {
 
         public MathInstruction(CodeBlock cbIn) : base(cbIn) { }
 
-        public override void EvaluateArgumentList() {
+        public override void EvaluateArgumentsOfInstruction() {
             if (GetArgument(SNAPCOLTYPEDESCRIPTION.LeftNumber) != null && GetArgument(SNAPCOLTYPEDESCRIPTION.RightNumber) != null) {
                 leftNum = (float)Convert.ChangeType(GetArgument(SNAPCOLTYPEDESCRIPTION.LeftNumber).EvaluateArgument().GetValue(), typeof(float));
                 rightNum = (float)Convert.ChangeType(GetArgument(SNAPCOLTYPEDESCRIPTION.RightNumber).EvaluateArgument().GetValue(), typeof(float));

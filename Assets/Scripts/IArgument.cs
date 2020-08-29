@@ -25,10 +25,10 @@ namespace MoveToCode {
         protected Dictionary<SNAPCOLTYPEDESCRIPTION, SnapCollider> argToSnapColliderDict = new Dictionary<SNAPCOLTYPEDESCRIPTION, SnapCollider>();
 
         public abstract IDataType EvaluateArgument();
-        public abstract void ResestInternalState();
-        public abstract void EvaluateArgumentList();
-        public abstract void SetUpArgToSnapColliderDict();
         public abstract string DescriptiveInstructionToString();
+
+        public virtual void ResestInternalState() {
+        }
 
 
         public CodeBlock GetCodeBlock() {

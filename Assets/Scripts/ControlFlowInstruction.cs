@@ -18,10 +18,8 @@
 
         protected string GetNestedInstructionsAsString() {
             string result = "";
-            StandAloneInstruction currInstruction = GetNestedInstruction();
-            while (currInstruction != null) {
+            for (StandAloneInstruction currInstruction = GetNestedInstruction(); currInstruction != null; currInstruction = currInstruction.GetNextInstruction()) {
                 result = AddNestedInstructionTabbing(result, currInstruction);
-                currInstruction = currInstruction.GetNextInstruction();
             }
             return result;
         }

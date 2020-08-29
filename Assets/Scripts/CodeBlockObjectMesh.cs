@@ -67,7 +67,7 @@ namespace MoveToCode {
 
         public void ChainResizeDown() {
             ResizeObjectMesh();
-            foreach (KeyValuePair<IARG, CodeBlock> kvp in GetMyCodeBlock().GetArgDictAsCodeBlocks()) {
+            foreach (KeyValuePair<SNAPCOLTYPEDESCRIPTION, CodeBlock> kvp in GetMyCodeBlock().GetArgDictAsCodeBlocks()) {
                 if (kvp.Value != null) {
                     kvp.Value.transform.ResetCodeBlockSize();
                     kvp.Value.GetCodeBlockObjectMesh().Recenter();

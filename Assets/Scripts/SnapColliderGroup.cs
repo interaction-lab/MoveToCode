@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace MoveToCode {
     public class SnapColliderGroup : MonoBehaviour {
-        Dictionary<IARG, SnapCollider> snapColliders;
+        Dictionary<SNAPCOLTYPEDESCRIPTION, SnapCollider> snapColliders;
         CodeBlock myCodeBlock;
 
         // public methods
@@ -26,10 +26,10 @@ namespace MoveToCode {
 
         // Private methods
         private void SetCollidersAndChildrenState(bool desiredActiveState) {
-            foreach (KeyValuePair<IARG, SnapCollider> scKV in GetSnapColliders()) {
+            foreach (KeyValuePair<SNAPCOLTYPEDESCRIPTION, SnapCollider> scKV in GetSnapColliders()) {
                 scKV.Value.gameObject.SetActive(desiredActiveState);
             }
-            foreach (KeyValuePair<IARG, CodeBlock> kvp in GetMyCodeBlock().GetArgDictAsCodeBlocks()) {
+            foreach (KeyValuePair<SNAPCOLTYPEDESCRIPTION, CodeBlock> kvp in GetMyCodeBlock().GetArgDictAsCodeBlocks()) {
                 (desiredActiveState ?
                     new Action(kvp.Value.GetSnapColliders().EnableAllCollidersAndChildrenColliders) :
                                kvp.Value.GetSnapColliders().DisableAllCollidersAndChildrenColliders)();
@@ -46,9 +46,9 @@ namespace MoveToCode {
 
 
         // TODO: this should be register/deregister
-        private Dictionary<IARG, SnapCollider> GetSnapColliders() {
+        private Dictionary<SNAPCOLTYPEDESCRIPTION, SnapCollider> GetSnapColliders() {
             if (snapColliders == null) {
-                snapColliders = new Dictionary<IARG, SnapCollider>();
+                snapColliders = new Dictionary<SNAPCOLTYPEDESCRIPTION, SnapCollider>();
                 foreach (Transform go in transform) {
                     SnapCollider sc = go.GetComponentInChildren<SnapCollider>(true);
                     if (sc != null) {

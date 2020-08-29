@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace MoveToCode {
     public class SnapCollider : MonoBehaviour {
-        public IARG myIArgType;
+        public SNAPCOLTYPEDESCRIPTION mySnapColTypeDescription;
         public Vector3 snapPosition;
 
         HashSet<Type> myCompatibleArgTypes;
@@ -23,6 +23,11 @@ namespace MoveToCode {
             CodeBlockManager.instance.RegisterSnapCollider(this);
             gameObject.SetActive(false);
             GetMyCodeBlockSnap();
+            RegisterWithMyCodeBlockArgDict();
+        }
+
+        private void RegisterWithMyCodeBlockArgDict() {
+            GetMyCodeBlock().GetMyIArgument().RegisterSnapCollider(mySnapColTypeDescription, this);
         }
 
         public MeshOutline GetMeshOutline() {
@@ -54,8 +59,8 @@ namespace MoveToCode {
             }
         }
 
-        internal IARG GetIArgType() {
-            return myIArgType;
+        internal SNAPCOLTYPEDESCRIPTION GetIArgType() {
+            return mySnapColTypeDescription;
         }
 
         public CodeBlock GetMyCodeBlock() {
@@ -69,7 +74,7 @@ namespace MoveToCode {
         // TODO: humanDidIt is such a hack
         // TODO: fix for arrays
         public void DoSnapAction(CodeBlock myCodeBlock, CodeBlock collidedCodeBlock, bool humanDidIt = true) {
-            myCodeBlock.SetIArg(myIArgType, collidedCodeBlock, humanDidIt);
+            myCodeBlock.SetIArg(mySnapColTypeDescription, collidedCodeBlock, humanDidIt);
             SnapToParentCenter(collidedCodeBlock, transform.parent);
         }
 
@@ -81,7 +86,7 @@ namespace MoveToCode {
 
         protected HashSet<Type> GetMyCompatibleArgTypes() {
             if (myCompatibleArgTypes == null) {
-                myCompatibleArgTypes = GetMyCodeBlock().GetArgCompatibility(myIArgType);
+                myCompatibleArgTypes = GetMyCodeBlock().GetArgCompatibility(mySnapColTypeDescription);
             }
             return myCompatibleArgTypes;
         }

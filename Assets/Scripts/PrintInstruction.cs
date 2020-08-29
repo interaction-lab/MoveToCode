@@ -8,7 +8,7 @@ namespace MoveToCode {
         public PrintInstruction(CodeBlock cbIn) : base(cbIn) { }
 
         public override void EvaluateArgumentList() {
-            output = GetArgument(IARG.Printable)?.EvaluateArgument()?.ToString();
+            output = GetArgument(SNAPCOLTYPEDESCRIPTION.Printable)?.EvaluateArgument()?.ToString();
         }
 
 
@@ -19,10 +19,10 @@ namespace MoveToCode {
         }
 
 
-        public override void SetUpArgCompatabilityDict() {
-            argCompatabilityDict = new Dictionary<IARG, HashSet<Type>> {
-                { IARG.Next, new HashSet<Type> { typeof(StandAloneInstruction) }  },
-                { IARG.Printable, new HashSet<Type> { typeof(IDataType), typeof(MathInstruction), typeof(ConditionalInstruction), typeof(ArrayIndexInstruction) }  }
+        public override void SetUpArgToSnapColliderDict() {
+            argToSnapColliderDict = new Dictionary<SNAPCOLTYPEDESCRIPTION, HashSet<Type>> {
+                { SNAPCOLTYPEDESCRIPTION.Next, new HashSet<Type> { typeof(StandAloneInstruction) }  },
+                { SNAPCOLTYPEDESCRIPTION.Printable, new HashSet<Type> { typeof(IDataType), typeof(MathInstruction), typeof(ConditionalInstruction), typeof(ArrayIndexInstruction) }  }
             };
         }
 
@@ -31,7 +31,7 @@ namespace MoveToCode {
         }
 
         public override string DescriptiveInstructionToString() {
-            return string.Join("", "<color=purple>" + ToString() + "</color>(", GetArgument(IARG.Printable)?.DescriptiveInstructionToString() + ")");
+            return string.Join("", "<color=purple>" + ToString() + "</color>(", GetArgument(SNAPCOLTYPEDESCRIPTION.Printable)?.DescriptiveInstructionToString() + ")");
         }
     }
 }

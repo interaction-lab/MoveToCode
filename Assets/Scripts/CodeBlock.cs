@@ -79,15 +79,15 @@ namespace MoveToCode {
             return snapColliders;
         }
 
-        public IARG GetArgDescriptionOfArg(IArgument iArgIn) {
-            foreach (KeyValuePair<IARG, IArgument> kvp in codeBlockArgumentList.GetArgDictAsIArgs()) {
+        public SNAPCOLTYPEDESCRIPTION GetArgDescriptionOfArg(IArgument iArgIn) {
+            foreach (KeyValuePair<SNAPCOLTYPEDESCRIPTION, IArgument> kvp in codeBlockArgumentList.GetArgDictAsIArgs()) {
                 if (kvp.Value == iArgIn)
                     return kvp.Key;
             }
-            return IARG.NotFound;
+            return SNAPCOLTYPEDESCRIPTION.NotFound;
         }
 
-        public void SetIArg(IARG argDescription, CodeBlock newArg, bool humanDidIt) {
+        public void SetIArg(SNAPCOLTYPEDESCRIPTION argDescription, CodeBlock newArg, bool humanDidIt) {
             codeBlockArgumentList.SetArg(argDescription, newArg, humanDidIt);
         }
 
@@ -96,23 +96,23 @@ namespace MoveToCode {
             codeBlockArgumentList.SetArrayArg(pos, block, humanDidIt);
         }
 
-        public Dictionary<IARG, CodeBlock> GetArgDictAsCodeBlocks() {
+        public Dictionary<SNAPCOLTYPEDESCRIPTION, CodeBlock> GetArgDictAsCodeBlocks() {
             return codeBlockArgumentList.GetArgDict();
         }
 
-        public Dictionary<IARG, IArgument> GetArgDictAsIArgs() {
+        public Dictionary<SNAPCOLTYPEDESCRIPTION, IArgument> GetArgDictAsIArgs() {
             return codeBlockArgumentList.GetArgDictAsIArgs();
         }
 
-        public HashSet<Type> GetArgCompatibility(IARG argDescription) {
+        public HashSet<Type> GetArgCompatibility(SNAPCOLTYPEDESCRIPTION argDescription) {
             return GetMyIArgument().GetArgCompatibility(argDescription);
         }
 
-        public CodeBlock GetArgAsCodeBlock(IARG argDescription) {
+        public CodeBlock GetArgAsCodeBlock(SNAPCOLTYPEDESCRIPTION argDescription) {
             return codeBlockArgumentList.GetArgAsCodeBlock(argDescription);
         }
 
-        public IArgument GetArgumentFromDict(IARG argDescription) {
+        public IArgument GetArgumentFromDict(SNAPCOLTYPEDESCRIPTION argDescription) {
             return codeBlockArgumentList.GetArgAsIArg(argDescription);
         }
 

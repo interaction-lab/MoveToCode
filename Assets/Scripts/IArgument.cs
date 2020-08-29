@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace MoveToCode {
-    public enum IARG {
+    public enum SNAPCOLTYPEDESCRIPTION {
         Next,
         Array,
         Value,
@@ -22,14 +22,14 @@ namespace MoveToCode {
     public abstract class IArgument {
         CodeBlock myCodeBlock;
         // TODO: this should just be a constant
-        protected Dictionary<IARG, HashSet<Type>> argCompatabilityDict;
+        protected Dictionary<SNAPCOLTYPEDESCRIPTION, SnapCollider> argToSnapColliderDict = new Dictionary<SNAPCOLTYPEDESCRIPTION, SnapCollider>();
 
         public abstract IDataType EvaluateArgument();
-        public virtual void ResestInternalState() { }
+        public abstract void ResestInternalState();
+        public abstract void EvaluateArgumentList();
+        public abstract void SetUpArgToSnapColliderDict();
+        public abstract string DescriptiveInstructionToString();
 
-        public virtual string DescriptiveInstructionToString() { return ""; }
-        public virtual void EvaluateArgumentList() { }
-        public virtual void SetUpArgCompatabilityDict() { }
 
         public CodeBlock GetCodeBlock() {
             return myCodeBlock;
@@ -40,28 +40,35 @@ namespace MoveToCode {
             ResestInternalState();
         }
 
-        public Dictionary<IARG, HashSet<Type>> GetArgCompatabilityDict() {
-            if (argCompatabilityDict == null) {
-                SetUpArgCompatabilityDict();
-            }
-            return argCompatabilityDict;
+        internal void RegisterSnapCollider(SNAPCOLTYPEDESCRIPTION snapColDescIn, SnapCollider snapCollider) {
+            GetArgToSnapColliderDict()[snapColDescIn] = snapCollider;
+        }
+
+        public Dictionary<SNAPCOLTYPEDESCRIPTION, SnapCollider> GetArgToSnapColliderDict() {
+            return argToSnapColliderDict;
         }
 
         public int GetNumArguments() {
-            return GetArgCompatabilityDict().Count;
+            return GetArgToSnapColliderDict().Count;
         }
 
-        public IArgument GetArgument(IARG iARGIn) {
+        public IArgument GetArgument(SNAPCOLTYPEDESCRIPTION iARGIn) {
             return myCodeBlock.GetArgumentFromDict(iARGIn);
         }
 
-        public virtual HashSet<Type> GetArgCompatibility(IARG argDescription) {
-            if (argCompatabilityDict == null) {
-                SetUpArgCompatabilityDict();
-            }
-            if (argCompatabilityDict.ContainsKey(argDescription))
-                return argCompatabilityDict[argDescription];
-            return null;
+
+        public static Dictionary<SNAPCOLTYPEDESCRIPTION, HashSet<Type>> iArgCompatabilityDict =
+            new Dictionary<SNAPCOLTYPEDESCRIPTION, HashSet<Type>> {
+                { SNAPCOLTYPEDESCRIPTION.LeftOfConditional, new HashSet<Type> {  typeof(BasicDataType), typeof(MathInstruction), typeof(ArrayIndexInstruction) }  },
+                { SNAPCOLTYPEDESCRIPTION.RightOfConditional, new HashSet<Type> {  typeof(BasicDataType), typeof(MathInstruction), typeof(ArrayIndexInstruction) }  },
+                { SNAPCOLTYPEDESCRIPTION.ArrayElement, new HashSet<Type> { typeof(BasicDataType) } },
+                 { SNAPCOLTYPEDESCRIPTION.Array, new HashSet<Type> { typeof(Variable) }  },
+                { SNAPCOLTYPEDESCRIPTION.ArrayElement, new HashSet<Type> {  typeof(IntDataType), typeof(MathInstruction) }  }
+            };
+
+
+        public virtual HashSet<Type> GetArgCompatibility(SNAPCOLTYPEDESCRIPTION argDescription) {
+            return iArgCompatabilityDict[argDescription];
         }
 
 

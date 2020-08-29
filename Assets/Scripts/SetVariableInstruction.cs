@@ -11,16 +11,16 @@ namespace MoveToCode {
 
         public override InstructionReturnValue RunInstruction() {
             EvaluateArgumentList();
-            if (GetArgument(IARG.Variable).GetType() == typeof(ArrayIndexInstruction)) {
+            if (GetArgument(SNAPCOLTYPEDESCRIPTION.Variable).GetType() == typeof(ArrayIndexInstruction)) {
                 //set "variable"/element in array
-                (GetArgument(IARG.Variable) as ArrayIndexInstruction).SetArrayValue(GetArgument(IARG.Value)?.EvaluateArgument());
+                (GetArgument(SNAPCOLTYPEDESCRIPTION.Variable) as ArrayIndexInstruction).SetArrayValue(GetArgument(SNAPCOLTYPEDESCRIPTION.Value)?.EvaluateArgument());
                 //set the array
-                ((GetArgument(IARG.Variable) as ArrayIndexInstruction).GetArgument(IARG.Next) as Variable)
-                    .SetValue((GetArgument(IARG.Variable) as ArrayIndexInstruction).GetArgument(IARG.Next).EvaluateArgument() as ArrayDataStructure);
+                ((GetArgument(SNAPCOLTYPEDESCRIPTION.Variable) as ArrayIndexInstruction).GetArgument(SNAPCOLTYPEDESCRIPTION.Next) as Variable)
+                    .SetValue((GetArgument(SNAPCOLTYPEDESCRIPTION.Variable) as ArrayIndexInstruction).GetArgument(SNAPCOLTYPEDESCRIPTION.Next).EvaluateArgument() as ArrayDataStructure);
             }
             else {
                 //set regular variable (not in an array)
-                (GetArgument(IARG.Variable) as Variable).SetValue(GetArgument(IARG.Value)?.EvaluateArgument());
+                (GetArgument(SNAPCOLTYPEDESCRIPTION.Variable) as Variable).SetValue(GetArgument(SNAPCOLTYPEDESCRIPTION.Value)?.EvaluateArgument());
             }
             return new InstructionReturnValue(null, GetNextInstruction());
         }
@@ -30,19 +30,19 @@ namespace MoveToCode {
         }
 
 
-        public override void SetUpArgCompatabilityDict() {
-            argCompatabilityDict = new Dictionary<IARG, HashSet<Type>> {
-                { IARG.Next, new HashSet<Type> { typeof(StandAloneInstruction) }  },
-                { IARG.Variable, new HashSet<Type> { typeof(Variable) , typeof(ArrayIndexInstruction) }  },
-                { IARG.Value, new HashSet<Type> { typeof(IDataType), typeof(MathInstruction), typeof(ConditionalInstruction), typeof(ArrayIndexInstruction) }  }
+        public override void SetUpArgToSnapColliderDict() {
+            argToSnapColliderDict = new Dictionary<SNAPCOLTYPEDESCRIPTION, HashSet<Type>> {
+                { SNAPCOLTYPEDESCRIPTION.Next, new HashSet<Type> { typeof(StandAloneInstruction) }  },
+                { SNAPCOLTYPEDESCRIPTION.Variable, new HashSet<Type> { typeof(Variable) , typeof(ArrayIndexInstruction) }  },
+                { SNAPCOLTYPEDESCRIPTION.Value, new HashSet<Type> { typeof(IDataType), typeof(MathInstruction), typeof(ConditionalInstruction), typeof(ArrayIndexInstruction) }  }
             };
         }
 
         public override string DescriptiveInstructionToString() {
             return string.Join("", "Set ",
-                GetArgument(IARG.Variable)?.DescriptiveInstructionToString(),
+                GetArgument(SNAPCOLTYPEDESCRIPTION.Variable)?.DescriptiveInstructionToString(),
                 " to ",
-                GetArgument(IARG.Value)?.DescriptiveInstructionToString());
+                GetArgument(SNAPCOLTYPEDESCRIPTION.Value)?.DescriptiveInstructionToString());
         }
     }
 }

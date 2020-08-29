@@ -124,7 +124,7 @@ namespace MoveToCode {
         }
 
         public void UnsnapAllBlockFromBlockManager() {
-            StartCodeBlock.instance.SetIArg(IARG.Next, null, false); // unsnap
+            StartCodeBlock.instance.SetIArg(SNAPCOLTYPEDESCRIPTION.Next, null, false); // unsnap
             foreach (CodeBlock cb in CodeBlockManager.instance.GetAllCodeBlocks()) {
                 if (cb != StartCodeBlock.instance) {
                     cb.transform.SnapToParent(transform);

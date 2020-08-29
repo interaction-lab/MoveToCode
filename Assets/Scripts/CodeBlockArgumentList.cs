@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿/*using System.Collections.Generic;
 using UnityEngine;
 
 namespace MoveToCode {
@@ -20,7 +20,7 @@ namespace MoveToCode {
         public Dictionary<IARG, CodeBlock> GetArgDict() {
             if (argDict == null) {
                 argDict = new Dictionary<IARG, CodeBlock>();
-                foreach (Pair<IARG, Type> kvp in myCodeBlock.GetArgCompatibility()) {
+                foreach (Pair<IARG, Type> kvp in myCodeBlock.GetArgCompatibility<) {
 
                 }
 
@@ -147,3 +147,4 @@ namespace MoveToCode {
 
     }
 }
+*/

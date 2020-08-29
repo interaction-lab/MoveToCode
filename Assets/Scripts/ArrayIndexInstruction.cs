@@ -12,14 +12,14 @@ namespace MoveToCode {
         public ArrayIndexInstruction(CodeBlock cbIn) : base(cbIn) { }
 
         public override void EvaluateArgumentList() {
-            if (GetArgument(IARG.Array)?.EvaluateArgument().GetType() != typeof(ArrayDataStructure)) {
+            if (GetArgument(SNAPCOLTYPEDESCRIPTION.Array)?.EvaluateArgument().GetType() != typeof(ArrayDataStructure)) {
                 arr = null;
             }
             else {
-                arr = GetArgument(IARG.Array)?.EvaluateArgument() as ArrayDataStructure;
+                arr = GetArgument(SNAPCOLTYPEDESCRIPTION.Array)?.EvaluateArgument() as ArrayDataStructure;
                 arr.EvaluateArgumentList();
             }
-            index = GetArgument(IARG.ArrayElement)?.EvaluateArgument() as IntDataType;
+            index = GetArgument(SNAPCOLTYPEDESCRIPTION.ArrayElement)?.EvaluateArgument() as IntDataType;
         }
 
         public override InstructionReturnValue RunInstruction() {
@@ -56,15 +56,8 @@ namespace MoveToCode {
         }
 
 
-        public override void SetUpArgCompatabilityDict() {
-            argCompatabilityDict = new Dictionary<IARG, HashSet<Type>> {
-                { IARG.Array, new HashSet<Type> { typeof(Variable) }  },
-                { IARG.ArrayElement, new HashSet<Type> {  typeof(IntDataType), typeof(MathInstruction) }  }
-            };
-        }
-
         public override string DescriptiveInstructionToString() {
-            return string.Join("", GetArgument(IARG.Array)?.DescriptiveInstructionToString(), " ", "[", " ", GetArgument(IARG.ArrayElement)?.DescriptiveInstructionToString(), "]");
+            return string.Join("", GetArgument(SNAPCOLTYPEDESCRIPTION.Array)?.DescriptiveInstructionToString(), " ", "[", " ", GetArgument(SNAPCOLTYPEDESCRIPTION.ArrayElement)?.DescriptiveInstructionToString(), "]");
         }
     }
 }

@@ -10,9 +10,9 @@ namespace MoveToCode {
         public MathInstruction(CodeBlock cbIn) : base(cbIn) { }
 
         public override void EvaluateArgumentList() {
-            if (GetArgument(IARG.LeftNumber) != null && GetArgument(IARG.RightNumber) != null) {
-                leftNum = (float)Convert.ChangeType(GetArgument(IARG.LeftNumber).EvaluateArgument().GetValue(), typeof(float));
-                rightNum = (float)Convert.ChangeType(GetArgument(IARG.RightNumber).EvaluateArgument().GetValue(), typeof(float));
+            if (GetArgument(SNAPCOLTYPEDESCRIPTION.LeftNumber) != null && GetArgument(SNAPCOLTYPEDESCRIPTION.RightNumber) != null) {
+                leftNum = (float)Convert.ChangeType(GetArgument(SNAPCOLTYPEDESCRIPTION.LeftNumber).EvaluateArgument().GetValue(), typeof(float));
+                rightNum = (float)Convert.ChangeType(GetArgument(SNAPCOLTYPEDESCRIPTION.RightNumber).EvaluateArgument().GetValue(), typeof(float));
             }
         }
 
@@ -21,15 +21,15 @@ namespace MoveToCode {
         }
 
 
-        public override void SetUpArgCompatabilityDict() {
-            argCompatabilityDict = new Dictionary<IARG, HashSet<Type>> {
-                { IARG.LeftNumber, new HashSet<Type> {  typeof(INumberDataType), typeof(MathInstruction) }  },
-                { IARG.RightNumber, new HashSet<Type> {  typeof(INumberDataType), typeof(MathInstruction) }  }
+        public override void SetUpArgToSnapColliderDict() {
+            argToSnapColliderDict = new Dictionary<SNAPCOLTYPEDESCRIPTION, HashSet<Type>> {
+                { SNAPCOLTYPEDESCRIPTION.LeftNumber, new HashSet<Type> {  typeof(INumberDataType), typeof(MathInstruction) }  },
+                { SNAPCOLTYPEDESCRIPTION.RightNumber, new HashSet<Type> {  typeof(INumberDataType), typeof(MathInstruction) }  }
             };
         }
 
         public override string DescriptiveInstructionToString() {
-            return string.Join("", GetArgument(IARG.LeftNumber)?.DescriptiveInstructionToString(), " ", GetMathSymbol(), " ", GetArgument(IARG.RightNumber)?.DescriptiveInstructionToString());
+            return string.Join("", GetArgument(SNAPCOLTYPEDESCRIPTION.LeftNumber)?.DescriptiveInstructionToString(), " ", GetMathSymbol(), " ", GetArgument(SNAPCOLTYPEDESCRIPTION.RightNumber)?.DescriptiveInstructionToString());
         }
     }
 }

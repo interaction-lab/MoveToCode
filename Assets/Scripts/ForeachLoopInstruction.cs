@@ -25,20 +25,20 @@ namespace MoveToCode {
         }
 
         public override void EvaluateArgumentList() {
-            Variable iteratorVar = GetArgument(IARG.Variable) as Variable;
-            ArrayDataStructure dataStructureVar = GetArgument(IARG.ArrayDataStructure) as ArrayDataStructure;
+            Variable iteratorVar = GetArgument(SNAPCOLTYPEDESCRIPTION.Variable) as Variable;
+            ArrayDataStructure dataStructureVar = GetArgument(SNAPCOLTYPEDESCRIPTION.ArrayDataStructure) as ArrayDataStructure;
             if (dataStructureVar != null && currIdxInArray < dataStructureVar.GetSize()) {
                 iteratorVar.SetValue(dataStructureVar.GetValueAtIndex(currIdxInArray));
             }
         }
 
 
-        public override void SetUpArgCompatabilityDict() {
-            argCompatabilityDict = new Dictionary<IARG, HashSet<Type>> {
-                { IARG.Nested, new HashSet<Type> { typeof(StandAloneInstruction) }  },
-                { IARG.Variable, new HashSet<Type> {  typeof(Variable) }  },
-                { IARG.ArrayDataStructure, new HashSet<Type> {  typeof(ArrayDataStructure) }  },
-                { IARG.Next, new HashSet<Type> { typeof(StandAloneInstruction) }  }
+        public override void SetUpArgToSnapColliderDict() {
+            argToSnapColliderDict = new Dictionary<SNAPCOLTYPEDESCRIPTION, HashSet<Type>> {
+                { SNAPCOLTYPEDESCRIPTION.Nested, new HashSet<Type> { typeof(StandAloneInstruction) }  },
+                { SNAPCOLTYPEDESCRIPTION.Variable, new HashSet<Type> {  typeof(Variable) }  },
+                { SNAPCOLTYPEDESCRIPTION.ArrayDataStructure, new HashSet<Type> {  typeof(ArrayDataStructure) }  },
+                { SNAPCOLTYPEDESCRIPTION.Next, new HashSet<Type> { typeof(StandAloneInstruction) }  }
             };
         }
 

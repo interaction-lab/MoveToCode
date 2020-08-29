@@ -55,10 +55,10 @@ namespace MoveToCode {
             Vector3 reposition = origPositionArgLeft;
             float horizontalSize = -1.0f;
             if (GetMyCodeBlock().GetType() == typeof(ConditionalCodeBlock)) {
-                horizontalSize = (float)GetMyCodeBlock().GetArgAsCodeBlock(IARG.LeftOfConditional)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
+                horizontalSize = (float)GetMyCodeBlock().GetArgAsCodeBlock(SNAPCOLTYPEDESCRIPTION.LeftOfConditional)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
             }
             else {
-                horizontalSize = (float)GetMyCodeBlock().GetArgAsCodeBlock(IARG.LeftNumber)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
+                horizontalSize = (float)GetMyCodeBlock().GetArgAsCodeBlock(SNAPCOLTYPEDESCRIPTION.LeftNumber)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
             }
             if (horizontalSize != -1.0f) {
                 rescale.x = (float)horizontalSize;
@@ -74,9 +74,9 @@ namespace MoveToCode {
             Vector3 reposition = origPositionArgRight;
             float horizontalSize = -1.0f;
             if (GetMyCodeBlock().GetType() == typeof(ConditionalCodeBlock))
-                horizontalSize = (float)GetMyCodeBlock().GetArgAsCodeBlock(IARG.RightOfConditional)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
+                horizontalSize = (float)GetMyCodeBlock().GetArgAsCodeBlock(SNAPCOLTYPEDESCRIPTION.RightOfConditional)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
             else //Math
-                horizontalSize = (float)GetMyCodeBlock().GetArgAsCodeBlock(IARG.RightNumber)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
+                horizontalSize = (float)GetMyCodeBlock().GetArgAsCodeBlock(SNAPCOLTYPEDESCRIPTION.RightNumber)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
             if (horizontalSize != -1.0f) {
                 rescale.x = (float)horizontalSize;
                 // 

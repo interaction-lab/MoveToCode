@@ -80,7 +80,7 @@ namespace MoveToCode {
                                      " at ", snapArgIndex.ToString());
             }
             else {
-                IARG childArg = GetChildArg(actionIndex);
+                SNAPCOLTYPEDESCRIPTION childArg = GetChildArg(actionIndex);
 
                 snapParent[actionIndex].SetIArg(childArg, null, false);
                 return string.Join("", "Remove ", snapChild[actionIndex].name,
@@ -89,19 +89,19 @@ namespace MoveToCode {
             }
         }
 
-        private IARG GetChildArg(int index) {
+        private SNAPCOLTYPEDESCRIPTION GetChildArg(int index) {
             return snapParent[index].GetArgDescriptionOfArg(snapChild[index].GetMyIArgument());
         }
 
         private int FindNextSnapIndex() {
             for (int actionIndex = 0; actionIndex < snapChild.Length; ++actionIndex) {
                 if (withAction[actionIndex] != SNAPACTIONS.REMOVE) {
-                    if (GetChildArg(actionIndex) == IARG.NotFound) {
+                    if (GetChildArg(actionIndex) == SNAPCOLTYPEDESCRIPTION.NotFound) {
                         return actionIndex;
                     }
                 }
                 else {
-                    if (GetChildArg(actionIndex) != IARG.NotFound) {
+                    if (GetChildArg(actionIndex) != SNAPCOLTYPEDESCRIPTION.NotFound) {
                         return actionIndex;
                     }
                 }

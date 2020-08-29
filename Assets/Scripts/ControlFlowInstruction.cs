@@ -10,7 +10,7 @@
         }
 
         public override void EvaluateArgumentList() {
-            IDataType d = (GetArgument(IARG.Conditional) as ConditionalInstruction)?.RunInstruction().GetReturnDataVal();
+            IDataType d = (GetArgument(SNAPCOLTYPEDESCRIPTION.Conditional) as ConditionalInstruction)?.RunInstruction().GetReturnDataVal();
             if (d != null) {
                 conditionIsTrue = (bool)d.GetValue();
             }
@@ -25,7 +25,7 @@
         }
 
         protected StandAloneInstruction GetNestedInstruction() {
-            return GetArgument(IARG.Nested) as StandAloneInstruction;
+            return GetArgument(SNAPCOLTYPEDESCRIPTION.Nested) as StandAloneInstruction;
         }
 
         private string AddNestedInstructionTabbing(string result, Instruction currInstruction) {
@@ -37,7 +37,7 @@
         }
 
         public override StandAloneInstruction GetNextInstruction() {
-            return GetArgument(IARG.Next) as StandAloneInstruction;
+            return GetArgument(SNAPCOLTYPEDESCRIPTION.Next) as StandAloneInstruction;
         }
     }
 }

@@ -26,7 +26,9 @@ namespace MoveToCode {
         private void Awake() {
             AddMRTKComponents();
             AddSnapColliderComponents();
-            SetMyBlockInternalArg();
+            if (myBlockInternalArg == null) {
+                SetMyBlockInternalArg();
+            }
             CodeBlockManager.instance.RegisterCodeBlock(this);
             SetUpManipulationLogger();
             dragScript = gameObject.AddComponent<CloneOnDrag>(); // TODO: clean this up
@@ -53,6 +55,9 @@ namespace MoveToCode {
 
         // Public Methods      
         public IArgument GetMyIArgument() {
+            if (myBlockInternalArg == null) {
+                SetMyBlockInternalArg();
+            }
             return myBlockInternalArg;
         }
 

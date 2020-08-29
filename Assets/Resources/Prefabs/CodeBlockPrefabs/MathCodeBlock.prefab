@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0064d2c807e4c7047a4189d5dd96702d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myIArgType: 8
+  mySnapColTypeDescription: 0
   snapPosition: {x: 0, y: 0, z: -0.25}
 --- !u!1 &438597427156623183
 GameObject:
@@ -405,7 +405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0064d2c807e4c7047a4189d5dd96702d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myIArgType: 7
+  mySnapColTypeDescription: 0
   snapPosition: {x: 0, y: 0, z: -0.25}
 --- !u!1 &438597427519189872
 GameObject:

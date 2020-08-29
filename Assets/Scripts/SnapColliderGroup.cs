@@ -28,11 +28,11 @@ namespace MoveToCode {
         private void SetCollidersAndChildrenState(bool desiredActiveState) {
             foreach (KeyValuePair<SNAPCOLTYPEDESCRIPTION, SnapCollider> scKV in GetSnapColliders()) {
                 scKV.Value.gameObject.SetActive(desiredActiveState);
-                /*if (scKV.Value.HasCodeBlockArgAttached()) {
+                if (scKV.Value.HasCodeBlockArgAttached()) {
                     (desiredActiveState ?
                     new Action(scKV.Value.GetMyCodeBlockArg().GetSnapColliderGroup().EnableAllCollidersAndChildrenColliders) :
                               scKV.Value.GetMyCodeBlockArg().GetSnapColliderGroup().DisableAllCollidersAndChildrenColliders)();
-                }*/ // here
+                } // here
             }
         }
 

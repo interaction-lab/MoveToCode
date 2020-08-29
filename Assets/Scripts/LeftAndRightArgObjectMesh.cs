@@ -56,7 +56,7 @@ namespace MoveToCode {
             SNAPCOLTYPEDESCRIPTION snalColDescIndex = GetMyCodeBlock().GetType() == typeof(ConditionalCodeBlock) ?
                 SNAPCOLTYPEDESCRIPTION.LeftOfConditional :
                 SNAPCOLTYPEDESCRIPTION.LeftNumber;
-            Debug.Log(GetMyCodeBlock().GetType().ToString());
+
             CodeBlock cb1 = GetMyCodeBlock().GetArgAsCodeBlock(snalColDescIndex);
             if (cb1 != null) {
                 cb1.GetCodeBlockObjectMesh().GetBlockHorizontalSize();

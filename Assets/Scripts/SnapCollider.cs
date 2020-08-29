@@ -93,9 +93,8 @@ namespace MoveToCode {
                 if (CodeBlockSnap.lastDraggedCBS != curArg) {
                     curArg.transform.localPosition = curArg.transform.localPosition + new Vector3(0.25f, 1.1f, 1.25f);
                 }
-                transform.SnapToCodeBlockManager();
-                curArg.GetCodeBlockObjectMesh().ResizeChain();
                 curArg.transform.SnapToCodeBlockManager();
+                curArg.GetCodeBlockObjectMesh().ResizeChain();
                 myCodeBlockArg = null;
                 // TODO: probably needs a log
             }

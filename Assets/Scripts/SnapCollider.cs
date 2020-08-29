@@ -77,11 +77,18 @@ namespace MoveToCode {
         // TODO: fix for arrays
         public void DoSnapAction(CodeBlock myCodeBlock, CodeBlock collidedCodeBlock, bool humanDidIt = true) {
             SetMyCodeBlockArg(collidedCodeBlock);
-            SnapToParentCenter(collidedCodeBlock, transform.parent);
         }
 
         public void SetMyCodeBlockArg(CodeBlock collidedCodeBlock) {
+            GetMyCodeBlockArg()?.RemoveFromParentSnapCollider(false);
+            AddNewCodeBlockArg(collidedCodeBlock);
+        }
+
+        private void AddNewCodeBlockArg(CodeBlock collidedCodeBlock) {
             myCodeBlockArg = collidedCodeBlock;
+            SnapToParentCenter(collidedCodeBlock, transform.parent);
+            AudioManager.instance.PlaySoundAtObject(gameObject, AudioManager.snapAudioClip);
+            GetMyCodeBlock().GetCodeBlockObjectMesh().ResizeChain();
         }
 
         public CodeBlock GetMyCodeBlockArg() {

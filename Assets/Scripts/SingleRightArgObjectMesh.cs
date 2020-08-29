@@ -37,7 +37,8 @@ namespace MoveToCode {
             // need to resize arg right based upon horizontal size of arg
             Vector3 rescale = origScaleArgRight;
             Vector3 reposition = origPositionArgRight;
-            float? horizontalSize = GetMyCodeBlock().GetArgAsCodeBlock(SNAPCOLTYPEDESCRIPTION.Conditional)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
+
+            float? horizontalSize = GetMyCodeBlock().GetArgAsCodeBlock(SNAPCOLTYPEDESCRIPTION.Printable)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
             if (horizontalSize != null) {
                 rescale.x = (float)horizontalSize;
                 reposition.x = reposition.x + (rescale.x - 0.5f) / 2.0f;

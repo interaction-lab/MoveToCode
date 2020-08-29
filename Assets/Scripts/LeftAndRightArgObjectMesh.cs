@@ -53,14 +53,12 @@ namespace MoveToCode {
             // need to resize arg right based upon horizontal size of arg
             Vector3 rescale = origScaleArg;
             Vector3 reposition = origPositionArgLeft;
-            float horizontalSize = -1.0f;
-            if (GetMyCodeBlock().GetType() == typeof(ConditionalCodeBlock)) {
-                horizontalSize = (float)GetMyCodeBlock().GetArgAsCodeBlock(SNAPCOLTYPEDESCRIPTION.LeftOfConditional)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
-            }
-            else {
-                horizontalSize = (float)GetMyCodeBlock().GetArgAsCodeBlock(SNAPCOLTYPEDESCRIPTION.LeftNumber)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
-            }
-            if (horizontalSize != -1.0f) {
+            SNAPCOLTYPEDESCRIPTION snalColDescIndex = GetMyCodeBlock().GetType() == typeof(ConditionalCodeBlock) ?
+                SNAPCOLTYPEDESCRIPTION.LeftOfConditional :
+                SNAPCOLTYPEDESCRIPTION.LeftNumber;
+            float? horizontalSize = (float)GetMyCodeBlock().GetArgAsCodeBlock(snalColDescIndex)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
+
+            if (horizontalSize != null) {
                 rescale.x = (float)horizontalSize;
                 reposition.x = reposition.x - (rescale.x - 0.5f) / 2.0f;
             }
@@ -72,15 +70,14 @@ namespace MoveToCode {
             // need to resize arg right based upon horizontal size of arg
             Vector3 rescale = origScaleArg;
             Vector3 reposition = origPositionArgRight;
-            float horizontalSize = -1.0f;
-            if (GetMyCodeBlock().GetType() == typeof(ConditionalCodeBlock))
-                horizontalSize = (float)GetMyCodeBlock().GetArgAsCodeBlock(SNAPCOLTYPEDESCRIPTION.RightOfConditional)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
-            else //Math
-                horizontalSize = (float)GetMyCodeBlock().GetArgAsCodeBlock(SNAPCOLTYPEDESCRIPTION.RightNumber)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
-            if (horizontalSize != -1.0f) {
+            SNAPCOLTYPEDESCRIPTION snalColDescIndex = GetMyCodeBlock().GetType() == typeof(ConditionalCodeBlock) ?
+                SNAPCOLTYPEDESCRIPTION.RightOfConditional :
+                SNAPCOLTYPEDESCRIPTION.RightNumber;
+            float? horizontalSize = (float)GetMyCodeBlock().GetArgAsCodeBlock(snalColDescIndex)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
+
+            if (horizontalSize != null) {
                 rescale.x = (float)horizontalSize;
-                // 
-                reposition.x = reposition.x + (rescale.x - 0.5f) / 2.0f;
+                reposition.x = reposition.x - (rescale.x - 0.5f) / 2.0f;
             }
             argRight.localPosition = reposition;
             argRight.localScale = rescale;

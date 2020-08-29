@@ -68,13 +68,11 @@ namespace MoveToCode {
             lastDraggedCBS = this;
             if (bestCandidateSnapCollider != null) { // within grey zone; SNAP ON
                 bestCandidateSnapCollider.DoSnapAction(bestCandidateSnapCollider.GetMyCodeBlock(), GetMyCodeBlock());
-                Block2TextConsoleManager.instance.UpdateConsoleOnSnap(); //refresh the Block2Text console when you ADD a block 
             }
-            else {// outside of grey zone; SNAP OFF 
-                // Remove when dragged away
+            else {
                 myCodeBlock.RemoveFromParentSnapCollider(true);
-                Block2TextConsoleManager.instance.UpdateConsoleOnSnap(); //refresh the Block2Text console when you REMOVE a block
             }
+            Block2TextConsoleManager.instance.UpdateConsoleOnSnap();
             mySnapColliders?.DisableAllCompatibleColliders();
             GetCurSnapCollidersInContact().Clear();
             AddSnapColliderInContact(null);

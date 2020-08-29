@@ -117,17 +117,7 @@ namespace MoveToCode {
         }
 
         public void RemoveFromParentSnapCollider(bool humanDidIt) {
-            SnapCollider parentSnapCollider = transform.parent?.GetComponent<SnapCollider>();
-            if (parentSnapCollider != null) {
-                parentSnapCollider.SetMyCodeBlockArg(null);
-                AudioManager.instance.PlaySoundAtObject(gameObject, AudioManager.popAudioClip);
-                if (CodeBlockSnap.lastDraggedCBS != GetCodeBlockSnap()) {
-                    transform.localPosition = transform.localPosition + new Vector3(0.25f, 1.1f, 1.25f);
-                }
-                transform.SnapToCodeBlockManager();
-                GetCodeBlockObjectMesh().ResizeChain();
-                // TODO: probably needs a log
-            }
+            transform.parent?.GetComponent<SnapCollider>()?.SetMyCodeBlockArg(null);
         }
 
         public void SetIsMenuBlock(bool option) {

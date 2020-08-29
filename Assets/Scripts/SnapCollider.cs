@@ -80,8 +80,25 @@ namespace MoveToCode {
         }
 
         public void SetMyCodeBlockArg(CodeBlock collidedCodeBlock) {
-            GetMyCodeBlockArg()?.RemoveFromParentSnapCollider(false);
-            AddNewCodeBlockArg(collidedCodeBlock);
+            RemoveCurrentBlockArg();
+            if (collidedCodeBlock != null) {
+                AddNewCodeBlockArg(collidedCodeBlock);
+            }
+        }
+
+        private void RemoveCurrentBlockArg() {
+            CodeBlock curArg = GetMyCodeBlockArg();
+            if (curArg != null) {
+                AudioManager.instance.PlaySoundAtObject(gameObject, AudioManager.popAudioClip);
+                if (CodeBlockSnap.lastDraggedCBS != curArg) {
+                    curArg.transform.localPosition = curArg.transform.localPosition + new Vector3(0.25f, 1.1f, 1.25f);
+                }
+                transform.SnapToCodeBlockManager();
+                curArg.GetCodeBlockObjectMesh().ResizeChain();
+                curArg.transform.SnapToCodeBlockManager();
+                myCodeBlockArg = null;
+                // TODO: probably needs a log
+            }
         }
 
         private void AddNewCodeBlockArg(CodeBlock collidedCodeBlock) {

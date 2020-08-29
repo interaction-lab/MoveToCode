@@ -18,14 +18,6 @@ namespace MoveToCode {
             return new InstructionReturnValue(null, GetNextInstruction());
         }
 
-
-        public override void SetUpArgToSnapColliderDict() {
-            argToSnapColliderDict = new Dictionary<SNAPCOLTYPEDESCRIPTION, HashSet<Type>> {
-                { SNAPCOLTYPEDESCRIPTION.Next, new HashSet<Type> { typeof(StandAloneInstruction) }  },
-                { SNAPCOLTYPEDESCRIPTION.Printable, new HashSet<Type> { typeof(IDataType), typeof(MathInstruction), typeof(ConditionalInstruction), typeof(ArrayIndexInstruction) }  }
-            };
-        }
-
         public override string ToString() {
             return "print";
         }

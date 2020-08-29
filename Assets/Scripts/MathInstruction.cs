@@ -20,14 +20,6 @@ namespace MoveToCode {
             return GetMathSymbol();
         }
 
-
-        public override void SetUpArgToSnapColliderDict() {
-            argToSnapColliderDict = new Dictionary<SNAPCOLTYPEDESCRIPTION, HashSet<Type>> {
-                { SNAPCOLTYPEDESCRIPTION.LeftNumber, new HashSet<Type> {  typeof(INumberDataType), typeof(MathInstruction) }  },
-                { SNAPCOLTYPEDESCRIPTION.RightNumber, new HashSet<Type> {  typeof(INumberDataType), typeof(MathInstruction) }  }
-            };
-        }
-
         public override string DescriptiveInstructionToString() {
             return string.Join("", GetArgument(SNAPCOLTYPEDESCRIPTION.LeftNumber)?.DescriptiveInstructionToString(), " ", GetMathSymbol(), " ", GetArgument(SNAPCOLTYPEDESCRIPTION.RightNumber)?.DescriptiveInstructionToString());
         }

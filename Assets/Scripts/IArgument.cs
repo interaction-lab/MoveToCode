@@ -59,11 +59,19 @@ namespace MoveToCode {
 
         public static Dictionary<SNAPCOLTYPEDESCRIPTION, HashSet<Type>> iArgCompatabilityDict =
             new Dictionary<SNAPCOLTYPEDESCRIPTION, HashSet<Type>> {
+                { SNAPCOLTYPEDESCRIPTION.Next, new HashSet<Type> { typeof(StandAloneInstruction) }  },
                 { SNAPCOLTYPEDESCRIPTION.LeftOfConditional, new HashSet<Type> {  typeof(BasicDataType), typeof(MathInstruction), typeof(ArrayIndexInstruction) }  },
                 { SNAPCOLTYPEDESCRIPTION.RightOfConditional, new HashSet<Type> {  typeof(BasicDataType), typeof(MathInstruction), typeof(ArrayIndexInstruction) }  },
                 { SNAPCOLTYPEDESCRIPTION.ArrayElement, new HashSet<Type> { typeof(BasicDataType) } },
-                 { SNAPCOLTYPEDESCRIPTION.Array, new HashSet<Type> { typeof(Variable) }  },
-                { SNAPCOLTYPEDESCRIPTION.ArrayElement, new HashSet<Type> {  typeof(IntDataType), typeof(MathInstruction) }  }
+                { SNAPCOLTYPEDESCRIPTION.Array, new HashSet<Type> { typeof(Variable) }  },
+                { SNAPCOLTYPEDESCRIPTION.ArrayDataStructure, new HashSet<Type> {  typeof(ArrayDataStructure) }  },
+                { SNAPCOLTYPEDESCRIPTION.Variable, new HashSet<Type> { typeof(Variable) , typeof(ArrayIndexInstruction) }  },
+                { SNAPCOLTYPEDESCRIPTION.Nested, new HashSet<Type> { typeof(StandAloneInstruction) }  },
+                { SNAPCOLTYPEDESCRIPTION.Conditional, new HashSet<Type> {  typeof(ConditionalInstruction) }  },
+                { SNAPCOLTYPEDESCRIPTION.Value, new HashSet<Type> { typeof(IDataType), typeof(MathInstruction), typeof(ConditionalInstruction), typeof(ArrayIndexInstruction) }  },
+                { SNAPCOLTYPEDESCRIPTION.Printable, new HashSet<Type> { typeof(IDataType), typeof(MathInstruction), typeof(ConditionalInstruction), typeof(ArrayIndexInstruction) }  },
+                { SNAPCOLTYPEDESCRIPTION.LeftNumber, new HashSet<Type> {  typeof(INumberDataType), typeof(MathInstruction) }  },
+                { SNAPCOLTYPEDESCRIPTION.RightNumber, new HashSet<Type> {  typeof(INumberDataType), typeof(MathInstruction) }  }
             };
 
 

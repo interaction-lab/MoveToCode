@@ -20,13 +20,6 @@ namespace MoveToCode {
             return startString;
         }
 
-
-        public override void SetUpArgToSnapColliderDict() {
-            argToSnapColliderDict = new Dictionary<SNAPCOLTYPEDESCRIPTION, HashSet<Type>> {
-               { SNAPCOLTYPEDESCRIPTION.Next, new HashSet<Type> { typeof(StandAloneInstruction) }  }
-            };
-        }
-
         public override string DescriptiveInstructionToString() {
             return ToString();
         }

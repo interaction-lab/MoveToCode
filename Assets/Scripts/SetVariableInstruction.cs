@@ -29,15 +29,6 @@ namespace MoveToCode {
             return "Set\nVar"; // TODO: figure out this spacing
         }
 
-
-        public override void SetUpArgToSnapColliderDict() {
-            argToSnapColliderDict = new Dictionary<SNAPCOLTYPEDESCRIPTION, HashSet<Type>> {
-                { SNAPCOLTYPEDESCRIPTION.Next, new HashSet<Type> { typeof(StandAloneInstruction) }  },
-                { SNAPCOLTYPEDESCRIPTION.Variable, new HashSet<Type> { typeof(Variable) , typeof(ArrayIndexInstruction) }  },
-                { SNAPCOLTYPEDESCRIPTION.Value, new HashSet<Type> { typeof(IDataType), typeof(MathInstruction), typeof(ConditionalInstruction), typeof(ArrayIndexInstruction) }  }
-            };
-        }
-
         public override string DescriptiveInstructionToString() {
             return string.Join("", "Set ",
                 GetArgument(SNAPCOLTYPEDESCRIPTION.Variable)?.DescriptiveInstructionToString(),

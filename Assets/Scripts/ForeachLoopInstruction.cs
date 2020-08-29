@@ -32,17 +32,6 @@ namespace MoveToCode {
             }
         }
 
-
-        public override void SetUpArgToSnapColliderDict() {
-            argToSnapColliderDict = new Dictionary<SNAPCOLTYPEDESCRIPTION, HashSet<Type>> {
-                { SNAPCOLTYPEDESCRIPTION.Nested, new HashSet<Type> { typeof(StandAloneInstruction) }  },
-                { SNAPCOLTYPEDESCRIPTION.Variable, new HashSet<Type> {  typeof(Variable) }  },
-                { SNAPCOLTYPEDESCRIPTION.ArrayDataStructure, new HashSet<Type> {  typeof(ArrayDataStructure) }  },
-                { SNAPCOLTYPEDESCRIPTION.Next, new HashSet<Type> { typeof(StandAloneInstruction) }  }
-            };
-        }
-
-
         public override string ToString() {
             return "foreach \nvar ";
         }

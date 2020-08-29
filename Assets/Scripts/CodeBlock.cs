@@ -14,7 +14,6 @@ namespace MoveToCode {
         ManipulationHandler manipHandler;
         CodeBlockObjectMesh codeBlockObjectMesh;
         SnapColliderGroup snapColliders;
-        CodeBlockArgumentList codeBlockArgumentList;
         CodeBlockSnap codeBlockSnap;
         GameObject codeBlockTextGameObject;
         CloneOnDrag dragScript;
@@ -36,10 +35,6 @@ namespace MoveToCode {
             // Setup
             SetMyBlockInternalArg();
             CodeBlockManager.instance.RegisterCodeBlock(this);
-
-            // ArgListManager set up
-            codeBlockArgumentList = gameObject.AddComponent<CodeBlockArgumentList>();
-            codeBlockArgumentList.SetUp(this);
 
             if (GetComponent<ManipulationLogger>() == null) {
                 gameObject.AddComponent<ManipulationLogger>();

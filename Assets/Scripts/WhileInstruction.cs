@@ -10,7 +10,6 @@
             }
             EvaluateArgumentList();
             if (conditionIsTrue) {
-                // put me on top of stack for when while loop ends
                 Interpreter.instance.AddToInstructionStack(this);
                 return new InstructionReturnValue(null, GetNestedInstruction());
             }

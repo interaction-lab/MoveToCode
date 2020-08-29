@@ -67,19 +67,7 @@ namespace MoveToCode {
             return internalArray[index].GetValue();
         }
 
-        public override HashSet<Type> GetArgCompatibility(SNAPCOLTYPEDESCRIPTION argDescription) {
-            EvaluateArgumentList();
-            if (argToSnapColliderDict == null || GetNumFilledElements() <= 1) {
-                SetUpArgToSnapColliderDict();
-            }
-            return argToSnapColliderDict[argDescription];
-        }
 
-        public override void SetUpArgToSnapColliderDict() { //TODO: do I have to worry about nullity, BasicDataType vs. myType?
-            argToSnapColliderDict = new Dictionary<SNAPCOLTYPEDESCRIPTION, HashSet<Type>> {
-                { SNAPCOLTYPEDESCRIPTION.ArrayElement, new HashSet<Type> { typeof(BasicDataType), myType }  }
-            };
-        }
 
         public override void ResestInternalState() {
             for (int i = 0; i < GetSize(); i++) {

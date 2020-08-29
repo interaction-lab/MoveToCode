@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace MoveToCode {
+﻿namespace MoveToCode {
     public abstract class ConditionalInstruction : Instruction {
         protected IDataType leftArg, rightArg;
 

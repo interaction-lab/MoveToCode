@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿
 namespace MoveToCode {
     public class StartInstruction : StandAloneInstruction {
         public static string startString = "Code Start";

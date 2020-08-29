@@ -17,8 +17,12 @@
         }
 
         public override string DescriptiveInstructionToString() {
-            return string.Join("", GetArgument(SNAPCOLTYPEDESCRIPTION.LeftOfConditional)?.DescriptiveInstructionToString(),
-                        " ", GetCodeString(), " ", GetArgument(SNAPCOLTYPEDESCRIPTION.RightOfConditional)?.DescriptiveInstructionToString());
+            return string.Join("",
+                        GetArgument(SNAPCOLTYPEDESCRIPTION.LeftOfConditional)?.DescriptiveInstructionToString(),
+                        " ",
+                        GetCodeString(),
+                        " ",
+                        GetArgument(SNAPCOLTYPEDESCRIPTION.RightOfConditional)?.DescriptiveInstructionToString());
         }
     }
 }

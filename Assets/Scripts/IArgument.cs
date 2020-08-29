@@ -21,7 +21,7 @@ namespace MoveToCode {
 
     public abstract class IArgument {
         CodeBlock myCodeBlock;
-        // TODO: this should just be a constant
+
         protected Dictionary<SNAPCOLTYPEDESCRIPTION, SnapCollider> argToSnapColliderDict = new Dictionary<SNAPCOLTYPEDESCRIPTION, SnapCollider>();
 
         public abstract IDataType EvaluateArgument();
@@ -52,9 +52,8 @@ namespace MoveToCode {
         }
 
         public IArgument GetArgument(SNAPCOLTYPEDESCRIPTION iARGIn) {
-            return GetArgToSnapColliderDict()[iARGIn].GetMyCodeBlockArg().GetMyIArgument();
+            return GetArgToSnapColliderDict()[iARGIn]?.GetMyCodeBlockArg()?.GetMyIArgument();
         }
-
 
         public static Dictionary<SNAPCOLTYPEDESCRIPTION, HashSet<Type>> iArgCompatabilityDict =
             new Dictionary<SNAPCOLTYPEDESCRIPTION, HashSet<Type>> {

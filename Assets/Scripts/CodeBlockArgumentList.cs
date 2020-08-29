@@ -17,43 +17,34 @@ namespace MoveToCode {
         //    }
         //    return argList;
         //}
-        public Dictionary<IARG, CodeBlock> GetArgDictAsCodeBlocks() {
-            if (argDict == null)
+        public Dictionary<IARG, CodeBlock> GetArgDict() {
+            if (argDict == null) {
                 argDict = new Dictionary<IARG, CodeBlock>();
+                foreach (Pair<IARG, Type> kvp in myCodeBlock.GetArgCompatibility()) {
+
+                }
+
+            }
             return argDict;
         }
 
 
-        //public CodeBlock GetArgAsCodeBlockAt(int pos) {
-        //    return GetArgListCodeBlocks()[pos];
-        //}
+
         public CodeBlock GetArgAsCodeBlock(IARG argDescription) {
             if (argDict.ContainsKey(argDescription))
                 return argDict[argDescription];
             return null;
         }
 
-        //public IArgument GetArgAsIArgumentAt(int pos) {
-        //    return GetArgAsCodeBlockAt(pos)?.GetMyIArgument();
-        //}
+
         public IArgument GetArgAsIArg(IARG argDescription) {
             return GetArgAsCodeBlock(argDescription)?.GetMyIArgument();
         }
 
-        //public List<IArgument> GetArgListAsIArguments() {
-        //    List<IArgument> result = new List<IArgument>(new IArgument[GetNumArguments()]);
-        //    for (int i = 0; i < GetNumArguments(); ++i) {
-        //        result[i] = GetArgAsIArgumentAt(i);
-        //    }
-        //    return result;
-        //}
+
         public Dictionary<IARG, IArgument> GetArgDictAsIArgs() {
             Dictionary<IARG, IArgument> result = new Dictionary<IARG, IArgument>();
-            if (argDict == null) {
-                argDict = new Dictionary<IARG, CodeBlock>();
-                return result;
-            }
-            foreach (KeyValuePair<IARG, CodeBlock> pair in argDict){
+            foreach (KeyValuePair<IARG, CodeBlock> pair in argDict) {
                 result[pair.Key] = pair.Value?.GetMyIArgument();
             }
             return result;
@@ -72,11 +63,11 @@ namespace MoveToCode {
 
         //literally only for ArrayCodeBlock I know its ugly shut up
         public void SetArrayArg(int pos, CodeBlock block, bool humanDidIt) {
-            
+
         }
 
 
-        public int GetNumArguments() { 
+        public int GetNumArguments() {
             return myCodeBlock.GetMyIArgument().GetNumArguments();
         }
 
@@ -99,7 +90,7 @@ namespace MoveToCode {
         //    }
         //}
         private void AddArg(IARG argDescription, CodeBlock newArg, bool humanDidIt) {
-            GetArgDictAsCodeBlocks()[argDescription] = newArg;
+            GetArgDict()[argDescription] = newArg;
             if (newArg != null) {
                 if (humanDidIt) {
                     LoggingManager.instance.UpdateLogColumn(SnapLoggingManager.GetSnapToColName(),
@@ -134,11 +125,11 @@ namespace MoveToCode {
         //    }
         //}
         private void RemoveArg(IARG argDescription, bool humanDidIt) {
-            if (GetArgDictAsCodeBlocks().ContainsKey(argDescription)) {
+            if (GetArgDict().ContainsKey(argDescription)) {
                 if (humanDidIt) {
                     LoggingManager.instance.UpdateLogColumn(SnapLoggingManager.GetSnapRemoveFromColName(),
-                                                             string.Join("",  "Remove ", argDescription.ToString(),
-                                                                             " from ",  myCodeBlock.name));
+                                                             string.Join("", "Remove ", argDescription.ToString(),
+                                                                             " from ", myCodeBlock.name));
                 }
                 AudioManager.instance.PlaySoundAtObject(gameObject, AudioManager.popAudioClip);
                 if (argDict[argDescription] != null) {
@@ -151,10 +142,8 @@ namespace MoveToCode {
                     argDict[argDescription] = null;
                     myCodeBlock.GetCodeBlockObjectMesh().ResizeChain();
                 }
-               
-
             }
         }
 
-        }
+    }
 }

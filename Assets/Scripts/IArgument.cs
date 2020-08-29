@@ -26,7 +26,7 @@ namespace MoveToCode {
 
         public abstract IDataType EvaluateArgument();
         public virtual void ResestInternalState() { }
-        public abstract int GetNumArguments();
+
         public virtual string DescriptiveInstructionToString() { return ""; }
         public virtual void EvaluateArgumentList() { }
         public virtual void SetUpArgCompatabilityDict() { }
@@ -40,26 +40,30 @@ namespace MoveToCode {
             ResestInternalState();
         }
 
+        public Dictionary<IARG, HashSet<Type>> GetArgCompatabilityDict() {
+            if (argCompatabilityDict == null) {
+                SetUpArgCompatabilityDict();
+            }
+            return argCompatabilityDict;
+        }
+
+        public int GetNumArguments() {
+            return GetArgCompatabilityDict().Count;
+        }
+
+        public IArgument GetArgument(IARG iARGIn) {
+            return myCodeBlock.GetArgumentFromDict(iARGIn);
+        }
 
         public virtual HashSet<Type> GetArgCompatibility(IARG argDescription) {
-            if (argCompatabilityDict == null)
+            if (argCompatabilityDict == null) {
                 SetUpArgCompatabilityDict();
+            }
             if (argCompatabilityDict.ContainsKey(argDescription))
                 return argCompatabilityDict[argDescription];
             return null;
         }
 
-
-        public Dictionary<IARG, IArgument> GetArgDictAsIArgs() {
-            return GetCodeBlock()?.GetArgDictAsIArgs();
-        }
-
-
-        public IArgument GetArgument(IARG argDescription) {
-            if ((bool)GetArgDictAsIArgs()?.ContainsKey(argDescription))
-                return GetArgDictAsIArgs()[argDescription];
-            return null;
-        }
 
     }
 }

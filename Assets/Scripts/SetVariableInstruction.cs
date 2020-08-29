@@ -9,19 +9,16 @@ namespace MoveToCode {
         public override void EvaluateArgumentList() {
         }
 
-        public override int GetNumArguments() {
-            return 3;
-        }
-
         public override InstructionReturnValue RunInstruction() {
             EvaluateArgumentList();
-            if(GetArgument(IARG.Variable).GetType() == typeof(ArrayIndexInstruction)) {
+            if (GetArgument(IARG.Variable).GetType() == typeof(ArrayIndexInstruction)) {
                 //set "variable"/element in array
                 (GetArgument(IARG.Variable) as ArrayIndexInstruction).SetArrayValue(GetArgument(IARG.Value)?.EvaluateArgument());
                 //set the array
                 ((GetArgument(IARG.Variable) as ArrayIndexInstruction).GetArgument(IARG.Next) as Variable)
                     .SetValue((GetArgument(IARG.Variable) as ArrayIndexInstruction).GetArgument(IARG.Next).EvaluateArgument() as ArrayDataStructure);
-            } else {
+            }
+            else {
                 //set regular variable (not in an array)
                 (GetArgument(IARG.Variable) as Variable).SetValue(GetArgument(IARG.Value)?.EvaluateArgument());
             }
@@ -32,24 +29,7 @@ namespace MoveToCode {
             return "Set\nVar"; // TODO: figure out this spacing
         }
 
-        //public override void SetUpArgPosToCompatability() {
-        //    argPosToCompatability = new List<List<Type>> {
-        //        new List<Type>{
-        //            typeof(StandAloneInstruction)
-        //        },
-        //        new List<Type> {
-        //            typeof(Variable), typeof(ArrayIndexInstruction)
-        //        },
-        //        new List<Type> {
-        //            typeof(IDataType), typeof(MathInstruction), typeof(ConditionalInstruction), typeof(ArrayIndexInstruction)
-        //        }
-        //    };
-        //}
 
-        //// drop down of variables
-        //public override void SetUpArgDescriptionList() {
-        //    argDescriptionList = new List<string> { "NextInstruction", "Variable to be changed", "New variable value" };
-        //}
         public override void SetUpArgCompatabilityDict() {
             argCompatabilityDict = new Dictionary<IARG, HashSet<Type>> {
                 { IARG.Next, new HashSet<Type> { typeof(StandAloneInstruction) }  },
@@ -59,7 +39,10 @@ namespace MoveToCode {
         }
 
         public override string DescriptiveInstructionToString() {
-            return string.Join("", "Set ", GetArgument(IARG.Variable)?.DescriptiveInstructionToString(), " to ", GetArgument(IARG.Value)?.DescriptiveInstructionToString());
+            return string.Join("", "Set ",
+                GetArgument(IARG.Variable)?.DescriptiveInstructionToString(),
+                " to ",
+                GetArgument(IARG.Value)?.DescriptiveInstructionToString());
         }
     }
 }

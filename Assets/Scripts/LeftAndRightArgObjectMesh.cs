@@ -54,10 +54,12 @@ namespace MoveToCode {
             Vector3 rescale = origScaleArg;
             Vector3 reposition = origPositionArgLeft;
             float horizontalSize = -1.0f;
-            if (GetMyCodeBlock().GetType() == typeof(ConditionalCodeBlock))
+            if (GetMyCodeBlock().GetType() == typeof(ConditionalCodeBlock)) {
                 horizontalSize = (float)GetMyCodeBlock().GetArgAsCodeBlock(IARG.LeftOfConditional)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
-            else //Math
+            }
+            else {
                 horizontalSize = (float)GetMyCodeBlock().GetArgAsCodeBlock(IARG.LeftNumber)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
+            }
             if (horizontalSize != -1.0f) {
                 rescale.x = (float)horizontalSize;
                 reposition.x = reposition.x - (rescale.x - 0.5f) / 2.0f;

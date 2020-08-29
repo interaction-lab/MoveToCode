@@ -14,9 +14,6 @@ namespace MoveToCode {
             return ToString();
         }
 
-        public override int GetNumArguments() {
-            return 0;
-        }
 
         public T CastObject<T>(object input) {
             return (T)input;

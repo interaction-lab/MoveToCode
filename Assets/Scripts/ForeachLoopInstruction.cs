@@ -9,10 +9,6 @@ namespace MoveToCode {
             currIdxInArray = 0;
         }
 
-        public override int GetNumArguments() {
-            return 4;
-        }
-
         public override InstructionReturnValue RunInstruction() {
             if (!exitInstructionAddedToStack) {
                 Interpreter.instance.AddToInstructionStack(GetNextInstruction());

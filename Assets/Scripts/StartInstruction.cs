@@ -2,20 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MoveToCode{
+namespace MoveToCode {
     public class StartInstruction : StandAloneInstruction {
         public static string startString = "Code Start";
 
         public StartInstruction(CodeBlock cbIn) : base(cbIn) { }
 
-        public override void EvaluateArgumentList(){
+        public override void EvaluateArgumentList() {
         }
 
-        public override int GetNumArguments() {
-            return 1;
-        }
-
-        public override InstructionReturnValue RunInstruction(){
+        public override InstructionReturnValue RunInstruction() {
             ConsoleManager.instance.AddLine(startString);
             return new InstructionReturnValue(null, GetArgument(IARG.Next) as StandAloneInstruction);
         }
@@ -41,7 +37,7 @@ namespace MoveToCode{
             };
         }
 
-        public override string DescriptiveInstructionToString()   {
+        public override string DescriptiveInstructionToString() {
             return ToString();
         }
     }

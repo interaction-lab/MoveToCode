@@ -97,7 +97,7 @@ namespace MoveToCode {
         }
 
         public Dictionary<IARG, CodeBlock> GetArgDictAsCodeBlocks() {
-            return codeBlockArgumentList.GetArgDictAsCodeBlocks();
+            return codeBlockArgumentList.GetArgDict();
         }
 
         public Dictionary<IARG, IArgument> GetArgDictAsIArgs() {
@@ -112,7 +112,7 @@ namespace MoveToCode {
             return codeBlockArgumentList.GetArgAsCodeBlock(argDescription);
         }
 
-        public IArgument GetArgAsIArg(IARG argDescription) {
+        public IArgument GetArgumentFromDict(IARG argDescription) {
             return codeBlockArgumentList.GetArgAsIArg(argDescription);
         }
 

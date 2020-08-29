@@ -12,9 +12,10 @@ namespace MoveToCode {
         public ArrayIndexInstruction(CodeBlock cbIn) : base(cbIn) { }
 
         public override void EvaluateArgumentList() {
-            if(GetArgument(IARG.Array)?.EvaluateArgument().GetType() != typeof(ArrayDataStructure)) {
+            if (GetArgument(IARG.Array)?.EvaluateArgument().GetType() != typeof(ArrayDataStructure)) {
                 arr = null;
-            } else {
+            }
+            else {
                 arr = GetArgument(IARG.Array)?.EvaluateArgument() as ArrayDataStructure;
                 arr.EvaluateArgumentList();
             }
@@ -27,14 +28,18 @@ namespace MoveToCode {
             arrValAtIndex = arr?.GetValueAtIndex(indexVal);
             if (arr?.GetArrayType() == typeof(IntDataType)) {
                 return new InstructionReturnValue(new IntDataType(null, (int)arrValAtIndex), null);
-            } else if (arr.GetArrayType() == typeof(FloatDataType)) {
+            }
+            else if (arr.GetArrayType() == typeof(FloatDataType)) {
                 return new InstructionReturnValue(new FloatDataType((float)arrValAtIndex), null);
-            } else if (arr.GetArrayType() == typeof(StringDataType)) {
+            }
+            else if (arr.GetArrayType() == typeof(StringDataType)) {
                 return new InstructionReturnValue(new StringDataType(null, (string)arrValAtIndex), null);
-            } else if (arr.GetArrayType() == typeof(CharDataType)) {
+            }
+            else if (arr.GetArrayType() == typeof(CharDataType)) {
                 char c = Convert.ToChar(arrValAtIndex);
                 return new InstructionReturnValue(new CharDataType(null, c), null);
-            } else {
+            }
+            else {
                 bool b = Convert.ToBoolean(arrValAtIndex);
                 return new InstructionReturnValue(new BoolDataType(null, b), null);
             }
@@ -46,28 +51,11 @@ namespace MoveToCode {
             arr.SetValueAtIndex(indexVal, valIn);
         }
 
-        public override int GetNumArguments() {
-            return 2;
-        }
-
         public override string ToString() {
             return "";
         }
 
-        //public override void SetUpArgPosToCompatability() {
-        //    argPosToCompatability = new List<List<Type>> {
-        //        new List<Type> {
-        //            typeof(Variable)
-        //        },
-        //        new List<Type> {
-        //            typeof(IntDataType), typeof(MathInstruction)
-        //        }
-        //    };
-        //}
 
-        //public override void SetUpArgDescriptionList() {
-        //    argDescriptionList = new List<string> { "Array", "Index" };
-        //}
         public override void SetUpArgCompatabilityDict() {
             argCompatabilityDict = new Dictionary<IARG, HashSet<Type>> {
                 { IARG.Array, new HashSet<Type> { typeof(Variable) }  },

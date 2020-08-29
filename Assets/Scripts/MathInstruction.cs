@@ -16,27 +16,11 @@ namespace MoveToCode {
             }
         }
 
-        public override int GetNumArguments() {
-            return 2;
-        }
-
         public override string ToString() {
             return GetMathSymbol();
         }
 
-        //public override void SetUpArgPosToCompatability() {
-        //    argPosToCompatability = new List<List<Type>> {
-        //        new List<Type> {
-        //            typeof(INumberDataType), typeof(MathInstruction)
-        //        },
-        //         new List<Type> {
-        //            typeof(INumberDataType), typeof(MathInstruction)
-        //        }
-        //    };
-        //}
-        //public override void SetUpArgDescriptionList() {
-        //    argDescriptionList = new List<string> { "Left number", "Right Number" };
-        //}
+
         public override void SetUpArgCompatabilityDict() {
             argCompatabilityDict = new Dictionary<IARG, HashSet<Type>> {
                 { IARG.LeftNumber, new HashSet<Type> {  typeof(INumberDataType), typeof(MathInstruction) }  },

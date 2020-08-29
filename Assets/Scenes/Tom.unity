@@ -1073,6 +1073,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PrintCodeBlock
       objectReference: {fileID: 0}
+    - target: {fileID: 5335814774712488531, guid: dddf9b2e6c0fcd546b30a826b21b6e2b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dddf9b2e6c0fcd546b30a826b21b6e2b, type: 3}
 --- !u!4 &67371734 stripped
@@ -2860,16 +2865,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2125387814}
     m_Modifications:
-    - target: {fileID: 438597426600385683, guid: 94705b48c2b7d1646bc29303de5ea6e8,
-        type: 3}
-      propertyPath: myIArgType
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 438597426600385685, guid: 94705b48c2b7d1646bc29303de5ea6e8,
-        type: 3}
-      propertyPath: m_Name
-      value: NumberRight
-      objectReference: {fileID: 0}
     - target: {fileID: 438597427285650154, guid: 94705b48c2b7d1646bc29303de5ea6e8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2930,15 +2925,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MathCodeBlock
       objectReference: {fileID: 0}
-    - target: {fileID: 438597427481538892, guid: 94705b48c2b7d1646bc29303de5ea6e8,
+    - target: {fileID: 438597427285650158, guid: 94705b48c2b7d1646bc29303de5ea6e8,
         type: 3}
-      propertyPath: myIArgType
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 438597427481538894, guid: 94705b48c2b7d1646bc29303de5ea6e8,
-        type: 3}
-      propertyPath: m_Name
-      value: NumberLeft
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94705b48c2b7d1646bc29303de5ea6e8, type: 3}
@@ -3376,6 +3366,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: VariableCodeBlock
+      objectReference: {fileID: 0}
+    - target: {fileID: 2122886152402194503, guid: f17e25d662fe0824e80fb4c5fabb9075,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f17e25d662fe0824e80fb4c5fabb9075, type: 3}
@@ -6493,6 +6488,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: IfCodeBlock
       objectReference: {fileID: 0}
+    - target: {fileID: 2446032068517754002, guid: 921691e8825a9b24f9cf14a2949088b9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2446032068517754005, guid: 921691e8825a9b24f9cf14a2949088b9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8277,6 +8277,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CharCodeBlock
       objectReference: {fileID: 0}
+    - target: {fileID: 2945543994263375967, guid: 3aae04be61e31164da9e0b30939a60e8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3aae04be61e31164da9e0b30939a60e8, type: 3}
 --- !u!4 &1400068062 stripped
@@ -8395,6 +8400,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StringCodeBlock
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945543994263375967, guid: 78a4ff0a40ceb764ab8cc91f3fb5921e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78a4ff0a40ceb764ab8cc91f3fb5921e, type: 3}
@@ -9309,6 +9319,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WhileCodeBlock
       objectReference: {fileID: 0}
+    - target: {fileID: 5984162907770358224, guid: d836d999a66aa5d43b726216a6ff5f1a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d836d999a66aa5d43b726216a6ff5f1a, type: 3}
 --- !u!4 &1648740816 stripped
@@ -9623,7 +9638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8030b9b811f614ab913f06f611c181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curExercisePos: 0
+  curExercisePos: 2
 --- !u!4 &1710312768 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3828739441442808839, guid: 9d4fb95003569de428fba011a79f6f10,
@@ -10945,6 +10960,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: IntCodeBlock
       objectReference: {fileID: 0}
+    - target: {fileID: 257811355727027397, guid: c05362a0194eef748b0f801c2e5c77a9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 257811355727027398, guid: c05362a0194eef748b0f801c2e5c77a9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11234,6 +11254,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SetVariableCodeBlock
+      objectReference: {fileID: 0}
+    - target: {fileID: 2110378778300613841, guid: ce8993180f01aa64abc2b2ef4f980f60,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2110378778300613842, guid: ce8993180f01aa64abc2b2ef4f980f60,
         type: 3}
@@ -17415,6 +17440,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ConditionalCodeBlock
       objectReference: {fileID: 0}
+    - target: {fileID: 4929860365483950079, guid: 00f6ddabaa4eed149853592bec687f35,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00f6ddabaa4eed149853592bec687f35, type: 3}
 --- !u!4 &2049573049518237216 stripped
@@ -17789,6 +17819,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ForeachLoopCodeBlock
+      objectReference: {fileID: 0}
+    - target: {fileID: 5984162907770358224, guid: 5094d6d31eb88e64facb42b395118804,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5094d6d31eb88e64facb42b395118804, type: 3}

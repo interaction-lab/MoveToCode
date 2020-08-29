@@ -95,10 +95,10 @@ namespace MoveToCode {
 
         // private helpers
         private float GetSizeOfInsideInstructionChain() {
-            return FindChainSize(GetMyCodeBlock().GetArgAsIArg(IARG.Nested));
+            return FindChainSize(GetMyCodeBlock().GetArgumentFromDict(IARG.Nested));
         }
         private float GetSizeOfExitInstructionChain() {
-            return FindChainSize(GetMyCodeBlock().GetArgAsIArg(IARG.Next)) + 0.5f;
+            return FindChainSize(GetMyCodeBlock().GetArgumentFromDict(IARG.Next)) + 0.5f;
         }
 
         private void ResizeSide() {

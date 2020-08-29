@@ -11,9 +11,6 @@ namespace MoveToCode {
             output = GetArgument(IARG.Printable)?.EvaluateArgument()?.ToString();
         }
 
-        public override int GetNumArguments() {
-            return 2;
-        }
 
         public override InstructionReturnValue RunInstruction() {
             EvaluateArgumentList();

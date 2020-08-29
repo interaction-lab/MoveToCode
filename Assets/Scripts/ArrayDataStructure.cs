@@ -28,9 +28,6 @@ namespace MoveToCode {
             return internalArray;
         }
 
-        public override int GetNumArguments() {
-            return GetSize();
-        }
 
         //set length of array, should only be called in constructor
         private void SetSize(int sizeIn) {

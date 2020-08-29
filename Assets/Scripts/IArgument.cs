@@ -21,6 +21,7 @@ namespace MoveToCode {
 
     public abstract class IArgument {
         CodeBlock myCodeBlock;
+        // TODO: this should just be a constant
         protected Dictionary<IARG, HashSet<Type>> argCompatabilityDict;
 
         public abstract IDataType EvaluateArgument();

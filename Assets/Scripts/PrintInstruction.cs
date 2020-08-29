@@ -8,7 +8,6 @@ namespace MoveToCode {
         public PrintInstruction(CodeBlock cbIn) : base(cbIn) { }
 
         public override void EvaluateArgumentList() {
-            // output = GetArgumentAt(1)?.EvaluateArgument()?.ToString();
             output = GetArgument(IARG.Printable)?.EvaluateArgument()?.ToString();
         }
 
@@ -22,20 +21,7 @@ namespace MoveToCode {
             return new InstructionReturnValue(null, GetNextInstruction());
         }
 
-        //public override void SetUpArgPosToCompatability() {
-        //    argPosToCompatability = new List<List<Type>> {
-        //        new List<Type>{
-        //            typeof(StandAloneInstruction)
-        //        },            
-        //        new List<Type> {
-        //            typeof(IDataType), typeof(MathInstruction), typeof(ConditionalInstruction), typeof(ArrayIndexInstruction)
-        //        }
-        //    };
-        //}
 
-        //public override void SetUpArgDescriptionList() {
-        //    argDescriptionList = new List<string> { "NextInstruction", "Thing that is printed" };
-        //}
         public override void SetUpArgCompatabilityDict() {
             argCompatabilityDict = new Dictionary<IARG, HashSet<Type>> {
                 { IARG.Next, new HashSet<Type> { typeof(StandAloneInstruction) }  },
@@ -48,7 +34,7 @@ namespace MoveToCode {
         }
 
         public override string DescriptiveInstructionToString() {
-            return string.Join("", "<color=purple>"+ToString()+"</color>(", GetArgument(IARG.Printable)?.DescriptiveInstructionToString()+")");
+            return string.Join("", "<color=purple>" + ToString() + "</color>(", GetArgument(IARG.Printable)?.DescriptiveInstructionToString() + ")");
         }
     }
 }

@@ -391,7 +391,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myIArgType: 6
-  myArgumentPosition: 1
   snapPosition: {x: 0, y: 0, z: -0.25}
 --- !u!1 &5335814775075328185
 GameObject:
@@ -498,5 +497,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myIArgType: 0
-  myArgumentPosition: 0
   snapPosition: {x: 0, y: -1, z: 0}

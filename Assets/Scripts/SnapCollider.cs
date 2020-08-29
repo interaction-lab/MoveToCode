@@ -81,10 +81,7 @@ namespace MoveToCode {
 
         protected HashSet<Type> GetMyCompatibleArgTypes() {
             if (myCompatibleArgTypes == null) {
-                myCompatibleArgTypes = GetMyCodeBlock().GetArgCompatibility(myIArgType); //TODO: its not just Next...
-            }
-            else if (GetMyCodeBlock().GetType() == typeof(ArrayCodeBlock)) { //first input sets array type, could later be generalized for all data structures?
-                myCompatibleArgTypes = GetMyCodeBlock().GetArgCompatibility(IARG.ArrayElement);
+                myCompatibleArgTypes = GetMyCodeBlock().GetArgCompatibility(myIArgType);
             }
             return myCompatibleArgTypes;
         }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.MixedReality.Toolkit.UI;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace MoveToCode {
@@ -40,6 +41,11 @@ namespace MoveToCode {
             return text.Substring(0, pos) + replace + text.Substring(pos + search.Length);
         }
 
+        // TextMesh Extensions
+        public static void ForceTextUpdate(this TextMeshPro tmp) {
+            tmp.enabled = false;
+            tmp.enabled = true;
+        }
 
         // Transform Extensions
         public static void SnapToParent(this Transform t, Transform prospectiveParent) {

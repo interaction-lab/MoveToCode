@@ -72,7 +72,6 @@ namespace MoveToCode {
         }
 
         // this should be from object mesh
-        //public IEnumerable GetAllAttachedCodeBlocks() { // this should just be from the object mesh
         public SnapColliderGroup GetSnapColliders() {
             if (snapColliders == null) {
                 snapColliders = GetComponentInChildren<SnapColliderGroup>();
@@ -80,16 +79,6 @@ namespace MoveToCode {
             return snapColliders;
         }
 
-        //public int GetPositionOfArgument(IArgument iArgIn) {      SHOULDN'T NEED THIS TRASH LINEAR SEARCH ANYMORE
-        //    int index = 0;
-        //    foreach (IArgument ia in codeBlockArgumentList.GetArgDictAsIArgs()) {
-        //        if (ia == iArgIn) {
-        //            return index;
-        //        }
-        //        ++index;
-        //    }
-        //    return -1;
-        //}
         public IARG GetArgDescriptionOfArg(IArgument iArgIn) {
             foreach (KeyValuePair<IARG, IArgument> kvp in codeBlockArgumentList.GetArgDictAsIArgs()) {
                 if (kvp.Value == iArgIn)
@@ -98,11 +87,6 @@ namespace MoveToCode {
             return IARG.NotFound;
         }
 
-        // CodeBlockArgumentList relay functions
-        //public void SetArgumentBlockAt(CodeBlock newArgumentCodeBlock, int argPosition, bool humanDidIt) {
-        //    codeBlockArgumentList.SetArgCodeBlockAt(newArgumentCodeBlock, argPosition, humanDidIt);
-        //    UpdateText();
-        //}
         public void SetIArg(IARG argDescription, CodeBlock newArg, bool humanDidIt) {
             codeBlockArgumentList.SetArg(argDescription, newArg, humanDidIt);
         }
@@ -112,38 +96,22 @@ namespace MoveToCode {
             codeBlockArgumentList.SetArrayArg(pos, block, humanDidIt);
         }
 
-
-        //public List<CodeBlock> GetArgumentListAsCodeBlocks() {
-        //    return codeBlockArgumentList.GetArgListCodeBlocks();
-        //}
         public Dictionary<IARG, CodeBlock> GetArgDictAsCodeBlocks() {
             return codeBlockArgumentList.GetArgDictAsCodeBlocks();
         }
 
-        //public List<IArgument> GetArgumentListAsIArgs() {
-        //    return codeBlockArgumentList.GetArgListAsIArguments();
-        //}
         public Dictionary<IARG, IArgument> GetArgDictAsIArgs() {
             return codeBlockArgumentList.GetArgDictAsIArgs();
         }
 
-        //public List<Type> GetArgCompatabilityAt(int pos) {
-        //    return (GetMyIArgument() as IArgument).GetArgCompatibilityAtPos(pos);
-        //}
         public HashSet<Type> GetArgCompatibility(IARG argDescription) {
             return GetMyIArgument().GetArgCompatibility(argDescription);
         }
 
-        //public CodeBlock GetArgAsCodeBlockAt(int pos) {
-        //    return codeBlockArgumentList.GetArgAsCodeBlockAt(pos);
-        //}
         public CodeBlock GetArgAsCodeBlock(IARG argDescription) {
             return codeBlockArgumentList.GetArgAsCodeBlock(argDescription);
         }
 
-        //public IArgument GetArgAsIArgumentAt(int pos) {
-        //    return codeBlockArgumentList.GetArgAsIArgumentAt(pos);
-        //}
         public IArgument GetArgAsIArg(IARG argDescription) {
             return codeBlockArgumentList.GetArgAsIArg(argDescription);
         }
@@ -207,9 +175,7 @@ namespace MoveToCode {
             }
             else {
                 textMesh.SetText(ToString());
-                // Forces text update
-                textMesh.enabled = false;
-                textMesh.enabled = true;
+                textMesh.ForceTextUpdate();
             }
         }
 

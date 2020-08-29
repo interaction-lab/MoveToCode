@@ -74,16 +74,16 @@ namespace MoveToCode {
         private string PerformFakeSnapAction(int actionIndex) {
             int snapArgIndex = ConvertSnapActionToIntPos(withAction[actionIndex]);
             if (withAction[actionIndex] != SNAPACTIONS.REMOVE) {
-                snapParent[actionIndex].GetSnapColliders().GetSnapColliderAtPos(snapArgIndex).DoSnapAction(snapParent[actionIndex], snapChild[actionIndex], false);
+                //snapParent[actionIndex].GetSnapColliders().GetSnapColliderAtPos(snapArgIndex).DoSnapAction(snapParent[actionIndex], snapChild[actionIndex], false);
                 return string.Join("", "Add ", snapChild[actionIndex].name,
                                     " from ", snapParent[actionIndex].name,
                                      " at ", snapArgIndex.ToString());
             }
             else {
                 IARG childArg = GetChildArg(actionIndex);
-                
-                snapParent[actionIndex].SetArg(childArg, null, false);
-                return string.Join("","Remove ", snapChild[actionIndex].name,
+
+                snapParent[actionIndex].SetIArg(childArg, null, false);
+                return string.Join("", "Remove ", snapChild[actionIndex].name,
                                       " from ", snapParent[actionIndex].name,
                                       " at ", childArg.ToString());
             }

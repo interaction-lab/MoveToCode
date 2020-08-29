@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace MoveToCode {
     public class SnapCollider : MonoBehaviour {
-        public int myArgumentPosition = 0; //only used for Arrays
+        public IARG myIArgType;
         public Vector3 snapPosition;
 
         HashSet<Type> myCompatibleArgTypes;
@@ -25,7 +25,6 @@ namespace MoveToCode {
             GetMyCodeBlockSnap();
         }
 
-        // Collision/outline // this needs to be moved to object mesh idk wait is this the snapcolliders?
         public MeshOutline GetMeshOutline() {
             if (outlineMaterial == null) {
                 outlineMaterial = Resources.Load<Material>(ResourcePathConstants.OutlineSnapColliderMaterial) as Material;
@@ -42,7 +41,7 @@ namespace MoveToCode {
         }
 
         private void OnTriggerEnter(Collider collision) {
-            collisionCodeBlockSnap = GetCollidersCodeBlockSnap(collision); // TODO: mega hack, need to find codeblock snap of other
+            collisionCodeBlockSnap = GetCollidersCodeBlockSnap(collision);
             if (collisionCodeBlockSnap == CodeBlockSnap.currentlyDraggingCBS) {
                 collisionCodeBlockSnap?.AddSnapColliderInContact(this);
             }
@@ -55,8 +54,12 @@ namespace MoveToCode {
             }
         }
 
+        internal IARG GetIArgType() {
+            return myIArgType;
+        }
+
         public CodeBlock GetMyCodeBlock() {
-            return transform.parent.parent?.GetComponent<CodeBlockObjectMesh>().GetMyCodeBlock(); // TODO: this is mega hack, clean up when rewriting snap
+            return transform.parent.parent?.GetComponent<CodeBlockObjectMesh>().GetMyCodeBlock();
         }
 
         CodeBlockSnap GetMyCodeBlockSnap() {
@@ -64,13 +67,13 @@ namespace MoveToCode {
         }
 
         // TODO: humanDidIt is such a hack
-        public void DoSnapAction(CodeBlock myCodeBlock, CodeBlock collidedCodeBlock, bool humanDidIt=true) {
-            Transform parentTransform = transform.parent;
-            if (myCodeBlock.GetType() == typeof(ArrayCodeBlock)) //Array codeblocks are the only special exception
-                myCodeBlock.SetArrayArg(myArgumentPosition, collidedCodeBlock, humanDidIt);
-            else //myArgumentPosition is always 0 otherwise which is IArg.Next
-                myCodeBlock.SetArg(IARG.Next, collidedCodeBlock, humanDidIt); 
+        // TODO: fix for arrays
+        public void DoSnapAction(CodeBlock myCodeBlock, CodeBlock collidedCodeBlock, bool humanDidIt = true) {
+            myCodeBlock.SetIArg(myIArgType, collidedCodeBlock, humanDidIt);
+            SnapToParentCenter(collidedCodeBlock, transform.parent);
+        }
 
+        private void SnapToParentCenter(CodeBlock collidedCodeBlock, Transform parentTransform) {
             Vector3 centerPos = collidedCodeBlock.GetCodeBlockObjectMesh().GetCenterPosition();
             centerPos.x = centerPos.x / parentTransform.localScale.x;
             collidedCodeBlock.transform.SnapToParent(parentTransform, snapPosition - centerPos);
@@ -78,8 +81,9 @@ namespace MoveToCode {
 
         protected HashSet<Type> GetMyCompatibleArgTypes() {
             if (myCompatibleArgTypes == null) {
-                myCompatibleArgTypes = GetMyCodeBlock().GetArgCompatibility(IARG.Next); //TODO: its not just Next...
-            } else if (GetMyCodeBlock().GetType() == typeof(ArrayCodeBlock)) { //first input sets array type, could later be generalized for all data structures?
+                myCompatibleArgTypes = GetMyCodeBlock().GetArgCompatibility(myIArgType); //TODO: its not just Next...
+            }
+            else if (GetMyCodeBlock().GetType() == typeof(ArrayCodeBlock)) { //first input sets array type, could later be generalized for all data structures?
                 myCompatibleArgTypes = GetMyCodeBlock().GetArgCompatibility(IARG.ArrayElement);
             }
             return myCompatibleArgTypes;
@@ -95,14 +99,11 @@ namespace MoveToCode {
         }
 
         private bool CheckArgCompatibleType(Type argTypeIn) {
-            if (GetMyCompatibleArgTypes() == null || GetMyCompatibleArgTypes().Count == 0) return true; 
+            if (GetMyCompatibleArgTypes() == null || GetMyCompatibleArgTypes().Count == 0) return true;
             foreach (Type T in GetMyCompatibleArgTypes()) {
-                if (T == null) {
-                    if (argTypeIn == null) {
-                        return true;
-                    }
-                }
-                else if (argTypeIn.IsAssignableFrom(T) || T.IsAssignableFrom(argTypeIn)) {
+                if (T == null && argTypeIn == null ||
+                    argTypeIn.IsAssignableFrom(T) ||
+                    T.IsAssignableFrom(argTypeIn)) {
                     return true;
                 }
             }
@@ -112,7 +113,7 @@ namespace MoveToCode {
 
         private void OnEnable() {
             meshRend.enabled = true;
-            //CodeBlockManager.instance.RegisterSnapCollider(this);
+            CodeBlockManager.instance.RegisterSnapCollider(this);
         }
 
         private void OnDisable() {
@@ -125,8 +126,5 @@ namespace MoveToCode {
             }
         }
 
-        public void SetMyArgumentPosition(int position) {
-            myArgumentPosition = position;
-        }
     }
 }

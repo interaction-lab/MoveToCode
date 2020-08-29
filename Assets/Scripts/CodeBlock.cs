@@ -103,7 +103,7 @@ namespace MoveToCode {
         //    codeBlockArgumentList.SetArgCodeBlockAt(newArgumentCodeBlock, argPosition, humanDidIt);
         //    UpdateText();
         //}
-        public void SetArg(IARG argDescription, CodeBlock newArg, bool humanDidIt) {
+        public void SetIArg(IARG argDescription, CodeBlock newArg, bool humanDidIt) {
             codeBlockArgumentList.SetArg(argDescription, newArg, humanDidIt);
         }
 
@@ -164,7 +164,7 @@ namespace MoveToCode {
         public void RemoveFromParentBlock(bool humanDidIt) {
             CodeBlock parentCodeBlock = FindParentCodeBlock();
             if (parentCodeBlock != null) {
-                parentCodeBlock.SetArg(parentCodeBlock.GetArgDescriptionOfArg(GetMyIArgument()), null,humanDidIt);
+                parentCodeBlock.SetIArg(parentCodeBlock.GetArgDescriptionOfArg(GetMyIArgument()), null, humanDidIt);
             }
         }
 

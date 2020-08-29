@@ -5,6 +5,8 @@ using UnityEngine;
 
 namespace MoveToCode {
     public class SnapCollider : MonoBehaviour {
+        CodeBlock myCodeBlockArg;
+
         public SNAPCOLTYPEDESCRIPTION mySnapColTypeDescription;
         public Vector3 snapPosition;
 
@@ -74,8 +76,16 @@ namespace MoveToCode {
         // TODO: humanDidIt is such a hack
         // TODO: fix for arrays
         public void DoSnapAction(CodeBlock myCodeBlock, CodeBlock collidedCodeBlock, bool humanDidIt = true) {
-            myCodeBlock.SetIArg(mySnapColTypeDescription, collidedCodeBlock, humanDidIt);
+            SetMyCodeBlockArg(collidedCodeBlock);
             SnapToParentCenter(collidedCodeBlock, transform.parent);
+        }
+
+        public void SetMyCodeBlockArg(CodeBlock collidedCodeBlock) {
+            myCodeBlockArg = collidedCodeBlock;
+        }
+
+        public CodeBlock GetMyCodeBlockArg() {
+            return myCodeBlockArg;
         }
 
         private void SnapToParentCenter(CodeBlock collidedCodeBlock, Transform parentTransform) {

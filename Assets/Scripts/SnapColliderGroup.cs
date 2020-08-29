@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace MoveToCode {
     public class SnapColliderGroup : MonoBehaviour {
-        Dictionary<SNAPCOLTYPEDESCRIPTION, SnapCollider> snapColliders;
+        Dictionary<SNAPCOLTYPEDESCRIPTION, SnapCollider> snapColliders; // this is in mycodblock already
         CodeBlock myCodeBlock;
 
         // public methods
@@ -29,6 +29,7 @@ namespace MoveToCode {
             foreach (KeyValuePair<SNAPCOLTYPEDESCRIPTION, SnapCollider> scKV in GetSnapColliders()) {
                 scKV.Value.gameObject.SetActive(desiredActiveState);
             }
+            // get all my colliders; have them enable all their codeblocks snap colliders
             foreach (KeyValuePair<SNAPCOLTYPEDESCRIPTION, CodeBlock> kvp in GetMyCodeBlock().GetArgDictAsCodeBlocks()) {
                 (desiredActiveState ?
                     new Action(kvp.Value.GetSnapColliders().EnableAllCollidersAndChildrenColliders) :
@@ -44,19 +45,8 @@ namespace MoveToCode {
             return myCodeBlock;
         }
 
-
-        // TODO: this should be register/deregister
         private Dictionary<SNAPCOLTYPEDESCRIPTION, SnapCollider> GetSnapColliders() {
-            if (snapColliders == null) {
-                snapColliders = new Dictionary<SNAPCOLTYPEDESCRIPTION, SnapCollider>();
-                foreach (Transform go in transform) {
-                    SnapCollider sc = go.GetComponentInChildren<SnapCollider>(true);
-                    if (sc != null) {
-                        snapColliders[sc.GetIArgType()] = sc;
-                    }
-                }
-            }
-            return snapColliders;
+            return myCodeBlock.GetMyIArgument().GetArgToSnapColliderDict();
         }
     }
 }

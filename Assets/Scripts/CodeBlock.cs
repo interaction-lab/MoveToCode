@@ -74,42 +74,13 @@ namespace MoveToCode {
             return snapColliders;
         }
 
-        public SNAPCOLTYPEDESCRIPTION GetArgDescriptionOfArg(IArgument iArgIn) {
-            foreach (KeyValuePair<SNAPCOLTYPEDESCRIPTION, IArgument> kvp in codeBlockArgumentList.GetArgDictAsIArgs()) {
-                if (kvp.Value == iArgIn)
-                    return kvp.Key;
-            }
-            return SNAPCOLTYPEDESCRIPTION.NotFound;
-        }
 
-        public void SetIArg(SNAPCOLTYPEDESCRIPTION argDescription, CodeBlock newArg, bool humanDidIt) {
-            codeBlockArgumentList.SetArg(argDescription, newArg, humanDidIt);
-        }
-
-        //literally only for ArrayCodeBlock, I know it's ugly shut up
-        public void SetArrayArg(int pos, CodeBlock block, bool humanDidIt) {
-            codeBlockArgumentList.SetArrayArg(pos, block, humanDidIt);
-        }
-
-        public Dictionary<SNAPCOLTYPEDESCRIPTION, CodeBlock> GetArgDictAsCodeBlocks() {
-            return codeBlockArgumentList.GetArgDict();
-        }
-
-        public Dictionary<SNAPCOLTYPEDESCRIPTION, IArgument> GetArgDictAsIArgs() {
-            return codeBlockArgumentList.GetArgDictAsIArgs();
-        }
 
         public HashSet<Type> GetArgCompatibility(SNAPCOLTYPEDESCRIPTION argDescription) {
             return GetMyIArgument().GetArgCompatibility(argDescription);
         }
 
-        public CodeBlock GetArgAsCodeBlock(SNAPCOLTYPEDESCRIPTION argDescription) {
-            return codeBlockArgumentList.GetArgAsCodeBlock(argDescription);
-        }
 
-        public IArgument GetArgumentFromDict(SNAPCOLTYPEDESCRIPTION argDescription) {
-            return codeBlockArgumentList.GetArgAsIArg(argDescription);
-        }
 
         public void ResetInstructionInternalState() {
             myBlockInternalArg.ResestInternalState();
@@ -124,10 +95,11 @@ namespace MoveToCode {
             GetCodeBlockObjectMesh().ToggleColliders(on);
         }
 
-        public void RemoveFromParentBlock(bool humanDidIt) {
-            CodeBlock parentCodeBlock = FindParentCodeBlock();
-            if (parentCodeBlock != null) {
-                parentCodeBlock.SetIArg(parentCodeBlock.GetArgDescriptionOfArg(GetMyIArgument()), null, humanDidIt);
+        public void RemoveFromParentSnapCollider(bool humanDidIt) {
+            SnapCollider parentSnapCollider = transform.parent?.GetComponent<SnapCollider>();
+            if (parentSnapCollider != null) {
+                parentSnapCollider.SetMyCodeBlockArg(null);
+                // TODO: probably needs a log
             }
         }
 

@@ -74,7 +74,7 @@ namespace MoveToCode {
             }
             else{// outside of grey zone; SNAP OFF 
                 // Remove when dragged away
-                myCodeBlock.RemoveFromParentBlock(true);
+                myCodeBlock.RemoveFromParentSnapCollider(true);
                 Block2TextConsoleManager.instance.UpdateConsoleOnSnap(); //refresh the Block2Text console when you REMOVE a block
             }
             mySnapColliders?.DisableAllCompatibleColliders();

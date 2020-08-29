@@ -82,15 +82,16 @@ namespace MoveToCode {
             else {
                 SNAPCOLTYPEDESCRIPTION childArg = GetChildArg(actionIndex);
 
-                snapParent[actionIndex].SetIArg(childArg, null, false);
+                //snapParent[actionIndex].SetIArg(childArg, null, false);
                 return string.Join("", "Remove ", snapChild[actionIndex].name,
                                       " from ", snapParent[actionIndex].name,
                                       " at ", childArg.ToString());
             }
         }
 
+        // TODO: fix kuri later
         private SNAPCOLTYPEDESCRIPTION GetChildArg(int index) {
-            return snapParent[index].GetArgDescriptionOfArg(snapChild[index].GetMyIArgument());
+            return SNAPCOLTYPEDESCRIPTION.NotFound; //snapParent[index].GetArgDescriptionOfArg(snapChild[index].GetMyIArgument());
         }
 
         private int FindNextSnapIndex() {

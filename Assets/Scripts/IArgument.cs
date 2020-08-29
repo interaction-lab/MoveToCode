@@ -30,7 +30,6 @@ namespace MoveToCode {
         public virtual void ResestInternalState() {
         }
 
-
         public CodeBlock GetCodeBlock() {
             return myCodeBlock;
         }
@@ -53,7 +52,7 @@ namespace MoveToCode {
         }
 
         public IArgument GetArgument(SNAPCOLTYPEDESCRIPTION iARGIn) {
-            return myCodeBlock.GetArgumentFromDict(iARGIn);
+            return GetArgToSnapColliderDict()[iARGIn].GetMyCodeBlockArg().GetMyIArgument();
         }
 
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace MoveToCode {
     public class SnapColliderGroup : MonoBehaviour {
-        Dictionary<SNAPCOLTYPEDESCRIPTION, SnapCollider> snapColliders; // this is in mycodblock already
+
         CodeBlock myCodeBlock;
 
         // public methods
@@ -28,13 +28,11 @@ namespace MoveToCode {
         private void SetCollidersAndChildrenState(bool desiredActiveState) {
             foreach (KeyValuePair<SNAPCOLTYPEDESCRIPTION, SnapCollider> scKV in GetSnapColliders()) {
                 scKV.Value.gameObject.SetActive(desiredActiveState);
-            }
-            // get all my colliders; have them enable all their codeblocks snap colliders
-            foreach (KeyValuePair<SNAPCOLTYPEDESCRIPTION, CodeBlock> kvp in GetMyCodeBlock().GetArgDictAsCodeBlocks()) {
-                (desiredActiveState ?
-                    new Action(kvp.Value.GetSnapColliders().EnableAllCollidersAndChildrenColliders) :
-                               kvp.Value.GetSnapColliders().DisableAllCollidersAndChildrenColliders)();
-
+                /*if (scKV.Value.HasCodeBlockArgAttached()) {
+                    (desiredActiveState ?
+                    new Action(scKV.Value.GetMyCodeBlockArg().GetSnapColliderGroup().EnableAllCollidersAndChildrenColliders) :
+                              scKV.Value.GetMyCodeBlockArg().GetSnapColliderGroup().DisableAllCollidersAndChildrenColliders)();
+                }*/ // here
             }
         }
 

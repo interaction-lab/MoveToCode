@@ -123,8 +123,9 @@ namespace MoveToCode {
             }
         }
 
+        // TODO: what does this do???
         public void UnsnapAllBlockFromBlockManager() {
-            StartCodeBlock.instance.SetIArg(SNAPCOLTYPEDESCRIPTION.Next, null, false); // unsnap
+            StartCodeBlock.instance.GetArgAsCodeBlock(SNAPCOLTYPEDESCRIPTION.Next).RemoveFromParentSnapCollider(false);
             foreach (CodeBlock cb in CodeBlockManager.instance.GetAllCodeBlocks()) {
                 if (cb != StartCodeBlock.instance) {
                     cb.transform.SnapToParent(transform);

@@ -37,7 +37,8 @@ namespace MoveToCode {
             if (rightBracketTextMesh == null && leftBracketTextMesh == null) {
                 leftBracketTextMesh = leftBracket.GetChild(0).GetComponent<TextMeshPro>();
                 rightBracketTextMesh = rightBracket.GetChild(0).GetComponent<TextMeshPro>();
-            } else {
+            }
+            else {
                 leftBracketTextMesh.SetText("[");
                 rightBracketTextMesh.SetText("]");
                 // Forces Text update
@@ -120,7 +121,8 @@ namespace MoveToCode {
         private void ResizeVariable() {
             Vector3 rescale = origScaleVariable;
             Vector3 reposition = origPosVariable;
-            float? horizontalSize = GetMyCodeBlock().GetArgAsCodeBlock(SNAPCOLTYPEDESCRIPTION.Array)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
+            // float? horizontalSize = GetMyCodeBlock().GetArgAsCodeBlock(SNAPCOLTYPEDESCRIPTION.Array)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
+            float? horizontalSize = 1; // TODO: fix arrays later
             if (horizontalSize != null) {
                 rescale.x = (float)horizontalSize;
                 reposition.x = reposition.x + (rescale.x - 0.5f) / 2.0f;

@@ -24,26 +24,31 @@ namespace MoveToCode {
 
         // Start Up
         private void Awake() {
-            // MRTK components to add
-            manipHandler = gameObject.AddComponent<ManipulationHandler>();
-            manipHandler.TwoHandedManipulationType = ManipulationHandler.TwoHandedManipulation.MoveRotate;
-
-            // Other components
-            codeBlockSnap = gameObject.AddComponent<CodeBlockSnap>();
-            snapColliders = GetComponentInChildren<SnapColliderGroup>();
-
-            // Setup
+            AddMRTKComponents();
+            AddSnapColliderComponents();
             SetMyBlockInternalArg();
             CodeBlockManager.instance.RegisterCodeBlock(this);
+            SetUpManipulationLogger();
+            dragScript = gameObject.AddComponent<CloneOnDrag>(); // TODO: clean this up
+            UpdateText();
+        }
 
+        private void SetUpManipulationLogger() {
             if (GetComponent<ManipulationLogger>() == null) {
                 gameObject.AddComponent<ManipulationLogger>();
             }
-
-            dragScript = gameObject.AddComponent<CloneOnDrag>();
-
-            UpdateText();
         }
+
+        private void AddMRTKComponents() {
+            manipHandler = gameObject.AddComponent<ManipulationHandler>();
+            manipHandler.TwoHandedManipulationType = ManipulationHandler.TwoHandedManipulation.MoveRotate;
+        }
+
+        private void AddSnapColliderComponents() {
+            codeBlockSnap = gameObject.AddComponent<CodeBlockSnap>();
+            snapColliders = GetComponentInChildren<SnapColliderGroup>();
+        }
+
 
 
         // Public Methods      
@@ -67,13 +72,24 @@ namespace MoveToCode {
         }
 
         // this should be from object mesh
-        public SnapColliderGroup GetSnapColliders() {
+        public SnapColliderGroup GetSnapColliderGroup() {
             if (snapColliders == null) {
                 snapColliders = GetComponentInChildren<SnapColliderGroup>();
             }
             return snapColliders;
         }
 
+        public CodeBlock GetArgAsCodeBlock(SNAPCOLTYPEDESCRIPTION argDescription) {
+            return GetArgumentFromDict(argDescription).GetCodeBlock();
+        }
+
+        internal Dictionary<SNAPCOLTYPEDESCRIPTION, SnapCollider> GetArgDictAsCodeBlocks() {
+            return GetMyIArgument().GetArgToSnapColliderDict();
+        }
+
+        public IArgument GetArgumentFromDict(SNAPCOLTYPEDESCRIPTION argDescription) {
+            return GetMyIArgument().GetArgument(argDescription);
+        }
 
 
         public HashSet<Type> GetArgCompatibility(SNAPCOLTYPEDESCRIPTION argDescription) {

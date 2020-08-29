@@ -88,6 +88,10 @@ namespace MoveToCode {
             return myCodeBlockArg;
         }
 
+        public bool HasCodeBlockArgAttached() {
+            return myCodeBlockArg != null;
+        }
+
         private void SnapToParentCenter(CodeBlock collidedCodeBlock, Transform parentTransform) {
             Vector3 centerPos = collidedCodeBlock.GetCodeBlockObjectMesh().GetCenterPosition();
             centerPos.x = centerPos.x / parentTransform.localScale.x;

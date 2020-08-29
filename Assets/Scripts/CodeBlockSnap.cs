@@ -63,10 +63,10 @@ namespace MoveToCode {
             }
         }
 
-        void OnManipulationEnd(ManipulationEventData call) { //let go of the block
+        void OnManipulationEnd(ManipulationEventData call) {
             currentlyDraggingCBS = null;
             lastDraggedCBS = this;
-            if (bestCandidateSnapCollider != null) { // within grey zone; SNAP ON
+            if (bestCandidateSnapCollider != null) {
                 bestCandidateSnapCollider.DoSnapAction(bestCandidateSnapCollider.GetMyCodeBlock(), GetMyCodeBlock());
             }
             else {

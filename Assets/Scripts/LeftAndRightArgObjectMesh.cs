@@ -56,7 +56,12 @@ namespace MoveToCode {
             SNAPCOLTYPEDESCRIPTION snalColDescIndex = GetMyCodeBlock().GetType() == typeof(ConditionalCodeBlock) ?
                 SNAPCOLTYPEDESCRIPTION.LeftOfConditional :
                 SNAPCOLTYPEDESCRIPTION.LeftNumber;
-            float? horizontalSize = (float)GetMyCodeBlock().GetArgAsCodeBlock(snalColDescIndex)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
+            Debug.Log(GetMyCodeBlock().GetType().ToString());
+            CodeBlock cb1 = GetMyCodeBlock().GetArgAsCodeBlock(snalColDescIndex);
+            if (cb1 != null) {
+                cb1.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
+            }
+            float? horizontalSize = GetMyCodeBlock().GetArgAsCodeBlock(snalColDescIndex)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
 
             if (horizontalSize != null) {
                 rescale.x = (float)horizontalSize;
@@ -73,7 +78,7 @@ namespace MoveToCode {
             SNAPCOLTYPEDESCRIPTION snalColDescIndex = GetMyCodeBlock().GetType() == typeof(ConditionalCodeBlock) ?
                 SNAPCOLTYPEDESCRIPTION.RightOfConditional :
                 SNAPCOLTYPEDESCRIPTION.RightNumber;
-            float? horizontalSize = (float)GetMyCodeBlock().GetArgAsCodeBlock(snalColDescIndex)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
+            float? horizontalSize = GetMyCodeBlock().GetArgAsCodeBlock(snalColDescIndex)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
 
             if (horizontalSize != null) {
                 rescale.x = (float)horizontalSize;

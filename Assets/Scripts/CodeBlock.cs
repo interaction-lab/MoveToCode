@@ -85,7 +85,7 @@ namespace MoveToCode {
         }
 
         public CodeBlock GetArgAsCodeBlock(SNAPCOLTYPEDESCRIPTION argDescription) {
-            return GetArgumentFromDict(argDescription).GetCodeBlock();
+            return GetArgumentFromDict(argDescription)?.GetCodeBlock();
         }
 
         internal Dictionary<SNAPCOLTYPEDESCRIPTION, SnapCollider> GetArgDictAsCodeBlocks() {

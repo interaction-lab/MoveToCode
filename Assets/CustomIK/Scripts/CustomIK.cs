@@ -51,7 +51,6 @@ public class CustomIK : MonoBehaviour {
                     targetAngleV = -Vector3.Angle(Vector3.forward, targetIK.position - rootBone.position);
                 }
         */
-
         #endregion
 
         #region assign parameters
@@ -104,8 +103,6 @@ public class CustomIK : MonoBehaviour {
             Debug.DrawLine(targetIK.position, elbowIK.position, Color.grey);
             Debug.DrawLine(adjacent, elbowIK.position, Color.grey);
         }
-
-
         return adjacent;
         #endregion
     }
@@ -119,19 +116,3 @@ public class CustomIK : MonoBehaviour {
     }
     #endregion
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

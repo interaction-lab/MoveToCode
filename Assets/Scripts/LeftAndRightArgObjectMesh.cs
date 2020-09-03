@@ -53,7 +53,16 @@ namespace MoveToCode {
             // need to resize arg right based upon horizontal size of arg
             Vector3 rescale = origScaleArg;
             Vector3 reposition = origPositionArgLeft;
-            float? horizontalSize = GetMyCodeBlock().GetArgAsCodeBlockAt(0)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
+            SNAPCOLTYPEDESCRIPTION snalColDescIndex = GetMyCodeBlock().GetType() == typeof(ConditionalCodeBlock) ?
+                SNAPCOLTYPEDESCRIPTION.LeftOfConditional :
+                SNAPCOLTYPEDESCRIPTION.LeftNumber;
+
+            CodeBlock cb1 = GetMyCodeBlock().GetArgAsCodeBlock(snalColDescIndex);
+            if (cb1 != null) {
+                cb1.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
+            }
+            float? horizontalSize = GetMyCodeBlock().GetArgAsCodeBlock(snalColDescIndex)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
+
             if (horizontalSize != null) {
                 rescale.x = (float)horizontalSize;
                 reposition.x = reposition.x - (rescale.x - 0.5f) / 2.0f;
@@ -66,11 +75,14 @@ namespace MoveToCode {
             // need to resize arg right based upon horizontal size of arg
             Vector3 rescale = origScaleArg;
             Vector3 reposition = origPositionArgRight;
-            float? horizontalSize = GetMyCodeBlock().GetArgAsCodeBlockAt(1)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
+            SNAPCOLTYPEDESCRIPTION snalColDescIndex = GetMyCodeBlock().GetType() == typeof(ConditionalCodeBlock) ?
+                SNAPCOLTYPEDESCRIPTION.RightOfConditional :
+                SNAPCOLTYPEDESCRIPTION.RightNumber;
+            float? horizontalSize = GetMyCodeBlock().GetArgAsCodeBlock(snalColDescIndex)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
+
             if (horizontalSize != null) {
                 rescale.x = (float)horizontalSize;
-                // 
-                reposition.x = reposition.x + (rescale.x - 0.5f) / 2.0f;
+                reposition.x = reposition.x - (rescale.x - 0.5f) / 2.0f;
             }
             argRight.localPosition = reposition;
             argRight.localScale = rescale;

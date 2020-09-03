@@ -5,8 +5,8 @@ E:\UnityProjects\MoveToCode\Assets\MixedRealityToolkit.Providers\WindowsMixedRea
 E:\UnityProjects\MoveToCode\Assets\MixedRealityToolkit.Providers\WindowsMixedReality\DotNetAdapter\Plugins\net46\Microsoft.Windows.MixedReality.DotNetWinRT\x64\MonoSupport.dll
 E:\UnityProjects\MoveToCode\Assets\MixedRealityToolkit.Providers\WindowsMixedReality\DotNetAdapter\Plugins\net46\Microsoft.Windows.MixedReality.DotNetWinRT\x64\MonoSupport.dll.meta
 E:\UnityProjects\MoveToCode\Assets\MixedRealityToolkit.Providers\WindowsMixedReality\DotNetAdapter\Plugins\net46\Microsoft.Windows.MixedReality.DotNetWinRT.dll.meta
-E:\UnityProjects\MoveToCode\Assets\MixedRealityToolkit.Providers\WindowsMixedReality\DotNetAdapter\Plugins\net46\System.Numerics.Vectors.dll.meta
 E:\UnityProjects\MoveToCode\Assets\MixedRealityToolkit.Providers\WindowsMixedReality\DotNetAdapter\Plugins\net46\Microsoft.Windows.MixedReality.DotNetWinRT.dll
-E:\UnityProjects\MoveToCode\Assets\MixedRealityToolkit.Providers\WindowsMixedReality\DotNetAdapter\Plugins\net46\System.Numerics.Vectors.dll
 E:\UnityProjects\MoveToCode\Assets\MixedRealityToolkit.Providers\WindowsMixedReality\DotNetAdapter\.obj\Release\net46\DotNetAdapter.csprojAssemblyReference.cache
 E:\UnityProjects\MoveToCode\Assets\MixedRealityToolkit.Providers\WindowsMixedReality\DotNetAdapter\.obj\Release\net46\DotNetAdapter.csproj.CopyComplete
+E:\UnityProjects\MoveToCode\Assets\MixedRealityToolkit.Providers\WindowsMixedReality\DotNetAdapter\Plugins\net46\System.Drawing.Primitives.dll.meta
+E:\UnityProjects\MoveToCode\Assets\MixedRealityToolkit.Providers\WindowsMixedReality\DotNetAdapter\Plugins\net46\System.Drawing.Primitives.dll

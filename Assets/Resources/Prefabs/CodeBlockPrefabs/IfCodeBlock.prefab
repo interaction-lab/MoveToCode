@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2446032066776534446}
   - component: {fileID: 2446032066776534447}
   m_Layer: 0
-  m_Name: Argument1
+  m_Name: ConditionalRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0064d2c807e4c7047a4189d5dd96702d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myArgumentPosition: 1
+  mySnapColTypeDescription: 9
   snapPosition: {x: 0, y: 0, z: -0.25}
 --- !u!1 &2446032066981336764
 GameObject:
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 2446032066981336766}
   - component: {fileID: 2446032066981336736}
   m_Layer: 0
-  m_Name: NextInstructionDown
+  m_Name: NestedInstructionDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -210,7 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0064d2c807e4c7047a4189d5dd96702d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myArgumentPosition: 0
+  mySnapColTypeDescription: 3
   snapPosition: {x: 0.18, y: -1, z: 0}
 --- !u!1 &2446032067061560247
 GameObject:
@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 2446032067061560248}
   - component: {fileID: 2446032067061560249}
   m_Layer: 0
-  m_Name: ExitInstructionDown
+  m_Name: NextInstructionDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -316,7 +316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0064d2c807e4c7047a4189d5dd96702d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myArgumentPosition: 2
+  mySnapColTypeDescription: 0
   snapPosition: {x: -0.25, y: -1, z: 0}
 --- !u!1 &2446032067502069107
 GameObject:
@@ -769,7 +769,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2446032068517754002}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

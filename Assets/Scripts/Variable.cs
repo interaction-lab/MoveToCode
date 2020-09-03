@@ -35,5 +35,9 @@ namespace MoveToCode {
         public override Type GetCastType() {
             return GetMyData().GetCastType();
         }
+
+        public override string DescriptiveInstructionToString() {
+            return ToString();
+        }
     }
 }

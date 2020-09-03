@@ -5,10 +5,12 @@ using UnityEngine;
 
 namespace MoveToCode {
     public class SnapCollider : MonoBehaviour {
-        public int myArgumentPosition = 0;
+        CodeBlock myCodeBlockArg;
+
+        public SNAPCOLTYPEDESCRIPTION mySnapColTypeDescription;
         public Vector3 snapPosition;
 
-        List<Type> myCompatibleArgTypes;
+        HashSet<Type> myCompatibleArgTypes;
         CodeBlockSnap collisionCodeBlockSnap;
 
         static Material outlineMaterial;
@@ -23,9 +25,13 @@ namespace MoveToCode {
             CodeBlockManager.instance.RegisterSnapCollider(this);
             gameObject.SetActive(false);
             GetMyCodeBlockSnap();
+            RegisterWithMyCodeBlockArgDict();
         }
 
-        // Collision/outline // this needs to be moved to object mesh idk wait is this the snapcolliders?
+        private void RegisterWithMyCodeBlockArgDict() {
+            GetMyCodeBlock().GetMyIArgument().RegisterSnapCollider(mySnapColTypeDescription, this);
+        }
+
         public MeshOutline GetMeshOutline() {
             if (outlineMaterial == null) {
                 outlineMaterial = Resources.Load<Material>(ResourcePathConstants.OutlineSnapColliderMaterial) as Material;
@@ -42,7 +48,7 @@ namespace MoveToCode {
         }
 
         private void OnTriggerEnter(Collider collision) {
-            collisionCodeBlockSnap = GetCollidersCodeBlockSnap(collision); // TODO: mega hack, need to find codeblock snap of other
+            collisionCodeBlockSnap = GetCollidersCodeBlockSnap(collision);
             if (collisionCodeBlockSnap == CodeBlockSnap.currentlyDraggingCBS) {
                 collisionCodeBlockSnap?.AddSnapColliderInContact(this);
             }
@@ -55,8 +61,12 @@ namespace MoveToCode {
             }
         }
 
+        internal SNAPCOLTYPEDESCRIPTION GetIArgType() {
+            return mySnapColTypeDescription;
+        }
+
         public CodeBlock GetMyCodeBlock() {
-            return transform.parent.parent?.GetComponent<CodeBlockObjectMesh>().GetMyCodeBlock(); // TODO: this is mega hack, clean up when rewriting snap
+            return transform.parent.parent?.GetComponent<CodeBlockObjectMesh>().GetMyCodeBlock();
         }
 
         CodeBlockSnap GetMyCodeBlockSnap() {
@@ -64,19 +74,56 @@ namespace MoveToCode {
         }
 
         // TODO: humanDidIt is such a hack
-        public void DoSnapAction(CodeBlock myCodeBlock, CodeBlock collidedCodeBlock, bool humanDidIt=true) {
-            Transform parentTransform = transform.parent;
-            myCodeBlock.SetArgumentBlockAt(collidedCodeBlock, myArgumentPosition, humanDidIt);
+        // TODO: fix for arrays
+        public void DoSnapAction(CodeBlock myCodeBlock, CodeBlock collidedCodeBlock, bool humanDidIt = true) {
+            SetMyCodeBlockArg(collidedCodeBlock);
+        }
+
+        public void SetMyCodeBlockArg(CodeBlock collidedCodeBlock) {
+            RemoveCurrentBlockArg();
+            if (collidedCodeBlock != null) {
+                AddNewCodeBlockArg(collidedCodeBlock);
+            }
+        }
+
+        private void RemoveCurrentBlockArg() {
+            CodeBlock curArg = GetMyCodeBlockArg();
+            if (curArg != null) {
+                AudioManager.instance.PlaySoundAtObject(gameObject, AudioManager.popAudioClip);
+                if (CodeBlockSnap.lastDraggedCBS != curArg) {
+                    curArg.transform.localPosition = curArg.transform.localPosition + new Vector3(0.25f, 1.1f, 1.25f);
+                }
+                curArg.transform.SnapToCodeBlockManager();
+                curArg.GetCodeBlockObjectMesh().ResizeChain();
+                myCodeBlockArg = null;
+                // TODO: probably needs a log
+            }
+        }
+
+        private void AddNewCodeBlockArg(CodeBlock collidedCodeBlock) {
+            myCodeBlockArg = collidedCodeBlock;
+            SnapToParentCenter(collidedCodeBlock, transform.parent);
+            AudioManager.instance.PlaySoundAtObject(gameObject, AudioManager.snapAudioClip);
+            GetMyCodeBlock().GetCodeBlockObjectMesh().ResizeChain();
+        }
+
+        public CodeBlock GetMyCodeBlockArg() {
+            return myCodeBlockArg;
+        }
+
+        public bool HasCodeBlockArgAttached() {
+            return myCodeBlockArg != null;
+        }
+
+        private void SnapToParentCenter(CodeBlock collidedCodeBlock, Transform parentTransform) {
             Vector3 centerPos = collidedCodeBlock.GetCodeBlockObjectMesh().GetCenterPosition();
             centerPos.x = centerPos.x / parentTransform.localScale.x;
             collidedCodeBlock.transform.SnapToParent(parentTransform, snapPosition - centerPos);
         }
 
-        protected List<Type> GetMyCompatibleArgTypes() {
+        protected HashSet<Type> GetMyCompatibleArgTypes() {
             if (myCompatibleArgTypes == null) {
-                myCompatibleArgTypes = GetMyCodeBlock().GetArgCompatabilityAt(myArgumentPosition);
-            } else if (GetMyCodeBlock().GetType() == typeof(ArrayCodeBlock)) { //first input sets array type, could later be generalized for all data structures?
-                myCompatibleArgTypes = GetMyCodeBlock().GetArgCompatabilityAt(myArgumentPosition);
+                myCompatibleArgTypes = GetMyCodeBlock().GetArgCompatibility(mySnapColTypeDescription);
             }
             return myCompatibleArgTypes;
         }
@@ -91,13 +138,11 @@ namespace MoveToCode {
         }
 
         private bool CheckArgCompatibleType(Type argTypeIn) {
+            if (GetMyCompatibleArgTypes() == null || GetMyCompatibleArgTypes().Count == 0) return true;
             foreach (Type T in GetMyCompatibleArgTypes()) {
-                if (T == null) {
-                    if (argTypeIn == null) {
-                        return true;
-                    }
-                }
-                else if (argTypeIn.IsAssignableFrom(T) || T.IsAssignableFrom(argTypeIn)) {
+                if (T == null && argTypeIn == null ||
+                    argTypeIn.IsAssignableFrom(T) ||
+                    T.IsAssignableFrom(argTypeIn)) {
                     return true;
                 }
             }
@@ -107,7 +152,7 @@ namespace MoveToCode {
 
         private void OnEnable() {
             meshRend.enabled = true;
-            //CodeBlockManager.instance.RegisterSnapCollider(this);
+            CodeBlockManager.instance.RegisterSnapCollider(this);
         }
 
         private void OnDisable() {
@@ -120,8 +165,5 @@ namespace MoveToCode {
             }
         }
 
-        public void SetMyArgumentPosition(int position) {
-            myArgumentPosition = position;
-        }
     }
 }

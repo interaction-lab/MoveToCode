@@ -1,4 +1,5 @@
 ﻿using Microsoft.MixedReality.Toolkit.Utilities;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -42,18 +43,20 @@ namespace MoveToCode {
             if (inTextMesh == null) {
                 InstantiateToText();
                 RepositionInText();
-                //RepositionBracketText();
-                //RescaleBracketText();
                 StartCoroutine(UpdateTextNextFrame());
             }
             if (inTextMesh == null) {
                 inTextMesh = middle.GetChild(0).GetComponent<TextMeshPro>();
-            } else {
-                inTextMesh.SetText("in");
-                // Forces Text update
-                inTextMesh.enabled = false;
-                inTextMesh.enabled = true;
             }
+            else {
+                inTextMesh.SetText("in");
+                ForceTextUpdate();
+            }
+        }
+
+        private void ForceTextUpdate() {
+            inTextMesh.enabled = false;
+            inTextMesh.enabled = true;
         }
 
         private void InstantiateToText() {
@@ -92,10 +95,10 @@ namespace MoveToCode {
 
         // private helpers
         private float GetSizeOfInsideInstructionChain() {
-            return FindChainSize(GetMyCodeBlock().GetArgAsIArgumentAt(0));
+            return FindChainSize(GetMyCodeBlock().GetArgumentFromDict(SNAPCOLTYPEDESCRIPTION.Nested));
         }
         private float GetSizeOfExitInstructionChain() {
-            return FindChainSize(GetMyCodeBlock().GetArgAsIArgumentAt(4)) + 0.5f;
+            return FindChainSize(GetMyCodeBlock().GetArgumentFromDict(SNAPCOLTYPEDESCRIPTION.Next)) + 0.5f;
         }
 
         private void ResizeSide() {

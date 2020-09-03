@@ -46,10 +46,10 @@ namespace MoveToCode {
 
         // private helpers
         private float GetSizeOfInsideInstructionChain() {
-            return FindChainSize(GetMyCodeBlock().GetArgAsIArgumentAt(0));
+            return FindChainSize(GetMyCodeBlock().GetArgumentFromDict(SNAPCOLTYPEDESCRIPTION.Nested));
         }
         private float GetSizeOfExitInstructionChain() {
-            return FindChainSize(GetMyCodeBlock().GetArgAsIArgumentAt(2)) + 0.5f;
+            return FindChainSize(GetMyCodeBlock().GetArgumentFromDict(SNAPCOLTYPEDESCRIPTION.Next)) + 0.5f;
         }
 
         private void ResizeSide() {
@@ -70,7 +70,7 @@ namespace MoveToCode {
         private void ResizeArgRight() {
             Vector3 rescale = origScaleArgRight;
             Vector3 reposition = origPositionArgRight;
-            CodeBlockObjectMesh obMesh = GetMyCodeBlock().GetArgAsCodeBlockAt(1)?.GetCodeBlockObjectMesh();
+            CodeBlockObjectMesh obMesh = GetMyCodeBlock().GetArgAsCodeBlock(SNAPCOLTYPEDESCRIPTION.Conditional)?.GetCodeBlockObjectMesh();
             if (obMesh != null) {
                 rescale.x = obMesh.GetBlockHorizontalSize();
                 reposition.x = reposition.x + (rescale.x - 0.5f) / 2.0f;

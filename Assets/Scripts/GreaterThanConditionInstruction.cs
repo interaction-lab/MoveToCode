@@ -4,7 +4,7 @@
         public GreaterThanConditionInstruction(CodeBlock cbIn) : base(cbIn) { }
 
         public override InstructionReturnValue RunInstruction() {
-            EvaluateArgumentList();
+            EvaluateArgumentsOfInstruction();
             return new InstructionReturnValue(new BoolDataType(null, (int)leftArg.GetValue() > (int)rightArg.GetValue()), null);
         }
 

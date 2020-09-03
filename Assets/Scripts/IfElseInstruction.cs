@@ -5,12 +5,12 @@
 
         public override InstructionReturnValue RunInstruction() {
             Interpreter.instance.AddToInstructionStack(GetNextInstruction());
-            EvaluateArgumentList();
+            EvaluateArgumentsOfInstruction();
             if (conditionIsTrue) {
                 return new InstructionReturnValue(null, GetNestedInstruction());
             }
             else {
-                return new InstructionReturnValue(null, (GetArgumentAt(2) as StandAloneInstruction));
+                return new InstructionReturnValue(null, (GetArgument(SNAPCOLTYPEDESCRIPTION.Next) as StandAloneInstruction));
             }
         }
 

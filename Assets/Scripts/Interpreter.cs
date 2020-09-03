@@ -29,7 +29,7 @@ namespace MoveToCode {
             curInstruction?.GetCodeBlock()?.ToggleOutline(false);
             instructionStack.Clear();
             lastInstructionReturn = null;
-            curInstruction = StartCodeBlock.instance.GetMyInternalIArgument() as Instruction;
+            curInstruction = StartCodeBlock.instance.GetMyIArgument() as Instruction;
             StartCodeBlock.instance.ToggleOutline(true);
             CodeBlockManager.instance.ResetAllCodeBlockInternalState();
             MemoryManager.instance.ResetMemoryState();
@@ -41,7 +41,7 @@ namespace MoveToCode {
                 ResetCodeState();
             }
             else {
-                if (curInstruction == StartCodeBlock.instance.GetMyInternalIArgument() as Instruction) {
+                if (curInstruction == StartCodeBlock.instance.GetMyIArgument() as Instruction) {
                     MemoryManager.instance.SaveMemoryState();
                 }
                 try {

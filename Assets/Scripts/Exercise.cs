@@ -1,8 +1,8 @@
-﻿using UnityEngine;
-using UnityEngine.Assertions;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace MoveToCode {
     public class Exercise : MonoBehaviour {
@@ -18,7 +18,7 @@ namespace MoveToCode {
             //read in json
             var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
             SetExerciseInternals(JsonConvert.DeserializeObject<ExerciseInternals>(json, settings));
-            
+
             //create code blocks
             InstantiateCodeBlocks();
             RepositionCodeBlocks();
@@ -51,12 +51,14 @@ namespace MoveToCode {
                 if (ResourcePathConstants.codeBlockDictionary[id] ==
                     Resources.Load<GameObject>(ResourcePathConstants.MathCodeBlockPrefab)) {
                     SetMathOp(ResourcePathConstants.codeBlockDictionary[id], value);
-                //set conditional operation
-                } else if (ResourcePathConstants.codeBlockDictionary[id] == 
-                    Resources.Load<GameObject>(ResourcePathConstants.ConditionBlockPrefab)) {
+                    //set conditional operation
+                }
+                else if (ResourcePathConstants.codeBlockDictionary[id] ==
+                  Resources.Load<GameObject>(ResourcePathConstants.ConditionBlockPrefab)) {
                     SetConditionalOp(ResourcePathConstants.codeBlockDictionary[id], value);
-                //set data value
-                } else if (value != null) {
+                    //set data value
+                }
+                else if (value != null) {
                     SetDataValue(ResourcePathConstants.codeBlockDictionary[id], value);
                 }
 
@@ -72,7 +74,9 @@ namespace MoveToCode {
                 result &= (MemoryManager.instance.GetVariableValue(myExerciseInternals.GetVarNames()[i]).GetValue() as int?) == (myExerciseInternals.GetFinalVariableGoalValues()[i] as int?) ||
                     (MemoryManager.instance.GetVariableValue(myExerciseInternals.GetVarNames()[i]).GetValue() as Array) == (myExerciseInternals.GetFinalVariableGoalValues()[i] as Array);
             }
-            result &= ConsoleManager.instance.GetCleanedMainText() == myExerciseInternals.GetConsoleStringGoal();
+
+            result &= ConsoleManager.instance.GetCleanedMainText() ==
+                myExerciseInternals.GetConsoleStringGoal().Replace("\"", string.Empty);
             return result;
         }
 
@@ -86,10 +90,12 @@ namespace MoveToCode {
             for (int i = 0; i < codeBlockGameObjectList.Count; i++) {
                 if (i == 0) {
                     codeBlockGameObjectList[i].transform.localPosition = new Vector3(prevX, prevY, topRightZ);
-                } else if (i % numBlocksInSpawnCol == 0) {
+                }
+                else if (i % numBlocksInSpawnCol == 0) {
                     prevY = topRightY;
                     codeBlockGameObjectList[i].transform.localPosition = new Vector3(prevX -= 0.5f, prevY, topRightZ);
-                } else {
+                }
+                else {
                     codeBlockGameObjectList[i].transform.localPosition = new Vector3(prevX, prevY -= 0.25f, topRightZ);
                 }
             }
@@ -117,8 +123,9 @@ namespace MoveToCode {
             }
         }
 
+        // TODO: what does this do???
         public void UnsnapAllBlockFromBlockManager() {
-            StartCodeBlock.instance.SetArgumentBlockAt(null, 0, false); // unsnap
+            StartCodeBlock.instance.GetArgAsCodeBlock(SNAPCOLTYPEDESCRIPTION.Next).RemoveFromParentSnapCollider(false);
             foreach (CodeBlock cb in CodeBlockManager.instance.GetAllCodeBlocks()) {
                 if (cb != StartCodeBlock.instance) {
                     cb.transform.SnapToParent(transform);

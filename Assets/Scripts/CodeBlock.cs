@@ -14,7 +14,6 @@ namespace MoveToCode {
         ManipulationHandler manipHandler;
         CodeBlockObjectMesh codeBlockObjectMesh;
         SnapColliderGroup snapColliders;
-        CodeBlockArgumentList codeBlockArgumentList;
         CodeBlockSnap codeBlockSnap;
         GameObject codeBlockTextGameObject;
         CloneOnDrag dragScript;
@@ -25,34 +24,40 @@ namespace MoveToCode {
 
         // Start Up
         private void Awake() {
-            // MRTK components to add
-            manipHandler = gameObject.AddComponent<ManipulationHandler>();
-            manipHandler.TwoHandedManipulationType = ManipulationHandler.TwoHandedManipulation.MoveRotate;
-
-            // Other components
-            codeBlockSnap = gameObject.AddComponent<CodeBlockSnap>();
-            snapColliders = GetComponentInChildren<SnapColliderGroup>();
-
-            // Setup
-            SetMyBlockInternalArg();
-            CodeBlockManager.instance.RegisterCodeBlock(this);
-
-            // ArgListManager set up
-            codeBlockArgumentList = gameObject.AddComponent<CodeBlockArgumentList>();
-            codeBlockArgumentList.SetUp(this);
-
-            if (GetComponent<ManipulationLogger>() == null) {
-                gameObject.AddComponent<ManipulationLogger>();
+            AddMRTKComponents();
+            AddSnapColliderComponents();
+            if (myBlockInternalArg == null) {
+                SetMyBlockInternalArg();
             }
-
-            dragScript = gameObject.AddComponent<CloneOnDrag>();
-
+            CodeBlockManager.instance.RegisterCodeBlock(this);
+            SetUpManipulationLogger();
+            dragScript = gameObject.AddComponent<CloneOnDrag>(); // TODO: clean this up
             UpdateText();
         }
 
-        // Public Methods
+        private void SetUpManipulationLogger() {
+            if (GetComponent<ManipulationLogger>() == null) {
+                gameObject.AddComponent<ManipulationLogger>();
+            }
+        }
 
-        public IArgument GetMyInternalIArgument() {
+        private void AddMRTKComponents() {
+            manipHandler = gameObject.AddComponent<ManipulationHandler>();
+            manipHandler.TwoHandedManipulationType = ManipulationHandler.TwoHandedManipulation.MoveRotate;
+        }
+
+        private void AddSnapColliderComponents() {
+            codeBlockSnap = gameObject.AddComponent<CodeBlockSnap>();
+            snapColliders = GetComponentInChildren<SnapColliderGroup>();
+        }
+
+
+
+        // Public Methods      
+        public IArgument GetMyIArgument() {
+            if (myBlockInternalArg == null) {
+                SetMyBlockInternalArg();
+            }
             return myBlockInternalArg;
         }
 
@@ -72,50 +77,31 @@ namespace MoveToCode {
         }
 
         // this should be from object mesh
-        //public IEnumerable GetAllAttachedCodeBlocks() { // this should just be from the object mesh
-        public SnapColliderGroup GetSnapColliders() {
+        public SnapColliderGroup GetSnapColliderGroup() {
             if (snapColliders == null) {
                 snapColliders = GetComponentInChildren<SnapColliderGroup>();
             }
             return snapColliders;
         }
 
-        public int GetPositionOfArgument(IArgument iArgIn) {
-            int index = 0;
-            foreach (IArgument ia in codeBlockArgumentList.GetArgListAsIArguments()) {
-                if (ia == iArgIn) {
-                    return index;
-                }
-                ++index;
-            }
-            return -1;
+        public CodeBlock GetArgAsCodeBlock(SNAPCOLTYPEDESCRIPTION argDescription) {
+            return GetArgumentFromDict(argDescription)?.GetCodeBlock();
         }
 
-        // CodeBlockArgumentList relay functions
-        public void SetArgumentBlockAt(CodeBlock newArgumentCodeBlock, int argPosition, bool humanDidIt) {
-            codeBlockArgumentList.SetArgCodeBlockAt(newArgumentCodeBlock, argPosition, humanDidIt);
-            UpdateText();
+        internal Dictionary<SNAPCOLTYPEDESCRIPTION, SnapCollider> GetArgDictAsCodeBlocks() {
+            return GetMyIArgument().GetArgToSnapColliderDict();
         }
 
-        public List<CodeBlock> GetArgumentListAsCodeBlocks() {
-            return codeBlockArgumentList.GetArgListCodeBlocks();
+        public IArgument GetArgumentFromDict(SNAPCOLTYPEDESCRIPTION argDescription) {
+            return GetMyIArgument().GetArgument(argDescription);
         }
 
-        public List<IArgument> GetArgumentListAsIArgs() {
-            return codeBlockArgumentList.GetArgListAsIArguments();
+
+        public HashSet<Type> GetArgCompatibility(SNAPCOLTYPEDESCRIPTION argDescription) {
+            return GetMyIArgument().GetArgCompatibility(argDescription);
         }
 
-        public List<Type> GetArgCompatabilityAt(int pos) {
-            return (GetMyInternalIArgument() as IArgument).GetArgCompatibilityAtPos(pos);
-        }
 
-        public CodeBlock GetArgAsCodeBlockAt(int pos) {
-            return codeBlockArgumentList.GetArgAsCodeBlockAt(pos);
-        }
-
-        public IArgument GetArgAsIArgumentAt(int pos) {
-            return codeBlockArgumentList.GetArgAsIArgumentAt(pos);
-        }
 
         public void ResetInstructionInternalState() {
             myBlockInternalArg.ResestInternalState();
@@ -130,11 +116,8 @@ namespace MoveToCode {
             GetCodeBlockObjectMesh().ToggleColliders(on);
         }
 
-        public void RemoveFromParentBlock(bool humanDidIt) {
-            CodeBlock parentCodeBlock = FindParentCodeBlock();
-            if (parentCodeBlock != null) {
-                parentCodeBlock.SetArgumentBlockAt(null, parentCodeBlock.GetPositionOfArgument(GetMyInternalIArgument()), humanDidIt);
-            }
+        public void RemoveFromParentSnapCollider(bool humanDidIt) {
+            transform.parent?.GetComponent<SnapCollider>()?.SetMyCodeBlockArg(null);
         }
 
         public void SetIsMenuBlock(bool option) {
@@ -176,9 +159,7 @@ namespace MoveToCode {
             }
             else {
                 textMesh.SetText(ToString());
-                // Forces text update
-                textMesh.enabled = false;
-                textMesh.enabled = true;
+                textMesh.ForceTextUpdate();
             }
         }
 

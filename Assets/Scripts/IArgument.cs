@@ -1,20 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace MoveToCode {
+    public enum SNAPCOLTYPEDESCRIPTION {
+        Next,
+        Array,
+        Value,
+        Nested,
+        Variable,
+        NotFound,
+        Printable,
+        LeftNumber,
+        RightNumber,
+        Conditional,
+        ArrayElement,
+        ArrayDataStructure,
+        LeftOfConditional,
+        RightOfConditional,
+    }
+
     public abstract class IArgument {
         CodeBlock myCodeBlock;
-        protected List<List<Type>> argPosToCompatability;
-        protected List<string> argDescriptionList;
+
+        protected Dictionary<SNAPCOLTYPEDESCRIPTION, SnapCollider> argToSnapColliderDict = new Dictionary<SNAPCOLTYPEDESCRIPTION, SnapCollider>();
 
         public abstract IDataType EvaluateArgument();
-        public virtual void ResestInternalState() { }
-        public abstract int GetNumArguments();
-        public virtual string DescriptiveInstructionToString() { return ""; }
-        public virtual void EvaluateArgumentList() { }
-        public virtual void SetUpArgPosToCompatability() { }
-        public virtual void SetUpArgDescriptionList() { }
+        public abstract string DescriptiveInstructionToString();
+
+        public virtual void ResestInternalState() {
+        }
 
         public CodeBlock GetCodeBlock() {
             return myCodeBlock;
@@ -25,34 +39,44 @@ namespace MoveToCode {
             ResestInternalState();
         }
 
-        public virtual List<Type> GetArgCompatibilityAtPos(int pos) {
-            if (argPosToCompatability == null) {
-                SetUpArgPosToCompatability();
-            }
-            return argPosToCompatability[pos];
+        internal void RegisterSnapCollider(SNAPCOLTYPEDESCRIPTION snapColDescIn, SnapCollider snapCollider) {
+            GetArgToSnapColliderDict()[snapColDescIn] = snapCollider;
         }
 
-        public IArgument GetArgumentAt(int pos) {
-            return GetArgumentListAsIArgs()[pos];
+        public Dictionary<SNAPCOLTYPEDESCRIPTION, SnapCollider> GetArgToSnapColliderDict() {
+            return argToSnapColliderDict;
         }
 
-        public List<IArgument> GetArgumentListAsIArgs() {
-            return GetCodeBlock().GetArgumentListAsIArgs();
+        public int GetNumArguments() {
+            return GetArgToSnapColliderDict().Count;
         }
 
-        public List<string> GetArgListDescription() {
-            if (argDescriptionList == null) {
-                SetUpArgDescriptionList();
-            }
-            return argDescriptionList;
+        public IArgument GetArgument(SNAPCOLTYPEDESCRIPTION iARGIn) {
+            return GetArgToSnapColliderDict()[iARGIn]?.GetMyCodeBlockArg()?.GetMyIArgument();
         }
 
-        public void PrintArgDescriptions() {
-            int i = 0;
-            foreach (string s in GetArgListDescription()) {
-                Debug.Log(string.Join("", "Arg[", i.ToString(), "] = ", s));
-                ++i;
-            }
+        public static Dictionary<SNAPCOLTYPEDESCRIPTION, HashSet<Type>> iArgCompatabilityDict =
+            new Dictionary<SNAPCOLTYPEDESCRIPTION, HashSet<Type>> {
+                { SNAPCOLTYPEDESCRIPTION.Next, new HashSet<Type> { typeof(StandAloneInstruction) }  },
+                { SNAPCOLTYPEDESCRIPTION.LeftOfConditional, new HashSet<Type> {  typeof(BasicDataType), typeof(MathInstruction), typeof(ArrayIndexInstruction) }  },
+                { SNAPCOLTYPEDESCRIPTION.RightOfConditional, new HashSet<Type> {  typeof(BasicDataType), typeof(MathInstruction), typeof(ArrayIndexInstruction) }  },
+                { SNAPCOLTYPEDESCRIPTION.ArrayElement, new HashSet<Type> { typeof(BasicDataType) } },
+                { SNAPCOLTYPEDESCRIPTION.Array, new HashSet<Type> { typeof(Variable) }  },
+                { SNAPCOLTYPEDESCRIPTION.ArrayDataStructure, new HashSet<Type> {  typeof(ArrayDataStructure) }  },
+                { SNAPCOLTYPEDESCRIPTION.Variable, new HashSet<Type> { typeof(Variable) , typeof(ArrayIndexInstruction) }  },
+                { SNAPCOLTYPEDESCRIPTION.Nested, new HashSet<Type> { typeof(StandAloneInstruction) }  },
+                { SNAPCOLTYPEDESCRIPTION.Conditional, new HashSet<Type> {  typeof(ConditionalInstruction) }  },
+                { SNAPCOLTYPEDESCRIPTION.Value, new HashSet<Type> { typeof(IDataType), typeof(MathInstruction), typeof(ConditionalInstruction), typeof(ArrayIndexInstruction) }  },
+                { SNAPCOLTYPEDESCRIPTION.Printable, new HashSet<Type> { typeof(IDataType), typeof(MathInstruction), typeof(ConditionalInstruction), typeof(ArrayIndexInstruction) }  },
+                { SNAPCOLTYPEDESCRIPTION.LeftNumber, new HashSet<Type> {  typeof(INumberDataType), typeof(MathInstruction) }  },
+                { SNAPCOLTYPEDESCRIPTION.RightNumber, new HashSet<Type> {  typeof(INumberDataType), typeof(MathInstruction) }  }
+            };
+
+
+        public virtual HashSet<Type> GetArgCompatibility(SNAPCOLTYPEDESCRIPTION argDescription) {
+            return iArgCompatabilityDict[argDescription];
         }
+
+
     }
 }

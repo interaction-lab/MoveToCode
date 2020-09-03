@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MoveToCode {
     public class SnapColliderGroup : MonoBehaviour {
-        List<SnapCollider> snapColliders;
+
         CodeBlock myCodeBlock;
 
         // public methods
@@ -25,16 +26,13 @@ namespace MoveToCode {
 
         // Private methods
         private void SetCollidersAndChildrenState(bool desiredActiveState) {
-            foreach (SnapCollider sc in GetSnapColliders()) {
-                sc.gameObject.SetActive(desiredActiveState);
-            }
-            foreach (CodeBlock c in GetMyCodeBlock().GetArgumentListAsCodeBlocks()) {
-                if (desiredActiveState) {
-                    c?.GetSnapColliders()?.EnableAllCollidersAndChildrenColliders();
-                }
-                else {
-                    c?.GetSnapColliders()?.DisableAllCollidersAndChildrenColliders();
-                }
+            foreach (KeyValuePair<SNAPCOLTYPEDESCRIPTION, SnapCollider> scKV in GetSnapColliders()) {
+                scKV.Value.gameObject.SetActive(desiredActiveState);
+                if (scKV.Value.HasCodeBlockArgAttached()) {
+                    (desiredActiveState ?
+                    new Action(scKV.Value.GetMyCodeBlockArg().GetSnapColliderGroup().EnableAllCollidersAndChildrenColliders) :
+                              scKV.Value.GetMyCodeBlockArg().GetSnapColliderGroup().DisableAllCollidersAndChildrenColliders)();
+                } // here
             }
         }
 
@@ -45,25 +43,8 @@ namespace MoveToCode {
             return myCodeBlock;
         }
 
-        public SnapCollider GetSnapColliderAtPos(int pos)
-        {
-            return GetSnapColliders()[pos];
-        }
-
-        // TODO: this should be register/deregister
-        private List<SnapCollider> GetSnapColliders() {
-            if (snapColliders == null) {
-                snapColliders = new List<SnapCollider>();
-                snapColliders.Resize(GetMyCodeBlock().GetMyInternalIArgument().GetNumArguments());
-                foreach (Transform go in transform) {
-                    SnapCollider sc = go.GetComponentInChildren<SnapCollider>(true);
-                    if (sc != null)
-                    {
-                        snapColliders[sc.myArgumentPosition] = sc;
-                    }
-                }
-            }
-            return snapColliders;
+        private Dictionary<SNAPCOLTYPEDESCRIPTION, SnapCollider> GetSnapColliders() {
+            return myCodeBlock.GetMyIArgument().GetArgToSnapColliderDict();
         }
     }
 }

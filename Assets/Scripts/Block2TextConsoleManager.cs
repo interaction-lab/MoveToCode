@@ -14,7 +14,7 @@ namespace MoveToCode
 
         public void UpdateConsoleOnSnap() {//every time a block is snapped, the console is updated with code/text     
             Block2TextConsoleManager.instance.ClearConsole();
-            curInstruction = StartCodeBlock.instance.GetMyInternalIArgument() as StandAloneInstruction;
+            curInstruction = StartCodeBlock.instance.GetMyIArgument() as StandAloneInstruction;
             while (curInstruction != null){
                 Block2TextConsoleManager.instance.AddLine(curInstruction?.DescriptiveInstructionToString());
                 curInstruction = curInstruction.GetNextInstruction();

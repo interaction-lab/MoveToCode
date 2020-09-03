@@ -11,9 +11,10 @@ public class KeyboardTestingScript : MonoBehaviour {
             Interpreter.instance.RunNextInstruction();
         }
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
-            MenuManager.instance.FakePressPlay();
+
         }
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
+            MenuManager.instance.FakePressPlay();
             HumanStateManager.instance.DebugLogData();
             //FindObjectOfType<KuriEmoteStringPublisher>().PubRandomNegative();
         }

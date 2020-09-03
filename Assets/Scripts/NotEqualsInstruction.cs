@@ -4,7 +4,7 @@
         public NotEqualsConditionInstruction(CodeBlock cbIn) : base(cbIn) { }
 
         public override InstructionReturnValue RunInstruction() {
-            EvaluateArgumentList();
+            EvaluateArgumentsOfInstruction();
             return new InstructionReturnValue(new BoolDataType(null, !leftArg.IsSameDataTypeAndEqualTo(rightArg)), null);
         }
 

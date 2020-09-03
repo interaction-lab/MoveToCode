@@ -16,10 +16,6 @@ namespace MoveToCode {
             return value;
         }
 
-        public override int GetNumArguments() {
-            return 0;
-        }
-
         public override IDataType EvaluateArgument() {
             return this;
         }

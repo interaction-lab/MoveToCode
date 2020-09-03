@@ -11,66 +11,53 @@ namespace MoveToCode {
 
         public ArrayIndexInstruction(CodeBlock cbIn) : base(cbIn) { }
 
-        public override void EvaluateArgumentList() {
-            if(GetArgumentAt(0)?.EvaluateArgument().GetType() != typeof(ArrayDataStructure)) {
+        public override void EvaluateArgumentsOfInstruction() {
+            if (GetArgument(SNAPCOLTYPEDESCRIPTION.Array)?.EvaluateArgument().GetType() != typeof(ArrayDataStructure)) {
                 arr = null;
-            } else {
-                arr = GetArgumentAt(0)?.EvaluateArgument() as ArrayDataStructure;
-                arr.EvaluateArgumentList();
             }
-            index = GetArgumentAt(1)?.EvaluateArgument() as IntDataType;
+            else {
+                arr = GetArgument(SNAPCOLTYPEDESCRIPTION.Array)?.EvaluateArgument() as ArrayDataStructure;
+                //arr.EvaluateArgumentsOfInstruction();
+            }
+            index = GetArgument(SNAPCOLTYPEDESCRIPTION.ArrayElement)?.EvaluateArgument() as IntDataType;
         }
 
         public override InstructionReturnValue RunInstruction() {
-            EvaluateArgumentList();
+            EvaluateArgumentsOfInstruction();
             indexVal = (int)index.GetValue();
             arrValAtIndex = arr?.GetValueAtIndex(indexVal);
             if (arr?.GetArrayType() == typeof(IntDataType)) {
                 return new InstructionReturnValue(new IntDataType(null, (int)arrValAtIndex), null);
-            } else if (arr.GetArrayType() == typeof(FloatDataType)) {
+            }
+            else if (arr.GetArrayType() == typeof(FloatDataType)) {
                 return new InstructionReturnValue(new FloatDataType((float)arrValAtIndex), null);
-            } else if (arr.GetArrayType() == typeof(StringDataType)) {
+            }
+            else if (arr.GetArrayType() == typeof(StringDataType)) {
                 return new InstructionReturnValue(new StringDataType(null, (string)arrValAtIndex), null);
-            } else if (arr.GetArrayType() == typeof(CharDataType)) {
+            }
+            else if (arr.GetArrayType() == typeof(CharDataType)) {
                 char c = Convert.ToChar(arrValAtIndex);
                 return new InstructionReturnValue(new CharDataType(null, c), null);
-            } else {
+            }
+            else {
                 bool b = Convert.ToBoolean(arrValAtIndex);
                 return new InstructionReturnValue(new BoolDataType(null, b), null);
             }
         }
 
         public void SetArrayValue(IDataType valIn) {
-            EvaluateArgumentList();
+            EvaluateArgumentsOfInstruction();
             indexVal = (int)index.GetValue();
             arr.SetValueAtIndex(indexVal, valIn);
-        }
-
-        public override int GetNumArguments() {
-            return 2;
         }
 
         public override string ToString() {
             return "";
         }
 
-        public override void SetUpArgPosToCompatability() {
-            argPosToCompatability = new List<List<Type>> {
-                new List<Type> {
-                    typeof(Variable)
-                },
-                new List<Type> {
-                    typeof(IntDataType), typeof(MathInstruction)
-                }
-            };
-        }
-
-        public override void SetUpArgDescriptionList() {
-            argDescriptionList = new List<string> { "Array", "Index" };
-        }
 
         public override string DescriptiveInstructionToString() {
-            return string.Join("", GetArgumentAt(0)?.DescriptiveInstructionToString(), " ", "[", " ", GetArgumentAt(1)?.DescriptiveInstructionToString(), "]");
+            return string.Join("", GetArgument(SNAPCOLTYPEDESCRIPTION.Array)?.DescriptiveInstructionToString(), " ", "[", " ", GetArgument(SNAPCOLTYPEDESCRIPTION.ArrayElement)?.DescriptiveInstructionToString(), "]");
         }
     }
 }

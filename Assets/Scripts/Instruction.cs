@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace MoveToCode {
+﻿namespace MoveToCode {
     public abstract class Instruction : IArgument {
         public abstract InstructionReturnValue RunInstruction();
 
@@ -12,5 +8,8 @@ namespace MoveToCode {
         public override IDataType EvaluateArgument() {
             return RunInstruction().GetReturnDataVal();
         }
+
+        public abstract void EvaluateArgumentsOfInstruction();
+
     }
 }

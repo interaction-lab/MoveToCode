@@ -9,9 +9,9 @@ namespace MoveToCode {
         Vector3[] origPositionElements;
         int numElements;
         Vector3[] origScaleElements;
-        
+
         public override void SetUpObject() {
-            numElements = (this.transform.parent.GetComponent<ArrayCodeBlock>().GetMyInternalIArgument() as ArrayDataStructure).GetSize();
+            numElements = (this.transform.parent.GetComponent<ArrayCodeBlock>().GetMyIArgument() as ArrayDataStructure).GetSize();
             SetUpElements();
             RepositionElements();
         }
@@ -39,8 +39,8 @@ namespace MoveToCode {
         public override Vector3 GetCenterPosition() {
             Vector3 leftmostB = elements[0].localPosition;
             leftmostB.x -= (elements[0].localScale.x / 2.0f);
-            Vector3 rightmostB = elements[elements.Length-1].localPosition;
-            rightmostB.x += (elements[elements.Length-1].localScale.x / 2.0f);
+            Vector3 rightmostB = elements[elements.Length - 1].localPosition;
+            rightmostB.x += (elements[elements.Length - 1].localScale.x / 2.0f);
             return (rightmostB + leftmostB) / 2.0f;
         }
 
@@ -76,14 +76,15 @@ namespace MoveToCode {
 
         private void SetUpOriginalScale() {
             origScaleElements = new Vector3[numElements];
-            for(int i = 0; i <  numElements; i++) {
+            for (int i = 0; i < numElements; i++) {
                 origScaleElements[i] = elements[i].localScale;
             }
         }
 
+        // TODO: fix for arrays
         private void SetElementArgPositions() {
             for (int i = 0; i < numElements; i++) {
-                elements[i].GetChild(0).GetComponent<SnapCollider>().SetMyArgumentPosition(i);
+                //  elements[i].GetChild(0).GetComponent<SnapCollider>().SetMyArgumentPosition(i);
             }
         }
 

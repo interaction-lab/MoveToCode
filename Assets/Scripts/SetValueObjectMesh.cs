@@ -32,8 +32,6 @@ namespace MoveToCode {
                 InstantiateText();
                 RepositionText();
                 StartCoroutine(UpdateTextNextFrame());
-            }
-            if (textMesh == null && textMeshSetVar == null) {
                 textMeshSetVar = top.GetChild(1).GetComponent<TextMeshPro>();
                 textMesh = middle.GetChild(0).GetComponent<TextMeshPro>();
             } else {

@@ -20,7 +20,7 @@ namespace MoveToCode {
 #endif
             SetUpFreePlayExercise();
             fileEntries = Directory.GetFiles(targetDirectory).Where(s => s.EndsWith(".json")).ToArray();
-            if(curExercisePos < fileEntries.Length) {
+            if (curExercisePos < fileEntries.Length) {
                 SetUpCurExercise(curExercisePos);
             } else {
                 InitiateFreePlay();
@@ -28,6 +28,10 @@ namespace MoveToCode {
             ToggleCurrentExercise(true);
             LoggingManager.instance.AddLogColumn(curExcersieCol, curExercisePos.ToString());
             LoggingManager.instance.AddLogColumn(exerciseSubmissionResultCol, "");
+        }
+
+        public int GetCurExcercisePos() {
+            return curExercisePos;
         }
 
         private void SetUpCurExercise(int exerciseNum) {
@@ -59,8 +63,7 @@ namespace MoveToCode {
                     KuriManager.instance.SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT.Congratulation);
                     LoggingManager.instance.UpdateLogColumn(exerciseSubmissionResultCol, "Correct");
                     lastExerciseCompleted = true;
-                }
-                else {
+                } else {
                     KuriManager.instance.DoScaffoldingDialogue();
                     LoggingManager.instance.UpdateLogColumn(exerciseSubmissionResultCol, "InCorrect");
                 }
@@ -80,8 +83,7 @@ namespace MoveToCode {
             curExercisePos += 1;
             if (curExercisePos == fileEntries.Length) {
                 InitiateFreePlay();
-            }
-            else {
+            } else {
                 LoggingManager.instance.UpdateLogColumn(curExcersieCol, curExercisePos.ToString());
                 SetUpCurExercise(curExercisePos);
                 ToggleCurrentExercise(true);
@@ -89,8 +91,9 @@ namespace MoveToCode {
         }
 
         private void InitiateFreePlay() {
-            Debug.Log("Free play woould be initiated");
+            Debug.Log("Free play would be initiated");
             curExercise = FreePlay;
+            CodeBlockMenuManager.instance.TurnMenuOn();
             ToggleCurrentExercise(true);
         }
 

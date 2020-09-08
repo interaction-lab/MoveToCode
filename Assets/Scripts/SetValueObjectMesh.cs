@@ -9,8 +9,10 @@ namespace MoveToCode {
         Transform top, variable, middle, valueTo;
         Vector3 origScaleVariable, origScaleValueTo;
         Vector3 origPosVariable, origPosValueTo, origPosMiddle;
+        GameObject codeBlockTextGameObjectTo, codeBlockTextGameObjectSetVar;
 
         TextMeshPro textMesh;
+        TextMeshPro textMeshSetVar;
 
         public override void SetUpObject() {
             top = transform.GetChild(0);
@@ -26,23 +28,22 @@ namespace MoveToCode {
 
         // Jank fix for text pos, maybe move it to it's codeblock?
         private void UpdateText() {
-            if (textMesh == null) {
-                textMesh = GetComponentInChildren<TextMeshPro>(true);
-            }
-            if (textMesh == null) {
-                GameObject codeBlockTextGameObject = Instantiate(
-                    Resources.Load<GameObject>(ResourcePathConstants.CodeBlockTextPrefab), GetMyCodeBlock().transform) as GameObject;
-                codeBlockTextGameObject.transform.SnapToParent(middle);
-                Vector3 tmp = codeBlockTextGameObject.transform.localPosition;
-                tmp.x = 0;
-                codeBlockTextGameObject.transform.localPosition = tmp;
+            if (textMesh == null && textMeshSetVar == null) {
+                InstantiateText();
+                RepositionText();
                 StartCoroutine(UpdateTextNextFrame());
             }
-            else {
+            if (textMesh == null && textMeshSetVar == null) {
+                textMeshSetVar = top.GetChild(1).GetComponent<TextMeshPro>();
+                textMesh = middle.GetChild(0).GetComponent<TextMeshPro>();
+            } else {
                 textMesh.SetText("To");
+                textMeshSetVar.SetText("Set\nVar");
                 // Forces Text update
                 textMesh.enabled = false;
                 textMesh.enabled = true;
+                textMeshSetVar.enabled = false;
+                textMeshSetVar.enabled = true;
             }
         }
 
@@ -50,6 +51,28 @@ namespace MoveToCode {
         private IEnumerator UpdateTextNextFrame() {
             yield return new WaitForEndOfFrame();
             UpdateText();
+        }
+
+        private void InstantiateText() {
+            codeBlockTextGameObjectTo = Instantiate(
+                        Resources.Load<GameObject>(ResourcePathConstants.CodeBlockTextPrefab), GetMyCodeBlock().transform) as GameObject;
+            codeBlockTextGameObjectTo.transform.SnapToParent(middle);
+
+
+            codeBlockTextGameObjectSetVar = Instantiate(
+                    Resources.Load<GameObject>(ResourcePathConstants.CodeBlockTextPrefab), GetMyCodeBlock().transform) as GameObject;
+            codeBlockTextGameObjectSetVar.transform.SnapToParent(top);
+
+        }
+
+        private void RepositionText() {
+            Vector3 tmp = codeBlockTextGameObjectTo.transform.localPosition;
+            tmp.x = 0;
+            codeBlockTextGameObjectTo.transform.localPosition = tmp;
+            Vector3 tmp2 = codeBlockTextGameObjectSetVar.transform.localPosition;
+            tmp2.x = 0;
+            codeBlockTextGameObjectSetVar.transform.localPosition = tmp2;
+
         }
 
         public override void SetUpMeshOutlineList() {
@@ -71,7 +94,7 @@ namespace MoveToCode {
         }
 
         public override Vector3 GetCenterPosition() {
-            return new Vector3(0.25f, 0, 0f);
+            return new Vector3(-0.5f, 0, 0f);
         }
 
         protected override void ResizeObjectMesh() {

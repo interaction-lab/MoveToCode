@@ -56,23 +56,19 @@ namespace MoveToCode {
         private void InstantiateText() {
             codeBlockTextGameObjectTo = Instantiate(
                         Resources.Load<GameObject>(ResourcePathConstants.CodeBlockTextPrefab), GetMyCodeBlock().transform) as GameObject;
-            codeBlockTextGameObjectTo.transform.SnapToParent(middle);
-
-
             codeBlockTextGameObjectSetVar = Instantiate(
                     Resources.Load<GameObject>(ResourcePathConstants.CodeBlockTextPrefab), GetMyCodeBlock().transform) as GameObject;
             codeBlockTextGameObjectSetVar.transform.SnapToParent(top);
-
+            codeBlockTextGameObjectTo.transform.SnapToParent(middle);
         }
 
         private void RepositionText() {
-            Vector3 tmp = codeBlockTextGameObjectTo.transform.localPosition;
-            tmp.x = 0;
-            codeBlockTextGameObjectTo.transform.localPosition = tmp;
-            Vector3 tmp2 = codeBlockTextGameObjectSetVar.transform.localPosition;
-            tmp2.x = 0;
-            codeBlockTextGameObjectSetVar.transform.localPosition = tmp2;
-
+            Vector3 tmpTo = codeBlockTextGameObjectTo.transform.localPosition;
+            tmpTo.x = 0;
+            codeBlockTextGameObjectTo.transform.localPosition = tmpTo;
+            Vector3 tmpSetVar = codeBlockTextGameObjectSetVar.transform.localPosition;
+            tmpSetVar.x = 0;
+            codeBlockTextGameObjectSetVar.transform.localPosition = tmpSetVar;
         }
 
         public override void SetUpMeshOutlineList() {

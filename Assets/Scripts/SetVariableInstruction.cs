@@ -26,7 +26,8 @@ namespace MoveToCode {
         }
 
         public override string ToString() {
-            return "Set\nVar"; // TODO: figure out this spacing
+            //return "Set\nVar"; // TODO: figure out this spacing
+            return "";
         }
 
         public override string DescriptiveInstructionToString() {

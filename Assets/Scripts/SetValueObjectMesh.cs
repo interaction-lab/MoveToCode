@@ -34,14 +34,12 @@ namespace MoveToCode {
                 StartCoroutine(UpdateTextNextFrame());
                 textMeshSetVar = top.GetChild(1).GetComponent<TextMeshPro>();
                 textMesh = middle.GetChild(0).GetComponent<TextMeshPro>();
-            } else {
+            }
+            else {
                 textMesh.SetText("To");
                 textMeshSetVar.SetText("Set\nVar");
-                // Forces Text update
-                textMesh.enabled = false;
-                textMesh.enabled = true;
-                textMeshSetVar.enabled = false;
-                textMeshSetVar.enabled = true;
+                textMesh.ForceTextUpdate();
+                textMeshSetVar.ForceTextUpdate();
             }
         }
 

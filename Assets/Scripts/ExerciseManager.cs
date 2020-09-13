@@ -22,7 +22,8 @@ namespace MoveToCode {
             fileEntries = Directory.GetFiles(targetDirectory).Where(s => s.EndsWith(".json")).ToArray();
             if (curExercisePos < fileEntries.Length) {
                 SetUpCurExercise(curExercisePos);
-            } else {
+            }
+            else {
                 InitiateFreePlay();
             }
             ToggleCurrentExercise(true);
@@ -63,7 +64,8 @@ namespace MoveToCode {
                     KuriManager.instance.SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT.Congratulation);
                     LoggingManager.instance.UpdateLogColumn(exerciseSubmissionResultCol, "Correct");
                     lastExerciseCompleted = true;
-                } else {
+                }
+                else {
                     KuriManager.instance.DoScaffoldingDialogue();
                     LoggingManager.instance.UpdateLogColumn(exerciseSubmissionResultCol, "InCorrect");
                 }
@@ -83,7 +85,8 @@ namespace MoveToCode {
             curExercisePos += 1;
             if (curExercisePos == fileEntries.Length) {
                 InitiateFreePlay();
-            } else {
+            }
+            else {
                 LoggingManager.instance.UpdateLogColumn(curExcersieCol, curExercisePos.ToString());
                 SetUpCurExercise(curExercisePos);
                 ToggleCurrentExercise(true);

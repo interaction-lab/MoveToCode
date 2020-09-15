@@ -10,6 +10,16 @@ Here is a [video](https://www.youtube.com/watch?v=s7udZXa2wEw) of MoveToCode + a
 ## Study Commits
 Currently the study commit for all papers: [0765f1d1ab46373f1bc1be90d9d5b07fafc2a533](https://github.com/interaction-lab/MoveToCode/commit/0765f1d1ab46373f1bc1be90d9d5b07fafc2a533)
 
+[Adapting Usability Metrics for a Socially Assistive, Kinesthetic, Mixed Reality Robot Tutoring Environment (pdf)](https://robotics.usc.edu/publications/media/uploads/pubs/pubdb_1107_eff82bdefbf34f42a435be8c6bacbfa4.pdf)
+```
+@inproceedings{mahajan2020adapting,
+  title={Adapting Usability Metrics for a Socially Assistive, Kinesthetic, Mixed Reality Robot Tutoring Environment},
+  author={Mahajan, Kartik and Groechel, Thomas and Pakkar, Roxanna and Cordero, Julia and Lee, Haemin and Matari{\'c}, Maja J},
+  booktitle={International Conference on Social Robotics},
+  year={2020}
+}
+``` 
+
 ## Projects in Progress
 - Arrays
 - CodeBlock to Python Text

@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace MoveToCode {
     public class KuriTextManager : Singleton<KuriTextManager> {
+        //public GameObject KuriLight0;
+        public GameObject[] lights;
+
         struct TextCommand {
             public COMMANDS commandType;
             public PRIORITY priority;
@@ -35,6 +38,8 @@ namespace MoveToCode {
         Queue<TextCommand> highPriorityCommands;
         AudioSource audioSource;
         AudioClip computerNoiseClip;
+        public bool isGlowing = true;
+        public Material led_on, led_off;
         int curCommandNum, ticketCommandNum;
 
         void Setup() {
@@ -51,6 +56,29 @@ namespace MoveToCode {
             audioSource.loop = true;
             audioSource.volume = 0.05f;
         }
+
+        public void ToggleGlow()
+        { //toggles glow on and off by changing material, helper method for chest lights
+            if (isGlowing)
+            {
+                for(int i = 0; i < lights.Length; i++)
+                {
+                    lights[i].GetComponent<MeshRenderer>().material = led_off;
+                }
+                isGlowing = false;
+                //light.enabled = !light.enabled;
+            }
+            else
+            {
+                for (int i = 0; i < lights.Length; i++)
+                {
+                    lights[i].GetComponent<MeshRenderer>().material = led_on;
+                }
+                isGlowing = true;
+                //light.enabled = !light.enabled;
+            }
+        }
+
 
         Queue<TextCommand> GetCommandQueue() {
             if (commandQueue == null) {
@@ -91,9 +119,17 @@ namespace MoveToCode {
                 audioSource.Play();
                 foreach (char letter in processTuple.text) {
                     kuriTextMesh.text += letter;
+                    //flickers light at each letter
+                    ToggleGlow();
                     yield return new WaitForSeconds(textTypingTime);
                 }
                 audioSource.Pause();
+                //turns light off
+                for (int i = 0; i < lights.Length; i++)
+                {
+                    lights[i].GetComponent<MeshRenderer>().material = led_on;
+                }
+                isGlowing = false;
             }
             else if (processTuple.commandType == COMMANDS.erase) {
                 kuriTextMesh.text = "";

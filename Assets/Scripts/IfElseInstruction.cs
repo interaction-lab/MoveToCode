@@ -10,7 +10,7 @@
                 return new InstructionReturnValue(null, GetNestedInstruction());
             }
             else {
-                return new InstructionReturnValue(null, (GetArgument(SNAPCOLTYPEDESCRIPTION.Next) as StandAloneInstruction));
+                return new InstructionReturnValue(null, (GetArgument("Next") as StandAloneInstruction));
             }
         }
 

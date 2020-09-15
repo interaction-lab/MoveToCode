@@ -10,9 +10,9 @@ namespace MoveToCode {
         public MathInstruction(CodeBlock cbIn) : base(cbIn) { }
 
         public override void EvaluateArgumentsOfInstruction() {
-            if (GetArgument(SNAPCOLTYPEDESCRIPTION.LeftNumber) != null && GetArgument(SNAPCOLTYPEDESCRIPTION.RightNumber) != null) {
-                leftNum = (float)Convert.ChangeType(GetArgument(SNAPCOLTYPEDESCRIPTION.LeftNumber).EvaluateArgument().GetValue(), typeof(float));
-                rightNum = (float)Convert.ChangeType(GetArgument(SNAPCOLTYPEDESCRIPTION.RightNumber).EvaluateArgument().GetValue(), typeof(float));
+            if (GetArgument("LeftNumber") != null && GetArgument("RightNumber") != null) {
+                leftNum = (float)Convert.ChangeType(GetArgument("LeftNumber").EvaluateArgument().GetValue(), typeof(float));
+                rightNum = (float)Convert.ChangeType(GetArgument("RightNumber").EvaluateArgument().GetValue(), typeof(float));
             }
         }
 
@@ -21,7 +21,7 @@ namespace MoveToCode {
         }
 
         public override string DescriptiveInstructionToString() {
-            return string.Join("", GetArgument(SNAPCOLTYPEDESCRIPTION.LeftNumber)?.DescriptiveInstructionToString(), " ", GetMathSymbol(), " ", GetArgument(SNAPCOLTYPEDESCRIPTION.RightNumber)?.DescriptiveInstructionToString());
+            return string.Join("", GetArgument("LeftNumber")?.DescriptiveInstructionToString(), " ", GetMathSymbol(), " ", GetArgument("RightNumber")?.DescriptiveInstructionToString());
         }
     }
 }

@@ -10,7 +10,7 @@ namespace MoveToCode {
 
         public override InstructionReturnValue RunInstruction() {
             ConsoleManager.instance.AddLine(startString);
-            return new InstructionReturnValue(null, GetArgument(SNAPCOLTYPEDESCRIPTION.Next) as StandAloneInstruction);
+            return new InstructionReturnValue(null, GetArgument(string.Next) as StandAloneInstruction);
         }
 
         public override string ToString() {

@@ -80,7 +80,7 @@ namespace MoveToCode {
                                      " at ", snapArgIndex.ToString());
             }
             else {
-                SNAPCOLTYPEDESCRIPTION childArg = GetChildArg(actionIndex);
+                string childArg = GetChildArg(actionIndex);
 
                 //snapParent[actionIndex].SetIArg(childArg, null, false);
                 return string.Join("", "Remove ", snapChild[actionIndex].name,
@@ -90,19 +90,19 @@ namespace MoveToCode {
         }
 
         // TODO: fix kuri later
-        private SNAPCOLTYPEDESCRIPTION GetChildArg(int index) {
-            return SNAPCOLTYPEDESCRIPTION.NotFound; //snapParent[index].GetArgDescriptionOfArg(snapChild[index].GetMyIArgument());
+        private string GetChildArg(int index) {
+            return string.NotFound; //snapParent[index].GetArgDescriptionOfArg(snapChild[index].GetMyIArgument());
         }
 
         private int FindNextSnapIndex() {
             for (int actionIndex = 0; actionIndex < snapChild.Length; ++actionIndex) {
                 if (withAction[actionIndex] != SNAPACTIONS.REMOVE) {
-                    if (GetChildArg(actionIndex) == SNAPCOLTYPEDESCRIPTION.NotFound) {
+                    if (GetChildArg(actionIndex) == string.NotFound) {
                         return actionIndex;
                     }
                 }
                 else {
-                    if (GetChildArg(actionIndex) != SNAPCOLTYPEDESCRIPTION.NotFound) {
+                    if (GetChildArg(actionIndex) != string.NotFound) {
                         return actionIndex;
                     }
                 }

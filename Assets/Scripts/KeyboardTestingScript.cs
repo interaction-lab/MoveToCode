@@ -5,8 +5,16 @@ using RosSharp.RosBridgeClient;
 using UnityEngine;
 
 public class KeyboardTestingScript : MonoBehaviour {
+    public Animator anim;
 
-    void Update() {
+    void Start() {
+        anim = GetComponent<Animator>();
+    }
+
+    void Update() { 
+        if (Input.GetKeyDown("h")) {
+            anim.SetTrigger("HighFive");
+        }
         if (Input.GetKeyDown(KeyCode.Alpha0)) {
             Interpreter.instance.RunNextInstruction();
         }

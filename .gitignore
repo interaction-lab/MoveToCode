@@ -106,3 +106,9 @@ Assets/Resources/PollyAPI[0123456789].txt.meta
 
 # Speech Cache
 Assets/Resources/Audio/CacheSpeech/*
+
+# mono_crash
+mono_crash.mem*
+
+# Mac
+.DS_Store

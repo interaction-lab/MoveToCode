@@ -20,14 +20,19 @@ namespace MoveToCode {
 #endif
             SetUpFreePlayExercise();
             fileEntries = Directory.GetFiles(targetDirectory).Where(s => s.EndsWith(".json")).ToArray();
-            if(curExercisePos < fileEntries.Length) {
+            if (curExercisePos < fileEntries.Length) {
                 SetUpCurExercise(curExercisePos);
-            } else {
+            }
+            else {
                 InitiateFreePlay();
             }
             ToggleCurrentExercise(true);
             LoggingManager.instance.AddLogColumn(curExcersieCol, curExercisePos.ToString());
             LoggingManager.instance.AddLogColumn(exerciseSubmissionResultCol, "");
+        }
+
+        public int GetCurExcercisePos() {
+            return curExercisePos;
         }
 
         private void SetUpCurExercise(int exerciseNum) {
@@ -89,8 +94,9 @@ namespace MoveToCode {
         }
 
         private void InitiateFreePlay() {
-            Debug.Log("Free play woould be initiated");
+            Debug.Log("Free play would be initiated");
             curExercise = FreePlay;
+            CodeBlockMenuManager.instance.TurnMenuOn();
             ToggleCurrentExercise(true);
         }
 

@@ -26,7 +26,7 @@ namespace MoveToCode {
         }
 
         public override float GetBlockVerticalSize() {
-            return top.localScale.y + FindChainSize(GetMyCodeBlock().GetArgumentFromDict(string.Nested));
+            return top.localScale.y + FindChainSize(GetMyCodeBlock().GetArgumentFromDict("Nested"));
         }
 
         public override Vector3 GetCenterPosition() {
@@ -38,7 +38,7 @@ namespace MoveToCode {
             Vector3 rescale = origScaleArgRight;
             Vector3 reposition = origPositionArgRight;
 
-            float? horizontalSize = GetMyCodeBlock().GetArgAsCodeBlock(string.Printable)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
+            float? horizontalSize = GetMyCodeBlock().GetArgAsCodeBlock("Printable")?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
             if (horizontalSize != null) {
                 rescale.x = (float)horizontalSize;
                 reposition.x = reposition.x + (rescale.x - 0.5f) / 2.0f;

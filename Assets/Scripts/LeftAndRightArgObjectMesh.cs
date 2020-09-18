@@ -54,8 +54,8 @@ namespace MoveToCode {
             Vector3 rescale = origScaleArg;
             Vector3 reposition = origPositionArgLeft;
             string snalColDescIndex = GetMyCodeBlock().GetType() == typeof(ConditionalCodeBlock) ?
-                string.LeftOfConditional :
-                string.LeftNumber;
+                "LeftOfConditional" :
+                "LeftNumber";
 
             CodeBlock cb1 = GetMyCodeBlock().GetArgAsCodeBlock(snalColDescIndex);
             if (cb1 != null) {
@@ -76,8 +76,8 @@ namespace MoveToCode {
             Vector3 rescale = origScaleArg;
             Vector3 reposition = origPositionArgRight;
             string snalColDescIndex = GetMyCodeBlock().GetType() == typeof(ConditionalCodeBlock) ?
-                string.RightOfConditional :
-                string.RightNumber;
+                "RightOfConditional" :
+                "RightNumber";
             float? horizontalSize = GetMyCodeBlock().GetArgAsCodeBlock(snalColDescIndex)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
 
             if (horizontalSize != null) {

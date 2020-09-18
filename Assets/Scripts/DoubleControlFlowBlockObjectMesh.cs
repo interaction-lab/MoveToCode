@@ -40,11 +40,11 @@ namespace MoveToCode {
         // private methods
 
         private float FindTopVerticalSize() {
-            return FindChainSize(GetMyCodeBlock().GetArgumentFromDict(string.Nested));
+            return FindChainSize(GetMyCodeBlock().GetArgumentFromDict("Nested"));
         }
 
         private float FindBotVerticalSize() {
-            return FindChainSize(GetMyCodeBlock().GetArgumentFromDict(string.Nested));
+            return FindChainSize(GetMyCodeBlock().GetArgumentFromDict("Nested"));
         }
 
         public override Vector3 GetCenterPosition() {

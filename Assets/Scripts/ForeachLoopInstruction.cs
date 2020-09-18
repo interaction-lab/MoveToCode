@@ -25,8 +25,8 @@ namespace MoveToCode {
         }
 
         public override void EvaluateArgumentsOfInstruction() {
-            Variable iteratorVar = GetArgument(string.Variable) as Variable;
-            ArrayDataStructure dataStructureVar = GetArgument(string.ArrayDataStructure) as ArrayDataStructure;
+            Variable iteratorVar = GetArgument("Variable") as Variable;
+            ArrayDataStructure dataStructureVar = GetArgument("ArrayDataStructure") as ArrayDataStructure;
             if (dataStructureVar != null && currIdxInArray < dataStructureVar.GetSize()) {
                 iteratorVar.SetValue(dataStructureVar.GetValueAtIndex(currIdxInArray));
             }

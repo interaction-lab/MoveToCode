@@ -52,7 +52,9 @@ namespace MoveToCode {
         }
 
         public IArgument GetArgument(string iARGIn) {
-            return GetArgToSnapColliderDict()[iARGIn]?.GetMyCodeBlockArg()?.GetMyIArgument();
+            if (GetArgToSnapColliderDict().ContainsKey(iARGIn))
+                return GetArgToSnapColliderDict()[iARGIn]?.GetMyCodeBlockArg()?.GetMyIArgument();
+            return null;
         }
 
         public static Dictionary<string, HashSet<Type>> iArgCompatabilityDict =
@@ -74,7 +76,10 @@ namespace MoveToCode {
 
 
         public virtual HashSet<Type> GetArgCompatibility(string argDescription) {
-            return iArgCompatabilityDict[argDescription];
+            if (iArgCompatabilityDict.ContainsKey(argDescription))
+                return iArgCompatabilityDict[argDescription];
+            
+            return null;
         }
 
 

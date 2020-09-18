@@ -91,18 +91,18 @@ namespace MoveToCode {
 
         // TODO: fix kuri later
         private string GetChildArg(int index) {
-            return string.NotFound; //snapParent[index].GetArgDescriptionOfArg(snapChild[index].GetMyIArgument());
+            return "NotFound"; //snapParent[index].GetArgDescriptionOfArg(snapChild[index].GetMyIArgument());
         }
 
         private int FindNextSnapIndex() {
             for (int actionIndex = 0; actionIndex < snapChild.Length; ++actionIndex) {
                 if (withAction[actionIndex] != SNAPACTIONS.REMOVE) {
-                    if (GetChildArg(actionIndex) == string.NotFound) {
+                    if (GetChildArg(actionIndex) == "NotFound") {
                         return actionIndex;
                     }
                 }
                 else {
-                    if (GetChildArg(actionIndex) != string.NotFound) {
+                    if (GetChildArg(actionIndex) != "NotFound") {
                         return actionIndex;
                     }
                 }

@@ -57,7 +57,7 @@ namespace MoveToCode {
 
 
         public override string DescriptiveInstructionToString() {
-            return string.Join("", GetArgument("Array")?.DescriptiveInstructionToString(), " ", "[", " ", GetArgument("ArrayElement")?.DescriptiveInstructionToString(), "]");
+            return string.Join("", GetArgument("Array")?.DescriptiveInstructionToString(), " ", "[", " ", GetArgument(string.Join("","ArrayElement",indexVal.ToString())), "]");
         }
     }
 }

@@ -47,7 +47,7 @@ namespace MoveToCode {
 
         string SpawnVariable() {
             string[] varNames = GetComponent<Exercise>().GetExerciseInternals().GetVarNames();
-            if (varNames.Length == 0) {
+            if (varNames?.Length == 0) {
                 return "";
             }
             string varToSpawn = varNames[Random.Range(0, varNames.Length)];

@@ -7958,7 +7958,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1147929549}
   - component: {fileID: 1147929550}
-  - component: {fileID: 1147929551}
   m_Layer: 0
   m_Name: CodeBlockMenu
   m_TagString: Untagged
@@ -7995,42 +7994,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c539f667b3c1714795010e251f628d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1147929551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1147929548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03daa81ea5f685f4ebf6e32038d058ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hostTransform: {fileID: 0}
-  manipulationType: 2
-  twoHandedManipulationType: 5
-  allowFarManipulation: 1
-  oneHandRotationModeNear: 6
-  oneHandRotationModeFar: 6
-  releaseBehavior: 3
-  constraintOnRotation: 0
-  useLocalSpaceForConstraint: 0
-  constraintOnMovement: 0
-  smoothingActive: 1
-  smoothingAmountOneHandManip: 0.001
-  OnManipulationStarted:
-    m_PersistentCalls:
-      m_Calls: []
-  OnManipulationEnded:
-    m_PersistentCalls:
-      m_Calls: []
-  OnHoverEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  OnHoverExited:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1175714598
 GameObject:
   m_ObjectHideFlags: 0
@@ -10428,7 +10391,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5f683c2377b903418a9dd4d28a6d5ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockInContactWithShelf: 0
 --- !u!114 &1506932010
 MonoBehaviour:
   m_ObjectHideFlags: 0

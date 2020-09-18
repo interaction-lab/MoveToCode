@@ -1,13 +1,4 @@
 {
-  "scopedRegistries": [
-    {
-      "name": "MS Build for Unity",
-      "url": "https://pkgs.dev.azure.com/UnityDeveloperTools/MSBuildForUnity/_packaging/UnityDeveloperTools/npm/registry",
-      "scopes": [
-        "com.microsoft"
-      ]
-    }
-  ],
   "dependencies": {
     "com.unity.ads": "2.0.8",
     "com.unity.analytics": "3.2.2",

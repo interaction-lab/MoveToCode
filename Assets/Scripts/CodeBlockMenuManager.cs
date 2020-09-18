@@ -6,6 +6,10 @@ namespace MoveToCode {
 
         private CodeBlockFamily currentCodeBlockFamily = null;
 
+        private void Awake() {
+            TurnMenuOff();
+        }
+
         public void SetFamily(CodeBlockFamily family) {
             HidePreviousActive();
             currentCodeBlockFamily = family;
@@ -22,6 +26,10 @@ namespace MoveToCode {
 
         public void TurnMenuOn() {
             gameObject.SetActive(true);
+        }
+
+        public void TurnMenuOff() {
+            gameObject.SetActive(false);
         }
     }
 }

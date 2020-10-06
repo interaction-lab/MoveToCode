@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace MoveToCode {
     public class KuriTextManager : Singleton<KuriTextManager> {
-        public MeshRenderer[] chestLights;
+        MeshRenderer[] chestLights;
         struct TextCommand {
             public COMMANDS commandType;
             public PRIORITY priority;
@@ -36,7 +36,7 @@ namespace MoveToCode {
         Queue<TextCommand> highPriorityCommands;
         AudioSource audioSource;
         AudioClip computerNoiseClip;
-        public Material ledOnMaterial, ledOffMaterial;
+        Material ledOnMaterial, ledOffMaterial;
         int curCommandNum, ticketCommandNum;
 
         void Setup() {

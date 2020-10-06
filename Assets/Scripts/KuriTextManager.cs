@@ -38,6 +38,7 @@ namespace MoveToCode {
         AudioClip computerNoiseClip;
         Material ledOnMaterial, ledOffMaterial;
         int curCommandNum, ticketCommandNum;
+        float[] spectrum = new float[256];
 
         void Setup() {
             commandQueue = new Queue<TextCommand>();
@@ -66,6 +67,13 @@ namespace MoveToCode {
             {
                 led.material = turnOn ? ledOnMaterial : ledOffMaterial;
             }
+        }
+
+        public void audioLightPattern()
+        {
+            AudioListener.GetSpectrumData(spectrum, 0, FFTWindow.Rectangular);
+
+
         }
 
 

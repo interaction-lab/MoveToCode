@@ -26,6 +26,7 @@ namespace MoveToCode {
         public static string ElementCodeBlockPrefab = CodeBlockPrefabFolder + "ElementCodeBlock";
         public static string ArrayIndexCodeBlockPrefab = CodeBlockPrefabFolder + "ArrayIndexCodeBlock";
 
+
         public static string ExercisePrefab = PrefabFolder + "Exercise";
 
         public static Dictionary<string, GameObject> codeBlockDictionary = new Dictionary<string, GameObject> {
@@ -48,6 +49,8 @@ namespace MoveToCode {
         public static string OutlineSnapColliderMaterial = MaterialFolder + "OutlineSnapCollider";
         public static string OutlineCodeBlockMaterial = MaterialFolder + "OutlineCodeBlock";
         public static string FakeButtonPressParticleMaterial = MaterialFolder + "FakeButtonPressParticle";
+        public static string locLedOnMaterial = MaterialFolder + "ChestLED";
+        public static string locLedOffMaterial = MaterialFolder + "ChestLED_off";
 
         // Audio
         public static string AudioFolder = "Audio/";

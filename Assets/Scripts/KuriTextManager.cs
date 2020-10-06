@@ -5,9 +5,7 @@ using UnityEngine;
 
 namespace MoveToCode {
     public class KuriTextManager : Singleton<KuriTextManager> {
-        //public GameObject KuriLight0;
-        public GameObject[] lights;
-
+        public MeshRenderer[] chestLights;
         struct TextCommand {
             public COMMANDS commandType;
             public PRIORITY priority;
@@ -38,8 +36,7 @@ namespace MoveToCode {
         Queue<TextCommand> highPriorityCommands;
         AudioSource audioSource;
         AudioClip computerNoiseClip;
-        public bool isGlowing = true;
-        public Material led_on, led_off;
+        public Material ledOnMaterial, ledOffMaterial;
         int curCommandNum, ticketCommandNum;
 
         void Setup() {
@@ -55,27 +52,19 @@ namespace MoveToCode {
             audioSource.spatialBlend = 1;
             audioSource.loop = true;
             audioSource.volume = 0.05f;
+            ledOnMaterial = Resources.Load<Material>(ResourcePathConstants.locLedOnMaterial) as Material;
+            ledOffMaterial = Resources.Load<Material>(ResourcePathConstants.locLedOffMaterial) as Material;
+            chestLights = GetComponentsInChildren<MeshRenderer>();
         }
 
-        public void ToggleGlow()
-        { //toggles glow on and off by changing material, helper method for chest lights
-            if (isGlowing)
+        public bool IsGlowing(){
+            return chestLights[0].material == ledOnMaterial;
+        }
+
+        public void ToggleGlow(bool turnOn){
+            foreach(MeshRenderer led in chestLights)
             {
-                for(int i = 0; i < lights.Length; i++)
-                {
-                    lights[i].GetComponent<MeshRenderer>().material = led_off;
-                }
-                isGlowing = false;
-                //light.enabled = !light.enabled;
-            }
-            else
-            {
-                for (int i = 0; i < lights.Length; i++)
-                {
-                    lights[i].GetComponent<MeshRenderer>().material = led_on;
-                }
-                isGlowing = true;
-                //light.enabled = !light.enabled;
+                led.material = turnOn ? ledOnMaterial : ledOffMaterial;
             }
         }
 
@@ -119,17 +108,11 @@ namespace MoveToCode {
                 audioSource.Play();
                 foreach (char letter in processTuple.text) {
                     kuriTextMesh.text += letter;
-                    //flickers light at each letter
-                    ToggleGlow();
+                    ToggleGlow(!IsGlowing());
                     yield return new WaitForSeconds(textTypingTime);
                 }
                 audioSource.Pause();
-                //turns light off
-                for (int i = 0; i < lights.Length; i++)
-                {
-                    lights[i].GetComponent<MeshRenderer>().material = led_on;
-                }
-                isGlowing = false;
+                ToggleGlow(false);
             }
             else if (processTuple.commandType == COMMANDS.erase) {
                 kuriTextMesh.text = "";

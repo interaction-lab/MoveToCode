@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace MoveToCode {
     public class KuriTextManager : Singleton<KuriTextManager> {
+        MeshRenderer[] chestLights;
         struct TextCommand {
             public COMMANDS commandType;
             public PRIORITY priority;
@@ -35,6 +36,7 @@ namespace MoveToCode {
         Queue<TextCommand> highPriorityCommands;
         AudioSource audioSource;
         AudioClip computerNoiseClip;
+        Material ledOnMaterial, ledOffMaterial;
         int curCommandNum, ticketCommandNum;
 
         void Setup() {
@@ -50,7 +52,22 @@ namespace MoveToCode {
             audioSource.spatialBlend = 1;
             audioSource.loop = true;
             audioSource.volume = 0.05f;
+            ledOnMaterial = Resources.Load<Material>(ResourcePathConstants.locLedOnMaterial) as Material;
+            ledOffMaterial = Resources.Load<Material>(ResourcePathConstants.locLedOffMaterial) as Material;
+            chestLights = GetComponentsInChildren<MeshRenderer>();
         }
+
+        public bool IsGlowing(){
+            return chestLights[0].material == ledOnMaterial;
+        }
+
+        public void ToggleGlow(bool turnOn){
+            foreach(MeshRenderer led in chestLights)
+            {
+                led.material = turnOn ? ledOnMaterial : ledOffMaterial;
+            }
+        }
+
 
         Queue<TextCommand> GetCommandQueue() {
             if (commandQueue == null) {
@@ -91,9 +108,11 @@ namespace MoveToCode {
                 audioSource.Play();
                 foreach (char letter in processTuple.text) {
                     kuriTextMesh.text += letter;
+                    ToggleGlow(!IsGlowing());
                     yield return new WaitForSeconds(textTypingTime);
                 }
                 audioSource.Pause();
+                ToggleGlow(false);
             }
             else if (processTuple.commandType == COMMANDS.erase) {
                 kuriTextMesh.text = "";

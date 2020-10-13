@@ -39,6 +39,7 @@ namespace MoveToCode {
         Material ledOnMaterial, ledOffMaterial;
         int curCommandNum, ticketCommandNum;
         float[] spectrum = new float[256];
+        float spectrumValue;
 
         void Setup() {
             commandQueue = new Queue<TextCommand>();
@@ -69,10 +70,18 @@ namespace MoveToCode {
             }
         }
 
-        public void audioLightPattern()
-        {
+        public void audioLightPattern(){
             AudioListener.GetSpectrumData(spectrum, 0, FFTWindow.Rectangular);
-
+            if(spectrum != null && spectrum.Length > 0) {
+                spectrumValue = spectrum[0] * 100;
+                Debug.Log("s value: " + spectrumValue);
+                if (spectrumValue > 0.2){
+                    ToggleGlow(true);
+                }else{
+                    ToggleGlow(false);
+                }
+                
+            }
 
         }
 
@@ -114,9 +123,10 @@ namespace MoveToCode {
                     highPriorityCommands.Enqueue(processTuple);
                 }
                 audioSource.Play();
+                audioLightPattern();
                 foreach (char letter in processTuple.text) {
+                    audioLightPattern();
                     kuriTextMesh.text += letter;
-                    ToggleGlow(!IsGlowing());
                     yield return new WaitForSeconds(textTypingTime);
                 }
                 audioSource.Pause();

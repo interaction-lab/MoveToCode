@@ -74,7 +74,6 @@ namespace MoveToCode {
             AudioListener.GetSpectrumData(spectrum, 0, FFTWindow.Rectangular);
             if(spectrum != null && spectrum.Length > 0) {
                 spectrumValue = spectrum[0] * 100;
-                Debug.Log("s value: " + spectrumValue);
                 if (spectrumValue > 0.2){
                     ToggleGlow(true);
                 }else{
@@ -123,7 +122,6 @@ namespace MoveToCode {
                     highPriorityCommands.Enqueue(processTuple);
                 }
                 audioSource.Play();
-                audioLightPattern();
                 foreach (char letter in processTuple.text) {
                     audioLightPattern();
                     kuriTextMesh.text += letter;

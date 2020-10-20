@@ -38,6 +38,8 @@ namespace MoveToCode {
         AudioClip computerNoiseClip;
         Material ledOnMaterial, ledOffMaterial;
         int curCommandNum, ticketCommandNum;
+        float[] spectrum = new float[256];
+        float spectrumValue;
 
         void Setup() {
             commandQueue = new Queue<TextCommand>();
@@ -66,6 +68,20 @@ namespace MoveToCode {
             {
                 led.material = turnOn ? ledOnMaterial : ledOffMaterial;
             }
+        }
+
+        public void audioLightPattern(){
+            AudioListener.GetSpectrumData(spectrum, 0, FFTWindow.Rectangular);
+            if(spectrum != null && spectrum.Length > 0) {
+                spectrumValue = spectrum[0] * 100;
+                if (spectrumValue > 0.2){
+                    ToggleGlow(true);
+                }else{
+                    ToggleGlow(false);
+                }
+                
+            }
+
         }
 
 
@@ -107,8 +123,8 @@ namespace MoveToCode {
                 }
                 audioSource.Play();
                 foreach (char letter in processTuple.text) {
+                    audioLightPattern();
                     kuriTextMesh.text += letter;
-                    ToggleGlow(!IsGlowing());
                     yield return new WaitForSeconds(textTypingTime);
                 }
                 audioSource.Pause();

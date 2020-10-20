@@ -53,9 +53,9 @@ namespace MoveToCode {
             // need to resize arg right based upon horizontal size of arg
             Vector3 rescale = origScaleArg;
             Vector3 reposition = origPositionArgLeft;
-            SNAPCOLTYPEDESCRIPTION snalColDescIndex = GetMyCodeBlock().GetType() == typeof(ConditionalCodeBlock) ?
-                SNAPCOLTYPEDESCRIPTION.LeftOfConditional :
-                SNAPCOLTYPEDESCRIPTION.LeftNumber;
+            string snalColDescIndex = GetMyCodeBlock().GetType() == typeof(ConditionalCodeBlock) ?
+                "LeftOfConditional" :
+                "LeftNumber";
 
             CodeBlock cb1 = GetMyCodeBlock().GetArgAsCodeBlock(snalColDescIndex);
             if (cb1 != null) {
@@ -75,9 +75,9 @@ namespace MoveToCode {
             // need to resize arg right based upon horizontal size of arg
             Vector3 rescale = origScaleArg;
             Vector3 reposition = origPositionArgRight;
-            SNAPCOLTYPEDESCRIPTION snalColDescIndex = GetMyCodeBlock().GetType() == typeof(ConditionalCodeBlock) ?
-                SNAPCOLTYPEDESCRIPTION.RightOfConditional :
-                SNAPCOLTYPEDESCRIPTION.RightNumber;
+            string snalColDescIndex = GetMyCodeBlock().GetType() == typeof(ConditionalCodeBlock) ?
+                "RightOfConditional" :
+                "RightNumber";
             float? horizontalSize = GetMyCodeBlock().GetArgAsCodeBlock(snalColDescIndex)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
 
             if (horizontalSize != null) {

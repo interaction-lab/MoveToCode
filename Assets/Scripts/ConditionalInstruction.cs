@@ -8,8 +8,8 @@
         public ConditionalInstruction(CodeBlock cbIn) : base(cbIn) { }
 
         public override void EvaluateArgumentsOfInstruction() {
-            leftArg = GetArgument(SNAPCOLTYPEDESCRIPTION.LeftOfConditional)?.EvaluateArgument();
-            rightArg = GetArgument(SNAPCOLTYPEDESCRIPTION.RightOfConditional)?.EvaluateArgument();
+            leftArg = GetArgument("LeftOfConditional")?.EvaluateArgument();
+            rightArg = GetArgument("RightOfConditional")?.EvaluateArgument();
         }
 
         public override string ToString() {
@@ -18,11 +18,11 @@
 
         public override string DescriptiveInstructionToString() {
             return string.Join("",
-                        GetArgument(SNAPCOLTYPEDESCRIPTION.LeftOfConditional)?.DescriptiveInstructionToString(),
+                        GetArgument("LeftOfConditional")?.DescriptiveInstructionToString(),
                         " ",
                         GetCodeString(),
                         " ",
-                        GetArgument(SNAPCOLTYPEDESCRIPTION.RightOfConditional)?.DescriptiveInstructionToString());
+                        GetArgument("RightOfConditional")?.DescriptiveInstructionToString());
         }
     }
 }

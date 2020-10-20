@@ -5,7 +5,9 @@ using UnityEngine;
 
 namespace MoveToCode {
     public class SnapCollider : MonoBehaviour {
-        public SNAPCOLTYPEDESCRIPTION mySnapColTypeDescription;
+        CodeBlock myCodeBlockArg;
+        public string mystring;
+
         public Vector3 snapPosition;
 
         HashSet<Type> myCompatibleArgTypes;
@@ -27,7 +29,7 @@ namespace MoveToCode {
         }
 
         private void RegisterWithMyCodeBlockArgDict() {
-            GetMyCodeBlock().GetMyIArgument().RegisterSnapCollider(mySnapColTypeDescription, this);
+            GetMyCodeBlock().GetMyIArgument().RegisterSnapCollider(mystring, this);
         }
 
         public MeshOutline GetMeshOutline() {
@@ -59,8 +61,8 @@ namespace MoveToCode {
             }
         }
 
-        internal SNAPCOLTYPEDESCRIPTION GetIArgType() {
-            return mySnapColTypeDescription;
+        internal string GetIArgType() {
+            return mystring;
         }
 
         public CodeBlock GetMyCodeBlock() {
@@ -119,7 +121,7 @@ namespace MoveToCode {
 
         protected HashSet<Type> GetMyCompatibleArgTypes() {
             if (myCompatibleArgTypes == null) {
-                myCompatibleArgTypes = GetMyCodeBlock().GetArgCompatibility(mySnapColTypeDescription);
+                myCompatibleArgTypes = GetMyCodeBlock().GetArgCompatibility(mystring);
             }
             return myCompatibleArgTypes;
         }

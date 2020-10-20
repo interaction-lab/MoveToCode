@@ -26,7 +26,7 @@ namespace MoveToCode {
 
         // Private methods
         private void SetCollidersAndChildrenState(bool desiredActiveState) {
-            foreach (KeyValuePair<SNAPCOLTYPEDESCRIPTION, SnapCollider> scKV in GetSnapColliders()) {
+            foreach (KeyValuePair<string, SnapCollider> scKV in GetSnapColliders()) {
                 scKV.Value.gameObject.SetActive(desiredActiveState);
                 if (scKV.Value.HasCodeBlockArgAttached()) {
                     (desiredActiveState ?
@@ -43,7 +43,7 @@ namespace MoveToCode {
             return myCodeBlock;
         }
 
-        private Dictionary<SNAPCOLTYPEDESCRIPTION, SnapCollider> GetSnapColliders() {
+        private Dictionary<string, SnapCollider> GetSnapColliders() {
             return myCodeBlock.GetMyIArgument().GetArgToSnapColliderDict();
         }
     }

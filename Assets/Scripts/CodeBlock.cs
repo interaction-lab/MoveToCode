@@ -84,20 +84,20 @@ namespace MoveToCode {
             return snapColliders;
         }
 
-        public CodeBlock GetArgAsCodeBlock(SNAPCOLTYPEDESCRIPTION argDescription) {
+        public CodeBlock GetArgAsCodeBlock(string argDescription) {
             return GetArgumentFromDict(argDescription)?.GetCodeBlock();
         }
 
-        internal Dictionary<SNAPCOLTYPEDESCRIPTION, SnapCollider> GetArgDictAsCodeBlocks() {
+        internal Dictionary<string, SnapCollider> GetArgDictAsCodeBlocks() {
             return GetMyIArgument().GetArgToSnapColliderDict();
         }
 
-        public IArgument GetArgumentFromDict(SNAPCOLTYPEDESCRIPTION argDescription) {
+        public IArgument GetArgumentFromDict(string argDescription) {
             return GetMyIArgument().GetArgument(argDescription);
         }
 
 
-        public HashSet<Type> GetArgCompatibility(SNAPCOLTYPEDESCRIPTION argDescription) {
+        public HashSet<Type> GetArgCompatibility(string argDescription) {
             return GetMyIArgument().GetArgCompatibility(argDescription);
         }
 

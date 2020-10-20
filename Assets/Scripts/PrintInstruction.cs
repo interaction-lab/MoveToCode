@@ -8,7 +8,7 @@ namespace MoveToCode {
         public PrintInstruction(CodeBlock cbIn) : base(cbIn) { }
 
         public override void EvaluateArgumentsOfInstruction() {
-            output = GetArgument(SNAPCOLTYPEDESCRIPTION.Printable)?.EvaluateArgument()?.ToString();
+            output = GetArgument("Printable")?.EvaluateArgument()?.ToString();
         }
 
 
@@ -23,7 +23,7 @@ namespace MoveToCode {
         }
 
         public override string DescriptiveInstructionToString() {
-            return string.Join("", "<color=purple>" + ToString() + "</color>(", GetArgument(SNAPCOLTYPEDESCRIPTION.Printable)?.DescriptiveInstructionToString() + ")");
+            return string.Join("", "<color=purple>" + ToString() + "</color>(", GetArgument("Printable")?.DescriptiveInstructionToString() + ")");
         }
     }
 }

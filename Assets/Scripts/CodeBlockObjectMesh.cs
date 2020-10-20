@@ -67,7 +67,7 @@ namespace MoveToCode {
 
         public void ChainResizeDown() {
             ResizeObjectMesh();
-            foreach (KeyValuePair<SNAPCOLTYPEDESCRIPTION, SnapCollider> snapCollider in GetMyCodeBlock().GetArgDictAsCodeBlocks()) {
+            foreach (KeyValuePair<string, SnapCollider> snapCollider in GetMyCodeBlock().GetArgDictAsCodeBlocks()) {
                 CodeBlock cb = snapCollider.Value.GetMyCodeBlockArg();
                 cb?.transform.ResetCodeBlockSize();
                 cb?.GetCodeBlockObjectMesh().Recenter();

@@ -4,7 +4,7 @@
         public StandAloneInstruction(CodeBlock cbIn) : base(cbIn) { }
 
         public virtual StandAloneInstruction GetNextInstruction() {
-            return GetArgument(SNAPCOLTYPEDESCRIPTION.Next) as StandAloneInstruction;
+            return GetArgument("Next") as StandAloneInstruction;
         }
     }
 }

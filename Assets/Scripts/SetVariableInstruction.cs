@@ -11,16 +11,16 @@ namespace MoveToCode {
 
         public override InstructionReturnValue RunInstruction() {
             EvaluateArgumentsOfInstruction();
-            if (GetArgument(SNAPCOLTYPEDESCRIPTION.Variable).GetType() == typeof(ArrayIndexInstruction)) {
+            if (GetArgument("Variable").GetType() == typeof(ArrayIndexInstruction)) {
                 //set "variable"/element in array
-                (GetArgument(SNAPCOLTYPEDESCRIPTION.Variable) as ArrayIndexInstruction).SetArrayValue(GetArgument(SNAPCOLTYPEDESCRIPTION.Value)?.EvaluateArgument());
+                (GetArgument("Variable") as ArrayIndexInstruction).SetArrayValue(GetArgument("Value")?.EvaluateArgument());
                 //set the array
-                ((GetArgument(SNAPCOLTYPEDESCRIPTION.Variable) as ArrayIndexInstruction).GetArgument(SNAPCOLTYPEDESCRIPTION.Next) as Variable)
-                    .SetValue((GetArgument(SNAPCOLTYPEDESCRIPTION.Variable) as ArrayIndexInstruction).GetArgument(SNAPCOLTYPEDESCRIPTION.Next).EvaluateArgument() as ArrayDataStructure);
+                ((GetArgument("Variable") as ArrayIndexInstruction).GetArgument("Next") as Variable)
+                    .SetValue((GetArgument("Variable") as ArrayIndexInstruction).GetArgument("Next").EvaluateArgument() as ArrayDataStructure);
             }
             else {
                 //set regular variable (not in an array)
-                (GetArgument(SNAPCOLTYPEDESCRIPTION.Variable) as Variable).SetValue(GetArgument(SNAPCOLTYPEDESCRIPTION.Value)?.EvaluateArgument());
+                (GetArgument("Variable") as Variable).SetValue(GetArgument("Value")?.EvaluateArgument());
             }
             return new InstructionReturnValue(null, GetNextInstruction());
         }
@@ -32,9 +32,9 @@ namespace MoveToCode {
 
         public override string DescriptiveInstructionToString() {
             return string.Join("", "Set ",
-                GetArgument(SNAPCOLTYPEDESCRIPTION.Variable)?.DescriptiveInstructionToString(),
+                GetArgument("Variable")?.DescriptiveInstructionToString(),
                 " to ",
-                GetArgument(SNAPCOLTYPEDESCRIPTION.Value)?.DescriptiveInstructionToString());
+                GetArgument("Value")?.DescriptiveInstructionToString());
         }
     }
 }

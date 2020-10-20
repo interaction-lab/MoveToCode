@@ -12,14 +12,14 @@ namespace MoveToCode {
         public ArrayIndexInstruction(CodeBlock cbIn) : base(cbIn) { }
 
         public override void EvaluateArgumentsOfInstruction() {
-            if (GetArgument(SNAPCOLTYPEDESCRIPTION.Array)?.EvaluateArgument().GetType() != typeof(ArrayDataStructure)) {
+            if (GetArgument("Array")?.EvaluateArgument().GetType() != typeof(ArrayDataStructure)) {
                 arr = null;
             }
             else {
-                arr = GetArgument(SNAPCOLTYPEDESCRIPTION.Array)?.EvaluateArgument() as ArrayDataStructure;
+                arr = GetArgument("Array")?.EvaluateArgument() as ArrayDataStructure;
                 //arr.EvaluateArgumentsOfInstruction();
             }
-            index = GetArgument(SNAPCOLTYPEDESCRIPTION.ArrayElement)?.EvaluateArgument() as IntDataType;
+            index = GetArgument("Array")?.EvaluateArgument() as IntDataType;
         }
 
         public override InstructionReturnValue RunInstruction() {
@@ -57,7 +57,7 @@ namespace MoveToCode {
 
 
         public override string DescriptiveInstructionToString() {
-            return string.Join("", GetArgument(SNAPCOLTYPEDESCRIPTION.Array)?.DescriptiveInstructionToString(), " ", "[", " ", GetArgument(SNAPCOLTYPEDESCRIPTION.ArrayElement)?.DescriptiveInstructionToString(), "]");
+            return string.Join("", GetArgument("Array")?.DescriptiveInstructionToString(), " ", "[", " ", GetArgument(string.Join("","ArrayElement",indexVal.ToString())), "]");
         }
     }
 }

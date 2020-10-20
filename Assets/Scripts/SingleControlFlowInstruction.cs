@@ -6,7 +6,7 @@ namespace MoveToCode {
         public SingleControlFlowInstruction(CodeBlock cbIn) : base(cbIn) { }
 
         public override string DescriptiveInstructionToString() {
-            return string.Join("", "<color=purple>", ToString(), "</color>", GetArgument(SNAPCOLTYPEDESCRIPTION.Conditional)?.DescriptiveInstructionToString(), ": ", GetNestedInstructionsAsString());
+            return string.Join("", "<color=purple>", ToString(), "</color>", GetArgument("Conditional")?.DescriptiveInstructionToString(), ": ", GetNestedInstructionsAsString());
         }
     }
 }

@@ -6,8 +6,8 @@ using UnityEngine;
 namespace MoveToCode {
     public class SnapCollider : MonoBehaviour {
         CodeBlock myCodeBlockArg;
-
         public string mystring;
+
         public Vector3 snapPosition;
 
         HashSet<Type> myCompatibleArgTypes;
@@ -95,24 +95,22 @@ namespace MoveToCode {
                 }
                 curArg.transform.SnapToCodeBlockManager();
                 curArg.GetCodeBlockObjectMesh().ResizeChain();
-                myCodeBlockArg = null;
                 // TODO: probably needs a log
             }
         }
 
         private void AddNewCodeBlockArg(CodeBlock collidedCodeBlock) {
-            myCodeBlockArg = collidedCodeBlock;
             SnapToParentCenter(collidedCodeBlock, transform.parent);
             AudioManager.instance.PlaySoundAtObject(gameObject, AudioManager.snapAudioClip);
             GetMyCodeBlock().GetCodeBlockObjectMesh().ResizeChain();
         }
 
         public CodeBlock GetMyCodeBlockArg() {
-            return myCodeBlockArg;
+            return transform.parent.GetComponentInChildren<CodeBlock>();
         }
 
         public bool HasCodeBlockArgAttached() {
-            return myCodeBlockArg != null;
+            return GetMyCodeBlockArg() != null;
         }
 
         private void SnapToParentCenter(CodeBlock collidedCodeBlock, Transform parentTransform) {

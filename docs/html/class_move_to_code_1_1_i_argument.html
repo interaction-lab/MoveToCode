@@ -85,12 +85,15 @@ $(document).ready(function(){initNavTree('class_move_to_code_1_1_i_argument.html
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#properties">Properties</a> &#124;
 <a href="class_move_to_code_1_1_i_argument-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">MoveToCode.IArgument Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Base abstract class for all internal "arguments" of codeblocks.  
+ <a href="class_move_to_code_1_1_i_argument.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for MoveToCode.IArgument:</div>
 <div class="dyncontent">
@@ -128,14 +131,19 @@ Inheritance diagram for MoveToCode.IArgument:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a331f384aa82e863b7acd964573826a19"><td class="memItemLeft" align="right" valign="top">abstract <a class="el" href="class_move_to_code_1_1_i_data_type.html">IDataType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_i_argument.html#a331f384aa82e863b7acd964573826a19">EvaluateArgument</a> ()</td></tr>
+<tr class="memdesc:a331f384aa82e863b7acd964573826a19"><td class="mdescLeft">&#160;</td><td class="mdescRight">For DataTypes, this is used to get a return value e.g., return the int of the <code><a class="el" href="class_move_to_code_1_1_int_code_block.html">IntCodeBlock</a></code>.  <a href="class_move_to_code_1_1_i_argument.html#a331f384aa82e863b7acd964573826a19">More...</a><br /></td></tr>
 <tr class="separator:a331f384aa82e863b7acd964573826a19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab73047e7d033f514b8e7fb04ef398383"><td class="memItemLeft" align="right" valign="top">abstract string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_i_argument.html#ab73047e7d033f514b8e7fb04ef398383">DescriptiveInstructionToString</a> ()</td></tr>
+<tr class="memdesc:ab73047e7d033f514b8e7fb04ef398383"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gives description within python code syntax  <a href="class_move_to_code_1_1_i_argument.html#ab73047e7d033f514b8e7fb04ef398383">More...</a><br /></td></tr>
 <tr class="separator:ab73047e7d033f514b8e7fb04ef398383"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a936b9a1ca0aa1ab4c346bf5b9388e9b7"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_i_argument.html#a936b9a1ca0aa1ab4c346bf5b9388e9b7">ResestInternalState</a> ()</td></tr>
+<tr class="memdesc:a936b9a1ca0aa1ab4c346bf5b9388e9b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">When the <code><a class="el" href="class_move_to_code_1_1_interpreter.html">Interpreter</a></code> restarts running code, any internal instruction state is reset.  <a href="class_move_to_code_1_1_i_argument.html#a936b9a1ca0aa1ab4c346bf5b9388e9b7">More...</a><br /></td></tr>
 <tr class="separator:a936b9a1ca0aa1ab4c346bf5b9388e9b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63aacd5e9f110157ac4ad617eb602f77"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_move_to_code_1_1_code_block.html">CodeBlock</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_i_argument.html#a63aacd5e9f110157ac4ad617eb602f77">GetCodeBlock</a> ()</td></tr>
+<tr class="memdesc:a63aacd5e9f110157ac4ad617eb602f77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns point to codeblock  <a href="class_move_to_code_1_1_i_argument.html#a63aacd5e9f110157ac4ad617eb602f77">More...</a><br /></td></tr>
 <tr class="separator:a63aacd5e9f110157ac4ad617eb602f77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac2de2634b42bd0d521ee19e57fd2d688"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_i_argument.html#ac2de2634b42bd0d521ee19e57fd2d688">IArgument</a> (<a class="el" href="class_move_to_code_1_1_code_block.html">CodeBlock</a> cbIn)</td></tr>
+<tr class="memdesc:ac2de2634b42bd0d521ee19e57fd2d688"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor of <code><a class="el" href="class_move_to_code_1_1_i_argument.html" title="Base abstract class for all internal &quot;arguments&quot; of codeblocks.">IArgument</a></code>  <a href="class_move_to_code_1_1_i_argument.html#ac2de2634b42bd0d521ee19e57fd2d688">More...</a><br /></td></tr>
 <tr class="separator:ac2de2634b42bd0d521ee19e57fd2d688"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c2cd3be04c57d929b406c2bb3a969ab"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; string, <a class="el" href="class_move_to_code_1_1_snap_collider.html">SnapCollider</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_i_argument.html#a2c2cd3be04c57d929b406c2bb3a969ab">GetArgToSnapColliderDict</a> ()</td></tr>
 <tr class="separator:a2c2cd3be04c57d929b406c2bb3a969ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -154,14 +162,19 @@ Static Public Attributes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a160b7b7955dec06f1c0aab0f21f4aa0f"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; string, <a class="el" href="class_move_to_code_1_1_snap_collider.html">SnapCollider</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_i_argument.html#a160b7b7955dec06f1c0aab0f21f4aa0f">argToSnapColliderDict</a> = new Dictionary&lt;string, <a class="el" href="class_move_to_code_1_1_snap_collider.html">SnapCollider</a>&gt;()</td></tr>
+<tr class="memdesc:a160b7b7955dec06f1c0aab0f21f4aa0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maps <a class="el" href="class_move_to_code_1_1_snap_collider.html">SnapCollider</a> string to it's respective <a class="el" href="class_move_to_code_1_1_snap_collider.html">SnapCollider</a> class.  <a href="class_move_to_code_1_1_i_argument.html#a160b7b7955dec06f1c0aab0f21f4aa0f">More...</a><br /></td></tr>
 <tr class="separator:a160b7b7955dec06f1c0aab0f21f4aa0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:a0f2dc22f6e0482f02526a5bd7284941d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_move_to_code_1_1_code_block.html">CodeBlock</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_i_argument.html#a0f2dc22f6e0482f02526a5bd7284941d">myCodeBlock</a></td></tr>
-<tr class="separator:a0f2dc22f6e0482f02526a5bd7284941d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
+Properties</h2></td></tr>
+<tr class="memitem:ac877773987f3f6cd35ea6d2cd35684e2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_move_to_code_1_1_code_block.html">CodeBlock</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_i_argument.html#ac877773987f3f6cd35ea6d2cd35684e2">MyCodeBlock</a><code> [get]</code></td></tr>
+<tr class="memdesc:ac877773987f3f6cd35ea6d2cd35684e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the <code><a class="el" href="class_move_to_code_1_1_code_block.html">CodeBlock</a></code> container that this is internal to.  <a href="class_move_to_code_1_1_i_argument.html#ac877773987f3f6cd35ea6d2cd35684e2">More...</a><br /></td></tr>
+<tr class="separator:ac877773987f3f6cd35ea6d2cd35684e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Base abstract class for all internal "arguments" of codeblocks. </p>
+<p>All instructions and data types are treated as arguments so they can be placed as arguments of other codeblocks. E.g., a <code><a class="el" href="class_move_to_code_1_1_int_code_block.html">IntCodeBlock</a></code> can be placed as a left or right argument to a <code>MathCodeBlock</code></p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ac2de2634b42bd0d521ee19e57fd2d688"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac2de2634b42bd0d521ee19e57fd2d688">&#9670;&nbsp;</a></span>IArgument()</h2>
 
@@ -177,6 +190,14 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Constructor of <code><a class="el" href="class_move_to_code_1_1_i_argument.html" title="Base abstract class for all internal &quot;arguments&quot; of codeblocks.">IArgument</a></code> </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cbIn</td><td><a class="el" href="class_move_to_code_1_1_code_block.html">CodeBlock</a> pointer to parent codeblock</td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -204,6 +225,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Gives description within python code syntax </p>
+<dl class="section return"><dt>Returns</dt><dd>String to be printed as python code</dd></dl>
+
 <p>Implemented in <a class="el" href="class_move_to_code_1_1_variable.html#afe3de2734fc591ffaefc792af6d0943a">MoveToCode.Variable</a>, <a class="el" href="class_move_to_code_1_1_string_data_type.html#ab2ef0eb7f16062a04cb9e4ef798f4b55">MoveToCode.StringDataType</a>, <a class="el" href="class_move_to_code_1_1_start_instruction.html#a8f980029423eca6ad0ffc592db0e437d">MoveToCode.StartInstruction</a>, <a class="el" href="class_move_to_code_1_1_single_control_flow_instruction.html#acfe60767c770edc42c0b7555ebbd2f9c">MoveToCode.SingleControlFlowInstruction</a>, <a class="el" href="class_move_to_code_1_1_set_variable_instruction.html#a89caa778c3374398985d0d99a03416c7">MoveToCode.SetVariableInstruction</a>, <a class="el" href="class_move_to_code_1_1_print_instruction.html#a6a3d698740d5b373009d53a391a6d3f0">MoveToCode.PrintInstruction</a>, <a class="el" href="class_move_to_code_1_1_math_instruction.html#a446e0e8153f0755f1b75217e211103de">MoveToCode.MathInstruction</a>, <a class="el" href="class_move_to_code_1_1_if_else_instruction.html#a4343a3762b7a02a6b37c84d62480c3dd">MoveToCode.IfElseInstruction</a>, <a class="el" href="class_move_to_code_1_1_foreach_loop_instruction.html#a49345374692322297e6493bfa5f4c27a">MoveToCode.ForeachLoopInstruction</a>, <a class="el" href="class_move_to_code_1_1_conditional_instruction.html#aa404af7b1ce871eef1f7e07e031ddbcf">MoveToCode.ConditionalInstruction</a>, <a class="el" href="class_move_to_code_1_1_basic_data_type.html#af6b5be6ab4e5c092b4f192fe909f2788">MoveToCode.BasicDataType</a>, <a class="el" href="class_move_to_code_1_1_array_index_instruction.html#adec5eed46da595f53dd2b259c507d105">MoveToCode.ArrayIndexInstruction</a>, and <a class="el" href="class_move_to_code_1_1_array_data_structure.html#a295084cfce53b484209dc3365e8701bb">MoveToCode.ArrayDataStructure</a>.</p>
 
 </div>
@@ -230,6 +254,10 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>For DataTypes, this is used to get a return value e.g., return the int of the <code><a class="el" href="class_move_to_code_1_1_int_code_block.html">IntCodeBlock</a></code>. </p>
+<p>For instructions, it is called before running an <a class="el" href="class_move_to_code_1_1_i_argument.html" title="Base abstract class for all internal &quot;arguments&quot; of codeblocks.">IArgument</a>. E.x. <code><a class="el" href="_math_instruction_8cs.html">MathInstruction.cs</a></code> evaluates the left and right arguments and stores their returns. If the left argument is another <code><a class="el" href="class_move_to_code_1_1_math_instruction.html">MathInstruction</a></code>, it will evaulate the whole instruction before running <code>RunInstruction</code>.</p>
+<dl class="section return"><dt>Returns</dt><dd>IDatatype of internal <a class="el" href="class_move_to_code_1_1_i_argument.html" title="Base abstract class for all internal &quot;arguments&quot; of codeblocks.">IArgument</a> value e.g., 1 or "Hello World"</dd></dl>
 
 <p>Implemented in <a class="el" href="class_move_to_code_1_1_variable.html#a527d4bb1d8cb3f0c1de259dfa6d64d81">MoveToCode.Variable</a>, <a class="el" href="class_move_to_code_1_1_instruction.html#afe555b060159d209947ab331e27e2bf1">MoveToCode.Instruction</a>, and <a class="el" href="class_move_to_code_1_1_i_data_type.html#af98b00e8baa64481793395b487c14e35">MoveToCode.IDataType</a>.</p>
 
@@ -311,6 +339,9 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Returns point to codeblock </p>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to <code><a class="el" href="class_move_to_code_1_1_code_block.html">CodeBlock</a></code> container.</dd></dl>
+
 </div>
 </div>
 <a id="aebd36aac9dcf2db2818862cfa57f3f08"></a>
@@ -353,6 +384,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>When the <code><a class="el" href="class_move_to_code_1_1_interpreter.html">Interpreter</a></code> restarts running code, any internal instruction state is reset. </p>
+<p>Ex. see <code><a class="el" href="_while_instruction_8cs.html">WhileInstruction.cs</a></code></p>
+
 <p>Reimplemented in <a class="el" href="class_move_to_code_1_1_control_flow_instruction.html#a5c9a81b2dc923b4f5ece30538524ddbb">MoveToCode.ControlFlowInstruction</a>, and <a class="el" href="class_move_to_code_1_1_array_data_structure.html#a12e1173bf00f331c173a44b9516a3af8">MoveToCode.ArrayDataStructure</a>.</p>
 
 </div>
@@ -377,6 +411,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Maps <a class="el" href="class_move_to_code_1_1_snap_collider.html">SnapCollider</a> string to it's respective <a class="el" href="class_move_to_code_1_1_snap_collider.html">SnapCollider</a> class. </p>
+<p>See <code><a class="el" href="_snap_collider_8cs.html">SnapCollider.cs</a></code> for more details.</p>
 
 </div>
 </div>
@@ -418,8 +455,9 @@ Private Attributes</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a0f2dc22f6e0482f02526a5bd7284941d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0f2dc22f6e0482f02526a5bd7284941d">&#9670;&nbsp;</a></span>myCodeBlock</h2>
+<h2 class="groupheader">Property Documentation</h2>
+<a id="ac877773987f3f6cd35ea6d2cd35684e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac877773987f3f6cd35ea6d2cd35684e2">&#9670;&nbsp;</a></span>MyCodeBlock</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -428,15 +466,18 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_move_to_code_1_1_code_block.html">CodeBlock</a> MoveToCode.IArgument.myCodeBlock</td>
+          <td class="memname"><a class="el" href="class_move_to_code_1_1_code_block.html">CodeBlock</a> MoveToCode.IArgument.MyCodeBlock</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Pointer to the <code><a class="el" href="class_move_to_code_1_1_code_block.html">CodeBlock</a></code> container that this is internal to. </p>
+<p>This is needed within internal arguments as a backwards pointer. <code>Codeblock.cs</code> also has a <code>myInternalIArgument</code> which is a pointer the other direction.</p>
 
 </div>
 </div>
@@ -449,7 +490,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_move_to_code.html">MoveToCode</a></li><li class="navelem"><a class="el" href="class_move_to_code_1_1_i_argument.html">IArgument</a></li>
-    <li class="footer">Generated on Sun Oct 25 2020 10:39:04 for MoveToCode by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
+    <li class="footer">Generated on Sun Oct 25 2020 11:49:38 for MoveToCode by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
   </ul>
 </div>
 </body>

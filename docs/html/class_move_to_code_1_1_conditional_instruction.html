@@ -97,7 +97,7 @@ Inheritance diagram for MoveToCode.ConditionalInstruction:</div>
   <img src="class_move_to_code_1_1_conditional_instruction.png" usemap="#MoveToCode.ConditionalInstruction_map" alt=""/>
   <map id="MoveToCode.ConditionalInstruction_map" name="MoveToCode.ConditionalInstruction_map">
 <area href="class_move_to_code_1_1_instruction.html" alt="MoveToCode.Instruction" shape="rect" coords="426,56,700,80"/>
-<area href="class_move_to_code_1_1_i_argument.html" alt="MoveToCode.IArgument" shape="rect" coords="426,0,700,24"/>
+<area href="class_move_to_code_1_1_i_argument.html" title="Base abstract class for all internal &quot;arguments&quot; of codeblocks." alt="MoveToCode.IArgument" shape="rect" coords="426,0,700,24"/>
 <area href="class_move_to_code_1_1_equals_condition_instruction.html" alt="MoveToCode.EqualsConditionInstruction" shape="rect" coords="0,168,274,192"/>
 <area href="class_move_to_code_1_1_greater_than_condition_instruction.html" alt="MoveToCode.GreaterThanConditionInstruction" shape="rect" coords="284,168,558,192"/>
 <area href="class_move_to_code_1_1_less_than_condition_instruction.html" alt="MoveToCode.LessThanConditionInstruction" shape="rect" coords="568,168,842,192"/>
@@ -118,6 +118,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a86bfaf5be49d748a41e9d83e5fcc7cb4"><td class="memItemLeft" align="right" valign="top">override string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_conditional_instruction.html#a86bfaf5be49d748a41e9d83e5fcc7cb4">ToString</a> ()</td></tr>
 <tr class="separator:a86bfaf5be49d748a41e9d83e5fcc7cb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa404af7b1ce871eef1f7e07e031ddbcf"><td class="memItemLeft" align="right" valign="top">override string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_conditional_instruction.html#aa404af7b1ce871eef1f7e07e031ddbcf">DescriptiveInstructionToString</a> ()</td></tr>
+<tr class="memdesc:aa404af7b1ce871eef1f7e07e031ddbcf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gives description within python code syntax  <a href="class_move_to_code_1_1_conditional_instruction.html#aa404af7b1ce871eef1f7e07e031ddbcf">More...</a><br /></td></tr>
 <tr class="separator:aa404af7b1ce871eef1f7e07e031ddbcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_move_to_code_1_1_instruction"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_move_to_code_1_1_instruction')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_move_to_code_1_1_instruction.html">MoveToCode.Instruction</a></td></tr>
 <tr class="memitem:aa7d55e2dea26f93c6fcaa1354136e9db inherit pub_methods_class_move_to_code_1_1_instruction"><td class="memItemLeft" align="right" valign="top">abstract <a class="el" href="class_move_to_code_1_1_instruction_return_value.html">InstructionReturnValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_instruction.html#aa7d55e2dea26f93c6fcaa1354136e9db">RunInstruction</a> ()</td></tr>
@@ -125,13 +126,17 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aac13e0d7eec71cd0aede28c02d0c1f25 inherit pub_methods_class_move_to_code_1_1_instruction"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_instruction.html#aac13e0d7eec71cd0aede28c02d0c1f25">Instruction</a> (<a class="el" href="class_move_to_code_1_1_code_block.html">CodeBlock</a> cbIn)</td></tr>
 <tr class="separator:aac13e0d7eec71cd0aede28c02d0c1f25 inherit pub_methods_class_move_to_code_1_1_instruction"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe555b060159d209947ab331e27e2bf1 inherit pub_methods_class_move_to_code_1_1_instruction"><td class="memItemLeft" align="right" valign="top">override <a class="el" href="class_move_to_code_1_1_i_data_type.html">IDataType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_instruction.html#afe555b060159d209947ab331e27e2bf1">EvaluateArgument</a> ()</td></tr>
+<tr class="memdesc:afe555b060159d209947ab331e27e2bf1 inherit pub_methods_class_move_to_code_1_1_instruction"><td class="mdescLeft">&#160;</td><td class="mdescRight">For DataTypes, this is used to get a return value e.g., return the int of the <code><a class="el" href="class_move_to_code_1_1_int_code_block.html">IntCodeBlock</a></code>.  <a href="class_move_to_code_1_1_instruction.html#afe555b060159d209947ab331e27e2bf1">More...</a><br /></td></tr>
 <tr class="separator:afe555b060159d209947ab331e27e2bf1 inherit pub_methods_class_move_to_code_1_1_instruction"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_move_to_code_1_1_i_argument"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_move_to_code_1_1_i_argument')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_move_to_code_1_1_i_argument.html">MoveToCode.IArgument</a></td></tr>
 <tr class="memitem:a936b9a1ca0aa1ab4c346bf5b9388e9b7 inherit pub_methods_class_move_to_code_1_1_i_argument"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_i_argument.html#a936b9a1ca0aa1ab4c346bf5b9388e9b7">ResestInternalState</a> ()</td></tr>
+<tr class="memdesc:a936b9a1ca0aa1ab4c346bf5b9388e9b7 inherit pub_methods_class_move_to_code_1_1_i_argument"><td class="mdescLeft">&#160;</td><td class="mdescRight">When the <code><a class="el" href="class_move_to_code_1_1_interpreter.html">Interpreter</a></code> restarts running code, any internal instruction state is reset.  <a href="class_move_to_code_1_1_i_argument.html#a936b9a1ca0aa1ab4c346bf5b9388e9b7">More...</a><br /></td></tr>
 <tr class="separator:a936b9a1ca0aa1ab4c346bf5b9388e9b7 inherit pub_methods_class_move_to_code_1_1_i_argument"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63aacd5e9f110157ac4ad617eb602f77 inherit pub_methods_class_move_to_code_1_1_i_argument"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_move_to_code_1_1_code_block.html">CodeBlock</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_i_argument.html#a63aacd5e9f110157ac4ad617eb602f77">GetCodeBlock</a> ()</td></tr>
+<tr class="memdesc:a63aacd5e9f110157ac4ad617eb602f77 inherit pub_methods_class_move_to_code_1_1_i_argument"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns point to codeblock  <a href="class_move_to_code_1_1_i_argument.html#a63aacd5e9f110157ac4ad617eb602f77">More...</a><br /></td></tr>
 <tr class="separator:a63aacd5e9f110157ac4ad617eb602f77 inherit pub_methods_class_move_to_code_1_1_i_argument"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac2de2634b42bd0d521ee19e57fd2d688 inherit pub_methods_class_move_to_code_1_1_i_argument"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_i_argument.html#ac2de2634b42bd0d521ee19e57fd2d688">IArgument</a> (<a class="el" href="class_move_to_code_1_1_code_block.html">CodeBlock</a> cbIn)</td></tr>
+<tr class="memdesc:ac2de2634b42bd0d521ee19e57fd2d688 inherit pub_methods_class_move_to_code_1_1_i_argument"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor of <code><a class="el" href="class_move_to_code_1_1_i_argument.html" title="Base abstract class for all internal &quot;arguments&quot; of codeblocks.">IArgument</a></code>  <a href="class_move_to_code_1_1_i_argument.html#ac2de2634b42bd0d521ee19e57fd2d688">More...</a><br /></td></tr>
 <tr class="separator:ac2de2634b42bd0d521ee19e57fd2d688 inherit pub_methods_class_move_to_code_1_1_i_argument"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c2cd3be04c57d929b406c2bb3a969ab inherit pub_methods_class_move_to_code_1_1_i_argument"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; string, <a class="el" href="class_move_to_code_1_1_snap_collider.html">SnapCollider</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_i_argument.html#a2c2cd3be04c57d929b406c2bb3a969ab">GetArgToSnapColliderDict</a> ()</td></tr>
 <tr class="separator:a2c2cd3be04c57d929b406c2bb3a969ab inherit pub_methods_class_move_to_code_1_1_i_argument"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -148,6 +153,7 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a20d95ae3ad59ca933c7a62daaf7c438c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_move_to_code_1_1_i_argument"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_move_to_code_1_1_i_argument')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_move_to_code_1_1_i_argument.html">MoveToCode.IArgument</a></td></tr>
 <tr class="memitem:a160b7b7955dec06f1c0aab0f21f4aa0f inherit pro_attribs_class_move_to_code_1_1_i_argument"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; string, <a class="el" href="class_move_to_code_1_1_snap_collider.html">SnapCollider</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_i_argument.html#a160b7b7955dec06f1c0aab0f21f4aa0f">argToSnapColliderDict</a> = new Dictionary&lt;string, <a class="el" href="class_move_to_code_1_1_snap_collider.html">SnapCollider</a>&gt;()</td></tr>
+<tr class="memdesc:a160b7b7955dec06f1c0aab0f21f4aa0f inherit pro_attribs_class_move_to_code_1_1_i_argument"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maps <a class="el" href="class_move_to_code_1_1_snap_collider.html">SnapCollider</a> string to it's respective <a class="el" href="class_move_to_code_1_1_snap_collider.html">SnapCollider</a> class.  <a href="class_move_to_code_1_1_i_argument.html#a160b7b7955dec06f1c0aab0f21f4aa0f">More...</a><br /></td></tr>
 <tr class="separator:a160b7b7955dec06f1c0aab0f21f4aa0f inherit pro_attribs_class_move_to_code_1_1_i_argument"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
@@ -160,6 +166,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_static_attribs_class_move_to_code_1_1_i_argument"><td colspan="2" onclick="javascript:toggleInherit('pub_static_attribs_class_move_to_code_1_1_i_argument')"><img src="closed.png" alt="-"/>&#160;Static Public Attributes inherited from <a class="el" href="class_move_to_code_1_1_i_argument.html">MoveToCode.IArgument</a></td></tr>
 <tr class="memitem:a58ba2b32201008650dc3c6bd84943409 inherit pub_static_attribs_class_move_to_code_1_1_i_argument"><td class="memItemLeft" align="right" valign="top">static Dictionary&lt; string, HashSet&lt; Type &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_i_argument.html#a58ba2b32201008650dc3c6bd84943409">iArgCompatabilityDict</a></td></tr>
 <tr class="separator:a58ba2b32201008650dc3c6bd84943409 inherit pub_static_attribs_class_move_to_code_1_1_i_argument"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header properties_class_move_to_code_1_1_i_argument"><td colspan="2" onclick="javascript:toggleInherit('properties_class_move_to_code_1_1_i_argument')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="class_move_to_code_1_1_i_argument.html">MoveToCode.IArgument</a></td></tr>
+<tr class="memitem:ac877773987f3f6cd35ea6d2cd35684e2 inherit properties_class_move_to_code_1_1_i_argument"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_move_to_code_1_1_code_block.html">CodeBlock</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_i_argument.html#ac877773987f3f6cd35ea6d2cd35684e2">MyCodeBlock</a><code> [get]</code></td></tr>
+<tr class="memdesc:ac877773987f3f6cd35ea6d2cd35684e2 inherit properties_class_move_to_code_1_1_i_argument"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the <code><a class="el" href="class_move_to_code_1_1_code_block.html">CodeBlock</a></code> container that this is internal to.  <a href="class_move_to_code_1_1_i_argument.html#ac877773987f3f6cd35ea6d2cd35684e2">More...</a><br /></td></tr>
+<tr class="separator:ac877773987f3f6cd35ea6d2cd35684e2 inherit properties_class_move_to_code_1_1_i_argument"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a43c141ff81b1923409d8f7cb487bb89a"></a>
@@ -203,6 +213,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Gives description within python code syntax </p>
+<dl class="section return"><dt>Returns</dt><dd>String to be printed as python code</dd></dl>
 
 <p>Implements <a class="el" href="class_move_to_code_1_1_i_argument.html#ab73047e7d033f514b8e7fb04ef398383">MoveToCode.IArgument</a>.</p>
 
@@ -360,7 +373,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_move_to_code.html">MoveToCode</a></li><li class="navelem"><a class="el" href="class_move_to_code_1_1_conditional_instruction.html">ConditionalInstruction</a></li>
-    <li class="footer">Generated on Sun Oct 25 2020 10:39:03 for MoveToCode by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
+    <li class="footer">Generated on Sun Oct 25 2020 11:49:37 for MoveToCode by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
   </ul>
 </div>
 </body>

@@ -57,6 +57,7 @@ Versions of packages are pushed directly to the repository to avoid versioning i
 - [ProBuilder](https://github.com/Unity-Technologies/com.unity.probuilder) ([Unity Companion License](https://unity3d.com/legal/licenses/Unity_Companion_License))
 - [TextMeshPro](https://docs.unity3d.com/Packages/com.unity.textmeshpro@2.0/manual/index.html) ([Unity Companion License](https://unity3d.com/legal/licenses/Unity_Companion_License))
 - [NugetForUnity](https://github.com/GlitchEnzo/NuGetForUnity) ([MIT License](https://en.wikipedia.org/wiki/MIT_License))
+- [Automatic Documentation Generation Unity Editor Plugin](http://www.jacobpennock.com/Blog/unity-automatic-documentation-generation-an-editor-plugin/) ([MIT License](https://en.wikipedia.org/wiki/MIT_License))
 
 ## Tested Platform Support
 The following are currently tested versions of required software. Higher versions of each software may work but have not been tested.

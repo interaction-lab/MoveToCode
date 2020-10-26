@@ -145,10 +145,11 @@ namespace MoveToCode {
             leftBracket.localPosition = reposition;
         }
 
+        // TODO: FIX THIS FOR ARRAYS
         private void ResizeIndex() {
             Vector3 rescale = origScaleIndex;
             Vector3 reposition = origPosIndex;
-            float? horizontalSize = GetMyCodeBlock().GetArgAsCodeBlock("ArrayElement")?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
+            float? horizontalSize = GetMyCodeBlock().GetArgAsCodeBlock(CommonSCKeys.Conditional)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
             if (horizontalSize != null) {
                 rescale.x = (float)horizontalSize;
                 reposition.x = reposition.x + (rescale.x - 0.5f) / 2.0f + GetVariableBlockHorizontalAddition();

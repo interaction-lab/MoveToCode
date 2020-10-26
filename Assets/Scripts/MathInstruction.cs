@@ -10,9 +10,9 @@ namespace MoveToCode {
         public MathInstruction(CodeBlock cbIn) : base(cbIn) { }
 
         public override void EvaluateArgumentsOfInstruction() {
-            if (GetArgument("LeftNumber") != null && GetArgument("RightNumber") != null) {
-                leftNum = (float)Convert.ChangeType(GetArgument("LeftNumber").EvaluateArgument().GetValue(), typeof(float));
-                rightNum = (float)Convert.ChangeType(GetArgument("RightNumber").EvaluateArgument().GetValue(), typeof(float));
+            if (GetArgument(CommonSCKeys.LeftNumber) != null && GetArgument(CommonSCKeys.RightNumber) != null) {
+                leftNum = (float)Convert.ChangeType(GetArgument(CommonSCKeys.LeftNumber).EvaluateArgument().GetValue(), typeof(float));
+                rightNum = (float)Convert.ChangeType(GetArgument(CommonSCKeys.RightNumber).EvaluateArgument().GetValue(), typeof(float));
             }
         }
 
@@ -21,7 +21,7 @@ namespace MoveToCode {
         }
 
         public override string DescriptiveInstructionToString() {
-            return string.Join("", GetArgument("LeftNumber")?.DescriptiveInstructionToString(), " ", GetMathSymbol(), " ", GetArgument("RightNumber")?.DescriptiveInstructionToString());
+            return string.Join("", GetArgument(CommonSCKeys.LeftNumber)?.DescriptiveInstructionToString(), " ", GetMathSymbol(), " ", GetArgument(CommonSCKeys.RightNumber)?.DescriptiveInstructionToString());
         }
     }
 }

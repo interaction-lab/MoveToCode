@@ -1,4 +1,5 @@
 ﻿using Microsoft.MixedReality.Toolkit.Utilities;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -53,9 +54,9 @@ namespace MoveToCode {
             // need to resize arg right based upon horizontal size of arg
             Vector3 rescale = origScaleArg;
             Vector3 reposition = origPositionArgLeft;
-            string snalColDescIndex = GetMyCodeBlock().GetType() == typeof(ConditionalCodeBlock) ?
-                "LeftOfConditional" :
-                "LeftNumber";
+            KeyValuePair<Type, int> snalColDescIndex = GetMyCodeBlock().GetType() == typeof(ConditionalCodeBlock) ?
+                CommonSCKeys.LeftConditional :
+                CommonSCKeys.LeftNumber;
 
             CodeBlock cb1 = GetMyCodeBlock().GetArgAsCodeBlock(snalColDescIndex);
             if (cb1 != null) {
@@ -75,9 +76,9 @@ namespace MoveToCode {
             // need to resize arg right based upon horizontal size of arg
             Vector3 rescale = origScaleArg;
             Vector3 reposition = origPositionArgRight;
-            string snalColDescIndex = GetMyCodeBlock().GetType() == typeof(ConditionalCodeBlock) ?
-                "RightOfConditional" :
-                "RightNumber";
+            KeyValuePair<Type, int> snalColDescIndex = GetMyCodeBlock().GetType() == typeof(ConditionalCodeBlock) ?
+                CommonSCKeys.RightConditional :
+                CommonSCKeys.RightNumber;
             float? horizontalSize = GetMyCodeBlock().GetArgAsCodeBlock(snalColDescIndex)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
 
             if (horizontalSize != null) {

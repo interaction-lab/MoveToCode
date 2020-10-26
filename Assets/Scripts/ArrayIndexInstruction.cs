@@ -9,17 +9,22 @@ namespace MoveToCode {
         int indexVal;
         object arrValAtIndex;
 
-        public ArrayIndexInstruction(CodeBlock cbIn) : base(cbIn) { }
+        // TODO: need to fix this for array vs array index element
+        KeyValuePair<Type, int> arrIndexArgKey;
+
+        public ArrayIndexInstruction(CodeBlock cbIn) : base(cbIn) {
+            arrIndexArgKey = new KeyValuePair<System.Type, int>(typeof(SnapColliderArrayElement), indexVal);
+        }
 
         public override void EvaluateArgumentsOfInstruction() {
-            if (GetArgument("Array")?.EvaluateArgument().GetType() != typeof(ArrayDataStructure)) {
+            if (GetArgument(arrIndexArgKey)?.EvaluateArgument().GetType() != typeof(ArrayDataStructure)) {
                 arr = null;
             }
             else {
-                arr = GetArgument("Array")?.EvaluateArgument() as ArrayDataStructure;
+                arr = GetArgument(arrIndexArgKey)?.EvaluateArgument() as ArrayDataStructure;
                 //arr.EvaluateArgumentsOfInstruction();
             }
-            index = GetArgument("Array")?.EvaluateArgument() as IntDataType;
+            index = GetArgument(arrIndexArgKey)?.EvaluateArgument() as IntDataType;
         }
 
         public override InstructionReturnValue RunInstruction() {
@@ -57,7 +62,7 @@ namespace MoveToCode {
 
 
         public override string DescriptiveInstructionToString() {
-            return string.Join("", GetArgument("Array")?.DescriptiveInstructionToString(), " ", "[", " ", GetArgument(string.Join("","ArrayElement",indexVal.ToString())), "]");
+            return string.Join("", GetArgument(arrIndexArgKey)?.DescriptiveInstructionToString(), " ", "[", " ", GetArgument(arrIndexArgKey), "]");
         }
     }
 }

@@ -1,12 +1,14 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-namespace MoveToCode{
-    public class SnapColliderLeftNumber : SnapCollider{
-        public override HashSet<Type> CompatibleArgTypes{get;} = new HashSet<Type> {
+namespace MoveToCode {
+    public class SnapColliderLeftNumber : SnapCollider {
+        public override HashSet<Type> CompatibleArgTypes { get; } = new HashSet<Type> {
             typeof(INumberDataType),
             typeof(MathInstruction) };
+
+        protected override void RegisterToSnapColliderGroup() {
+            MyCodeBlock.GetSnapColliderGroup().RegisterSnapCollider(CommonSCKeys.LeftNumber, this);
+        }
     }
 }

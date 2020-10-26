@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace MoveToCode {
     public abstract class SnapCollider : MonoBehaviour {
-        public CodeBlock MyCodeBlock { get{ return transform.parent.parent?.GetComponent<CodeBlockObjectMesh>().GetMyCodeBlock(); } }
+        public CodeBlock MyCodeBlock { get { return transform.parent.parent?.GetComponent<CodeBlockObjectMesh>().GetMyCodeBlock(); } }
         public CodeBlock MyCodeBlockArg { get { return transform.parent.GetComponentInChildren<CodeBlock>(); } }
 
         static Material OutlineMaterial { get; set; }
@@ -20,9 +20,8 @@ namespace MoveToCode {
 
         CodeBlockSnap collisionCodeBlockSnap;
 
-
-        public SnapCollider(){
-            if(OutlineMaterial == null){
+        public SnapCollider() {
+            if (OutlineMaterial == null) {
                 OutlineMaterial = Resources.Load<Material>(ResourcePathConstants.OutlineSnapColliderMaterial);
             }
             MyMeshOutline = gameObject.AddComponent(typeof(MeshOutline)) as MeshOutline;
@@ -95,8 +94,7 @@ namespace MoveToCode {
         }
 
         private bool CheckArgCompatibleType(Type argTypeIn) {
-            if (CompatibleArgTypes.Count == 0)
-            {
+            if (CompatibleArgTypes.Count == 0) {
                 return true;
             }
             foreach (Type T in CompatibleArgTypes) {
@@ -109,20 +107,16 @@ namespace MoveToCode {
             return false;
         }
 
-        private void OnTriggerEnter(Collider collision)
-        {
+        private void OnTriggerEnter(Collider collision) {
             collisionCodeBlockSnap = GetCollidersCodeBlockSnap(collision);
-            if (collisionCodeBlockSnap == CodeBlockSnap.currentlyDraggingCBS)
-            {
+            if (collisionCodeBlockSnap == CodeBlockSnap.currentlyDraggingCBS) {
                 collisionCodeBlockSnap?.AddSnapColliderInContact(this);
             }
         }
 
-        private void OnTriggerExit(Collider collision)
-        {
+        private void OnTriggerExit(Collider collision) {
             collisionCodeBlockSnap = GetCollidersCodeBlockSnap(collision);
-            if (collisionCodeBlockSnap == CodeBlockSnap.currentlyDraggingCBS)
-            {
+            if (collisionCodeBlockSnap == CodeBlockSnap.currentlyDraggingCBS) {
                 collisionCodeBlockSnap?.RemoveAsCurSnapColliderInContact(this);
             }
         }

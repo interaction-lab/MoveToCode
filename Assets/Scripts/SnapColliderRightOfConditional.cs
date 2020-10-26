@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace MoveToCode {
     public class SnapColliderRightOfConditional : SnapCollider {
@@ -9,6 +7,13 @@ namespace MoveToCode {
             new HashSet<Type> { typeof(BasicDataType),
                                 typeof(MathInstruction),
                                 typeof(ArrayIndexInstruction) };
+        protected override void RegisterToSnapColliderGroup() {
+            MyCodeBlock.GetSnapColliderGroup().RegisterSnapCollider(
+                new KeyValuePair<Type, int>(
+                    typeof(SnapColliderRightOfConditional),
+                    0),
+                this);
+        }
     }
 }
 

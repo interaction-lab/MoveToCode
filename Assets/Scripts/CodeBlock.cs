@@ -84,24 +84,18 @@ namespace MoveToCode {
             return snapColliders;
         }
 
-        public CodeBlock GetArgAsCodeBlock(string argDescription) {
-            return GetArgumentFromDict(argDescription)?.GetCodeBlock();
+        public CodeBlock GetArgAsCodeBlock(KeyValuePair<Type, int> key) {
+            return GetArgumentFromDict(key)?.GetCodeBlock();
         }
 
         internal Dictionary<string, SnapCollider> GetArgDictAsCodeBlocks() {
             return GetMyIArgument().GetArgToSnapColliderDict();
         }
 
-        public IArgument GetArgumentFromDict(string argDescription) {
-            return GetMyIArgument().GetArgument(argDescription);
+
+        public IArgument GetArgumentFromDict(KeyValuePair<Type, int> key) {
+            return GetMyIArgument().GetArgument(key);
         }
-
-
-        public HashSet<Type> GetArgCompatibility(string argDescription) {
-            return GetMyIArgument().GetArgCompatibility(argDescription);
-        }
-
-
 
         public void ResetInstructionInternalState() {
             myBlockInternalArg.ResestInternalState();

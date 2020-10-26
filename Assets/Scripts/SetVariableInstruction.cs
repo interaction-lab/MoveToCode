@@ -11,16 +11,16 @@ namespace MoveToCode {
 
         public override InstructionReturnValue RunInstruction() {
             EvaluateArgumentsOfInstruction();
-            if (GetArgument("Variable").GetType() == typeof(ArrayIndexInstruction)) {
+            if (GetArgument(CommonSCKeys.Variable).GetType() == typeof(ArrayIndexInstruction)) {
                 //set "variable"/element in array
-                (GetArgument("Variable") as ArrayIndexInstruction).SetArrayValue(GetArgument("Value")?.EvaluateArgument());
+                (GetArgument(CommonSCKeys.Variable) as ArrayIndexInstruction).SetArrayValue(GetArgument(CommonSCKeys.Value)?.EvaluateArgument());
                 //set the array
-                ((GetArgument("Variable") as ArrayIndexInstruction).GetArgument("Next") as Variable)
-                    .SetValue((GetArgument("Variable") as ArrayIndexInstruction).GetArgument("Next").EvaluateArgument() as ArrayDataStructure);
+                ((GetArgument(CommonSCKeys.Variable) as ArrayIndexInstruction).GetArgument(CommonSCKeys.Next) as Variable)
+                    .SetValue((GetArgument(CommonSCKeys.Variable) as ArrayIndexInstruction).GetArgument(CommonSCKeys.Next).EvaluateArgument() as ArrayDataStructure);
             }
             else {
                 //set regular variable (not in an array)
-                (GetArgument("Variable") as Variable).SetValue(GetArgument("Value")?.EvaluateArgument());
+                (GetArgument(CommonSCKeys.Variable) as Variable).SetValue(GetArgument(CommonSCKeys.Value)?.EvaluateArgument());
             }
             return new InstructionReturnValue(null, GetNextInstruction());
         }
@@ -32,9 +32,9 @@ namespace MoveToCode {
 
         public override string DescriptiveInstructionToString() {
             return string.Join("", "Set ",
-                GetArgument("Variable")?.DescriptiveInstructionToString(),
+                GetArgument(CommonSCKeys.Variable)?.DescriptiveInstructionToString(),
                 " to ",
-                GetArgument("Value")?.DescriptiveInstructionToString());
+                GetArgument(CommonSCKeys.Value)?.DescriptiveInstructionToString());
         }
     }
 }

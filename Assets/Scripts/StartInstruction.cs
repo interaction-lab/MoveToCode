@@ -1,4 +1,5 @@
-﻿
+﻿using System.Collections.Generic;
+
 namespace MoveToCode {
     public class StartInstruction : StandAloneInstruction {
         public static string startString = "Code Start";
@@ -10,7 +11,8 @@ namespace MoveToCode {
 
         public override InstructionReturnValue RunInstruction() {
             ConsoleManager.instance.AddLine(startString);
-            return new InstructionReturnValue(null, GetArgument("Next") as StandAloneInstruction);
+            return new InstructionReturnValue(null, GetArgument(
+                new KeyValuePair<System.Type, int>(typeof(SnapColliderNext), 0)) as StandAloneInstruction);
         }
 
         public override string ToString() {

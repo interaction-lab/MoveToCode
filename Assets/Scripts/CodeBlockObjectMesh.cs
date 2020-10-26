@@ -1,4 +1,5 @@
 ﻿using Microsoft.MixedReality.Toolkit.Utilities;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -67,8 +68,8 @@ namespace MoveToCode {
 
         public void ChainResizeDown() {
             ResizeObjectMesh();
-            foreach (SnapCollider sc in myCodeBlock.GetSnapColliderGroup().SnapColliderSet) {
-                CodeBlock cb = sc.MyCodeBlockArg;
+            foreach (var sc in myCodeBlock.GetSnapColliderGroup().SnapColliderSet) {
+                CodeBlock cb = sc.Value.MyCodeBlockArg;
                 cb?.transform.ResetCodeBlockSize();
                 cb?.GetCodeBlockObjectMesh().Recenter();
                 cb?.GetCodeBlockObjectMesh().ChainResizeDown();

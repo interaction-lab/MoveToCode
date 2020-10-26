@@ -10,7 +10,7 @@
         }
 
         public override void EvaluateArgumentsOfInstruction() {
-            IDataType d = (GetArgument("Conditional") as ConditionalInstruction)?.RunInstruction().GetReturnDataVal();
+            IDataType d = (GetArgument(CommonSCKeys.Conditional) as ConditionalInstruction)?.RunInstruction().GetReturnDataVal();
             if (d != null) {
                 conditionIsTrue = (bool)d.GetValue();
             }
@@ -25,7 +25,7 @@
         }
 
         protected StandAloneInstruction GetNestedInstruction() {
-            return GetArgument("Nested") as StandAloneInstruction;
+            return GetArgument(CommonSCKeys.Nested) as StandAloneInstruction;
         }
 
         private string AddNestedInstructionTabbing(string result, Instruction currInstruction) {
@@ -37,7 +37,7 @@
         }
 
         public override StandAloneInstruction GetNextInstruction() {
-            return GetArgument("Next") as StandAloneInstruction;
+            return GetArgument(CommonSCKeys.Next) as StandAloneInstruction;
         }
     }
 }

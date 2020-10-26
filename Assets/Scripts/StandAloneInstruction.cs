@@ -1,10 +1,12 @@
-﻿namespace MoveToCode {
+﻿using System.Collections.Generic;
+
+namespace MoveToCode {
     public abstract class StandAloneInstruction : Instruction {
 
         public StandAloneInstruction(CodeBlock cbIn) : base(cbIn) { }
 
         public virtual StandAloneInstruction GetNextInstruction() {
-            return GetArgument("Next") as StandAloneInstruction;
+            return GetArgument(new KeyValuePair<System.Type, int>(typeof(SnapColliderNext), 0)) as StandAloneInstruction;
         }
     }
 }

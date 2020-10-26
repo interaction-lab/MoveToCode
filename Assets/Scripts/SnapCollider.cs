@@ -12,7 +12,7 @@ namespace MoveToCode {
         public MeshOutline MyMeshOutline { get; set; }
         MeshRenderer MeshRend { get; set; }
 
-        public Vector3 snapPosition;
+        public virtual Vector3 SnapPosition {get; set; } = Vector3.zero;
 
         public abstract HashSet<Type> CompatibleArgTypes { get; }
 
@@ -79,7 +79,7 @@ namespace MoveToCode {
         private void SnapToParentCenter(CodeBlock collidedCodeBlock, Transform parentTransform) {
             Vector3 centerPos = collidedCodeBlock.GetCodeBlockObjectMesh().GetCenterPosition();
             centerPos.x = centerPos.x / parentTransform.localScale.x;
-            collidedCodeBlock.transform.SnapToParent(parentTransform, snapPosition - centerPos);
+            collidedCodeBlock.transform.SnapToParent(parentTransform, SnapPosition - centerPos);
         }
 
         public bool HasCompatibleType(IArgument argIn) {

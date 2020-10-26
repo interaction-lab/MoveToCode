@@ -35,7 +35,6 @@ namespace MoveToCode {
             gameObject.SetActive(false);
             RegisterToSnapColliderGroup();
             CodeBlockManager.instance.RegisterSnapCollider(this);
-
         }
 
         protected abstract void RegisterToSnapColliderGroup();

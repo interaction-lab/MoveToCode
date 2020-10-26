@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 namespace MoveToCode {
+
     /// <summary>
     /// Base abstract class for all internal "arguments" of codeblocks. All instructions and data types are treated as arguments so they can be placed as arguments of other codeblocks. E.g., a `IntCodeBlock` can be placed as a left or right argument to a `MathCodeBlock`
     /// </summary>
@@ -70,41 +71,12 @@ namespace MoveToCode {
         }
 
         /// <summary>
-        /// Returns My IArgument if in dict8ionary
+        /// Returns `IArgument` when looking up respective `SnapCollider` with index pair
         /// </summary>
-        /// <param name="iARGIn">String representation of argument lookup</param>
-        /// <returns>My IArgument</returns>
-        public IArgument GetArgument(string iARGIn) {
-            if (GetArgToSnapColliderDict().ContainsKey(iARGIn))
-                return GetArgToSnapColliderDict()[iARGIn]?.GetMyCodeBlockArg()?.GetMyIArgument();
-            return null;
+        /// <param name="snapArgLookUp">Key, item1: type of `SnapCollider` of argument, item2: index of argument, used for `ArrayIndexInstruction`</param>
+        /// <returns></returns>
+        public IArgument GetArgument(KeyValuePair<Type,int> snapArgLookUp) {
+            return MyCodeBlock.GetSnapColliderGroup().SnapColliderSet[snapArgLookUp]?.MyCodeBlock.GetMyIArgument();
         }
-
-        public static Dictionary<string, HashSet<Type>> iArgCompatabilityDict =
-            new Dictionary<string, HashSet<Type>> {
-                { "Next", new HashSet<Type> { typeof(StandAloneInstruction) }  },
-                { "LeftOfConditional", new HashSet<Type> {  typeof(BasicDataType), typeof(MathInstruction), typeof(ArrayIndexInstruction) }  },
-                { "RightOfConditional", new HashSet<Type> {  typeof(BasicDataType), typeof(MathInstruction), typeof(ArrayIndexInstruction) }  },
-                { "ArrayElement", new HashSet<Type> { typeof(BasicDataType) } },
-                { "Array", new HashSet<Type> { typeof(Variable) }  },
-                { "ArrayDataStructure", new HashSet<Type> {  typeof(ArrayDataStructure) }  },
-                { "Variable", new HashSet<Type> { typeof(Variable) , typeof(ArrayIndexInstruction) }  },
-                { "Nested", new HashSet<Type> { typeof(StandAloneInstruction) }  },
-                { "Conditional", new HashSet<Type> {  typeof(ConditionalInstruction) }  },
-                { "Value", new HashSet<Type> { typeof(IDataType), typeof(MathInstruction), typeof(ConditionalInstruction), typeof(ArrayIndexInstruction) }  },
-                { "Printable", new HashSet<Type> { typeof(IDataType), typeof(MathInstruction), typeof(ConditionalInstruction), typeof(ArrayIndexInstruction) }  },
-                { "LeftNumber", new HashSet<Type> {  typeof(INumberDataType), typeof(MathInstruction) }  },
-                { "RightNumber", new HashSet<Type> {  typeof(INumberDataType), typeof(MathInstruction) }  }
-            };
-
-
-        public virtual HashSet<Type> GetArgCompatibility(string argDescription) {
-            if (iArgCompatabilityDict.ContainsKey(argDescription))
-                return iArgCompatabilityDict[argDescription];
-            
-            return null;
-        }
-
-
     }
 }

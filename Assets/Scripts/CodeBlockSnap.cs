@@ -30,9 +30,9 @@ namespace MoveToCode {
         }
 
         void OnManipulationStart(ManipulationEventData call) {
+            currentlyDraggingCBS = this;
             CodeBlockManager.instance.EnableCollidersCompatibleCodeBlock(GetMyCodeBlock());
             mySnapColliders?.DisableAllCollidersAndChildrenColliders();
-            currentlyDraggingCBS = this;
         }
 
         IEnumerator DisableMyColliderForOneFrame() {
@@ -72,7 +72,7 @@ namespace MoveToCode {
             else {
                 myCodeBlock.RemoveFromParentSnapCollider(true);
             }
-            Block2TextConsoleManager.instance.UpdateConsoleOnSnap();
+            //Block2TextConsoleManager.instance.UpdateConsoleOnSnap(); // INF LOOP ISSUE
             CodeBlockManager.instance.DisableCollidersCompatibleCodeBlock(GetMyCodeBlock());
             GetCurSnapCollidersInContact().Clear();
             AddSnapColliderInContact(null);

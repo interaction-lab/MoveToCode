@@ -17,11 +17,11 @@ var class_move_to_code_1_1_snap_collider =
     [ "SetMyCodeBlockArg", "class_move_to_code_1_1_snap_collider.html#ab4afedd821d2007ac53d0d7839a174ba", null ],
     [ "SnapToParentCenter", "class_move_to_code_1_1_snap_collider.html#a5d05920d58a7438a90fe731115774229", null ],
     [ "collisionCodeBlockSnap", "class_move_to_code_1_1_snap_collider.html#a57b16448ec9b4f57c4408b8aa37eb3da", null ],
-    [ "snapPosition", "class_move_to_code_1_1_snap_collider.html#ac92b1189327d8fc98c47c8314f08e7ec", null ],
     [ "CompatibleArgTypes", "class_move_to_code_1_1_snap_collider.html#a695fab0bdf3d9488e9ec28fbc8b31c25", null ],
     [ "MeshRend", "class_move_to_code_1_1_snap_collider.html#ab8767177e1c00a0a43d7e57c9f84aa21", null ],
     [ "MyCodeBlock", "class_move_to_code_1_1_snap_collider.html#a18b539d13fdbc432374d18de65199160", null ],
     [ "MyCodeBlockArg", "class_move_to_code_1_1_snap_collider.html#a2b2842e268018ea77f64eac4417bc476", null ],
     [ "MyMeshOutline", "class_move_to_code_1_1_snap_collider.html#ac0ec13f6d0a2e881d5c884facf617d9d", null ],
-    [ "OutlineMaterial", "class_move_to_code_1_1_snap_collider.html#aca91653009a1041187883f9666800d46", null ]
+    [ "OutlineMaterial", "class_move_to_code_1_1_snap_collider.html#aca91653009a1041187883f9666800d46", null ],
+    [ "SnapPosition", "class_move_to_code_1_1_snap_collider.html#a68309a8b9b6c5dc981ac6ca5281a10fb", null ]
 ];

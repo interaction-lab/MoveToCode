@@ -83,7 +83,6 @@ $(document).ready(function(){initNavTree('class_move_to_code_1_1_snap_collider.h
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
@@ -125,11 +124,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8005cec326bea645e112c0182dbd1aef"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#a8005cec326bea645e112c0182dbd1aef">HasCompatibleType</a> (<a class="el" href="class_move_to_code_1_1_i_argument.html">IArgument</a> argIn)</td></tr>
 <tr class="separator:a8005cec326bea645e112c0182dbd1aef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:ac92b1189327d8fc98c47c8314f08e7ec"><td class="memItemLeft" align="right" valign="top">Vector3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#ac92b1189327d8fc98c47c8314f08e7ec">snapPosition</a></td></tr>
-<tr class="separator:ac92b1189327d8fc98c47c8314f08e7ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a3990a11347f0d74446cf376f33329e64"><td class="memItemLeft" align="right" valign="top">abstract void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#a3990a11347f0d74446cf376f33329e64">RegisterToSnapColliderGroup</a> ()</td></tr>
@@ -147,6 +141,8 @@ Properties</h2></td></tr>
 <tr class="separator:ac0ec13f6d0a2e881d5c884facf617d9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab8767177e1c00a0a43d7e57c9f84aa21"><td class="memItemLeft" align="right" valign="top">MeshRenderer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#ab8767177e1c00a0a43d7e57c9f84aa21">MeshRend</a><code> [get, set]</code></td></tr>
 <tr class="separator:ab8767177e1c00a0a43d7e57c9f84aa21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68309a8b9b6c5dc981ac6ca5281a10fb"><td class="memItemLeft" align="right" valign="top">abstract Vector3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#a68309a8b9b6c5dc981ac6ca5281a10fb">SnapPosition</a><code> [get]</code></td></tr>
+<tr class="separator:a68309a8b9b6c5dc981ac6ca5281a10fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a695fab0bdf3d9488e9ec28fbc8b31c25"><td class="memItemLeft" align="right" valign="top">abstract HashSet&lt; Type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#a695fab0bdf3d9488e9ec28fbc8b31c25">CompatibleArgTypes</a><code> [get]</code></td></tr>
 <tr class="separator:a695fab0bdf3d9488e9ec28fbc8b31c25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -609,20 +605,6 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ac92b1189327d8fc98c47c8314f08e7ec"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac92b1189327d8fc98c47c8314f08e7ec">&#9670;&nbsp;</a></span>snapPosition</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Vector3 MoveToCode.SnapCollider.snapPosition</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Property Documentation</h2>
 <a id="a695fab0bdf3d9488e9ec28fbc8b31c25"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a695fab0bdf3d9488e9ec28fbc8b31c25">&#9670;&nbsp;</a></span>CompatibleArgTypes</h2>
@@ -756,6 +738,28 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a68309a8b9b6c5dc981ac6ca5281a10fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68309a8b9b6c5dc981ac6ca5281a10fb">&#9670;&nbsp;</a></span>SnapPosition</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract Vector3 MoveToCode.SnapCollider.SnapPosition</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>E:/UnityProjects/MoveToCode/Assets/Scripts/<a class="el" href="_snap_collider_8cs.html">SnapCollider.cs</a></li>
 </ul>
@@ -765,7 +769,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_move_to_code.html">MoveToCode</a></li><li class="navelem"><a class="el" href="class_move_to_code_1_1_snap_collider.html">SnapCollider</a></li>
-    <li class="footer">Generated on Sun Oct 25 2020 23:33:46 for MoveToCode by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
+    <li class="footer">Generated on Mon Oct 26 2020 16:58:41 for MoveToCode by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
   </ul>
 </div>
 </body>

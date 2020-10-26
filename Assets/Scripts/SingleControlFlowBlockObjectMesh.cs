@@ -70,7 +70,9 @@ namespace MoveToCode {
         private void ResizeArgRight() {
             Vector3 rescale = origScaleArgRight;
             Vector3 reposition = origPositionArgRight;
-            CodeBlockObjectMesh obMesh = GetMyCodeBlock().GetSnapColliderCodeBlock(CommonSCKeys.Conditional)?.GetCodeBlockObjectMesh();
+
+            // TODO: this is done slightly differently, this should really be a method
+            CodeBlockObjectMesh obMesh = GetComponent<SnapColliderGroup>().SnapColliderSet[CommonSCKeys.Conditional]?.MyCodeBlockArg?.GetCodeBlockObjectMesh();
             if (obMesh != null) {
                 rescale.x = obMesh.GetBlockHorizontalSize();
                 reposition.x = reposition.x + (rescale.x - 0.5f) / 2.0f;

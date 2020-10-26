@@ -10,9 +10,7 @@ namespace MoveToCode {
 
         protected override void RegisterToSnapColliderGroup() {
             MyCodeBlock.GetSnapColliderGroup().RegisterSnapCollider(
-                new KeyValuePair<Type, int>(
-                    typeof(SnapColliderLeftNumber),
-                    0),
+                CommonSCKeys.LeftConditional,
                 this);
         }
     }

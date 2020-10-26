@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace MoveToCode {
     public class SnapColliderRightNumber : SnapCollider {
@@ -10,9 +8,7 @@ namespace MoveToCode {
                                 typeof(MathInstruction) };
         protected override void RegisterToSnapColliderGroup() {
             MyCodeBlock.GetSnapColliderGroup().RegisterSnapCollider(
-                new KeyValuePair<Type, int>(
-                    typeof(SnapColliderRightNumber),
-                    0),
+                CommonSCKeys.RightConditional,
                 this);
         }
     }

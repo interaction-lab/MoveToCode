@@ -9,9 +9,7 @@ namespace MoveToCode {
                                 typeof(ArrayIndexInstruction) };
         protected override void RegisterToSnapColliderGroup() {
             MyCodeBlock.GetSnapColliderGroup().RegisterSnapCollider(
-                new KeyValuePair<Type, int>(
-                    typeof(SnapColliderRightOfConditional),
-                    0),
+                CommonSCKeys.RightConditional,
                 this);
         }
     }

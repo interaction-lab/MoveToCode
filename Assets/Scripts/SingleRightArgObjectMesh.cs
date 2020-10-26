@@ -38,7 +38,8 @@ namespace MoveToCode {
             Vector3 rescale = origScaleArgRight;
             Vector3 reposition = origPositionArgRight;
 
-            float? horizontalSize = GetMyCodeBlock().GetArgAsCodeBlock(CommonSCKeys.Printable)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
+            float? horizontalSize = GetComponent<SnapColliderGroup>().SnapColliderSet[CommonSCKeys.Printable]?.MyCodeBlockArg?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
+            
             if (horizontalSize != null) {
                 rescale.x = (float)horizontalSize;
                 reposition.x = reposition.x + (rescale.x - 0.5f) / 2.0f;

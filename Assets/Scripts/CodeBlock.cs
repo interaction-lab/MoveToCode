@@ -84,7 +84,7 @@ namespace MoveToCode {
             return snapColliders;
         }
 
-        public CodeBlock GetArgAsCodeBlock(KeyValuePair<Type, int> key) {
+        public CodeBlock GetSnapColliderCodeBlock(KeyValuePair<Type, int> key) {
             return GetArgumentFromDict(key)?.GetCodeBlock();
         }
 

@@ -149,7 +149,7 @@ namespace MoveToCode {
         private void ResizeIndex() {
             Vector3 rescale = origScaleIndex;
             Vector3 reposition = origPosIndex;
-            float? horizontalSize = GetMyCodeBlock().GetArgAsCodeBlock(CommonSCKeys.Conditional)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
+            float? horizontalSize = GetMyCodeBlock().GetSnapColliderCodeBlock(CommonSCKeys.Conditional)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
             if (horizontalSize != null) {
                 rescale.x = (float)horizontalSize;
                 reposition.x = reposition.x + (rescale.x - 0.5f) / 2.0f + GetVariableBlockHorizontalAddition();

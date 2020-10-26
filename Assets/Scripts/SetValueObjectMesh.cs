@@ -100,7 +100,7 @@ namespace MoveToCode {
             // need to resize arg right based upon horizontal size of arg
             Vector3 rescale = origScaleVariable;
             Vector3 reposition = origPosVariable;
-            float? horizontalSize = GetMyCodeBlock().GetArgAsCodeBlock(CommonSCKeys.Variable)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
+            float? horizontalSize = GetMyCodeBlock().GetSnapColliderCodeBlock(CommonSCKeys.Variable)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
             if (horizontalSize != null) {
                 rescale.x = (float)horizontalSize;
                 reposition.x = reposition.x + (rescale.x - 0.5f) / 2.0f;
@@ -123,7 +123,7 @@ namespace MoveToCode {
             // need to resize arg right based upon horizontal size of arg
             Vector3 rescale = origScaleValueTo;
             Vector3 reposition = origPosValueTo;
-            float? horizontalSize = GetMyCodeBlock().GetArgAsCodeBlock(CommonSCKeys.Value)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
+            float? horizontalSize = GetMyCodeBlock().GetSnapColliderCodeBlock(CommonSCKeys.Value)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
             if (horizontalSize != null) {
                 rescale.x = (float)horizontalSize;
             }

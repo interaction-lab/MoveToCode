@@ -58,11 +58,11 @@ namespace MoveToCode {
                 CommonSCKeys.LeftConditional :
                 CommonSCKeys.LeftNumber;
 
-            CodeBlock cb1 = GetMyCodeBlock().GetArgAsCodeBlock(snalColDescIndex);
+            CodeBlock cb1 = GetMyCodeBlock().GetSnapColliderCodeBlock(snalColDescIndex);
             if (cb1 != null) {
                 cb1.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
             }
-            float? horizontalSize = GetMyCodeBlock().GetArgAsCodeBlock(snalColDescIndex)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
+            float? horizontalSize = GetMyCodeBlock().GetSnapColliderCodeBlock(snalColDescIndex)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
 
             if (horizontalSize != null) {
                 rescale.x = (float)horizontalSize;
@@ -79,7 +79,7 @@ namespace MoveToCode {
             KeyValuePair<Type, int> snalColDescIndex = GetMyCodeBlock().GetType() == typeof(ConditionalCodeBlock) ?
                 CommonSCKeys.RightConditional :
                 CommonSCKeys.RightNumber;
-            float? horizontalSize = GetMyCodeBlock().GetArgAsCodeBlock(snalColDescIndex)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
+            float? horizontalSize = GetMyCodeBlock().GetSnapColliderCodeBlock(snalColDescIndex)?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
 
             if (horizontalSize != null) {
                 rescale.x = (float)horizontalSize;

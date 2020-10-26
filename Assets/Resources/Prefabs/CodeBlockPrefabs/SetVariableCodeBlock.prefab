@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2110378777366927050}
   - component: {fileID: 2110378777366927049}
   - component: {fileID: 2110378777366927048}
-  - component: {fileID: 2110378777366927055}
+  - component: {fileID: 6225660077406614862}
   m_Layer: 0
   m_Name: ValueRight
   m_TagString: Untagged
@@ -92,7 +92,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.8, z: 0.8}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2110378777366927055
+--- !u!114 &6225660077406614862
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,11 +101,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2110378777366927053}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0064d2c807e4c7047a4189d5dd96702d, type: 3}
+  m_Script: {fileID: 11500000, guid: 685c9104389f20f47ae0c0ba7b2ea024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mySnapColTypeDescription: 2
-  snapPosition: {x: 0, y: 0, z: -0.25}
+  snapPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &2110378777720014675
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,7 +208,7 @@ GameObject:
   - component: {fileID: 2110378777836018539}
   - component: {fileID: 2110378777836018538}
   - component: {fileID: 2110378777836018537}
-  - component: {fileID: 2110378777836018536}
+  - component: {fileID: 5658563134914193584}
   m_Layer: 0
   m_Name: NextInstructionDown
   m_TagString: Untagged
@@ -289,7 +288,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2110378777836018542}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &2110378777836018536
+--- !u!114 &5658563134914193584
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -298,11 +297,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2110378777836018542}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0064d2c807e4c7047a4189d5dd96702d, type: 3}
+  m_Script: {fileID: 11500000, guid: e3c6296b8edd61d4480af17a0f5fe4e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mySnapColTypeDescription: 0
-  snapPosition: {x: 0.5, y: -1, z: 0}
+  snapPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &2110378777860639043
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,7 +313,7 @@ GameObject:
   - component: {fileID: 2110378777860639064}
   - component: {fileID: 2110378777860639071}
   - component: {fileID: 2110378777860639070}
-  - component: {fileID: 2110378777860639069}
+  - component: {fileID: 1504469148210542456}
   m_Layer: 0
   m_Name: VariableLeft
   m_TagString: Untagged
@@ -395,7 +393,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.8, z: 0.8}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2110378777860639069
+--- !u!114 &1504469148210542456
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -404,11 +402,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2110378777860639043}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0064d2c807e4c7047a4189d5dd96702d, type: 3}
+  m_Script: {fileID: 11500000, guid: d22914b3ab7802240a4f225a2742e77d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mySnapColTypeDescription: 4
-  snapPosition: {x: 0, y: 0, z: -0.25}
+  snapPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &2110378778199124361
 GameObject:
   m_ObjectHideFlags: 0

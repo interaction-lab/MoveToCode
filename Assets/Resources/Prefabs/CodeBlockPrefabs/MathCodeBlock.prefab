@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 438597426600385680}
   - component: {fileID: 438597426600385681}
   - component: {fileID: 438597426600385682}
-  - component: {fileID: 438597426600385683}
+  - component: {fileID: 1843702445264290153}
   m_Layer: 0
   m_Name: NumberRight
   m_TagString: Untagged
@@ -151,7 +151,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.8, z: 0.8}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &438597426600385683
+--- !u!114 &1843702445264290153
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -160,11 +160,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 438597426600385685}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0064d2c807e4c7047a4189d5dd96702d, type: 3}
+  m_Script: {fileID: 11500000, guid: 5a8c1e6216d1fd7458978dd035f34e0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mySnapColTypeDescription: 8
-  snapPosition: {x: 0, y: 0, z: -0.25}
+  snapPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &438597427156623183
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,7 +312,7 @@ GameObject:
   - component: {fileID: 438597427481538889}
   - component: {fileID: 438597427481538890}
   - component: {fileID: 438597427481538891}
-  - component: {fileID: 438597427481538892}
+  - component: {fileID: 7133053985765625744}
   m_Layer: 0
   m_Name: NumberLeft
   m_TagString: Untagged
@@ -393,7 +392,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.8, z: 0.8}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &438597427481538892
+--- !u!114 &7133053985765625744
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -402,11 +401,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 438597427481538894}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0064d2c807e4c7047a4189d5dd96702d, type: 3}
+  m_Script: {fileID: 11500000, guid: 234575557b167bd47a7053c3b6d9b2e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mySnapColTypeDescription: 7
-  snapPosition: {x: 0, y: 0, z: -0.25}
+  snapPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &438597427519189872
 GameObject:
   m_ObjectHideFlags: 0

@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 5984162907952264054}
   - component: {fileID: 5984162907952264055}
   - component: {fileID: 5984162907952264056}
-  - component: {fileID: 5984162907952264057}
+  - component: {fileID: 1576958209825119967}
   m_Layer: 0
   m_Name: Conditional
   m_TagString: Untagged
@@ -288,7 +288,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.8, z: 0.8}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5984162907952264057
+--- !u!114 &1576958209825119967
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -297,11 +297,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5984162907952264059}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0064d2c807e4c7047a4189d5dd96702d, type: 3}
+  m_Script: {fileID: 11500000, guid: ee417d2508c743e46b274b875aef53ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mySnapColTypeDescription: 9
-  snapPosition: {x: 0, y: 0, z: -0.25}
+  snapPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &5984162908249333204
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,7 +405,7 @@ GameObject:
   - component: {fileID: 5984162908603006584}
   - component: {fileID: 5984162908603006585}
   - component: {fileID: 5984162908603006586}
-  - component: {fileID: 5984162908603006587}
+  - component: {fileID: 7334762057653591800}
   m_Layer: 0
   m_Name: NestedInstructionDown
   m_TagString: Untagged
@@ -486,7 +485,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5984162908603006589}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &5984162908603006587
+--- !u!114 &7334762057653591800
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -495,11 +494,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5984162908603006589}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0064d2c807e4c7047a4189d5dd96702d, type: 3}
+  m_Script: {fileID: 11500000, guid: 0edf70b0db035004d90d9d27ac74d990, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mySnapColTypeDescription: 3
-  snapPosition: {x: 0.18, y: -1, z: 0}
+  snapPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &5984162909096327951
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,7 +510,7 @@ GameObject:
   - component: {fileID: 5984162909096327946}
   - component: {fileID: 5984162909096327947}
   - component: {fileID: 5984162909096327948}
-  - component: {fileID: 5984162909096327949}
+  - component: {fileID: 3875121196837038380}
   m_Layer: 0
   m_Name: NextInstructionDown
   m_TagString: Untagged
@@ -592,7 +590,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5984162909096327951}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &5984162909096327949
+--- !u!114 &3875121196837038380
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -601,11 +599,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5984162909096327951}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0064d2c807e4c7047a4189d5dd96702d, type: 3}
+  m_Script: {fileID: 11500000, guid: e3c6296b8edd61d4480af17a0f5fe4e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mySnapColTypeDescription: 0
-  snapPosition: {x: -0.25, y: -1, z: 0}
+  snapPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &5984162909159336268
 GameObject:
   m_ObjectHideFlags: 0

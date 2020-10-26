@@ -9,10 +9,8 @@ namespace MoveToCode {
         public CodeBlock MyCodeBlockArg { get { return transform.parent.GetComponentInChildren<CodeBlock>(); } }
 
         static Material OutlineMaterial { get; set; }
-        public MeshOutline MyMeshOutline { get; }
+        public MeshOutline MyMeshOutline { get; set; }
         MeshRenderer MeshRend { get; set; }
-
-        public string mystring;
 
         public Vector3 snapPosition;
 
@@ -20,7 +18,7 @@ namespace MoveToCode {
 
         CodeBlockSnap collisionCodeBlockSnap;
 
-        public SnapCollider() {
+        void Awake() {
             if (OutlineMaterial == null) {
                 OutlineMaterial = Resources.Load<Material>(ResourcePathConstants.OutlineSnapColliderMaterial);
             }

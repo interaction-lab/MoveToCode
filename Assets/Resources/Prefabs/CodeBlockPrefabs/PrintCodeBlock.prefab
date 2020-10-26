@@ -298,9 +298,9 @@ GameObject:
   - component: {fileID: 5335814774715270011}
   - component: {fileID: 5335814774715270010}
   - component: {fileID: 5335814774715270005}
-  - component: {fileID: 5335814774715270004}
+  - component: {fileID: 3068261369568121161}
   m_Layer: 0
-  m_Name: Argument1
+  m_Name: PrintableSC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -378,7 +378,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.8, z: 0.8}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5335814774715270004
+--- !u!114 &3068261369568121161
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -387,11 +387,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5335814774715270006}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0064d2c807e4c7047a4189d5dd96702d, type: 3}
+  m_Script: {fileID: 11500000, guid: fef273f2bd4b6f74bab74a998594b69d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mySnapColTypeDescription: 6
-  snapPosition: {x: 0, y: 0, z: -0.25}
+  snapPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &5335814775075328185
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,7 +403,7 @@ GameObject:
   - component: {fileID: 5335814775075328191}
   - component: {fileID: 5335814775075328162}
   - component: {fileID: 5335814775075328189}
-  - component: {fileID: 5335814775075328188}
+  - component: {fileID: 213873660322605457}
   m_Layer: 0
   m_Name: NextInstructionDown
   m_TagString: Untagged
@@ -484,7 +483,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5335814775075328185}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &5335814775075328188
+--- !u!114 &213873660322605457
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -493,8 +492,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5335814775075328185}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0064d2c807e4c7047a4189d5dd96702d, type: 3}
+  m_Script: {fileID: 11500000, guid: e3c6296b8edd61d4480af17a0f5fe4e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mySnapColTypeDescription: 0
-  snapPosition: {x: 0, y: -1, z: 0}
+  snapPosition: {x: 0, y: 0, z: 0}

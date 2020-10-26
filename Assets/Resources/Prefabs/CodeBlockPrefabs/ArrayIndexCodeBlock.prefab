@@ -135,7 +135,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c8283d18e4adbc4d9acec5084a60299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMenuBlock: 0
 --- !u!1 &4929860365879125353
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,9 +147,9 @@ GameObject:
   - component: {fileID: 4929860365879125364}
   - component: {fileID: 4929860365879125365}
   - component: {fileID: 4929860365879125366}
-  - component: {fileID: 4929860365879125367}
+  - component: {fileID: 215817319812583682}
   m_Layer: 0
-  m_Name: Argument0
+  m_Name: VariableSC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -228,7 +227,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.8, z: 0.8}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4929860365879125367
+--- !u!114 &215817319812583682
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -237,11 +236,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4929860365879125353}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0064d2c807e4c7047a4189d5dd96702d, type: 3}
+  m_Script: {fileID: 11500000, guid: d22914b3ab7802240a4f225a2742e77d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myArgumentPosition: 0
-  snapPosition: {x: 0, y: 0, z: -0.25}
+  snapPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &4929860366053751516
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,9 +344,9 @@ GameObject:
   - component: {fileID: 4929860366800051886}
   - component: {fileID: 4929860366800051887}
   - component: {fileID: 4929860366800051872}
-  - component: {fileID: 4929860366800051873}
+  - component: {fileID: 8362025017620792457}
   m_Layer: 0
-  m_Name: Argument1
+  m_Name: IntIndexSC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -426,7 +424,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.8, z: 0.8}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4929860366800051873
+--- !u!114 &8362025017620792457
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -435,11 +433,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4929860366800051875}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0064d2c807e4c7047a4189d5dd96702d, type: 3}
+  m_Script: {fileID: 11500000, guid: 2bbff156a026c7042a3e0ccdbc113b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myArgumentPosition: 1
-  snapPosition: {x: 0, y: 0, z: -0.25}
+  snapPosition: {x: 0, y: 0, z: 0}
+  index: 0
 --- !u!1 &4929860367150813261
 GameObject:
   m_ObjectHideFlags: 0

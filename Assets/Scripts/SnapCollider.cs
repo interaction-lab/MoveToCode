@@ -4,73 +4,44 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace MoveToCode {
-    public class SnapCollider : MonoBehaviour {
-        CodeBlock myCodeBlockArg;
+    public abstract class SnapCollider : MonoBehaviour {
+        public CodeBlock MyCodeBlock { get{ return transform.parent.parent?.GetComponent<CodeBlockObjectMesh>().GetMyCodeBlock(); } }
+        public CodeBlock MyCodeBlockArg { get { return transform.parent.GetComponentInChildren<CodeBlock>(); } }
+
+        static Material OutlineMaterial { get; set; }
+        public MeshOutline MyMeshOutline { get; }
+        MeshRenderer MeshRend { get; set; }
+
         public string mystring;
 
         public Vector3 snapPosition;
 
-        HashSet<Type> myCompatibleArgTypes;
+        public abstract HashSet<Type> CompatibleArgTypes { get; }
+
         CodeBlockSnap collisionCodeBlockSnap;
 
-        static Material outlineMaterial;
-        MeshRenderer meshRend;
-        MeshOutline meshOutline;
 
-        private void Awake() {
-            meshRend = GetComponent<MeshRenderer>();
-            meshRend.enabled = false;
+        public SnapCollider(){
+            if(OutlineMaterial == null){
+                OutlineMaterial = Resources.Load<Material>(ResourcePathConstants.OutlineSnapColliderMaterial);
+            }
+            MyMeshOutline = gameObject.AddComponent(typeof(MeshOutline)) as MeshOutline;
+            MyMeshOutline.OutlineMaterial = OutlineMaterial;
+            MeshRend = GetComponent<MeshRenderer>();
+            MeshRend.enabled = false;
             GetComponent<Collider>().isTrigger = true;
             gameObject.layer = 2;
             CodeBlockManager.instance.RegisterSnapCollider(this);
             gameObject.SetActive(false);
-            GetMyCodeBlockSnap();
-            RegisterWithMyCodeBlockArgDict();
+            RegisterToSnapColliderGroup();
+            CodeBlockManager.instance.RegisterSnapCollider(this);
+
         }
 
-        private void RegisterWithMyCodeBlockArgDict() {
-            GetMyCodeBlock().GetMyIArgument().RegisterSnapCollider(mystring, this);
-        }
-
-        public MeshOutline GetMeshOutline() {
-            if (outlineMaterial == null) {
-                outlineMaterial = Resources.Load<Material>(ResourcePathConstants.OutlineSnapColliderMaterial) as Material;
-            }
-            if (meshOutline == null) {
-                meshOutline = gameObject.AddComponent(typeof(MeshOutline)) as MeshOutline;
-                meshOutline.OutlineMaterial = outlineMaterial;
-            }
-            return meshOutline;
-        }
+        protected abstract void RegisterToSnapColliderGroup();
 
         private CodeBlockSnap GetCollidersCodeBlockSnap(Collider collision) {
             return collision.transform.parent.parent.GetComponent<CodeBlockSnap>();
-        }
-
-        private void OnTriggerEnter(Collider collision) {
-            collisionCodeBlockSnap = GetCollidersCodeBlockSnap(collision);
-            if (collisionCodeBlockSnap == CodeBlockSnap.currentlyDraggingCBS) {
-                collisionCodeBlockSnap?.AddSnapColliderInContact(this);
-            }
-        }
-
-        private void OnTriggerExit(Collider collision) {
-            collisionCodeBlockSnap = GetCollidersCodeBlockSnap(collision);
-            if (collisionCodeBlockSnap == CodeBlockSnap.currentlyDraggingCBS) {
-                collisionCodeBlockSnap?.RemoveAsCurSnapColliderInContact(this);
-            }
-        }
-
-        internal string GetIArgType() {
-            return mystring;
-        }
-
-        public CodeBlock GetMyCodeBlock() {
-            return transform.parent.parent?.GetComponent<CodeBlockObjectMesh>().GetMyCodeBlock();
-        }
-
-        CodeBlockSnap GetMyCodeBlockSnap() {
-            return GetMyCodeBlock()?.GetCodeBlockSnap();
         }
 
         // TODO: humanDidIt is such a hack
@@ -87,7 +58,7 @@ namespace MoveToCode {
         }
 
         private void RemoveCurrentBlockArg() {
-            CodeBlock curArg = GetMyCodeBlockArg();
+            CodeBlock curArg = MyCodeBlockArg;
             if (curArg != null) {
                 AudioManager.instance.PlaySoundAtObject(gameObject, AudioManager.popAudioClip);
                 if (CodeBlockSnap.lastDraggedCBS != curArg) {
@@ -102,28 +73,17 @@ namespace MoveToCode {
         private void AddNewCodeBlockArg(CodeBlock collidedCodeBlock) {
             SnapToParentCenter(collidedCodeBlock, transform.parent);
             AudioManager.instance.PlaySoundAtObject(gameObject, AudioManager.snapAudioClip);
-            GetMyCodeBlock().GetCodeBlockObjectMesh().ResizeChain();
-        }
-
-        public CodeBlock GetMyCodeBlockArg() {
-            return transform.parent.GetComponentInChildren<CodeBlock>();
+            MyCodeBlock.GetCodeBlockObjectMesh().ResizeChain();
         }
 
         public bool HasCodeBlockArgAttached() {
-            return GetMyCodeBlockArg() != null;
+            return MyCodeBlockArg != null;
         }
 
         private void SnapToParentCenter(CodeBlock collidedCodeBlock, Transform parentTransform) {
             Vector3 centerPos = collidedCodeBlock.GetCodeBlockObjectMesh().GetCenterPosition();
             centerPos.x = centerPos.x / parentTransform.localScale.x;
             collidedCodeBlock.transform.SnapToParent(parentTransform, snapPosition - centerPos);
-        }
-
-        protected HashSet<Type> GetMyCompatibleArgTypes() {
-            if (myCompatibleArgTypes == null) {
-                myCompatibleArgTypes = GetMyCodeBlock().GetArgCompatibility(mystring);
-            }
-            return myCompatibleArgTypes;
         }
 
         public bool HasCompatibleType(IArgument argIn) {
@@ -136,8 +96,11 @@ namespace MoveToCode {
         }
 
         private bool CheckArgCompatibleType(Type argTypeIn) {
-            if (GetMyCompatibleArgTypes() == null || GetMyCompatibleArgTypes().Count == 0) return true;
-            foreach (Type T in GetMyCompatibleArgTypes()) {
+            if (CompatibleArgTypes.Count == 0)
+            {
+                return true;
+            }
+            foreach (Type T in CompatibleArgTypes) {
                 if (T == null && argTypeIn == null ||
                     argTypeIn.IsAssignableFrom(T) ||
                     T.IsAssignableFrom(argTypeIn)) {
@@ -147,14 +110,30 @@ namespace MoveToCode {
             return false;
         }
 
+        private void OnTriggerEnter(Collider collision)
+        {
+            collisionCodeBlockSnap = GetCollidersCodeBlockSnap(collision);
+            if (collisionCodeBlockSnap == CodeBlockSnap.currentlyDraggingCBS)
+            {
+                collisionCodeBlockSnap?.AddSnapColliderInContact(this);
+            }
+        }
+
+        private void OnTriggerExit(Collider collision)
+        {
+            collisionCodeBlockSnap = GetCollidersCodeBlockSnap(collision);
+            if (collisionCodeBlockSnap == CodeBlockSnap.currentlyDraggingCBS)
+            {
+                collisionCodeBlockSnap?.RemoveAsCurSnapColliderInContact(this);
+            }
+        }
 
         private void OnEnable() {
-            meshRend.enabled = true;
-            CodeBlockManager.instance.RegisterSnapCollider(this);
+            MeshRend.enabled = true;
         }
 
         private void OnDisable() {
-            meshRend.enabled = false;
+            MeshRend.enabled = false;
         }
 
         private void OnDestroy() {

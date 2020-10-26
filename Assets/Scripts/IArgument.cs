@@ -2,23 +2,6 @@
 using System.Collections.Generic;
 
 namespace MoveToCode {
-    //public enum string {
-    //    Next,
-    //    Array,
-    //    Value,
-    //    Nested,
-    //    Variable,
-    //    NotFound,
-    //    Printable,
-    //    LeftNumber,
-    //    RightNumber,
-    //    Conditional,
-    //    ArrayElement,
-    //    ArrayDataStructure,
-    //    LeftOfConditional,
-    //    RightOfConditional,
-    //}
-    
     /// <summary>
     /// Base abstract class for all internal "arguments" of codeblocks. All instructions and data types are treated as arguments so they can be placed as arguments of other codeblocks. E.g., a `IntCodeBlock` can be placed as a left or right argument to a `MathCodeBlock`
     /// </summary>
@@ -27,7 +10,7 @@ namespace MoveToCode {
         /// <summary>
         /// Pointer to the `CodeBlock` container that this is internal to. This is needed within internal arguments as a backwards pointer. `Codeblock.cs` also has a `myInternalIArgument` which is a pointer the other direction.
         /// </summary>
-        public CodeBlock MyCodeBlock {get; }
+        public CodeBlock MyCodeBlock { get; set; }
 
         /// <summary>
         /// Maps SnapCollider string to it's respective SnapCollider class. See `SnapCollider.cs` for more details.
@@ -78,14 +61,19 @@ namespace MoveToCode {
             GetArgToSnapColliderDict()[snapColDescIn] = snapCollider;
         }
 
+        /// <summary>
+        /// Returns argToSnapColliderDict
+        /// </summary>
+        /// <returns>argToSnapColliderDict</returns>
         public Dictionary<string, SnapCollider> GetArgToSnapColliderDict() {
             return argToSnapColliderDict;
         }
 
-        public int GetNumArguments() {
-            return GetArgToSnapColliderDict().Count;
-        }
-
+        /// <summary>
+        /// Returns My IArgument if in dict8ionary
+        /// </summary>
+        /// <param name="iARGIn">String representation of argument lookup</param>
+        /// <returns>My IArgument</returns>
         public IArgument GetArgument(string iARGIn) {
             if (GetArgToSnapColliderDict().ContainsKey(iARGIn))
                 return GetArgToSnapColliderDict()[iARGIn]?.GetMyCodeBlockArg()?.GetMyIArgument();

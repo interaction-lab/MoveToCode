@@ -30,7 +30,7 @@ namespace MoveToCode {
         }
 
         void OnManipulationStart(ManipulationEventData call) {
-            mySnapColliders?.EnableAllCompatibleColliders();
+            CodeBlockManager.instance.EnableCollidersCompatibleCodeBlock(GetMyCodeBlock());
             mySnapColliders?.DisableAllCollidersAndChildrenColliders();
             currentlyDraggingCBS = this;
         }
@@ -43,16 +43,16 @@ namespace MoveToCode {
 
         public void AddSnapColliderInContact(SnapCollider sc) {
             if (bestCandidateSnapCollider != null) {
-                bestCandidateSnapCollider.GetMeshOutline().enabled = false;
+                bestCandidateSnapCollider.MyMeshOutline.enabled = false;
             }
             bestCandidateSnapCollider = sc;
             if (bestCandidateSnapCollider != null) {
-                bestCandidateSnapCollider.GetMeshOutline().enabled = true;
+                bestCandidateSnapCollider.MyMeshOutline.enabled = true;
                 GetCurSnapCollidersInContact().Add(bestCandidateSnapCollider);
             }
             else if (!GetCurSnapCollidersInContact().Empty()) {
                 bestCandidateSnapCollider = curSnapCollidersInContact.ElementAt(0);
-                bestCandidateSnapCollider.GetMeshOutline().enabled = true;
+                bestCandidateSnapCollider.MyMeshOutline.enabled = true;
             }
         }
 
@@ -67,13 +67,13 @@ namespace MoveToCode {
             currentlyDraggingCBS = null;
             lastDraggedCBS = this;
             if (bestCandidateSnapCollider != null) {
-                bestCandidateSnapCollider.DoSnapAction(bestCandidateSnapCollider.GetMyCodeBlock(), GetMyCodeBlock());
+                bestCandidateSnapCollider.DoSnapAction(bestCandidateSnapCollider.MyCodeBlock, GetMyCodeBlock());
             }
             else {
                 myCodeBlock.RemoveFromParentSnapCollider(true);
             }
             Block2TextConsoleManager.instance.UpdateConsoleOnSnap();
-            mySnapColliders?.DisableAllCompatibleColliders();
+            CodeBlockManager.instance.DisableCollidersCompatibleCodeBlock(GetMyCodeBlock());
             GetCurSnapCollidersInContact().Clear();
             AddSnapColliderInContact(null);
         }

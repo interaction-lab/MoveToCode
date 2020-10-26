@@ -5,13 +5,9 @@ using UnityEngine;
 
 namespace MoveToCode {
     public class SnapColliderRightNumber : SnapCollider {
-        private HashSet<Type> _compatibleTypes =
+        public override HashSet<Type> CompatibleArgTypes { get; } =
             new HashSet<Type> { typeof(INumberDataType),
                                 typeof(MathInstruction) };
-        public HashSet<Type> compatibleTypes {
-            get { return _compatibleTypes; }
-            set { _compatibleTypes = value; }
-        }
     }
 }
 

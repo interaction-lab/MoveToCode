@@ -79,7 +79,7 @@ namespace MoveToCode {
             }
             SnapCollider sc = go.GetComponent<SnapCollider>();
             if (sc != null) {
-                return sc.GetMyCodeBlock().name;
+                return sc.MyCodeBlock.name;
             }
             PressableButtonHoloLens2 pbh2 = go.GetComponentInParent<PressableButtonHoloLens2>();
             if (pbh2 != null) {
@@ -97,7 +97,7 @@ namespace MoveToCode {
             }
             SnapCollider sc = go.GetComponent<SnapCollider>();
             if (sc != null) {
-                result = sc.GetMyCodeBlock();
+                result = sc.MyCodeBlock;
             }
             // StartCodeBlock is indestructible
             if (result == StartCodeBlock.instance) {

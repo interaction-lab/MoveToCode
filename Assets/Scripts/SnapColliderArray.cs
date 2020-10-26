@@ -1,15 +1,19 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace MoveToCode {
     public class SnapColliderArray : SnapCollider {
-        private HashSet<Type> _compatibleTypes = new HashSet<Type> { typeof(Variable) };
-        public HashSet<Type> compatibleTypes {
-            get { return _compatibleTypes; }
-            set { _compatibleTypes = value; }
-        }
+        public override HashSet<Type> CompatibleArgTypes { get; } = new HashSet<Type> {
+            typeof(Variable) };
+    }
+
+    protected override void RegisterToSnapColliderGroup()
+    {
+        MyCodeBlock.GetSnapColliderGroup().RegisterSnapCollider(
+            new KeyValuePair<Type, int>(
+                typeof(SnapColliderArray),
+                0),
+            this);
     }
 }
 

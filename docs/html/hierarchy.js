@@ -96,6 +96,7 @@ var hierarchy =
         [ "MoveToCode.SingleRightArgObjectMesh", "class_move_to_code_1_1_single_right_arg_object_mesh.html", null ]
       ] ],
       [ "MoveToCode.CodeBlockSnap", "class_move_to_code_1_1_code_block_snap.html", null ],
+      [ "MoveToCode.CommonSCKeys", "class_move_to_code_1_1_common_s_c_keys.html", null ],
       [ "MoveToCode.Exercise", "class_move_to_code_1_1_exercise.html", [
         [ "MoveToCode.FreePlayExercise", "class_move_to_code_1_1_free_play_exercise.html", null ]
       ] ],

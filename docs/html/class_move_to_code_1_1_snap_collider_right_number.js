@@ -1,5 +1,5 @@
 var class_move_to_code_1_1_snap_collider_right_number =
 [
-    [ "_compatibleTypes", "class_move_to_code_1_1_snap_collider_right_number.html#a7b67ce6b0e7f24c001825707c3c3f24d", null ],
-    [ "compatibleTypes", "class_move_to_code_1_1_snap_collider_right_number.html#a60af3dabcaad914f0283f780192f2034", null ]
+    [ "RegisterToSnapColliderGroup", "class_move_to_code_1_1_snap_collider_right_number.html#a744bac911fdc1ad8fc50a483c0cb82e9", null ],
+    [ "CompatibleArgTypes", "class_move_to_code_1_1_snap_collider_right_number.html#a9714ac6fcd276bbb4c109f9d314aa151", null ]
 ];

@@ -63,6 +63,9 @@ var dir_f13b41af88cf68434578284aaf699e39 =
     [ "CodeBlockSnap.cs", "_code_block_snap_8cs.html", [
       [ "CodeBlockSnap", "class_move_to_code_1_1_code_block_snap.html", "class_move_to_code_1_1_code_block_snap" ]
     ] ],
+    [ "CommonSCKeys.cs", "_common_s_c_keys_8cs.html", [
+      [ "CommonSCKeys", "class_move_to_code_1_1_common_s_c_keys.html", "class_move_to_code_1_1_common_s_c_keys" ]
+    ] ],
     [ "ConditionalCodeBlock.cs", "_conditional_code_block_8cs.html", [
       [ "ConditionalCodeBlock", "class_move_to_code_1_1_conditional_code_block.html", "class_move_to_code_1_1_conditional_code_block" ]
     ] ],

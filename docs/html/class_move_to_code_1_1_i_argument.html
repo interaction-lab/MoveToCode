@@ -83,7 +83,6 @@ $(document).ready(function(){initNavTree('class_move_to_code_1_1_i_argument.html
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="class_move_to_code_1_1_i_argument-members.html">List of all members</a>  </div>
@@ -146,18 +145,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ac2de2634b42bd0d521ee19e57fd2d688"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor of <code><a class="el" href="class_move_to_code_1_1_i_argument.html" title="Base abstract class for all internal &quot;arguments&quot; of codeblocks.">IArgument</a></code>  <a href="class_move_to_code_1_1_i_argument.html#ac2de2634b42bd0d521ee19e57fd2d688">More...</a><br /></td></tr>
 <tr class="separator:ac2de2634b42bd0d521ee19e57fd2d688"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c2cd3be04c57d929b406c2bb3a969ab"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; string, <a class="el" href="class_move_to_code_1_1_snap_collider.html">SnapCollider</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_i_argument.html#a2c2cd3be04c57d929b406c2bb3a969ab">GetArgToSnapColliderDict</a> ()</td></tr>
+<tr class="memdesc:a2c2cd3be04c57d929b406c2bb3a969ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns argToSnapColliderDict  <a href="class_move_to_code_1_1_i_argument.html#a2c2cd3be04c57d929b406c2bb3a969ab">More...</a><br /></td></tr>
 <tr class="separator:a2c2cd3be04c57d929b406c2bb3a969ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aebd36aac9dcf2db2818862cfa57f3f08"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_i_argument.html#aebd36aac9dcf2db2818862cfa57f3f08">GetNumArguments</a> ()</td></tr>
-<tr class="separator:aebd36aac9dcf2db2818862cfa57f3f08"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a59c496d867094a66b97e27c960681e46"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_move_to_code_1_1_i_argument.html">IArgument</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_i_argument.html#a59c496d867094a66b97e27c960681e46">GetArgument</a> (string iARGIn)</td></tr>
-<tr class="separator:a59c496d867094a66b97e27c960681e46"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8dc1da1c0860024b54f9b5181bca3f4"><td class="memItemLeft" align="right" valign="top">virtual HashSet&lt; Type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_i_argument.html#ae8dc1da1c0860024b54f9b5181bca3f4">GetArgCompatibility</a> (string argDescription)</td></tr>
-<tr class="separator:ae8dc1da1c0860024b54f9b5181bca3f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
-Static Public Attributes</h2></td></tr>
-<tr class="memitem:a58ba2b32201008650dc3c6bd84943409"><td class="memItemLeft" align="right" valign="top">static Dictionary&lt; string, HashSet&lt; Type &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_i_argument.html#a58ba2b32201008650dc3c6bd84943409">iArgCompatabilityDict</a></td></tr>
-<tr class="separator:a58ba2b32201008650dc3c6bd84943409"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac2ca17d04d6090f453cf5d956584227"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_move_to_code_1_1_i_argument.html">IArgument</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_i_argument.html#aac2ca17d04d6090f453cf5d956584227">GetArgument</a> (KeyValuePair&lt; Type, int &gt; snapArgLookUp)</td></tr>
+<tr class="memdesc:aac2ca17d04d6090f453cf5d956584227"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <code><a class="el" href="class_move_to_code_1_1_i_argument.html" title="Base abstract class for all internal &quot;arguments&quot; of codeblocks.">IArgument</a></code> when looking up respective <code><a class="el" href="class_move_to_code_1_1_snap_collider.html">SnapCollider</a></code> with index pair  <a href="class_move_to_code_1_1_i_argument.html#aac2ca17d04d6090f453cf5d956584227">More...</a><br /></td></tr>
+<tr class="separator:aac2ca17d04d6090f453cf5d956584227"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -167,7 +159,7 @@ Protected Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:ac877773987f3f6cd35ea6d2cd35684e2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_move_to_code_1_1_code_block.html">CodeBlock</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_i_argument.html#ac877773987f3f6cd35ea6d2cd35684e2">MyCodeBlock</a><code> [get]</code></td></tr>
+<tr class="memitem:ac877773987f3f6cd35ea6d2cd35684e2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_move_to_code_1_1_code_block.html">CodeBlock</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_i_argument.html#ac877773987f3f6cd35ea6d2cd35684e2">MyCodeBlock</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:ac877773987f3f6cd35ea6d2cd35684e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the <code><a class="el" href="class_move_to_code_1_1_code_block.html">CodeBlock</a></code> container that this is internal to.  <a href="class_move_to_code_1_1_i_argument.html#ac877773987f3f6cd35ea6d2cd35684e2">More...</a><br /></td></tr>
 <tr class="separator:ac877773987f3f6cd35ea6d2cd35684e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -263,32 +255,6 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="ae8dc1da1c0860024b54f9b5181bca3f4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae8dc1da1c0860024b54f9b5181bca3f4">&#9670;&nbsp;</a></span>GetArgCompatibility()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual HashSet&lt;Type&gt; MoveToCode.IArgument.GetArgCompatibility </td>
-          <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>argDescription</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a2c2cd3be04c57d929b406c2bb3a969ab"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2c2cd3be04c57d929b406c2bb3a969ab">&#9670;&nbsp;</a></span>GetArgToSnapColliderDict()</h2>
 
@@ -304,10 +270,13 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Returns argToSnapColliderDict </p>
+<dl class="section return"><dt>Returns</dt><dd>argToSnapColliderDict</dd></dl>
+
 </div>
 </div>
-<a id="a59c496d867094a66b97e27c960681e46"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a59c496d867094a66b97e27c960681e46">&#9670;&nbsp;</a></span>GetArgument()</h2>
+<a id="aac2ca17d04d6090f453cf5d956584227"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac2ca17d04d6090f453cf5d956584227">&#9670;&nbsp;</a></span>GetArgument()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -315,12 +284,21 @@ Properties</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="class_move_to_code_1_1_i_argument.html">IArgument</a> MoveToCode.IArgument.GetArgument </td>
           <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>iARGIn</em></td><td>)</td>
+          <td class="paramtype">KeyValuePair&lt; Type, int &gt;&#160;</td>
+          <td class="paramname"><em>snapArgLookUp</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Returns <code><a class="el" href="class_move_to_code_1_1_i_argument.html" title="Base abstract class for all internal &quot;arguments&quot; of codeblocks.">IArgument</a></code> when looking up respective <code><a class="el" href="class_move_to_code_1_1_snap_collider.html">SnapCollider</a></code> with index pair </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">snapArgLookUp</td><td>Key, item1: type of <code><a class="el" href="class_move_to_code_1_1_snap_collider.html">SnapCollider</a></code> of argument, item2: index of argument, used for <code><a class="el" href="class_move_to_code_1_1_array_index_instruction.html">ArrayIndexInstruction</a></code></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
 </div>
@@ -341,23 +319,6 @@ Properties</h2></td></tr>
 
 <p>Returns point to codeblock </p>
 <dl class="section return"><dt>Returns</dt><dd>Pointer to <code><a class="el" href="class_move_to_code_1_1_code_block.html">CodeBlock</a></code> container.</dd></dl>
-
-</div>
-</div>
-<a id="aebd36aac9dcf2db2818862cfa57f3f08"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aebd36aac9dcf2db2818862cfa57f3f08">&#9670;&nbsp;</a></span>GetNumArguments()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int MoveToCode.IArgument.GetNumArguments </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
 
 </div>
 </div>
@@ -417,44 +378,6 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a58ba2b32201008650dc3c6bd84943409"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a58ba2b32201008650dc3c6bd84943409">&#9670;&nbsp;</a></span>iArgCompatabilityDict</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Dictionary&lt;string, HashSet&lt;Type&gt; &gt; MoveToCode.IArgument.iArgCompatabilityDict</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">            <span class="keyword">new</span> Dictionary&lt;string, HashSet&lt;Type&gt;&gt; {</div>
-<div class="line">                { <span class="stringliteral">&quot;Next&quot;</span>, <span class="keyword">new</span> HashSet&lt;Type&gt; { typeof(StandAloneInstruction) }  },</div>
-<div class="line">                { <span class="stringliteral">&quot;LeftOfConditional&quot;</span>, <span class="keyword">new</span> HashSet&lt;Type&gt; {  typeof(BasicDataType), typeof(MathInstruction), typeof(ArrayIndexInstruction) }  },</div>
-<div class="line">                { <span class="stringliteral">&quot;RightOfConditional&quot;</span>, <span class="keyword">new</span> HashSet&lt;Type&gt; {  typeof(BasicDataType), typeof(MathInstruction), typeof(ArrayIndexInstruction) }  },</div>
-<div class="line">                { <span class="stringliteral">&quot;ArrayElement&quot;</span>, <span class="keyword">new</span> HashSet&lt;Type&gt; { typeof(BasicDataType) } },</div>
-<div class="line">                { <span class="stringliteral">&quot;Array&quot;</span>, <span class="keyword">new</span> HashSet&lt;Type&gt; { typeof(Variable) }  },</div>
-<div class="line">                { <span class="stringliteral">&quot;ArrayDataStructure&quot;</span>, <span class="keyword">new</span> HashSet&lt;Type&gt; {  typeof(ArrayDataStructure) }  },</div>
-<div class="line">                { <span class="stringliteral">&quot;Variable&quot;</span>, <span class="keyword">new</span> HashSet&lt;Type&gt; { typeof(Variable) , typeof(ArrayIndexInstruction) }  },</div>
-<div class="line">                { <span class="stringliteral">&quot;Nested&quot;</span>, <span class="keyword">new</span> HashSet&lt;Type&gt; { typeof(StandAloneInstruction) }  },</div>
-<div class="line">                { <span class="stringliteral">&quot;Conditional&quot;</span>, <span class="keyword">new</span> HashSet&lt;Type&gt; {  typeof(ConditionalInstruction) }  },</div>
-<div class="line">                { <span class="stringliteral">&quot;Value&quot;</span>, <span class="keyword">new</span> HashSet&lt;Type&gt; { typeof(IDataType), typeof(MathInstruction), typeof(ConditionalInstruction), typeof(ArrayIndexInstruction) }  },</div>
-<div class="line">                { <span class="stringliteral">&quot;Printable&quot;</span>, <span class="keyword">new</span> HashSet&lt;Type&gt; { typeof(IDataType), typeof(MathInstruction), typeof(ConditionalInstruction), typeof(ArrayIndexInstruction) }  },</div>
-<div class="line">                { <span class="stringliteral">&quot;LeftNumber&quot;</span>, <span class="keyword">new</span> HashSet&lt;Type&gt; {  typeof(INumberDataType), typeof(MathInstruction) }  },</div>
-<div class="line">                { <span class="stringliteral">&quot;RightNumber&quot;</span>, <span class="keyword">new</span> HashSet&lt;Type&gt; {  typeof(INumberDataType), typeof(MathInstruction) }  }</div>
-<div class="line">            }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <h2 class="groupheader">Property Documentation</h2>
 <a id="ac877773987f3f6cd35ea6d2cd35684e2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac877773987f3f6cd35ea6d2cd35684e2">&#9670;&nbsp;</a></span>MyCodeBlock</h2>
@@ -471,7 +394,7 @@ Properties</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -490,7 +413,7 @@ Properties</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_move_to_code.html">MoveToCode</a></li><li class="navelem"><a class="el" href="class_move_to_code_1_1_i_argument.html">IArgument</a></li>
-    <li class="footer">Generated on Sun Oct 25 2020 11:49:38 for MoveToCode by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
+    <li class="footer">Generated on Sun Oct 25 2020 23:33:45 for MoveToCode by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
   </ul>
 </div>
 </body>

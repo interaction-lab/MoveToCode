@@ -85,12 +85,12 @@ $(document).ready(function(){initNavTree('class_move_to_code_1_1_snap_collider.h
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#properties">Properties</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
-<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_move_to_code_1_1_snap_collider-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">MoveToCode.SnapCollider Class Reference</div>  </div>
+<div class="title">MoveToCode.SnapCollider Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="dynheader">
@@ -116,16 +116,10 @@ Inheritance diagram for MoveToCode.SnapCollider:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a1f6cb5376b2f64f1949445a4c2a861b1"><td class="memItemLeft" align="right" valign="top">MeshOutline&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#a1f6cb5376b2f64f1949445a4c2a861b1">GetMeshOutline</a> ()</td></tr>
-<tr class="separator:a1f6cb5376b2f64f1949445a4c2a861b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac91411384d76e1f12e0ed207ea4e09b9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_move_to_code_1_1_code_block.html">CodeBlock</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#ac91411384d76e1f12e0ed207ea4e09b9">GetMyCodeBlock</a> ()</td></tr>
-<tr class="separator:ac91411384d76e1f12e0ed207ea4e09b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7ca38873ce068f58f58c7bde812e282"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#af7ca38873ce068f58f58c7bde812e282">DoSnapAction</a> (<a class="el" href="class_move_to_code_1_1_code_block.html">CodeBlock</a> myCodeBlock, <a class="el" href="class_move_to_code_1_1_code_block.html">CodeBlock</a> collidedCodeBlock, bool humanDidIt=true)</td></tr>
 <tr class="separator:af7ca38873ce068f58f58c7bde812e282"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab4afedd821d2007ac53d0d7839a174ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#ab4afedd821d2007ac53d0d7839a174ba">SetMyCodeBlockArg</a> (<a class="el" href="class_move_to_code_1_1_code_block.html">CodeBlock</a> collidedCodeBlock)</td></tr>
 <tr class="separator:ab4afedd821d2007ac53d0d7839a174ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a25772aaa86a82e4ecad46f8c011f7e56"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_move_to_code_1_1_code_block.html">CodeBlock</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#a25772aaa86a82e4ecad46f8c011f7e56">GetMyCodeBlockArg</a> ()</td></tr>
-<tr class="separator:a25772aaa86a82e4ecad46f8c011f7e56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af84c96f6d33e10a6aba99e715794bbb9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#af84c96f6d33e10a6aba99e715794bbb9">HasCodeBlockArgAttached</a> ()</td></tr>
 <tr class="separator:af84c96f6d33e10a6aba99e715794bbb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8005cec326bea645e112c0182dbd1aef"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#a8005cec326bea645e112c0182dbd1aef">HasCompatibleType</a> (<a class="el" href="class_move_to_code_1_1_i_argument.html">IArgument</a> argIn)</td></tr>
@@ -133,30 +127,35 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a6313814dacab4404668678c203c9758a"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#a6313814dacab4404668678c203c9758a">mystring</a></td></tr>
-<tr class="separator:a6313814dacab4404668678c203c9758a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac92b1189327d8fc98c47c8314f08e7ec"><td class="memItemLeft" align="right" valign="top">Vector3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#ac92b1189327d8fc98c47c8314f08e7ec">snapPosition</a></td></tr>
 <tr class="separator:ac92b1189327d8fc98c47c8314f08e7ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:ab23baa4252bb5bc8dc6f7b9d688429a2"><td class="memItemLeft" align="right" valign="top">HashSet&lt; Type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#ab23baa4252bb5bc8dc6f7b9d688429a2">GetMyCompatibleArgTypes</a> ()</td></tr>
-<tr class="separator:ab23baa4252bb5bc8dc6f7b9d688429a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3990a11347f0d74446cf376f33329e64"><td class="memItemLeft" align="right" valign="top">abstract void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#a3990a11347f0d74446cf376f33329e64">RegisterToSnapColliderGroup</a> ()</td></tr>
+<tr class="separator:a3990a11347f0d74446cf376f33329e64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
+Properties</h2></td></tr>
+<tr class="memitem:a18b539d13fdbc432374d18de65199160"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_move_to_code_1_1_code_block.html">CodeBlock</a>?&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#a18b539d13fdbc432374d18de65199160">MyCodeBlock</a><code> [get]</code></td></tr>
+<tr class="separator:a18b539d13fdbc432374d18de65199160"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b2842e268018ea77f64eac4417bc476"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_move_to_code_1_1_code_block.html">CodeBlock</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#a2b2842e268018ea77f64eac4417bc476">MyCodeBlockArg</a><code> [get]</code></td></tr>
+<tr class="separator:a2b2842e268018ea77f64eac4417bc476"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca91653009a1041187883f9666800d46"><td class="memItemLeft" align="right" valign="top">static Material&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#aca91653009a1041187883f9666800d46">OutlineMaterial</a><code> [get, set]</code></td></tr>
+<tr class="separator:aca91653009a1041187883f9666800d46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0ec13f6d0a2e881d5c884facf617d9d"><td class="memItemLeft" align="right" valign="top">MeshOutline&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#ac0ec13f6d0a2e881d5c884facf617d9d">MyMeshOutline</a><code> [get, set]</code></td></tr>
+<tr class="separator:ac0ec13f6d0a2e881d5c884facf617d9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8767177e1c00a0a43d7e57c9f84aa21"><td class="memItemLeft" align="right" valign="top">MeshRenderer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#ab8767177e1c00a0a43d7e57c9f84aa21">MeshRend</a><code> [get, set]</code></td></tr>
+<tr class="separator:ab8767177e1c00a0a43d7e57c9f84aa21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a695fab0bdf3d9488e9ec28fbc8b31c25"><td class="memItemLeft" align="right" valign="top">abstract HashSet&lt; Type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#a695fab0bdf3d9488e9ec28fbc8b31c25">CompatibleArgTypes</a><code> [get]</code></td></tr>
+<tr class="separator:a695fab0bdf3d9488e9ec28fbc8b31c25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:acaaecbbe58d3a696551dbe3b36772f06"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#acaaecbbe58d3a696551dbe3b36772f06">Awake</a> ()</td></tr>
 <tr class="separator:acaaecbbe58d3a696551dbe3b36772f06"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d4b6faf0f03f057f29c244278649f3d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#a8d4b6faf0f03f057f29c244278649f3d">RegisterWithMyCodeBlockArgDict</a> ()</td></tr>
-<tr class="separator:a8d4b6faf0f03f057f29c244278649f3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a998f5ca736954f432312e7af6b407386"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_move_to_code_1_1_code_block_snap.html">CodeBlockSnap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#a998f5ca736954f432312e7af6b407386">GetCollidersCodeBlockSnap</a> (Collider collision)</td></tr>
 <tr class="separator:a998f5ca736954f432312e7af6b407386"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac23c7b137bddf40f89a048877ac53920"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#ac23c7b137bddf40f89a048877ac53920">OnTriggerEnter</a> (Collider collision)</td></tr>
-<tr class="separator:ac23c7b137bddf40f89a048877ac53920"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9468ead5bcd81453b55556f1df1f3ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#aa9468ead5bcd81453b55556f1df1f3ea">OnTriggerExit</a> (Collider collision)</td></tr>
-<tr class="separator:aa9468ead5bcd81453b55556f1df1f3ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8586903be49dee9393cc4571bb053799"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_move_to_code_1_1_code_block_snap.html">CodeBlockSnap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#a8586903be49dee9393cc4571bb053799">GetMyCodeBlockSnap</a> ()</td></tr>
-<tr class="separator:a8586903be49dee9393cc4571bb053799"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3adfe0dcde55b2556bf5cf2857d8989f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#a3adfe0dcde55b2556bf5cf2857d8989f">RemoveCurrentBlockArg</a> ()</td></tr>
 <tr class="separator:a3adfe0dcde55b2556bf5cf2857d8989f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8644cdc467479b11f50190b531412105"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#a8644cdc467479b11f50190b531412105">AddNewCodeBlockArg</a> (<a class="el" href="class_move_to_code_1_1_code_block.html">CodeBlock</a> collidedCodeBlock)</td></tr>
@@ -165,6 +164,10 @@ Private Member Functions</h2></td></tr>
 <tr class="separator:a5d05920d58a7438a90fe731115774229"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa4c9a6e214acc0fe9588fdca2001bda7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#aa4c9a6e214acc0fe9588fdca2001bda7">CheckArgCompatibleType</a> (Type argTypeIn)</td></tr>
 <tr class="separator:aa4c9a6e214acc0fe9588fdca2001bda7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac23c7b137bddf40f89a048877ac53920"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#ac23c7b137bddf40f89a048877ac53920">OnTriggerEnter</a> (Collider collision)</td></tr>
+<tr class="separator:ac23c7b137bddf40f89a048877ac53920"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9468ead5bcd81453b55556f1df1f3ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#aa9468ead5bcd81453b55556f1df1f3ea">OnTriggerExit</a> (Collider collision)</td></tr>
+<tr class="separator:aa9468ead5bcd81453b55556f1df1f3ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02da6f39c234e6e348bee4b2d8bbd4d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#a02da6f39c234e6e348bee4b2d8bbd4d6">OnEnable</a> ()</td></tr>
 <tr class="separator:a02da6f39c234e6e348bee4b2d8bbd4d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a155b071a47e58f63559a8ce21cc8b33d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#a155b071a47e58f63559a8ce21cc8b33d">OnDisable</a> ()</td></tr>
@@ -174,21 +177,8 @@ Private Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a936e9d76891ad267763864fb0b6d3f6f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_move_to_code_1_1_code_block.html">CodeBlock</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#a936e9d76891ad267763864fb0b6d3f6f">myCodeBlockArg</a></td></tr>
-<tr class="separator:a936e9d76891ad267763864fb0b6d3f6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d81f4a318481b7e6bc84171f571199a"><td class="memItemLeft" align="right" valign="top">HashSet&lt; Type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#a9d81f4a318481b7e6bc84171f571199a">myCompatibleArgTypes</a></td></tr>
-<tr class="separator:a9d81f4a318481b7e6bc84171f571199a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57b16448ec9b4f57c4408b8aa37eb3da"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_move_to_code_1_1_code_block_snap.html">CodeBlockSnap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#a57b16448ec9b4f57c4408b8aa37eb3da">collisionCodeBlockSnap</a></td></tr>
 <tr class="separator:a57b16448ec9b4f57c4408b8aa37eb3da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27c943a96952507135e5fe90f2a069e8"><td class="memItemLeft" align="right" valign="top">MeshRenderer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#a27c943a96952507135e5fe90f2a069e8">meshRend</a></td></tr>
-<tr class="separator:a27c943a96952507135e5fe90f2a069e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4884ed6208ad4ef5a6367a28ad6dc31d"><td class="memItemLeft" align="right" valign="top">MeshOutline&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#a4884ed6208ad4ef5a6367a28ad6dc31d">meshOutline</a></td></tr>
-<tr class="separator:a4884ed6208ad4ef5a6367a28ad6dc31d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
-Static Private Attributes</h2></td></tr>
-<tr class="memitem:ad63c4883664ec734074df8cedb643d17"><td class="memItemLeft" align="right" valign="top">static Material&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_move_to_code_1_1_snap_collider.html#ad63c4883664ec734074df8cedb643d17">outlineMaterial</a></td></tr>
-<tr class="separator:ad63c4883664ec734074df8cedb643d17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a8644cdc467479b11f50190b531412105"></a>
@@ -322,107 +312,6 @@ Static Private Attributes</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a1f6cb5376b2f64f1949445a4c2a861b1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1f6cb5376b2f64f1949445a4c2a861b1">&#9670;&nbsp;</a></span>GetMeshOutline()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">MeshOutline MoveToCode.SnapCollider.GetMeshOutline </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ac91411384d76e1f12e0ed207ea4e09b9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac91411384d76e1f12e0ed207ea4e09b9">&#9670;&nbsp;</a></span>GetMyCodeBlock()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_move_to_code_1_1_code_block.html">CodeBlock</a> MoveToCode.SnapCollider.GetMyCodeBlock </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a25772aaa86a82e4ecad46f8c011f7e56"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a25772aaa86a82e4ecad46f8c011f7e56">&#9670;&nbsp;</a></span>GetMyCodeBlockArg()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_move_to_code_1_1_code_block.html">CodeBlock</a> MoveToCode.SnapCollider.GetMyCodeBlockArg </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a8586903be49dee9393cc4571bb053799"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8586903be49dee9393cc4571bb053799">&#9670;&nbsp;</a></span>GetMyCodeBlockSnap()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_move_to_code_1_1_code_block_snap.html">CodeBlockSnap</a> MoveToCode.SnapCollider.GetMyCodeBlockSnap </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ab23baa4252bb5bc8dc6f7b9d688429a2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab23baa4252bb5bc8dc6f7b9d688429a2">&#9670;&nbsp;</a></span>GetMyCompatibleArgTypes()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">HashSet&lt;Type&gt; MoveToCode.SnapCollider.GetMyCompatibleArgTypes </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -591,8 +480,8 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a8d4b6faf0f03f057f29c244278649f3d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8d4b6faf0f03f057f29c244278649f3d">&#9670;&nbsp;</a></span>RegisterWithMyCodeBlockArgDict()</h2>
+<a id="a3990a11347f0d74446cf376f33329e64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3990a11347f0d74446cf376f33329e64">&#9670;&nbsp;</a></span>RegisterToSnapColliderGroup()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -601,7 +490,7 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void MoveToCode.SnapCollider.RegisterWithMyCodeBlockArgDict </td>
+          <td class="memname">abstract void MoveToCode.SnapCollider.RegisterToSnapColliderGroup </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -609,10 +498,12 @@ Static Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="class_move_to_code_1_1_snap_collider_variable.html#a8a748bf57a0adfb38fc931cf45d9373d">MoveToCode.SnapColliderVariable</a>, <a class="el" href="class_move_to_code_1_1_snap_collider_value.html#a32340ccad2d95d8f74daddc181997cae">MoveToCode.SnapColliderValue</a>, <a class="el" href="class_move_to_code_1_1_snap_collider_right_of_conditional.html#acb5904b3343779847ff999dc4ee4226b">MoveToCode.SnapColliderRightOfConditional</a>, <a class="el" href="class_move_to_code_1_1_snap_collider_right_number.html#a744bac911fdc1ad8fc50a483c0cb82e9">MoveToCode.SnapColliderRightNumber</a>, <a class="el" href="class_move_to_code_1_1_snap_collider_printable.html#abf8aea1c04b335f8a0af5ec8e4286b6a">MoveToCode.SnapColliderPrintable</a>, <a class="el" href="class_move_to_code_1_1_snap_collider_next.html#adef2907a59e2785c73f5c9cbe4053fe5">MoveToCode.SnapColliderNext</a>, <a class="el" href="class_move_to_code_1_1_snap_collider_nested.html#a69aff1a84f95723472c67ea14ef11382">MoveToCode.SnapColliderNested</a>, <a class="el" href="class_move_to_code_1_1_snap_collider_left_of_conditional.html#a5075c40b25d16fd8241d3c3042e8a5d8">MoveToCode.SnapColliderLeftOfConditional</a>, <a class="el" href="class_move_to_code_1_1_snap_collider_left_number.html#aacbae3166275fda2bf4d73a39930d129">MoveToCode.SnapColliderLeftNumber</a>, <a class="el" href="class_move_to_code_1_1_snap_collider_conditional.html#a655738413664e5f1968c4539146296ed">MoveToCode.SnapColliderConditional</a>, <a class="el" href="class_move_to_code_1_1_snap_collider_array_element.html#ab92ff045b9323dc99e63917231a5719d">MoveToCode.SnapColliderArrayElement</a>, and <a class="el" href="class_move_to_code_1_1_snap_collider_array.html#a3c2b4b6af49ca656f870e6333c1ffd24">MoveToCode.SnapColliderArray</a>.</p>
 
 </div>
 </div>
@@ -718,130 +609,6 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a4884ed6208ad4ef5a6367a28ad6dc31d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4884ed6208ad4ef5a6367a28ad6dc31d">&#9670;&nbsp;</a></span>meshOutline</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">MeshOutline MoveToCode.SnapCollider.meshOutline</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a27c943a96952507135e5fe90f2a069e8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a27c943a96952507135e5fe90f2a069e8">&#9670;&nbsp;</a></span>meshRend</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">MeshRenderer MoveToCode.SnapCollider.meshRend</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a936e9d76891ad267763864fb0b6d3f6f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a936e9d76891ad267763864fb0b6d3f6f">&#9670;&nbsp;</a></span>myCodeBlockArg</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_move_to_code_1_1_code_block.html">CodeBlock</a> MoveToCode.SnapCollider.myCodeBlockArg</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a9d81f4a318481b7e6bc84171f571199a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9d81f4a318481b7e6bc84171f571199a">&#9670;&nbsp;</a></span>myCompatibleArgTypes</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">HashSet&lt;Type&gt; MoveToCode.SnapCollider.myCompatibleArgTypes</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a6313814dacab4404668678c203c9758a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6313814dacab4404668678c203c9758a">&#9670;&nbsp;</a></span>mystring</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">string MoveToCode.SnapCollider.mystring</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ad63c4883664ec734074df8cedb643d17"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad63c4883664ec734074df8cedb643d17">&#9670;&nbsp;</a></span>outlineMaterial</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Material MoveToCode.SnapCollider.outlineMaterial</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="ac92b1189327d8fc98c47c8314f08e7ec"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac92b1189327d8fc98c47c8314f08e7ec">&#9670;&nbsp;</a></span>snapPosition</h2>
 
@@ -856,6 +623,139 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<h2 class="groupheader">Property Documentation</h2>
+<a id="a695fab0bdf3d9488e9ec28fbc8b31c25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a695fab0bdf3d9488e9ec28fbc8b31c25">&#9670;&nbsp;</a></span>CompatibleArgTypes</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract HashSet&lt;Type&gt; MoveToCode.SnapCollider.CompatibleArgTypes</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab8767177e1c00a0a43d7e57c9f84aa21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8767177e1c00a0a43d7e57c9f84aa21">&#9670;&nbsp;</a></span>MeshRend</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">MeshRenderer MoveToCode.SnapCollider.MeshRend</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a18b539d13fdbc432374d18de65199160"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18b539d13fdbc432374d18de65199160">&#9670;&nbsp;</a></span>MyCodeBlock</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_move_to_code_1_1_code_block.html">CodeBlock</a>? MoveToCode.SnapCollider.MyCodeBlock</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2b2842e268018ea77f64eac4417bc476"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b2842e268018ea77f64eac4417bc476">&#9670;&nbsp;</a></span>MyCodeBlockArg</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_move_to_code_1_1_code_block.html">CodeBlock</a> MoveToCode.SnapCollider.MyCodeBlockArg</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac0ec13f6d0a2e881d5c884facf617d9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0ec13f6d0a2e881d5c884facf617d9d">&#9670;&nbsp;</a></span>MyMeshOutline</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">MeshOutline MoveToCode.SnapCollider.MyMeshOutline</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aca91653009a1041187883f9666800d46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca91653009a1041187883f9666800d46">&#9670;&nbsp;</a></span>OutlineMaterial</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Material MoveToCode.SnapCollider.OutlineMaterial</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span><span class="mlabel">set</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>E:/UnityProjects/MoveToCode/Assets/Scripts/<a class="el" href="_snap_collider_8cs.html">SnapCollider.cs</a></li>
 </ul>
@@ -865,7 +765,7 @@ Static Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_move_to_code.html">MoveToCode</a></li><li class="navelem"><a class="el" href="class_move_to_code_1_1_snap_collider.html">SnapCollider</a></li>
-    <li class="footer">Generated on Sun Oct 25 2020 11:49:38 for MoveToCode by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
+    <li class="footer">Generated on Sun Oct 25 2020 23:33:46 for MoveToCode by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
   </ul>
 </div>
 </body>

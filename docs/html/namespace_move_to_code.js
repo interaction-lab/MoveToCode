@@ -21,6 +21,7 @@ var namespace_move_to_code =
     [ "CodeBlockMenuManager", "class_move_to_code_1_1_code_block_menu_manager.html", "class_move_to_code_1_1_code_block_menu_manager" ],
     [ "CodeBlockObjectMesh", "class_move_to_code_1_1_code_block_object_mesh.html", "class_move_to_code_1_1_code_block_object_mesh" ],
     [ "CodeBlockSnap", "class_move_to_code_1_1_code_block_snap.html", "class_move_to_code_1_1_code_block_snap" ],
+    [ "CommonSCKeys", "class_move_to_code_1_1_common_s_c_keys.html", "class_move_to_code_1_1_common_s_c_keys" ],
     [ "ConditionalCodeBlock", "class_move_to_code_1_1_conditional_code_block.html", "class_move_to_code_1_1_conditional_code_block" ],
     [ "ConditionalInstruction", "class_move_to_code_1_1_conditional_instruction.html", "class_move_to_code_1_1_conditional_instruction" ],
     [ "ConsoleManager", "class_move_to_code_1_1_console_manager.html", "class_move_to_code_1_1_console_manager" ],

@@ -7,13 +7,10 @@ namespace MoveToCode {
     public abstract class SnapCollider : MonoBehaviour {
         public CodeBlock MyCodeBlock { get { return transform.parent.parent?.GetComponent<CodeBlockObjectMesh>().GetMyCodeBlock(); } }
         public CodeBlock MyCodeBlockArg { get { return transform.parent.GetComponentInChildren<CodeBlock>(); } }
-
         static Material OutlineMaterial { get; set; }
         public MeshOutline MyMeshOutline { get; set; }
         MeshRenderer MeshRend { get; set; }
-
         public abstract Vector3 SnapPosition {get;}
-
         public abstract HashSet<Type> CompatibleArgTypes { get; }
 
         CodeBlockSnap collisionCodeBlockSnap;
@@ -55,14 +52,15 @@ namespace MoveToCode {
         }
 
         private void RemoveCurrentBlockArg() {
-            CodeBlock curArg = MyCodeBlockArg;
-            if (curArg != null) {
+            if (MyCodeBlockArg != null) {
+                CodeBlock tmpargBlock = MyCodeBlockArg;
+
                 AudioManager.instance.PlaySoundAtObject(gameObject, AudioManager.popAudioClip);
-                if (CodeBlockSnap.lastDraggedCBS != curArg) {
-                    curArg.transform.localPosition = curArg.transform.localPosition + new Vector3(0.25f, 1.1f, 1.25f);
+                if (CodeBlockSnap.lastDraggedCBS != tmpargBlock.GetCodeBlockSnap()) { // how is this allowing a type check???
+                    MyCodeBlockArg.transform.localPosition = MyCodeBlockArg.transform.localPosition + new Vector3(0.25f, 1.1f, 1.25f);
                 }
-                curArg.transform.SnapToCodeBlockManager();
-                curArg.GetCodeBlockObjectMesh().ResizeChain();
+                tmpargBlock.transform.SnapToCodeBlockManager();
+                tmpargBlock.GetCodeBlockObjectMesh().ResizeChain();
                 // TODO: probably needs a log
             }
         }

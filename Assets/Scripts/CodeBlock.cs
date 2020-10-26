@@ -111,7 +111,7 @@ namespace MoveToCode {
         }
 
         public void RemoveFromParentSnapCollider(bool humanDidIt) {
-            transform.parent?.GetComponent<SnapCollider>()?.SetMyCodeBlockArg(null);
+            transform.parent?.GetComponentInChildren<SnapCollider>()?.SetMyCodeBlockArg(null);
         }
 
         public void SetIsMenuBlock(bool option) {

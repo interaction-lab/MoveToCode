@@ -24,6 +24,7 @@ namespace MoveToCode {
             }
             MyMeshOutline = gameObject.AddComponent(typeof(MeshOutline)) as MeshOutline;
             MyMeshOutline.OutlineMaterial = OutlineMaterial;
+            MyMeshOutline.enabled = false;
             MeshRend = GetComponent<MeshRenderer>();
             MeshRend.enabled = false;
             GetComponent<Collider>().isTrigger = true;

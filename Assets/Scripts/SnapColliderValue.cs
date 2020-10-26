@@ -11,9 +11,7 @@ namespace MoveToCode {
                                 typeof(ArrayIndexInstruction) };
         protected override void RegisterToSnapColliderGroup() {
             MyCodeBlock.GetSnapColliderGroup().RegisterSnapCollider(
-                new KeyValuePair<Type, int>(
-                    typeof(SnapColliderValue),
-                    0),
+                CommonSCKeys.Value,
                 this);
         }
     }

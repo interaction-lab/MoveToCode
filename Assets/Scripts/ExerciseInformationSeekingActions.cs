@@ -50,12 +50,13 @@ namespace MoveToCode {
             if (varNames?.Length == 0) {
                 return "";
             }
-            string varToSpawn = varNames[Random.Range(0, varNames.Length)];
+           /* string varToSpawn = varNames[Random.Range(0, varNames.Length)];
             FakePressButton fpb = MemoryManager.instance.GetVariables()[varToSpawn].GetComponent<FakePressButton>();
             if (fpb == null) {
                 fpb = MemoryManager.instance.GetVariables()[varToSpawn].gameObject.AddComponent<FakePressButton>();
-            }
-            return fpb.PressButton();
+            }*/
+           return ""; // TODO: fix later, currently hardcoded to original exercises
+            //return fpb.PressButton();
         }
 
         string SnapNextSnapISA() {

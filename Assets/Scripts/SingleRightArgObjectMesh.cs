@@ -26,7 +26,7 @@ namespace MoveToCode {
         }
 
         public override float GetBlockVerticalSize() {
-            return top.localScale.y + FindChainSize(GetMyCodeBlock().GetArgumentFromDict(CommonSCKeys.Nested));
+            return top.localScale.y + FindChainSize(GetMyCodeBlock().GetArgumentFromDict(CommonSCKeys.Next));
         }
 
         public override Vector3 GetCenterPosition() {

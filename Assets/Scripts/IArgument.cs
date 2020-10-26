@@ -76,7 +76,7 @@ namespace MoveToCode {
         /// <param name="snapArgLookUp">Key, item1: type of `SnapCollider` of argument, item2: index of argument, used for `ArrayIndexInstruction`</param>
         /// <returns></returns>
         public IArgument GetArgument(KeyValuePair<Type,int> snapArgLookUp) {
-            return MyCodeBlock.GetSnapColliderGroup().SnapColliderSet[snapArgLookUp]?.MyCodeBlock.GetMyIArgument();
+            return MyCodeBlock.GetSnapColliderGroup().SnapColliderSet[snapArgLookUp]?.MyCodeBlockArg?.GetMyIArgument();
         }
     }
 }

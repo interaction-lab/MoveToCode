@@ -12,7 +12,7 @@ namespace MoveToCode {
         public MeshOutline MyMeshOutline { get; set; }
         MeshRenderer MeshRend { get; set; }
 
-        public virtual Vector3 SnapPosition {get; set; } = Vector3.zero;
+        public abstract Vector3 SnapPosition {get;}
 
         public abstract HashSet<Type> CompatibleArgTypes { get; }
 

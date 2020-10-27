@@ -52,6 +52,7 @@ namespace MoveToCode {
                     OnlineRequestPolly(sreq, filename);
                 }
                 catch (Exception e) {
+                    Debug.LogError(e.Message);
                     throw new FileLoadException();
                 }
 

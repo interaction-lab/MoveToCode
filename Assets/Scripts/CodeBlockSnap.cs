@@ -8,7 +8,13 @@ using UnityEngine;
 namespace MoveToCode {
     public class CodeBlockSnap : MonoBehaviour {
         public static CodeBlockSnap currentlyDraggingCBS, lastDraggedCBS;
+        /// <summary>
+        /// Pointer to my internal `CodeBlock`
+        /// </summary>
         CodeBlock myCodeBlock;
+        /// <summary>
+        /// Manipulation Handler for events, look at `void OnManipulationStart(ManipulationEventData call)`
+        /// </summary>
         ManipulationHandler manipulationHandler;
         SnapColliderGroup mySnapColliders;
         HashSet<SnapCollider> curSnapCollidersInContact;

@@ -57,6 +57,7 @@ namespace MoveToCode {
                     filepath = awsPollyGetter.PullPhrase(lyric);
                 }
                 catch (FileLoadException e) {
+                    Debug.LogWarning(e.Message);
                     KuriTextManager ktm = KuriTextManager.instance;
                     ktm.Addline(lyric);
                     return empty; 

@@ -1,14 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Amazon.Polly;
-using Amazon.Polly.Model;
+//using Amazon.Polly;
+//using Amazon.Polly.Model;
 using System.IO;
 using System;
 using System.Text;
 
 namespace MoveToCode {
     public class AWSPollyGetter : Singleton<AWSPollyGetter> {
+        /* 
         private string APIPath = "Assets/Resources/" + ResourcePathConstants.AWSPollyAPI + ".txt";
 
         private const string speakstyle = "pitch=\"x-high\" rate=\"100%\"";
@@ -94,6 +95,8 @@ namespace MoveToCode {
             {"EUCentral1", Amazon.RegionEndpoint.EUCentral1},
             {"EUWest1", Amazon.RegionEndpoint.EUWest1 }
         };
+        */
+
 
     }
 }

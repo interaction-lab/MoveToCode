@@ -10,7 +10,7 @@ namespace MoveToCode {
         private List<KuriPhrase> phraseList; 
         private List<KuriPhrase> preloadEncouragementList;
         private List<KuriPhrase> preloadCongratulationList;
-        private AWSPollyGetter awsPollyGetter;
+        //private AWSPollyGetter awsPollyGetter;
         private int idCount;
         public bool onlineMode = true;
 
@@ -19,12 +19,14 @@ namespace MoveToCode {
         private KuriPhrase empty = new KuriPhrase(-1, "", KuriPhrase.USECASE.Other, "emptyfile");
 
         void Awake() {
+            /*
             if (onlineMode) {
                 awsPollyGetter = new AWSPollyGetter(onlineMode);
             }
             else {
                 awsPollyGetter = new AWSPollyGetter(state: false);
             }
+            */
             idCount = 0;
             phraseList = new List<KuriPhrase>();
             StreamReader reader = new StreamReader("Assets/Resources/" + ResourcePathConstants.EncouragementPhrases + ".json"); //TODO filepaths that work post-build 
@@ -51,10 +53,12 @@ namespace MoveToCode {
                     return kp;
                 }
             }
-            if(awsPollyGetter.GetFunctioningState()) {
+            
+            if(/*awsPollyGetter.GetFunctioningState()*/true) {
                 string filepath;
                 try {
-                    filepath = awsPollyGetter.PullPhrase(lyric);
+                    //filepath = awsPollyGetter.PullPhrase(lyric);
+                    filepath = ""; //temporary fix for Polly
                 }
                 catch (FileLoadException e) {
                     Debug.LogWarning(e.Message);
@@ -64,7 +68,7 @@ namespace MoveToCode {
                 }
                 KuriPhrase newPhrase = new KuriPhrase(idCount, lyric, KuriPhrase.USECASE.Other, filepath);
                 idCount++;
-                AssetDatabase.Refresh(); //IMPORTANT
+                //AssetDatabase.Refresh(); //IMPORTANT
                 phraseList.Add(newPhrase);
 
                 using (StreamWriter sw = new StreamWriter(

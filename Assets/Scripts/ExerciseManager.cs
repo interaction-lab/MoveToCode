@@ -19,7 +19,14 @@ namespace MoveToCode {
             curExercisePos = 0;
 #endif
             SetUpFreePlayExercise();
-            fileEntries = Directory.GetFiles(targetDirectory).Where(s => s.EndsWith(".json")).ToArray();
+            var tmp = Resources.LoadAll<TextAsset>(ResourcePathConstants.ExerciseJsonFolder);
+            fileEntries = new string[tmp.Length];
+            int i = 0;
+            foreach (var ta in tmp) {
+                fileEntries[i] = ta.ToString();
+                ++i;
+            }
+            //fileEntries = Directory.GetFiles(targetDirectory).Where(s => s.EndsWith(".json")).ToArray();
             if (curExercisePos < fileEntries.Length) {
                 SetUpCurExercise(curExercisePos);
             }
@@ -36,7 +43,8 @@ namespace MoveToCode {
         }
 
         private void SetUpCurExercise(int exerciseNum) {
-            string json = File.ReadAllText(fileEntries[exerciseNum]);
+            string json = fileEntries[exerciseNum];
+            //string json = File.ReadAllText(fileEntries[exerciseNum]);
             GameObject exercise = InstantiateExercise(json);
             //Add scaffoldDialogue
             exercise.AddComponent<ExerciseScaffolding>().SetScaffoldDialogue(

@@ -8,9 +8,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Main.unity
     guid: 7e95cf0d9c28e92429e926900e348501
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/IpekDebug.unity
     guid: 114c80b44988249bd8bf3c5e03a83b55
+  - enabled: 1
+    path: Assets/Scenes/ChloeMain 1.unity
+    guid: f4afa3227376a4c37aa88d9861b307e6
   m_configObjects:
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: b26fb7ef3a6e56b46acf7ab1e79f9de5,
       type: 2}

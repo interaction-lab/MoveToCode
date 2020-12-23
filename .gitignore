@@ -112,3 +112,6 @@ mono_crash.mem*
 
 # Mac
 .DS_Store
+
+# Test build folder for iOS
+M2C_MobileTest/

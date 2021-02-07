@@ -68,6 +68,10 @@ namespace MoveToCode {
         private void AddNewCodeBlockArg(CodeBlock collidedCodeBlock) {
             SnapToParentCenter(collidedCodeBlock, transform.parent);
             AudioManager.instance.PlaySoundAtObject(gameObject, AudioManager.snapAudioClip);
+            System.Threading.Thread.Sleep((int)AudioManager.instance.MRTKButtonPress.length);
+            //instead of the line above, start a new coroutine to play sound
+            //maybe create a new function that takes care of this
+            Debug.LogWarning("Snap sound!"); //this function runs but the audio file never plays
             MyCodeBlock.GetCodeBlockObjectMesh().ResizeChain();
         }
 

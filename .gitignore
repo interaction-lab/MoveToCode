@@ -115,3 +115,7 @@ mono_crash.mem*
 
 # Test build folder for iOS
 M2C_MobileTest/
+
+# Firebase
+[Aa]ssets/Firebase
+[Aa]ssets/Data

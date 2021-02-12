@@ -67,6 +67,26 @@ The following are currently tested versions of required software. Higher version
 - .NET Framework 4.6 and Visual Studio 2017
 - Built for [Hololens 2](https://www.microsoft.com/en-us/hololens/hardware)
 
+## Mobile Setup Guide
+This is a guide on how to build MoveToCode as a mobile app on your IOS. You will need to have Unity and XCode downloaded on your device.
+- Open the MoveToCode Project and navigate to File->Build Settings...
+- In the Build Settings Menu, select your desired scene from the Scenes in Build section. If your scene does not appear in the suggestions, you can open it manually and then click the "add open scenes" button
+- Select iOS in the Platform Menu and then click on Build
+
+- Open XCode and either select "Open a project or file" in the starting menu or navigate to File->Open...
+- Navigate to your build file and open it with XCode
+
+Once you have your project on XCode, you will need to adjust a few quick settings in order to build it on an iOS device
+- Navigate to the Signing and Capabilities menu and select Unity-IPhone as your target
+- Update the team and bundle identifier for All. You can do this by adding characters to the end of the existing Bundle Identifier.
+- Enable "automatically manage signing" and select your team, this will also update your Signing Certificate for you
+- Next, navigate to the UnityFramework target. 
+- In UnityFramework, under the Signing and Capabilities section, update the team for All.
+
+Now you are ready to build your program on an iOS device! Connect an iOS device to your computer, select the device you want to build on, and run your code!
+If the project builds on your iPhone, but your device is unable to open the application, approve the app by going to settings → general → device management
+
+
 ## Licensing
 MoveToCode is open source under the [MIT License](https://en.wikipedia.org/wiki/MIT_License)
 

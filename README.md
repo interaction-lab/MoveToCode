@@ -68,8 +68,8 @@ The following are currently tested versions of required software. Higher version
 - Built for [Hololens 2](https://www.microsoft.com/en-us/hololens/hardware)
 
 ## Mobile Setup Guide
-This is a guide on how to build MoveToCode as a mobile app on your IOS. You will need to have Unity and XCode downloaded on your device.
-- Open the MoveToCode Project and navigate to File->Build Settings...
+This is a guide on how to build MoveToCode as a mobile app on your iOS device. You will need to have installed Unity and XCode on your current device in order to follow along.
+- In Unity, open the MoveToCode Project and navigate to File->Build Settings...
 - In the Build Settings Menu, select your desired scene from the Scenes in Build section. If your scene does not appear in the suggestions, you can open it manually and then click the "add open scenes" button
 - Select iOS in the Platform Menu and then click on Build
 

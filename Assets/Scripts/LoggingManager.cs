@@ -4,6 +4,10 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
 
+using Firebase.Storage;
+using System.Threading.Tasks;
+using System;
+
 namespace MoveToCode {
     public class LoggingManager : Singleton<LoggingManager> {
 
@@ -116,6 +120,30 @@ namespace MoveToCode {
             streamWriter.WriteLine(string.Join(",", "Time", string.Join(",", columnNames)));
             streamWriter.Close();
             Debug.Log("Logged data to: " + filePath);
+
+            // ADDED THIS
+            // Create a reference to the file you want to upload
+            var storage = FirebaseStorage.DefaultInstance;
+            var csvRef = storage.GetReference($"/csvfiles/{csvFilename}");
+
+            // Upload the file to the path csvfiles folder
+            csvRef.PutFileAsync(filePath)
+            .ContinueWith((Task<StorageMetadata> task) => {
+                if (task.IsFaulted || task.IsCanceled)
+                {
+                    Debug.Log(task.Exception.ToString());
+                // Uh-oh, an error occurred!
+            }
+                else
+                {
+                // Metadata contains file metadata such as size, content-type, and download URL.
+                StorageMetadata metadata = task.Result;
+                    string md5Hash = metadata.Md5Hash;
+                    Debug.Log("Finished uploading...");
+                    Debug.Log("md5 hash = " + md5Hash);
+                }
+            });
+            
         }
 
         // Write out columns, will be at end of file

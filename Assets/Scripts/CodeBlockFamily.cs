@@ -55,7 +55,7 @@ namespace MoveToCode {
             block.transform.localScale = Vector3.one;
             block.transform.localPosition = new Vector3(
                     shelfMeshRenderer.bounds.center.x,
-                    shelfMeshRenderer.bounds.extents.y - 0.2f - index * shelfMeshRenderer.bounds.size.y / (blocksInFamily.Count + 0.25f),
+                    shelfMeshRenderer.bounds.extents.y - 0.2f - (index * shelfMeshRenderer.bounds.size.y * 4f) / (blocksInFamily.Count + 0.25f),
                     transform.localPosition.z + 1);
 
             //set codeblocks as blocks in menu

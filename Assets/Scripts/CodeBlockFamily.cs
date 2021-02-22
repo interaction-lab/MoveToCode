@@ -20,6 +20,15 @@ namespace MoveToCode {
             InstantiateBlocksInFamily();
         }
 
+        public void UpdateLoc()
+        {
+            for (int i = 0; i < blocksInFamily.Count; i++)
+            {
+                SetBlockPosition(blocksInFamily[i], i);
+            }
+
+        }
+
         public void ShowFamily() {
             gameObject.SetActive(true);
         }

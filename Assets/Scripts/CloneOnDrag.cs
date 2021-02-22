@@ -13,6 +13,11 @@ namespace MoveToCode {
             startingPosition = transform.position;
         }
 
+        private void Update()
+        {
+            startingPosition = transform.position;
+        }
+
         private void OnEnable() {
             manipulationHandler = GetComponent<ManipulationHandler>();
             manipulationHandler.OnManipulationStarted.AddListener(StartedMotion);

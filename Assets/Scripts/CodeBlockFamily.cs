@@ -54,13 +54,14 @@ namespace MoveToCode {
             block.transform.SnapToParent(transform);
             block.transform.localScale = Vector3.one;
             block.transform.localPosition = new Vector3(
-                    shelfMeshRenderer.bounds.center.x + 0.5f,
-                    shelfMeshRenderer.bounds.extents.y - 0.2f - ( index * shelfMeshRenderer.bounds.size.y * 1.5f / (blocksInFamily.Count + 0.25f) ),
-                    transform.localPosition.z);
-            Vector3 clone_pos = shelfMeshRenderer.bounds.center - block.transform.localPosition;
-            block.GetComponent<CloneOnDrag>().SetCodeBlockType(blocksInFamily[index], clone_pos);
-            block.GetComponent<CodeBlock>().SetIsMenuBlock(true);
+                    shelfMeshRenderer.bounds.center.x,
+                    shelfMeshRenderer.bounds.extents.y - 0.2f - index * shelfMeshRenderer.bounds.size.y / (blocksInFamily.Count + 0.25f),
+                    transform.localPosition.z + 1);
 
+            //set codeblocks as blocks in menu
+            block.GetComponent<CloneOnDrag>().SetCodeBlockType(blocksInFamily[index]);
+            block.GetComponent<CodeBlock>().SetIsMenuBlock(true);
+            
         }
 
         private void SetMathOperation(GameObject block, int index) {

@@ -8,9 +8,12 @@ namespace MoveToCode {
         GameObject clone;
         GameObject codeBlockType;
         bool blockStillInMenu;
+        MeshRenderer shelfMeshRenderer;
+        Vector3 clonePos;
 
         private void Start() {
-            startingPosition = transform.position;
+            //startingPosition = transform.position;
+            shelfMeshRenderer = gameObject.transform.parent.parent.transform.GetChild(0).GetComponent<MeshRenderer>();
         }
 
         private void OnEnable() {
@@ -19,8 +22,16 @@ namespace MoveToCode {
             manipulationHandler.OnManipulationEnded.AddListener(StoppedMotion);
         }
 
-        public void SetCodeBlockType(GameObject cb) {
+        public void SetCodeBlockType(GameObject cb, Vector3 pos) {
             codeBlockType = cb;
+            clonePos = pos;
+
+            startingPosition = new Vector3(
+                    shelfMeshRenderer.bounds.center.x,
+                    shelfMeshRenderer.bounds.center.y,
+                    shelfMeshRenderer.bounds.center.z);
+
+            startingPosition = clonePos + startingPosition;
         }
 
         public void SetBlockStillInMenu(bool option) {
@@ -48,9 +59,11 @@ namespace MoveToCode {
 
         private GameObject InstantiateBlock(GameObject block, Vector3 spawnPos) {
             GameObject go = Instantiate(block, spawnPos, Quaternion.identity);
-            go.GetComponent<CloneOnDrag>().SetCodeBlockType(codeBlockType);
+            go.GetComponent<CloneOnDrag>().SetCodeBlockType(codeBlockType, clonePos);
             go.transform.SetParent(transform.parent);
             go.transform.localScale = Vector3.one;
+            block.transform.SnapToParent(transform);
+
             return go;
         }
 

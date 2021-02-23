@@ -9,6 +9,7 @@ using System.Threading;
 using Firebase.Storage;
 using Firebase.Extensions;
 using System;
+using UnityEngine.UI;
 
 namespace MoveToCode {
     public class LoggingManager : Singleton<LoggingManager> {
@@ -26,14 +27,21 @@ namespace MoveToCode {
         private UploadBarController progressBar;
         long total_bytes = 0;
         long transferred_bytes = 0;
+        //private UploadText uploadState;
+        private Text uploadStatus;
+        bool uploadStarted = false;
+        bool uploadFinished = false;
 
         private void Awake() {
             Init();
+            // ADDED bottom stuff
             progressBar = GameObject.Find("progressSlider").GetComponent<UploadBarController>();
+            //uploadState = GameObject.Find("uploadText").GetComponent<UploadText>();
+            uploadStatus = GameObject.Find("loser").GetComponent<Text>();
         }
 
 
-        void Init() {
+        void Init() { 
             if (initialized) {
                 return;
             }
@@ -154,6 +162,18 @@ namespace MoveToCode {
                 // change progress bar appropriately (total value is out of 100)
                 progressBar.changeBytesUploaded((100 * transferred_bytes) / total_bytes);
             }
+            /*
+            // if we started uploading file, then change status on the text
+            if (uploadStarted) {
+                uploadState.startUploading();
+                uploadStarted = false; // reset boolean value
+            }
+            // if we finished uploading file, then change status on the text
+            if (uploadFinished) {
+                uploadState.finishUploading();
+                uploadFinished = false;
+            }
+            */
         }
 
         public void FinishLogging(bool hasQuit = false) {
@@ -173,9 +193,11 @@ namespace MoveToCode {
             }
 
             Debug.Log("Logged data to: " + filePath);
-
+            //uploadState.startUploading();
+            uploadStatus.text = "Started uploading...";
 
             // ADDED this
+            uploadStarted = true;
             // Create a reference to the file you want to upload
             var storage = FirebaseStorage.DefaultInstance;
             var csvRef = storage.GetReference($"/csvfiles/{csvFilename}");
@@ -194,6 +216,8 @@ namespace MoveToCode {
                 if (!resultTask.IsFaulted && !resultTask.IsCanceled)
                 {
                     Debug.Log("Upload finished.");
+                    uploadFinished = true;
+                    uploadStatus.text = "Upload finished...";
                 }
             });
 

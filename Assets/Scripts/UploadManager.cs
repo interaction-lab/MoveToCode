@@ -27,9 +27,12 @@ namespace MoveToCode {
         private void Awake()
         {
             // ADDED bottom stuff
+            /*
             progressBar = GameObject.Find("progressSlider").GetComponent<UploadBarController>();
             //uploadState = GameObject.Find("uploadText").GetComponent<UploadText>();
             uploadStatus = GameObject.Find("loser").GetComponent<Text>();
+            */
+            progressBar = GetComponentInChildren<Canvas>().GetComponentInChildren<Button>(); 
         }
 
         // Start is called before the first frame update

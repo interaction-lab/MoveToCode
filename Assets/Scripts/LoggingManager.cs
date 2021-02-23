@@ -132,12 +132,12 @@ namespace MoveToCode {
         }
 
         // ADDED THIS FOR uploadmanager
-        public String getFilePath() {
+        public string getFilePath() {
             return filePath;
         }
 
         // ADDED this for uploadmanager
-        public String getCSVFileName() {
+        public string getCSVFileName() {
             return csvFilename;
         }
 

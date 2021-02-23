@@ -22,8 +22,14 @@ namespace MoveToCode {
         string csvFilename;
         string filePath;
 
+        // ADDED this for progress bar
+        private UploadBarController progressBar;
+        long total_bytes = 0;
+        long transferred_bytes = 0;
+
         private void Awake() {
             Init();
+            progressBar = GameObject.Find("progressSlider").GetComponent<UploadBarController>();
         }
 
 
@@ -140,6 +146,16 @@ namespace MoveToCode {
         }
         */
 
+        // ADDED this..
+        private void Update()
+        {
+            // update progress bar
+            if (total_bytes != 0) {
+                // change progress bar appropriately (total value is out of 100)
+                progressBar.changeBytesUploaded((100 * transferred_bytes) / total_bytes);
+            }
+        }
+
         public void FinishLogging(bool hasQuit = false) {
             // Added steamwriter condition
             if (!logData || !StreamWriterIsOpen()) {
@@ -166,6 +182,8 @@ namespace MoveToCode {
             // Start uploading a file
             var task = csvRef.PutFileAsync(filePath, null,
                 new StorageProgress<UploadState>(state => {
+                    total_bytes = state.TotalByteCount;
+                    transferred_bytes = state.BytesTransferred;
                     // called periodically during the upload
                     Debug.Log(String.Format("Progress: {0} of {1} bytes transferred.",
                                     state.BytesTransferred, state.TotalByteCount));
@@ -216,7 +234,7 @@ namespace MoveToCode {
 
         // Write out columns, will be at end of file
         void OnApplicationQuit() {
-         //   FinishLogging(true);
+        //   FinishLogging(true);
         }
     }
 }

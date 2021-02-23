@@ -4,8 +4,10 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-using Firebase.Storage;
 using System.Threading.Tasks;
+using System.Threading;
+using Firebase.Storage;
+using Firebase.Extensions;
 using System;
 
 namespace MoveToCode {
@@ -40,7 +42,7 @@ namespace MoveToCode {
                 csvFilename = System.DateTime.Now.ToString().Replace(' ', '_').Replace('\\', '_').Replace('/', '_').Replace(':', '-') + ".csv";
                 filePath = Path.Combine(Application.persistentDataPath, csvFilename);
                 Debug.Log(filePath);
-                streamWriter = new StreamWriter(new FileStream(filePath, FileMode.Create)); ;
+                streamWriter = new StreamWriter(new FileStream(filePath, FileMode.Create)); 
             }
             else {
                 Debug.LogWarning("NOT LOGGING DATA, data is autologged when deployed to the Hololens 2 but not by default for the Unity editor. If you want logging, check the \"logData\" public box of the LoggingManager component");
@@ -99,7 +101,11 @@ namespace MoveToCode {
                 return;
             }
             List<string> rowDuplicate = new List<string>(row);
-            streamWriter.WriteLine(string.Join(",", Time.time.ToString(), string.Join(",", rowDuplicate)));
+            // added this
+            if (StreamWriterIsOpen()) {
+                streamWriter.WriteLine(string.Join(",", Time.time.ToString(), string.Join(",", rowDuplicate)));
+            }
+           // streamWriter.WriteLine(string.Join(",", Time.time.ToString(), string.Join(",", rowDuplicate)));
             ResetRow();
         }
 
@@ -107,8 +113,36 @@ namespace MoveToCode {
             WriteRowToCSV();
         }
 
+        // ADDED THIS
+        /*
+        public void UploadLog() {
+            // to finish up the csv
+            FinishLogging(true);
+            // Create a reference to the file you want to upload
+            var storage = FirebaseStorage.DefaultInstance;
+            var csvRef = storage.GetReference($"/csvfiles/{csvFilename}");
+            // Start uploading a file
+            var task = csvRef.PutFileAsync(filePath, null,
+                    new StorageProgress<UploadState>(state => {
+            // called periodically during the upload
+            Debug.Log(String.Format("Progress: {0} of {1} bytes transferred.",
+                            state.BytesTransferred, state.TotalByteCount));
+                    }), CancellationToken.None, null);
+
+            task.ContinueWithOnMainThread(resultTask =>
+            {
+                if (!resultTask.IsFaulted && !resultTask.IsCanceled)
+                {
+                    Debug.Log("Upload finished.");
+                }
+            });
+
+        }
+        */
+
         public void FinishLogging(bool hasQuit = false) {
-            if (!logData) {
+            // Added steamwriter condition
+            if (!logData || !StreamWriterIsOpen()) {
                 return;
             }
             var ordered = columnLookup.OrderBy(x => x.Value);
@@ -116,11 +150,36 @@ namespace MoveToCode {
             foreach (var pairKeyVal in ordered) {
                 columnNames.Add(pairKeyVal.Key);
             }
+            // Added this to check that streamwriter is not closed
+            if (streamWriter.BaseStream != null) {
+                streamWriter.WriteLine(string.Join(",", "Time", string.Join(",", columnNames)));
+                streamWriter.Close();
+            }
 
-            streamWriter.WriteLine(string.Join(",", "Time", string.Join(",", columnNames)));
-            streamWriter.Close();
             Debug.Log("Logged data to: " + filePath);
 
+
+            // ADDED this
+            // Create a reference to the file you want to upload
+            var storage = FirebaseStorage.DefaultInstance;
+            var csvRef = storage.GetReference($"/csvfiles/{csvFilename}");
+            // Start uploading a file
+            var task = csvRef.PutFileAsync(filePath, null,
+                new StorageProgress<UploadState>(state => {
+                    // called periodically during the upload
+                    Debug.Log(String.Format("Progress: {0} of {1} bytes transferred.",
+                                    state.BytesTransferred, state.TotalByteCount));
+                }), CancellationToken.None, null);
+
+            task.ContinueWithOnMainThread(resultTask =>
+            {
+                if (!resultTask.IsFaulted && !resultTask.IsCanceled)
+                {
+                    Debug.Log("Upload finished.");
+                }
+            });
+
+            /*
             // ADDED THIS
             // Create a reference to the file you want to upload
             var storage = FirebaseStorage.DefaultInstance;
@@ -143,12 +202,21 @@ namespace MoveToCode {
                     Debug.Log("md5 hash = " + md5Hash);
                 }
             });
-            
+            */
+
+
+
+        }
+
+        // ADDED THIS
+        bool StreamWriterIsOpen()
+        {
+            return streamWriter.BaseStream != null;
         }
 
         // Write out columns, will be at end of file
         void OnApplicationQuit() {
-            FinishLogging(true);
+         //   FinishLogging(true);
         }
     }
 }

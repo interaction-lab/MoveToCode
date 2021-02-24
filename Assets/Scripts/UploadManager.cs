@@ -50,6 +50,8 @@ namespace MoveToCode {
 
         // ADDED THIS
         public void UploadLog() {
+            // finish the logging upload
+            LoggingManager.instance.FinishLogging(true);
             // Create a reference to the file you want to upload
             var storage = FirebaseStorage.DefaultInstance;
             var csvRef = storage.GetReference($"/csvfiles/{LoggingManager.instance.getCSVFileName()}");

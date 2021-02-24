@@ -2,32 +2,36 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class UploadText : MonoBehaviour
+namespace MoveToCode
 {
-    private Text progressText;
-    private string status = "Upload not yet started...";
-    private void Awake()
-    {
-        progressText = GetComponent<Text>();
-    }
 
-    // Update is called once per frame
-    /*
-    void Update()
+    public class UploadText : MonoBehaviour
     {
-        progressText.text = status;
-    }
-    */ 
+        private Text progressText;
+        private string status = "Upload not yet started...";
+        private void Awake()
+        {
+            progressText = GetComponent<Text>();
+        }
 
-    // Started uploading process
-    public void startUploading() 
-    {
-        progressText.text = "Started uploading...";
-    }
+        // Update is called once per frame
+        /*
+        void Update()
+        {
+            progressText.text = status;
+        }
+        */
 
-    // Finished uploading 
-    public void finishUploading()
-    {
-        progressText.text = "Successfully uploaded file!";
+        // Started uploading process
+        public void startUploading()
+        {
+            progressText.text = "Started uploading...";
+        }
+
+        // Finished uploading 
+        public void finishUploading()
+        {
+            progressText.text = "Successfully uploaded file!";
+        }
     }
 }

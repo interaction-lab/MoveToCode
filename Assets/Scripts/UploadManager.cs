@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.Assertions;
 
 using System.Threading.Tasks;
 using System.Threading;
@@ -16,28 +14,27 @@ namespace MoveToCode {
     {
         // ADDED this for progress bar
         private UploadBarController progressBar;
-        long total_bytes = 0;
-        long transferred_bytes = 0;
-        private UploadText uploadState;
-        bool uploadStarted = false;
-        bool uploadFinished = false;
+        public long total_bytes = 0;
+        public long transferred_bytes = 0;
 
         // initializes progress bar and progress text
         private void Awake()
         {
             progressBar = GetComponentInChildren<Canvas>().GetComponentInChildren<Slider>().GetComponent<UploadBarController>();
-            uploadState = GetComponentInChildren<Canvas>().GetComponentInChildren<Text>().GetComponent<UploadText>();
         }
+        
 
         // Update is called once per frame
-        private void Update()
+        void Update()
         {
+            
             // update progress bar
-            if (total_bytes != 0) {
-                Debug.Log("Updating bar here...");
                 // change progress bar appropriately (total value is out of 100)
+            if (total_bytes != 0)
+            {
                 progressBar.changeBytesUploaded((100 * transferred_bytes) / total_bytes);
             }
+            /*
             // if we started uploading file, then change status on the text
             if (uploadStarted) {
                 uploadState.startUploading();
@@ -48,12 +45,11 @@ namespace MoveToCode {
                 uploadState.finishUploading();
                 uploadFinished = false;
             }
+            */
         }
 
         // ADDED THIS
         public void UploadLog() {
-            // ADDED this
-            uploadStarted = true;
             // Create a reference to the file you want to upload
             var storage = FirebaseStorage.DefaultInstance;
             var csvRef = storage.GetReference($"/csvfiles/{LoggingManager.instance.getCSVFileName()}");
@@ -72,10 +68,8 @@ namespace MoveToCode {
                 if (!resultTask.IsFaulted && !resultTask.IsCanceled)
                 {
                     Debug.Log("Upload finished.");
-                    uploadFinished = true;
                 }
             });
         }
     }
-
 }

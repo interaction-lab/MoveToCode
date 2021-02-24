@@ -14,8 +14,16 @@ namespace MoveToCode {
     {
         // ADDED this for progress bar
         private UploadBarController progressBar;
+      //  private UploadText status;
         public long total_bytes = 0;
         public long transferred_bytes = 0;
+
+        /*
+        private void Start()
+        {
+            status = GetComponentInChildren<Canvas>().GetComponentInChildren<GameObject>().GetComponent<UploadText>();
+        }
+        */
 
         // initializes progress bar and progress text
         private void Awake()

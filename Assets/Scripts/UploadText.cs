@@ -15,12 +15,12 @@ namespace MoveToCode
         }
 
         // Update is called once per frame
-        /*
+ 
         void Update()
         {
             progressText.text = status;
         }
-        */
+        
 
         // Started uploading process
         public void startUploading()

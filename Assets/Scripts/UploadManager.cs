@@ -3,6 +3,7 @@ using System.Collections;
 using System.IO;
 using UnityEngine;
 
+using Firebase;
 using System.Threading.Tasks;
 using System.Threading;
 using Firebase.Storage;
@@ -19,6 +20,7 @@ namespace MoveToCode {
         private TextMeshProUGUI progressText;
         private long total_bytes = 0;
         private long transferred_bytes = 0;
+        protected static string UriFileScheme = Uri.UriSchemeFile + "://";
 
         // initializes progress bar and progress text
         private void Awake()
@@ -46,6 +48,16 @@ namespace MoveToCode {
             // restart upload button
             progressText.text = "Upload file";
         }
+
+        // Get the local filename as a URI relative to the persistent data path if the path isn't
+        // already a file URI.
+        protected virtual string PathToPersistentDataPathUriString(string filename) {
+        if (filename.StartsWith(UriFileScheme)) {
+            return filename;
+        }
+        return String.Format("{0}{1}/{2}", UriFileScheme, Application.persistentDataPath,
+            filename);
+        }
     
 
         // ADDED THIS
@@ -56,8 +68,11 @@ namespace MoveToCode {
             // Create a reference to the file you want to upload
             var storage = FirebaseStorage.DefaultInstance;
             var csvRef = storage.GetReference($"/csvfiles/{LoggingManager.instance.getCSVFileName()}");
+            //var filePath = LoggingManager.instance.getFilePath();
+            //var filePath = Application.persistentDataPath + "/" + LoggingManager.instance.getCSVFileName();
+            var filePath = PathToPersistentDataPathUriString(LoggingManager.instance.getCSVFileName());
             // Start uploading a file
-            var task = csvRef.PutFileAsync(LoggingManager.instance.getFilePath(), null,
+            var task = csvRef.PutFileAsync(filePath, null,
                 new StorageProgress<UploadState>(state => {
                     total_bytes = state.TotalByteCount;
                     transferred_bytes = state.BytesTransferred;

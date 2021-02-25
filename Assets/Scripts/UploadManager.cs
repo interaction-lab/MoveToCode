@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections;
 using System.IO;
 using UnityEngine;
 
@@ -18,8 +19,6 @@ namespace MoveToCode {
         private TextMeshProUGUI progressText;
         private long total_bytes = 0;
         private long transferred_bytes = 0;
-        private bool uploadStarted = false;
-        private bool uploadFinished = false;
 
         // initializes progress bar and progress text
         private void Awake()
@@ -37,29 +36,21 @@ namespace MoveToCode {
             if (total_bytes != 0)
             {
                 progressBar.changeBytesUploaded((100 * transferred_bytes) / total_bytes);
-            }
-            
-            
-            // if we started uploading file, then change status on the text
-            if (uploadStarted) {
-                // status.startUploading();
-                progressText.text = "Started upload";
-                uploadStarted = false; // reset boolean value
-            }
-            // if we finished uploading file, then change status on the text
-            if (uploadFinished) {
-                //status.finishUploading();
-                progressText.text = "Finished upload";
-                uploadFinished = false;
-            }
-            
-            
+            }    
         }
+
+        IEnumerator restartBtn() {
+           // progressText.text = "Upload file";
+           Debug.Log("Called!");
+            yield return new WaitForSeconds(5);
+            // restart upload button
+            progressText.text = "Upload file";
+        }
+    
 
         // ADDED THIS
         public void UploadLog() {
-            // flag start of uploading
-            uploadStarted = true;
+            progressText.text = "Started upload";
             // finish the logging upload
             LoggingManager.instance.FinishLogging(true);
             // Create a reference to the file you want to upload
@@ -79,8 +70,8 @@ namespace MoveToCode {
             {
                 if (!resultTask.IsFaulted && !resultTask.IsCanceled)
                 {
-                    // flag end of upload
-                    uploadFinished = true;
+                    progressText.text = "Finished upload";
+                    StartCoroutine(restartBtn());
                     Debug.Log("Upload finished.");
                 }
             });

@@ -1,24 +1,28 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using TMPro;
 
 namespace MoveToCode
 {
 
     public class UploadText : MonoBehaviour
     {
-        private Text progressText;
+        private TextMeshProUGUI progressText;
         private string status = "Upload not yet started...";
         private void Awake()
         {
-            progressText = GetComponent<Text>();
+            progressText = GetComponent<TextMeshProUGUI>();
         }
 
         // Update is called once per frame
  
         void Update()
         {
-            progressText.text = status;
+            if (progressText != null)
+            {
+                progressText.text = status;
+            }
         }
         
 

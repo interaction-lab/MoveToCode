@@ -8,26 +8,23 @@ using Firebase.Storage;
 using Firebase.Extensions;
 using System;
 using UnityEngine.UI;
+using TMPro;
 
 namespace MoveToCode {
     public class UploadManager : MonoBehaviour
     {
         // ADDED this for progress bar
         private UploadBarController progressBar;
-      //  private UploadText status;
-        public long total_bytes = 0;
-        public long transferred_bytes = 0;
-
-        /*
-        private void Start()
-        {
-            status = GetComponentInChildren<Canvas>().GetComponentInChildren<GameObject>().GetComponent<UploadText>();
-        }
-        */
+        private TextMeshProUGUI progressText;
+        private long total_bytes = 0;
+        private long transferred_bytes = 0;
+        private bool uploadStarted = false;
+        private bool uploadFinished = false;
 
         // initializes progress bar and progress text
         private void Awake()
         {
+            progressText = GetComponentInChildren<Canvas>().GetComponentInChildren<TextMeshProUGUI>();
             progressBar = GetComponentInChildren<Canvas>().GetComponentInChildren<Slider>().GetComponent<UploadBarController>();
         }
         
@@ -35,29 +32,34 @@ namespace MoveToCode {
         // Update is called once per frame
         void Update()
         {
-            
             // update progress bar
-                // change progress bar appropriately (total value is out of 100)
+            // change progress bar appropriately (total value is out of 100)
             if (total_bytes != 0)
             {
                 progressBar.changeBytesUploaded((100 * transferred_bytes) / total_bytes);
             }
-            /*
+            
+            
             // if we started uploading file, then change status on the text
             if (uploadStarted) {
-                uploadState.startUploading();
+                // status.startUploading();
+                progressText.text = "Started upload";
                 uploadStarted = false; // reset boolean value
             }
             // if we finished uploading file, then change status on the text
             if (uploadFinished) {
-                uploadState.finishUploading();
+                //status.finishUploading();
+                progressText.text = "Finished upload";
                 uploadFinished = false;
             }
-            */
+            
+            
         }
 
         // ADDED THIS
         public void UploadLog() {
+            // flag start of uploading
+            uploadStarted = true;
             // finish the logging upload
             LoggingManager.instance.FinishLogging(true);
             // Create a reference to the file you want to upload
@@ -77,6 +79,8 @@ namespace MoveToCode {
             {
                 if (!resultTask.IsFaulted && !resultTask.IsCanceled)
                 {
+                    // flag end of upload
+                    uploadFinished = true;
                     Debug.Log("Upload finished.");
                 }
             });

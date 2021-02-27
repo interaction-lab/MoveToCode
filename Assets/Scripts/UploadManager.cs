@@ -21,6 +21,7 @@ namespace MoveToCode {
         private long total_bytes = 0;
         private long transferred_bytes = 0;
         protected static string UriFileScheme = Uri.UriSchemeFile + "://";
+        private int count = 1;
 
         // initializes progress bar and progress text
         private void Awake()
@@ -42,11 +43,13 @@ namespace MoveToCode {
         }
 
         IEnumerator restartBtn() {
-           // progressText.text = "Upload file";
-           Debug.Log("Called!");
+            // progressText.text = "Upload file";
+            Debug.Log("Called!");
             yield return new WaitForSeconds(5);
             // restart upload button
             progressText.text = "Upload file";
+            // restart progress bar
+            //progressBar.restartBar();
         }
 
         // Get the local filename as a URI relative to the persistent data path if the path isn't
@@ -67,9 +70,8 @@ namespace MoveToCode {
             LoggingManager.instance.FinishLogging(true);
             // Create a reference to the file you want to upload
             var storage = FirebaseStorage.DefaultInstance;
-            var csvRef = storage.GetReference($"/csvfiles/{LoggingManager.instance.getCSVFileName()}");
-            //var filePath = LoggingManager.instance.getFilePath();
-            //var filePath = Application.persistentDataPath + "/" + LoggingManager.instance.getCSVFileName();
+            /// <value>count keeps track of number of times the user uploads file in one session</value>
+            var csvRef = storage.GetReference($"/csvfiles/({count}){LoggingManager.instance.getCSVFileName()}");
             var filePath = PathToPersistentDataPathUriString(LoggingManager.instance.getCSVFileName());
             // Start uploading a file
             var task = csvRef.PutFileAsync(filePath, null,
@@ -86,6 +88,7 @@ namespace MoveToCode {
                 if (!resultTask.IsFaulted && !resultTask.IsCanceled)
                 {
                     progressText.text = "Finished upload";
+                    count++;
                     StartCoroutine(restartBtn());
                     Debug.Log("Upload finished.");
                 }

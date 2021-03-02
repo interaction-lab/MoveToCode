@@ -5,17 +5,21 @@ namespace MoveToCode {
     public class CloneOnDrag : MonoBehaviour {
         ManipulationHandler manipulationHandler;
         Vector3 startingPosition;
+        Quaternion rotation;
+        Quaternion startingRotation;
         GameObject clone;
         GameObject codeBlockType;
         bool blockStillInMenu;
 
         private void Start() {
             startingPosition = transform.position;
+            startingRotation = transform.rotation;
         }
 
         private void Update()
         {
             startingPosition = transform.position;
+            rotation = transform.rotation;
         }
 
         private void OnEnable() {
@@ -45,14 +49,14 @@ namespace MoveToCode {
                 transform.GetComponent<CodeBlock>().SetIsMenuBlock(false);
                 //cannot directly clone gameobject because CodeBlock components are attached after instantiation
                 CopyOperationOntoClonePrefab();
-                clone = InstantiateBlock(codeBlockType, startingPosition);
+                clone = InstantiateBlock(codeBlockType, startingPosition, rotation);
                 clone.GetComponent<CodeBlock>().SetIsMenuBlock(true);
                 transform.SnapToCodeBlockManager();
             }
         }
 
-        private GameObject InstantiateBlock(GameObject block, Vector3 spawnPos) {
-            GameObject go = Instantiate(block, spawnPos, Quaternion.identity);
+        private GameObject InstantiateBlock(GameObject block, Vector3 spawnPos, Quaternion rotPos) {
+            GameObject go = Instantiate(block, spawnPos, rotPos);
             go.GetComponent<CloneOnDrag>().SetCodeBlockType(codeBlockType);
             go.transform.SetParent(transform.parent);
             go.transform.localScale = Vector3.one;

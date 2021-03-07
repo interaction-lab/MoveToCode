@@ -13,9 +13,12 @@ using UnityEngine.UI;
 using TMPro;
 
 namespace MoveToCode {
+    /// <summary>
+    /// UploadManager class uploads a CSV file to Firebase Storage
+    /// when user presses the Upload File button. 
+    /// </summary>
     public class UploadManager : MonoBehaviour
     {
-        // ADDED this for progress bar
         private UploadBarController progressBar;
         private TextMeshProUGUI progressText;
         private long total_bytes = 0;
@@ -23,19 +26,14 @@ namespace MoveToCode {
         protected static string UriFileScheme = Uri.UriSchemeFile + "://";
         private int count = 1;
 
-        // initializes progress bar and progress text
-        private void Awake()
-        {
+        // Initializes progress bar and progress text
+        private void Awake() {
             progressText = GetComponentInChildren<Canvas>().GetComponentInChildren<TextMeshProUGUI>();
             progressBar = GetComponentInChildren<Canvas>().GetComponentInChildren<Slider>().GetComponent<UploadBarController>();
         }
         
-
-        // Update is called once per frame
-        void Update()
-        {
-            // update progress bar
-            // change progress bar appropriately (total value is out of 100)
+        void Update() {
+            // Changes progress bar appropriately by bytes that have been uploaded (total value is out of 100)
             if (total_bytes != 0)
             {
                 progressBar.changeBytesUploaded((100 * transferred_bytes) / total_bytes);
@@ -43,48 +41,44 @@ namespace MoveToCode {
         }
 
         IEnumerator restartBtn() {
-            // progressText.text = "Upload file";
             Debug.Log("Called!");
             yield return new WaitForSeconds(5);
-            // restart upload button
             progressText.text = "Upload file";
-            // restart progress bar
-            //progressBar.restartBar();
         }
 
-        // Get the local filename as a URI relative to the persistent data path if the path isn't
+        // Gets the local filename as a URI relative to the persistent data path if the path isn't
         // already a file URI.
         protected virtual string PathToPersistentDataPathUriString(string filename) {
-        if (filename.StartsWith(UriFileScheme)) {
-            return filename;
-        }
-        return String.Format("{0}{1}/{2}", UriFileScheme, Application.persistentDataPath,
-            filename);
+            if (filename.StartsWith(UriFileScheme)) {
+                return filename;
+            }
+            return String.Format("{0}{1}/{2}", UriFileScheme, Application.persistentDataPath,
+                filename);
         }
     
 
-        // ADDED THIS
+        // Gets the finished CSV file from LoggingManager and uploads
+        // it to Firebase 
         public void UploadLog() {
             progressText.text = "Started upload";
-            // finish the logging upload
             LoggingManager.instance.FinishLogging(true);
-            // Create a reference to the file you want to upload
             var storage = FirebaseStorage.DefaultInstance;
-            /// <value>count keeps track of number of times the user uploads file in one session</value>
+            /// <value>count is the version number of the file. It keeps track of number of times the user uploads the same filename in one session.</value>
             var csvRef = storage.GetReference($"/csvfiles/({count}){LoggingManager.instance.getCSVFileName()}");
             var filePath = PathToPersistentDataPathUriString(LoggingManager.instance.getCSVFileName());
-            // Start uploading a file
+            // Starts uploading a file
             var task = csvRef.PutFileAsync(filePath, null,
                 new StorageProgress<UploadState>(state => {
                     total_bytes = state.TotalByteCount;
                     transferred_bytes = state.BytesTransferred;
-                    // called periodically during the upload
+                    // Called periodically during the upload
                     Debug.Log(String.Format("Progress: {0} of {1} bytes transferred.",
                                     state.BytesTransferred, state.TotalByteCount));
                 }), CancellationToken.None, null);
 
             task.ContinueWithOnMainThread(resultTask =>
             {
+                // Checks that file is successfully uploaded and restarts upload button 
                 if (!resultTask.IsFaulted && !resultTask.IsCanceled)
                 {
                     progressText.text = "Finished upload";

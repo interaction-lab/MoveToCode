@@ -15,7 +15,8 @@ using TMPro;
 namespace MoveToCode {
     /// <summary>
     /// UploadManager class uploads a CSV file to Firebase Storage
-    /// when user presses the Upload File button. 
+    /// when user presses the Upload File button. It also
+    /// uses a progress bar to track the file upload process. 
     /// </summary>
     public class UploadManager : MonoBehaviour
     {

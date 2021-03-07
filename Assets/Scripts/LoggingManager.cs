@@ -94,11 +94,10 @@ namespace MoveToCode {
                 return;
             }
             List<string> rowDuplicate = new List<string>(row);
-            // added this TODO: comment
+            // Added StreamWriter condition for uploading CSV
             if (StreamWriterIsOpen()) {
                 streamWriter.WriteLine(string.Join(",", Time.time.ToString(), string.Join(",", rowDuplicate)));
             }
-           // streamWriter.WriteLine(string.Join(",", Time.time.ToString(), string.Join(",", rowDuplicate)));
             ResetRow();
         }
 
@@ -107,7 +106,7 @@ namespace MoveToCode {
         }
 
         public void FinishLogging(bool hasQuit = false) {
-            // Added steamwriter condition
+            // Added StreamWriter condition for uploading CSV
             if (!logData || !StreamWriterIsOpen()) {
                 return;
             }
@@ -116,7 +115,7 @@ namespace MoveToCode {
             foreach (var pairKeyVal in ordered) {
                 columnNames.Add(pairKeyVal.Key);
             }
-            // Added this condition to check that streamwriter is not closed
+            // Added a check NULL condition for streamWriter as part of uploading CSV
             if (streamWriter.BaseStream != null) {
                 streamWriter.WriteLine(string.Join(",", "Time", string.Join(",", columnNames)));
                 streamWriter.Close();
@@ -126,24 +125,25 @@ namespace MoveToCode {
 
         }
 
-        // ADDED THIS
+        // Added helper function for uploading CSV to check that streamWriter is open 
         bool StreamWriterIsOpen() {
             return streamWriter.BaseStream != null;
         }
 
-        // ADDED THIS FOR uploadmanager
+        // Added helper function that returns filePath for uploading CSV
         public string getFilePath() {
             return filePath;
         }
 
-        // ADDED this for uploadmanager
+        // Added helper function that returns csvFilename for uploading CSV
         public string getCSVFileName() {
             return csvFilename;
         }
 
         // Write out columns, will be at end of file
         void OnApplicationQuit() {
-        //   FinishLogging(true); // Removed this for uploadmanager! add comment
+        // Commented out line below for uploading CSV
+        //   FinishLogging(true); 
         }
     }
 }

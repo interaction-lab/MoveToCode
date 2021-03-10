@@ -11,20 +11,16 @@ namespace MoveToCode
     public class UploadBarController : MonoBehaviour
     {
         private Slider progressBar;
-        private long bytesUploaded = 0;
         public long totalBytes = 0;
 
         private void Awake() {
             progressBar = gameObject.GetComponent<Slider>();
+            changeBytesUploaded(0);
         }
-
-        void Update() {
-            progressBar.value = bytesUploaded;
-        }
-
+        
         // Sets progress bar value to new total of uploaded bytes
         public void changeBytesUploaded(long total_bytes) {
-            bytesUploaded = total_bytes;
+            progressBar.value = total_bytes;
         }
     }
 

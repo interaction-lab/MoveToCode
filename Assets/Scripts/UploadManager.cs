@@ -27,7 +27,6 @@ namespace MoveToCode {
         protected static string UriFileScheme = Uri.UriSchemeFile + "://";
         private int count = 1;
 
-        // Initializes progress bar and progress text
         private void Awake() {
             progressText = GetComponentInChildren<Canvas>().GetComponentInChildren<TextMeshProUGUI>();
             progressBar = GetComponentInChildren<Canvas>().GetComponentInChildren<Slider>().GetComponent<progressBarController>();
@@ -42,7 +41,6 @@ namespace MoveToCode {
         }
 
         IEnumerator restartBtn() {
-            Debug.Log("Called!");
             yield return new WaitForSeconds(5);
             progressText.text = "Upload file";
         }

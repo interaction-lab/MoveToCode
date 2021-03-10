@@ -116,7 +116,7 @@ namespace MoveToCode {
                 columnNames.Add(pairKeyVal.Key);
             }
             // Added a check NULL condition for streamWriter as part of uploading CSV
-            if (streamWriter.BaseStream != null) {
+            if (StreamWriterIsOpen()) {
                 streamWriter.WriteLine(string.Join(",", "Time", string.Join(",", columnNames)));
                 streamWriter.Close();
             }
@@ -126,16 +126,34 @@ namespace MoveToCode {
         }
 
         // Added helper function for uploading CSV to check that streamWriter is open 
+        /// <summary>
+        /// Checks if streamWriter is open when uploading CSV file and returns the result
+        /// </summary>
+        /// <returns>
+        /// True if streamWriter is open; otherwise, False if null
+        /// </returns>
         bool StreamWriterIsOpen() {
             return streamWriter.BaseStream != null;
         }
 
-        // Added helper function that returns filePath for uploading CSV
+        // Added helper function that returns file path for uploading CSV
+        /// <summary>
+        /// Retrieves the file path to CSV file that will be uploaded
+        /// </summary>
+        /// <returns>
+        /// File path to the CSV file to be uploaded
+        /// </returns>
         public string getFilePath() {
             return filePath;
         }
 
         // Added helper function that returns csvFilename for uploading CSV
+        /// <summary>
+        /// Retrieves the file name of CSV file that will be uploaded
+        /// </summary>
+        /// <returns>
+        /// File name of the CSV file to be uploaded
+        /// </returns>
         public string getCSVFileName() {
             return csvFilename;
         }

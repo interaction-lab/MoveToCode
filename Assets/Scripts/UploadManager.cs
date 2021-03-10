@@ -22,8 +22,8 @@ namespace MoveToCode {
 
         private progressBarController progressBar;
         private TextMeshProUGUI progressText;
-        private long total_bytes = 0;
-        private long transferred_bytes = 0;
+        private long totalBytes = 0;
+        private long transferredBytes = 0;
         protected static string UriFileScheme = Uri.UriSchemeFile + "://";
         private int count = 1;
 
@@ -35,9 +35,9 @@ namespace MoveToCode {
         
         void Update() {
             // Changes progress bar appropriately by bytes that have been uploaded (total value is out of 100)
-            if (total_bytes != 0)
+            if (totalBytes != 0)
             {
-                progressBar.ChangeBytesUploaded((100 * transferred_bytes) / total_bytes);
+                progressBar.ChangeBytesUploaded((100 * transferredBytes) / totalBytes);
             }    
         }
 
@@ -70,8 +70,8 @@ namespace MoveToCode {
             // Starts uploading a file
             var task = csvRef.PutFileAsync(filePath, null,
                 new StorageProgress<UploadState>(state => {
-                    total_bytes = state.TotalByteCount;
-                    transferred_bytes = state.BytesTransferred;
+                    totalBytes = state.TotalByteCount;
+                    transferredBytes = state.BytesTransferred;
                     // Called periodically during the upload
                     Debug.Log(String.Format("Progress: {0} of {1} bytes transferred.",
                                     state.BytesTransferred, state.TotalByteCount));

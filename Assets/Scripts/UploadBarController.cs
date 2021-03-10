@@ -15,12 +15,14 @@ namespace MoveToCode
 
         private void Awake() {
             progressBar = gameObject.GetComponent<Slider>();
-            changeBytesUploaded(0);
+            ChangeBytesUploaded(0);
         }
-        
-        // Sets progress bar value to new total of uploaded bytes
-        public void changeBytesUploaded(long total_bytes) {
-            progressBar.value = total_bytes;
+
+        /// <summary>
+        /// Sets progress bar value to new total of uploaded bytes for CSV file
+        /// </summary>
+        public void ChangeBytesUploaded(long totalBytes) {
+            progressBar.value = totalBytes;
         }
     }
 

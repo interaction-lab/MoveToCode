@@ -37,7 +37,7 @@ namespace MoveToCode {
             // Changes progress bar appropriately by bytes that have been uploaded (total value is out of 100)
             if (total_bytes != 0)
             {
-                progressBar.changeBytesUploaded((100 * transferred_bytes) / total_bytes);
+                progressBar.ChangeBytesUploaded((100 * transferred_bytes) / total_bytes);
             }    
         }
 

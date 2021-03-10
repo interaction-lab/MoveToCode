@@ -18,8 +18,8 @@ namespace MoveToCode {
     /// when user presses the Upload File button. It also
     /// uses a progress bar to track the file upload process. 
     /// </summary>
-    public class UploadManager : MonoBehaviour
-    {
+    public class UploadManager : Singleton<UploadManager> {
+        
         private UploadBarController progressBar;
         private TextMeshProUGUI progressText;
         private long total_bytes = 0;

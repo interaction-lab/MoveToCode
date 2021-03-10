@@ -5,11 +5,10 @@ using System.Collections;
 namespace MoveToCode
 {
     /// <summary>
-    /// UploadBarController class keeps track of the file uploading progress
+    /// progressBarController class keeps track of the file uploading progress
     /// and visually displays the changes of bytes uploaded to Firebase. 
     /// </summary>
-    public class UploadBarController : MonoBehaviour
-    {
+    public class progressBarController : MonoBehaviour {
         private Slider progressBar;
         public long totalBytes = 0;
 
@@ -25,5 +24,4 @@ namespace MoveToCode
             progressBar.value = totalBytes;
         }
     }
-
 }

@@ -19,8 +19,8 @@ namespace MoveToCode {
     /// uses a progress bar to track the file upload process. 
     /// </summary>
     public class UploadManager : Singleton<UploadManager> {
-        
-        private UploadBarController progressBar;
+
+        private progressBarController progressBar;
         private TextMeshProUGUI progressText;
         private long total_bytes = 0;
         private long transferred_bytes = 0;
@@ -30,7 +30,7 @@ namespace MoveToCode {
         // Initializes progress bar and progress text
         private void Awake() {
             progressText = GetComponentInChildren<Canvas>().GetComponentInChildren<TextMeshProUGUI>();
-            progressBar = GetComponentInChildren<Canvas>().GetComponentInChildren<Slider>().GetComponent<UploadBarController>();
+            progressBar = GetComponentInChildren<Canvas>().GetComponentInChildren<Slider>().GetComponent<progressBarController>();
         }
         
         void Update() {

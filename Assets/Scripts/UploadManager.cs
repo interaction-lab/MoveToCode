@@ -45,8 +45,10 @@ namespace MoveToCode {
             progressText.text = "Upload file";
         }
 
-        // Gets the local filename as a URI relative to the persistent data path if the path isn't
-        // already a file URI.
+        /// <summary>
+        /// Gets the local filename as a URI relative to the persistent data path if the path isn't already a file URI
+        /// </summary>
+        /// <returns>URI of local filename</returns>
         protected virtual string PathToPersistentDataPathUriString(string filename) {
             if (filename.StartsWith(UriFileScheme)) {
                 return filename;
@@ -55,9 +57,9 @@ namespace MoveToCode {
                 filename);
         }
     
-
-        // Gets the finished CSV file from LoggingManager and uploads
-        // it to Firebase 
+        /// <summary>
+        /// Gets the finished CSV file from LoggingManager and uploads it to Firebase 
+        /// </summary>
         public void UploadLog() {
             progressText.text = "Started upload";
             LoggingManager.instance.FinishLogging(true);

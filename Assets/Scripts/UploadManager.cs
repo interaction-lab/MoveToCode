@@ -61,8 +61,15 @@ namespace MoveToCode {
         /// Gets the finished CSV file from LoggingManager and uploads it to Firebase 
         /// </summary>
         public void UploadLog() {
-            progressText.text = "Started upload";
             LoggingManager.instance.FinishLogging(true);
+            LogCSVToFirebase();
+        }
+
+        /// <summary>
+        /// Uploads CSV file to Firebase and displays upload progress to user
+        /// </summary>
+        private void LogCSVToFirebase() {
+            progressText.text = "Started upload";
             var storage = FirebaseStorage.DefaultInstance;
             /// <value>count is the version number of the file. It keeps track of number of times the user uploads the same filename in one session.</value>
             var csvRef = storage.GetReference($"/csvfiles/({count}){LoggingManager.instance.getCSVFileName()}");

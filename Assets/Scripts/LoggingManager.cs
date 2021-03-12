@@ -93,12 +93,18 @@ namespace MoveToCode {
             if (!logData) {
                 return;
             }
+            WriteValuesIfStreamWriterOpen();
+            ResetRow();
+        }
+
+        /// <summary>
+        /// Writes the values in row of CSV file if StreamWriter is open
+        /// </summary>
+        private void WriteValuesIfStreamWriterOpen() {
             List<string> rowDuplicate = new List<string>(row);
-            // Added StreamWriter condition for uploading CSV
             if (StreamWriterIsOpen()) {
                 streamWriter.WriteLine(string.Join(",", Time.time.ToString(), string.Join(",", rowDuplicate)));
             }
-            ResetRow();
         }
 
         private void FixedUpdate() {
@@ -110,19 +116,24 @@ namespace MoveToCode {
             if (!logData || !StreamWriterIsOpen()) {
                 return;
             }
+            WriteKeysIfStreamWriterOpen();
+            Debug.Log("Logged data to: " + filePath);
+
+        }
+
+        /// <summary>
+        /// Writes the keys in the bottom columns of CSV file before uploading
+        /// </summary>
+        private void WriteKeysIfStreamWriterOpen() {
             var ordered = columnLookup.OrderBy(x => x.Value);
             List<string> columnNames = new List<string>();
             foreach (var pairKeyVal in ordered) {
                 columnNames.Add(pairKeyVal.Key);
             }
-            // Added a check NULL condition for streamWriter as part of uploading CSV
             if (StreamWriterIsOpen()) {
                 streamWriter.WriteLine(string.Join(",", "Time", string.Join(",", columnNames)));
                 streamWriter.Close();
             }
-
-            Debug.Log("Logged data to: " + filePath);
-
         }
 
         // Added helper function for uploading CSV to check that streamWriter is open 
@@ -132,7 +143,7 @@ namespace MoveToCode {
         /// <returns>
         /// True if streamWriter is open; otherwise, False if null
         /// </returns>
-        bool StreamWriterIsOpen() {
+        private bool StreamWriterIsOpen() {
             return streamWriter.BaseStream != null;
         }
 

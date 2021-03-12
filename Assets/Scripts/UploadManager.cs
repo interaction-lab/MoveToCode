@@ -31,15 +31,22 @@ namespace MoveToCode {
             progressText = GetComponentInChildren<Canvas>().GetComponentInChildren<TextMeshProUGUI>();
             progressBar = GetComponentInChildren<Canvas>().GetComponentInChildren<Slider>().GetComponent<progressBarController>();
         }
-        
-        void Update() {
-            // Changes progress bar appropriately by bytes that have been uploaded (total value is out of 100)
-            if (totalBytes != 0)
-            {
-                progressBar.ChangeBytesUploaded((100 * transferredBytes) / totalBytes);
-            }    
-        }
 
+        /// <summary>
+        /// Changes progress bar appropriately by bytes that have been uploaded (total value is out of 100)
+        /// </summary>
+        IEnumerator UpdateProgressBar() {
+            while(transferredBytes == 0 && totalBytes == 0) {
+                yield return null;
+            }
+            while (transferredBytes != totalBytes) {
+                progressBar.ChangeBytesUploaded((100 * transferredBytes) / totalBytes);
+                yield return null;
+            }
+            if (transferredBytes == totalBytes) {
+                progressBar.ChangeBytesUploaded((100 * transferredBytes) / totalBytes);
+            }
+        }
 
         IEnumerator RestartBtn() {
             yield return new WaitForSeconds(5);
@@ -63,6 +70,7 @@ namespace MoveToCode {
         /// </summary>
         public void UploadLog() {
             LoggingManager.instance.FinishLogging(true);
+            StartCoroutine(UpdateProgressBar());
             LogCSVToFirebase();
         }
 

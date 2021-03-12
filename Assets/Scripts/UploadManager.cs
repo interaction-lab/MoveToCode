@@ -40,7 +40,8 @@ namespace MoveToCode {
             }    
         }
 
-        IEnumerator restartBtn() {
+
+        IEnumerator RestartBtn() {
             yield return new WaitForSeconds(5);
             progressText.text = "Upload file";
         }
@@ -91,7 +92,7 @@ namespace MoveToCode {
                 {
                     progressText.text = "Finished upload";
                     count++;
-                    StartCoroutine(restartBtn());
+                    StartCoroutine(RestartBtn());
                     Debug.Log("Upload finished.");
                 }
             });

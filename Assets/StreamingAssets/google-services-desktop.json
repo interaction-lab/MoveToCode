@@ -1,0 +1,37 @@
+{
+  "client": [
+    {
+      "services": {
+        "appinvite_service": {
+          "status": 1
+        }, 
+        "analytics_service": {
+          "status": 0
+        }
+      }, 
+      "oauth_client": [
+        {
+          "client_id": "188313516402-k8jttf8ges5ht87gohduloqmbe3it84m.apps.googleusercontent.com"
+        }
+      ], 
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWgIC4vbpoL93u8IXaDYUPrCBisO1VVGI"
+        }
+      ], 
+      "client_info": {
+        "mobilesdk_app_id": "1:188313516402:ios:c7164f4261dcfc07cec5eb", 
+        "android_client_info": {
+          "package_name": "com.InteractionLab.MoveToCode"
+        }
+      }
+    }
+  ], 
+  "configuration_version": "1", 
+  "project_info": {
+    "storage_bucket": "movetocode2021.appspot.com", 
+    "project_id": "movetocode2021", 
+    "firebase_url": "https://movetocode2021-default-rtdb.firebaseio.com", 
+    "project_number": "188313516402"
+  }
+}

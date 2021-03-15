@@ -244,10 +244,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: MoveToCode is an open source mixed reality visual programming language
-    (VPL) created by the Interaction Lab led by Maja J Matric. With MoveToCode, you
-    can move and stack code blocks to create algorithms that solve different challenges!
-    This video shows how the code blocks can be moved and snapped together.
+  m_text: 'Now let''s learn about the different code blocks! Code blocks are found
+    in the menu to the left, and they are categorized by the type of operations they
+    are used for. We can also create our own variable blocks that we can access from
+    the red square to the right! '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -292,7 +292,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 85
+  m_firstOverflowCharacterIndex: 90
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -316,12 +316,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 259395011}
-    characterCount: 307
+    characterCount: 262
     spriteCount: 0
-    spaceCount: 49
+    spaceCount: 50
     wordCount: 50
     linkCount: 0
-    lineCount: 4
+    lineCount: 3
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0

@@ -22,6 +22,7 @@ namespace MoveToCode {
 
         private progressBarController progressBar;
         private TextMeshProUGUI progressText;
+        private Button uploadBtn;
         private long totalBytes = 0;
         private long transferredBytes = 0;
         protected static string UriFileScheme = Uri.UriSchemeFile + "://";
@@ -30,6 +31,7 @@ namespace MoveToCode {
         private void Awake() {
             progressText = GetComponentInChildren<Canvas>().GetComponentInChildren<TextMeshProUGUI>();
             progressBar = GetComponentInChildren<Canvas>().GetComponentInChildren<Slider>().GetComponent<progressBarController>();
+            uploadBtn = GetComponentInChildren<Canvas>().GetComponentInChildren<Button>();
         }
 
         /// <summary>
@@ -49,8 +51,10 @@ namespace MoveToCode {
         }
 
         IEnumerator RestartBtn() {
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(3);
             progressText.text = "Upload file";
+            progressBar.gameObject.SetActive(false);
+            uploadBtn.gameObject.SetActive(false);
         }
 
         /// <summary>

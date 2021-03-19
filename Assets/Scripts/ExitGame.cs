@@ -12,8 +12,7 @@ namespace MoveToCode {
         public Button uploadBtn;
         public Slider progressBar;
 
-        void Start()
-        {
+        void Start() {
             uploadBtn.gameObject.SetActive(false);
             progressBar.gameObject.SetActive(false);
         }

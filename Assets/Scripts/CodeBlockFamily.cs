@@ -1,6 +1,4 @@
-﻿using Microsoft.MixedReality.Toolkit.UI;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace MoveToCode {
@@ -11,13 +9,19 @@ namespace MoveToCode {
 
         private void Awake() {
             CodeBlockMenuManager.instance.SetFamily(this);
-            shelfMeshRenderer = gameObject.transform.parent.parent.transform.GetChild(0).GetComponent<MeshRenderer>();
+            shelfMeshRenderer = Shelf.instance.GetComponent<MeshRenderer>();
             HideFamily();
         }
 
         private void Start() {
             AddVariantBlocksToFamily();
             InstantiateBlocksInFamily();
+        }
+
+        public void UpdateLoc() {
+            for (int i = 0; i < blocksInFamily.Count; i++) {
+                SetBlockPosition(blocksInFamily[i], i);
+            }
         }
 
         public void ShowFamily() {
@@ -33,7 +37,8 @@ namespace MoveToCode {
                 for (int i = 1; i < System.Enum.GetNames(typeof(ConditionalCodeBlock.OPERATION)).Length; i++) {
                     blocksInFamily.Add(blocksInFamily[0]);
                 }
-            } else if (blocksInFamily[0].GetComponent<MathOperationCodeBlock>() != null) {
+            }
+            else if (blocksInFamily[0].GetComponent<MathOperationCodeBlock>() != null) {
                 for (int i = 1; i < System.Enum.GetNames(typeof(MathOperationCodeBlock.OPERATION)).Length; i++) {
                     blocksInFamily.Add(blocksInFamily[0]);
                 }
@@ -50,16 +55,22 @@ namespace MoveToCode {
         }
 
         private void SetBlockPosition(GameObject block, int index) {
-            block.transform.position = new Vector3(
-                    shelfMeshRenderer.bounds.center.x,
-                    shelfMeshRenderer.bounds.extents.y - 0.2f - index * shelfMeshRenderer.bounds.size.y / (blocksInFamily.Count + 0.25f),
-                    transform.position.z);
+            SnapBlockToFamilyTransform(block, index);
+            SetAsMenuCodeBlocks(block, index);
+        }
 
-            //set codeblocks as blocks in menu
-            block.GetComponent<CloneOnDrag>().SetCodeBlockType(blocksInFamily[index]);
-            block.GetComponent<CodeBlock>().SetIsMenuBlock(true);
+        private void SnapBlockToFamilyTransform(GameObject block, int index) {
             block.transform.SnapToParent(transform);
             block.transform.localScale = Vector3.one;
+            block.transform.localPosition = new Vector3(
+                    shelfMeshRenderer.bounds.center.x,
+                    shelfMeshRenderer.bounds.extents.y - 0.2f - (index * shelfMeshRenderer.bounds.size.y * 4f) / (blocksInFamily.Count + 0.25f),
+                    transform.localPosition.z + 1);
+        }
+
+        private void SetAsMenuCodeBlocks(GameObject block, int index) {
+            block.GetComponent<CloneOnDrag>().SetCodeBlockType(blocksInFamily[index]);
+            block.GetComponent<CodeBlock>().SetIsMenuBlock(true);
         }
 
         private void SetMathOperation(GameObject block, int index) {

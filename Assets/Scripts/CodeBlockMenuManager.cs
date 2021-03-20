@@ -8,6 +8,7 @@ namespace MoveToCode {
 
         private void Awake() {
             TurnMenuOff();
+            GetComponent<ObjectManipulator>().RemoveTwoHandedScaling();
         }
 
         public void SetFamily(CodeBlockFamily family) {

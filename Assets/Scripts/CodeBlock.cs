@@ -17,6 +17,7 @@ namespace MoveToCode {
         CodeBlockSnap codeBlockSnap;
         GameObject codeBlockTextGameObject;
         CloneOnDrag dragScript;
+
         bool isMenuBlock;
 
         // Abstract Methods
@@ -34,6 +35,8 @@ namespace MoveToCode {
             dragScript = gameObject.AddComponent<CloneOnDrag>(); // TODO: clean this up
             UpdateText();
         }
+
+
 
         private void SetUpManipulationLogger() {
             if (GetComponent<ManipulationLogger>() == null) {

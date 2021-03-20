@@ -10,7 +10,7 @@ namespace MoveToCode {
         static Material OutlineMaterial { get; set; }
         public MeshOutline MyMeshOutline { get; set; }
         MeshRenderer MeshRend { get; set; }
-        public abstract Vector3 SnapPosition {get;}
+        public abstract Vector3 SnapPosition { get; }
         public abstract HashSet<Type> CompatibleArgTypes { get; }
 
         CodeBlockSnap collisionCodeBlockSnap;
@@ -55,7 +55,7 @@ namespace MoveToCode {
             if (MyCodeBlockArg != null) {
                 CodeBlock tmpargBlock = MyCodeBlockArg;
 
-                AudioManager.instance.PlaySoundAtObject(gameObject, AudioManager.popAudioClip);
+                AudioManager.instance.PlaySoundAtObject(MyCodeBlock.transform, AudioManager.popAudioClip);
                 if (CodeBlockSnap.lastDraggedCBS != tmpargBlock.GetCodeBlockSnap()) { // how is this allowing a type check???
                     MyCodeBlockArg.transform.localPosition = MyCodeBlockArg.transform.localPosition + new Vector3(0.25f, 1.1f, 1.25f);
                 }
@@ -67,7 +67,7 @@ namespace MoveToCode {
 
         private void AddNewCodeBlockArg(CodeBlock collidedCodeBlock) {
             SnapToParentCenter(collidedCodeBlock, transform.parent);
-            AudioManager.instance.PlaySoundAtObject(gameObject, AudioManager.snapAudioClip);
+            AudioManager.instance.PlaySoundAtObject(MyCodeBlock.transform, AudioManager.snapAudioClip);
             MyCodeBlock.GetCodeBlockObjectMesh().ResizeChain();
         }
 

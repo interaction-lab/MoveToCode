@@ -18,8 +18,8 @@ EditorBuildSettings:
     path: Assets/Scenes/MobileDevelop.unity
     guid: c719ee877d4b040839cc1161053d3c7a
   - enabled: 1
-    path: Assets/Scenes/KarenFirebase.unity
-    guid: 27188f31dffd55b49a24b9ff21e930ab
+    path: Assets/Scenes/Ipek_MDebug.unity
+    guid: d2efcc8a45e87404d96a7229a3a1bc36
   m_configObjects:
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: b26fb7ef3a6e56b46acf7ab1e79f9de5,
       type: 2}

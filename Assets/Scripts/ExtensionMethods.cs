@@ -105,5 +105,11 @@ namespace MoveToCode {
             }
             return result;
         }
+
+        // ObjectManipulator
+        public static void RemoveTwoHandedScaling(this ObjectManipulator om) {
+            om.TwoHandedManipulationType = om.TwoHandedManipulationType &
+                (Microsoft.MixedReality.Toolkit.Utilities.TransformFlags.Move | Microsoft.MixedReality.Toolkit.Utilities.TransformFlags.Rotate);
+        }
     }
 }

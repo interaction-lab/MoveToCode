@@ -21,7 +21,7 @@ namespace MoveToCode {
         }
 
 
-        void Init() {
+        void Init() { 
             if (initialized) {
                 return;
             }
@@ -36,13 +36,12 @@ namespace MoveToCode {
                 csvFilename = System.DateTime.Now.ToString().Replace(' ', '_').Replace('\\', '_').Replace('/', '_').Replace(':', '-') + ".csv";
                 filePath = Path.Combine(Application.persistentDataPath, csvFilename);
                 Debug.Log(filePath);
-                streamWriter = new StreamWriter(new FileStream(filePath, FileMode.Create)); ;
+                streamWriter = new StreamWriter(new FileStream(filePath, FileMode.Create)); 
             }
             else {
                 Debug.LogWarning("NOT LOGGING DATA, data is autologged when deployed to the Hololens 2 but not by default for the Unity editor. If you want logging, check the \"logData\" public box of the LoggingManager component");
             }
         }
-
 
         public Dictionary<string, int> GetColumnLookUp() {
             if (columnLookup == null) {
@@ -94,9 +93,18 @@ namespace MoveToCode {
             if (!logData) {
                 return;
             }
-            List<string> rowDuplicate = new List<string>(row);
-            streamWriter.WriteLine(string.Join(",", Time.time.ToString(), string.Join(",", rowDuplicate)));
+            WriteValuesIfStreamWriterOpen();
             ResetRow();
+        }
+
+        /// <summary>
+        /// Writes the values in row of CSV file if StreamWriter is open
+        /// </summary>
+        private void WriteValuesIfStreamWriterOpen() {
+            List<string> rowDuplicate = new List<string>(row);
+            if (StreamWriterIsOpen()) {
+                streamWriter.WriteLine(string.Join(",", Time.time.ToString(), string.Join(",", rowDuplicate)));
+            }
         }
 
         private void FixedUpdate() {
@@ -104,23 +112,67 @@ namespace MoveToCode {
         }
 
         public void FinishLogging(bool hasQuit = false) {
-            if (!logData) {
+            // Added StreamWriter condition for uploading CSV
+            if (!logData || !StreamWriterIsOpen()) {
                 return;
             }
+            WriteKeysIfStreamWriterOpen();
+            Debug.Log("Logged data to: " + filePath);
+
+        }
+
+        /// <summary>
+        /// Writes the keys in the bottom columns of CSV file before uploading
+        /// </summary>
+        private void WriteKeysIfStreamWriterOpen() {
             var ordered = columnLookup.OrderBy(x => x.Value);
             List<string> columnNames = new List<string>();
             foreach (var pairKeyVal in ordered) {
                 columnNames.Add(pairKeyVal.Key);
             }
+            if (StreamWriterIsOpen()) {
+                streamWriter.WriteLine(string.Join(",", "Time", string.Join(",", columnNames)));
+                streamWriter.Close();
+            }
+        }
 
-            streamWriter.WriteLine(string.Join(",", "Time", string.Join(",", columnNames)));
-            streamWriter.Close();
-            Debug.Log("Logged data to: " + filePath);
+        // Added helper function for uploading CSV to check that streamWriter is open 
+        /// <summary>
+        /// Checks if streamWriter is open when uploading CSV file and returns the result
+        /// </summary>
+        /// <returns>
+        /// True if streamWriter is open; otherwise, False if null
+        /// </returns>
+        private bool StreamWriterIsOpen() {
+            return streamWriter.BaseStream != null;
+        }
+
+        // Added helper function that returns file path for uploading CSV
+        /// <summary>
+        /// Retrieves the file path to CSV file that will be uploaded
+        /// </summary>
+        /// <returns>
+        /// File path to the CSV file to be uploaded
+        /// </returns>
+        public string getFilePath() {
+            return filePath;
+        }
+
+        // Added helper function that returns csvFilename for uploading CSV
+        /// <summary>
+        /// Retrieves the file name of CSV file that will be uploaded
+        /// </summary>
+        /// <returns>
+        /// File name of the CSV file to be uploaded
+        /// </returns>
+        public string getCSVFileName() {
+            return csvFilename;
         }
 
         // Write out columns, will be at end of file
         void OnApplicationQuit() {
-            FinishLogging(true);
+        // Commented out line below for uploading CSV
+        //   FinishLogging(true); 
         }
     }
 }

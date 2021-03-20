@@ -46,7 +46,6 @@ namespace MoveToCode {
         }
 
         private void InstantiateBlocksInFamily() {
-
             for (int i = 0; i < blocksInFamily.Count; i++) {
                 SetMathOperation(blocksInFamily[0], i);
                 SetConditionalOperation(blocksInFamily[0], i);

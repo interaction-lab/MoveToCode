@@ -4,23 +4,9 @@ using UnityEngine;
 namespace MoveToCode {
     public class CloneOnDrag : MonoBehaviour {
         ManipulationHandler manipulationHandler;
-        Vector3 startingPosition;
-        Quaternion rotation;
-        Quaternion startingRotation;
         GameObject clone;
         GameObject codeBlockType;
         bool blockStillInMenu;
-
-        private void Start() {
-            startingPosition = transform.position;
-            startingRotation = transform.rotation;
-        }
-
-        private void Update()
-        {
-            startingPosition = transform.position;
-            rotation = transform.rotation;
-        }
 
         private void OnEnable() {
             manipulationHandler = GetComponent<ManipulationHandler>();
@@ -38,7 +24,7 @@ namespace MoveToCode {
 
         private void StoppedMotion(ManipulationEventData arg0) {
             //deactivate block if still on shelf/placed back on shelf
-            if(blockStillInMenu) {
+            if (blockStillInMenu) {
                 Shelf.instance.DisableShelfOutline();
                 gameObject.SetActive(false);
             }
@@ -49,7 +35,7 @@ namespace MoveToCode {
                 transform.GetComponent<CodeBlock>().SetIsMenuBlock(false);
                 //cannot directly clone gameobject because CodeBlock components are attached after instantiation
                 CopyOperationOntoClonePrefab();
-                clone = InstantiateBlock(codeBlockType, startingPosition, rotation);
+                clone = InstantiateBlock(codeBlockType, transform.position, transform.rotation);
                 clone.GetComponent<CodeBlock>().SetIsMenuBlock(true);
                 transform.SnapToCodeBlockManager();
             }
@@ -74,7 +60,8 @@ namespace MoveToCode {
         private void CopyOperationOntoClonePrefab() {
             if (codeBlockType.GetComponent<MathOperationCodeBlock>() != null) {
                 CopyMathOperation(codeBlockType, gameObject.GetComponent<MathOperationCodeBlock>().op);
-            } else if (codeBlockType.GetComponent<ConditionalCodeBlock>() != null) {
+            }
+            else if (codeBlockType.GetComponent<ConditionalCodeBlock>() != null) {
                 CopyConditionalOperation(codeBlockType, gameObject.GetComponent<ConditionalCodeBlock>().op);
             }
         }

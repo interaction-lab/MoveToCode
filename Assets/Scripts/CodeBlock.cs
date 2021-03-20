@@ -17,7 +17,7 @@ namespace MoveToCode {
         CodeBlockSnap codeBlockSnap;
         GameObject codeBlockTextGameObject;
         CloneOnDrag dragScript;
-        Quaternion startingRotation;
+
         bool isMenuBlock;
 
         // Abstract Methods
@@ -34,16 +34,9 @@ namespace MoveToCode {
             SetUpManipulationLogger();
             dragScript = gameObject.AddComponent<CloneOnDrag>(); // TODO: clean this up
             UpdateText();
-            startingRotation = transform.rotation;
         }
 
-        private void Update(){
-            if(!isMenuBlock)
-            {
-                transform.rotation = startingRotation;
-            }
 
-        }
 
         private void SetUpManipulationLogger() {
             if (GetComponent<ManipulationLogger>() == null) {

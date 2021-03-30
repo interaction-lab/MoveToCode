@@ -15,6 +15,21 @@ Currently the study commit for all papers: [0765f1d1ab46373f1bc1be90d9d5b07fafc2
 
 [Adapting Usability Metrics for a Socially Assistive, Kinesthetic, Mixed Reality Robot Tutoring Environment (pdf)](https://robotics.usc.edu/publications/media/uploads/pubs/pubdb_1107_eff82bdefbf34f42a435be8c6bacbfa4.pdf)
 ```
+@InProceedings{10.1007/978-3-030-71151-1_22,
+author="Groechel, Thomas and Pakkar, Roxanna and Dasgupta, Roddur and Kuo, Chloe and Lee, Haemin and Cordero, Julia and Mahajan, Kartik and Matari{\'{c}}, Maja J.",
+editor="Siciliano, Bruno
+and Laschi, Cecilia
+and Khatib, Oussama",
+title="Kinesthetic Curiosity: Towards Personalized Embodied Learning with a Robot Tutor Teaching Programming in Mixed Reality",
+booktitle="Experimental Robotics",
+year="2021",
+publisher="Springer International Publishing",
+address="Cham",
+pages="245--252",
+isbn="978-3-030-71151-1"
+}
+
+
 @inproceedings{mahajan2020adapting,
   title={Adapting Usability Metrics for a Socially Assistive, Kinesthetic, Mixed Reality Robot Tutoring Environment},
   author={Mahajan, Kartik and Groechel, Thomas and Pakkar, Roxanna and Cordero, Julia and Lee, Haemin and Matari{\'c}, Maja J},

@@ -13,23 +13,24 @@ Doxygen documentation can be found here: https://interaction-lab.github.io/MoveT
 ![](Images/newconcise.png)
 Currently the study commit for all papers: [0765f1d1ab46373f1bc1be90d9d5b07fafc2a533](https://github.com/interaction-lab/MoveToCode/commit/0765f1d1ab46373f1bc1be90d9d5b07fafc2a533)
 
-[Adapting Usability Metrics for a Socially Assistive, Kinesthetic, Mixed Reality Robot Tutoring Environment (pdf)](https://robotics.usc.edu/publications/media/uploads/pubs/pubdb_1107_eff82bdefbf34f42a435be8c6bacbfa4.pdf)
+[Kinesthetic Curiosity: Towards Personalized Embodied Learning with a Robot Tutor Teaching Programming in Mixed Reality](https://robotics.usc.edu/publications/media/uploads/pubs/pubdb_1110_b3d5df607edd4a42993486ba993c6bf7.pdf)
 ```
 @InProceedings{10.1007/978-3-030-71151-1_22,
-author="Groechel, Thomas and Pakkar, Roxanna and Dasgupta, Roddur and Kuo, Chloe and Lee, Haemin and Cordero, Julia and Mahajan, Kartik and Matari{\'{c}}, Maja J.",
-editor="Siciliano, Bruno
-and Laschi, Cecilia
-and Khatib, Oussama",
-title="Kinesthetic Curiosity: Towards Personalized Embodied Learning with a Robot Tutor Teaching Programming in Mixed Reality",
-booktitle="Experimental Robotics",
-year="2021",
-publisher="Springer International Publishing",
-address="Cham",
-pages="245--252",
-isbn="978-3-030-71151-1"
+  author="Groechel, Thomas and Pakkar, Roxanna and Dasgupta, Roddur and Kuo, Chloe and Lee, Haemin and Cordero, Julia and Mahajan, Kartik and Matari{\'{c}}, Maja J.",
+  editor="Siciliano, Bruno
+  and Laschi, Cecilia
+  and Khatib, Oussama",
+  title="Kinesthetic Curiosity: Towards Personalized Embodied Learning with a Robot Tutor Teaching Programming in Mixed Reality",
+  booktitle="Experimental Robotics",
+  year="2021",
+  publisher="Springer International Publishing",
+  address="Cham",
+  pages="245--252",
+  isbn="978-3-030-71151-1"
 }
-
-
+```
+[Adapting Usability Metrics for a Socially Assistive, Kinesthetic, Mixed Reality Robot Tutoring Environment (pdf)](https://robotics.usc.edu/publications/media/uploads/pubs/pubdb_1107_eff82bdefbf34f42a435be8c6bacbfa4.pdf)
+```
 @inproceedings{mahajan2020adapting,
   title={Adapting Usability Metrics for a Socially Assistive, Kinesthetic, Mixed Reality Robot Tutoring Environment},
   author={Mahajan, Kartik and Groechel, Thomas and Pakkar, Roxanna and Cordero, Julia and Lee, Haemin and Matari{\'c}, Maja J},

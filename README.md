@@ -39,32 +39,6 @@ Currently the study commit for all papers: [0765f1d1ab46373f1bc1be90d9d5b07fafc2
 }
 ``` 
 
-## Projects in Progress
-- Arrays
-- CodeBlock to Python Text
-- Robot speech via Amazon Polly
-- [Adding virtual robot arms](https://github.com/interaction-lab/KuriAugmentedRealityArmsPublic)
-
-## General Structure
-
-### Interpreter
-- Singleton class that reads/interprets connected codeblocks line-by-line from top to bottom, beginning at the "Start" codeblock.
-- Utilizes an instruction stack to ensure that the reaching the end of a codeblock control flow statement (if, while) does not end the program unless the stack is empty.
-
-### Memory Manager
-- Singleton class that holds a list of buttons which spawn variables created by the user.
-- Visualizes changes in the values stored in variables as interpreter reads/runs code.
-
-### IArgument
-- Abstract class from which all visual/block coding components are derived.
-- Of all the classes that inherit from IArgument, only the bottom classes/leaf nodes are non-abstract
-- Child classes - main partition for code blocks based on function
-    - IDataType: All data types (primitive and derived) inherit from this class
-        - int, float, string, bool, char, array
-    - Instruction: All instructions inherit from this class
-        - print, set variable value, conditionals, arithmetic
-
-
 ## External Dependencies
 Versions of packages are pushed directly to the repository to avoid versioning issues, licensing permitting.
 - [ROS#; dwhit UWP branch](https://github.com/dwhit/ros-sharp/commit/4ccf45fc94827132397afeaa210afc01834d1dec) ([Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0))
@@ -73,14 +47,13 @@ Versions of packages are pushed directly to the repository to avoid versioning i
     - [websocket-sharp](https://github.com/sta/websocket-sharp) ([MIT License](https://en.wikipedia.org/wiki/MIT_License))
 - [Mixed Reality Toolkit v2.1](https://github.com/microsoft/MixedRealityToolkit-Unity)([MIT License](https://en.wikipedia.org/wiki/MIT_License))
 - [ProBuilder](https://github.com/Unity-Technologies/com.unity.probuilder) ([Unity Companion License](https://unity3d.com/legal/licenses/Unity_Companion_License))
-- [TextMeshPro](https://docs.unity3d.com/Packages/com.unity.textmeshpro@2.0/manual/index.html) ([Unity Companion License](https://unity3d.com/legal/licenses/Unity_Companion_License))
 - [NugetForUnity](https://github.com/GlitchEnzo/NuGetForUnity) ([MIT License](https://en.wikipedia.org/wiki/MIT_License))
 - [Automatic Documentation Generation Unity Editor Plugin](http://www.jacobpennock.com/Blog/unity-automatic-documentation-generation-an-editor-plugin/) ([MIT License](https://en.wikipedia.org/wiki/MIT_License))
 
 ## Tested Platform Support
 The following are currently tested versions of required software. Higher versions of each software may work but have not been tested.
-- [Unity 3D](https://github.com/siemens/ros-sharp/tree/master/Unity3D) v2018.4.14f
-- .NET Framework 4.6 and Visual Studio 2017
+- [Unity 3D](https://github.com/siemens/ros-sharp/tree/master/Unity3D) v2019.3.15f
+- .NET Framework 4.6 and Visual Studio 2019
 - Built for [Hololens 2](https://www.microsoft.com/en-us/hololens/hardware)
 
 ## Licensing

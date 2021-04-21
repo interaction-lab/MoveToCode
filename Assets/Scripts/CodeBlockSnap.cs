@@ -3,97 +3,162 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 // only keep track of last collided instead, highlight it
 namespace MoveToCode {
     public class CodeBlockSnap : MonoBehaviour {
-        public static CodeBlockSnap currentlyDraggingCBS, lastDraggedCBS;
+
+        /// <summary>
+        /// CodeBlockSnap that is currently being grabbed by user
+        /// </summary>
+        public static CodeBlockSnap CurrentlyDraggingCodeBlockSnap;
+
+        /// <summary>
+        /// Last CodeBlockSnap to be let go of by user
+        /// </summary>
+        public static CodeBlockSnap LastDraggingCodeBlockSnap;
+
+        CodeBlock myCodeBlock;
         /// <summary>
         /// Pointer to my internal `CodeBlock`
         /// </summary>
-        CodeBlock myCodeBlock;
+        public CodeBlock MyCodeBlock {
+            get {
+                if (myCodeBlock == null) {
+                    myCodeBlock = GetComponent<CodeBlock>();
+                }
+                return myCodeBlock;
+            }
+        }
         /// <summary>
         /// Manipulation Handler for events, look at `void OnManipulationStart(ManipulationEventData call)`
         /// </summary>
         ManipulationHandler manipulationHandler;
-        SnapColliderGroup mySnapColliders;
-        HashSet<SnapCollider> curSnapCollidersInContact;
+
+
+        SnapColliderGroup snapColliderGroup;
+
+        /// <summary>
+        /// Current set of `SnapCollider`s in contact with the dragging block
+        /// </summary>
+        HashSet<SnapCollider> curSnapCollidersInContact { get; set; } = new HashSet<SnapCollider>();
+
+        /// <summary>
+        /// Snapcollider that is decided on from the set of all collided with SnapColliders currently
+        /// </summary>
         SnapCollider bestCandidateSnapCollider;
 
         private void Awake() {
-            myCodeBlock = GetComponent<CodeBlock>();
             manipulationHandler = GetComponent<ManipulationHandler>();
             manipulationHandler.OnManipulationStarted.AddListener(OnManipulationStart);
             manipulationHandler.OnManipulationEnded.AddListener(OnManipulationEnd);
-            mySnapColliders = GetComponentInChildren<SnapColliderGroup>();
+            snapColliderGroup = GetComponentInChildren<SnapColliderGroup>();
+            ResetCBS();
         }
 
-        public HashSet<SnapCollider> GetCurSnapCollidersInContact() {
-            if (curSnapCollidersInContact == null) {
-                curSnapCollidersInContact = new HashSet<SnapCollider>();
-            }
-            return curSnapCollidersInContact;
-        }
-
+        /// <summary>
+        /// Set up for finding canidate SnapColliders when user grabs CodeBlock 
+        /// </summary>
+        /// <param name="call">Manipulation Event when user grabs block</param>
         void OnManipulationStart(ManipulationEventData call) {
-            currentlyDraggingCBS = this;
-            CodeBlockManager.instance.EnableCollidersCompatibleCodeBlock(GetMyCodeBlock());
-            mySnapColliders?.DisableAllCollidersAndChildrenColliders();
+            CurrentlyDraggingCodeBlockSnap = this;
+            CodeBlockManager.instance.EnableCollidersCompatibleCodeBlock(MyCodeBlock);
+            snapColliderGroup?.DisableAllCollidersAndChildrenColliders();
         }
 
-        IEnumerator DisableMyColliderForOneFrame() {
-            GetMyCodeBlock().ToggleColliders(false);
-            yield return new WaitForFixedUpdate();
-            GetMyCodeBlock().ToggleColliders(true);
-        }
-
+        /// <summary>
+        /// Adds SnapCollder in contact to set and updates best snap collider based upon argument.
+        /// See `UpdateBestSnapCollider(SnapCollider sc)` for more details.
+        /// </summary>
+        /// <param name="sc">Snap collider in contact. Can be null.</param>
         public void AddSnapColliderInContact(SnapCollider sc) {
-            if (bestCandidateSnapCollider != null) {
-                bestCandidateSnapCollider.MyMeshOutline.enabled = false;
-            }
+            DisableLastBestCandidatesOutline();
+            UpdateBestSnapCollider(sc);
+        }
+
+        /// <summary>
+        /// If `sc` is not null, will update best candidate to `sc`
+        /// If `sc` is null, will attempt to add any snapcolliders still in contact
+        /// Due to the set up, best candidate will be null if both `sc` is null and
+        /// the set of colliders in contact is empty.
+        /// </summary>
+        /// <param name="sc">Snap collider in contact. Can be null.</param>
+        private void UpdateBestSnapCollider(SnapCollider sc) {
             bestCandidateSnapCollider = sc;
             if (bestCandidateSnapCollider != null) {
                 bestCandidateSnapCollider.MyMeshOutline.enabled = true;
-                GetCurSnapCollidersInContact().Add(bestCandidateSnapCollider);
+                curSnapCollidersInContact.Add(bestCandidateSnapCollider);
             }
-            else if (!GetCurSnapCollidersInContact().Empty()) {
+            else if (!curSnapCollidersInContact.Empty()) {
                 bestCandidateSnapCollider = curSnapCollidersInContact.ElementAt(0);
                 bestCandidateSnapCollider.MyMeshOutline.enabled = true;
             }
         }
 
+        /// <summary>
+        /// Turns off outline of the last best snap collider
+        /// </summary>
+        private void DisableLastBestCandidatesOutline() {
+            if (bestCandidateSnapCollider != null) {
+                bestCandidateSnapCollider.MyMeshOutline.enabled = false;
+            }
+        }
+
+        /// <summary>
+        /// Removes SnapCollider from curSnapCollidersInContact set
+        /// </summary>
+        /// <param name="sc">SnapCollider to be removed. Cannot be null.</param>
         public void RemoveAsCurSnapColliderInContact(SnapCollider sc) {
-            GetCurSnapCollidersInContact().Remove(sc);
+            Assert.IsTrue(sc != null);
+            curSnapCollidersInContact.Remove(sc);
             if (sc == bestCandidateSnapCollider) {
                 AddSnapColliderInContact(null);
             }
         }
 
+        /// <summary>
+        /// Evaulates what snap action to take and then resets CBS
+        /// </summary>
+        /// <param name="call">End manipuation event</param>
         void OnManipulationEnd(ManipulationEventData call) {
-            currentlyDraggingCBS = null;
-            lastDraggedCBS = this;
+            EvaluateBestCandidateCollider();
+            CodeBlockManager.instance.DisableCollidersCompatibleCodeBlock(MyCodeBlock);
+            ResetCBS();
+            LastDraggingCodeBlockSnap = this;
+        }
+
+        /// <summary>
+        /// Snaps to best non-null candidate.
+        /// If candidate is null, removes from parent
+        /// CurSnapCollidersInContact cannot be empty in this case 
+        /// or else bestCandidate would just be whatever is in that set
+        /// </summary>
+        private void EvaluateBestCandidateCollider() {
             if (bestCandidateSnapCollider != null) {
-                bestCandidateSnapCollider.DoSnapAction(bestCandidateSnapCollider.MyCodeBlock, GetMyCodeBlock());
+                bestCandidateSnapCollider.DoSnapAction(MyCodeBlock);
             }
             else {
-                myCodeBlock.RemoveFromParentSnapCollider(true);
+                Assert.IsTrue(curSnapCollidersInContact.Empty());
+                MyCodeBlock.RemoveFromParentSnapCollider(true);
             }
-            //Block2TextConsoleManager.instance.UpdateConsoleOnSnap(); // INF LOOP ISSUE
-            CodeBlockManager.instance.DisableCollidersCompatibleCodeBlock(GetMyCodeBlock());
-            GetCurSnapCollidersInContact().Clear();
-            AddSnapColliderInContact(null);
         }
 
-        public CodeBlock GetMyCodeBlock() {
-            return myCodeBlock;
+        /// <summary>
+        /// Resets static state and removes snap collider candidates from set
+        /// </summary>
+        private void ResetCBS() {
+            curSnapCollidersInContact.Clear();
+            AddSnapColliderInContact(null);
+            CurrentlyDraggingCodeBlockSnap = null;
         }
 
-        private void OnEnable() {
-            AddSnapColliderInContact(null);
-        }
+        /* private void OnEnable() {
+             ResetCBS();
+         }
 
-        private void OnDisable() {
-            AddSnapColliderInContact(null);
-        }
+         private void OnDisable() {
+             ResetCBS();
+         }*/
     }
 }

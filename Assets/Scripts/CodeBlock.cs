@@ -113,8 +113,14 @@ namespace MoveToCode {
             GetCodeBlockObjectMesh().ToggleColliders(on);
         }
 
+        private SnapCollider GetSnapColliderImAttachedTo() {
+            if (transform.parent == CodeBlockManager.instance.transform) {
+                return null;
+            }
+            return transform.parent.GetComponentInChildren<SnapCollider>();
+        }
         public void RemoveFromParentSnapCollider(bool humanDidIt) {
-            transform.parent?.GetComponentInChildren<SnapCollider>()?.SetMyCodeBlockArg(null);
+            GetSnapColliderImAttachedTo()?.SetCodeBlockArg(null);
         }
 
         public void SetIsMenuBlock(bool option) {

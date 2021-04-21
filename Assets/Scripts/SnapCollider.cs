@@ -2,11 +2,24 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace MoveToCode {
     public abstract class SnapCollider : MonoBehaviour {
-        public CodeBlock MyCodeBlock { get { return transform.parent.parent?.GetComponent<CodeBlockObjectMesh>().GetMyCodeBlock(); } }
-        public CodeBlock MyCodeBlockArg { get { return transform.parent.GetComponentInChildren<CodeBlock>(); } }
+        CodeBlock myCodeBlock;
+        public CodeBlock MyCodeBlock {
+            get {
+                if (myCodeBlock == null) {
+                    myCodeBlock = transform.parent.parent?.GetComponent<CodeBlockObjectMesh>().GetMyCodeBlock();
+                }
+                return myCodeBlock;
+            }
+        }
+        public CodeBlock MyCodeBlockArg {
+            get {
+                return transform.parent.GetComponentInChildren<CodeBlock>();
+            }
+        }
         static Material OutlineMaterial { get; set; }
         public MeshOutline MyMeshOutline { get; set; }
         MeshRenderer MeshRend { get; set; }
@@ -26,7 +39,6 @@ namespace MoveToCode {
             MeshRend.enabled = false;
             GetComponent<Collider>().isTrigger = true;
             gameObject.layer = 2;
-            CodeBlockManager.instance.RegisterSnapCollider(this);
             gameObject.SetActive(false);
             RegisterToSnapColliderGroup();
             CodeBlockManager.instance.RegisterSnapCollider(this);
@@ -40,11 +52,11 @@ namespace MoveToCode {
 
         // TODO: humanDidIt is such a hack
         // TODO: fix for arrays
-        public void DoSnapAction(CodeBlock myCodeBlock, CodeBlock collidedCodeBlock, bool humanDidIt = true) {
-            SetMyCodeBlockArg(collidedCodeBlock);
+        public void DoSnapAction(CodeBlock collidedCodeBlock, bool humanDidIt = true) {
+            SetCodeBlockArg(collidedCodeBlock);
         }
 
-        public void SetMyCodeBlockArg(CodeBlock collidedCodeBlock) {
+        public void SetCodeBlockArg(CodeBlock collidedCodeBlock) {
             RemoveCurrentBlockArg();
             if (collidedCodeBlock != null) {
                 AddNewCodeBlockArg(collidedCodeBlock);
@@ -54,13 +66,12 @@ namespace MoveToCode {
         private void RemoveCurrentBlockArg() {
             if (MyCodeBlockArg != null) {
                 CodeBlock tmpargBlock = MyCodeBlockArg;
-
-                AudioManager.instance.PlaySoundAtObject(MyCodeBlock.transform, AudioManager.popAudioClip);
-                if (CodeBlockSnap.lastDraggedCBS != tmpargBlock.GetCodeBlockSnap()) { // how is this allowing a type check???
-                    MyCodeBlockArg.transform.localPosition = MyCodeBlockArg.transform.localPosition + new Vector3(0.25f, 1.1f, 1.25f);
-                }
+                MyCodeBlockArg.transform.localPosition = MyCodeBlockArg.transform.localPosition + new Vector3(0.25f, 1.1f, 1.25f);
                 tmpargBlock.transform.SnapToCodeBlockManager();
                 tmpargBlock.GetCodeBlockObjectMesh().ResizeChain();
+                AudioManager.instance.PlaySoundAtObject(MyCodeBlock.transform, AudioManager.popAudioClip);
+
+
                 // TODO: probably needs a log
             }
         }
@@ -106,14 +117,14 @@ namespace MoveToCode {
 
         private void OnTriggerEnter(Collider collision) {
             collisionCodeBlockSnap = GetCollidersCodeBlockSnap(collision);
-            if (collisionCodeBlockSnap == CodeBlockSnap.currentlyDraggingCBS) {
+            if (collisionCodeBlockSnap == CodeBlockSnap.CurrentlyDraggingCodeBlockSnap) {
                 collisionCodeBlockSnap?.AddSnapColliderInContact(this);
             }
         }
 
         private void OnTriggerExit(Collider collision) {
             collisionCodeBlockSnap = GetCollidersCodeBlockSnap(collision);
-            if (collisionCodeBlockSnap == CodeBlockSnap.currentlyDraggingCBS) {
+            if (collisionCodeBlockSnap == CodeBlockSnap.CurrentlyDraggingCodeBlockSnap) {
                 collisionCodeBlockSnap?.RemoveAsCurSnapColliderInContact(this);
             }
         }

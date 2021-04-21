@@ -1,5 +1,7 @@
 var NAVTREEINDEX55 =
 {
+"namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers.html#ad0d0123cc49fdf027d8a76988f27079ba6adf97f83acf6453d4a6a4b1070f3754":[0,0,1,0,0,13,0,162,0],
+"namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers.html#ad0d0123cc49fdf027d8a76988f27079ba6e4717b565217d03b9f82dcbaa421afd":[0,0,1,0,0,13,0,162,27],
 "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers.html#ad0d0123cc49fdf027d8a76988f27079ba6ee24f45bef176186b2cfe429b9db6f9":[0,0,1,0,0,13,0,162,84],
 "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers.html#ad0d0123cc49fdf027d8a76988f27079ba6f745462e89d5d9c18d7da6f685bea8e":[0,0,1,0,0,13,0,162,82],
 "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers.html#ad0d0123cc49fdf027d8a76988f27079ba7cc81058bca3d2204c4985b3afe0ad4a":[0,0,1,0,0,13,0,162,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX55 =
 "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i.html#a27234f80cbbf6f95f92d770e9b90b209acf637ffa2663b40ae52857aa0bdb1ec3":[0,0,1,0,0,21,131,7],
 "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i.html#a27234f80cbbf6f95f92d770e9b90b209ad92a8333dd3ccb895cc65f7455b71206":[0,0,1,0,0,21,131,10],
 "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i.html#a6d0a5c33619025d603f40700c635ca21":[0,0,1,0,0,21,124],
-"namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i.html#a6d0a5c33619025d603f40700c635ca21a263d7b2cf53802c9ed127b718c0bf9fd":[0,0,1,0,0,21,124,5],
-"namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i.html#a6d0a5c33619025d603f40700c635ca21a3b01c41f438fb273773f55802db9a966":[0,0,1,0,0,21,124,4],
-"namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i.html#a6d0a5c33619025d603f40700c635ca21a5c92e44009b4ad16030b5aa828c11dbf":[0,0,1,0,0,21,124,2]
+"namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i.html#a6d0a5c33619025d603f40700c635ca21a263d7b2cf53802c9ed127b718c0bf9fd":[0,0,1,0,0,21,124,5]
 };

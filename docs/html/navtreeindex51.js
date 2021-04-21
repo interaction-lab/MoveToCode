@@ -1,5 +1,7 @@
 var NAVTREEINDEX51 =
 {
+"namespace_microsoft_1_1_mixed_reality_1_1_toolkit.html#ae0646d2448a529e02e5e93f01d25e34cadddb3998aa3e4eb22f4163d1a2b6f447":[0,0,1,0,0,112,3],
+"namespace_microsoft_1_1_mixed_reality_1_1_toolkit.html#ae0646d2448a529e02e5e93f01d25e34caef9912f7d50e4a54ae1857fe9df86a16":[0,0,1,0,0,112,0],
 "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_audio.html":[0,0,1,0,0,0],
 "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_audio.html#aa44798b5a464a125559b0d75f6cf1d78":[0,0,1,0,0,0,4],
 "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_audio.html#aa44798b5a464a125559b0d75f6cf1d78a3e924c28566464990d1d3bdf974a1b67":[0,0,1,0,0,0,4,4],
@@ -247,7 +249,5 @@ var NAVTREEINDEX51 =
 "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_leap_motion_1_1_input.html#a7c67b67596b35a1a944335e711623b1ba7a1920d61156abc05a60135aefe8bc67":[0,0,1,0,0,11,0,4,0],
 "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_leap_motion_1_1_input.html#a7c67b67596b35a1a944335e711623b1baa0693fd102e7bc29edd357e925eb64ad":[0,0,1,0,0,11,0,4,1],
 "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_leap_motion_1_1_input.html#aeffa48c741bc5b16736f6ec9be9a0690":[0,0,1,0,0,11,0,3],
-"namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_leap_motion_1_1_input.html#aeffa48c741bc5b16736f6ec9be9a0690a0e78b32331d11ccdfeca5a38c2ec9f9c":[0,0,1,0,0,11,0,3,1],
-"namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_leap_motion_1_1_input.html#aeffa48c741bc5b16736f6ec9be9a0690ad480b8c7a164e3e8aa55f7f9d214919f":[0,0,1,0,0,11,0,3,0],
-"namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_leap_motion_1_1_inspectors.html":[0,0,1,0,0,11,1]
+"namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_leap_motion_1_1_input.html#aeffa48c741bc5b16736f6ec9be9a0690a0e78b32331d11ccdfeca5a38c2ec9f9c":[0,0,1,0,0,11,0,3,1]
 };

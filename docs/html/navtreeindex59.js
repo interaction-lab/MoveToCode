@@ -1,5 +1,7 @@
 var NAVTREEINDEX59 =
 {
+"openvr__api_8cs.html#a5e2d92940d0808804d339eb4c6443ca6a61c175d34f7bb8d8b6b0a2a6cd568208":[2,0,0,3,2,2,0,0,142,103],
+"openvr__api_8cs.html#a5e2d92940d0808804d339eb4c6443ca6a63ee5b9aa45eb67cc428647de964e055":[2,0,0,3,2,2,0,0,142,69],
 "openvr__api_8cs.html#a5e2d92940d0808804d339eb4c6443ca6a66194139106cba346f759d1ac7a8ef8e":[2,0,0,3,2,2,0,0,142,100],
 "openvr__api_8cs.html#a5e2d92940d0808804d339eb4c6443ca6a6a15356c98509eb56e4ea457d8489b0a":[2,0,0,3,2,2,0,0,142,104],
 "openvr__api_8cs.html#a5e2d92940d0808804d339eb4c6443ca6a6c19b8abff70def525b517ad6ea9e531":[2,0,0,3,2,2,0,0,142,42],
@@ -247,7 +249,5 @@ var NAVTREEINDEX59 =
 "openvr__api_8cs.html#a96c264d538def403f5bf25d8abc53400ac384c2d4103419700a487f2f47ed6cca":[2,0,0,3,2,2,0,0,169,4],
 "openvr__api_8cs.html#a96c264d538def403f5bf25d8abc53400ac5c74fde889a7ff675d84f6a4b725b0d":[2,0,0,3,2,2,0,0,169,2],
 "openvr__api_8cs.html#a96c264d538def403f5bf25d8abc53400ae498749f3c42246d50b15c81c101d988":[2,0,0,3,2,2,0,0,169,1],
-"openvr__api_8cs.html#a96c264d538def403f5bf25d8abc53400aef8333a6a56d208be00f40fbe376bfbc":[2,0,0,3,2,2,0,0,169,3],
-"openvr__api_8cs.html#a9a88b171b315aedaad3cd924670fc6c6":[2,0,0,3,2,2,0,0,188],
-"openvr__api_8cs.html#a9a88b171b315aedaad3cd924670fc6c6a6adf97f83acf6453d4a6a4b1070f3754":[2,0,0,3,2,2,0,0,188,0]
+"openvr__api_8cs.html#a96c264d538def403f5bf25d8abc53400aef8333a6a56d208be00f40fbe376bfbc":[2,0,0,3,2,2,0,0,169,3]
 };

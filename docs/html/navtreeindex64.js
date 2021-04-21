@@ -1,5 +1,7 @@
 var NAVTREEINDEX64 =
 {
+"struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_input_origin_info__t.html#a8f712d306dcb58a9045eb0d0ae75bd78":[1,0,0,0,0,13,0,119,130],
+"struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_input_origin_info__t.html#a90aa49537ee9d142bb9d4c19cadbb256":[1,0,0,0,0,13,0,119,99],
 "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_input_origin_info__t.html#a923c93127d5c28385b4a11ab68be2dcd":[1,0,0,0,0,13,0,119,118],
 "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_input_origin_info__t.html#a9520c984ac92eca32e986cdcfdb7c102":[1,0,0,0,0,13,0,119,41],
 "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_input_origin_info__t.html#a9885dfc2c41d38a9a157efc945504eb9":[1,0,0,0,0,13,0,119,71],
@@ -247,7 +249,5 @@ var NAVTREEINDEX64 =
 "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_v_r_event___progress_update__t.html#a52855350d498ffd7ff0fc14fa15cf929":[1,0,0,0,0,13,0,85,0],
 "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_v_r_event___progress_update__t.html#a8911b782d08aa2c879f00635d7c71583":[1,0,0,0,0,13,0,85,1],
 "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_v_r_event___progress_update__t.html#ae3a88bd307d156ab96d5df9241441f0d":[1,0,0,0,0,13,0,85,4],
-"struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_v_r_event___progress_update__t.html#aeacea9eec502bf0a27ae32bf60f44707":[1,0,0,0,0,13,0,85,3],
-"struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_v_r_event___property__t.html":[1,0,0,0,0,13,0,78],
-"struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_v_r_event___property__t.html#a18961051a68f2b75c24ecccb42403952":[1,0,0,0,0,13,0,78,0]
+"struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_v_r_event___progress_update__t.html#aeacea9eec502bf0a27ae32bf60f44707":[1,0,0,0,0,13,0,85,3]
 };

@@ -1,5 +1,7 @@
 var NAVTREEINDEX48 =
 {
+"functions_vars_l.html":[1,3,2,11],
+"functions_vars_m.html":[1,3,2,12],
 "functions_vars_n.html":[1,3,2,13],
 "functions_vars_o.html":[1,3,2,14],
 "functions_vars_p.html":[1,3,2,15],
@@ -247,7 +249,5 @@ var NAVTREEINDEX48 =
 "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_i_input_simulation_service.html#ad5366cdf59e3662bec8a3d8708a9c133":[1,0,0,0,0,9,115,19],
 "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_i_input_simulation_service.html#adb7e0ca97bbef9ad5400b00ac921090c":[1,0,0,0,0,9,115,27],
 "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_i_input_simulation_service.html#af296b9373d78ea76d1732a31e9f59674":[1,0,0,0,0,9,115,14],
-"interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_i_input_simulation_service.html#af8d2aada46fa44dd258f1260ff08c81d":[1,0,0,0,0,9,115,25],
-"interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_i_mixed_reality_base_input_handler.html":[1,0,0,0,0,9,55],
-"interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_i_mixed_reality_controller.html":[1,0,0,0,0,9,46]
+"interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_i_input_simulation_service.html#af8d2aada46fa44dd258f1260ff08c81d":[1,0,0,0,0,9,115,25]
 };

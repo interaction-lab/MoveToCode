@@ -1,5 +1,7 @@
 var NAVTREEINDEX63 =
 {
+"struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_compositor___frame_timing.html#a8cc9dc0dd586243431cca8387c6020b9":[1,0,0,0,0,13,0,99,14],
+"struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_compositor___frame_timing.html#a9021333f9254e64e2d0a62b28aa2742a":[1,0,0,0,0,13,0,99,19],
 "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_compositor___frame_timing.html#a95f91e32567f19941bcb564ef345c879":[1,0,0,0,0,13,0,99,0],
 "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_compositor___frame_timing.html#a9f8c5f3265db9a3e67a25fa4d150857f":[1,0,0,0,0,13,0,99,17],
 "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_compositor___frame_timing.html#ac1bdc2867db44cf58a9c0045b3184f77":[1,0,0,0,0,13,0,99,15],
@@ -247,7 +249,5 @@ var NAVTREEINDEX63 =
 "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_input_origin_info__t.html#a856dc0a64df76855a91ba9fabaa82c21":[1,0,0,0,0,13,0,119,3],
 "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_input_origin_info__t.html#a88f3dc493dab023d9e94fe9fb0c0e794":[1,0,0,0,0,13,0,119,129],
 "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_input_origin_info__t.html#a89cdd9fff8d1a377eb9b6e90b7572344":[1,0,0,0,0,13,0,119,92],
-"struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_input_origin_info__t.html#a89f753b3b04684ce1d352ba7ababbeaf":[1,0,0,0,0,13,0,119,29],
-"struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_input_origin_info__t.html#a8f712d306dcb58a9045eb0d0ae75bd78":[1,0,0,0,0,13,0,119,130],
-"struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_input_origin_info__t.html#a90aa49537ee9d142bb9d4c19cadbb256":[1,0,0,0,0,13,0,119,99]
+"struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_input_origin_info__t.html#a89f753b3b04684ce1d352ba7ababbeaf":[1,0,0,0,0,13,0,119,29]
 };

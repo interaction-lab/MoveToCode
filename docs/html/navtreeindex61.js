@@ -1,5 +1,7 @@
 var NAVTREEINDEX61 =
 {
+"openvr__api_8cs.html#ac7cda30a13f436a23e5ed10a4c90f2c6a8ee34bbae0466177c81b7253cea440cb":[2,0,0,3,2,2,0,0,182,8],
+"openvr__api_8cs.html#ac7cda30a13f436a23e5ed10a4c90f2c6a9705ee0c782ab5e4941f5cd3ca4af6e0":[2,0,0,3,2,2,0,0,182,4],
 "openvr__api_8cs.html#ac7cda30a13f436a23e5ed10a4c90f2c6aafbf0897a5a83fdd873dfb032ec695d3":[2,0,0,3,2,2,0,0,182,1],
 "openvr__api_8cs.html#ac7cda30a13f436a23e5ed10a4c90f2c6ac1e034b414792de5b3c51c565a323d63":[2,0,0,3,2,2,0,0,182,6],
 "openvr__api_8cs.html#ac7cda30a13f436a23e5ed10a4c90f2c6acc7fb290faf7d98024260a208818b4b2":[2,0,0,3,2,2,0,0,182,9],
@@ -247,7 +249,5 @@ var NAVTREEINDEX61 =
 "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_camera_system_1_1_mixed_reality_camera_settings_configuration.html#af945c6d8897b69bdf026123de5548ee9":[1,0,0,0,0,3,1,4],
 "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_physics_1_1_elastic_properties.html":[1,0,0,0,0,7,10,5],
 "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_physics_1_1_elastic_properties.html#a89b1172c4ccd94e6e7d61a166f9b4e68":[1,0,0,0,0,7,10,5,2],
-"struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_physics_1_1_elastic_properties.html#a99b16a6e006e12da8ddaf6d7f626025e":[1,0,0,0,0,7,10,5,4],
-"struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_physics_1_1_elastic_properties.html#aa2aa4d26d5b6e4480b4b3c1057bb9fa9":[1,0,0,0,0,7,10,5,3],
-"struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_physics_1_1_elastic_properties.html#ac3b449c4c5dcf6cfb1e240fbdf863797":[1,0,0,0,0,7,10,5,1]
+"struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_physics_1_1_elastic_properties.html#a99b16a6e006e12da8ddaf6d7f626025e":[1,0,0,0,0,7,10,5,4]
 };

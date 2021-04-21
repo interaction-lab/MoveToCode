@@ -1,5 +1,7 @@
 var NAVTREEINDEX50 =
 {
+"interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_i_mixed_reality_pointer.html#af6f58fb91bea3418f55309b6fb64fabb":[1,0,0,0,0,9,84,15],
+"interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_i_mixed_reality_pointer.html#aff53726c4ac85f73b669c1995115f1bf":[1,0,0,0,0,9,84,16],
 "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_i_mixed_reality_pointer_handler.html":[1,0,0,0,0,9,65],
 "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_i_mixed_reality_pointer_handler.html#a2ea39ab5b2faa7012911cf29d61d2341":[1,0,0,0,0,9,65,0],
 "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_i_mixed_reality_pointer_handler.html#a9cd5b2ac2cfe465afc9cc6e9cb1cca04":[1,0,0,0,0,9,65,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX50 =
 "namespace_microsoft_1_1_mixed_reality_1_1_toolkit.html#ae0646d2448a529e02e5e93f01d25e34ca722d0929561f3b46d5065ae08d4add48":[0,0,1,0,0,112,4],
 "namespace_microsoft_1_1_mixed_reality_1_1_toolkit.html#ae0646d2448a529e02e5e93f01d25e34ca89f1db3f6a9c9ef2da9a79d748c15f42":[0,0,1,0,0,112,1],
 "namespace_microsoft_1_1_mixed_reality_1_1_toolkit.html#ae0646d2448a529e02e5e93f01d25e34caaa14864f0471c716c763c0dfb0d704fe":[0,0,1,0,0,112,5],
-"namespace_microsoft_1_1_mixed_reality_1_1_toolkit.html#ae0646d2448a529e02e5e93f01d25e34cad4c60827dc32aee2d85e5b1696042409":[0,0,1,0,0,112,8],
-"namespace_microsoft_1_1_mixed_reality_1_1_toolkit.html#ae0646d2448a529e02e5e93f01d25e34cadddb3998aa3e4eb22f4163d1a2b6f447":[0,0,1,0,0,112,3],
-"namespace_microsoft_1_1_mixed_reality_1_1_toolkit.html#ae0646d2448a529e02e5e93f01d25e34caef9912f7d50e4a54ae1857fe9df86a16":[0,0,1,0,0,112,0]
+"namespace_microsoft_1_1_mixed_reality_1_1_toolkit.html#ae0646d2448a529e02e5e93f01d25e34cad4c60827dc32aee2d85e5b1696042409":[0,0,1,0,0,112,8]
 };

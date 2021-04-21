@@ -1,5 +1,7 @@
 var NAVTREEINDEX53 =
 {
+"namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers.html#a5e2d92940d0808804d339eb4c6443ca6abb04bbe8f077b6c72a5a0d652ff341ff":[0,0,1,0,0,13,0,142,114],
+"namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers.html#a5e2d92940d0808804d339eb4c6443ca6abca0e26e7d133ab2ac55478f933b7857":[0,0,1,0,0,13,0,142,23],
 "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers.html#a5e2d92940d0808804d339eb4c6443ca6abca742aebc2b6ca7d2958a3a6f140c3c":[0,0,1,0,0,13,0,142,118],
 "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers.html#a5e2d92940d0808804d339eb4c6443ca6abea4240a3e40e40afd68861d114514da":[0,0,1,0,0,13,0,142,148],
 "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers.html#a5e2d92940d0808804d339eb4c6443ca6abf4c776d0b8a1caae2a116458231bceb":[0,0,1,0,0,13,0,142,139],
@@ -247,7 +249,5 @@ var NAVTREEINDEX53 =
 "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers.html#aa87674d1b9e399c4b0f3e2630f9c7628a19faded4197a946a5b12d53a355d4ff1":[0,0,1,0,0,13,0,157,124],
 "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers.html#aa87674d1b9e399c4b0f3e2630f9c7628a1c8c2d023398c51970056c9bef39d401":[0,0,1,0,0,13,0,157,68],
 "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers.html#aa87674d1b9e399c4b0f3e2630f9c7628a1ee1b17073a8c4a8bae225eaf553688f":[0,0,1,0,0,13,0,157,137],
-"namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers.html#aa87674d1b9e399c4b0f3e2630f9c7628a1fc416a1fd88780650b28d3bbab59721":[0,0,1,0,0,13,0,157,93],
-"namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers.html#aa87674d1b9e399c4b0f3e2630f9c7628a2023214618b925fff8ea5472b942abe6":[0,0,1,0,0,13,0,157,7],
-"namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers.html#aa87674d1b9e399c4b0f3e2630f9c7628a20d7793edb899c3449d81e728c6dfaf3":[0,0,1,0,0,13,0,157,145]
+"namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers.html#aa87674d1b9e399c4b0f3e2630f9c7628a1fc416a1fd88780650b28d3bbab59721":[0,0,1,0,0,13,0,157,93]
 };

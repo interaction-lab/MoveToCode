@@ -1,5 +1,7 @@
 var NAVTREEINDEX49 =
 {
+"interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_i_mixed_reality_base_input_handler.html":[1,0,0,0,0,9,55],
+"interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_i_mixed_reality_controller.html":[1,0,0,0,0,9,46],
 "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_i_mixed_reality_controller.html#a04897185ec90959d080cbcaacfdbf5c7":[1,0,0,0,0,9,46,9],
 "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_i_mixed_reality_controller.html#a0811a22efced61f52fbd69426fa2e97c":[1,0,0,0,0,9,46,5],
 "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_i_mixed_reality_controller.html#a08a9734b1d24a981022783202bfe373b":[1,0,0,0,0,9,46,7],
@@ -247,7 +249,5 @@ var NAVTREEINDEX49 =
 "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_i_mixed_reality_pointer.html#ad0c373c3a000da4fe063f4853e41cf6d":[1,0,0,0,0,9,84,8],
 "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_i_mixed_reality_pointer.html#ad7448d6a280199a3f3961721457ea7dd":[1,0,0,0,0,9,84,14],
 "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_i_mixed_reality_pointer.html#ad9013c7aa44d277f5c1829a198a443e6":[1,0,0,0,0,9,84,6],
-"interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_i_mixed_reality_pointer.html#ae4604de59b93fce0ab1d397bba21493e":[1,0,0,0,0,9,84,0],
-"interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_i_mixed_reality_pointer.html#af6f58fb91bea3418f55309b6fb64fabb":[1,0,0,0,0,9,84,15],
-"interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_i_mixed_reality_pointer.html#aff53726c4ac85f73b669c1995115f1bf":[1,0,0,0,0,9,84,16]
+"interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_i_mixed_reality_pointer.html#ae4604de59b93fce0ab1d397bba21493e":[1,0,0,0,0,9,84,0]
 };

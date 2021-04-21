@@ -1,5 +1,7 @@
 var NAVTREEINDEX54 =
 {
+"namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers.html#aa87674d1b9e399c4b0f3e2630f9c7628a2023214618b925fff8ea5472b942abe6":[0,0,1,0,0,13,0,157,7],
+"namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers.html#aa87674d1b9e399c4b0f3e2630f9c7628a20d7793edb899c3449d81e728c6dfaf3":[0,0,1,0,0,13,0,157,145],
 "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers.html#aa87674d1b9e399c4b0f3e2630f9c7628a2110d2570dc29ecdf2989ec3a45f6746":[0,0,1,0,0,13,0,157,53],
 "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers.html#aa87674d1b9e399c4b0f3e2630f9c7628a241efda5edcb448fee595da4ed387d9e":[0,0,1,0,0,13,0,157,112],
 "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers.html#aa87674d1b9e399c4b0f3e2630f9c7628a259d24fd52c2f0a7b2d6a9bca88a4944":[0,0,1,0,0,13,0,157,4],
@@ -247,7 +249,5 @@ var NAVTREEINDEX54 =
 "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers.html#ad0d0123cc49fdf027d8a76988f27079ba64081becbaa1cd0c1099af99bc61845b":[0,0,1,0,0,13,0,162,31],
 "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers.html#ad0d0123cc49fdf027d8a76988f27079ba67f0681aa8413b97692396a7a3d22415":[0,0,1,0,0,13,0,162,49],
 "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers.html#ad0d0123cc49fdf027d8a76988f27079ba6855e0f219244a7cad35ef794c499ee6":[0,0,1,0,0,13,0,162,24],
-"namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers.html#ad0d0123cc49fdf027d8a76988f27079ba6a1eac3fdefebd0d477a5ddb58b00d90":[0,0,1,0,0,13,0,162,62],
-"namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers.html#ad0d0123cc49fdf027d8a76988f27079ba6adf97f83acf6453d4a6a4b1070f3754":[0,0,1,0,0,13,0,162,0],
-"namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers.html#ad0d0123cc49fdf027d8a76988f27079ba6e4717b565217d03b9f82dcbaa421afd":[0,0,1,0,0,13,0,162,27]
+"namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers.html#ad0d0123cc49fdf027d8a76988f27079ba6a1eac3fdefebd0d477a5ddb58b00d90":[0,0,1,0,0,13,0,162,62]
 };

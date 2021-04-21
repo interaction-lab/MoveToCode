@@ -1,5 +1,7 @@
 var NAVTREEINDEX57 =
 {
+"namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities.html#a86c1863c348d848148992159397db374a09537de76cd75e65f0296a0006d9349d":[0,0,1,0,0,22,80,7],
+"namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities.html#a86c1863c348d848148992159397db374a0bb8309239953b782fec18706fe60b4a":[0,0,1,0,0,22,80,2],
 "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities.html#a86c1863c348d848148992159397db374a18a6539137f8211d92abed5ed260af72":[0,0,1,0,0,22,80,6],
 "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities.html#a86c1863c348d848148992159397db374a3d298d42565272d66d534da6a03baabc":[0,0,1,0,0,22,80,4],
 "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities.html#a86c1863c348d848148992159397db374a65e65c8ab0d8609ce12fc68a03cb8e00":[0,0,1,0,0,22,80,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX57 =
 "namespacegenerate__xml__from__google__services__json.html#a638764f8a1d6ff3898b80c69bf688560":[0,0,0,5],
 "namespacegenerate__xml__from__google__services__json.html#a82c31109f21e2fcae7948931aaf137ca":[0,0,0,3],
 "namespacegenerate__xml__from__google__services__json.html#ab8f4788814cfa91c400d130394363333":[0,0,0,13],
-"namespacegenerate__xml__from__google__services__json.html#abf4f021a85a4c7f036d5cb6625bb04af":[0,0,0,7],
-"namespacegenerate__xml__from__google__services__json.html#ac910e418d00e1de6a2b28e3cc66df0a1":[0,0,0,6],
-"namespacegenerate__xml__from__google__services__json.html#ad7831332497f5026faa6ee3e248ddabf":[0,0,0,9]
+"namespacegenerate__xml__from__google__services__json.html#abf4f021a85a4c7f036d5cb6625bb04af":[0,0,0,7]
 };

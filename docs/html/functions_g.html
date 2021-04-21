@@ -585,6 +585,9 @@ $(document).ready(function(){initNavTree('functions_g.html',''); initResizable()
 <li>GetComponentCount()
 : <a class="el" href="class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_c_v_r_render_models.html#a3ed84226995b90bfe0653084e6523820">Microsoft.MixedReality.Toolkit.OpenVR.Headers.CVRRenderModels</a>
 </li>
+<li>GetComponentInChildrenOnlyDepthOne&lt; T &gt;()
+: <a class="el" href="class_move_to_code_1_1_extension_methods.html#a69d80bf89afb2a67662e43dca7294c88">MoveToCode.ExtensionMethods</a>
+</li>
 <li>GetComponentName()
 : <a class="el" href="class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_c_v_r_render_models.html#acd5f3fc605206be0b1cb5c283dcca417">Microsoft.MixedReality.Toolkit.OpenVR.Headers.CVRRenderModels</a>
 </li>
@@ -702,9 +705,6 @@ $(document).ready(function(){initNavTree('functions_g.html',''); initResizable()
 , <a class="el" href="class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_physics_1_1_linear_elastic_system.html#acf0cf7cde16ad892377a23625df577af">Microsoft.MixedReality.Toolkit.Experimental.Physics.LinearElasticSystem</a>
 , <a class="el" href="class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_physics_1_1_quaternion_elastic_system.html#a2dd18f1947179848a8e1bc69c963a6ed">Microsoft.MixedReality.Toolkit.Experimental.Physics.QuaternionElasticSystem</a>
 , <a class="el" href="class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_physics_1_1_volume_elastic_system.html#a3ee7c298bd53ee20e74bc9335f0e42eb">Microsoft.MixedReality.Toolkit.Experimental.Physics.VolumeElasticSystem</a>
-</li>
-<li>GetCurSnapCollidersInContact()
-: <a class="el" href="class_move_to_code_1_1_code_block_snap.html#a6bc113c43d02704d3a5e3ee86a2c5e25">MoveToCode.CodeBlockSnap</a>
 </li>
 <li>GetCursorVisibility()
 : <a class="el" href="class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_cursor_modifier.html#ac50f3fb8bda9153bef3b63f726b54928">Microsoft.MixedReality.Toolkit.Input.CursorModifier</a>
@@ -1026,11 +1026,11 @@ $(document).ready(function(){initNavTree('functions_g.html',''); initResizable()
 , <a class="el" href="class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_base_generic_input_source.html#aadde9295d9a595e2ef4ff64042ac930e">Microsoft.MixedReality.Toolkit.Input.BaseGenericInputSource</a>
 , <a class="el" href="class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_generic_pointer.html#aa90704bcc2dc5a49173e84a8879ea13a">Microsoft.MixedReality.Toolkit.Input.GenericPointer</a>
 , <a class="el" href="class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_g_g_v_pointer.html#a608a09bc636797c3afd838612af05de7">Microsoft.MixedReality.Toolkit.Input.GGVPointer</a>
-, <a class="el" href="struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_mixed_reality_input_action.html#aef266e1198e55080744af13f9e842025">Microsoft.MixedReality.Toolkit.Input.MixedRealityInputAction</a>
+, <a class="el" href="struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_mixed_reality_input_action.html#a6a8adc5fd8aca02a6a62850f3bddb07b">Microsoft.MixedReality.Toolkit.Input.MixedRealityInputAction</a>
 , <a class="el" href="struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_simulated_motion_controller_button_state.html#adf2b756657f18e5fa325516d110a9f22">Microsoft.MixedReality.Toolkit.Input.SimulatedMotionControllerButtonState</a>
 , <a class="el" href="class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_base_spatial_observer.html#a02cdd7ebfd331d14a01affd8bc36c23c">Microsoft.MixedReality.Toolkit.SpatialAwareness.BaseSpatialObserver</a>
-, <a class="el" href="struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_mixed_reality_pose.html#ab0aa9d11068ac67f2a1d8332931fc5bd">Microsoft.MixedReality.Toolkit.Utilities.MixedRealityPose</a>
-, <a class="el" href="struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_mixed_reality_transform.html#a138d20a9d8dac211f7712d0cc832afa4">Microsoft.MixedReality.Toolkit.Utilities.MixedRealityTransform</a>
+, <a class="el" href="struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_mixed_reality_pose.html#ad3fbc94f3756f4c68ff85401da07d902">Microsoft.MixedReality.Toolkit.Utilities.MixedRealityPose</a>
+, <a class="el" href="struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_mixed_reality_transform.html#a3031e4994c1f88098deacc6ecafa5116">Microsoft.MixedReality.Toolkit.Utilities.MixedRealityTransform</a>
 </li>
 <li>GetHeaderConsole()
 : <a class="el" href="class_move_to_code_1_1_block2_text_console_manager.html#a5f2f374a2f307792987cb1cd6330f604">MoveToCode.Block2TextConsoleManager</a>
@@ -1267,7 +1267,6 @@ $(document).ready(function(){initNavTree('functions_g.html',''); initResizable()
 </li>
 <li>GetMyCodeBlock()
 : <a class="el" href="class_move_to_code_1_1_code_block_object_mesh.html#ad56be32f63002271a484e7a4d6defe8d">MoveToCode.CodeBlockObjectMesh</a>
-, <a class="el" href="class_move_to_code_1_1_code_block_snap.html#a438957061918b55271dab930ad43253e">MoveToCode.CodeBlockSnap</a>
 </li>
 <li>GetMyData()
 : <a class="el" href="class_move_to_code_1_1_variable.html#a908ec4446bbff8144332811e230814a3">MoveToCode.Variable</a>
@@ -2213,7 +2212,7 @@ $(document).ready(function(){initNavTree('functions_g.html',''); initResizable()
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Apr 21 2021 08:31:18 for MoveToCode by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Apr 21 2021 10:47:04 for MoveToCode by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

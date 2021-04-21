@@ -1,5 +1,7 @@
 var NAVTREEINDEX66 =
 {
+"struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_editor_1_1_search_1_1_search_config.html#a784c3c9f8e98d637391defb894f66211":[1,0,0,0,0,22,0,0,4,4],
+"struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_editor_1_1_search_1_1_search_config.html#ad2aeb67c8100d99e8c6cc75f58c40fc1":[1,0,0,0,0,22,0,0,4,2],
 "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_mixed_reality_pose.html":[1,0,0,0,0,22,7],
 "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_mixed_reality_pose.html#a068fc2d7dfc4fb4390bf3f231445092e":[1,0,0,0,0,22,7,3],
 "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_mixed_reality_pose.html#a0b722167452d661c4b2e9f652cb7b9b6":[1,0,0,0,0,22,7,13],

@@ -66,6 +66,15 @@ namespace MoveToCode {
             SnapToCodeBlockManager(t);
             SnapToParent(t, origParent);
         }
+        public static T GetComponentInChildrenOnlyDepthOne<T>(this Transform t) {
+            foreach (Transform tmp in t) {
+                T cmp = tmp.GetComponent<T>();
+                if (cmp != null) {
+                    return cmp;
+                }
+            }
+            return default(T);
+        }
 
         public static void RotateTowardsUser(this Transform t) {
             t.rotation = Quaternion.LookRotation(Camera.main.transform.forward);
@@ -104,6 +113,10 @@ namespace MoveToCode {
                 result = null;
             }
             return result;
+        }
+
+        public static T GetComponentInChildrenOnlyDepthOne<T>(this GameObject go) {
+            return go.transform.GetComponentInChildrenOnlyDepthOne<T>();
         }
 
         // ObjectManipulator

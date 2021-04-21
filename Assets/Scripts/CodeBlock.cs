@@ -51,7 +51,7 @@ namespace MoveToCode {
 
         private void AddSnapColliderComponents() {
             codeBlockSnap = gameObject.AddComponent<CodeBlockSnap>();
-            snapColliders = GetComponentInChildren<SnapColliderGroup>();
+            snapColliders = gameObject.GetComponentInChildrenOnlyDepthOne<SnapColliderGroup>();
         }
 
 
@@ -70,7 +70,7 @@ namespace MoveToCode {
 
         public CodeBlockObjectMesh GetCodeBlockObjectMesh() {
             if (codeBlockObjectMesh == null) {
-                codeBlockObjectMesh = GetComponentInChildren<CodeBlockObjectMesh>();
+                codeBlockObjectMesh = gameObject.GetComponentInChildrenOnlyDepthOne<CodeBlockObjectMesh>();
             }
             return codeBlockObjectMesh;
         }
@@ -82,7 +82,7 @@ namespace MoveToCode {
         // this should be from object mesh
         public SnapColliderGroup GetSnapColliderGroup() {
             if (snapColliders == null) {
-                snapColliders = GetComponentInChildren<SnapColliderGroup>();
+                snapColliders = gameObject.GetComponentInChildrenOnlyDepthOne<SnapColliderGroup>();
             }
             return snapColliders;
         }
@@ -114,10 +114,7 @@ namespace MoveToCode {
         }
 
         private SnapCollider GetSnapColliderImAttachedTo() {
-            if (transform.parent == CodeBlockManager.instance.transform) {
-                return null;
-            }
-            return transform.parent.GetComponentInChildren<SnapCollider>();
+            return transform.parent.GetComponentInChildrenOnlyDepthOne<SnapCollider>();
         }
         public void RemoveFromParentSnapCollider(bool humanDidIt) {
             GetSnapColliderImAttachedTo()?.SetCodeBlockArg(null);

@@ -14,11 +14,6 @@ namespace MoveToCode {
         /// </summary>
         public static CodeBlockSnap CurrentlyDraggingCodeBlockSnap;
 
-        /// <summary>
-        /// Last CodeBlockSnap to be let go of by user
-        /// </summary>
-        public static CodeBlockSnap LastDraggingCodeBlockSnap;
-
         CodeBlock myCodeBlock;
         /// <summary>
         /// Pointer to my internal `CodeBlock`
@@ -53,7 +48,7 @@ namespace MoveToCode {
             manipulationHandler = GetComponent<ManipulationHandler>();
             manipulationHandler.OnManipulationStarted.AddListener(OnManipulationStart);
             manipulationHandler.OnManipulationEnded.AddListener(OnManipulationEnd);
-            snapColliderGroup = GetComponentInChildren<SnapColliderGroup>();
+            snapColliderGroup = gameObject.GetComponentInChildrenOnlyDepthOne<SnapColliderGroup>();
             ResetCBS();
         }
 
@@ -125,7 +120,6 @@ namespace MoveToCode {
             EvaluateBestCandidateCollider();
             CodeBlockManager.instance.DisableCollidersCompatibleCodeBlock(MyCodeBlock);
             ResetCBS();
-            LastDraggingCodeBlockSnap = this;
         }
 
         /// <summary>
@@ -153,12 +147,12 @@ namespace MoveToCode {
             CurrentlyDraggingCodeBlockSnap = null;
         }
 
-        /* private void OnEnable() {
-             ResetCBS();
-         }
+        private void OnEnable() {
+            AddSnapColliderInContact(null);
+        }
 
-         private void OnDisable() {
-             ResetCBS();
-         }*/
+        private void OnDisable() {
+            AddSnapColliderInContact(null);
+        }
     }
 }

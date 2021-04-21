@@ -17,7 +17,7 @@ namespace MoveToCode {
         }
         public CodeBlock MyCodeBlockArg {
             get {
-                return transform.parent.GetComponentInChildren<CodeBlock>();
+                return transform.parent.GetComponentInChildrenOnlyDepthOne<CodeBlock>();
             }
         }
         static Material OutlineMaterial { get; set; }
@@ -66,12 +66,12 @@ namespace MoveToCode {
         private void RemoveCurrentBlockArg() {
             if (MyCodeBlockArg != null) {
                 CodeBlock tmpargBlock = MyCodeBlockArg;
-                MyCodeBlockArg.transform.localPosition = MyCodeBlockArg.transform.localPosition + new Vector3(0.25f, 1.1f, 1.25f);
+                if (MyCodeBlockArg.GetCodeBlockSnap() != CodeBlockSnap.CurrentlyDraggingCodeBlockSnap) {
+                    MyCodeBlockArg.transform.localPosition = MyCodeBlockArg.transform.localPosition + new Vector3(0.25f, 1.1f, 1.25f);
+                }
                 tmpargBlock.transform.SnapToCodeBlockManager();
                 tmpargBlock.GetCodeBlockObjectMesh().ResizeChain();
                 AudioManager.instance.PlaySoundAtObject(MyCodeBlock.transform, AudioManager.popAudioClip);
-
-
                 // TODO: probably needs a log
             }
         }

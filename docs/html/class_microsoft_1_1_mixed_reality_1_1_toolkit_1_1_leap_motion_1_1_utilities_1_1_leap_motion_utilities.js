@@ -1,0 +1,4 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_leap_motion_1_1_utilities_1_1_leap_motion_utilities =
+[
+    [ "IsLeapInProject", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_leap_motion_1_1_utilities_1_1_leap_motion_utilities.html#a35889f2cf41526bfefaef863c7b12a4d", null ]
+];

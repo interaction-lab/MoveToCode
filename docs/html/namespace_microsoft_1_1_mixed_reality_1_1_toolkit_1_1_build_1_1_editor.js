@@ -1,0 +1,13 @@
+var namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_build_1_1_editor =
+[
+    [ "BuildDeployPreferences", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_build_1_1_editor_1_1_build_deploy_preferences.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_build_1_1_editor_1_1_build_deploy_preferences" ],
+    [ "BuildInfo", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_build_1_1_editor_1_1_build_info.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_build_1_1_editor_1_1_build_info" ],
+    [ "BuildInfoExtensions", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_build_1_1_editor_1_1_build_info_extensions.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_build_1_1_editor_1_1_build_info_extensions" ],
+    [ "IBuildInfo", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_build_1_1_editor_1_1_i_build_info.html", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_build_1_1_editor_1_1_i_build_info" ],
+    [ "UnityPlayerBuildTools", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_build_1_1_editor_1_1_unity_player_build_tools.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_build_1_1_editor_1_1_unity_player_build_tools" ],
+    [ "UwpAppxBuildTools", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_build_1_1_editor_1_1_uwp_appx_build_tools.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_build_1_1_editor_1_1_uwp_appx_build_tools" ],
+    [ "UwpBuildDeployPreferences", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_build_1_1_editor_1_1_uwp_build_deploy_preferences.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_build_1_1_editor_1_1_uwp_build_deploy_preferences" ],
+    [ "UwpBuildInfo", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_build_1_1_editor_1_1_uwp_build_info.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_build_1_1_editor_1_1_uwp_build_info" ],
+    [ "UwpPlayerBuildTools", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_build_1_1_editor_1_1_uwp_player_build_tools.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_build_1_1_editor_1_1_uwp_player_build_tools" ],
+    [ "BuildDeployWindow", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_build_1_1_editor_1_1_build_deploy_window.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_build_1_1_editor_1_1_build_deploy_window" ]
+];

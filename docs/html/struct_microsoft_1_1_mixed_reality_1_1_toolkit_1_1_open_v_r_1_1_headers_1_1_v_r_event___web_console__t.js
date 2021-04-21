@@ -1,0 +1,4 @@
+var struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_v_r_event___web_console__t =
+[
+    [ "webConsoleHandle", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_v_r_event___web_console__t.html#a72b19bb6bdb71b23de973e05f1ed96e4", null ]
+];

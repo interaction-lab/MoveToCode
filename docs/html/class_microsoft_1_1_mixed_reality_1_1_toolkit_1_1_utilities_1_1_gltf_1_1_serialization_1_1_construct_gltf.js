@@ -1,0 +1,5 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_gltf_1_1_serialization_1_1_construct_gltf =
+[
+    [ "Construct", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_gltf_1_1_serialization_1_1_construct_gltf.html#a3a0c234f76fe9f44aba0d972e9fb116d", null ],
+    [ "ConstructAsync", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_gltf_1_1_serialization_1_1_construct_gltf.html#a6571dd16db7df6cd21cc7c40265571a5", null ]
+];

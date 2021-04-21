@@ -1,0 +1,4 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_editor_1_1_speech_command_property_drawer =
+[
+    [ "OnGUI", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_editor_1_1_speech_command_property_drawer.html#ab6ca6aa95924de311c8015acc4e36b8f", null ]
+];

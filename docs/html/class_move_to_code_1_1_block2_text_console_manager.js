@@ -2,7 +2,6 @@ var class_move_to_code_1_1_block2_text_console_manager =
 [
     [ "AddFinishLine", "class_move_to_code_1_1_block2_text_console_manager.html#a2599b7fbc61368639bfba1d5e9870721", null ],
     [ "AddLine", "class_move_to_code_1_1_block2_text_console_manager.html#a368f167c0542f7db5afa5afa46b306e1", null ],
-    [ "Awake", "class_move_to_code_1_1_block2_text_console_manager.html#ae4d2a1920e2980ef9a053bd412da2bd7", null ],
     [ "ClearConsole", "class_move_to_code_1_1_block2_text_console_manager.html#a61324392433f43643febb0b3339d62c2", null ],
     [ "GetCleanedMainText", "class_move_to_code_1_1_block2_text_console_manager.html#a41d769bb4cd49b52cb2f34d80e04f0f2", null ],
     [ "GetHeaderConsole", "class_move_to_code_1_1_block2_text_console_manager.html#a5f2f374a2f307792987cb1cd6330f604", null ],
@@ -11,8 +10,5 @@ var class_move_to_code_1_1_block2_text_console_manager =
     [ "GetMainText", "class_move_to_code_1_1_block2_text_console_manager.html#a5f305068b252c0dec3906c7d17939842", null ],
     [ "SetHeaderText", "class_move_to_code_1_1_block2_text_console_manager.html#a9967868ba70c375b6308bdc79f708f1d", null ],
     [ "UpdateConsoleOnSnap", "class_move_to_code_1_1_block2_text_console_manager.html#a9bc7637b810dda62787a41cdf32ae8b7", null ],
-    [ "curInstruction", "class_move_to_code_1_1_block2_text_console_manager.html#a61ec66c298a9efd4d5806ff5a5304b4e", null ],
-    [ "finishedString", "class_move_to_code_1_1_block2_text_console_manager.html#a48ea1a7b6cde9da674b0ddd7b3494d5b", null ],
-    [ "headerConsole", "class_move_to_code_1_1_block2_text_console_manager.html#a22a8e3a304b81704063eb923739d44ea", null ],
-    [ "mainConsole", "class_move_to_code_1_1_block2_text_console_manager.html#a20c801435a7d46ced4b644c01c4eaf72", null ]
+    [ "finishedString", "class_move_to_code_1_1_block2_text_console_manager.html#a48ea1a7b6cde9da674b0ddd7b3494d5b", null ]
 ];

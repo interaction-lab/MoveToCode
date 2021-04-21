@@ -1,0 +1,13 @@
+var namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_camera_system =
+[
+    [ "BaseCameraSettingsProfile", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_camera_system_1_1_base_camera_settings_profile.html", null ],
+    [ "MixedRealityCameraSettingsConfiguration", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_camera_system_1_1_mixed_reality_camera_settings_configuration.html", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_camera_system_1_1_mixed_reality_camera_settings_configuration" ],
+    [ "IMixedRealityCameraSettingsProvider", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_camera_system_1_1_i_mixed_reality_camera_settings_provider.html", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_camera_system_1_1_i_mixed_reality_camera_settings_provider" ],
+    [ "IMixedRealityCameraSystem", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_camera_system_1_1_i_mixed_reality_camera_system.html", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_camera_system_1_1_i_mixed_reality_camera_system" ],
+    [ "BaseCameraSettingsProvider", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_camera_system_1_1_base_camera_settings_provider.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_camera_system_1_1_base_camera_settings_provider" ],
+    [ "MixedRealityCameraSystem", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_camera_system_1_1_mixed_reality_camera_system.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_camera_system_1_1_mixed_reality_camera_system" ],
+    [ "DisplayType", "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_camera_system.html#aa2b65d8d8b17a5a3ff7411deed52f1c0", [
+      [ "Opaque", "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_camera_system.html#aa2b65d8d8b17a5a3ff7411deed52f1c0afaa90538de35640e4b1e31ccf35b6eb5", null ],
+      [ "Transparent", "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_camera_system.html#aa2b65d8d8b17a5a3ff7411deed52f1c0a3d971943089a3388c01fb297a32d9ba7", null ]
+    ] ]
+];

@@ -1,0 +1,26 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_controller_pose_synchronizer =
+[
+    [ "OnInputChanged", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_controller_pose_synchronizer.html#a1db1d94fef4365c04f4342eaa9b60230", null ],
+    [ "OnInputChanged", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_controller_pose_synchronizer.html#af67308ef218e7eaffbbf4301dd7d506d", null ],
+    [ "OnInputChanged", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_controller_pose_synchronizer.html#a3a8bc5585c44305e3345fec69e5c3fef", null ],
+    [ "OnInputChanged", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_controller_pose_synchronizer.html#a4957ed02eb39b6680bad68ca209c5ebb", null ],
+    [ "OnInputChanged", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_controller_pose_synchronizer.html#ac3202075d08ffd2450dd941c3e3751bb", null ],
+    [ "OnInputDown", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_controller_pose_synchronizer.html#aa90d93d45b1ce16aad8c33b51abf242e", null ],
+    [ "OnInputUp", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_controller_pose_synchronizer.html#ad73ff2dd4004cda403cf146aa5dd0045", null ],
+    [ "OnSourceDetected", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_controller_pose_synchronizer.html#a0b0a2de023af9cdb2c5e581c00b37476", null ],
+    [ "OnSourceLost", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_controller_pose_synchronizer.html#a3f4a4a3f1d3c5a3bff18b09e48f4938d", null ],
+    [ "OnSourcePoseChanged", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_controller_pose_synchronizer.html#ad06bcd65af0216adfb455927a170a1ec", null ],
+    [ "OnSourcePoseChanged", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_controller_pose_synchronizer.html#add0f1182b42d41cf9cfc697e2686cc86", null ],
+    [ "OnSourcePoseChanged", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_controller_pose_synchronizer.html#adee5c30350c96b3b57cd303f44a516f1", null ],
+    [ "OnSourcePoseChanged", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_controller_pose_synchronizer.html#a0604ccaa43f631cb19ec897d8cffa6e2", null ],
+    [ "OnSourcePoseChanged", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_controller_pose_synchronizer.html#ab38ff0412876c62436abf0680e52284f", null ],
+    [ "RegisterHandlers", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_controller_pose_synchronizer.html#a84f3a9390dc30247bc27faf327bfa42d", null ],
+    [ "UnregisterHandlers", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_controller_pose_synchronizer.html#a1afc1b4cfb91efecc0439f8b6d6f241e", null ],
+    [ "TrackingState", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_controller_pose_synchronizer.html#af170e4270ec2b5057348095cc184c1b0", null ],
+    [ "Controller", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_controller_pose_synchronizer.html#abc8acf1e9558a50904d42f1a231bfdad", null ],
+    [ "DestroyOnSourceLost", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_controller_pose_synchronizer.html#a9cc174a9422cda0c2d06081db46d6f88", null ],
+    [ "Handedness", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_controller_pose_synchronizer.html#a09c845c495af7c9550a53f4c3800b408", null ],
+    [ "IsTracked", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_controller_pose_synchronizer.html#a913157f66769a446634766c8057e82b2", null ],
+    [ "PoseAction", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_controller_pose_synchronizer.html#aabf4ba68c10af53d0048887490c11391", null ],
+    [ "UseSourcePoseData", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_controller_pose_synchronizer.html#aecbed6455d9616b80fca3310613d3794", null ]
+];

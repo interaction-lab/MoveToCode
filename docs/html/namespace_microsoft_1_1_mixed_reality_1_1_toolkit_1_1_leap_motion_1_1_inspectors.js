@@ -1,0 +1,4 @@
+var namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_leap_motion_1_1_inspectors =
+[
+    [ "LeapMotionDeviceManagerProfileInspector", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_leap_motion_1_1_inspectors_1_1_leap_motion_device_manager_profile_inspector.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_leap_motion_1_1_inspectors_1_1_leap_motion_device_manager_profile_inspector" ]
+];

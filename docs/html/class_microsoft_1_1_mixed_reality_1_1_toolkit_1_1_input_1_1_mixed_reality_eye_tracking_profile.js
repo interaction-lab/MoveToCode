@@ -1,0 +1,4 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_mixed_reality_eye_tracking_profile =
+[
+    [ "SmoothEyeTracking", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_mixed_reality_eye_tracking_profile.html#ac20446c4241ddd571097211ba7114a68", null ]
+];

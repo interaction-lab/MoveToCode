@@ -1,0 +1,4 @@
+var namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_1_1_utilities =
+[
+    [ "WindowsApiChecker", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_1_1_utilities_1_1_windows_api_checker.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_1_1_utilities_1_1_windows_api_checker" ]
+];

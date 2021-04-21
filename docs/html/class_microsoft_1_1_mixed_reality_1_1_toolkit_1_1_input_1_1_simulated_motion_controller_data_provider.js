@@ -1,0 +1,5 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_simulated_motion_controller_data_provider =
+[
+    [ "SimulatedMotionControllerDataProvider", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_simulated_motion_controller_data_provider.html#a2c6ad1aba9be7a231b31a18fb509f05b", null ],
+    [ "UpdateControllerData", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_simulated_motion_controller_data_provider.html#a6486f2622cbd5ba5bb0422d296426583", null ]
+];

@@ -1,0 +1,4 @@
+var interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_i_mixed_reality_hand_visualizer =
+[
+    [ "TryGetJointTransform", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_i_mixed_reality_hand_visualizer.html#a11404a1d556bb94fb5cf4b7944e683c8", null ]
+];

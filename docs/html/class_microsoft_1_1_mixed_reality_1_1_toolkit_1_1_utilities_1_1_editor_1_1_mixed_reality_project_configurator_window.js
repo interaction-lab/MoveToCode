@@ -1,0 +1,6 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_editor_1_1_mixed_reality_project_configurator_window =
+[
+    [ "ShowWindow", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_editor_1_1_mixed_reality_project_configurator_window.html#a5b97b707d42a0f1a8892d981a6c25bba", null ],
+    [ "Instance", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_editor_1_1_mixed_reality_project_configurator_window.html#a6b0622e6126c56740593710d62c121a4", null ],
+    [ "IsOpen", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_editor_1_1_mixed_reality_project_configurator_window.html#a0cdc84e76afa11dcf7c0e681cbb3ead8", null ]
+];

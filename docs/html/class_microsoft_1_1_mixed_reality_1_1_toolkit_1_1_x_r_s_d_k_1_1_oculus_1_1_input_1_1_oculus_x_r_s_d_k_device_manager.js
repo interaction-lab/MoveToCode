@@ -1,0 +1,8 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_oculus_1_1_input_1_1_oculus_x_r_s_d_k_device_manager =
+[
+    [ "OculusXRSDKDeviceManager", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_oculus_1_1_input_1_1_oculus_x_r_s_d_k_device_manager.html#aad3c070344c905cee40672a75c52943b", null ],
+    [ "CheckCapability", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_oculus_1_1_input_1_1_oculus_x_r_s_d_k_device_manager.html#a2cc265a48934b66dabbd31907a896f0f", null ],
+    [ "GetControllerType", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_oculus_1_1_input_1_1_oculus_x_r_s_d_k_device_manager.html#af1400d916ab7b3f4942e793c16393099", null ],
+    [ "GetCurrentControllerType", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_oculus_1_1_input_1_1_oculus_x_r_s_d_k_device_manager.html#a788e92608f4e8a8592149124902ae61e", null ],
+    [ "GetInputSourceType", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_oculus_1_1_input_1_1_oculus_x_r_s_d_k_device_manager.html#a7e651f7da51fa8fffe8ebc3f2e69a283", null ]
+];

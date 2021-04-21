@@ -1,0 +1,4 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_network_interfaces =
+[
+    [ "Interfaces", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_network_interfaces.html#aeaf5dbe0b3890aae26e35884df02006b", null ]
+];

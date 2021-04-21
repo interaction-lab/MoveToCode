@@ -1,0 +1,25 @@
+var struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_scene_system_1_1_runtime_render_settings =
+[
+    [ "Black", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_scene_system_1_1_runtime_render_settings.html#ad1b6161af3f4b9dfc122fde4ddeb3cbc", null ],
+    [ "Lerp", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_scene_system_1_1_runtime_render_settings.html#a73f628386c4b2aa1fc3b849a146db809", null ],
+    [ "AmbientEquatorColor", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_scene_system_1_1_runtime_render_settings.html#a6eee0fd950c432d1d2b11e28c1ea2554", null ],
+    [ "AmbientGroundColor", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_scene_system_1_1_runtime_render_settings.html#a390b893aa1e203c72addb36c33f1381f", null ],
+    [ "AmbientIntensity", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_scene_system_1_1_runtime_render_settings.html#adeb098c1cfef146d3fba388ac313ff1f", null ],
+    [ "AmbientLight", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_scene_system_1_1_runtime_render_settings.html#a8559bc841d3b88b9499610f209882b11", null ],
+    [ "AmbientMode", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_scene_system_1_1_runtime_render_settings.html#a39f0764e6d4396240046c6e83aa3ec38", null ],
+    [ "AmbientSkyColor", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_scene_system_1_1_runtime_render_settings.html#a02acdec1933f4caee672cc807705e541", null ],
+    [ "CustomReflection", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_scene_system_1_1_runtime_render_settings.html#aa66251fc5806889d0f09c64bd1507894", null ],
+    [ "DefaultReflectionMode", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_scene_system_1_1_runtime_render_settings.html#a1e7f10a67e838d77dd2e334efd7efc22", null ],
+    [ "DefaultReflectionResolution", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_scene_system_1_1_runtime_render_settings.html#af379d46eeb604db06dad1af954061bb0", null ],
+    [ "Fog", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_scene_system_1_1_runtime_render_settings.html#a0ec8ae4e6234aed565371c13cbb72fb6", null ],
+    [ "FogColor", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_scene_system_1_1_runtime_render_settings.html#a6c6c591321e68b160459a3b866f62210", null ],
+    [ "FogDensity", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_scene_system_1_1_runtime_render_settings.html#a9c08a9a754c94bd2a8553f880dd6873e", null ],
+    [ "FogMode", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_scene_system_1_1_runtime_render_settings.html#a42f31d9f8c169e53c223d864783390f2", null ],
+    [ "LinearFogEnd", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_scene_system_1_1_runtime_render_settings.html#ad63a599a5b1b6f5f1a9044658272eaca", null ],
+    [ "LinearFogStart", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_scene_system_1_1_runtime_render_settings.html#a678d6bcc106447ff2c92d5e5bacf97e8", null ],
+    [ "ReflectionBounces", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_scene_system_1_1_runtime_render_settings.html#abb5138a03e8e965b04c51047ba1663fb", null ],
+    [ "ReflectionIntensity", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_scene_system_1_1_runtime_render_settings.html#ad91e3da738615b2af7c1b5d727d2f1e4", null ],
+    [ "SkyboxMaterial", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_scene_system_1_1_runtime_render_settings.html#ac1598c80a9d6aa378bd0b9e0870bf3ab", null ],
+    [ "SubtractiveShadowColor", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_scene_system_1_1_runtime_render_settings.html#afc5e1b8f7c872594563ba78035a0d4e2", null ],
+    [ "UseRadianceAmbientProbe", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_scene_system_1_1_runtime_render_settings.html#aa61b36460143cc0fcc6541c83bda3c14", null ]
+];

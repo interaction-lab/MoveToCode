@@ -1,0 +1,6 @@
+var namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_rendering =
+[
+    [ "IMaterialInstanceOwner", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_rendering_1_1_i_material_instance_owner.html", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_rendering_1_1_i_material_instance_owner" ],
+    [ "DepthBufferRenderer", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_rendering_1_1_depth_buffer_renderer.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_rendering_1_1_depth_buffer_renderer" ],
+    [ "MaterialInstance", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_rendering_1_1_material_instance.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_rendering_1_1_material_instance" ]
+];

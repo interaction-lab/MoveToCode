@@ -1,0 +1,5 @@
+var interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_mixed_reality_1_1_i_windows_mixed_reality_utilities_provider =
+[
+    [ "IHolographicFramePtr", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_mixed_reality_1_1_i_windows_mixed_reality_utilities_provider.html#a742153a9affcdb5ae934d2e0ed3ee9ee", null ],
+    [ "ISpatialCoordinateSystemPtr", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_mixed_reality_1_1_i_windows_mixed_reality_utilities_provider.html#a9ca20201d41d788a5f6983fb8d3f14ff", null ]
+];

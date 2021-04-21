@@ -1,0 +1,5 @@
+var struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_v_r_overlay_intersection_mask_primitive__t =
+[
+    [ "m_nPrimitiveType", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_v_r_overlay_intersection_mask_primitive__t.html#ad5d5eb93d2bdd4f164ee6dd4a391d283", null ],
+    [ "m_Primitive", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_v_r_overlay_intersection_mask_primitive__t.html#a6d7009ad5020e16a46b3b752e8630bd4", null ]
+];

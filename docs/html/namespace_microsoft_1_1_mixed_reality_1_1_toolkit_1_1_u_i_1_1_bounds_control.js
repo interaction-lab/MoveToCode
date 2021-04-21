@@ -1,0 +1,22 @@
+var namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control =
+[
+    [ "BoundsControl", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_bounds_control.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_bounds_control" ],
+    [ "BoxDisplay", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_box_display.html", null ],
+    [ "BoxDisplayConfiguration", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_box_display_configuration.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_box_display_configuration" ],
+    [ "HandlesBaseConfiguration", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_handles_base_configuration.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_handles_base_configuration" ],
+    [ "LinksConfiguration", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_links_configuration.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_links_configuration" ],
+    [ "PerAxisHandlesConfiguration", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_per_axis_handles_configuration.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_per_axis_handles_configuration" ],
+    [ "RotationHandlesConfiguration", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_rotation_handles_configuration.html", null ],
+    [ "ScaleHandlesConfiguration", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_scale_handles_configuration.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_scale_handles_configuration" ],
+    [ "TranslationHandlesConfiguration", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_translation_handles_configuration.html", null ],
+    [ "HandlesBase", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_handles_base.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_handles_base" ],
+    [ "Links", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_links.html", null ],
+    [ "PerAxisHandles", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_per_axis_handles.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_per_axis_handles" ],
+    [ "ProximityObjectsChangedEvent", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_proximity_objects_changed_event.html", null ],
+    [ "IProximityEffectObjectProvider", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_i_proximity_effect_object_provider.html", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_i_proximity_effect_object_provider" ],
+    [ "ProximityEffect", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_proximity_effect.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_proximity_effect" ],
+    [ "ProximityEffectConfiguration", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_proximity_effect_configuration.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_proximity_effect_configuration" ],
+    [ "RotationHandles", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_rotation_handles.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_rotation_handles" ],
+    [ "ScaleHandles", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_scale_handles.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_scale_handles" ],
+    [ "TranslationHandles", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_translation_handles.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_translation_handles" ]
+];

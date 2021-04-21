@@ -1,0 +1,25 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_mixed_reality_interaction_mapping =
+[
+    [ "MixedRealityInteractionMapping", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_mixed_reality_interaction_mapping.html#a032d0374ca239a0c478f02f39b8a5a3e", null ],
+    [ "MixedRealityInteractionMapping", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_mixed_reality_interaction_mapping.html#ad293440326121cec47160b4acd24530e", null ],
+    [ "MixedRealityInteractionMapping", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_mixed_reality_interaction_mapping.html#ad9afd3ea5546ce9add40903233fcff8d", null ],
+    [ "MixedRealityInteractionMapping", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_mixed_reality_interaction_mapping.html#a1afe75ad793ebde4a29119362d0a2146", null ],
+    [ "AxisCodeX", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_mixed_reality_interaction_mapping.html#af6cb0b65b0685f43a10d0b555ab953ff", null ],
+    [ "AxisCodeY", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_mixed_reality_interaction_mapping.html#ac2b80a5530fd72b9e66a20ca0816dedc", null ],
+    [ "AxisType", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_mixed_reality_interaction_mapping.html#a0f44acf46d3a09b8570bb8fd593418f7", null ],
+    [ "BoolData", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_mixed_reality_interaction_mapping.html#a6f402b7c525c07e2b32480884cd96d19", null ],
+    [ "Changed", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_mixed_reality_interaction_mapping.html#a4623973c60cf0658d3756fe21ae7f518", null ],
+    [ "Description", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_mixed_reality_interaction_mapping.html#a274bfaeefc94b0a3996fd21a9188b219", null ],
+    [ "FloatData", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_mixed_reality_interaction_mapping.html#aeb39a31934380e9730fe0e971c791570", null ],
+    [ "Id", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_mixed_reality_interaction_mapping.html#ab7f9e4eda399705e5fcc536c8a441650", null ],
+    [ "InputType", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_mixed_reality_interaction_mapping.html#a4364c3ec5b0d63c8de6e35ab584e6341", null ],
+    [ "InvertXAxis", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_mixed_reality_interaction_mapping.html#a3ef72e46ee6dfad621d6fa070c32dc25", null ],
+    [ "InvertYAxis", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_mixed_reality_interaction_mapping.html#a10559b3e5e86facaf875c32fcd14c948", null ],
+    [ "KeyCode", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_mixed_reality_interaction_mapping.html#a6d7b906e1599f8c6852f3ccd87690546", null ],
+    [ "MixedRealityInputAction", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_mixed_reality_interaction_mapping.html#a6756e5d7f1bb74761c8a015b3eea2b93", null ],
+    [ "PoseData", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_mixed_reality_interaction_mapping.html#afba16a3d5e60d67ff7097fd387a22359", null ],
+    [ "PositionData", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_mixed_reality_interaction_mapping.html#a8e85862f78c94cb434467ffd2612dc6c", null ],
+    [ "RawData", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_mixed_reality_interaction_mapping.html#a1ec47d6bb939fc4895e4d7873556813e", null ],
+    [ "RotationData", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_mixed_reality_interaction_mapping.html#ab3a3f5bc698872235efbbf17828e8d47", null ],
+    [ "Vector2Data", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_mixed_reality_interaction_mapping.html#aff385be7ee07e923a9966dd6ac91c143", null ]
+];

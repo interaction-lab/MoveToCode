@@ -1,0 +1,4 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_diagnostics_1_1_diagnostics_system_manager =
+[
+    [ "OnDestroy", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_diagnostics_1_1_diagnostics_system_manager.html#a702cec0c02c1b8fbc3357fe36ab91b8f", null ]
+];

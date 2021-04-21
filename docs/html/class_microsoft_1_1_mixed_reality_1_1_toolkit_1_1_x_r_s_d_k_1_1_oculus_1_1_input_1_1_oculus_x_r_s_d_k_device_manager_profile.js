@@ -1,0 +1,15 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_oculus_1_1_input_1_1_oculus_x_r_s_d_k_device_manager_profile =
+[
+    [ "ApplyConfiguredPerformanceSettings", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_oculus_1_1_input_1_1_oculus_x_r_s_d_k_device_manager_profile.html#a0d153f8fe1f095202d35db0c7e21bd37", null ],
+    [ "OnCustomHandMaterialUpdate", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_oculus_1_1_input_1_1_oculus_x_r_s_d_k_device_manager_profile.html#a37cd7cacedba0b0add49ff6ccf7d62ce", null ],
+    [ "CPULevel", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_oculus_1_1_input_1_1_oculus_x_r_s_d_k_device_manager_profile.html#a85fd1d4c9abf29842cc9912e2e4243bd", null ],
+    [ "CustomHandMaterial", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_oculus_1_1_input_1_1_oculus_x_r_s_d_k_device_manager_profile.html#a22de9fb809b7a54860d374abada8a8ea", null ],
+    [ "GPULevel", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_oculus_1_1_input_1_1_oculus_x_r_s_d_k_device_manager_profile.html#a28f363ba3c90514a22eb76c16078f128", null ],
+    [ "LocalAvatarPrefab", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_oculus_1_1_input_1_1_oculus_x_r_s_d_k_device_manager_profile.html#ae7c4b536fae07e5b4148658c38dd2bab", null ],
+    [ "LowConfidenceTimeThreshold", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_oculus_1_1_input_1_1_oculus_x_r_s_d_k_device_manager_profile.html#a10136247ddaafe5422f3d4e172285f84", null ],
+    [ "OVRCameraRigPrefab", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_oculus_1_1_input_1_1_oculus_x_r_s_d_k_device_manager_profile.html#a22a704dfdc8f37a29c3f3560179003f6", null ],
+    [ "PinchStrengthMaterialProperty", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_oculus_1_1_input_1_1_oculus_x_r_s_d_k_device_manager_profile.html#aa3c8175d7b2abb927d0ed28c0adce145", null ],
+    [ "RenderAvatarHandsInsteadOfController", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_oculus_1_1_input_1_1_oculus_x_r_s_d_k_device_manager_profile.html#ab0eddaae599bf6438397e17752cde58c", null ],
+    [ "UpdateMaterialPinchStrengthValue", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_oculus_1_1_input_1_1_oculus_x_r_s_d_k_device_manager_profile.html#a5415d0b2d3744b237ef62ae3e3d3354e", null ],
+    [ "UseCustomHandMaterial", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_oculus_1_1_input_1_1_oculus_x_r_s_d_k_device_manager_profile.html#aef87e9f1f080d4db46d5a1084f269623", null ]
+];

@@ -1,0 +1,9 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_mixed_reality_spatial_awareness_event_data =
+[
+    [ "MixedRealitySpatialAwarenessEventData", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_mixed_reality_spatial_awareness_event_data.html#ad57d1fe1053a28f2fb4b7c6b9760cd60", null ],
+    [ "MixedRealitySpatialAwarenessEventData", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_mixed_reality_spatial_awareness_event_data.html#ad57d1fe1053a28f2fb4b7c6b9760cd60", null ],
+    [ "Initialize", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_mixed_reality_spatial_awareness_event_data.html#a90759eb00b299f3247e6d1699229a218", null ],
+    [ "Initialize", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_mixed_reality_spatial_awareness_event_data.html#a22516e8cfe6aeecd2bbf17a469527461", null ],
+    [ "Id", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_mixed_reality_spatial_awareness_event_data.html#ae565034a1123b7cf173ed95e3dc98325", null ],
+    [ "SpatialObject", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_mixed_reality_spatial_awareness_event_data.html#a79e93910a47eecd13620a8d31cb1937e", null ]
+];

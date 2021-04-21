@@ -1,0 +1,6 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_editor_1_1_spatial_awareness_1_1_mixed_reality03f2321d2aea44e609477ab8f7d24941 =
+[
+    [ "IsProfileInActiveInstance", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_editor_1_1_spatial_awareness_1_1_mixed_reality03f2321d2aea44e609477ab8f7d24941.html#a35e2375e75d8e7a435d41f6ed13f62c7", null ],
+    [ "OnEnable", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_editor_1_1_spatial_awareness_1_1_mixed_reality03f2321d2aea44e609477ab8f7d24941.html#af6c88cd4f94d7615c7f96c31c39d242a", null ],
+    [ "OnInspectorGUI", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_editor_1_1_spatial_awareness_1_1_mixed_reality03f2321d2aea44e609477ab8f7d24941.html#a8931fff71eb305f87ff6f6f60b5c03b4", null ]
+];

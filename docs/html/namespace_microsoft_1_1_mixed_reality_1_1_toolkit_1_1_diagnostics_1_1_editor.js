@@ -1,0 +1,4 @@
+var namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_diagnostics_1_1_editor =
+[
+    [ "MixedRealityDiagnosticsSystemProfileInspector", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_diagnostics_1_1_editor_1_1_mixed_reality_diagnostics_system_profile_inspector.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_diagnostics_1_1_editor_1_1_mixed_reality_diagnostics_system_profile_inspector" ]
+];

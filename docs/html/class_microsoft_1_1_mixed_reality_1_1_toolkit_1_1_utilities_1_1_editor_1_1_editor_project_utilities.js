@@ -1,0 +1,5 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_editor_1_1_editor_project_utilities =
+[
+    [ "CheckMinimumEditorVersion", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_editor_1_1_editor_project_utilities.html#a5d1c84469f652b309fceb7c6c4075bb5", null ],
+    [ "FindRelativeDirectory", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_editor_1_1_editor_project_utilities.html#a1ba46a6fdf6591c80fc203a0088c2b79", null ]
+];

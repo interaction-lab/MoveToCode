@@ -1,0 +1,10 @@
+var struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_mixed_reality_spatial_observer_configuration =
+[
+    [ "MixedRealitySpatialObserverConfiguration", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_mixed_reality_spatial_observer_configuration.html#a105f7bd3788c54b05f7c1be237f221bb", null ],
+    [ "ComponentName", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_mixed_reality_spatial_observer_configuration.html#a3f397177981366ecbd31ed4484f827d6", null ],
+    [ "ComponentType", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_mixed_reality_spatial_observer_configuration.html#a38b0e97ee184b5ca87dcd37684e0638b", null ],
+    [ "ObserverProfile", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_mixed_reality_spatial_observer_configuration.html#a026062bbc0e54311bbbd272181ea4659", null ],
+    [ "Priority", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_mixed_reality_spatial_observer_configuration.html#af8180409417d920e3c474e8ed171774d", null ],
+    [ "Profile", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_mixed_reality_spatial_observer_configuration.html#a3626da81909cfff05a7b1bdae374c9ad", null ],
+    [ "RuntimePlatform", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_mixed_reality_spatial_observer_configuration.html#a98887ed05841d48611ebfb190003a05b", null ]
+];

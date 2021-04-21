@@ -1,0 +1,4 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_object_mesh_observer_1_1_spatial_object_mesh_observer_profile =
+[
+    [ "SpatialMeshObject", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_object_mesh_observer_1_1_spatial_object_mesh_observer_profile.html#afd118cd939c22114504a6cffea549530", null ]
+];

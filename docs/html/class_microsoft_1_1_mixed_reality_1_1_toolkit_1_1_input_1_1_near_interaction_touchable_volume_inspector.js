@@ -1,0 +1,4 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_near_interaction_touchable_volume_inspector =
+[
+    [ "OnInspectorGUI", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_near_interaction_touchable_volume_inspector.html#a734b0c4bf9784d4e62c5987b951e9561", null ]
+];

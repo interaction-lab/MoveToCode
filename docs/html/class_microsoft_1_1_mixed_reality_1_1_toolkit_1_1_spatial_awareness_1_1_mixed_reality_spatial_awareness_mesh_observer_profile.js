@@ -1,0 +1,11 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_mixed_reality_spatial_awareness_mesh_observer_profile =
+[
+    [ "DisplayOption", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_mixed_reality_spatial_awareness_mesh_observer_profile.html#adeba43549aed41cd618f16604b22089e", null ],
+    [ "LevelOfDetail", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_mixed_reality_spatial_awareness_mesh_observer_profile.html#adf4a5548159e03394ff2306d370cf77a", null ],
+    [ "MeshPhysicsLayer", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_mixed_reality_spatial_awareness_mesh_observer_profile.html#a98b57ce413d19efb0cc8d2226ce9a29d", null ],
+    [ "OcclusionMaterial", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_mixed_reality_spatial_awareness_mesh_observer_profile.html#a74532d19861dc1db0fbce9996257e3c7", null ],
+    [ "PhysicsMaterial", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_mixed_reality_spatial_awareness_mesh_observer_profile.html#a058304a77f70ac81f2ebe644a56e5855", null ],
+    [ "RecalculateNormals", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_mixed_reality_spatial_awareness_mesh_observer_profile.html#a5bce81d193ab552b57293be84c749e60", null ],
+    [ "TrianglesPerCubicMeter", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_mixed_reality_spatial_awareness_mesh_observer_profile.html#adf40efd183c9647801946842c34a6575", null ],
+    [ "VisibleMaterial", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_mixed_reality_spatial_awareness_mesh_observer_profile.html#a41be7988803e76c07b09f1fae08f76c8", null ]
+];

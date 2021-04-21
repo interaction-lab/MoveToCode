@@ -1,0 +1,9 @@
+var interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_i_proximity_effect_object_provider =
+[
+    [ "ForEachProximityObject", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_i_proximity_effect_object_provider.html#a84443cca3a13db328c3f855582a74f97", null ],
+    [ "GetBaseMaterial", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_i_proximity_effect_object_provider.html#a1ba1de7b02b44b20b75a73e7119d2152", null ],
+    [ "GetHighlightedMaterial", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_i_proximity_effect_object_provider.html#a3d8b55313dd8ba02b72ad0c5835f6f72", null ],
+    [ "GetObjectSize", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_i_proximity_effect_object_provider.html#a7b21c8fc4ee314cfc3012866c414abc1", null ],
+    [ "IsActive", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_i_proximity_effect_object_provider.html#aa9f4b5b4cf214e9550084ffe35da0102", null ],
+    [ "ProximityObjectsChanged", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_bounds_control_1_1_i_proximity_effect_object_provider.html#a95bd1266aa0638818e6336389f0df3bf", null ]
+];

@@ -1,0 +1,6 @@
+var interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_i_mixed_reality_spat2eda3554410881dfc4c43928649cae1f =
+[
+    [ "OnObservationAdded", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_i_mixed_reality_spat2eda3554410881dfc4c43928649cae1f.html#a3dd24c162cc199fbf4082da4a735fd9c", null ],
+    [ "OnObservationRemoved", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_i_mixed_reality_spat2eda3554410881dfc4c43928649cae1f.html#a6ab20f3c8cfade90286cf24c3ebb3045", null ],
+    [ "OnObservationUpdated", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_i_mixed_reality_spat2eda3554410881dfc4c43928649cae1f.html#afa6c8e4d640240f8d862e9f81b50265c", null ]
+];

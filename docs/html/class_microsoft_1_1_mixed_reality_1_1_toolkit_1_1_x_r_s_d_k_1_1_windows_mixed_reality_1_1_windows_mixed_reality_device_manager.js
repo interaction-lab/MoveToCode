@@ -1,0 +1,8 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_windows_mixed_reality_1_1_windows_mixed_reality_device_manager =
+[
+    [ "WindowsMixedRealityDeviceManager", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_windows_mixed_reality_1_1_windows_mixed_reality_device_manager.html#a3b34f5d592d0bfb96c8b26c67969d295", null ],
+    [ "CheckCapability", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_windows_mixed_reality_1_1_windows_mixed_reality_device_manager.html#a35f79463ccc479432996fcb2c0d3b7f9", null ],
+    [ "GetControllerType", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_windows_mixed_reality_1_1_windows_mixed_reality_device_manager.html#a22719e80db8a9410d9d31d677a706d0e", null ],
+    [ "GetCurrentControllerType", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_windows_mixed_reality_1_1_windows_mixed_reality_device_manager.html#a0c7a79885ca5675f6af0838f727cbf2a", null ],
+    [ "GetInputSourceType", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_windows_mixed_reality_1_1_windows_mixed_reality_device_manager.html#ab5145680c0aa010b26298d8d46aed6c0", null ]
+];

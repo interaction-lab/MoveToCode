@@ -1,0 +1,28 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_mixed_reality_toolkit_configuration_profile =
+[
+    [ "BoundarySystemSystemType", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_mixed_reality_toolkit_configuration_profile.html#a3a939988a3fa6ffa269efd52c351d6c6", null ],
+    [ "BoundaryVisualizationProfile", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_mixed_reality_toolkit_configuration_profile.html#a5ee112ced45f7b3702a1e97852880c8f", null ],
+    [ "CameraProfile", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_mixed_reality_toolkit_configuration_profile.html#a89f0c2a8ccad8e35fa2629f025b8c986", null ],
+    [ "CameraSystemType", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_mixed_reality_toolkit_configuration_profile.html#a8a11b542e2a0ec1b090a4945dbbb1fdf", null ],
+    [ "DiagnosticsSystemProfile", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_mixed_reality_toolkit_configuration_profile.html#a86ce592825b2128d2277b9679b09847d", null ],
+    [ "DiagnosticsSystemSystemType", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_mixed_reality_toolkit_configuration_profile.html#ab4bd8f9e5003c72d5a5d98a0d9f19fa0", null ],
+    [ "EnableVerboseLogging", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_mixed_reality_toolkit_configuration_profile.html#aed82d584b369d44d3b37a7a2ab4f3017", null ],
+    [ "InputSystemProfile", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_mixed_reality_toolkit_configuration_profile.html#aa95196630f707c967bb9ae53fe9144b9", null ],
+    [ "InputSystemType", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_mixed_reality_toolkit_configuration_profile.html#acbd058afb69a90410982d009339bbe91", null ],
+    [ "IsBoundarySystemEnabled", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_mixed_reality_toolkit_configuration_profile.html#ae54e6e8c14b1bd9dee3ed5f13beea6c2", null ],
+    [ "IsCameraSystemEnabled", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_mixed_reality_toolkit_configuration_profile.html#a9fe40a7dc4463a39d18f9b1ec5806b94", null ],
+    [ "IsDiagnosticsSystemEnabled", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_mixed_reality_toolkit_configuration_profile.html#a0be5c70561ccbf14aac11ec2b062e77d", null ],
+    [ "IsInputSystemEnabled", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_mixed_reality_toolkit_configuration_profile.html#ae5a58e095709b21a4bd465e342c1a562", null ],
+    [ "IsSceneSystemEnabled", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_mixed_reality_toolkit_configuration_profile.html#a0a09bd0f94e6d46813981d1ac93174d9", null ],
+    [ "IsSpatialAwarenessSystemEnabled", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_mixed_reality_toolkit_configuration_profile.html#a901e1c1160bc1689333b3059dee53a5e", null ],
+    [ "IsTeleportSystemEnabled", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_mixed_reality_toolkit_configuration_profile.html#ab3072777daa3e4e218bc80666f87412e", null ],
+    [ "RegisteredServiceProvidersProfile", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_mixed_reality_toolkit_configuration_profile.html#a6c336c834cb7230ca06746901194bb2e", null ],
+    [ "RenderDepthBuffer", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_mixed_reality_toolkit_configuration_profile.html#a755ede669aa91814352afbb87e305383", null ],
+    [ "SceneSystemProfile", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_mixed_reality_toolkit_configuration_profile.html#a32c96eec9613c4074322125794eb8b87", null ],
+    [ "SceneSystemSystemType", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_mixed_reality_toolkit_configuration_profile.html#a7bdb7ebee729bda6be641a982babafe9", null ],
+    [ "SpatialAwarenessSystemProfile", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_mixed_reality_toolkit_configuration_profile.html#a289653d01c0dc707cfa834281f11b947", null ],
+    [ "SpatialAwarenessSystemSystemType", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_mixed_reality_toolkit_configuration_profile.html#aaaea96adb1a69cbcf25f2aba38fdc1e2", null ],
+    [ "TargetExperienceScale", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_mixed_reality_toolkit_configuration_profile.html#a519574e2866d93d368ba7b78dcdc7af8", null ],
+    [ "TeleportSystemSystemType", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_mixed_reality_toolkit_configuration_profile.html#aa4d4d6b289a77405e97be7686be46933", null ],
+    [ "UseServiceInspectors", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_mixed_reality_toolkit_configuration_profile.html#aa49c3452461839201ac049ce3c112f33", null ]
+];

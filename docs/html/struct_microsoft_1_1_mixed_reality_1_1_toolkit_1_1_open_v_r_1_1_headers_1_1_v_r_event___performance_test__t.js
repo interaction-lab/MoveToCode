@@ -1,0 +1,4 @@
+var struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_v_r_event___performance_test__t =
+[
+    [ "m_nFidelityLevel", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_v_r_event___performance_test__t.html#a94a0f0dd81811e09179ffb3426ff4f5d", null ]
+];

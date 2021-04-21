@@ -1,0 +1,28 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_device_portal =
+[
+    [ "ConnectToWiFiNetworkAsync", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_device_portal.html#a596d87693eec040548d3dc4101701a85", null ],
+    [ "DownloadLogFileAsync", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_device_portal.html#a1441e3f80b7e7ef4cb7cacb9ade4d329", null ],
+    [ "EnsureAuthenticationAsync", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_device_portal.html#ad5cc55806599dd5d4c6b278e441537a8", null ],
+    [ "FinalizeUrl", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_device_portal.html#aa851290a5775241151aa26d0225fb6bf", null ],
+    [ "GetAllInstalledAppsAsync", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_device_portal.html#a82c7013a5cf8d98423ef3b33c6e93673", null ],
+    [ "GetAvailableWiFiNetworksAsync", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_device_portal.html#aeafaa55cf974daf60dfa839fcd36921d", null ],
+    [ "GetBatteryStateAsync", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_device_portal.html#af330a5b65a201b1defac0bdeaf587f13", null ],
+    [ "GetDeviceOsInfoAsync", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_device_portal.html#a9f4803b864d9865d2ddd3cc059af21cc", null ],
+    [ "GetIpConfigInfoAsync", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_device_portal.html#ae6fc7a03d67656b431a16fd573bf16f8", null ],
+    [ "GetMachineNameAsync", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_device_portal.html#a0fd1c4492770a2c7ef7e275b2111c468", null ],
+    [ "GetPowerStateAsync", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_device_portal.html#a8e71c323019bbb7006cc8f7adede938c", null ],
+    [ "GetWiFiNetworkInterfacesAsync", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_device_portal.html#a17033f56573b5e5f894140ecfeaa5a5b", null ],
+    [ "InstallAppAsync", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_device_portal.html#a320adf4a96b0c3a37138ec9262a8ac22", null ],
+    [ "IsAppInstalledAsync", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_device_portal.html#a58c1ddb5e8e16a1be22abb060ae19410", null ],
+    [ "IsAppRunningAsync", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_device_portal.html#ae9a49345cee965437e504e6528aecf54", null ],
+    [ "LaunchAppAsync", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_device_portal.html#a75d2c16e356f7e8ec878598e308fc8ef", null ],
+    [ "OpenWebPortal", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_device_portal.html#ab74ccce1678184f5f7b216ae2c23d9f6", null ],
+    [ "RefreshCsrfTokenAsync", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_device_portal.html#ac10099edead2bfc29e168006ac851b71", null ],
+    [ "RestartAsync", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_device_portal.html#a101e636d46116047cf773a3f68933c02", null ],
+    [ "ShutdownAsync", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_device_portal.html#a2b459df70b90ba5658622706d6378624", null ],
+    [ "StopAppAsync", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_device_portal.html#a3c06cb978336d608c9e74ef381a52666", null ],
+    [ "UninstallAppAsync", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_device_portal.html#aedd172d3d8f40c583a7da4f7b3fb961f", null ],
+    [ "DevicePortalCertificateHandler", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_device_portal.html#abadb1b1ccd6b06681258d8f44cadaf19", null ],
+    [ "UseSSL", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_device_portal.html#af4f0fd6ad6b7e01e6cbbe6f8b6e35a1c", null ],
+    [ "VerifySSLCertificates", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_device_portal.html#af376323e51030f6ebbcb8e580116866a", null ]
+];

@@ -1,0 +1,6 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_editor_1_1_mixed_reality_speech_commands_profile_inspector =
+[
+    [ "IsProfileInActiveInstance", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_editor_1_1_mixed_reality_speech_commands_profile_inspector.html#aa58de3c2f800d2b4dfa558b28555c345", null ],
+    [ "OnEnable", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_editor_1_1_mixed_reality_speech_commands_profile_inspector.html#aa1e5fe0e3c905c62b2d0a792ef629f5e", null ],
+    [ "OnInspectorGUI", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_editor_1_1_mixed_reality_speech_commands_profile_inspector.html#a5c9d4b4346887c78ee0d1b0730235fab", null ]
+];

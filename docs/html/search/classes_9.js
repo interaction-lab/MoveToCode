@@ -1,9 +1,20 @@
 var searchData=
 [
-  ['keyboardtestingscript_1041',['KeyboardTestingScript',['../class_keyboard_testing_script.html',1,'']]],
-  ['kuriemotestringpublisher_1042',['KuriEmoteStringPublisher',['../class_ros_sharp_1_1_ros_bridge_client_1_1_kuri_emote_string_publisher.html',1,'RosSharp::RosBridgeClient']]],
-  ['kurimanager_1043',['KuriManager',['../class_move_to_code_1_1_kuri_manager.html',1,'MoveToCode']]],
-  ['kuriphrase_1044',['KuriPhrase',['../class_move_to_code_1_1_kuri_phrase.html',1,'MoveToCode']]],
-  ['kuriphrasemanager_1045',['KuriPhraseManager',['../class_move_to_code_1_1_kuri_phrase_manager.html',1,'MoveToCode']]],
-  ['kuritextmanager_1046',['KuriTextManager',['../class_move_to_code_1_1_kuri_text_manager.html',1,'MoveToCode']]]
+  ['jointkinematicbody_10992',['JointKinematicBody',['../class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_extensions_1_1_hand_physics_1_1_joint_kinematic_body.html',1,'Microsoft::MixedReality::Toolkit::Extensions::HandPhysics']]],
+  ['jointstatepatcher_10993',['JointStatePatcher',['../class_ros_sharp_1_1_ros_bridge_client_1_1_joint_state_patcher.html',1,'RosSharp::RosBridgeClient']]],
+  ['jointstatepatchereditor_10994',['JointStatePatcherEditor',['../class_ros_sharp_1_1_ros_bridge_client_1_1_joint_state_patcher_editor.html',1,'RosSharp::RosBridgeClient']]],
+  ['jointstatepublisher_10995',['JointStatePublisher',['../class_ros_sharp_1_1_ros_bridge_client_1_1_joint_state_publisher.html',1,'RosSharp::RosBridgeClient']]],
+  ['jointstatereader_10996',['JointStateReader',['../class_ros_sharp_1_1_ros_bridge_client_1_1_joint_state_reader.html',1,'RosSharp::RosBridgeClient']]],
+  ['jointstatesubscriber_10997',['JointStateSubscriber',['../class_ros_sharp_1_1_ros_bridge_client_1_1_joint_state_subscriber.html',1,'RosSharp::RosBridgeClient']]],
+  ['jointstatewriter_10998',['JointStateWriter',['../class_ros_sharp_1_1_ros_bridge_client_1_1_joint_state_writer.html',1,'RosSharp::RosBridgeClient']]],
+  ['joyaxisinputpasser_10999',['JoyAxisInputPasser',['../class_ros_sharp_1_1_ros_bridge_client_1_1_joy_axis_input_passer.html',1,'RosSharp::RosBridgeClient']]],
+  ['joyaxisjointmotorwriter_11000',['JoyAxisJointMotorWriter',['../class_ros_sharp_1_1_ros_bridge_client_1_1_joy_axis_joint_motor_writer.html',1,'RosSharp::RosBridgeClient']]],
+  ['joyaxisjointtransformwriter_11001',['JoyAxisJointTransformWriter',['../class_ros_sharp_1_1_ros_bridge_client_1_1_joy_axis_joint_transform_writer.html',1,'RosSharp::RosBridgeClient']]],
+  ['joyaxisreader_11002',['JoyAxisReader',['../class_ros_sharp_1_1_ros_bridge_client_1_1_joy_axis_reader.html',1,'RosSharp::RosBridgeClient']]],
+  ['joyaxiswriter_11003',['JoyAxisWriter',['../class_ros_sharp_1_1_ros_bridge_client_1_1_joy_axis_writer.html',1,'RosSharp::RosBridgeClient']]],
+  ['joybuttonreader_11004',['JoyButtonReader',['../class_ros_sharp_1_1_ros_bridge_client_1_1_joy_button_reader.html',1,'RosSharp::RosBridgeClient']]],
+  ['joybuttonwriter_11005',['JoyButtonWriter',['../class_ros_sharp_1_1_ros_bridge_client_1_1_joy_button_writer.html',1,'RosSharp::RosBridgeClient']]],
+  ['joypublisher_11006',['JoyPublisher',['../class_ros_sharp_1_1_ros_bridge_client_1_1_joy_publisher.html',1,'RosSharp::RosBridgeClient']]],
+  ['joystickcontroller_11007',['JoystickController',['../class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_joystick_1_1_joystick_controller.html',1,'Microsoft::MixedReality::Toolkit::Experimental::Joystick']]],
+  ['joysubscriber_11008',['JoySubscriber',['../class_ros_sharp_1_1_ros_bridge_client_1_1_joy_subscriber.html',1,'RosSharp::RosBridgeClient']]]
 ];

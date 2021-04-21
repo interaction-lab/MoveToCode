@@ -1,0 +1,6 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_gltf_1_1_schema_1_1_gltf_accessor_sparse_indices =
+[
+    [ "bufferView", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_gltf_1_1_schema_1_1_gltf_accessor_sparse_indices.html#a9c6e3c53d20defa5980d1dfb51188fb6", null ],
+    [ "byteOffset", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_gltf_1_1_schema_1_1_gltf_accessor_sparse_indices.html#ac9ad1bdb85957d7aa4499ba497f4c0fd", null ],
+    [ "ComponentType", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_gltf_1_1_schema_1_1_gltf_accessor_sparse_indices.html#a8aa987ba0c4e388dd92cd8b8e82442c1", null ]
+];

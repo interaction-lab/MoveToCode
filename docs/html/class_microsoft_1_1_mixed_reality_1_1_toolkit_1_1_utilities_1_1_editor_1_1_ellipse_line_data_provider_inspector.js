@@ -1,0 +1,5 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_editor_1_1_ellipse_line_data_provider_inspector =
+[
+    [ "OnEnable", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_editor_1_1_ellipse_line_data_provider_inspector.html#af7896fa118ed7773e2bc420342291b46", null ],
+    [ "OnInspectorGUI", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_editor_1_1_ellipse_line_data_provider_inspector.html#a1065793385b11198a1eb40bfc49b5cd2", null ]
+];

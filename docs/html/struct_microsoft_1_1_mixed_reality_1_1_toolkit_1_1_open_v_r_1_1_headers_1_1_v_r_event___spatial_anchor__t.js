@@ -1,0 +1,4 @@
+var struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_v_r_event___spatial_anchor__t =
+[
+    [ "unHandle", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_v_r_event___spatial_anchor__t.html#a2b78719e1f61b83cffcfac376edad74d", null ]
+];

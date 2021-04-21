@@ -1,0 +1,7 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_windows_mixed_reality_1_1_windowf4fa7663eadb842732565592e00d4694 =
+[
+    [ "WindowsMixedRealityXRSDKMotionController", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_windows_mixed_reality_1_1_windowf4fa7663eadb842732565592e00d4694.html#a690afeeeaf40f4fba1fd30d930f6e3dc", null ],
+    [ "UpdateButtonData", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_windows_mixed_reality_1_1_windowf4fa7663eadb842732565592e00d4694.html#af8193fa119658ca7b43aa21db625744f", null ],
+    [ "UpdateDualAxisData", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_windows_mixed_reality_1_1_windowf4fa7663eadb842732565592e00d4694.html#a2cbd3768e6b4657bcf9bced2bf57553a", null ],
+    [ "DefaultInteractions", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_windows_mixed_reality_1_1_windowf4fa7663eadb842732565592e00d4694.html#a5738c841dcb397d7c4cce68036594310", null ]
+];

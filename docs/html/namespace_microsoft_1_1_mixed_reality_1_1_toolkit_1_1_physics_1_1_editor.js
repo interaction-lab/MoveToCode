@@ -1,0 +1,4 @@
+var namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_physics_1_1_editor =
+[
+    [ "PhysicsLayerAttributeDrawer", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_physics_1_1_editor_1_1_physics_layer_attribute_drawer.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_physics_1_1_editor_1_1_physics_layer_attribute_drawer" ]
+];

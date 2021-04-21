@@ -1,0 +1,4 @@
+var struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_v_r_event___screenshot_progress__t =
+[
+    [ "progress", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_v_r_event___screenshot_progress__t.html#a2b61a3922f76ba3d14c343de98e70a15", null ]
+];

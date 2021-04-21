@@ -1,0 +1,5 @@
+var interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_camera_system_1_1_i_mixed_reality_camera_settings_provider =
+[
+    [ "ApplyConfiguration", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_camera_system_1_1_i_mixed_reality_camera_settings_provider.html#a026d0659381c00d61b121d67be1c3687", null ],
+    [ "IsOpaque", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_camera_system_1_1_i_mixed_reality_camera_settings_provider.html#a02499965176cdc9b64ea16a3a02f7120", null ]
+];

@@ -1,0 +1,4 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_mixed_reality_spatial_awareness_system_profile =
+[
+    [ "ObserverConfigurations", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_mixed_reality_spatial_awareness_system_profile.html#a6e6b6bccfc2081186a31b5a6040fd3bc", null ]
+];

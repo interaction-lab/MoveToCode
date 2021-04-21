@@ -1,0 +1,6 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_unity_a_r_1_1_unity_a_r_camera_settings_profile =
+[
+    [ "PoseSource", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_unity_a_r_1_1_unity_a_r_camera_settings_profile.html#a32a80246b699bc83cd4ba8791720a76a", null ],
+    [ "TrackingType", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_unity_a_r_1_1_unity_a_r_camera_settings_profile.html#a68b2ee652e371d74610048ad06c5af26", null ],
+    [ "UpdateType", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_unity_a_r_1_1_unity_a_r_camera_settings_profile.html#ae60836ba0499d14e4d13167f772677f3", null ]
+];

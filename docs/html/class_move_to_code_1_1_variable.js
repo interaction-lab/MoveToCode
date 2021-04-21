@@ -8,6 +8,5 @@ var class_move_to_code_1_1_variable =
     [ "GetValue", "class_move_to_code_1_1_variable.html#a0054a02602f904acfd9ac6ba01a57b71", null ],
     [ "IsSameDataTypeAndEqualTo", "class_move_to_code_1_1_variable.html#a195cbb9801b03f0b0ca01a1a43267d5c", null ],
     [ "SetValue", "class_move_to_code_1_1_variable.html#a3f31d9f4804ee5e07eb7782d629b847d", null ],
-    [ "ToString", "class_move_to_code_1_1_variable.html#a3c9373b40b917c34b877b4874b40bb14", null ],
-    [ "myVariableCodeBlock", "class_move_to_code_1_1_variable.html#ae0f2da10b7e0510ecb6e781c3e471545", null ]
+    [ "ToString", "class_move_to_code_1_1_variable.html#a3c9373b40b917c34b877b4874b40bb14", null ]
 ];

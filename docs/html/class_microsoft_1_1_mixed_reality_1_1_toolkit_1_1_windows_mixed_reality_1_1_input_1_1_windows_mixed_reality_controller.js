@@ -1,0 +1,5 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_mixed_reality_1_1_input_1_1_windows_mixed_reality_controller =
+[
+    [ "WindowsMixedRealityController", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_mixed_reality_1_1_input_1_1_windows_mixed_reality_controller.html#a173ceccf180c6e121cd4601807d089e6", null ],
+    [ "DefaultInteractions", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_mixed_reality_1_1_input_1_1_windows_mixed_reality_controller.html#af993f6a2d939edfb0d8b53c7d1ae5828", null ]
+];

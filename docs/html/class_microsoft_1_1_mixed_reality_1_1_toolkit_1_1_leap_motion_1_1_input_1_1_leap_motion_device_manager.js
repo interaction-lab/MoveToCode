@@ -1,0 +1,5 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_leap_motion_1_1_input_1_1_leap_motion_device_manager =
+[
+    [ "LeapMotionDeviceManager", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_leap_motion_1_1_input_1_1_leap_motion_device_manager.html#aaa42437ea747426bc9e8fcb795d4d7c2", null ],
+    [ "CheckCapability", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_leap_motion_1_1_input_1_1_leap_motion_device_manager.html#afad3da090b089a666e02f702ef626e77", null ]
+];

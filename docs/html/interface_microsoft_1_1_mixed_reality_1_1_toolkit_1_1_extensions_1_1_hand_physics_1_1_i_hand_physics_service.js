@@ -1,0 +1,8 @@
+var interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_extensions_1_1_hand_physics_1_1_i_hand_physics_service =
+[
+    [ "FingerTipKinematicBodyPrefab", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_extensions_1_1_hand_physics_1_1_i_hand_physics_service.html#af39e366788945b84a9eff1e1af3f3f14", null ],
+    [ "HandPhysicsLayer", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_extensions_1_1_hand_physics_1_1_i_hand_physics_service.html#acb0325044474ee04a9a9a4951a5cc3c5", null ],
+    [ "HandPhysicsServiceRoot", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_extensions_1_1_hand_physics_1_1_i_hand_physics_service.html#ac5ffdefe115db32884d313f2d760f69d", null ],
+    [ "PalmKinematicBodyPrefab", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_extensions_1_1_hand_physics_1_1_i_hand_physics_service.html#a1be0f8d903ed86515072d3af049e25ab", null ],
+    [ "UsePalmKinematicBody", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_extensions_1_1_hand_physics_1_1_i_hand_physics_service.html#ae76b2fbc4f1464309597758931d83e6e", null ]
+];

@@ -1,0 +1,5 @@
+var struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_interactable_color_children_theme_1_1_blocks_and_renderer =
+[
+    [ "Block", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_interactable_color_children_theme_1_1_blocks_and_renderer.html#a373cff0259232a6e36a6122c3abc04c1", null ],
+    [ "Renderer", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_u_i_1_1_interactable_color_children_theme_1_1_blocks_and_renderer.html#acb6224b60709052822f9b7ed90475105", null ]
+];

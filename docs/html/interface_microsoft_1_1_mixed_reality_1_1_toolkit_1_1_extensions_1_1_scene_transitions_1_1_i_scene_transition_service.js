@@ -1,0 +1,25 @@
+var interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_extensions_1_1_scene_transitions_1_1_i_scene_transition_service =
+[
+    [ "DoSceneTransition", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_extensions_1_1_scene_transitions_1_1_i_scene_transition_service.html#a31712f9986d3f01ff27ab07a6f117c52", null ],
+    [ "DoSceneTransition", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_extensions_1_1_scene_transitions_1_1_i_scene_transition_service.html#ae8a7efeca934b3dcca53b18e23d55acf", null ],
+    [ "DoSceneTransition", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_extensions_1_1_scene_transitions_1_1_i_scene_transition_service.html#ad43d361956713b17f4f04fd71766c918", null ],
+    [ "DoSceneTransition", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_extensions_1_1_scene_transitions_1_1_i_scene_transition_service.html#aaf44275cd63f07a141b4e57185aa02e9", null ],
+    [ "FadeIn", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_extensions_1_1_scene_transitions_1_1_i_scene_transition_service.html#aae427102679747275d15feee81f053d1", null ],
+    [ "FadeIn", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_extensions_1_1_scene_transitions_1_1_i_scene_transition_service.html#a0d5cf4e22e7e4869ff6586451735a850", null ],
+    [ "FadeOut", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_extensions_1_1_scene_transitions_1_1_i_scene_transition_service.html#ac43f80b267192d1a11589c7acee24933", null ],
+    [ "FadeOut", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_extensions_1_1_scene_transitions_1_1_i_scene_transition_service.html#af30d4f825cee9e74377ad7061e388f75", null ],
+    [ "HideProgressIndicator", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_extensions_1_1_scene_transitions_1_1_i_scene_transition_service.html#aea36598c425e6204ca8f82b3d6d45624", null ],
+    [ "SetCustomFadeTargetCameras", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_extensions_1_1_scene_transitions_1_1_i_scene_transition_service.html#a9fa42a8536265e0c68e1261137c60248", null ],
+    [ "SetProgressMessage", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_extensions_1_1_scene_transitions_1_1_i_scene_transition_service.html#a03a488f40f9427ab612d5fc4fd9e6bd7", null ],
+    [ "SetProgressValue", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_extensions_1_1_scene_transitions_1_1_i_scene_transition_service.html#a99ad5ff612ea21a1136bcd4006514ae2", null ],
+    [ "ShowDefaultProgressIndicator", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_extensions_1_1_scene_transitions_1_1_i_scene_transition_service.html#a107e2f81534d980c3303932e6bd33b00", null ],
+    [ "FadeColor", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_extensions_1_1_scene_transitions_1_1_i_scene_transition_service.html#a19c80f8dc2cecda82acce0d510c61013", null ],
+    [ "FadeInTime", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_extensions_1_1_scene_transitions_1_1_i_scene_transition_service.html#a9e574f278bbc968cc4e70c8fe145a7a1", null ],
+    [ "FadeOutTime", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_extensions_1_1_scene_transitions_1_1_i_scene_transition_service.html#a08ebebb25be3a7412361146f865da02a", null ],
+    [ "FadeTargets", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_extensions_1_1_scene_transitions_1_1_i_scene_transition_service.html#a1989408ca6d3c1d9af714b075bbc3214", null ],
+    [ "OnTransitionCompleted", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_extensions_1_1_scene_transitions_1_1_i_scene_transition_service.html#a30e373081cb0112e98bdde6789c609ea", null ],
+    [ "OnTransitionStarted", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_extensions_1_1_scene_transitions_1_1_i_scene_transition_service.html#a6980d6578f9a3e5cb56e24f5bb821ab8", null ],
+    [ "TransitionInProgress", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_extensions_1_1_scene_transitions_1_1_i_scene_transition_service.html#ad4dd1876f11284ee96e062cb97dc7ca0", null ],
+    [ "TransitionProgress", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_extensions_1_1_scene_transitions_1_1_i_scene_transition_service.html#a88764b23093772b418eb5c6dac2f7275", null ],
+    [ "UseFadeColor", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_extensions_1_1_scene_transitions_1_1_i_scene_transition_service.html#ae6e500e5a92b8e472c44ba27989bb14c", null ]
+];

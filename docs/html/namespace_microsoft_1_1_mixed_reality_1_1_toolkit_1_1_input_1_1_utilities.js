@@ -1,0 +1,5 @@
+var namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_utilities =
+[
+    [ "CanvasUtility", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_utilities_1_1_canvas_utility.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_utilities_1_1_canvas_utility" ],
+    [ "ScaleMeshEffect", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_utilities_1_1_scale_mesh_effect.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_utilities_1_1_scale_mesh_effect" ]
+];

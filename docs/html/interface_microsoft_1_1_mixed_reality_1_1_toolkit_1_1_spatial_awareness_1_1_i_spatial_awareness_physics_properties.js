@@ -1,0 +1,4 @@
+var interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_i_spatial_awareness_physics_properties =
+[
+    [ "PhysicsMaterial", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_i_spatial_awareness_physics_properties.html#a4de3df212bb0644fde36bc8a5dc1d309", null ]
+];

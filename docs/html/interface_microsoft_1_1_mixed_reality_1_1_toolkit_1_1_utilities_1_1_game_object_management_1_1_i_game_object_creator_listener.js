@@ -1,0 +1,5 @@
+var interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_game_object_management_1_1_i_game_object_creator_listener =
+[
+    [ "PrepareForRecycle", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_game_object_management_1_1_i_game_object_creator_listener.html#a51fc8619e08709a540d4b14fa9b1336d", null ],
+    [ "PrepareForUse", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_game_object_management_1_1_i_game_object_creator_listener.html#a40c923a49c59b97f85cc18addffad5a8", null ]
+];

@@ -1,0 +1,5 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_editor_1_1_solvers_1_1_tap_to_place_inspector =
+[
+    [ "OnEnable", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_editor_1_1_solvers_1_1_tap_to_place_inspector.html#ae35e340fa829e1e22361368cc10c28a7", null ],
+    [ "OnInspectorGUI", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_editor_1_1_solvers_1_1_tap_to_place_inspector.html#ad9fcc3c58d1852a4bbd18dab3b2fab6e", null ]
+];

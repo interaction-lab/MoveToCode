@@ -1,0 +1,16 @@
+var namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_solvers =
+[
+    [ "ConstantViewSize", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_solvers_1_1_constant_view_size.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_solvers_1_1_constant_view_size" ],
+    [ "ControllerFinder", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_solvers_1_1_controller_finder.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_solvers_1_1_controller_finder" ],
+    [ "HandConstraint", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_solvers_1_1_hand_constraint.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_solvers_1_1_hand_constraint" ],
+    [ "HandConstraintPalmUp", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_solvers_1_1_hand_constraint_palm_up.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_solvers_1_1_hand_constraint_palm_up" ],
+    [ "InBetween", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_solvers_1_1_in_between.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_solvers_1_1_in_between" ],
+    [ "Momentum", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_solvers_1_1_momentum.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_solvers_1_1_momentum" ],
+    [ "Orbital", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_solvers_1_1_orbital.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_solvers_1_1_orbital" ],
+    [ "Overlap", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_solvers_1_1_overlap.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_solvers_1_1_overlap" ],
+    [ "RadialView", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_solvers_1_1_radial_view.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_solvers_1_1_radial_view" ],
+    [ "Solver", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_solvers_1_1_solver.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_solvers_1_1_solver" ],
+    [ "SolverHandler", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_solvers_1_1_solver_handler.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_solvers_1_1_solver_handler" ],
+    [ "SurfaceMagnetism", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_solvers_1_1_surface_magnetism.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_solvers_1_1_surface_magnetism" ],
+    [ "TapToPlace", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_solvers_1_1_tap_to_place.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_solvers_1_1_tap_to_place" ]
+];

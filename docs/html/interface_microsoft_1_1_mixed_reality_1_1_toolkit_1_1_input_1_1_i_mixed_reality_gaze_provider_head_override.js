@@ -1,0 +1,5 @@
+var interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_i_mixed_reality_gaze_provider_head_override =
+[
+    [ "OverrideHeadGaze", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_i_mixed_reality_gaze_provider_head_override.html#aecc614c2e2460455b73b99c65d093fa6", null ],
+    [ "UseHeadGazeOverride", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_i_mixed_reality_gaze_provider_head_override.html#a821b75c5b5a4ff3d4eab639777187cf4", null ]
+];

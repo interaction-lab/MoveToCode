@@ -6,6 +6,7 @@ var class_move_to_code_1_1_extension_methods =
     [ "Empty< T, V >", "class_move_to_code_1_1_extension_methods.html#a317eef547f6f2913b3f9debadf0afd90", null ],
     [ "ForceTextUpdate", "class_move_to_code_1_1_extension_methods.html#a05926944998e2562798c2fdf197346e8", null ],
     [ "GetDestructableCodeBlockObject", "class_move_to_code_1_1_extension_methods.html#a06f5afff89cf149d2f2ca40c72b5f20e", null ],
+    [ "RemoveTwoHandedScaling", "class_move_to_code_1_1_extension_methods.html#ad42ee89dea9241119879f79c083405ad", null ],
     [ "ReplaceFirst", "class_move_to_code_1_1_extension_methods.html#afc8e322436e2783b084ea14ec808a857", null ],
     [ "ResetCodeBlockSize", "class_move_to_code_1_1_extension_methods.html#a3d08a835483cac03fc80ecb071da1e06", null ],
     [ "Resize< T >", "class_move_to_code_1_1_extension_methods.html#a2277f78db333f988919c656235949b7a", null ],

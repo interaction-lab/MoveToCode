@@ -1,0 +1,4 @@
+var struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_c_v_r_setting_helper =
+[
+    [ "m_pSettings", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_c_v_r_setting_helper.html#a83c9e294c89cba4a2e9cf4fcccddde5d", null ]
+];

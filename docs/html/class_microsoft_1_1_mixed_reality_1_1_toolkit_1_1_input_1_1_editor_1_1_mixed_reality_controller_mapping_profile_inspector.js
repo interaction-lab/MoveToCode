@@ -1,0 +1,6 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_editor_1_1_mixed_reality_controller_mapping_profile_inspector =
+[
+    [ "IsProfileInActiveInstance", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_editor_1_1_mixed_reality_controller_mapping_profile_inspector.html#a6043ebd2b7b8dc19053d3bce594c213c", null ],
+    [ "OnEnable", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_editor_1_1_mixed_reality_controller_mapping_profile_inspector.html#aac2c822c92bfaf92dcf678af7b731e4e", null ],
+    [ "OnInspectorGUI", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_editor_1_1_mixed_reality_controller_mapping_profile_inspector.html#abe8c393c7980ff1a7ce5d0fc7a255723", null ]
+];

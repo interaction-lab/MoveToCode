@@ -1,0 +1,5 @@
+var interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_i_mixed_reality_eye_gaze_data_provider =
+[
+    [ "SaccadeProvider", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_i_mixed_reality_eye_gaze_data_provider.html#a9f8d403826dcbe031747847120768cad", null ],
+    [ "SmoothEyeTracking", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_i_mixed_reality_eye_gaze_data_provider.html#a1010d998cb69d6668b85f087298bf9e7", null ]
+];

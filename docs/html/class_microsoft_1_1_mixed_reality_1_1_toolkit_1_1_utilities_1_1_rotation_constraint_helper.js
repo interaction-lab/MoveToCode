@@ -1,0 +1,4 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_rotation_constraint_helper =
+[
+    [ "ConvertToAxisFlags", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_rotation_constraint_helper.html#af4f8c2ca9bb831b7d3bb9c27135923ca", null ]
+];

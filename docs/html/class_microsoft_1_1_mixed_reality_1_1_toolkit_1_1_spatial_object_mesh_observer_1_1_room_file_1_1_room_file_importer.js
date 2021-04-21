@@ -1,0 +1,4 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_object_mesh_observer_1_1_room_file_1_1_room_file_importer =
+[
+    [ "OnImportAsset", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_object_mesh_observer_1_1_room_file_1_1_room_file_importer.html#a253b7769d2288400ec1175e11ebb5f4d", null ]
+];

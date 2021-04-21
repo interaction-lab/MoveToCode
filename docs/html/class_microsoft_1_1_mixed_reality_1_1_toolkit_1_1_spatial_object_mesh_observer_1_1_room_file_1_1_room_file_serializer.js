@@ -1,0 +1,4 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_object_mesh_observer_1_1_room_file_1_1_room_file_serializer =
+[
+    [ "Deserialize", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_object_mesh_observer_1_1_room_file_1_1_room_file_serializer.html#a30172e8d55f467a6b676eb66cfa2df27", null ]
+];

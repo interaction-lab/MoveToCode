@@ -1,0 +1,40 @@
+var namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness =
+[
+    [ "Editor", "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_editor.html", "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_editor" ],
+    [ "Utilities", "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_utilities.html", "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_utilities" ],
+    [ "MixedRealitySpatialObserverConfiguration", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_mixed_reality_spatial_observer_configuration.html", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_mixed_reality_spatial_observer_configuration" ],
+    [ "BaseSpatialAwarenessObject", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_base_spatial_awareness_object.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_base_spatial_awareness_object" ],
+    [ "BaseSpatialAwarenessObserverProfile", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_base_spatial_awareness_observer_profile.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_base_spatial_awareness_observer_profile" ],
+    [ "MixedRealitySpatialAwarenessMeshObserverProfile", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_mixed_reality_spatial_awareness_mesh_observer_profile.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_mixed_reality_spatial_awareness_mesh_observer_profile" ],
+    [ "MixedRealitySpatialAwarenessSystemProfile", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_mixed_reality_spatial_awareness_system_profile.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_mixed_reality_spatial_awareness_system_profile" ],
+    [ "SpatialAwarenessMeshObject", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_spatial_awareness_mesh_object.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_spatial_awareness_mesh_object" ],
+    [ "SpatialAwarenessPlanarObject", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_spatial_awareness_planar_object.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_spatial_awareness_planar_object" ],
+    [ "MixedRealitySpatialAwarenessEventData", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_mixed_reality_spatial_awareness_event_data.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_mixed_reality_spatial_awareness_event_data" ],
+    [ "IMixedRealitySpatialAwarenessObservationHandler", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_i_mixed_reality_spat2eda3554410881dfc4c43928649cae1f.html", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_i_mixed_reality_spat2eda3554410881dfc4c43928649cae1f" ],
+    [ "IMixedRealitySpatialAwarenessObject", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_i_mixed_reality_spatial_awareness_object.html", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_i_mixed_reality_spatial_awareness_object" ],
+    [ "IMixedRealitySpatialAwarenessSystem", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_i_mixed_reality_spatial_awareness_system.html", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_i_mixed_reality_spatial_awareness_system" ],
+    [ "IMixedRealitySpatialAwarenessMeshObserver", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_i_mixed_reality_spatial_awareness_mesh_observer.html", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_i_mixed_reality_spatial_awareness_mesh_observer" ],
+    [ "IMixedRealitySpatialAwarenessObserver", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_i_mixed_reality_spatial_awareness_observer.html", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_i_mixed_reality_spatial_awareness_observer" ],
+    [ "ISpatialAwarenessPhysicsProperties", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_i_spatial_awareness_physics_properties.html", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_i_spatial_awareness_physics_properties" ],
+    [ "BaseSpatialMeshObserver", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_base_spatial_mesh_observer.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_base_spatial_mesh_observer" ],
+    [ "BaseSpatialObserver", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_base_spatial_observer.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_base_spatial_observer" ],
+    [ "MixedRealitySpatialAwarenessSystem", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_mixed_reality_spatial_awareness_system.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_mixed_reality_spatial_awareness_system" ],
+    [ "SpatialAwarenessMeshDisplayOptions", "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness.html#ada9abe405128abf20958e9325be41a57", [
+      [ "None", "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness.html#ada9abe405128abf20958e9325be41a57a6adf97f83acf6453d4a6a4b1070f3754", null ],
+      [ "Visible", "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness.html#ada9abe405128abf20958e9325be41a57aec24d78ce33048dc73a2b6b1a0690192", null ],
+      [ "Occlusion", "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness.html#ada9abe405128abf20958e9325be41a57aaaceaef1909e0c12c4eb1a0d2b4bc42f", null ]
+    ] ],
+    [ "SpatialAwarenessMeshLevelOfDetail", "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness.html#af6ed60fc7e82eaef8512e64b615a083a", [
+      [ "Custom", "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness.html#af6ed60fc7e82eaef8512e64b615a083aa90589c47f06eb971d548591f23c285af", null ],
+      [ "Coarse", "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness.html#af6ed60fc7e82eaef8512e64b615a083aa1fb282a269a2bc94abc136c0511daa59", null ],
+      [ "Medium", "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness.html#af6ed60fc7e82eaef8512e64b615a083aa87f8a6ab85c9ced3702b4ea641ad4bb5", null ],
+      [ "Fine", "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness.html#af6ed60fc7e82eaef8512e64b615a083aa5999b8900bb8b90cfa1af137d355ff14", null ]
+    ] ],
+    [ "SpatialAwarenessSurfaceTypes", "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness.html#aebf53b94b96e3008b84a3b0fe36ee3cb", [
+      [ "Unknown", "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness.html#aebf53b94b96e3008b84a3b0fe36ee3cba88183b946cc5f0e8c96b2e66e1c74a7e", null ],
+      [ "Floor", "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness.html#aebf53b94b96e3008b84a3b0fe36ee3cbaf3f6d0343d56ce88ce7958170ed05cb3", null ],
+      [ "Ceiling", "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness.html#aebf53b94b96e3008b84a3b0fe36ee3cba3237fbc8204064c106cb9080088a17cb", null ],
+      [ "Wall", "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness.html#aebf53b94b96e3008b84a3b0fe36ee3cba94e8a499539d1a472f3b5dbbb85508c0", null ],
+      [ "Platform", "namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness.html#aebf53b94b96e3008b84a3b0fe36ee3cba419f3742e6de8e0ec4b22cce005e7630", null ]
+    ] ]
+];

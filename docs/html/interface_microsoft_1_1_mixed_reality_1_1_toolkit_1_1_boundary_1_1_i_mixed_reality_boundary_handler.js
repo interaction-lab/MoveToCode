@@ -1,0 +1,4 @@
+var interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_boundary_1_1_i_mixed_reality_boundary_handler =
+[
+    [ "OnBoundaryVisualizationChanged", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_boundary_1_1_i_mixed_reality_boundary_handler.html#a105cf1d1278d054f4c1648a87f194fb2", null ]
+];

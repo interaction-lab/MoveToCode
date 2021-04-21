@@ -1,0 +1,5 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_windows_mixed_reality_1_1_windows_mixed_reality_camera_settings =
+[
+    [ "WindowsMixedRealityCameraSettings", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_windows_mixed_reality_1_1_windows_mixed_reality_camera_settings.html#aaa08902920cf4fbff26e6be601c7dd53", null ],
+    [ "IsOpaque", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_windows_mixed_reality_1_1_windows_mixed_reality_camera_settings.html#a27abea3d9e6649db4c04b4b4c145c294", null ]
+];

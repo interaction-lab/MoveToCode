@@ -1,0 +1,4 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_dwell_1_1_editor_1_1_dwell_handler_inspector =
+[
+    [ "OnInspectorGUI", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_dwell_1_1_editor_1_1_dwell_handler_inspector.html#aeaab66c69faa73dc7ecb689aab3a1c6b", null ]
+];

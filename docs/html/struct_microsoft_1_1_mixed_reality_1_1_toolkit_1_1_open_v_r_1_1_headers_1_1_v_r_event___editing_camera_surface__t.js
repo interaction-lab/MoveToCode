@@ -1,0 +1,5 @@
+var struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_v_r_event___editing_camera_surface__t =
+[
+    [ "nVisualMode", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_v_r_event___editing_camera_surface__t.html#a2a0c753f9f5a2d20d35dfd1f0435255d", null ],
+    [ "overlayHandle", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_v_r_event___editing_camera_surface__t.html#a4164a5a407f33e38c8b75c53ae603582", null ]
+];

@@ -1,0 +1,4 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_editor_1_1_search_1_1_mixed_reality_search_inspector_utility =
+[
+    [ "DrawSearchInterface", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_editor_1_1_search_1_1_mixed_reality_search_inspector_utility.html#af280a7f379f6702fab149667544a928c", null ]
+];

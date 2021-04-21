@@ -22,7 +22,7 @@ var dir_f13b41af88cf68434578284aaf699e39 =
       [ "AudioManager", "class_move_to_code_1_1_audio_manager.html", "class_move_to_code_1_1_audio_manager" ]
     ] ],
     [ "AWSPollyGetter.cs", "_a_w_s_polly_getter_8cs.html", [
-      [ "AWSPollyGetter", "class_move_to_code_1_1_a_w_s_polly_getter.html", "class_move_to_code_1_1_a_w_s_polly_getter" ]
+      [ "AWSPollyGetter", "class_move_to_code_1_1_a_w_s_polly_getter.html", null ]
     ] ],
     [ "BasicDataType.cs", "_basic_data_type_8cs.html", [
       [ "BasicDataType", "class_move_to_code_1_1_basic_data_type.html", "class_move_to_code_1_1_basic_data_type" ]
@@ -84,6 +84,9 @@ var dir_f13b41af88cf68434578284aaf699e39 =
     [ "ControlFlowInstruction.cs", "_control_flow_instruction_8cs.html", [
       [ "ControlFlowInstruction", "class_move_to_code_1_1_control_flow_instruction.html", "class_move_to_code_1_1_control_flow_instruction" ]
     ] ],
+    [ "CreateVarInMemButton.cs", "_create_var_in_mem_button_8cs.html", [
+      [ "CreateVarInMemButton", "class_move_to_code_1_1_create_var_in_mem_button.html", null ]
+    ] ],
     [ "DataCodeBlock.cs", "_data_code_block_8cs.html", [
       [ "DataCodeBlock", "class_move_to_code_1_1_data_code_block.html", "class_move_to_code_1_1_data_code_block" ]
     ] ],
@@ -120,14 +123,20 @@ var dir_f13b41af88cf68434578284aaf699e39 =
     [ "ExerciseScaffolding.cs", "_exercise_scaffolding_8cs.html", [
       [ "ExerciseScaffolding", "class_move_to_code_1_1_exercise_scaffolding.html", "class_move_to_code_1_1_exercise_scaffolding" ]
     ] ],
+    [ "ExitGame.cs", "_exit_game_8cs.html", [
+      [ "ExitGame", "class_move_to_code_1_1_exit_game.html", "class_move_to_code_1_1_exit_game" ]
+    ] ],
     [ "ExtensionMethods.cs", "_extension_methods_8cs.html", [
       [ "ExtensionMethods", "class_move_to_code_1_1_extension_methods.html", "class_move_to_code_1_1_extension_methods" ]
     ] ],
     [ "EyeGazeLoggingManager.cs", "_eye_gaze_logging_manager_8cs.html", [
-      [ "EyeGazeLoggingManager", "class_move_to_code_1_1_eye_gaze_logging_manager.html", "class_move_to_code_1_1_eye_gaze_logging_manager" ]
+      [ "EyeGazeLoggingManager", "class_move_to_code_1_1_eye_gaze_logging_manager.html", null ]
     ] ],
     [ "FakePressButton.cs", "_fake_press_button_8cs.html", [
       [ "FakePressButton", "class_move_to_code_1_1_fake_press_button.html", "class_move_to_code_1_1_fake_press_button" ]
+    ] ],
+    [ "FirebaseInit.cs", "_firebase_init_8cs.html", [
+      [ "FirebaseInit", "class_firebase_init.html", "class_firebase_init" ]
     ] ],
     [ "FloatDataType.cs", "_float_data_type_8cs.html", [
       [ "FloatDataType", "class_move_to_code_1_1_float_data_type.html", "class_move_to_code_1_1_float_data_type" ]
@@ -151,7 +160,7 @@ var dir_f13b41af88cf68434578284aaf699e39 =
       [ "GreaterThanConditionInstruction", "class_move_to_code_1_1_greater_than_condition_instruction.html", "class_move_to_code_1_1_greater_than_condition_instruction" ]
     ] ],
     [ "HeadPoseLoggingManager.cs", "_head_pose_logging_manager_8cs.html", [
-      [ "HeadPoseLoggingManager", "class_move_to_code_1_1_head_pose_logging_manager.html", "class_move_to_code_1_1_head_pose_logging_manager" ]
+      [ "HeadPoseLoggingManager", "class_move_to_code_1_1_head_pose_logging_manager.html", null ]
     ] ],
     [ "HumanStateManager.cs", "_human_state_manager_8cs.html", [
       [ "HumanStateManager", "class_move_to_code_1_1_human_state_manager.html", "class_move_to_code_1_1_human_state_manager" ]
@@ -214,8 +223,7 @@ var dir_f13b41af88cf68434578284aaf699e39 =
       [ "KuriPhraseManager", "class_move_to_code_1_1_kuri_phrase_manager.html", "class_move_to_code_1_1_kuri_phrase_manager" ]
     ] ],
     [ "KuriTextManager.cs", "_kuri_text_manager_8cs.html", [
-      [ "KuriTextManager", "class_move_to_code_1_1_kuri_text_manager.html", "class_move_to_code_1_1_kuri_text_manager" ],
-      [ "TextCommand", "struct_move_to_code_1_1_kuri_text_manager_1_1_text_command.html", "struct_move_to_code_1_1_kuri_text_manager_1_1_text_command" ]
+      [ "KuriTextManager", "class_move_to_code_1_1_kuri_text_manager.html", "class_move_to_code_1_1_kuri_text_manager" ]
     ] ],
     [ "LeftAndRightArgObjectMesh.cs", "_left_and_right_arg_object_mesh_8cs.html", [
       [ "LeftAndRightArgObjectMesh", "class_move_to_code_1_1_left_and_right_arg_object_mesh.html", "class_move_to_code_1_1_left_and_right_arg_object_mesh" ]
@@ -230,7 +238,7 @@ var dir_f13b41af88cf68434578284aaf699e39 =
       [ "MakeTransformLookAtUser", "class_move_to_code_1_1_make_transform_look_at_user.html", "class_move_to_code_1_1_make_transform_look_at_user" ]
     ] ],
     [ "ManipulationLogger.cs", "_manipulation_logger_8cs.html", [
-      [ "ManipulationLogger", "class_move_to_code_1_1_manipulation_logger.html", "class_move_to_code_1_1_manipulation_logger" ]
+      [ "ManipulationLogger", "class_move_to_code_1_1_manipulation_logger.html", null ]
     ] ],
     [ "ManipulationLoggingManager.cs", "_manipulation_logging_manager_8cs.html", [
       [ "ManipulationLoggingManager", "class_move_to_code_1_1_manipulation_logging_manager.html", "class_move_to_code_1_1_manipulation_logging_manager" ]
@@ -261,6 +269,9 @@ var dir_f13b41af88cf68434578284aaf699e39 =
     ] ],
     [ "PrintInstruction.cs", "_print_instruction_8cs.html", [
       [ "PrintInstruction", "class_move_to_code_1_1_print_instruction.html", "class_move_to_code_1_1_print_instruction" ]
+    ] ],
+    [ "progressBarController.cs", "progress_bar_controller_8cs.html", [
+      [ "progressBarController", "class_move_to_code_1_1progress_bar_controller.html", "class_move_to_code_1_1progress_bar_controller" ]
     ] ],
     [ "ResourcePathConstants.cs", "_resource_path_constants_8cs.html", [
       [ "ResourcePathConstants", "class_move_to_code_1_1_resource_path_constants.html", "class_move_to_code_1_1_resource_path_constants" ]
@@ -340,6 +351,9 @@ var dir_f13b41af88cf68434578284aaf699e39 =
     [ "SnapLoggingManager.cs", "_snap_logging_manager_8cs.html", [
       [ "SnapLoggingManager", "class_move_to_code_1_1_snap_logging_manager.html", "class_move_to_code_1_1_snap_logging_manager" ]
     ] ],
+    [ "SnappableStandAloneInstruction.cs", "_snappable_stand_alone_instruction_8cs.html", [
+      [ "SnappableStandAloneInstruction", "class_move_to_code_1_1_snappable_stand_alone_instruction.html", "class_move_to_code_1_1_snappable_stand_alone_instruction" ]
+    ] ],
     [ "StandAloneInstruction.cs", "_stand_alone_instruction_8cs.html", [
       [ "StandAloneInstruction", "class_move_to_code_1_1_stand_alone_instruction.html", "class_move_to_code_1_1_stand_alone_instruction" ]
     ] ],
@@ -363,6 +377,9 @@ var dir_f13b41af88cf68434578284aaf699e39 =
     ] ],
     [ "TrashcanManager.cs", "_trashcan_manager_8cs.html", [
       [ "TrashcanManager", "class_move_to_code_1_1_trashcan_manager.html", "class_move_to_code_1_1_trashcan_manager" ]
+    ] ],
+    [ "UploadManager.cs", "_upload_manager_8cs.html", [
+      [ "UploadManager", "class_move_to_code_1_1_upload_manager.html", "class_move_to_code_1_1_upload_manager" ]
     ] ],
     [ "Variable.cs", "_variable_8cs.html", [
       [ "Variable", "class_move_to_code_1_1_variable.html", "class_move_to_code_1_1_variable" ]

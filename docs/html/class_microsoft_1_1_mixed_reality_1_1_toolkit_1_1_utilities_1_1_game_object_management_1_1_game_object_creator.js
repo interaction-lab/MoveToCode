@@ -1,0 +1,6 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_game_object_management_1_1_game_object_creator =
+[
+    [ "Instantiate", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_game_object_management_1_1_game_object_creator.html#ac0dd96f2281c7dfd7ff471d27d55fb70", null ],
+    [ "PrepareForRecycle", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_game_object_management_1_1_game_object_creator.html#ae0ce50cab4226c7334b8ecbd93a5dffb", null ],
+    [ "PrepareForUse", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_game_object_management_1_1_game_object_creator.html#ac52ec6ce1f89fc62e604fb815dc326cf", null ]
+];

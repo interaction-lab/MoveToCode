@@ -1,0 +1,5 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_windows_mixed_reality_1_1_base_wc5fdd3678895baa195837ebac2ef82d9 =
+[
+    [ "BaseWindowsMixedRealityXRSDKSource", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_windows_mixed_reality_1_1_base_wc5fdd3678895baa195837ebac2ef82d9.html#ae2663f415f682b07608d84bf54e0f3d7", null ],
+    [ "UpdatePoseData", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_windows_mixed_reality_1_1_base_wc5fdd3678895baa195837ebac2ef82d9.html#a4d2b488f23d36b60d4f46bb5ac13c5cb", null ]
+];

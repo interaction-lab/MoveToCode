@@ -1,0 +1,8 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_gltf_1_1_schema_1_1_extensions_1751cb32bc7361e1221bd4d749c29876d =
+[
+    [ "diffuseFactor", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_gltf_1_1_schema_1_1_extensions_1751cb32bc7361e1221bd4d749c29876d.html#aee4b1573528af83cdb1fd3b177553c6c", null ],
+    [ "diffuseTexture", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_gltf_1_1_schema_1_1_extensions_1751cb32bc7361e1221bd4d749c29876d.html#a9a0d7cab361942c3d5736f5d584339c3", null ],
+    [ "glossinessFactor", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_gltf_1_1_schema_1_1_extensions_1751cb32bc7361e1221bd4d749c29876d.html#ac0b453df940b20e07954bffa97015af3", null ],
+    [ "specularFactor", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_gltf_1_1_schema_1_1_extensions_1751cb32bc7361e1221bd4d749c29876d.html#a3b1cf70cfbfe800fbb5e98f0e1a84456", null ],
+    [ "specularGlossinessTexture", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_gltf_1_1_schema_1_1_extensions_1751cb32bc7361e1221bd4d749c29876d.html#a864315c646947a9dd5c38891eb7ac848", null ]
+];

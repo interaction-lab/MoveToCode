@@ -1,0 +1,4 @@
+var struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_v_r_texture_with_pose_and_depth__t =
+[
+    [ "depth", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_v_r_texture_with_pose_and_depth__t.html#a6b8118511256db857a088afd9983c329", null ]
+];

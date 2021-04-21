@@ -1,0 +1,27 @@
+var namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal =
+[
+    [ "ActivePowerSchemeInfo", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_active_power_scheme_info.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_active_power_scheme_info" ],
+    [ "AdapterInfo", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_adapter_info.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_adapter_info" ],
+    [ "ApplicationInfo", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_application_info.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_application_info" ],
+    [ "AvailableWiFiNetworks", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_available_wi_fi_networks.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_available_wi_fi_networks" ],
+    [ "BatteryInfo", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_battery_info.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_battery_info" ],
+    [ "DeviceInfo", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_device_info.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_device_info" ],
+    [ "DeviceOsInfo", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_device_os_info.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_device_os_info" ],
+    [ "DevicePortalConnections", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_device_portal_connections.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_device_portal_connections" ],
+    [ "DHCPInfo", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_d_h_c_p_info.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_d_h_c_p_info" ],
+    [ "FileInfo", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_file_info.html", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_file_info" ],
+    [ "FileList", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_file_list.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_file_list" ],
+    [ "InstalledApps", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_installed_apps.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_installed_apps" ],
+    [ "InstallStatus", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_install_status.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_install_status" ],
+    [ "InterfaceInfo", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_interface_info.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_interface_info" ],
+    [ "IpAddressInfo", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_ip_address_info.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_ip_address_info" ],
+    [ "IpConfigInfo", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_ip_config_info.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_ip_config_info" ],
+    [ "MachineName", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_machine_name.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_machine_name" ],
+    [ "NetworkInterfaces", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_network_interfaces.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_network_interfaces" ],
+    [ "NetworkProfileInfo", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_network_profile_info.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_network_profile_info" ],
+    [ "PowerStateInfo", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_power_state_info.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_power_state_info" ],
+    [ "ProcessInfo", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_process_info.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_process_info" ],
+    [ "ProcessList", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_process_list.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_process_list" ],
+    [ "WirelessNetworkInfo", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_wireless_network_info.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_wireless_network_info" ],
+    [ "DevicePortal", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_device_portal.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_device_portal" ]
+];

@@ -1,0 +1,4 @@
+var namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_editor =
+[
+    [ "MixedRealitySpatialAwarenessSystemProfileInspector", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_editor_1_1_mixed_realityeae27532346c589ae0ddd8570661440b.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_editor_1_1_mixed_realityeae27532346c589ae0ddd8570661440b" ]
+];

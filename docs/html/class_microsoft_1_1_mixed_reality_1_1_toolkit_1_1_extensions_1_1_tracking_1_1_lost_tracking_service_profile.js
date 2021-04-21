@@ -1,0 +1,8 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_extensions_1_1_tracking_1_1_lost_tracking_service_profile =
+[
+    [ "HaltAudioOnTrackingLost", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_extensions_1_1_tracking_1_1_lost_tracking_service_profile.html#a0eaf30dcf502424d8e126ae8bb2921d6", null ],
+    [ "HaltTimeWhileTrackingLost", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_extensions_1_1_tracking_1_1_lost_tracking_service_profile.html#a8ba032578a0225b42deb38acd928ebae", null ],
+    [ "TrackingLostCullingMask", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_extensions_1_1_tracking_1_1_lost_tracking_service_profile.html#a1f9d33e64592a31c65eafefe9a57c476", null ],
+    [ "TrackingLostVisualLayer", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_extensions_1_1_tracking_1_1_lost_tracking_service_profile.html#ab68bfaf837f2045cd2976f943e4b9361", null ],
+    [ "TrackingLostVisualPrefab", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_extensions_1_1_tracking_1_1_lost_tracking_service_profile.html#ab76ab1e3ad2209a012be56a46efe5c11", null ]
+];

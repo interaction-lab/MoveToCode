@@ -1,0 +1,4 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_u_i_1_1_mixed_reality_keyboard =
+[
+    [ "Text", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_u_i_1_1_mixed_reality_keyboard.html#a9255a117f3e7781ea49cbed49c5787a0", null ]
+];

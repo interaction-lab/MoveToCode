@@ -1,0 +1,5 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_gltf_1_1_schema_1_1_gltf_accessor_sparse_values =
+[
+    [ "bufferView", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_gltf_1_1_schema_1_1_gltf_accessor_sparse_values.html#abc64db1cde158321c134278a11758444", null ],
+    [ "byteOffset", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_gltf_1_1_schema_1_1_gltf_accessor_sparse_values.html#aa9fd2a452efad1de3bd72de73631b912", null ]
+];

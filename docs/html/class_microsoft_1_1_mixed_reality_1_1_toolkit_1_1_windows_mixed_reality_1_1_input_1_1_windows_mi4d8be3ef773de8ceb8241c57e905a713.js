@@ -1,0 +1,12 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_mixed_reality_1_1_input_1_1_windows_mi4d8be3ef773de8ceb8241c57e905a713 =
+[
+    [ "WindowsMixedRealityEyeGazeDataProvider", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_mixed_reality_1_1_input_1_1_windows_mi4d8be3ef773de8ceb8241c57e905a713.html#a4da870d28e4327f0d2ce7d9d08d41ccb", null ],
+    [ "WindowsMixedRealityEyeGazeDataProvider", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_mixed_reality_1_1_input_1_1_windows_mi4d8be3ef773de8ceb8241c57e905a713.html#a0a272318035aaaaf9b596ea19182bbef", null ],
+    [ "CheckCapability", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_mixed_reality_1_1_input_1_1_windows_mi4d8be3ef773de8ceb8241c57e905a713.html#a01b7488eaa0f965a93562915a10ae71b", null ],
+    [ "Initialize", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_mixed_reality_1_1_input_1_1_windows_mi4d8be3ef773de8ceb8241c57e905a713.html#ad5448ca5d27f913574b5d528956ead8b", null ],
+    [ "SaccadeProvider", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_mixed_reality_1_1_input_1_1_windows_mi4d8be3ef773de8ceb8241c57e905a713.html#a97380d5c41a43274c620015d9758b0bd", null ],
+    [ "SmoothEyeTracking", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_mixed_reality_1_1_input_1_1_windows_mi4d8be3ef773de8ceb8241c57e905a713.html#a89dd0197f92105349ed05364021d3715", null ],
+    [ "OnSaccade", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_mixed_reality_1_1_input_1_1_windows_mi4d8be3ef773de8ceb8241c57e905a713.html#a8b7ac79bdeb3a39e23eeeaec28059248", null ],
+    [ "OnSaccadeX", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_mixed_reality_1_1_input_1_1_windows_mi4d8be3ef773de8ceb8241c57e905a713.html#acfcbf361668e3bcdf9075db5b4003938", null ],
+    [ "OnSaccadeY", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_mixed_reality_1_1_input_1_1_windows_mi4d8be3ef773de8ceb8241c57e905a713.html#a772200bbab387835bd208ea27c7b5a82", null ]
+];

@@ -1,0 +1,25 @@
+var interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_boundary_1_1_i_mixed_reality_boundary_system =
+[
+    [ "Contains", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_boundary_1_1_i_mixed_reality_boundary_system.html#a2fe1e926f0ab178e16ab8d6e941f31bb", null ],
+    [ "GetBoundaryCeilingVisualization", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_boundary_1_1_i_mixed_reality_boundary_system.html#a70b3ab66681f37672d09007d5306bad7", null ],
+    [ "GetBoundaryWallVisualization", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_boundary_1_1_i_mixed_reality_boundary_system.html#a831bd78e324e6432b885c36de798d743", null ],
+    [ "GetFloorVisualization", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_boundary_1_1_i_mixed_reality_boundary_system.html#a0783c2893ede1d5297a601feb93a5447", null ],
+    [ "GetPlayAreaVisualization", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_boundary_1_1_i_mixed_reality_boundary_system.html#a6438888ce419210e424bcbbfe814a6ab", null ],
+    [ "GetTrackedAreaVisualization", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_boundary_1_1_i_mixed_reality_boundary_system.html#a0b36d5fcf6ecc119053edab061ec7a39", null ],
+    [ "TryGetRectangularBoundsParams", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_boundary_1_1_i_mixed_reality_boundary_system.html#aa72af2e4f1bef89e174dc7ba493f9bbe", null ],
+    [ "BoundaryHeight", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_boundary_1_1_i_mixed_reality_boundary_system.html#a51eda87c9efc91bb666b562706ccbc5b", null ],
+    [ "BoundaryVisualizationProfile", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_boundary_1_1_i_mixed_reality_boundary_system.html#ac86341a17abb6dd42caf8c203f81a69d", null ],
+    [ "BoundaryWallsPhysicsLayer", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_boundary_1_1_i_mixed_reality_boundary_system.html#a91d129cdf1ea5b1d0f8ae60460626987", null ],
+    [ "Bounds", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_boundary_1_1_i_mixed_reality_boundary_system.html#a73152ed3c01e8e8f90106b6ef2f48c10", null ],
+    [ "CeilingPhysicsLayer", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_boundary_1_1_i_mixed_reality_boundary_system.html#a009df442cfb66b87b16072c1820865e8", null ],
+    [ "FloorHeight", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_boundary_1_1_i_mixed_reality_boundary_system.html#a2ea16adb9c976b6c62ae5f6e50bcd218", null ],
+    [ "FloorPhysicsLayer", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_boundary_1_1_i_mixed_reality_boundary_system.html#ac7b8fec87378007d76572c0bfbb9bc64", null ],
+    [ "PlayAreaPhysicsLayer", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_boundary_1_1_i_mixed_reality_boundary_system.html#a6f43c9f08666fc611b400d4f17d6fb7d", null ],
+    [ "Scale", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_boundary_1_1_i_mixed_reality_boundary_system.html#aa2b9331fc0f82a08eb675a2deb6faf3f", null ],
+    [ "ShowBoundaryCeiling", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_boundary_1_1_i_mixed_reality_boundary_system.html#a9cf191e72b3e723e8ff9a31bd966ca19", null ],
+    [ "ShowBoundaryWalls", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_boundary_1_1_i_mixed_reality_boundary_system.html#a14a5471e1d7306b0166280399fa59dac", null ],
+    [ "ShowFloor", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_boundary_1_1_i_mixed_reality_boundary_system.html#a26efa7e41749cd8ad080999e64d1852c", null ],
+    [ "ShowPlayArea", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_boundary_1_1_i_mixed_reality_boundary_system.html#af1b70552cd117c9458abec1d323f8f6d", null ],
+    [ "ShowTrackedArea", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_boundary_1_1_i_mixed_reality_boundary_system.html#ab851097f5bcbef6d03d81245839a3a43", null ],
+    [ "TrackedAreaPhysicsLayer", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_boundary_1_1_i_mixed_reality_boundary_system.html#a2fff367d2fe7f94521d2010e8aab06e6", null ]
+];

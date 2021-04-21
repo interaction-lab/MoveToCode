@@ -1,0 +1,5 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_windows_mixed_reality_1_1_window23507437dc8b9155bf100da5353f6837 =
+[
+    [ "WindowsMixedRealitySpatialMeshObserver", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_windows_mixed_reality_1_1_window23507437dc8b9155bf100da5353f6837.html#a9f7c01b0720a7870b58571d507e4ee89", null ],
+    [ "ConfigureObserverVolume", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_windows_mixed_reality_1_1_window23507437dc8b9155bf100da5353f6837.html#a6544fade6815098e14c12d918a9e4530", null ]
+];

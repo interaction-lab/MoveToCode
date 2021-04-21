@@ -1,0 +1,5 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_game_object_management_1_1_generic_prefab_instance_creator =
+[
+    [ "Instantiate", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_game_object_management_1_1_generic_prefab_instance_creator.html#aeb65e4426a7c948d0c3426f0b805819d", null ],
+    [ "Prefab", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_game_object_management_1_1_generic_prefab_instance_creator.html#a7b6d2c7d4dd3ac467db6cea1c717414f", null ]
+];

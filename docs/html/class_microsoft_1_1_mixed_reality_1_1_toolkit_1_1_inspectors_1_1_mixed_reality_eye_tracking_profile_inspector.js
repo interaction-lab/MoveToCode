@@ -1,0 +1,6 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_inspectors_1_1_mixed_reality_eye_tracking_profile_inspector =
+[
+    [ "IsProfileInActiveInstance", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_inspectors_1_1_mixed_reality_eye_tracking_profile_inspector.html#a7933b7928e0d603cfe2e6bb72cf49685", null ],
+    [ "OnEnable", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_inspectors_1_1_mixed_reality_eye_tracking_profile_inspector.html#ab2381112fe0aaf45d8fa23e571ae69ec", null ],
+    [ "OnInspectorGUI", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_inspectors_1_1_mixed_reality_eye_tracking_profile_inspector.html#aee11b307e227814c314a28d8f4ba0132", null ]
+];

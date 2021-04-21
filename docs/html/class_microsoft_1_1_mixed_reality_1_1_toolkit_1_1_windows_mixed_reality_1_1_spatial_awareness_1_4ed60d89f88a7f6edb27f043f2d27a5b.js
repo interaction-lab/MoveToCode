@@ -1,0 +1,11 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_mixed_reality_1_1_spatial_awareness_1_4ed60d89f88a7f6edb27f043f2d27a5b =
+[
+    [ "WindowsMixedRealitySpatialMeshObserver", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_mixed_reality_1_1_spatial_awareness_1_4ed60d89f88a7f6edb27f043f2d27a5b.html#ae63a0cf59f7cae6fb017f9b86858cf87", null ],
+    [ "WindowsMixedRealitySpatialMeshObserver", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_mixed_reality_1_1_spatial_awareness_1_4ed60d89f88a7f6edb27f043f2d27a5b.html#a5349767b957ae31bec13475030e43b32", null ],
+    [ "CheckCapability", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_mixed_reality_1_1_spatial_awareness_1_4ed60d89f88a7f6edb27f043f2d27a5b.html#a3974ca8411a853be524667aff10a5c5b", null ],
+    [ "CleanupObserver", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_mixed_reality_1_1_spatial_awareness_1_4ed60d89f88a7f6edb27f043f2d27a5b.html#acd1d2c8c9aeabd8c2c142295e6991132", null ],
+    [ "CreateObserver", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_mixed_reality_1_1_spatial_awareness_1_4ed60d89f88a7f6edb27f043f2d27a5b.html#a9aaeba9caa51fef23d078e38ed5c30e2", null ],
+    [ "LookupTriangleDensity", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_mixed_reality_1_1_spatial_awareness_1_4ed60d89f88a7f6edb27f043f2d27a5b.html#ad67ea86e4780f9714fbde7343492df0e", null ],
+    [ "Resume", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_mixed_reality_1_1_spatial_awareness_1_4ed60d89f88a7f6edb27f043f2d27a5b.html#ade99cca07a8479070b970b108f617273", null ],
+    [ "Suspend", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_mixed_reality_1_1_spatial_awareness_1_4ed60d89f88a7f6edb27f043f2d27a5b.html#ab203322e3cb47dafc2989b84aa83a686", null ]
+];

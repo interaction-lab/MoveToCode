@@ -1,0 +1,4 @@
+var interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_rendering_1_1_i_material_instance_owner =
+[
+    [ "OnMaterialChanged", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_rendering_1_1_i_material_instance_owner.html#a0368216751434caa652ec3b7cceea018", null ]
+];

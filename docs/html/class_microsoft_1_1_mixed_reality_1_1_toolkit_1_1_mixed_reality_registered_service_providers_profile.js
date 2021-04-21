@@ -1,0 +1,4 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_mixed_reality_registered_service_providers_profile =
+[
+    [ "Configurations", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_mixed_reality_registered_service_providers_profile.html#a454c5581aa1517b41534d6498027b000", null ]
+];

@@ -1,0 +1,5 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_gltf_1_1_schema_1_1_gltf_animation_channel_target =
+[
+    [ "node", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_gltf_1_1_schema_1_1_gltf_animation_channel_target.html#a653f45674799591eaa9e4d1db4ff7d6a", null ],
+    [ "path", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_gltf_1_1_schema_1_1_gltf_animation_channel_target.html#a05db4259fe948774d6fa9106686751ec", null ]
+];

@@ -1,0 +1,7 @@
+var struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_v_r_event___input_action_manifest_load__t =
+[
+    [ "pathAppKey", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_v_r_event___input_action_manifest_load__t.html#a4b3ceba15e354d245c3f892814d1ad8d", null ],
+    [ "pathManifestPath", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_v_r_event___input_action_manifest_load__t.html#ad5777c336733c1c18b97abeed09140d1", null ],
+    [ "pathMessage", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_v_r_event___input_action_manifest_load__t.html#a741a8acad1c4d1378d781d3f5fdc39fd", null ],
+    [ "pathMessageParam", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_v_r_event___input_action_manifest_load__t.html#ab8c87c0eedf5fb341e95302395185169", null ]
+];

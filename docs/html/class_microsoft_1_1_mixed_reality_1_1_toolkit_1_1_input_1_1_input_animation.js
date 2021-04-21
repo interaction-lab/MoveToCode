@@ -1,0 +1,27 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_input_animation =
+[
+    [ "PoseCurves", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_input_animation_1_1_pose_curves.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_input_animation_1_1_pose_curves" ],
+    [ "InputAnimation", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_input_animation.html#aa8290ba2a738c3bf173e5c9b2fb0fd43", null ],
+    [ "AddCameraPoseKey", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_input_animation.html#a2dd555a80f491b28fc034d733f669d12", null ],
+    [ "AddHandJointKey", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_input_animation.html#acfb563e56388e99e794605894e3baa0f", null ],
+    [ "AddHandStateKey", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_input_animation.html#a24b7ca0c0be5144d3e6ffe81fa46618c", null ],
+    [ "AddMarker", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_input_animation.html#afb0e49d2173564f65ea4ff76c7e0adc4", null ],
+    [ "Clear", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_input_animation.html#a9df4ab35867e3a97bc38bf9449f1ebb9", null ],
+    [ "CreateHandJointCurves", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_input_animation.html#a4ad2c8560911108fa20852e580d73558", null ],
+    [ "CutoffBeforeTime", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_input_animation.html#a320eb4f57dd14e88a2269053d6268591", null ],
+    [ "EvaluateCameraPose", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_input_animation.html#a4aaaf743a84a0447eb7126ce7ed8d8fc", null ],
+    [ "EvaluateHandJoint", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_input_animation.html#a9d379503563601a8a54cf46af8f5813b", null ],
+    [ "EvaluateHandState", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_input_animation.html#a6185897a5790c1a45092e59339f21540", null ],
+    [ "FindMarkerInterval", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_input_animation.html#a8c19f9be205e536f82e7d8f1d8222343", null ],
+    [ "FromStream", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_input_animation.html#afd5fc09e529dc8e15b534fb101b2b4e3", null ],
+    [ "GetMarker", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_input_animation.html#a2c2160a1199c73d77b6dd08fc44157b4", null ],
+    [ "RemoveMarker", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_input_animation.html#aa718335a2d3ad064bd247f9a49c5037c", null ],
+    [ "SetMarkerTime", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_input_animation.html#a44c01e00ef12e794e0188dcb3370b4f8", null ],
+    [ "ToStream", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_input_animation.html#a62d57fa1ee14fe72f328b62406139718", null ],
+    [ "TryGetHandJointCurves", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_input_animation.html#a96497b3072d780b4274c5acc320bb87b", null ],
+    [ "jointCount", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_input_animation.html#affde544cd87f8d1a328f5e7c792c856f", null ],
+    [ "AnimationCurves", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_input_animation.html#adfd63caaed0ec76fe5b531ef96751cc5", null ],
+    [ "CameraCurves", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_input_animation.html#a862a58855d7f19b10452a3c2bc220df7", null ],
+    [ "Duration", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_input_animation.html#aa6e7f811fa3a70b4da1cf4015b04b3f1", null ],
+    [ "markerCount", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_input_animation.html#acf95ffbdb8275368794f01907cf3000c", null ]
+];

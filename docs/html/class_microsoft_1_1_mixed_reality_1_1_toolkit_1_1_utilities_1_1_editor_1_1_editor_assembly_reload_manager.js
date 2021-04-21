@@ -1,0 +1,4 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_editor_1_1_editor_assembly_reload_manager =
+[
+    [ "LockReloadAssemblies", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_editor_1_1_editor_assembly_reload_manager.html#a1cb5b67f6d8e2ae411f3c5625f8bb79f", null ]
+];

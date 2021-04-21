@@ -8,8 +8,5 @@ var class_move_to_code_1_1_code_block_manager =
     [ "GetAllSnapColliders", "class_move_to_code_1_1_code_block_manager.html#a9c0b4c4b9e7dd391445b8fb4e7790b19", null ],
     [ "RegisterCodeBlock", "class_move_to_code_1_1_code_block_manager.html#aaf207d242b3a54e74430a13654a6aa42", null ],
     [ "RegisterSnapCollider", "class_move_to_code_1_1_code_block_manager.html#af4e59c6bb12967031fec32458a28b9db", null ],
-    [ "ResetAllCodeBlockInternalState", "class_move_to_code_1_1_code_block_manager.html#a1acdd3ba79f3033ab0546cc18ff859e5", null ],
-    [ "SetCompatibleColliderState", "class_move_to_code_1_1_code_block_manager.html#a6578d8015af7bf8bc5231fec5a73f53f", null ],
-    [ "codeBlocks", "class_move_to_code_1_1_code_block_manager.html#a1556b7fd4e4d4dbc8d2cc9a56438d999", null ],
-    [ "snapColliders", "class_move_to_code_1_1_code_block_manager.html#a5a6f1acd48d3ea46247e8401ee69b886", null ]
+    [ "ResetAllCodeBlockInternalState", "class_move_to_code_1_1_code_block_manager.html#a1acdd3ba79f3033ab0546cc18ff859e5", null ]
 ];

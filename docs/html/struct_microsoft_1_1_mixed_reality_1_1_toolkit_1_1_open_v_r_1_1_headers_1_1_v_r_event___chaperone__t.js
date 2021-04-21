@@ -1,0 +1,5 @@
+var struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_v_r_event___chaperone__t =
+[
+    [ "m_nCurrentUniverse", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_v_r_event___chaperone__t.html#aa7b51510ef9b7253324669ba8fe5d878", null ],
+    [ "m_nPreviousUniverse", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_v_r_event___chaperone__t.html#a172b503d3fc9cd6d4cd29aed9a3d0832", null ]
+];

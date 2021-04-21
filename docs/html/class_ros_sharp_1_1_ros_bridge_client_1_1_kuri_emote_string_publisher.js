@@ -10,13 +10,9 @@ var class_ros_sharp_1_1_ros_bridge_client_1_1_kuri_emote_string_publisher =
       [ "love", "class_ros_sharp_1_1_ros_bridge_client_1_1_kuri_emote_string_publisher.html#a1c91e36545fac9925b7a6e17131e5a41ab5c0b187fe309af0f4d35982fd961d7e", null ],
       [ "close_eyes", "class_ros_sharp_1_1_ros_bridge_client_1_1_kuri_emote_string_publisher.html#a1c91e36545fac9925b7a6e17131e5a41a5c63b45b80f7199348912671698d0ec1", null ]
     ] ],
-    [ "InitializeMessage", "class_ros_sharp_1_1_ros_bridge_client_1_1_kuri_emote_string_publisher.html#a3bb0a7b875fd6ae6dd6e0a1b7717ee1b", null ],
-    [ "LogAction", "class_ros_sharp_1_1_ros_bridge_client_1_1_kuri_emote_string_publisher.html#a2c28792dc62c00b8554bca0b5654b016", null ],
     [ "PublishAction", "class_ros_sharp_1_1_ros_bridge_client_1_1_kuri_emote_string_publisher.html#a508c18b2a55e2e72d3939e0267546d93", null ],
     [ "PubNeutralAction", "class_ros_sharp_1_1_ros_bridge_client_1_1_kuri_emote_string_publisher.html#aa763fb9766a397f33d221bc649046ad1", null ],
     [ "PubRandomNegative", "class_ros_sharp_1_1_ros_bridge_client_1_1_kuri_emote_string_publisher.html#a85e6c9c8076a3b85407b46047247f976", null ],
     [ "PubRandomPositive", "class_ros_sharp_1_1_ros_bridge_client_1_1_kuri_emote_string_publisher.html#a8c91286af5c2c1f743ddc45e34852145", null ],
-    [ "Start", "class_ros_sharp_1_1_ros_bridge_client_1_1_kuri_emote_string_publisher.html#a8a1e317e00b07577ec7babb640581a7c", null ],
-    [ "kuriPhysicalEmoteActionCol", "class_ros_sharp_1_1_ros_bridge_client_1_1_kuri_emote_string_publisher.html#a4da471cd596dad08895a4d275cca78bb", null ],
-    [ "message", "class_ros_sharp_1_1_ros_bridge_client_1_1_kuri_emote_string_publisher.html#a8fd4d5038ee8485a30ecec8910a47ddb", null ]
+    [ "Start", "class_ros_sharp_1_1_ros_bridge_client_1_1_kuri_emote_string_publisher.html#a8a1e317e00b07577ec7babb640581a7c", null ]
 ];

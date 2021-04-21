@@ -1,0 +1,8 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_mixed_reality_1_1_base_windows_mixed_reality_camera_settings =
+[
+    [ "BaseWindowsMixedRealityCameraSettings", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_mixed_reality_1_1_base_windows_mixed_reality_camera_settings.html#a9b208f69765e97eb1dcc48e79bf8343b", null ],
+    [ "ApplyConfiguration", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_mixed_reality_1_1_base_windows_mixed_reality_camera_settings.html#a1e8110c730164797e1b3046856128666", null ],
+    [ "Disable", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_mixed_reality_1_1_base_windows_mixed_reality_camera_settings.html#a6e95f5e4c9803f1c40d5eed72afbcd28", null ],
+    [ "Enable", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_mixed_reality_1_1_base_windows_mixed_reality_camera_settings.html#aebcc352827f7bfd87ac7e8513cdb07fb", null ],
+    [ "Profile", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_mixed_reality_1_1_base_windows_mixed_reality_camera_settings.html#a40c87ebe38d85a269aa5789b37a0352c", null ]
+];

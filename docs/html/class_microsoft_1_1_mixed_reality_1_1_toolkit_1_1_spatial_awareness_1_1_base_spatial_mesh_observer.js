@@ -1,0 +1,26 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_base_spatial_mesh_observer =
+[
+    [ "BaseSpatialMeshObserver", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_base_spatial_mesh_observer.html#a4a318183fc0f150c4ecc60de3b8ac5db", null ],
+    [ "ApplyUpdatedMeshDisplayOption", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_base_spatial_mesh_observer.html#aa52e1ee5d9777c76d502de3848a85d04", null ],
+    [ "ApplyUpdatedMeshPhysics", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_base_spatial_mesh_observer.html#a6042d52870027097f7e734c64e568149", null ],
+    [ "ApplyUpdatedPhysicsLayer", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_base_spatial_mesh_observer.html#a7249aaffb6a1ea488f8a5dc1ee219718", null ],
+    [ "Initialize", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_base_spatial_mesh_observer.html#a68e66fc5ad7c28440982332f81210575", null ],
+    [ "LookupTriangleDensity", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_base_spatial_mesh_observer.html#a955619a68106b70c04afd66ed91ff20c", null ],
+    [ "ReadProfile", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_base_spatial_mesh_observer.html#a2d9d687e80ca0065992f441fbad50007", null ],
+    [ "meshes", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_base_spatial_mesh_observer.html#a5c10fba6ef4b95a49eda3f78b20d24f8", null ],
+    [ "meshEventData", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_base_spatial_mesh_observer.html#a2c30b37f9292b5a4fb614c84e724ec15", null ],
+    [ "OnMeshAdded", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_base_spatial_mesh_observer.html#a174b0967d3bdf7e0c184d44cc374f49c", null ],
+    [ "OnMeshRemoved", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_base_spatial_mesh_observer.html#a9a38ed7b1f8e32c963298b0ec8842f97", null ],
+    [ "OnMeshUpdated", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_base_spatial_mesh_observer.html#a6f0e613ca1cd9be131017b0f9bf49e3d", null ],
+    [ "DisplayOption", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_base_spatial_mesh_observer.html#a41c246132c6a9651dab44dff23b9b885", null ],
+    [ "LevelOfDetail", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_base_spatial_mesh_observer.html#a00fe83af2e493f49ad68c27eb1d78dc7", null ],
+    [ "Meshes", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_base_spatial_mesh_observer.html#a5ca6952c358669a3cdf1672afe8a2fc9", null ],
+    [ "MeshPhysicsLayer", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_base_spatial_mesh_observer.html#ac831fa1163d78b04fb0779f7d76219e3", null ],
+    [ "MeshPhysicsLayerMask", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_base_spatial_mesh_observer.html#ab641b5f60adbc37c4b4fee1a2bc3e07c", null ],
+    [ "ObservedObjectParent", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_base_spatial_mesh_observer.html#a463f24c366658da2565dc747146c971b", null ],
+    [ "OcclusionMaterial", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_base_spatial_mesh_observer.html#a72e83af6940e69cb5482eb22e21e6eb0", null ],
+    [ "PhysicsMaterial", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_base_spatial_mesh_observer.html#a06ddeff9f3062b318221fd269d31081d", null ],
+    [ "RecalculateNormals", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_base_spatial_mesh_observer.html#a9c9b6120353a1f0287d9b192e59aaf70", null ],
+    [ "TrianglesPerCubicMeter", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_base_spatial_mesh_observer.html#a0bbe49e28eabaebf418afe0d9f69533f", null ],
+    [ "VisibleMaterial", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_spatial_awareness_1_1_base_spatial_mesh_observer.html#ab2e5ffd54571967e687adeacfa752c90", null ]
+];

@@ -1,0 +1,27 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_m_s_build_1_1_assembly_definition_info =
+[
+    [ "GetDefaultAssemblyCSharpInfo", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_m_s_build_1_1_assembly_definition_info.html#aaec886dfef0f4dcbc77e69ed2ee78762", null ],
+    [ "GetSources", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_m_s_build_1_1_assembly_definition_info.html#a20161f79bf0a139550868180b2786588", null ],
+    [ "Parse", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_m_s_build_1_1_assembly_definition_info.html#a3169959eabe76e9df2382b006537d4f0", null ],
+    [ "ToString", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_m_s_build_1_1_assembly_definition_info.html#a2a8ef959012537f1808731472f5c14f6", null ],
+    [ "Validate", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_m_s_build_1_1_assembly_definition_info.html#a1abb31ae79eb6b749372596a5477740d", null ],
+    [ "allowUnsafeCode", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_m_s_build_1_1_assembly_definition_info.html#abb20b062c983acf25ce128f9066820f7", null ],
+    [ "autoReferenced", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_m_s_build_1_1_assembly_definition_info.html#ad682a8923ef3b55fc1f12cf9257c69c1", null ],
+    [ "defineConstraints", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_m_s_build_1_1_assembly_definition_info.html#afb20742e51a3744c6654afd0ce41e974", null ],
+    [ "EditorPlatform", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_m_s_build_1_1_assembly_definition_info.html#ad1e8496a656fab3587279e49cb3c498a", null ],
+    [ "excludePlatforms", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_m_s_build_1_1_assembly_definition_info.html#a174076670f43906e3d915a14d19734bd", null ],
+    [ "includePlatforms", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_m_s_build_1_1_assembly_definition_info.html#a9ee7995ca31ed16f4d12cc893dc091e6", null ],
+    [ "optionalUnityReferences", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_m_s_build_1_1_assembly_definition_info.html#ac934335edbda39f1725eb0d1c85c4944", null ],
+    [ "overrideReferences", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_m_s_build_1_1_assembly_definition_info.html#af46dfe1457ffbde0f485eb53af5f91bb", null ],
+    [ "TestAssembliesReference", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_m_s_build_1_1_assembly_definition_info.html#a387a5942391e8519f72c5e16fecb644c", null ],
+    [ "BuiltInPackage", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_m_s_build_1_1_assembly_definition_info.html#a08e665da76e283b510093d941ab3d431", null ],
+    [ "Directory", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_m_s_build_1_1_assembly_definition_info.html#a1834fc9f692857f5b196cec4d2d315c6", null ],
+    [ "EditorPlatformSupported", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_m_s_build_1_1_assembly_definition_info.html#aa03ee8ddfa9cd28b7e56c2488db48670", null ],
+    [ "Guid", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_m_s_build_1_1_assembly_definition_info.html#a21a6bcae34a83c8fc88a749d08449eb4", null ],
+    [ "IsDefaultAssembly", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_m_s_build_1_1_assembly_definition_info.html#aa097d620433077c3afee512ee985802d", null ],
+    [ "Name", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_m_s_build_1_1_assembly_definition_info.html#ace183fcb68e5667d0426abc0ea3f095c", null ],
+    [ "NonEditorPlatformSupported", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_m_s_build_1_1_assembly_definition_info.html#a7c529c9cf4e5326a6e5ae180935eb265", null ],
+    [ "PrecompiledAssemblyReferences", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_m_s_build_1_1_assembly_definition_info.html#a52385f314d8152c823e7c1c5503cecc0", null ],
+    [ "References", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_m_s_build_1_1_assembly_definition_info.html#ab8865315a8baf2a5945bf8d581ada7b9", null ],
+    [ "TestAssembly", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_m_s_build_1_1_assembly_definition_info.html#af63e230ef60e8399f51b75880b7e8a2c", null ]
+];

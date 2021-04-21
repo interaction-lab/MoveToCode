@@ -1,0 +1,4 @@
+var interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_i_mixed_reality_input_device_manager =
+[
+    [ "GetActiveControllers", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_i_mixed_reality_input_device_manager.html#a526f031f367ecea9a6a37e0119ddde7b", null ]
+];

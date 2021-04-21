@@ -1,10 +1,13 @@
 var searchData=
 [
-  ['kcstate_1770',['kcState',['../class_move_to_code_1_1_interaction_manager.html#aa842388129e0a7e0003f4eaa5a3a7cff',1,'MoveToCode::InteractionManager']]],
-  ['kuricurposetransform_1771',['kuriCurPoseTransform',['../class_move_to_code_1_1_kuri_manager.html#ac2a629327c60ce037e9a818f36e9680c',1,'MoveToCode::KuriManager']]],
-  ['kuriemotestringpublisher_1772',['kuriEmoteStringPublisher',['../class_move_to_code_1_1_kuri_manager.html#a674a76ff73e40c2b264c9b869ac561ae',1,'MoveToCode::KuriManager']]],
-  ['kurigoalposetransform_1773',['kuriGoalPoseTransform',['../class_move_to_code_1_1_kuri_manager.html#aa5965a1757350f2062f0bf5c92297474',1,'MoveToCode::KuriManager']]],
-  ['kurigoalstring_1774',['kuriGoalString',['../class_move_to_code_1_1_exercise_internals.html#a36c9257431c89fd72b8a0c1f99a16b93',1,'MoveToCode::ExerciseInternals']]],
-  ['kuriphysicalemoteactioncol_1775',['kuriPhysicalEmoteActionCol',['../class_ros_sharp_1_1_ros_bridge_client_1_1_kuri_emote_string_publisher.html#a4da471cd596dad08895a4d275cca78bb',1,'RosSharp::RosBridgeClient::KuriEmoteStringPublisher']]],
-  ['kuritextmesh_1776',['kuriTextMesh',['../class_move_to_code_1_1_kuri_text_manager.html#a6885e22b189a279f34922d2b65d2d07c',1,'MoveToCode::KuriTextManager']]]
+  ['jointcount_16338',['jointCount',['../class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_input_animation.html#affde544cd87f8d1a328f5e7c792c856f',1,'Microsoft.MixedReality.Toolkit.Input.InputAnimation.jointCount()'],['../class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_simulated_hand.html#a1445d4830425fdd9d3453dba32ed6af0',1,'Microsoft.MixedReality.Toolkit.Input.SimulatedHand.jointCount()']]],
+  ['jointname_16339',['JointName',['../class_ros_sharp_1_1_urdf_1_1_urdf_joint.html#ae4fcc0b8b693e41f249fbcb3040fda1a',1,'RosSharp::Urdf::UrdfJoint']]],
+  ['jointnames_16340',['JointNames',['../class_ros_sharp_1_1_ros_bridge_client_1_1_joint_state_subscriber.html#a8d14347e4da3e2e1ceb29a4af89a332b',1,'RosSharp::RosBridgeClient::JointStateSubscriber']]],
+  ['jointposes_16341',['jointPoses',['../class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_simulated_hand.html#a9e2d92b92c8493f495dd0e96aba7e612',1,'Microsoft.MixedReality.Toolkit.Input.SimulatedHand.jointPoses()'],['../class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_oculus_1_1_input_1_1_oculus_hand.html#abbece661bacf0625199458d6e480e0e3',1,'Microsoft.MixedReality.Toolkit.XRSDK.Oculus.Input.OculusHand.jointPoses()']]],
+  ['joints_16342',['joints',['../class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_base_hand_visualizer.html#a0afd8294492936af34763981f6305abd',1,'Microsoft.MixedReality.Toolkit.Input.BaseHandVisualizer.joints()'],['../class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_gltf_1_1_schema_1_1_gltf_skin.html#affea9bb652363a4db909bad71276c6aa',1,'Microsoft.MixedReality.Toolkit.Utilities.Gltf.Schema.GltfSkin.joints()']]],
+  ['jointstatereaders_16343',['JointStateReaders',['../class_ros_sharp_1_1_ros_bridge_client_1_1_joint_state_publisher.html#a2fb7342ff10d7fded8302f0684af5eb1',1,'RosSharp::RosBridgeClient::JointStatePublisher']]],
+  ['jointstatewriters_16344',['JointStateWriters',['../class_ros_sharp_1_1_ros_bridge_client_1_1_joint_state_subscriber.html#aaa997f1ba70bc6ee2542a7a2a1266731',1,'RosSharp::RosBridgeClient::JointStateSubscriber']]],
+  ['joyaxiswriters_16345',['joyAxisWriters',['../class_ros_sharp_1_1_ros_bridge_client_1_1_joy_subscriber.html#a88cfdba1b2d85457bce7b6f951fb442b',1,'RosSharp::RosBridgeClient::JoySubscriber']]],
+  ['joybuttonwriters_16346',['joyButtonWriters',['../class_ros_sharp_1_1_ros_bridge_client_1_1_joy_subscriber.html#a4261bc0eebe79b159f892c9974374a12',1,'RosSharp::RosBridgeClient::JoySubscriber']]],
+  ['joynum_16347',['JoyNum',['../class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_editor_1_1_input_manager_axis.html#a76d48644b5c1c3cd3182e2031a55055d',1,'Microsoft::MixedReality::Toolkit::Utilities::Editor::InputManagerAxis']]]
 ];

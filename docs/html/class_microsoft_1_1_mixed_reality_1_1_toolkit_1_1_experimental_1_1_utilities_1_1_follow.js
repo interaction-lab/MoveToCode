@@ -1,0 +1,36 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_utilities_1_1_follow =
+[
+    [ "AngularClampType", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_utilities_1_1_follow.html#ac19a56b501563a549cdb3632837c995b", [
+      [ "ViewDegrees", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_utilities_1_1_follow.html#ac19a56b501563a549cdb3632837c995bacc81960b5fd04a328d929a4f60b3aa5c", null ],
+      [ "AngleStepping", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_utilities_1_1_follow.html#ac19a56b501563a549cdb3632837c995ba1ea1640b07227154c31cfadc51208ffc", null ],
+      [ "RendererBounds", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_utilities_1_1_follow.html#ac19a56b501563a549cdb3632837c995baff488372e9accbc10ec227c6f4ffe416", null ],
+      [ "ColliderBounds", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_utilities_1_1_follow.html#ac19a56b501563a549cdb3632837c995baafe04403594c3a4afe3ea0630263d27f", null ]
+    ] ],
+    [ "OnEnable", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_utilities_1_1_follow.html#aae94367ef9c76e21fae8b163536ae35b", null ],
+    [ "RecalculateBoundsExtents", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_utilities_1_1_follow.html#aed774dc2015c97e51b8a84147138da0b", null ],
+    [ "Recenter", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_utilities_1_1_follow.html#abdc27e3c0119a218da861e641ec76bd3", null ],
+    [ "SolverUpdate", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_utilities_1_1_follow.html#ab0612c1ee89c9f269c41766d6d193826", null ],
+    [ "pitchOffset", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_utilities_1_1_follow.html#ab794dcfc05ddfb9b88de3c247b2a1bc2", null ],
+    [ "AngularClampMode", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_utilities_1_1_follow.html#a3393bdc1baa864b1517515d265a291b1", null ],
+    [ "BoundsScaler", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_utilities_1_1_follow.html#a046c59015658a2b7b68c8538e80d2717", null ],
+    [ "DefaultDistance", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_utilities_1_1_follow.html#a1d6a5827c27c499ab6557b96e2aa01b4", null ],
+    [ "FaceTrackedObjectWhileClamped", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_utilities_1_1_follow.html#a328ca47a5d4ec3fa90a68a1cd2ab73b2", null ],
+    [ "FaceUserDefinedTargetTransform", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_utilities_1_1_follow.html#a0276e06346795ae0de27cff8d3f58f62", null ],
+    [ "IgnoreAngleClamp", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_utilities_1_1_follow.html#a8fc63a36a98afdb47e4094c3f51f782b", null ],
+    [ "IgnoreDistanceClamp", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_utilities_1_1_follow.html#afe0600b21db749fcf3dae6e3f14fe733", null ],
+    [ "IgnoreReferencePitchAndRoll", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_utilities_1_1_follow.html#a83462cc8bc5dcc19f6e81a160f6c2665", null ],
+    [ "MaxDistance", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_utilities_1_1_follow.html#a300e4267b2404d937218abce0c21990f", null ],
+    [ "MaxViewHorizontalDegrees", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_utilities_1_1_follow.html#a6b637c14d76d4eec83d1f0f1343fb387", null ],
+    [ "MaxViewVerticalDegrees", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_utilities_1_1_follow.html#ab0e4c5ec0d67230f0c534ded5c4e4be3", null ],
+    [ "MinDistance", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_utilities_1_1_follow.html#a29c47edbc068b668778a8d70ad6baf6a", null ],
+    [ "OrientationType", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_utilities_1_1_follow.html#a2cf04608babf1cfafc7dc5c9156172e8", null ],
+    [ "OrientToControllerDeadzoneDegrees", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_utilities_1_1_follow.html#a48a96212fc92b646fca10005a4f8920a", null ],
+    [ "PitchOffset", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_utilities_1_1_follow.html#af51d0b3cf964bbac3a10c982c4f3eeae", null ],
+    [ "PivotAxis", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_utilities_1_1_follow.html#a872b1ecb1d4ef783ba5c0a9335179db5", null ],
+    [ "ReferencePosition", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_utilities_1_1_follow.html#a7c33fb483db2374b090a869440ee5a4c", null ],
+    [ "ReferenceRotation", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_utilities_1_1_follow.html#abe9cddc8b9253efecdd74edf1057a7a7", null ],
+    [ "ReorientWhenOutsideParameters", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_utilities_1_1_follow.html#a2a27eae0045d4fe1a65b01383cc2c735", null ],
+    [ "TargetToFace", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_utilities_1_1_follow.html#a70769212d13f78c71fb4b6175591e5f5", null ],
+    [ "TetherAngleSteps", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_utilities_1_1_follow.html#ada0546add776e63728cbba622c9a9eff", null ],
+    [ "VerticalMaxDistance", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_utilities_1_1_follow.html#a5d8e89176b038a5c33e00933a941ccf0", null ]
+];

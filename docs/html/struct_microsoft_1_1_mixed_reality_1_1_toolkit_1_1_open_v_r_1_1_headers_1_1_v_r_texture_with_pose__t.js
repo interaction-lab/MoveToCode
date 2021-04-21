@@ -1,0 +1,4 @@
+var struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_v_r_texture_with_pose__t =
+[
+    [ "mDeviceToAbsoluteTracking", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_v_r_texture_with_pose__t.html#a96bc75228b4e94ccbd01faafbab408f0", null ]
+];

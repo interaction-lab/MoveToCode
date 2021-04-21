@@ -1,0 +1,4 @@
+var interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_i_mixed_reality_hand_joint_handler =
+[
+    [ "OnHandJointsUpdated", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_i_mixed_reality_hand_joint_handler.html#a02bf52ebd94a4b4bca00f81a19f1de3e", null ]
+];

@@ -1,0 +1,5 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_editor_1_1_solvers_1_1_surface_magnetism_inspector =
+[
+    [ "OnEnable", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_editor_1_1_solvers_1_1_surface_magnetism_inspector.html#a4533864c6667eb5c45e1a5d201ba8552", null ],
+    [ "OnInspectorGUI", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_editor_1_1_solvers_1_1_surface_magnetism_inspector.html#ad5936f99db0664e2678f35b40afec9b9", null ]
+];

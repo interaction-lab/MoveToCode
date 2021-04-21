@@ -1,0 +1,5 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_mixed_reality_1_1_input_1_1_windows_mixed_reality_g_g_v_hand =
+[
+    [ "WindowsMixedRealityGGVHand", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_mixed_reality_1_1_input_1_1_windows_mixed_reality_g_g_v_hand.html#a28bce58437ed5c0d2e6f7b4661f9e2e0", null ],
+    [ "DefaultInteractions", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_mixed_reality_1_1_input_1_1_windows_mixed_reality_g_g_v_hand.html#ae450eecf48c9d3c311e2955ab1e74a62", null ]
+];

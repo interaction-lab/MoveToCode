@@ -1,0 +1,4 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_active_power_scheme_info =
+[
+    [ "ActivePowerScheme", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_windows_device_portal_1_1_active_power_scheme_info.html#a109f5546f7f124f68de388f966c17d59", null ]
+];

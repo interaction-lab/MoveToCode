@@ -1,0 +1,27 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_c_v_r_input =
+[
+    [ "DecompressSkeletalBoneData", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_c_v_r_input.html#aaaa925a3420da71ed01dee6263d2b1b9", null ],
+    [ "GetActionHandle", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_c_v_r_input.html#a9bc8493ed24f677912e3124ec98d11d0", null ],
+    [ "GetActionOrigins", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_c_v_r_input.html#aabd5367ba10a1522322e97691f9fba29", null ],
+    [ "GetActionSetHandle", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_c_v_r_input.html#a3640fba253b6668bc1fbc225b0938cee", null ],
+    [ "GetAnalogActionData", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_c_v_r_input.html#ae108e97fbf46556c42be57a7b23e4e5c", null ],
+    [ "GetBoneCount", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_c_v_r_input.html#a5e3a8731c6b477d894db20bff5f7b4bf", null ],
+    [ "GetBoneHierarchy", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_c_v_r_input.html#af7c01b735cd5d958e24e6a0230b55235", null ],
+    [ "GetBoneName", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_c_v_r_input.html#a3383e81246863611bcc0c9e1577bff1f", null ],
+    [ "GetDigitalActionData", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_c_v_r_input.html#a259a79282c4241844fd13c57e183065c", null ],
+    [ "GetInputSourceHandle", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_c_v_r_input.html#a8e9cedc33ac0d241e4e8bc2753e411d2", null ],
+    [ "GetOriginLocalizedName", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_c_v_r_input.html#a6abca39281c9385e714b70c6c3ed149c", null ],
+    [ "GetOriginTrackedDeviceInfo", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_c_v_r_input.html#a132d966f49efd79024c0ea7a919f0fdd", null ],
+    [ "GetPoseActionData", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_c_v_r_input.html#a2c1835c05750104df8d8e6d9182974b7", null ],
+    [ "GetSkeletalActionData", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_c_v_r_input.html#a41641c8645778cf0aa18f39bfdb1bd52", null ],
+    [ "GetSkeletalBoneData", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_c_v_r_input.html#a5f1e116023edbb6883030e56fa734128", null ],
+    [ "GetSkeletalBoneDataCompressed", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_c_v_r_input.html#aa5684fee49f524124cf9bc6bb935b41d", null ],
+    [ "GetSkeletalReferenceTransforms", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_c_v_r_input.html#abf568785b8fc0f86e2ed6e371d18d613", null ],
+    [ "GetSkeletalSummaryData", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_c_v_r_input.html#a9703aa58649d8bfeea82ccb9f784e786", null ],
+    [ "GetSkeletalTrackingLevel", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_c_v_r_input.html#a4f776ef3be302ebaf3dee68eb0a4a583", null ],
+    [ "SetActionManifestPath", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_c_v_r_input.html#a11872fae1c6b2f80138f7e065093b1c1", null ],
+    [ "ShowActionOrigins", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_c_v_r_input.html#a693106ae219abc9694d3937981692a71", null ],
+    [ "ShowBindingsForActionSet", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_c_v_r_input.html#a48d1b15295d2af6a1438eaac134a30bd", null ],
+    [ "TriggerHapticVibrationAction", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_c_v_r_input.html#a3f9907b2cb028aa259fccefb48929e50", null ],
+    [ "UpdateActionState", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_c_v_r_input.html#a676cbd72f82681ac7234e7f97ee18320", null ]
+];

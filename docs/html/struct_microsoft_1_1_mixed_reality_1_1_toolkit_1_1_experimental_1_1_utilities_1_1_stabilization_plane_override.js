@@ -1,0 +1,5 @@
+var struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_utilities_1_1_stabilization_plane_override =
+[
+    [ "Center", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_utilities_1_1_stabilization_plane_override.html#a02612f1e77237c84ba553fac56f3601d", null ],
+    [ "Normal", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_utilities_1_1_stabilization_plane_override.html#a6e9174d3510a30f5eeb6e041d596d8f7", null ]
+];

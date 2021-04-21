@@ -1,0 +1,6 @@
+var namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_facades =
+[
+    [ "MixedRealityToolkitFacadeHandler", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_facades_1_1_mixed_reality_toolkit_facade_handler.html", null ],
+    [ "ServiceFacadeEditor", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_facades_1_1_service_facade_editor.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_facades_1_1_service_facade_editor" ],
+    [ "ServiceFacade", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_facades_1_1_service_facade.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_facades_1_1_service_facade" ]
+];

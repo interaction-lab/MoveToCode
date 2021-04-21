@@ -1,0 +1,4 @@
+var struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_spatial_anchor_pose__t =
+[
+    [ "mAnchorToAbsoluteTracking", "struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_open_v_r_1_1_headers_1_1_spatial_anchor_pose__t.html#a9a9b3bd2f8272b383230072df4bb15e6", null ]
+];

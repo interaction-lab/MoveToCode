@@ -1,0 +1,6 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_boundary_1_1_editor_1_1_mixed_reality_boundary76d3090de87eef47224019e7e1ccb678 =
+[
+    [ "IsProfileInActiveInstance", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_boundary_1_1_editor_1_1_mixed_reality_boundary76d3090de87eef47224019e7e1ccb678.html#a57d1071c87b2e71d8933946a23332767", null ],
+    [ "OnEnable", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_boundary_1_1_editor_1_1_mixed_reality_boundary76d3090de87eef47224019e7e1ccb678.html#ab0e01bf816fe9b1ed56deacb8159d72b", null ],
+    [ "OnInspectorGUI", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_boundary_1_1_editor_1_1_mixed_reality_boundary76d3090de87eef47224019e7e1ccb678.html#aaf39dcaeae4a077dac1054875ef10ea9", null ]
+];

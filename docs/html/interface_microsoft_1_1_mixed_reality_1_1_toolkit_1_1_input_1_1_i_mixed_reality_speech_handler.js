@@ -1,0 +1,4 @@
+var interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_i_mixed_reality_speech_handler =
+[
+    [ "OnSpeechKeywordRecognized", "interface_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_input_1_1_i_mixed_reality_speech_handler.html#ac7211108d7f10082f28413820ff70ed1", null ]
+];

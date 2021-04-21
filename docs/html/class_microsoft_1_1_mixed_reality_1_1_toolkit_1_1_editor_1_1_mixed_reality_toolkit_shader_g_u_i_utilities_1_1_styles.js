@@ -1,0 +1,5 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_editor_1_1_mixed_reality_toolkit_shader_g_u_i_utilities_1_1_styles =
+[
+    [ "DepthWriteFixNowButton", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_editor_1_1_mixed_reality_toolkit_shader_g_u_i_utilities_1_1_styles.html#a28ba058c5bca422ee775d208ec8b0b27", null ],
+    [ "DepthWriteWarning", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_editor_1_1_mixed_reality_toolkit_shader_g_u_i_utilities_1_1_styles.html#a1d1272b489e598fc6c19826877f313e7", null ]
+];

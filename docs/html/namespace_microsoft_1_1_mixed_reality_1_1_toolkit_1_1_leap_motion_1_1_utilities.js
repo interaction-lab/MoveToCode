@@ -1,0 +1,4 @@
+var namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_leap_motion_1_1_utilities =
+[
+    [ "LeapMotionUtilities", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_leap_motion_1_1_utilities_1_1_leap_motion_utilities.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_leap_motion_1_1_utilities_1_1_leap_motion_utilities" ]
+];

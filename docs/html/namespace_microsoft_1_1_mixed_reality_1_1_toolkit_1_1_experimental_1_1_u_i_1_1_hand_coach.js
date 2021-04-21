@@ -1,0 +1,5 @@
+var namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_u_i_1_1_hand_coach =
+[
+    [ "MoveToTarget", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_u_i_1_1_hand_coach_1_1_move_to_target.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_u_i_1_1_hand_coach_1_1_move_to_target" ],
+    [ "RotateAroundPoint", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_u_i_1_1_hand_coach_1_1_rotate_around_point.html", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_u_i_1_1_hand_coach_1_1_rotate_around_point" ]
+];

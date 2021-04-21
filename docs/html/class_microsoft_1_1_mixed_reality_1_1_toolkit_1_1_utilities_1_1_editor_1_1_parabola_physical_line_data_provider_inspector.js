@@ -1,0 +1,5 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_editor_1_1_parabola_physical_line_data_provider_inspector =
+[
+    [ "OnEnable", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_editor_1_1_parabola_physical_line_data_provider_inspector.html#a235d22c4a5820821a5d98a2f8263d4c4", null ],
+    [ "OnInspectorGUI", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_editor_1_1_parabola_physical_line_data_provider_inspector.html#a6208324c79c3de154838626c3b6ae885", null ]
+];

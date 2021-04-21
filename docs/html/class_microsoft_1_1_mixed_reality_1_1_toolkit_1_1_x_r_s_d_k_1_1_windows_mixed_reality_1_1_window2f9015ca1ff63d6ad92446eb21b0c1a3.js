@@ -1,0 +1,8 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_windows_mixed_reality_1_1_window2f9015ca1ff63d6ad92446eb21b0c1a3 =
+[
+    [ "WindowsMixedRealityXRSDKArticulatedHand", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_windows_mixed_reality_1_1_window2f9015ca1ff63d6ad92446eb21b0c1a3.html#ae51fe7960d5a1081298576cfdfdda394", null ],
+    [ "TryGetJoint", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_windows_mixed_reality_1_1_window2f9015ca1ff63d6ad92446eb21b0c1a3.html#a54ff3a84900187f5b08a5b0af2d8ccde", null ],
+    [ "UpdateController", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_windows_mixed_reality_1_1_window2f9015ca1ff63d6ad92446eb21b0c1a3.html#ab6c1f0dad9ff053b7a209f265c3fbb9e", null ],
+    [ "DefaultInteractions", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_windows_mixed_reality_1_1_window2f9015ca1ff63d6ad92446eb21b0c1a3.html#adbfd4b78484703dea0faf0df81802c4e", null ],
+    [ "IsInPointingPose", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_x_r_s_d_k_1_1_windows_mixed_reality_1_1_window2f9015ca1ff63d6ad92446eb21b0c1a3.html#ab37accc85ca94930a137e28ae8b580d0", null ]
+];

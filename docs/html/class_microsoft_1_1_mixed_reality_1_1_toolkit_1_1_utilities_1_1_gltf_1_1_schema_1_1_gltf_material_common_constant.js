@@ -1,0 +1,6 @@
+var class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_gltf_1_1_schema_1_1_gltf_material_common_constant =
+[
+    [ "ambientFactor", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_gltf_1_1_schema_1_1_gltf_material_common_constant.html#a512d65ef22e7c74cd625001f128a40f0", null ],
+    [ "lightmapFactor", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_gltf_1_1_schema_1_1_gltf_material_common_constant.html#aacbcdc725fbe080ff548de8329e37316", null ],
+    [ "lightmapTexture", "class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_utilities_1_1_gltf_1_1_schema_1_1_gltf_material_common_constant.html#a50d974dc58001b041fd59fe13959268b", null ]
+];

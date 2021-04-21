@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['textcommand_1119',['TextCommand',['../struct_move_to_code_1_1_kuri_text_manager_1_1_text_command.html',1,'MoveToCode::KuriTextManager']]],
-  ['trashcanmanager_1120',['TrashcanManager',['../class_move_to_code_1_1_trashcan_manager.html',1,'MoveToCode']]]
+  ['quaternionelasticextent_11308',['QuaternionElasticExtent',['../struct_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_physics_1_1_quaternion_elastic_extent.html',1,'Microsoft::MixedReality::Toolkit::Experimental::Physics']]],
+  ['quaternionelasticsystem_11309',['QuaternionElasticSystem',['../class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_physics_1_1_quaternion_elastic_system.html',1,'Microsoft::MixedReality::Toolkit::Experimental::Physics']]],
+  ['quaternionextensions_11310',['QuaternionExtensions',['../class_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_quaternion_extensions.html',1,'Microsoft::MixedReality::Toolkit']]]
 ];

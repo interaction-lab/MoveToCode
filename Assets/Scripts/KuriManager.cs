@@ -6,6 +6,8 @@ namespace MoveToCode {
     public class KuriManager : Singleton<KuriManager> {
         [Range(-3.0f, 3.0f)]
         public float robotKC;
+        [HideInInspector]
+        public bool usePhysicalKuri = true;
 
         static string rISACol = "robotISA", robotKCLevel = "robotKCLevel";
 
@@ -48,7 +50,7 @@ namespace MoveToCode {
         }
 
         private void Update() {
-            if (inStartUp) {
+            if (inStartUp || !usePhysicalKuri) {
                 return;
             }
             Tick();

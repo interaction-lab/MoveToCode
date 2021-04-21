@@ -7,6 +7,7 @@ using UnityEngine.Assertions;
 namespace MoveToCode {
     public class LoggingManager : Singleton<LoggingManager> {
 
+        [HideInInspector]
         public bool logData = false;
         bool initialized = false;
         Dictionary<string, int> columnLookup;
@@ -21,7 +22,7 @@ namespace MoveToCode {
         }
 
 
-        void Init() { 
+        void Init() {
             if (initialized) {
                 return;
             }
@@ -36,7 +37,7 @@ namespace MoveToCode {
                 csvFilename = System.DateTime.Now.ToString().Replace(' ', '_').Replace('\\', '_').Replace('/', '_').Replace(':', '-') + ".csv";
                 filePath = Path.Combine(Application.persistentDataPath, csvFilename);
                 Debug.Log(filePath);
-                streamWriter = new StreamWriter(new FileStream(filePath, FileMode.Create)); 
+                streamWriter = new StreamWriter(new FileStream(filePath, FileMode.Create));
             }
             else {
                 Debug.LogWarning("NOT LOGGING DATA, data is autologged when deployed to the Hololens 2 but not by default for the Unity editor. If you want logging, check the \"logData\" public box of the LoggingManager component");
@@ -171,8 +172,8 @@ namespace MoveToCode {
 
         // Write out columns, will be at end of file
         void OnApplicationQuit() {
-        // Commented out line below for uploading CSV
-        //   FinishLogging(true); 
+            // Commented out line below for uploading CSV
+            //   FinishLogging(true); 
         }
     }
 }

@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿
 namespace MoveToCode {
-    public class PrintInstruction : StandAloneInstruction {
+    public class PrintInstruction : SnappableStandAloneInstruction {
         string output;
 
         public PrintInstruction(CodeBlock cbIn) : base(cbIn) { }
@@ -10,7 +8,6 @@ namespace MoveToCode {
         public override void EvaluateArgumentsOfInstruction() {
             output = GetArgument(CommonSCKeys.Printable)?.EvaluateArgument()?.ToString();
         }
-
 
         public override InstructionReturnValue RunInstruction() {
             EvaluateArgumentsOfInstruction();

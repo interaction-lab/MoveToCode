@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace MoveToCode {
-    public class SetVariableInstruction : StandAloneInstruction {
+    public class SetVariableInstruction : SnappableStandAloneInstruction {
 
         public SetVariableInstruction(CodeBlock cbIn) : base(cbIn) { }
 

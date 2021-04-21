@@ -10,7 +10,7 @@ namespace MoveToCode {
         Dictionary<string, VariableBlockCollection> variables;
         Dictionary<string, IDataType> variableSaveState;
         Transform memoryHeader;
-        float scaleForSetting = 0.1f;
+        float scaleForSetting = 0.175f;
 
         private void Awake() {
             GetVariables();
@@ -84,7 +84,7 @@ namespace MoveToCode {
         }
 
         public void AddNewVariableCodeBlock(string varName, IDataType dIn = null) {
-            GameObject go = Instantiate(Resources.Load<GameObject>(ResourcePathConstants.VariableCodeBlockCollectionPrefab), CodeBlockManager.instance.transform.position, Quaternion.identity) as GameObject;
+            GameObject go = Instantiate(Resources.Load<GameObject>(ResourcePathConstants.VariableCodeBlockCollectionPrefab), CodeBlockManager.instance.transform.position, Quaternion.identity);
             go.GetComponent<VariableBlockCollection>().SetVariableName(varName);
             go.GetComponent<VariableBlockCollection>().SetVariableValue(dIn);
 

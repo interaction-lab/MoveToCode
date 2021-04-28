@@ -117,6 +117,7 @@ namespace MoveToCode {
 
         private void OnTriggerEnter(Collider collision) {
             collisionCodeBlockSnap = GetCollidersCodeBlockSnap(collision);
+            Debug.Log(CodeBlockSnap.CurrentlyDraggingCodeBlockSnap);
             if (collisionCodeBlockSnap == CodeBlockSnap.CurrentlyDraggingCodeBlockSnap) {
                 collisionCodeBlockSnap?.AddSnapColliderInContact(this);
             }

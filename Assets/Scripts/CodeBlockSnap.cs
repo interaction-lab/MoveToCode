@@ -120,6 +120,7 @@ namespace MoveToCode {
             EvaluateBestCandidateCollider();
             CodeBlockManager.instance.DisableCollidersCompatibleCodeBlock(MyCodeBlock);
             ResetCBS();
+            CurrentlyDraggingCodeBlockSnap = null;
         }
 
         /// <summary>
@@ -144,7 +145,6 @@ namespace MoveToCode {
         private void ResetCBS() {
             curSnapCollidersInContact.Clear();
             AddSnapColliderInContact(null);
-            CurrentlyDraggingCodeBlockSnap = null;
         }
 
         private void OnEnable() {

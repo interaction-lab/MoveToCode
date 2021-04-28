@@ -12,6 +12,7 @@ namespace MoveToCode {
             outline.enabled = false;
         }
 
+        // TODO: This should just be on enter/leave
         private void OnTriggerStay(Collider blockCol) {
             if (blockCol.GetComponentInParent<CodeBlock>() != null && !blockCol.GetComponentInParent<CodeBlock>().GetIsMenuBlock()) {
                 blockCol.GetComponentInParent<CloneOnDrag>().SetBlockStillInMenu(true);

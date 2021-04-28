@@ -21,9 +21,10 @@ namespace MoveToCode {
         /// When the user clicks the exit button, the upload file and progress bar will
         /// appear and be interactable.
         /// </summary>
-        public void setUploadActive() {
-            uploadBtn.gameObject.SetActive(true);
-            progressBar.gameObject.SetActive(true);
+        public void ToggleUploadActive() {
+            bool a = uploadBtn.gameObject.activeSelf;
+            uploadBtn.gameObject.SetActive(!a);
+            progressBar.gameObject.SetActive(!a);
         }
     }
 }

@@ -6,20 +6,23 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/Main.unity
-    guid: 7e95cf0d9c28e92429e926900e348501
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Scenes/IpekDebug.unity
-    guid: 114c80b44988249bd8bf3c5e03a83b55
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Scenes/ChloeMain 1.unity
-    guid: f4afa3227376a4c37aa88d9861b307e6
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Scenes/MobileDevelop.unity
-    guid: c719ee877d4b040839cc1161053d3c7a
-  - enabled: 1
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
     path: Assets/Scenes/Ipek_MDebug.unity
     guid: d2efcc8a45e87404d96a7229a3a1bc36
+  - enabled: 1
+    path: Assets/Scenes/Main.unity
+    guid: 6ee034c939d19aa4b81befc2df9d1047
   m_configObjects:
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: b26fb7ef3a6e56b46acf7ab1e79f9de5,
       type: 2}

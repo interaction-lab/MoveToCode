@@ -11,6 +11,7 @@ using Firebase.Extensions;
 using System;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Assertions;
 
 namespace MoveToCode {
     /// <summary>
@@ -32,13 +33,20 @@ namespace MoveToCode {
             progressText = GetComponentInChildren<Canvas>().GetComponentInChildren<TextMeshProUGUI>();
             progressBar = GetComponentInChildren<Canvas>().GetComponentInChildren<Slider>().GetComponent<progressBarController>();
             uploadBtn = GetComponentInChildren<Canvas>().GetComponentInChildren<Button>();
+            PlaceUploadCanvas();
+        }
+
+        private void PlaceUploadCanvas() {
+            Canvas cv = transform.GetComponentInChildrenOnlyDepthOne<Canvas>();
+            Assert.IsTrue(cv != null);
+
         }
 
         /// <summary>
         /// Changes progress bar appropriately by bytes that have been uploaded (total value is out of 100)
         /// </summary>
         IEnumerator UpdateProgressBar() {
-            while(transferredBytes == 0 && totalBytes == 0) {
+            while (transferredBytes == 0 && totalBytes == 0) {
                 yield return null;
             }
             while (transferredBytes != totalBytes) {
@@ -68,7 +76,7 @@ namespace MoveToCode {
             return String.Format("{0}{1}/{2}", UriFileScheme, Application.persistentDataPath,
                 filename);
         }
-    
+
         /// <summary>
         /// Gets the finished CSV file from LoggingManager and uploads it to Firebase 
         /// </summary>
@@ -97,13 +105,12 @@ namespace MoveToCode {
                                     state.BytesTransferred, state.TotalByteCount));
                 }), CancellationToken.None, null);
 
-            task.ContinueWithOnMainThread(resultTask =>
-            {
+            task.ContinueWithOnMainThread(resultTask => {
                 // Checks that file is successfully uploaded and restarts upload button 
-                if (!resultTask.IsFaulted && !resultTask.IsCanceled)
-                {
+                if (!resultTask.IsFaulted && !resultTask.IsCanceled) {
                     progressText.text = "Finished upload";
                     count++;
+                    Application.Quit();
                     StartCoroutine(RestartBtn());
                     Debug.Log("Upload finished.");
                 }

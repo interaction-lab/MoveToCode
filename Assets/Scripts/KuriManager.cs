@@ -17,6 +17,8 @@ namespace MoveToCode {
 
         Transform kuriGoalPoseTransform, kuriCurPoseTransform;
 
+        GameObject virtualKuri;
+
         bool inStartUp;
 
         private void Awake() {
@@ -51,6 +53,10 @@ namespace MoveToCode {
 
         private void Update() {
             if (inStartUp || !usePhysicalKuri) {
+                if (!usePhysicalKuri && virtualKuri == null) {
+                    virtualKuri = transform.GetComponentInChildrenOnlyDepthOne<Animator>().gameObject;
+                    kuriCurPoseTransform = virtualKuri.transform;
+                }
                 return;
             }
             Tick();

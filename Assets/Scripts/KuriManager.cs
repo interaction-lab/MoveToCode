@@ -15,21 +15,23 @@ namespace MoveToCode {
         PoseStampedPublisher poseStampPublisher;
         float timeSinceLastAction, timeWindow;
 
-        Transform kuriGoalPoseTransform, kuriCurPoseTransform;
-
-        GameObject virtualKuri;
+        GameObject kuriGameObject;
+        public Transform KuriGoalPoseTransform;
 
         bool inStartUp;
 
         private void Awake() {
+            OptionSelectionManager.instance.Init();
+            if (!usePhysicalKuri && kuriGameObject == null) {
+                kuriGameObject = transform.GetComponentInChildrenOnlyDepthOne<Animator>().gameObject;
+            }
             timeWindow = HumanStateManager.instance.timeWindow;
             timeSinceLastAction = 0;
             kuriEmoteStringPublisher = FindObjectOfType<KuriEmoteStringPublisher>();
             poseStampPublisher = FindObjectOfType<PoseStampedPublisher>();
-            kuriGoalPoseTransform = transform.GetChild(0);
-            kuriCurPoseTransform = transform.GetChild(1);
             LoggingManager.instance.AddLogColumn(rISACol, "");
             LoggingManager.instance.AddLogColumn(robotKCLevel, "");
+            KuriGoalPoseTransform = transform.GetChild(0); // TODO: this is awful
         }
 
         private void Start() {
@@ -53,28 +55,10 @@ namespace MoveToCode {
 
         private void Update() {
             if (inStartUp || !usePhysicalKuri) {
-                if (!usePhysicalKuri && virtualKuri == null) {
-                    virtualKuri = transform.GetComponentInChildrenOnlyDepthOne<Animator>().gameObject;
-                    kuriCurPoseTransform = virtualKuri.transform;
-                }
                 return;
             }
             Tick();
             timeSinceLastAction += Time.deltaTime;
-        }
-
-        public Transform GetKuriGoalPoseTransform() {
-            if (kuriGoalPoseTransform == null) {
-                kuriGoalPoseTransform = transform.GetChild(0);
-            }
-            return kuriGoalPoseTransform;
-        }
-
-        public Transform GetKuriCurPoseTransform() {
-            if (kuriCurPoseTransform == null) {
-                kuriCurPoseTransform = transform.GetChild(1);
-            }
-            return kuriCurPoseTransform;
         }
 
         public void AlertActionMade() {
@@ -102,9 +86,9 @@ namespace MoveToCode {
         }
 
         private void TakeMovementAction() {
-            kuriGoalPoseTransform.position = ExerciseInformationSeekingActions.goOfFocus.transform.position;
-            kuriGoalPoseTransform.rotation = Quaternion.LookRotation(ExerciseInformationSeekingActions.goOfFocus.transform.forward);
-            poseStampPublisher?.PublishPosition(kuriGoalPoseTransform);
+            KuriGoalPoseTransform.position = ExerciseInformationSeekingActions.goOfFocus.transform.position;
+            KuriGoalPoseTransform.rotation = Quaternion.LookRotation(ExerciseInformationSeekingActions.goOfFocus.transform.forward);
+            poseStampPublisher?.PublishPosition(KuriGoalPoseTransform);
         }
 
         public void SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT toa) {

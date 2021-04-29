@@ -121,36 +121,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &24491696
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 24491697}
-  m_Layer: 0
-  m_Name: KuriCurPos
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &24491697
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 24491696}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 648124168}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &25042201
 GameObject:
   m_ObjectHideFlags: 0
@@ -4399,7 +4369,7 @@ GameObject:
   m_Component:
   - component: {fileID: 584438853}
   m_Layer: 0
-  m_Name: TransformPublishObject
+  m_Name: GoalTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4900,7 +4870,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 584438853}
-  - {fileID: 24491697}
   - {fileID: 485192126}
   m_Father: {fileID: 223377336}
   m_RootOrder: 6
@@ -4919,6 +4888,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   robotKC: 0.1
   usePhysicalKuri: 0
+  KuriGoalPoseTransform: {fileID: 0}
 --- !u!4 &671810406 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5335814774712488528, guid: dddf9b2e6c0fcd546b30a826b21b6e2b,
@@ -11305,7 +11275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Topic: /laser_amcl_basic_pose
   TimeStep: 0.25
-  PublishedTransform: {fileID: 24491697}
+  PublishedTransform: {fileID: 0}
 --- !u!114 &1504993770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11962,7 +11932,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 485192125}
   m_PrefabAsset: {fileID: 0}
---- !u!136 &1622200377
+--- !u!136 &1622200378
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

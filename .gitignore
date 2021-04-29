@@ -119,3 +119,5 @@ M2C_MobileTest/
 # Firebase
 [Aa]ssets/Firebase
 [Aa]ssets/Data
+[Aa]ssets/GoogleService-Info.plist*
+[Aa]ssets/google-services.json*

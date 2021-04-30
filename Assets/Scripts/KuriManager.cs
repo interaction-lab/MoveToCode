@@ -8,8 +8,8 @@ namespace MoveToCode {
         public float robotKC;
         [HideInInspector]
         public bool usePhysicalKuri = true;
-
         static string rISACol = "robotISA", robotKCLevel = "robotKCLevel";
+
 
         KuriEmoteStringPublisher kuriEmoteStringPublisher;
         PoseStampedPublisher poseStampPublisher;
@@ -17,11 +17,18 @@ namespace MoveToCode {
 
         GameObject kuriGameObject;
         public Transform KuriGoalPoseTransform;
+        KuriController kuriController;
 
         bool inStartUp;
 
         private void Awake() {
             OptionSelectionManager.instance.Init();
+            if (usePhysicalKuri) {
+                kuriController = FindObjectOfType<PhysicalKuriController>().GetComponent<KuriController>();
+            }
+            else {
+                kuriController = FindObjectOfType<VirtualKuriController>().GetComponent<KuriController>();
+            }
             if (!usePhysicalKuri && kuriGameObject == null) {
                 kuriGameObject = transform.GetComponentInChildrenOnlyDepthOne<Animator>().gameObject;
             }
@@ -38,6 +45,11 @@ namespace MoveToCode {
             StartCoroutine(StartRoutine());
         }
 
+        public void SetKC(float kcRIn) {
+            robotKC = kcRIn;
+            LoggingManager.instance.UpdateLogColumn(robotKCLevel, robotKC.ToString("F3"));
+        }
+
         IEnumerator StartRoutine() {
             inStartUp = true;
             yield return null;
@@ -48,10 +60,7 @@ namespace MoveToCode {
             inStartUp = false;
         }
 
-        public void SetKC(float kcRIn) {
-            robotKC = kcRIn;
-            LoggingManager.instance.UpdateLogColumn(robotKCLevel, robotKC.ToString("F3"));
-        }
+
 
         private void Update() {
             if (inStartUp || !usePhysicalKuri) {
@@ -81,8 +90,7 @@ namespace MoveToCode {
         }
 
         private void TakeISAAction() {
-            string actionString = ExerciseManager.instance.GetCurExercise().GetComponent<ExerciseInformationSeekingActions>().DoISAAction();
-            LoggingManager.instance.UpdateLogColumn(rISACol, actionString);
+            LoggingManager.instance.UpdateLogColumn(rISACol, kuriController.TakeISAAction());
         }
 
         private void TakeMovementAction() {
@@ -92,8 +100,9 @@ namespace MoveToCode {
         }
 
         public void SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT toa) {
-            poseStampPublisher?.PubTurnTowardUser();
-            kuriEmoteStringPublisher?.PubRandomPositive();
+            //poseStampPublisher?.PubTurnTowardUser();
+            //kuriEmoteStringPublisher?.PubRandomPositive();
+            kuriController.DoPositiveAffect(toa);
             KuriTextManager.instance.Clear(KuriTextManager.PRIORITY.low);
             KuriTextManager.instance.SayRandomPositiveAffect(toa);
             AlertActionMade();

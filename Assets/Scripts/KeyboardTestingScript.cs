@@ -11,19 +11,20 @@ public class KeyboardTestingScript : MonoBehaviour {
         anim = GetComponent<Animator>();
     }
 
-    void Update() { 
+    void Update() {
         if (Input.GetKeyDown("h")) {
-            anim.SetTrigger("HighFive");
+            //anim.SetTrigger("HighFive");
         }
         if (Input.GetKeyDown(KeyCode.Alpha0)) {
-            Interpreter.instance.RunNextInstruction();
+            // Interpreter.instance.RunNextInstruction();
+            KuriManager.instance.SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT.Congratulation);
         }
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
 
         }
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
-            MenuManager.instance.FakePressPlay();
-            HumanStateManager.instance.DebugLogData();
+            //  MenuManager.instance.FakePressPlay();
+            //  HumanStateManager.instance.DebugLogData();
             //FindObjectOfType<KuriEmoteStringPublisher>().PubRandomNegative();
         }
 

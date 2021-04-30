@@ -34,5 +34,10 @@ namespace MoveToCode {
         protected override void SetMyBlockInternalArg() {
             myBlockInternalArg = new StartInstruction(this);
         }
+
+        public void UnSnapArgument() {
+            SnapCollider snap = GetComponentInChildren<SnapColliderNext>();
+            snap.DoSnapAction(null, false);
+        }
     }
 }

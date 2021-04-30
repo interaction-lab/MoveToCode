@@ -18,6 +18,7 @@ namespace MoveToCode {
         public static GameObject goOfFocus;
 
         public virtual string DoISAAction() {
+            Debug.Log("ISA");
             int probRange = 10;
             string result = "";
             int count = 0;
@@ -41,22 +42,21 @@ namespace MoveToCode {
                 }
                 ++count;
             }
-
+            Debug.Log(result);
             return result;
         }
 
         string SpawnVariable() {
-            string[] varNames = GetComponent<Exercise>().GetExerciseInternals().GetVarNames();
-            if (varNames?.Length == 0) {
+            string[] varNames = GetComponent<Exercise>().varNames;
+            if (varNames.Length == 0) {
                 return "";
             }
-           /* string varToSpawn = varNames[Random.Range(0, varNames.Length)];
+            string varToSpawn = varNames[Random.Range(0, varNames.Length)];
             FakePressButton fpb = MemoryManager.instance.GetVariables()[varToSpawn].GetComponent<FakePressButton>();
             if (fpb == null) {
                 fpb = MemoryManager.instance.GetVariables()[varToSpawn].gameObject.AddComponent<FakePressButton>();
-            }*/
-           return ""; // TODO: fix later, currently hardcoded to original exercises
-            //return fpb.PressButton();
+            }
+            return fpb.PressButton();
         }
 
         string SnapNextSnapISA() {
@@ -76,34 +76,40 @@ namespace MoveToCode {
             int snapArgIndex = ConvertSnapActionToIntPos(withAction[actionIndex]);
             if (withAction[actionIndex] != SNAPACTIONS.REMOVE) {
                 //snapParent[actionIndex].GetSnapColliders().GetSnapColliderAtPos(snapArgIndex).DoSnapAction(snapParent[actionIndex], snapChild[actionIndex], false);
-                return string.Join("", "Add ", snapChild[actionIndex].name,
-                                    " from ", snapParent[actionIndex].name,
-                                     " at ", snapArgIndex.ToString());
+                return string.Join("",
+                                "Add ",
+                                snapChild[actionIndex].name,
+                                " from ",
+                                snapParent[actionIndex].name,
+                                " at ",
+                                snapArgIndex.ToString());
             }
             else {
-                string childArg = GetChildArg(actionIndex);
-
-                //snapParent[actionIndex].SetIArg(childArg, null, false);
-                return string.Join("", "Remove ", snapChild[actionIndex].name,
-                                      " from ", snapParent[actionIndex].name,
-                                      " at ", childArg.ToString());
+                int childIndex = GetChildArgPos(actionIndex);
+                //snapParent[actionIndex].SetArgumentBlockAt(null, childIndex, false);
+                return string.Join("",
+                                "Remove ",
+                                snapChild[actionIndex].name,
+                                " from ",
+                                snapParent[actionIndex].name,
+                                " at ",
+                                childIndex.ToString());
             }
         }
 
-        // TODO: fix kuri later
-        private string GetChildArg(int index) {
-            return "NotFound"; //snapParent[index].GetArgDescriptionOfArg(snapChild[index].GetMyIArgument());
+        private int GetChildArgPos(int index) {
+            return 0;//snapParent[index].GetPositionOfArgument(snapChild[index].GetMyInternalIArgument());
         }
 
         private int FindNextSnapIndex() {
             for (int actionIndex = 0; actionIndex < snapChild.Length; ++actionIndex) {
                 if (withAction[actionIndex] != SNAPACTIONS.REMOVE) {
-                    if (GetChildArg(actionIndex) == "NotFound") {
+                    if (GetChildArgPos(actionIndex) == -1) {
                         return actionIndex;
                     }
                 }
                 else {
-                    if (GetChildArg(actionIndex) != "NotFound") {
+                    if (GetChildArgPos(actionIndex) != -1) {
                         return actionIndex;
                     }
                 }

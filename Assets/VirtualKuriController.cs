@@ -18,6 +18,7 @@ namespace MoveToCode {
         }
         public override void DoPositiveAffect(KuriTextManager.TYPEOFAFFECT toa) {
             Anim.SetTrigger("GotItTrigger");
+            return "GotItTrigger";
         }
 
         public override void TakeMovementAction() {

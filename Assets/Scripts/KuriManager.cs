@@ -1,6 +1,7 @@
 ﻿using RosSharp.RosBridgeClient;
 using System.Collections;
 using UnityEngine;
+using static MoveToCode.KuriController;
 
 namespace MoveToCode {
     public class KuriManager : Singleton<KuriManager> {
@@ -8,14 +9,15 @@ namespace MoveToCode {
         public float robotKC;
         [HideInInspector]
         public bool usePhysicalKuri = true;
-        static string rISACol = "robotISA", robotKCLevel = "robotKCLevel";
+        static string rISACol = "robotISA",
+            robotKCLevel = "robotKCLevel",
+            kuriPhysicalEmoteActionCol = "kuriPhysicalAction",
+            kuriMovementActionCol = "kuriMovementAction";
 
 
-        KuriEmoteStringPublisher kuriEmoteStringPublisher;
         PoseStampedPublisher poseStampPublisher;
         float timeSinceLastAction, timeWindow;
 
-        GameObject kuriGameObject;
         public Transform KuriGoalPoseTransform;
         KuriController kuriController;
 
@@ -29,15 +31,13 @@ namespace MoveToCode {
             else {
                 kuriController = FindObjectOfType<VirtualKuriController>().GetComponent<KuriController>();
             }
-            if (!usePhysicalKuri && kuriGameObject == null) {
-                kuriGameObject = transform.GetComponentInChildrenOnlyDepthOne<Animator>().gameObject;
-            }
             timeWindow = HumanStateManager.instance.timeWindow;
             timeSinceLastAction = 0;
-            kuriEmoteStringPublisher = FindObjectOfType<KuriEmoteStringPublisher>();
             poseStampPublisher = FindObjectOfType<PoseStampedPublisher>();
             LoggingManager.instance.AddLogColumn(rISACol, "");
             LoggingManager.instance.AddLogColumn(robotKCLevel, "");
+            LoggingManager.instance.AddLogColumn(kuriPhysicalEmoteActionCol, "");
+            LoggingManager.instance.AddLogColumn(kuriMovementActionCol, "");
             KuriGoalPoseTransform = transform.GetChild(0); // TODO: this is awful
         }
 
@@ -54,16 +54,16 @@ namespace MoveToCode {
             inStartUp = true;
             yield return null;
             yield return new WaitForSeconds(3);
-            kuriEmoteStringPublisher?.PublishAction(KuriEmoteStringPublisher.EMOTIONS.close_eyes);
+            kuriController.DoAction(EMOTIONS.close_eyes);
             yield return new WaitForSeconds(InteractionManager.instance.MinToSeconds(InteractionManager.instance.warmUpTimeMinutes) - 3f);
-            kuriEmoteStringPublisher?.PublishAction(KuriEmoteStringPublisher.EMOTIONS.happy);
+            kuriController.DoAction(KuriEmoteStringPublisher.EMOTIONS.happy);
             inStartUp = false;
         }
 
 
 
         private void Update() {
-            if (inStartUp || !usePhysicalKuri) {
+            if (inStartUp) {
                 return;
             }
             Tick();
@@ -84,16 +84,19 @@ namespace MoveToCode {
                 //TakeMovementAction();
             }
             else {
-                kuriEmoteStringPublisher?.PubRandomPositive();
+                kuriController.DoRandomPositiveAction();
             }
             AlertActionMade();
         }
 
         private void TakeISAAction() {
-            LoggingManager.instance.UpdateLogColumn(rISACol, kuriController.TakeISAAction());
+            string actionMade = kuriController.TakeISAAction();
+            LoggingManager.instance.UpdateLogColumn(rISACol, actionMade);
         }
 
         private void TakeMovementAction() {
+            string actionMade = kuriController.TakeMovementAction();
+            LoggingManager.instance.UpdateLogColumn(kuriMovementActionCol, actionMade);
             KuriGoalPoseTransform.position = ExerciseInformationSeekingActions.goOfFocus.transform.position;
             KuriGoalPoseTransform.rotation = Quaternion.LookRotation(ExerciseInformationSeekingActions.goOfFocus.transform.forward);
             poseStampPublisher?.PublishPosition(KuriGoalPoseTransform);
@@ -102,7 +105,9 @@ namespace MoveToCode {
         public void SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT toa) {
             //poseStampPublisher?.PubTurnTowardUser();
             //kuriEmoteStringPublisher?.PubRandomPositive();
-            kuriController.DoPositiveAffect(toa);
+            LoggingManager.instance.UpdateLogColumn(kuriPhysicalEmoteActionCol,
+                kuriController.DoPositiveAffect(toa));
+
             KuriTextManager.instance.Clear(KuriTextManager.PRIORITY.low);
             KuriTextManager.instance.SayRandomPositiveAffect(toa);
             AlertActionMade();

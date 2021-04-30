@@ -1,30 +1,16 @@
 ﻿using MoveToCode;
 using UnityEngine;
+using static MoveToCode.KuriController;
 
 namespace RosSharp.RosBridgeClient {
     public class KuriEmoteStringPublisher : Publisher<Messages.Standard.String> {
 
-        public enum EMOTIONS {
-            happy,
-            neutral,
-            sad,
-            sassy,
-            confused,
-            thinking,
-            love,
-            close_eyes
-        }
-
         private Messages.Standard.String message;
-        string kuriPhysicalEmoteActionCol = "kuriPhysicalAction";
+
         protected override void Start() {
             base.Start();
             InitializeMessage();
-            LoggingManager.instance.AddLogColumn(kuriPhysicalEmoteActionCol, "");
-        }
 
-        void LogAction(EMOTIONS e) {
-            LoggingManager.instance.UpdateLogColumn(kuriPhysicalEmoteActionCol, e.ToString());
         }
 
         public void PubRandomPositive() {
@@ -44,13 +30,12 @@ namespace RosSharp.RosBridgeClient {
 
         public void PublishAction(EMOTIONS action) {
             message.data = action.ToString();
-            LogAction(action);
             Publish(message);
         }
 
         private void InitializeMessage() {
             message = new Messages.Standard.String {
-                data = "happy"
+                data = EMOTIONS.happy.ToString()
             };
         }
 

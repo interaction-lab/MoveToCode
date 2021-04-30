@@ -69,6 +69,9 @@ namespace MoveToCode {
         public static string EncouragementPhrases = SpeechFolder + "preloadEncouragement";
         public static string CachePhrases = SpeechCacheFolder + "cachePhrase";
 
+        public static string KuriSoundFolder = AudioFolder + "KuriAudio/";
+        public static string KuriILoveYouSound = KuriSoundFolder + "i_love_you";
+
         // AWS Credentials
         public static string AWSPollyAPI = "PollyAPI1";
     }

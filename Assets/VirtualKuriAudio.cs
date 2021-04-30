@@ -2,17 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VirtualKuriAudio : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+namespace MoveToCode {
+    [RequireComponent(typeof(AudioSource))]
+    public class VirtualKuriAudio : MonoBehaviour {
+        public static AudioClip iLoveYouAudioClip;
+        AudioSource aos;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private void Awake() {
+            aos = GetComponent<AudioSource>();
+            iLoveYouAudioClip = Resources.Load<AudioClip>(ResourcePathConstants.KuriILoveYouSound);
+        }
+
+        public void PlayILoveYou() {
+            PlayKuriAduioClip(iLoveYouAudioClip);
+        }
+
+        public void PlayKuriAduioClip(AudioClip ac) {
+            aos.PlayOneShot(ac);
+        }
     }
 }

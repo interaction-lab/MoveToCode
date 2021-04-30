@@ -16,21 +16,35 @@ namespace MoveToCode {
             }
         }
 
+        PoseStampedPublisher poseStampPub;
+        PoseStampedPublisher PoseStampPub {
+            get {
+                if (poseStampPub == null) {
+                    poseStampPub = GetComponent<PoseStampedPublisher>();
+                }
+                return poseStampPub;
+            }
+        }
+
         public override string DoAction(EMOTIONS e) {
             KuriEmoteStringPub.PublishAction(e);
             return e.ToString();
         }
 
-        public override string DoPositiveAffect(KuriTextManager.TYPEOFAFFECT toa) {
-            return "";
+        public override string DoRandomPositiveAction() {
+            return KuriEmoteStringPub.PubRandomPositive();
         }
 
-        public override void DoRandomPositiveAction() {
+        public override string TakeMovementAction() {
             throw new System.NotImplementedException();
         }
 
-        public override void TakeMovementAction() {
+        public override string TurnTowardsUser() {
             throw new System.NotImplementedException();
+        }
+
+        public override string DoRandomNegativeAction() {
+            return KuriEmoteStringPub.PubRandomNegative();
         }
     }
 }

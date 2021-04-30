@@ -13,15 +13,15 @@ namespace RosSharp.RosBridgeClient {
 
         }
 
-        public void PubRandomPositive() {
-            EMOTIONS[] e = new EMOTIONS[] { EMOTIONS.happy, EMOTIONS.love, EMOTIONS.thinking };
-            int choice = Random.Range(0, 3);
-            PublishAction(e[choice]);
+        public string PubRandomPositive() {
+            int choice = Random.Range(0, PositiveEmotions.Length);
+            PublishAction(PositiveEmotions[choice]);
+            return PositiveEmotions[choice].ToString();
         }
-        public void PubRandomNegative() {
-            EMOTIONS[] e = new EMOTIONS[] { EMOTIONS.sad, EMOTIONS.sassy, EMOTIONS.confused };
-            int choice = Random.Range(0, 3);
-            PublishAction(e[choice]);
+        public string PubRandomNegative() {
+            int choice = Random.Range(0, NegativeEmotions.Length);
+            PublishAction(NegativeEmotions[choice]);
+            return NegativeEmotions[choice].ToString();
         }
 
         public void PubNeutralAction() {

@@ -33,7 +33,6 @@ namespace MoveToCode {
             }
             timeWindow = HumanStateManager.instance.timeWindow;
             timeSinceLastAction = 0;
-            poseStampPublisher = FindObjectOfType<PoseStampedPublisher>();
             LoggingManager.instance.AddLogColumn(rISACol, "");
             LoggingManager.instance.AddLogColumn(robotKCLevel, "");
             LoggingManager.instance.AddLogColumn(kuriPhysicalEmoteActionCol, "");
@@ -56,7 +55,7 @@ namespace MoveToCode {
             yield return new WaitForSeconds(3);
             kuriController.DoAction(EMOTIONS.close_eyes);
             yield return new WaitForSeconds(InteractionManager.instance.MinToSeconds(InteractionManager.instance.warmUpTimeMinutes) - 3f);
-            kuriController.DoAction(KuriEmoteStringPublisher.EMOTIONS.happy);
+            kuriController.DoAction(EMOTIONS.happy);
             inStartUp = false;
         }
 
@@ -105,8 +104,9 @@ namespace MoveToCode {
         public void SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT toa) {
             //poseStampPublisher?.PubTurnTowardUser();
             //kuriEmoteStringPublisher?.PubRandomPositive();
+            string actionMade = kuriController.DoRandomPositiveAction();
             LoggingManager.instance.UpdateLogColumn(kuriPhysicalEmoteActionCol,
-                kuriController.DoPositiveAffect(toa));
+                actionMade);
 
             KuriTextManager.instance.Clear(KuriTextManager.PRIORITY.low);
             KuriTextManager.instance.SayRandomPositiveAffect(toa);

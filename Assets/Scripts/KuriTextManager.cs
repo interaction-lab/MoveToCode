@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace MoveToCode {
     public class KuriTextManager : Singleton<KuriTextManager> {
-        MeshRenderer[] chestLights;
         struct TextCommand {
             public COMMANDS commandType;
             public PRIORITY priority;
@@ -36,10 +35,7 @@ namespace MoveToCode {
         Queue<TextCommand> highPriorityCommands;
         AudioSource audioSource;
         AudioClip computerNoiseClip;
-        Material ledOnMaterial, ledOffMaterial;
         int curCommandNum, ticketCommandNum;
-        float[] spectrum = new float[256];
-        float spectrumValue;
 
         void Setup() {
             commandQueue = new Queue<TextCommand>();
@@ -54,36 +50,7 @@ namespace MoveToCode {
             audioSource.spatialBlend = 1;
             audioSource.loop = true;
             audioSource.volume = 0.05f;
-            ledOnMaterial = Resources.Load<Material>(ResourcePathConstants.locLedOnMaterial) as Material;
-            ledOffMaterial = Resources.Load<Material>(ResourcePathConstants.locLedOffMaterial) as Material;
-            chestLights = GetComponentsInChildren<MeshRenderer>();
         }
-
-        public bool IsGlowing(){
-            return chestLights[0].material == ledOnMaterial;
-        }
-
-        public void ToggleGlow(bool turnOn){
-            foreach(MeshRenderer led in chestLights)
-            {
-                led.material = turnOn ? ledOnMaterial : ledOffMaterial;
-            }
-        }
-
-        public void audioLightPattern(){
-            AudioListener.GetSpectrumData(spectrum, 0, FFTWindow.Rectangular);
-            if(spectrum != null && spectrum.Length > 0) {
-                spectrumValue = spectrum[0] * 100;
-                if (spectrumValue > 0.2){
-                    ToggleGlow(true);
-                }else{
-                    ToggleGlow(false);
-                }
-                
-            }
-
-        }
-
 
         Queue<TextCommand> GetCommandQueue() {
             if (commandQueue == null) {
@@ -123,12 +90,10 @@ namespace MoveToCode {
                 }
                 audioSource.Play();
                 foreach (char letter in processTuple.text) {
-                    audioLightPattern();
                     kuriTextMesh.text += letter;
                     yield return new WaitForSeconds(textTypingTime);
                 }
                 audioSource.Pause();
-                ToggleGlow(false);
             }
             else if (processTuple.commandType == COMMANDS.erase) {
                 kuriTextMesh.text = "";
@@ -169,7 +134,7 @@ namespace MoveToCode {
                     "You can do this!",
                     "Go ahead!",
                     "Don't give up!",
-                    "Keep trying!"
+                    "Keey trying!"
                 }
 
             }

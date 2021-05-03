@@ -6,11 +6,6 @@ namespace MoveToCode {
 
         private CodeBlockFamily currentCodeBlockFamily = null;
 
-        private void Awake() {
-            TurnMenuOff();
-            GetComponent<ObjectManipulator>().RemoveTwoHandedScaling();
-        }
-
         public void SetFamily(CodeBlockFamily family) {
             HidePreviousActive();
             currentCodeBlockFamily = family;
@@ -27,6 +22,10 @@ namespace MoveToCode {
 
         public void TurnMenuOn() {
             gameObject.SetActive(true);
+        }
+
+        private void OnEnable() {
+            GetComponent<ObjectManipulator>().RemoveTwoHandedScaling();
         }
 
         public void TurnMenuOff() {

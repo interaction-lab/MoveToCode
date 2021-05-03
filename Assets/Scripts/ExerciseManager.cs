@@ -60,21 +60,20 @@ namespace MoveToCode {
             curExercise.CleanUp();
             ToggleCurrentExercise(false);
             curExercisePos += 1;
-            if (curExercisePos == exerciseList.Count) {
-                InitiateFreePlay();
-            }
-            else {
-                LoggingManager.instance.UpdateLogColumn(curExcersieCol, curExercisePos.ToString());
-                curExercise = exerciseList[curExercisePos];
-                ToggleCurrentExercise(true);
-            }
-        }
 
-        private void InitiateFreePlay() {
-            Debug.Log("Free play woould be initiated");
+            LoggingManager.instance.UpdateLogColumn(curExcersieCol, curExercisePos.ToString());
+            curExercise = exerciseList[curExercisePos];
+            ToggleCurrentExercise(true);
+
         }
 
         private void ToggleCurrentExercise(bool desiredActiveState) {
+            if (curExercise as FreePlayExercise != null) {
+                CodeBlockMenuManager.instance.TurnMenuOn();
+            }
+            else {
+                CodeBlockMenuManager.instance.TurnMenuOff();
+            }
             curExercise.gameObject.SetActive(desiredActiveState);
         }
     }

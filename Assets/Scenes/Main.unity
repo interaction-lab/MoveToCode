@@ -2941,7 +2941,6 @@ MonoBehaviour:
   - {fileID: 257811355727027397, guid: c05362a0194eef748b0f801c2e5c77a9, type: 3}
   - {fileID: 2945543994263375967, guid: 3aae04be61e31164da9e0b30939a60e8, type: 3}
   - {fileID: 2945543994263375967, guid: 78a4ff0a40ceb764ab8cc91f3fb5921e, type: 3}
-  - {fileID: 438597427285650158, guid: 57d39436a1729d8418928abcbb7778a5, type: 3}
 --- !u!1001 &384486156
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5515,7 +5514,6 @@ MonoBehaviour:
   blocksInFamily:
   - {fileID: 5335814774712488531, guid: dddf9b2e6c0fcd546b30a826b21b6e2b, type: 3}
   - {fileID: 2110378778300613841, guid: ce8993180f01aa64abc2b2ef4f980f60, type: 3}
-  - {fileID: 4929860365483950079, guid: ff07a001519698249b1b66cc791cc71e, type: 3}
 --- !u!1001 &778971552
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12647,7 +12645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8030b9b811f614ab913f06f611c181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curExercisePos: 0
+  curExercisePos: 7
 --- !u!1 &1706427365
 GameObject:
   m_ObjectHideFlags: 0
@@ -14022,7 +14020,6 @@ MonoBehaviour:
   blocksInFamily:
   - {fileID: 2446032068517754002, guid: 921691e8825a9b24f9cf14a2949088b9, type: 3}
   - {fileID: 5984162907770358224, guid: d836d999a66aa5d43b726216a6ff5f1a, type: 3}
-  - {fileID: 5984162907770358224, guid: 5094d6d31eb88e64facb42b395118804, type: 3}
 --- !u!4 &1870461798 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2204069623020599746, guid: 3f1f46cbecbe08e46a303ccfdb5b498a,

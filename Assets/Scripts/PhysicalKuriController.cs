@@ -39,8 +39,8 @@ namespace MoveToCode {
             throw new System.NotImplementedException();
         }
 
-        public override string TurnTowardsUser() {
-            throw new System.NotImplementedException();
+        public override void TurnTowardsUser() {
+            PoseStampPub?.PubTurnTowardUser();
         }
 
         public override string DoRandomNegativeAction() {

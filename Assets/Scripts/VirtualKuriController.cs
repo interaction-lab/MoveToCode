@@ -14,6 +14,16 @@ namespace MoveToCode {
             }
         }
 
+        MakeTransformLookAtUser mtlau;
+        MakeTransformLookAtUser Mtlau {
+            get {
+                if (mtlau == null) {
+                    mtlau = GetComponent<MakeTransformLookAtUser>();
+                }
+                return mtlau;
+            }
+        }
+
         public override string DoAction(EMOTIONS e) {
             string action = e.ToString();
             Anim.SetTrigger(action);
@@ -32,8 +42,8 @@ namespace MoveToCode {
             throw new System.NotImplementedException();
         }
 
-        public override string TurnTowardsUser() {
-            throw new System.NotImplementedException();
+        public override void TurnTowardsUser() {
+            Mtlau.LookAtUser();
         }
     }
 }

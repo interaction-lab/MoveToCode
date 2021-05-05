@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -6,19 +7,24 @@ namespace MoveToCode {
     public class ExerciseInformationSeekingActions : MonoBehaviour {
         public CodeBlock[] snapChild;
         public CodeBlock[] snapParent;
-        public enum SNAPACTIONS {
+        public enum SNAPARGTYPES {
             REMOVE,
-            SNAPATZERO,
-            SNAPATONE,
-            SNAPATTWO,
-            SNAPATTHREE
+            NEXT,
+            NESTED,
+            CONDITIONAL,
+            LEFTNUM,
+            RIGHTNUM,
+            LEFTCONDITIONAL,
+            RIGHTCONDITIONAL,
+            PRINTABLE,
+            VALUE,
+            VARIABLE
         }
-        public SNAPACTIONS[] withAction;
+        public SNAPARGTYPES[] snapArgs;
 
         public static GameObject goOfFocus;
 
         public virtual string DoISAAction() {
-            Debug.Log("ISA");
             int probRange = 10;
             string result = "";
             int count = 0;
@@ -26,7 +32,7 @@ namespace MoveToCode {
                 probRange = 20;
             }
             while (result == "" && count < 5) {
-                int rand = Random.Range(0, probRange);
+                int rand = UnityEngine.Random.Range(0, probRange);
                 if (rand < 4) {
                     result = SnapNextSnapISA();
                 }
@@ -42,7 +48,6 @@ namespace MoveToCode {
                 }
                 ++count;
             }
-            Debug.Log(result);
             return result;
         }
 
@@ -51,7 +56,7 @@ namespace MoveToCode {
             if (varNames.Length == 0) {
                 return "";
             }
-            string varToSpawn = varNames[Random.Range(0, varNames.Length)];
+            string varToSpawn = varNames[UnityEngine.Random.Range(0, varNames.Length)];
             FakePressButton fpb = MemoryManager.instance.GetVariables()[varToSpawn].GetComponent<FakePressButton>();
             if (fpb == null) {
                 fpb = MemoryManager.instance.GetVariables()[varToSpawn].gameObject.AddComponent<FakePressButton>();
@@ -60,7 +65,7 @@ namespace MoveToCode {
         }
 
         string SnapNextSnapISA() {
-            Assert.IsTrue(snapChild.Length == snapParent.Length && snapParent.Length == withAction.Length);
+            Assert.IsTrue(snapChild.Length == snapParent.Length && snapParent.Length == snapArgs.Length);
             int index = FindNextSnapIndex();
             if (index == -1) {
                 return "";
@@ -68,52 +73,70 @@ namespace MoveToCode {
             return PerformFakeSnapAction(index);
         }
 
-        public int ConvertSnapActionToIntPos(SNAPACTIONS sa) {
-            return (int)sa - 1;
+        Dictionary<SNAPARGTYPES, Type> snapColCovertMap = new Dictionary<SNAPARGTYPES, Type>(){
+            {SNAPARGTYPES.CONDITIONAL, typeof(SnapColliderConditional) },
+            {SNAPARGTYPES.LEFTCONDITIONAL, typeof(SnapColliderLeftOfConditional) },
+            {SNAPARGTYPES.RIGHTCONDITIONAL, typeof(SnapColliderRightOfConditional)},
+             {SNAPARGTYPES.LEFTNUM, typeof(SnapColliderLeftNumber) },
+            {SNAPARGTYPES.RIGHTNUM, typeof(SnapColliderRightNumber) },
+            {SNAPARGTYPES.NESTED, typeof(SnapColliderNested)},
+             {SNAPARGTYPES.NEXT, typeof(SnapColliderNext) },
+            {SNAPARGTYPES.PRINTABLE, typeof(SnapColliderPrintable) },
+            {SNAPARGTYPES.VALUE, typeof(SnapColliderValue)},
+            {SNAPARGTYPES.VARIABLE, typeof(SnapColliderVariable)},
+            {SNAPARGTYPES.REMOVE, null}
+            };
+        public Type ConvertToSnapColClass(SNAPARGTYPES sa) {
+            return snapColCovertMap[sa];
         }
 
         private string PerformFakeSnapAction(int actionIndex) {
-            int snapArgIndex = ConvertSnapActionToIntPos(withAction[actionIndex]);
-            if (withAction[actionIndex] != SNAPACTIONS.REMOVE) {
-                //snapParent[actionIndex].GetSnapColliders().GetSnapColliderAtPos(snapArgIndex).DoSnapAction(snapParent[actionIndex], snapChild[actionIndex], false);
+            Debug.Log(snapArgs[actionIndex].ToString());
+            Type snapArgType = ConvertToSnapColClass(snapArgs[actionIndex]);
+            if (snapArgs[actionIndex] != SNAPARGTYPES.REMOVE) {
+                snapParent[actionIndex]
+                    .GetSnapColliderGroup()
+                    .SnapColliderSet[new KeyValuePair<Type, int>(snapArgType, 0)]
+                    .DoSnapAction(snapChild[actionIndex], false);
+
                 return string.Join("",
                                 "Add ",
                                 snapChild[actionIndex].name,
                                 " from ",
                                 snapParent[actionIndex].name,
                                 " at ",
-                                snapArgIndex.ToString());
+                                snapArgs[actionIndex].ToString());
             }
             else {
-                int childIndex = GetChildArgPos(actionIndex);
-                //snapParent[actionIndex].SetArgumentBlockAt(null, childIndex, false);
+                string colliderName = snapChild[actionIndex].GetSnapColliderImAttachedTo().name;
+                snapChild[actionIndex].RemoveFromParentSnapCollider(false);
                 return string.Join("",
                                 "Remove ",
                                 snapChild[actionIndex].name,
                                 " from ",
                                 snapParent[actionIndex].name,
                                 " at ",
-                                childIndex.ToString());
+                                colliderName);
             }
         }
 
-        private int GetChildArgPos(int index) {
-            return 0;//snapParent[index].GetPositionOfArgument(snapChild[index].GetMyInternalIArgument());
-        }
 
         private int FindNextSnapIndex() {
+
             for (int actionIndex = 0; actionIndex < snapChild.Length; ++actionIndex) {
-                if (withAction[actionIndex] != SNAPACTIONS.REMOVE) {
-                    if (GetChildArgPos(actionIndex) == -1) {
+                Type snapArgType = ConvertToSnapColClass(snapArgs[actionIndex]);
+
+                if (snapArgs[actionIndex] != SNAPARGTYPES.REMOVE) {
+                    IArgument ia = snapParent[actionIndex].GetArgumentFromDict(new KeyValuePair<Type, int>(snapArgType, 0));
+                    if (ia == null) {
                         return actionIndex;
                     }
                 }
                 else {
-                    if (GetChildArgPos(actionIndex) != -1) {
+                    if (snapChild[actionIndex].FindParentCodeBlock() == snapParent[actionIndex]) {
                         return actionIndex;
                     }
                 }
-
             }
             return -1;
         }

@@ -42,6 +42,6 @@ namespace MoveToCode {
         public abstract string DoRandomPositiveAction();
         public abstract string DoRandomNegativeAction();
         public abstract string DoAction(EMOTIONS e);
-        public abstract string TurnTowardsUser();
+        public abstract void TurnTowardsUser();
     }
 }

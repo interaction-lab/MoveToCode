@@ -90,20 +90,19 @@ namespace MoveToCode {
 
         private void TakeISAAction() {
             string actionMade = kuriController.TakeISAAction();
+            Debug.Log(actionMade);
             LoggingManager.instance.UpdateLogColumn(rISACol, actionMade);
         }
 
         private void TakeMovementAction() {
-            string actionMade = kuriController.TakeMovementAction();
-            LoggingManager.instance.UpdateLogColumn(kuriMovementActionCol, actionMade);
             KuriGoalPoseTransform.position = ExerciseInformationSeekingActions.goOfFocus.transform.position;
             KuriGoalPoseTransform.rotation = Quaternion.LookRotation(ExerciseInformationSeekingActions.goOfFocus.transform.forward);
-            poseStampPublisher?.PublishPosition(KuriGoalPoseTransform);
+            string actionMade = kuriController.TakeMovementAction();
+            LoggingManager.instance.UpdateLogColumn(kuriMovementActionCol, actionMade);
         }
 
         public void SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT toa) {
-            //poseStampPublisher?.PubTurnTowardUser();
-            //kuriEmoteStringPublisher?.PubRandomPositive();
+            kuriController.TurnTowardsUser();
             string actionMade = kuriController.DoRandomPositiveAction();
             LoggingManager.instance.UpdateLogColumn(kuriPhysicalEmoteActionCol,
                 actionMade);
@@ -114,7 +113,6 @@ namespace MoveToCode {
         }
 
         public void SayExerciseGoal() {
-            poseStampPublisher?.PubTurnTowardUser();
             KuriTextManager.instance.Addline(string.Join("",
                 "Goal: ",
                 ExerciseManager.instance.GetCurExercise().GetGoalString()),
@@ -123,7 +121,7 @@ namespace MoveToCode {
         }
 
         public void DoScaffoldingDialogue() {
-            poseStampPublisher?.PubTurnTowardUser();
+            kuriController.TurnTowardsUser();
             ExerciseManager.instance.GetCurExercise().GetComponent<ExerciseScaffolding>().SayNextScaffold();
             AlertActionMade();
         }

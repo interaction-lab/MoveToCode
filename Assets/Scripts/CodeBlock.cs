@@ -113,7 +113,7 @@ namespace MoveToCode {
             GetCodeBlockObjectMesh().ToggleColliders(on);
         }
 
-        private SnapCollider GetSnapColliderImAttachedTo() {
+        public SnapCollider GetSnapColliderImAttachedTo() {
             return transform.parent.GetComponentInChildrenOnlyDepthOne<SnapCollider>();
         }
         public void RemoveFromParentSnapCollider(bool humanDidIt) {

@@ -2354,7 +2354,7 @@ MonoBehaviour:
   snapParent:
   - {fileID: 51471739}
   - {fileID: 584239309}
-  withAction: 0200000001000000
+  snapArgs: 0800000001000000
 --- !u!114 &270212281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2757,8 +2757,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a508445c8a81442a30343ce95a1691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  consoleStringGoal: 
-  kuriGoalString: 
+  consoleStringGoal: False
+  kuriGoalString: Print False
   varNames: []
   initialVariableValues: 
   finalVariableGoalValues: 
@@ -2794,7 +2794,7 @@ MonoBehaviour:
   snapParent:
   - {fileID: 1049456439}
   - {fileID: 1219873126}
-  withAction: 0100000002000000
+  snapArgs: 0600000008000000
 --- !u!4 &355508224 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2204069623020599746, guid: 3f1f46cbecbe08e46a303ccfdb5b498a,
@@ -3424,7 +3424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snapChild: []
   snapParent: []
-  withAction: 
+  snapArgs: 
 --- !u!114 &450252044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3931,7 +3931,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400128, guid: aeb85e1648e1a534a85e6711b3f10b01, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400128, guid: aeb85e1648e1a534a85e6711b3f10b01, type: 3}
       propertyPath: m_LocalRotation.z
@@ -3939,11 +3939,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400128, guid: aeb85e1648e1a534a85e6711b3f10b01, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400128, guid: aeb85e1648e1a534a85e6711b3f10b01, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400128, guid: aeb85e1648e1a534a85e6711b3f10b01, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3951,7 +3951,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400128, guid: aeb85e1648e1a534a85e6711b3f10b01, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400128, guid: aeb85e1648e1a534a85e6711b3f10b01, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -3968,6 +3968,22 @@ PrefabInstance:
     - target: {fileID: 400128, guid: aeb85e1648e1a534a85e6711b3f10b01, type: 3}
       propertyPath: m_LocalScale.z
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400130, guid: aeb85e1648e1a534a85e6711b3f10b01, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400130, guid: aeb85e1648e1a534a85e6711b3f10b01, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400130, guid: aeb85e1648e1a534a85e6711b3f10b01, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400130, guid: aeb85e1648e1a534a85e6711b3f10b01, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: aeb85e1648e1a534a85e6711b3f10b01, type: 3}
       propertyPath: m_Controller
@@ -6846,11 +6862,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a508445c8a81442a30343ce95a1691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  consoleStringGoal: 
-  kuriGoalString: 
-  varNames: []
-  initialVariableValues: 
-  finalVariableGoalValues: 
+  consoleStringGoal: 5
+  kuriGoalString: Set Var1 to 5 and print it
+  varNames:
+  - Var1
+  initialVariableValues: 09000000
+  finalVariableGoalValues: 05000000
 --- !u!114 &923277385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6886,7 +6903,7 @@ MonoBehaviour:
   - {fileID: 584239309}
   - {fileID: 602786166}
   - {fileID: 1232676583}
-  withAction: 010000000300000000000000
+  snapArgs: 010000000900000000000000
 --- !u!1001 &929097633
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7065,8 +7082,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a508445c8a81442a30343ce95a1691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  consoleStringGoal: 
-  kuriGoalString: 
+  consoleStringGoal: 11
+  kuriGoalString: Print 11
   varNames: []
   initialVariableValues: 
   finalVariableGoalValues: 
@@ -7106,7 +7123,7 @@ MonoBehaviour:
   - {fileID: 587595296}
   - {fileID: 587595296}
   - {fileID: 633503632}
-  withAction: 000000000200000002000000
+  snapArgs: 000000000400000005000000
 --- !u!114 &958299769 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 257811355727027399, guid: c05362a0194eef748b0f801c2e5c77a9,
@@ -9069,8 +9086,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a508445c8a81442a30343ce95a1691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  consoleStringGoal: 
-  kuriGoalString: 
+  consoleStringGoal: 1
+  kuriGoalString: Print 1
   varNames: []
   initialVariableValues: 
   finalVariableGoalValues: 
@@ -9108,7 +9125,7 @@ MonoBehaviour:
   snapParent:
   - {fileID: 226310094}
   - {fileID: 584239309}
-  withAction: 0200000001000000
+  snapArgs: 0800000001000000
 --- !u!1001 &1190885915
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10026,8 +10043,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a508445c8a81442a30343ce95a1691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  consoleStringGoal: 
-  kuriGoalString: 
+  consoleStringGoal: True
+  kuriGoalString: Print True
   varNames: []
   initialVariableValues: 
   finalVariableGoalValues: 
@@ -10064,7 +10081,7 @@ MonoBehaviour:
   snapParent:
   - {fileID: 1988759692}
   - {fileID: 1988759692}
-  withAction: 0100000002000000
+  snapArgs: 0600000007000000
 --- !u!4 &1268369015 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2204069623020599746, guid: 3f1f46cbecbe08e46a303ccfdb5b498a,
@@ -10875,6 +10892,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da58decf41e70a14ea6164103234dafb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1434147719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434147715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d86c4d4914e0bc4a8701ab2dd32c549, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  t: {fileID: 0}
+  animCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &1434483032
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12593,7 +12647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8030b9b811f614ab913f06f611c181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curExercisePos: 6
+  curExercisePos: 0
 --- !u!1 &1706427365
 GameObject:
   m_ObjectHideFlags: 0
@@ -14120,8 +14174,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a508445c8a81442a30343ce95a1691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  consoleStringGoal: 
-  kuriGoalString: 
+  consoleStringGoal: 6
+  kuriGoalString: Print 6
   varNames: []
   initialVariableValues: 
   finalVariableGoalValues: 
@@ -14161,7 +14215,7 @@ MonoBehaviour:
   - {fileID: 1280756238}
   - {fileID: 2083584181}
   - {fileID: 258801517}
-  withAction: 010000000100000002000000
+  snapArgs: 040000000500000008000000
 --- !u!1001 &1908096062
 PrefabInstance:
   m_ObjectHideFlags: 0

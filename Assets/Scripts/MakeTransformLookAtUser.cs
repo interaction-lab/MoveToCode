@@ -5,14 +5,16 @@ namespace MoveToCode {
     public class MakeTransformLookAtUser : MonoBehaviour {
         public Transform t;
         public AnimationCurve animCurve;
+        Transform camTransform;
 
         private void Awake() {
             if (t == null) {
                 t = transform;
             }
+            camTransform = Camera.main.transform;
         }
         IEnumerator Turn() {
-            Quaternion start = transform.rotation, goal = Quaternion.LookRotation(Camera.main.transform.forward);
+            Quaternion start = transform.rotation, goal = Quaternion.LookRotation(camTransform.forward);
             float curTime = 0f, totalTime = 0.5f;
 
             while (curTime < totalTime) {

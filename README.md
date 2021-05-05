@@ -3,9 +3,9 @@
 ![](Images/cleanavailsnap.PNG)
 MoveToCode is an open source mixed reality visual programming language (VPL) created by the [Interaction Lab](http://robotics.usc.edu/interaction/) led by [Maja J Matric](https://robotics.usc.edu/~maja/index.html). The VPL is used to study [student kinesthetic curiostiy](https://tgroechel.github.io/kin_cur.html).  The VPL can be thought of similar to [Scratch](https://scratch.mit.edu/) in 3D. 
 
-MoveToCode is built for the [Microsoft Hololens 2](https://www.microsoft.com/en-us/hololens/hardware) using the [Mixed Reality Toolkit](https://github.com/microsoft/MixedRealityToolkit-Unity). Currently it is set up to work with the [Mayfield Kuri robot](https://www.heykuri.com/explore-kuri/) but can be modified for any [ROS](https://www.ros.org/) supported robot via [ROS#](https://github.com/siemens/ros-sharp) and [rosbridge](http://wiki.ros.org/rosbridge_suite).
+MoveToCode is built for the [Microsoft Hololens 2](https://www.microsoft.com/en-us/hololens/hardware), as well as [ARCore supported mobile devices](https://developers.google.com/ar/devices), using the [Mixed Reality Toolkit](https://github.com/microsoft/MixedRealityToolkit-Unity). Currently it is set up to work with the [Mayfield Kuri robot](https://www.heykuri.com/explore-kuri/) but can be modified for any [ROS](https://www.ros.org/) supported robot via [ROS#](https://github.com/siemens/ros-sharp) and [rosbridge](http://wiki.ros.org/rosbridge_suite). A virtual, high fidelity model, Kuri robot is also currently availble with limited capabilities.
 
-Here is a [video](https://www.youtube.com/watch?v=s7udZXa2wEw) of MoveToCode + a robot tutor.
+Here is a [video](https://www.youtube.com/watch?v=s7udZXa2wEw) of MoveToCode + a robot tutor using the Hololens 2.
 
 Doxygen documentation can be found here: https://interaction-lab.github.io/MoveToCode/html/index.html
 
@@ -54,7 +54,9 @@ Versions of packages are pushed directly to the repository to avoid versioning i
 The following are currently tested versions of required software. Higher versions of each software may work but have not been tested.
 - [Unity 3D](https://github.com/siemens/ros-sharp/tree/master/Unity3D) v2019.3.15f
 - .NET Framework 4.6 and Visual Studio 2019
-- Built for [Hololens 2](https://www.microsoft.com/en-us/hololens/hardware)
+- Built for:
+  -  [Hololens 2](https://www.microsoft.com/en-us/hololens/hardware)
+  -  [ARCore Supported Mobile Devices](https://developers.google.com/ar/devices)
 
 ## Licensing
 MoveToCode is open source under the [MIT License](https://en.wikipedia.org/wiki/MIT_License)

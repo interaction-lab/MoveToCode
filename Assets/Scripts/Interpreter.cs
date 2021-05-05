@@ -8,7 +8,7 @@ namespace MoveToCode {
         Stack<Instruction> instructionStack = new Stack<Instruction>();
         public InstructionReturnValue lastInstructionReturn;
         public Instruction curInstruction;
-        public static string instructionRunCol = "InstructionRun";
+        public static string instructionRunCol = "InstructionRun", codeErrorCol = "codeErrorWhileRunning";
         int numInstructionsRun = 0;
         public int instructionRunLimit = 30;
         bool fullSteppingCode = false;
@@ -17,6 +17,7 @@ namespace MoveToCode {
         private void Awake() {
             ResetCodeState();
             LoggingManager.instance.AddLogColumn(instructionRunCol, "");
+            LoggingManager.instance.AddLogColumn(codeErrorCol, "");
         }
 
         public void ResetCodeState() {
@@ -59,6 +60,7 @@ namespace MoveToCode {
                         lineToAdd = "Instruction Block Incomplete";
                     }
                     ConsoleManager.instance.AddLine(string.Join("", lineToAdd, ", Code Resetting"));
+                    LoggingManager.instance.UpdateLogColumn(codeErrorCol, lineToAdd);
                     Debug.LogWarning(ex.ToString());
                     ResetCodeState();
                 }

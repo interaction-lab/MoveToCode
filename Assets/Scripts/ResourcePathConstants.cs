@@ -70,7 +70,18 @@ namespace MoveToCode {
         public static string CachePhrases = SpeechCacheFolder + "cachePhrase";
 
         public static string KuriSoundFolder = AudioFolder + "KuriAudio/";
-        public static string KuriILoveYouSound = KuriSoundFolder + "i_love_you";
+        public static string KuriPositiveSoundFolder = KuriSoundFolder + "Positive/";
+        public static string KuriNegativeSoundFolder = KuriSoundFolder + "Negative/";
+
+        public static string KuriILoveYouSound = KuriPositiveSoundFolder + "i_love_you";
+        public static string KuriGreetingSound = KuriPositiveSoundFolder + "Greeting";
+        public static string KuriYippeSound = KuriPositiveSoundFolder + "S81_YIPPEEE_2";
+
+        public static string KuriBangDownSound = KuriNegativeSoundFolder + "BANG_GOINGDOWN";
+        public static string KuriFart = KuriNegativeSoundFolder + "Fart";
+        public static string KuriPonderSad = KuriNegativeSoundFolder + "PONDER_SAD";
+
+
 
         // AWS Credentials
         public static string AWSPollyAPI = "PollyAPI1";

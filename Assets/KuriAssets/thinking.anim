@@ -434,7 +434,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.06666667
-    functionName: PlayILoveYou
+    functionName: PlayYippe
     data: 
     objectReferenceParameter: {fileID: 8300000, guid: bbb2fd2ef3a8a0a41977a37b9e70d6b0,
       type: 3}

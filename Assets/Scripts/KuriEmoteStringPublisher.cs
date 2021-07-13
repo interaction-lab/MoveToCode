@@ -28,8 +28,8 @@ namespace RosSharp.RosBridgeClient {
         }
 
         public void PublishAction(EMOTIONS action) {
-            message.data = action.ToString();
-            Publish(message);
+            // message.data = action.ToString();
+            // Publish(message);
         }
 
         private void InitializeMessage() {

@@ -15,14 +15,14 @@ limitations under the License.
 
 namespace RosSharp.RosBridgeClient
 {
-    public class JoyPublisher : UnityPublisher<MessageTypes.Sensor.Joy>
+    public class JoyPublisher : Publisher<Messages.Sensor.Joy>
     {
         private JoyAxisReader[] JoyAxisReaders;
         private JoyButtonReader[] JoyButtonReaders;
 
         public string FrameId = "Unity";
 
-        private MessageTypes.Sensor.Joy message;
+        private Messages.Sensor.Joy message;
 
         protected override void Start()
         {
@@ -44,7 +44,7 @@ namespace RosSharp.RosBridgeClient
 
         private void InitializeMessage()
         {
-            message = new MessageTypes.Sensor.Joy();
+            message = new Messages.Sensor.Joy();
             message.header.frame_id = FrameId;
             message.axes = new float[JoyAxisReaders.Length];
             message.buttons = new int[JoyButtonReaders.Length];

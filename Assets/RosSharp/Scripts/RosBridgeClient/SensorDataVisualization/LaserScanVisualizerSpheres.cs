@@ -1,5 +1,5 @@
 ﻿/*
-© Siemens AG, 2018-2019
+© Siemens AG, 2018
 Author: Berkay Alp Cakal (berkay_alp.cakal.ct@siemens.com)
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@ limitations under the License.
 
 using UnityEngine;
 
-namespace RosSharp.RosBridgeClient
+namespace RosSharp.SensorVisualization
 {
     public class LaserScanVisualizerSpheres : LaserScanVisualizer
     {
@@ -23,15 +23,11 @@ namespace RosSharp.RosBridgeClient
         public float objectWidth;
         public Material material;
 
-        private GameObject laserScanSpheres;
         private GameObject[] LaserScan;
         private bool IsCreated = false;
 
         private void Create(int numOfSpheres)
         {
-            laserScanSpheres = new GameObject("laserScanSpheres");
-            laserScanSpheres.transform.parent = null;
-
             LaserScan = new GameObject[numOfSpheres];
 
             for (int i = 0; i < numOfSpheres; i++)
@@ -39,7 +35,7 @@ namespace RosSharp.RosBridgeClient
                 LaserScan[i] = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 DestroyImmediate(LaserScan[i].GetComponent<Collider>());                    
                 LaserScan[i].name = "LaserScanSpheres";
-                LaserScan[i].transform.parent = laserScanSpheres.transform;
+                LaserScan[i].transform.parent = transform;
                 LaserScan[i].GetComponent<Renderer>().material = material;
             }
             IsCreated = true;
@@ -50,12 +46,10 @@ namespace RosSharp.RosBridgeClient
             if (!IsCreated)
                 Create(directions.Length);
 
-            laserScanSpheres.transform.SetPositionAndRotation(base_transform.position, base_transform.rotation);
-
             for (int i = 0; i < directions.Length; i++)
             {
                 LaserScan[i].SetActive(ranges[i] != 0);
-                LaserScan[i].GetComponent<Renderer>().material.SetColor("_Color", GetColor(ranges[i]));
+                LaserScan[i].GetComponent<Renderer>().material.SetColor("_TintColor", GetColor(ranges[i]));
                 LaserScan[i].transform.localScale = objectWidth * Vector3.one;
                 LaserScan[i].transform.localPosition = ranges[i] * directions[i];
             }
@@ -65,8 +59,6 @@ namespace RosSharp.RosBridgeClient
         {
             for (int i = 0; i < LaserScan.Length; i++)
                 Destroy(LaserScan[i]);
-
-            Destroy(laserScanSpheres);
             IsCreated = false;
         }
 

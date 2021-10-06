@@ -1,5 +1,5 @@
 ﻿/*
-© Siemens AG, 2017-2019
+© Siemens AG, 2017-2018
 Author: Dr. Martin Bischoff (martin.bischoff@siemens.com)
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ using UnityEngine;
 
 namespace RosSharp.Urdf
 {
-    //[RequireComponent(typeof(Joint))]
+    [RequireComponent(typeof(Joint))]
     public abstract class UrdfJoint : MonoBehaviour
     {
         public enum JointTypes
@@ -34,8 +34,7 @@ namespace RosSharp.Urdf
         protected UnityEngine.Joint UnityJoint;
         public string JointName;
 
-        public JointTypes JointType { get { return _jointType; } protected set { value = _jointType; } }
-        [SerializeField] protected JointTypes _jointType;
+        public abstract JointTypes JointType { get; }
         public bool IsRevoluteOrContinuous => JointType == JointTypes.Revolute || JointType == JointTypes.Revolute;
         public double EffortLimit = 1e3;
         public double VelocityLimit = 1e3;

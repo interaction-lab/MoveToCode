@@ -42,9 +42,7 @@ namespace RosSharp.Urdf
         public void SetUseUrdfInertiaData(bool useUrdfData)
         {
             foreach (UrdfInertial urdfInertial in GetComponentsInChildren<UrdfInertial>())
-                urdfInertial.rigidbodyDataSource = useUrdfData ?
-                    UrdfInertial.RigidbodyDataSource.Urdf :
-                    UrdfInertial.RigidbodyDataSource.Unity;
+                urdfInertial.UseUrdfData = useUrdfData;
         }
 
         public void SetRigidbodiesUseGravity(bool useGravity)

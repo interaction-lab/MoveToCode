@@ -1,6 +1,7 @@
 ﻿/*
 © Siemens AG, 2017-2018
 Author: Dr. Martin Bischoff (martin.bischoff@siemens.com)
+
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
@@ -16,10 +17,10 @@ using MoveToCode;
 using UnityEngine;
 
 namespace RosSharp.RosBridgeClient {
-    public class PoseStampedPublisher : UnityPublisher<MessageTypes.Geometry.PoseStamped> {
+    public class PoseStampedPublisher : Publisher<Messages.Geometry.PoseStamped> {
         public string FrameId = "map";
         static string poseGoalCol = "poseGoalSent";
-        private MessageTypes.Geometry.PoseStamped message;
+        private Messages.Geometry.PoseStamped message;
         bool initialized = false;
         public Vector3 offset;
 
@@ -31,8 +32,8 @@ namespace RosSharp.RosBridgeClient {
         }
 
         private void InitializeMessage() {
-            message = new MessageTypes.Geometry.PoseStamped {
-                header = new MessageTypes.Std.Header() {
+            message = new Messages.Geometry.PoseStamped {
+                header = new Messages.Standard.Header() {
                     frame_id = FrameId
                 }
             };
@@ -66,16 +67,16 @@ namespace RosSharp.RosBridgeClient {
             PublishPosition(curPos, rotationGoal);
         }
 
-        private MessageTypes.Geometry.Point GetGeometryPoint(Vector3 position) {
-            MessageTypes.Geometry.Point geometryPoint = new MessageTypes.Geometry.Point();
+        private Messages.Geometry.Point GetGeometryPoint(Vector3 position) {
+            Messages.Geometry.Point geometryPoint = new Messages.Geometry.Point();
             geometryPoint.x = position.x;
             geometryPoint.y = position.y;
             geometryPoint.z = position.z;
             return geometryPoint;
         }
 
-        private MessageTypes.Geometry.Quaternion GetGeometryQuaternion(Quaternion quaternion) {
-            MessageTypes.Geometry.Quaternion geometryQuaternion = new MessageTypes.Geometry.Quaternion();
+        private Messages.Geometry.Quaternion GetGeometryQuaternion(Quaternion quaternion) {
+            Messages.Geometry.Quaternion geometryQuaternion = new Messages.Geometry.Quaternion();
             geometryQuaternion.x = quaternion.x;
             geometryQuaternion.y = quaternion.y;
             geometryQuaternion.z = quaternion.z;

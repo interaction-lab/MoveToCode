@@ -22,6 +22,8 @@ namespace RosSharp.Urdf
     [SelectionBase]
     public class UrdfCollision : MonoBehaviour
     {
-        public GeometryTypes GeometryType;
+        [SerializeField]
+        public GeometryTypes geometryType;
+
     }
 }

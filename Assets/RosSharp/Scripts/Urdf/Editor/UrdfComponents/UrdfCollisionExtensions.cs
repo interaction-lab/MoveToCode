@@ -27,11 +27,11 @@ namespace RosSharp.Urdf.Editor
             collisionObject.transform.SetParentAndAlign(parent);
 
             UrdfCollision urdfCollision = collisionObject.AddComponent<UrdfCollision>();
-            urdfCollision.GeometryType = type;
+            urdfCollision.geometryType = type;
 
             if (visualToCopy != null)
             {
-                if (urdfCollision.GeometryType == GeometryTypes.Mesh)
+                if (urdfCollision.geometryType == GeometryTypes.Mesh)
                     UrdfGeometryCollision.CreateMatchingMeshCollision(collisionObject.transform, visualToCopy);
                 else
                     UrdfGeometryCollision.Create(collisionObject.transform, type);
@@ -52,17 +52,17 @@ namespace RosSharp.Urdf.Editor
             GameObject collisionObject = new GameObject("unnamed");
             collisionObject.transform.SetParentAndAlign(parent);
             UrdfCollision urdfCollision = collisionObject.AddComponent<UrdfCollision>();
-            urdfCollision.GeometryType = UrdfGeometry.GetGeometryType(collision.geometry);
+            urdfCollision.geometryType = UrdfGeometry.GetGeometryType(collision.geometry);
 
-            UrdfGeometryCollision.Create(collisionObject.transform, urdfCollision.GeometryType, collision.geometry);
+            UrdfGeometryCollision.Create(collisionObject.transform, urdfCollision.geometryType, collision.geometry);
             UrdfOrigin.ImportOriginData(collisionObject.transform, collision.origin);
         }
     
         public static Link.Collision ExportCollisionData(this UrdfCollision urdfCollision)
         {
-            UrdfGeometry.CheckForUrdfCompatibility(urdfCollision.transform, urdfCollision.GeometryType);
+            UrdfGeometry.CheckForUrdfCompatibility(urdfCollision.transform, urdfCollision.geometryType);
 
-            Link.Geometry geometry = UrdfGeometry.ExportGeometryData(urdfCollision.GeometryType, urdfCollision.transform, true);
+            Link.Geometry geometry = UrdfGeometry.ExportGeometryData(urdfCollision.geometryType, urdfCollision.transform, true);
             string collisionName = urdfCollision.name == "unnamed" ? null : urdfCollision.name;
 
             return new Link.Collision(geometry, collisionName, UrdfOrigin.ExportOriginData(urdfCollision.transform));

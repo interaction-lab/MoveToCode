@@ -23,102 +23,62 @@ namespace RosSharp.Urdf
     [RequireComponent(typeof(Rigidbody))]
     public class UrdfInertial : MonoBehaviour
     {
-        [SerializeField] private Rigidbody _rigidbody;
         public bool DisplayInertiaGizmo;
 
-        public enum RigidbodyDataSource { Urdf, Unity, Manual};
-        public RigidbodyDataSource rigidbodyDataSource;
-
-        public float Mass;
+        public bool UseUrdfData;
         public Vector3 CenterOfMass;
         public Vector3 InertiaTensor;
         public Quaternion InertiaTensorRotation;
 
-        public float UrdfMass;
-        public Vector3 UrdfCenterOfMass;
-        public Vector3 UrdfInertiaTensor;
-        public Quaternion UrdfInertiaTensorRotation;
-
         private const int RoundDigits = 10;
-        private const float MinInertia = 1e-6f;
-
-        private bool isCreated;
+        private const float MinInertia = 1e-8f;
 
         public static void Create(GameObject linkObject, Link.Inertial inertial = null)
         {
             UrdfInertial urdfInertial = linkObject.AddComponent<UrdfInertial>();
-            urdfInertial.UrdfMass = (float)inertial.mass;
+            Rigidbody _rigidbody = urdfInertial.GetComponent<Rigidbody>();
 
-            if (inertial.origin != null)
-                urdfInertial.UrdfCenterOfMass = UrdfOrigin.GetPositionFromUrdf(inertial.origin);
+            if (inertial != null)
+            {
+                _rigidbody.mass = (float)inertial.mass;
 
-            urdfInertial.ImportInertiaData(inertial.inertia);
-            urdfInertial.Initialize();
-            urdfInertial.isCreated = true;
-        }
+                if (inertial.origin != null)
+                    _rigidbody.centerOfMass = UrdfOrigin.GetPositionFromUrdf(inertial.origin);
 
-        private void Initialize()
-        {
-            rigidbodyDataSource = RigidbodyDataSource.Urdf;
-  
-            Mass = UrdfMass;
-            CenterOfMass = UrdfCenterOfMass;
-            InertiaTensor = UrdfInertiaTensor;
-            InertiaTensorRotation =  UrdfInertiaTensorRotation;
+                urdfInertial.ImportInertiaData(inertial.inertia);
 
-            DisplayInertiaGizmo = false;
+                urdfInertial.UseUrdfData = true;
+            }
 
-            UpdateRigidBodyData();
+            urdfInertial.DisplayInertiaGizmo = false;
+
+            //Save original rigidbody data from URDF
+            urdfInertial.CenterOfMass = _rigidbody.centerOfMass;
+            urdfInertial.InertiaTensor = _rigidbody.inertiaTensor;
+            urdfInertial.InertiaTensorRotation = _rigidbody.inertiaTensorRotation;
         }
 
         #region Runtime
-        private void Reset()
-        {
-            if(isCreated)
-                Initialize();
-        }
 
-         private void OnValidate()
+        private void Start()
         {
-            if (isCreated)
-                UpdateRigidBodyData();
+            UpdateRigidBodyData();
         }
 
         public void UpdateRigidBodyData()
         {
-            _rigidbody = GetComponent<Rigidbody>();
+            Rigidbody _rigidbody = GetComponent<Rigidbody>();
 
-            switch (rigidbodyDataSource)
+            if (UseUrdfData)
             {
-                case RigidbodyDataSource.Urdf:
-                    {
-                        _rigidbody.mass = UrdfMass;
-                        _rigidbody.centerOfMass = UrdfCenterOfMass;
-                        _rigidbody.inertiaTensor = UrdfInertiaTensor;
-                        _rigidbody.inertiaTensorRotation = UrdfInertiaTensorRotation;
-                        return;
-                    }
-                case RigidbodyDataSource.Unity:
-                    {
-                        _rigidbody.mass = Mass;
-                        bool isKinematic = _rigidbody.isKinematic;
-                        _rigidbody.isKinematic = false;
-                        _rigidbody.ResetCenterOfMass();
-                        _rigidbody.ResetInertiaTensor();
-                        _rigidbody.isKinematic = isKinematic;
-                        CenterOfMass = _rigidbody.centerOfMass;
-                        InertiaTensor = _rigidbody.inertiaTensor;
-                        InertiaTensorRotation = _rigidbody.inertiaTensorRotation;
-                        return;
-                    }
-                case RigidbodyDataSource.Manual:
-                    {
-                        _rigidbody.mass = Mass;
-                        _rigidbody.centerOfMass = CenterOfMass;
-                        _rigidbody.inertiaTensor = InertiaTensor;
-                        _rigidbody.inertiaTensorRotation = InertiaTensorRotation;
-                        return;
-                    }
+                _rigidbody.centerOfMass = CenterOfMass;
+                _rigidbody.inertiaTensor = InertiaTensor;
+                _rigidbody.inertiaTensorRotation = InertiaTensorRotation;
+            }
+            else
+            {
+                _rigidbody.ResetCenterOfMass();
+                _rigidbody.ResetInertiaTensor();
             }
         }
 
@@ -146,10 +106,10 @@ namespace RosSharp.Urdf
             Matrix3x3 rotationMatrix = ToMatrix3x3(inertia);
             rotationMatrix.DiagonalizeRealSymmetric(out eigenvalues, out eigenvectors);
 
-            UrdfInertiaTensor = ToUnityInertiaTensor(FixMinInertia(eigenvalues));
-            Debug.Log(UrdfInertiaTensor);
-            UrdfInertiaTensorRotation = ToQuaternion(eigenvectors[0], eigenvectors[1], eigenvectors[2]).Ros2Unity();
-            Debug.Log(UrdfInertiaTensorRotation);
+            Rigidbody _rigidbody = GetComponent<Rigidbody>();
+
+            _rigidbody.inertiaTensor = ToUnityInertiaTensor(FixMinInertia(eigenvalues));
+            _rigidbody.inertiaTensorRotation = ToQuaternion(eigenvectors[0], eigenvectors[1], eigenvectors[2]).Ros2Unity();
         }
 
         private static Vector3 ToUnityInertiaTensor(Vector3 vector3)
@@ -182,34 +142,34 @@ namespace RosSharp.Urdf
             float qw, qx, qy, qz;
             if (tr > 0)
             {
-                float s = Mathf.Sqrt(tr + 1.0f) * 2f; // S=4*qw 
+                float s = Mathf.Sqrt((tr + 1.0f) * 2f); // S=4*qw 
                 qw = 0.25f * s;
-                qx = (eigenvector1[2] - eigenvector2[1]) / s;
-                qy = (eigenvector2[0] - eigenvector0[2]) / s;
-                qz = (eigenvector0[1] - eigenvector1[0]) / s;
+                qx = (eigenvector2[1] - eigenvector1[2]) / s;
+                qy = (eigenvector0[2] - eigenvector2[0]) / s;
+                qz = (eigenvector1[0] - eigenvector0[1]) / s;
             }
             else if ((eigenvector0[0] > eigenvector1[1]) & (eigenvector0[0] > eigenvector2[2]))
             {
                 float s = Mathf.Sqrt(1.0f + eigenvector0[0] - eigenvector1[1] - eigenvector2[2]) * 2; // S=4*qx 
-                qw = (eigenvector1[2] - eigenvector2[1]) / s;
+                qw = (eigenvector2[1] - eigenvector1[2]) / s;
                 qx = 0.25f * s;
-                qy = (eigenvector1[0] + eigenvector0[1]) / s;
-                qz = (eigenvector2[0] + eigenvector0[2]) / s;
+                qy = (eigenvector0[1] + eigenvector1[0]) / s;
+                qz = (eigenvector0[2] + eigenvector2[0]) / s;
             }
             else if (eigenvector1[1] > eigenvector2[2])
             {
                 float s = Mathf.Sqrt(1.0f + eigenvector1[1] - eigenvector0[0] - eigenvector2[2]) * 2; // S=4*qy
-                qw = (eigenvector2[0] - eigenvector0[2]) / s;
-                qx = (eigenvector1[0] + eigenvector0[1]) / s;
+                qw = (eigenvector0[2] - eigenvector2[0]) / s;
+                qx = (eigenvector0[1] + eigenvector1[0]) / s;
                 qy = 0.25f * s;
-                qz = (eigenvector2[1] + eigenvector1[2]) / s;
+                qz = (eigenvector1[2] + eigenvector2[1]) / s;
             }
             else
             {
                 float s = Mathf.Sqrt(1.0f + eigenvector2[2] - eigenvector0[0] - eigenvector1[1]) * 2; // S=4*qz
-                qw = (eigenvector0[1] - eigenvector1[0]) / s;
-                qx = (eigenvector2[0] + eigenvector0[2]) / s;
-                qy = (eigenvector2[1] + eigenvector1[2]) / s;
+                qw = (eigenvector1[0] - eigenvector0[1]) / s;
+                qx = (eigenvector0[2] + eigenvector2[0]) / s;
+                qy = (eigenvector1[2] + eigenvector2[1]) / s;
                 qz = 0.25f * s;
             }
             return new Quaternion(qx, qy, qz, qw);
@@ -220,7 +180,12 @@ namespace RosSharp.Urdf
         #region Export
         public Link.Inertial ExportInertialData()
         {
-            // should we read the data from this clas instead of _rigidbody?
+            Rigidbody _rigidbody = GetComponent<Rigidbody>();
+
+            if (_rigidbody == null)
+                return null;
+
+            UpdateRigidBodyData();
             Origin inertialOrigin = new Origin(_rigidbody.centerOfMass.Unity2Ros().ToRoundedDoubleArray(), new double[] { 0, 0, 0 });
             Link.Inertial.Inertia inertia = ExportInertiaData(_rigidbody);
 

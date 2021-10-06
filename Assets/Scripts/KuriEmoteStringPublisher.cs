@@ -3,13 +3,14 @@ using UnityEngine;
 using static MoveToCode.KuriController;
 
 namespace RosSharp.RosBridgeClient {
-    public class KuriEmoteStringPublisher : UnityPublisher<MessageTypes.Std.String> {
+    public class KuriEmoteStringPublisher : Publisher<Messages.Standard.String> {
 
-        private MessageTypes.Std.String message;
+        private Messages.Standard.String message;
 
         protected override void Start() {
             base.Start();
             InitializeMessage();
+
         }
 
         public string PubRandomPositive() {
@@ -28,12 +29,12 @@ namespace RosSharp.RosBridgeClient {
         }
 
         public void PublishAction(EMOTIONS action) {
-            // message.data = action.ToString();
-            // Publish(message);
+            message.data = action.ToString();
+            Publish(message);
         }
 
         private void InitializeMessage() {
-            message = new MessageTypes.Std.String {
+            message = new Messages.Standard.String {
                 data = EMOTIONS.happy.ToString()
             };
         }

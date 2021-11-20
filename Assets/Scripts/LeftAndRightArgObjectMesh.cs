@@ -26,11 +26,11 @@ namespace MoveToCode {
         }
 
         public override float GetBlockHorizontalSize() {
-            return argRight.localScale.x + argLeft.localScale.x + top.localScale.x;
+            return 2;//argRight.localScale.x + argLeft.localScale.x + top.localScale.x;
         }
 
         public override float GetBlockVerticalSize() {
-            return transform.localScale.y;
+            return 0.5f;//transform.localScale.y;
         }
 
         // left bounds minux right 
@@ -39,8 +39,8 @@ namespace MoveToCode {
             leftB.x -= (argLeft.localScale.x / 2.0f);
             Vector3 rightB = argRight.localPosition;
             rightB.x += (argRight.localScale.x / 2.0f);
-
-            return (rightB + leftB) / 2.0f;
+            return top.localPosition;
+            //return (rightB + leftB) / 2.0f;
         }
 
         protected override void ResizeObjectMesh() {
@@ -62,7 +62,7 @@ namespace MoveToCode {
 
             if (horizontalSize != null) {
                 rescale.x = (float)horizontalSize;
-                reposition.x = reposition.x - (rescale.x - 0.5f) / 2.0f;
+                //reposition.x = reposition.x - (rescale.x - 0.5f) / 2.0f;
             }
             argLeft.localPosition = reposition;
             argLeft.localScale = rescale;

@@ -81,7 +81,7 @@ namespace MoveToCode {
             if (parentTransform == CodeBlockManager.instance.transform) {
                 return;
             }
-            Vector3 centerPos = myCodeBlock.GetCodeBlockObjectMesh().GetCenterPosition();
+            Vector3 centerPos =  myCodeBlock.GetCodeBlockObjectMesh().GetCenterPosition();
             SnapCollider sc = parentTransform.GetChild(0).GetComponent<SnapCollider>();
             centerPos.x = centerPos.x / parentTransform.localScale.x; // this is on object mesh....
             myCodeBlock.transform.SnapToParent(parentTransform, sc.SnapPosition - centerPos);

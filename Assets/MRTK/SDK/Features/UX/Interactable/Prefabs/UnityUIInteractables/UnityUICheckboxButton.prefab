@@ -7,15 +7,97 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 9060071670294517501, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: m_Name
-      value: UnityUICheckboxButton
-      objectReference: {fileID: 0}
-    - target: {fileID: 9060071670294517501, guid: e35ccb692ee2a154fb472995266a2450,
+    - target: {fileID: 773360473827421914, guid: e35ccb692ee2a154fb472995266a2450,
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2095207503967632265, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2095207503967632265, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 2800397327216220481, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3573642777006372954, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: m_text
+      value: Checkbox Button 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3573642777006372954, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 6a84f857bec7e7345843ae29404c57ce,
+        type: 2}
+    - target: {fileID: 3573642777006372954, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: m_textAlignment
+      value: 513
+      objectReference: {fileID: 0}
+    - target: {fileID: 3573642777006372954, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 21202819797275496, guid: 6a84f857bec7e7345843ae29404c57ce,
+        type: 2}
+    - target: {fileID: 3573642777006372954, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 3802676811585589510, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3802676811585589510, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3802676811585589510, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3802676811585589510, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3802676811585589510, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3802676811585589510, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3802676811585589510, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3802676811585589510, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3802676811585589510, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 3802676811585589510, guid: e35ccb692ee2a154fb472995266a2450,
         type: 3}
@@ -34,6 +116,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3802676811585589510, guid: e35ccb692ee2a154fb472995266a2450,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3802676811585589510, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -49,12 +136,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3802676811585589510, guid: e35ccb692ee2a154fb472995266a2450,
         type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
+      propertyPath: m_AnchoredPosition.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3802676811585589510, guid: e35ccb692ee2a154fb472995266a2450,
         type: 3}
-      propertyPath: m_RootOrder
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3802676811585589510, guid: e35ccb692ee2a154fb472995266a2450,
@@ -72,82 +159,200 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3802676811585589510, guid: e35ccb692ee2a154fb472995266a2450,
+    - target: {fileID: 3840639677224109995, guid: e35ccb692ee2a154fb472995266a2450,
         type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
+      propertyPath: m_LocalScale.x
+      value: 0.54764
       objectReference: {fileID: 0}
-    - target: {fileID: 3802676811585589510, guid: e35ccb692ee2a154fb472995266a2450,
+    - target: {fileID: 3840639677224109995, guid: e35ccb692ee2a154fb472995266a2450,
         type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
+      propertyPath: m_LocalScale.y
+      value: 0.54764
       objectReference: {fileID: 0}
-    - target: {fileID: 3802676811585589510, guid: e35ccb692ee2a154fb472995266a2450,
+    - target: {fileID: 3840639677224109995, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.54764
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: TouchEnd.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: TouchBegin.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: ButtonPressed.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: ButtonReleased.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: TouchEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: TouchBegin.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: TouchEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8024116164960921542}
+    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: TouchEnd.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: TouchBegin.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8024116164960921542}
+    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: TouchBegin.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: ButtonPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: TouchEnd.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: ButtonReleased.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: TouchEnd.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnHandPressUntouched
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: TouchEnd.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnHandPressCompleted
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: ButtonPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8024116164960921542}
+    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: ButtonPressed.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: TouchBegin.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: ButtonReleased.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8024116164960921542}
+    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: ButtonReleased.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: TouchBegin.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnHandPressTouched
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: TouchBegin.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnHandPressTouched
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: ButtonPressed.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: ButtonPressed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnHandPressTriggered
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: ButtonPressed.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnHandPressTriggered
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: ButtonReleased.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: ButtonReleased.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnHandPressCompleted
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: ButtonReleased.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnHandPressCompleted
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: TouchEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: TouchBegin.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: ButtonPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: ButtonReleased.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6125606074263152001, guid: e35ccb692ee2a154fb472995266a2450,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 45
+      value: 200
       objectReference: {fileID: 0}
-    - target: {fileID: 3802676811585589510, guid: e35ccb692ee2a154fb472995266a2450,
+    - target: {fileID: 6125606074263152001, guid: e35ccb692ee2a154fb472995266a2450,
         type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 45
+      propertyPath: m_AnchoredPosition.x
+      value: 137.9
       objectReference: {fileID: 0}
-    - target: {fileID: 3802676811585589510, guid: e35ccb692ee2a154fb472995266a2450,
+    - target: {fileID: 6125606074263152001, guid: e35ccb692ee2a154fb472995266a2450,
         type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
+      propertyPath: m_AnchoredPosition.y
+      value: 2.1
       objectReference: {fileID: 0}
-    - target: {fileID: 3802676811585589510, guid: e35ccb692ee2a154fb472995266a2450,
+    - target: {fileID: 6549419268572740206, guid: e35ccb692ee2a154fb472995266a2450,
         type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3802676811585589510, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3802676811585589510, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3802676811585589510, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3802676811585589510, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3573642777006372954, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: m_text
-      value: Checkbox Button 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3573642777006372954, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 17
-      objectReference: {fileID: 0}
-    - target: {fileID: 3573642777006372954, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 6a84f857bec7e7345843ae29404c57ce,
-        type: 2}
-    - target: {fileID: 3573642777006372954, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 21202819797275496, guid: 6a84f857bec7e7345843ae29404c57ce,
-        type: 2}
-    - target: {fileID: 3573642777006372954, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: m_textAlignment
-      value: 513
+      propertyPath: CanDeselect
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6549419268572740206, guid: e35ccb692ee2a154fb472995266a2450,
         type: 3}
@@ -156,13 +361,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6549419268572740206, guid: e35ccb692ee2a154fb472995266a2450,
         type: 3}
-      propertyPath: Events.Array.data[0].Settings.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6549419268572740206, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: CanDeselect
-      value: 1
+      propertyPath: Events.Array.data[0].ClassName
+      value: InteractableAudioReceiver
       objectReference: {fileID: 0}
     - target: {fileID: 6549419268572740206, guid: e35ccb692ee2a154fb472995266a2450,
         type: 3}
@@ -172,14 +372,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6549419268572740206, guid: e35ccb692ee2a154fb472995266a2450,
         type: 3}
-      propertyPath: Events.Array.data[0].ClassName
-      value: InteractableAudioReceiver
+      propertyPath: Events.Array.data[0].Settings.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6549419268572740206, guid: e35ccb692ee2a154fb472995266a2450,
         type: 3}
       propertyPath: Events.Array.data[0].AssemblyQualifiedName
       value: Microsoft.MixedReality.Toolkit.UI.InteractableAudioReceiver, Microsoft.MixedReality.Toolkit.SDK,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      objectReference: {fileID: 0}
+    - target: {fileID: 6549419268572740206, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: profiles.Array.data[3].Themes.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: dae413b1fffbbf841ae1176deb55d3c0,
+        type: 2}
+    - target: {fileID: 6549419268572740206, guid: e35ccb692ee2a154fb472995266a2450,
+        type: 3}
+      propertyPath: Events.Array.data[0].Settings.Array.data[0].Name
+      value: AudioClip
       objectReference: {fileID: 0}
     - target: {fileID: 6549419268572740206, guid: e35ccb692ee2a154fb472995266a2450,
         type: 3}
@@ -190,11 +401,6 @@ PrefabInstance:
         type: 3}
       propertyPath: Events.Array.data[0].Settings.Array.data[0].Label
       value: Audio Clip
-      objectReference: {fileID: 0}
-    - target: {fileID: 6549419268572740206, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: Events.Array.data[0].Settings.Array.data[0].Name
-      value: AudioClip
       objectReference: {fileID: 0}
     - target: {fileID: 6549419268572740206, guid: e35ccb692ee2a154fb472995266a2450,
         type: 3}
@@ -212,50 +418,14 @@ PrefabInstance:
       value: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       objectReference: {fileID: 0}
-    - target: {fileID: 6549419268572740206, guid: e35ccb692ee2a154fb472995266a2450,
+    - target: {fileID: 6903490369425335361, guid: e35ccb692ee2a154fb472995266a2450,
         type: 3}
-      propertyPath: profiles.Array.data[3].Themes.Array.data[1]
+      propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 11400000, guid: dae413b1fffbbf841ae1176deb55d3c0,
-        type: 2}
-    - target: {fileID: 3840639677224109995, guid: e35ccb692ee2a154fb472995266a2450,
+      objectReference: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 8386217965422895077, guid: e35ccb692ee2a154fb472995266a2450,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.54764
-      objectReference: {fileID: 0}
-    - target: {fileID: 3840639677224109995, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.54764
-      objectReference: {fileID: 0}
-    - target: {fileID: 3840639677224109995, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.54764
-      objectReference: {fileID: 0}
-    - target: {fileID: 6125606074263152001, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 137.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 6125606074263152001, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 6125606074263152001, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 2.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2800397327216220481, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 773360473827421914, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: m_IsActive
+      propertyPath: m_Type
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8386217965422895077, guid: e35ccb692ee2a154fb472995266a2450,
@@ -263,11 +433,6 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-    - target: {fileID: 8386217965422895077, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: m_Type
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8386217965422895077, guid: e35ccb692ee2a154fb472995266a2450,
         type: 3}
       propertyPath: m_FillCenter
@@ -278,180 +443,15 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2095207503967632265, guid: e35ccb692ee2a154fb472995266a2450,
+    - target: {fileID: 9060071670294517501, guid: e35ccb692ee2a154fb472995266a2450,
         type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-    - target: {fileID: 2095207503967632265, guid: e35ccb692ee2a154fb472995266a2450,
+      propertyPath: m_Name
+      value: UnityUICheckboxButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 9060071670294517501, guid: e35ccb692ee2a154fb472995266a2450,
         type: 3}
-      propertyPath: m_Type
+      propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6903490369425335361, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: TouchBegin.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: TouchEnd.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: ButtonPressed.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: ButtonReleased.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: TouchBegin.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 8024116164960921542}
-    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: TouchEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 8024116164960921542}
-    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: ButtonPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 8024116164960921542}
-    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: ButtonReleased.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 8024116164960921542}
-    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: TouchBegin.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: TouchBegin.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: OnHandPressTouched
-      objectReference: {fileID: 0}
-    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: TouchBegin.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: TouchEnd.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: TouchEnd.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: OnHandPressCompleted
-      objectReference: {fileID: 0}
-    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: TouchEnd.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: ButtonPressed.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: ButtonPressed.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: OnHandPressTriggered
-      objectReference: {fileID: 0}
-    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: ButtonPressed.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: ButtonReleased.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: ButtonReleased.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: OnHandPressCompleted
-      objectReference: {fileID: 0}
-    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: ButtonReleased.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: TouchBegin.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnHandPressTouched
-      objectReference: {fileID: 0}
-    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: TouchEnd.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnHandPressUntouched
-      objectReference: {fileID: 0}
-    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: ButtonPressed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnHandPressTriggered
-      objectReference: {fileID: 0}
-    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: ButtonReleased.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnHandPressCompleted
-      objectReference: {fileID: 0}
-    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: TouchBegin.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: TouchBegin.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: TouchEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: TouchEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: ButtonPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: ButtonPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: ButtonReleased.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5005363787759766542, guid: e35ccb692ee2a154fb472995266a2450,
-        type: 3}
-      propertyPath: ButtonReleased.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e35ccb692ee2a154fb472995266a2450, type: 3}

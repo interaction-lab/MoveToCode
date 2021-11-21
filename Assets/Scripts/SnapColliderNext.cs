@@ -6,9 +6,9 @@ namespace MoveToCode {
     public class SnapColliderNext : SnapCollider {
         public override Vector3 SnapPosition {
             get {
-                if (MyCodeBlock as SetVariableCodeBlock != null) {
-                    return new Vector3(0, 0, 0);
-                }
+                // if (MyCodeBlock as SetVariableCodeBlock != null) {
+                //     return new Vector3(0, 0, 0);
+                // }
                 return transform.localPosition;
             }
         }

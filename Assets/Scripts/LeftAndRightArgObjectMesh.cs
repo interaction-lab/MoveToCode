@@ -73,7 +73,11 @@ namespace MoveToCode {
             Vector3 rescale = origScaleArg;        // this is all Vector3.one
             Vector3 reposition = origPositionArgRight;  // this is always 0.75, 0, 0
 
-            float? horizontalSize = GetComponent<SnapColliderGroup>().SnapColliderSet[CommonSCKeys.Printable]?.MyCodeBlockArg?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
+            KeyValuePair<Type, int> snalColDescIndex = GetMyCodeBlock().GetType() == typeof(ConditionalCodeBlock) ?
+                CommonSCKeys.RightConditional :
+                CommonSCKeys.RightNumber;
+
+            float? horizontalSize = GetComponent<SnapColliderGroup>().SnapColliderSet[snalColDescIndex]?.MyCodeBlockArg?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
             
             if (horizontalSize != null) {
                 rescale.x = (float)horizontalSize / 0.5f;                

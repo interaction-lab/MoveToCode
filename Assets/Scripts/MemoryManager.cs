@@ -88,7 +88,7 @@ namespace MoveToCode {
             go.GetComponent<VariableBlockCollection>().SetVariableName(varName);
             go.GetComponent<VariableBlockCollection>().SetVariableValue(dIn);
 
-            go.transform.SnapToParent(GetCanvas().transform, Vector3.down * GetNumVariables() * scaleForSetting);
+            go.transform.SnapToParent(GetCanvas().transform, new Vector3(0, -1 * GetNumVariables() * scaleForSetting, -0.0f));
 
             GetVariables()[varName] = go.GetComponent<VariableBlockCollection>();
             if (!memoryHeader.gameObject.activeSelf) {

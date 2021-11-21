@@ -61,8 +61,8 @@ namespace MoveToCode {
             float? horizontalSize = GetComponent<SnapColliderGroup>().SnapColliderSet[snalColDescIndex]?.MyCodeBlockArg?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
 
             if (horizontalSize != null) {
-                rescale.x = (float)horizontalSize;
-                //reposition.x = reposition.x - (rescale.x - 0.5f) / 2.0f;
+                rescale.x = (float)horizontalSize / 0.5f;                
+                reposition.x = reposition.x - ((float)horizontalSize - 0.5f) / 2f; // horizontal is in units of real world
             }
             argLeft.localPosition = reposition;
             argLeft.localScale = rescale;
@@ -70,17 +70,14 @@ namespace MoveToCode {
 
         private void ResizeArgRight() {
             // need to resize arg right based upon horizontal size of arg
-            Vector3 rescale = origScaleArg;
-            Vector3 reposition = origPositionArgRight;
-            KeyValuePair<Type, int> snalColDescIndex = GetMyCodeBlock().GetType() == typeof(ConditionalCodeBlock) ?
-                CommonSCKeys.RightConditional :
-                CommonSCKeys.RightNumber;
+            Vector3 rescale = origScaleArg;        // this is all Vector3.one
+            Vector3 reposition = origPositionArgRight;  // this is always 0.75, 0, 0
 
-            float? horizontalSize = GetComponent<SnapColliderGroup>().SnapColliderSet[snalColDescIndex]?.MyCodeBlockArg?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
-
+            float? horizontalSize = GetComponent<SnapColliderGroup>().SnapColliderSet[CommonSCKeys.Printable]?.MyCodeBlockArg?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
+            
             if (horizontalSize != null) {
-                rescale.x = (float)horizontalSize;
-                reposition.x = reposition.x - (rescale.x - 0.5f) / 2.0f;
+                rescale.x = (float)horizontalSize / 0.5f;                
+                reposition.x = reposition.x + ((float)horizontalSize - 0.5f) / 2f; // horizontal is in units of real world
             }
             argRight.localPosition = reposition;
             argRight.localScale = rescale;

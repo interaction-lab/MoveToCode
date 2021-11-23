@@ -6,7 +6,7 @@
             url "https://maven.google.com"
         }
         maven {
-            url (unityProjectPath + "/Assets/GeneratedLocalRepo/Firebase/m2repository") // Assets/Firebase/Editor/AppDependencies.xml:22, Assets/Firebase/Editor/AuthDependencies.xml:20, Assets/Firebase/Editor/DynamicLinksDependencies.xml:20, Assets/Firebase/Editor/FirestoreDependencies.xml:20, Assets/Firebase/Editor/StorageDependencies.xml:20
+            url (unityProjectPath + "/Assets/GeneratedLocalRepo/Firebase/m2repository") // Packages/com.google.firebase.firestore/Firebase/Editor/FirestoreDependencies.xml:20, Packages/com.google.firebase.app/Firebase/Editor/AppDependencies.xml:22, Packages/com.google.firebase.auth/Firebase/Editor/AuthDependencies.xml:20
         }
         mavenLocal()
         jcenter()
@@ -20,18 +20,14 @@ apply plugin: 'com.android.library'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 // Android Resolver Dependencies Start
-    implementation 'com.google.android.gms:play-services-base:17.6.0' // Assets/Firebase/Editor/AppDependencies.xml:17
-    implementation 'com.google.firebase:firebase-analytics:19.0.0' // Assets/Firebase/Editor/StorageDependencies.xml:15
-    implementation 'com.google.firebase:firebase-app-unity:8.5.0' // Assets/Firebase/Editor/AppDependencies.xml:22
-    implementation 'com.google.firebase:firebase-auth:21.0.1' // Assets/Firebase/Editor/AuthDependencies.xml:13
-    implementation 'com.google.firebase:firebase-auth-unity:8.5.0' // Assets/Firebase/Editor/AuthDependencies.xml:20
-    implementation 'com.google.firebase:firebase-common:20.0.0' // Assets/Firebase/Editor/AppDependencies.xml:13
-    implementation 'com.google.firebase:firebase-dynamic-links:20.1.0' // Assets/Firebase/Editor/DynamicLinksDependencies.xml:13
-    implementation 'com.google.firebase:firebase-dynamic-links-unity:8.5.0' // Assets/Firebase/Editor/DynamicLinksDependencies.xml:20
-    implementation 'com.google.firebase:firebase-firestore:23.0.1' // Assets/Firebase/Editor/FirestoreDependencies.xml:13
-    implementation 'com.google.firebase:firebase-firestore-unity:8.5.0' // Assets/Firebase/Editor/FirestoreDependencies.xml:20
-    implementation 'com.google.firebase:firebase-storage:20.0.0' // Assets/Firebase/Editor/StorageDependencies.xml:13
-    implementation 'com.google.firebase:firebase-storage-unity:8.5.0' // Assets/Firebase/Editor/StorageDependencies.xml:20
+    implementation 'com.google.android.gms:play-services-base:17.6.0' // Packages/com.google.firebase.app/Firebase/Editor/AppDependencies.xml:17
+    implementation 'com.google.firebase:firebase-analytics:19.0.0' // Packages/com.google.firebase.auth/Firebase/Editor/AuthDependencies.xml:15
+    implementation 'com.google.firebase:firebase-app-unity:8.6.2' // Packages/com.google.firebase.app/Firebase/Editor/AppDependencies.xml:22
+    implementation 'com.google.firebase:firebase-auth:21.0.1' // Packages/com.google.firebase.auth/Firebase/Editor/AuthDependencies.xml:13
+    implementation 'com.google.firebase:firebase-auth-unity:8.6.2' // Packages/com.google.firebase.auth/Firebase/Editor/AuthDependencies.xml:20
+    implementation 'com.google.firebase:firebase-common:20.0.0' // Packages/com.google.firebase.app/Firebase/Editor/AppDependencies.xml:13
+    implementation 'com.google.firebase:firebase-firestore:23.0.1' // Packages/com.google.firebase.firestore/Firebase/Editor/FirestoreDependencies.xml:13
+    implementation 'com.google.firebase:firebase-firestore-unity:8.6.2' // Packages/com.google.firebase.firestore/Firebase/Editor/FirestoreDependencies.xml:20
 // Android Resolver Dependencies End
 **DEPS**}
 

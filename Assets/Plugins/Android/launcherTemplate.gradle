@@ -1,26 +1,3 @@
-buildscript {
-    repositories {
-        google()
-        jcenter()
-    }
-    dependencies {
-        // Must be Android Gradle Plugin 3.6.0 or later. For a list of
-        // compatible Gradle versions refer to:
-        // https://developer.android.com/studio/releases/gradle-plugin
-        classpath 'com.android.tools.build:gradle:3.6.0'
-    }
-}
-
-allprojects {
-   repositories {
-      google()
-      jcenter()
-      flatDir {
-        dirs 'libs'
-      }
-   }
-}
-
 apply plugin: 'com.android.application'
 
 dependencies {
@@ -48,7 +25,7 @@ android {
     }
 
     aaptOptions {
-        noCompress = ['.unity3d', '.ress', '.resource', '.obb'**STREAMING_ASSETS**]
+        noCompress = **BUILTIN_NOCOMPRESS** + unityStreamingAssets.tokenize(', ')
         ignoreAssetsPattern = "!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~"
     }**SIGN**
 
@@ -59,16 +36,14 @@ android {
     buildTypes {
         debug {
             minifyEnabled **MINIFY_DEBUG**
-            useProguard **PROGUARD_DEBUG**
             proguardFiles getDefaultProguardFile('proguard-android.txt')**SIGNCONFIG**
             jniDebuggable true
         }
         release {
             minifyEnabled **MINIFY_RELEASE**
-            useProguard **PROGUARD_RELEASE**
             proguardFiles getDefaultProguardFile('proguard-android.txt')**SIGNCONFIG**
         }
-    }**PACKAGING_OPTIONS****SPLITS**
+    }**PACKAGING_OPTIONS****PLAY_ASSET_PACKS****SPLITS**
 **BUILT_APK_LOCATION**
     bundle {
         language {

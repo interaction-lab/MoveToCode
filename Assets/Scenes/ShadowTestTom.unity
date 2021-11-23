@@ -13023,7 +13023,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8030b9b811f614ab913f06f611c181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curExercisePos: 6
+  curExercisePos: 7
 --- !u!1 &1706427365
 GameObject:
   m_ObjectHideFlags: 0

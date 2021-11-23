@@ -35,18 +35,21 @@ namespace MoveToCode {
             return curExercise;
         }
 
-        public void AlertCodeFinished() {
+        public Boolean AlertCodeFinished() {
             if (curExercise != null) { // This if is to guard against initializing interpreter
                 if (curExercise.IsExerciseCorrect()) {
                     KuriManager.instance.SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT.Congratulation);
                     LoggingManager.instance.UpdateLogColumn(exerciseSubmissionResultCol, "Correct");
                     lastExerciseCompleted = true;
+                    return true;
                 }
                 else {
                     KuriManager.instance.DoScaffoldingDialogue();
                     LoggingManager.instance.UpdateLogColumn(exerciseSubmissionResultCol, "InCorrect");
+                    return false;
                 }
             }
+            return true;
         }
 
         public void AlertCodeReset() {

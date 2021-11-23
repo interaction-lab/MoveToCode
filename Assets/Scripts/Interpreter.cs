@@ -35,6 +35,7 @@ namespace MoveToCode {
             CodeBlockManager.instance.ResetAllCodeBlockInternalState();
             MemoryManager.instance.ResetMemoryState();
             numInstructionsRun = 0;
+            StaticNextChallengeButton.instance.gameObject.SetActive(false);
         }
 
         public void RunNextInstruction() {
@@ -79,7 +80,9 @@ namespace MoveToCode {
                 curInstruction.GetCodeBlock().ToggleOutline(true);
             }
             else {
-                ExerciseManager.instance.AlertCodeFinished();
+                if (ExerciseManager.instance.AlertCodeFinished()) {
+                    StaticNextChallengeButton.instance.gameObject.SetActive(true);
+                }
                 ConsoleManager.instance.AddFinishLine();
             }
         }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.MixedReality.Toolkit.UI;
+using Microsoft.MixedReality.Toolkit.Input;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,6 @@ namespace MoveToCode {
         /// </summary>
         ManipulationHandler manipulationHandler;
 
-
         SnapColliderGroup snapColliderGroup;
 
         /// <summary>
@@ -60,6 +60,29 @@ namespace MoveToCode {
             CurrentlyDraggingCodeBlockSnap = this;
             CodeBlockManager.instance.EnableCollidersCompatibleCodeBlock(MyCodeBlock);
             snapColliderGroup?.DisableAllCollidersAndChildrenColliders();
+            // run raycast
+            StartCoroutine(ShootRayFromHandThroughSnapColliders(call.Pointer));
+        }
+
+        IEnumerator ShootRayFromHandThroughSnapColliders(IMixedRealityPointer pointer)
+        {
+            while(CurrentlyDraggingCodeBlockSnap == this && pointer != null){
+                Vector3 rayOrigin = pointer.Position;
+                Vector3 direction = transform.position - rayOrigin;
+                Debug.DrawRay(rayOrigin, direction * 100, Color.cyan);
+                yield return null;
+            }
+        }
+
+        /// <summary>
+        /// Evaulates what snap action to take and then resets CBS
+        /// </summary>
+        /// <param name="call">End manipuation event</param>
+        void OnManipulationEnd(ManipulationEventData call) {
+            EvaluateBestCandidateCollider();
+            CodeBlockManager.instance.DisableCollidersCompatibleCodeBlock(MyCodeBlock);
+            ResetCBS();
+            CurrentlyDraggingCodeBlockSnap = null;
         }
 
         /// <summary>
@@ -110,17 +133,6 @@ namespace MoveToCode {
             if (sc == bestCandidateSnapCollider) {
                 AddSnapColliderInContact(null);
             }
-        }
-
-        /// <summary>
-        /// Evaulates what snap action to take and then resets CBS
-        /// </summary>
-        /// <param name="call">End manipuation event</param>
-        void OnManipulationEnd(ManipulationEventData call) {
-            EvaluateBestCandidateCollider();
-            CodeBlockManager.instance.DisableCollidersCompatibleCodeBlock(MyCodeBlock);
-            ResetCBS();
-            CurrentlyDraggingCodeBlockSnap = null;
         }
 
         /// <summary>

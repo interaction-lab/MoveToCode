@@ -66,10 +66,19 @@ namespace MoveToCode {
 
         IEnumerator ShootRayFromHandThroughSnapColliders(IMixedRealityPointer pointer)
         {
+            RaycastHit rayHitData;
             while(CurrentlyDraggingCodeBlockSnap == this && pointer != null){
                 Vector3 rayOrigin = pointer.Position;
                 Vector3 direction = transform.position - rayOrigin;
                 Debug.DrawRay(rayOrigin, direction * 100, Color.cyan);
+                if(Physics.Raycast(rayOrigin,direction, out rayHitData)){
+                    Debug.Log(rayHitData.transform.name);
+                    SnapCollider sc = rayHitData.transform.GetComponent<SnapCollider>();
+                    if(sc != null){
+                        Debug.Log(sc.gameObject.name);
+                    }
+                }
+
                 yield return null;
             }
         }

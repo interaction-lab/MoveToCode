@@ -29,7 +29,7 @@ namespace MoveToCode {
             else {
                 initialized = true;
             }
-#if WINDOWS_UWP
+#if !UNITY_EDITOR
             logData = true;
 #endif
             if (logData) {

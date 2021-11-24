@@ -9,6 +9,9 @@ namespace MoveToCode {
         Vector3 origPositionArgRight;
 
         float TopSizeHBC { get; } = 0.8f;
+        float TopSizeVBC { get; } = 0.5f;
+        float BotSizeVBC { get; } = 0.5f;
+        float SideSizeVBC { get; } = 1.5f;
         float ArgRightHBC {
             get {
                 return argRight.localScale.x * 0.5f;
@@ -40,7 +43,7 @@ namespace MoveToCode {
         }
 
         public override float GetBlockVerticalSize() {
-            return GetSizeOfInsideInstructionChain() + GetSizeOfExitInstructionChain() + 0.5f /*top*/ + 0.5f /*bot*/;
+            return GetSizeOfInsideInstructionChain() + GetSizeOfExitInstructionChain() + TopSizeVBC + BotSizeVBC;
         }
 
         public override float GetBlockHorizontalSize() {
@@ -68,7 +71,7 @@ namespace MoveToCode {
             float internalSize = GetSizeOfInsideInstructionChain();
 
             Vector3 scaler = side.localScale;
-            scaler.y = internalSize + 1.5f;
+            scaler.y = internalSize + SideSizeVBC;
             side.localScale = scaler;
 
             scaler = bot.localPosition;
@@ -82,12 +85,10 @@ namespace MoveToCode {
         private void ResizeArgRight() {
             Vector3 rescale = origScaleArgRight;
             Vector3 reposition = origPositionArgRight;
-
-            // TODO: this is done slightly differently, this should really be a method
-            CodeBlockObjectMesh obMesh = GetComponent<SnapColliderGroup>().SnapColliderSet[CommonSCKeys.Conditional]?.MyCodeBlockArg?.GetCodeBlockObjectMesh();
-            if (obMesh != null) {
-                rescale.x = obMesh.GetBlockHorizontalSize();
-                reposition.x = reposition.x + (rescale.x - 0.5f) / 2.0f;
+            float? horizontalSize = GetComponent<SnapColliderGroup>().SnapColliderSet[CommonSCKeys.Conditional]?.MyCodeBlockArg?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
+            if (horizontalSize != null) {
+                rescale.x = (float)horizontalSize / 0.5f;
+                reposition.x = reposition.x + ((float)horizontalSize - 0.5f) / 2f; // horizontal is in units of real world
             }
             argRight.localPosition = reposition;
             argRight.localScale = rescale;

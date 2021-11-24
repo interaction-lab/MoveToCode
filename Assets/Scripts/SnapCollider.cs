@@ -64,13 +64,15 @@ namespace MoveToCode {
         }
 
         private void RemoveCurrentBlockArg() {
-            if (MyCodeBlockArg != null) {
+            if (HasCodeBlockArgAttached()) {
                 CodeBlock tmpargBlock = MyCodeBlockArg;
                 if (MyCodeBlockArg.GetCodeBlockSnap() != CodeBlockSnap.CurrentlyDraggingCodeBlockSnap) {
                     MyCodeBlockArg.transform.localPosition = MyCodeBlockArg.transform.localPosition + new Vector3(0.25f, 1.1f, 1.25f);
                 }
                 tmpargBlock.transform.SnapToCodeBlockManager();
                 tmpargBlock.GetCodeBlockObjectMesh().ResizeChain();
+                // need to resize myself as well
+                MyCodeBlock.GetCodeBlockObjectMesh().ResizeChain();
                 AudioManager.instance.PlaySoundAtObject(MyCodeBlock.transform, AudioManager.popAudioClip);
                 // TODO: probably needs a log
             }

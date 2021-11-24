@@ -67,15 +67,25 @@ namespace MoveToCode {
         IEnumerator ShootRayFromHandThroughSnapColliders(IMixedRealityPointer pointer)
         {
             RaycastHit rayHitData;
+            SnapCollider lastSCLaserContact = null;
             while(CurrentlyDraggingCodeBlockSnap == this && pointer != null){
                 Vector3 rayOrigin = pointer.Position;
                 Vector3 direction = transform.position - rayOrigin;
                 if(Physics.Raycast(rayOrigin,direction, out rayHitData)){
                     SnapCollider sc = rayHitData.collider.transform.GetComponent<SnapCollider>();
                     if(sc != null){
-                        if(!curSnapCollidersInContact.Contains(sc)){
-                            AddSnapColliderInContact(sc);
-                        }
+                        if(lastSCLaserContact != null){
+                            RemoveAsCurSnapColliderInContact(lastSCLaserContact);
+                            lastSCLaserContact = null;
+                        }   
+                        lastSCLaserContact = sc;
+                        AddSnapColliderInContact(lastSCLaserContact);
+                    }
+                }
+                else{
+                    if(lastSCLaserContact != null){
+                        RemoveAsCurSnapColliderInContact(lastSCLaserContact);
+                        lastSCLaserContact = null;
                     }
                 }
                 yield return null;

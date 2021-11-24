@@ -331,6 +331,7 @@ GameObject:
   - component: {fileID: 39108128}
   - component: {fileID: 39108129}
   - component: {fileID: 39108130}
+  - component: {fileID: 39108131}
   m_Layer: 0
   m_Name: LoggingManagers
   m_TagString: Untagged
@@ -412,6 +413,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d42ad37fa7e592745b6bc7699d82a0de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &39108131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39108124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07ba9edd092c34b91a2ef4fdf0bc785d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &51471737
@@ -1687,7 +1700,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc2d53d40907b574da033fd21b3eef9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  logData: 0
+  logData: 1
   usePhysicalKuri: 0
 --- !u!4 &223377336
 Transform:

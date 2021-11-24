@@ -8,6 +8,13 @@ namespace MoveToCode {
         Vector3 origScaleArgRight;
         Vector3 origPositionArgRight;
 
+        float TopSizeHBC { get; } = 0.8f;
+        float ArgRightHBC {
+            get {
+                return argRight.localScale.x * 0.5f;
+            }
+        }
+
         public override void SetUpObject() {
             top = transform.GetChild(0);
             argRight = transform.GetChild(1);
@@ -28,15 +35,15 @@ namespace MoveToCode {
         }
 
         public override float GetBlockVerticalSize() {
-            return GetSizeOfInsideInstructionChain() + GetSizeOfExitInstructionChain() + top.localScale.y + bot.localScale.y;
+            return GetSizeOfInsideInstructionChain() + GetSizeOfExitInstructionChain() + 0.5f /*top*/ + 0.5f /*bot*/;
         }
 
         public override float GetBlockHorizontalSize() {
-            return side.localScale.x + top.localScale.x + argRight.localScale.x;
+            return side.localScale.x + 0.8f /*top*/ + argRight.localScale.x;
         }
 
         public override Vector3 GetCenterPosition() {
-            return Vector3.zero; // maybe this is right?
+            return Vector3.zero; // maybe this is right? -> most defintely not lol
         }
 
         protected override void ResizeObjectMesh() {

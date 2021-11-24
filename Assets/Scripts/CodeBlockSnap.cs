@@ -68,10 +68,11 @@ namespace MoveToCode {
         {
             RaycastHit rayHitData;
             SnapCollider lastSCLaserContact = null;
+            LayerMask lm = 1 << LayerMask.NameToLayer("SnapCollider");
             while(CurrentlyDraggingCodeBlockSnap == this && pointer != null){
                 Vector3 rayOrigin = pointer.Position;
                 Vector3 direction = transform.position - rayOrigin;
-                if(Physics.Raycast(rayOrigin,direction, out rayHitData)){
+                if(Physics.Raycast(rayOrigin,direction, out rayHitData, 10, lm)){
                     SnapCollider sc = rayHitData.collider.transform.GetComponent<SnapCollider>();
                     if(sc != null){
                         if(lastSCLaserContact != null){

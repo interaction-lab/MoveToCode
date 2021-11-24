@@ -14,6 +14,11 @@ namespace MoveToCode {
                 return argRight.localScale.x * 0.5f;
             }
         }
+        float SideSizeHBC {
+            get {
+                return side.localScale.x;
+            }
+        }
 
         public override void SetUpObject() {
             top = transform.GetChild(0);
@@ -39,11 +44,11 @@ namespace MoveToCode {
         }
 
         public override float GetBlockHorizontalSize() {
-            return side.localScale.x + 0.8f /*top*/ + argRight.localScale.x;
+            return SideSizeHBC + TopSizeHBC + ArgRightHBC;
         }
 
         public override Vector3 GetCenterPosition() {
-            return Vector3.zero; // maybe this is right? -> most defintely not lol
+            return Vector3.zero; // TODO: figure out what calls this even and why
         }
 
         protected override void ResizeObjectMesh() {

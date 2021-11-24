@@ -35,7 +35,7 @@ namespace MoveToCode {
             return curExercise;
         }
 
-        public Boolean AlertCodeFinished() {
+        public bool AlertCodeFinished() {
             if (curExercise != null) { // This if is to guard against initializing interpreter
                 if (curExercise.IsExerciseCorrect()) {
                     KuriManager.instance.SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT.Congratulation);

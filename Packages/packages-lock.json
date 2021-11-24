@@ -22,14 +22,6 @@
         "com.google.firebase.app": "8.6.2"
       }
     },
-    "com.google.firebase.crashlytics": {
-      "version": "file:../GooglePackages/com.google.firebase.crashlytics-8.6.2.tgz",
-      "depth": 0,
-      "source": "local-tarball",
-      "dependencies": {
-        "com.google.firebase.app": "8.6.2"
-      }
-    },
     "com.google.firebase.firestore": {
       "version": "file:../GooglePackages/com.google.firebase.firestore-8.6.2.tgz",
       "depth": 0,

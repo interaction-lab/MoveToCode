@@ -26,7 +26,7 @@ namespace MoveToCode {
         }
 
         public override float GetBlockHorizontalSize() {
-            return 2;//argRight.localScale.x + argLeft.localScale.x + top.localScale.x;
+            return argRight.localScale.x * 0.5f + argLeft.localScale.x + top.localScale.x * 0.5f;
         }
 
         public override float GetBlockVerticalSize() {

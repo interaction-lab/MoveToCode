@@ -79,7 +79,9 @@ namespace MoveToCode {
                             lastSCLaserContact = null;
                         }   
                         lastSCLaserContact = sc;
-                        AddSnapColliderInContact(lastSCLaserContact);
+                        if(!curSnapCollidersInContact.Contains(lastSCLaserContact)){
+                            AddSnapColliderInContact(lastSCLaserContact);
+                        }
                     }
                 }
                 else{

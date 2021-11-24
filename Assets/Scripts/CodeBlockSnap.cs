@@ -70,15 +70,14 @@ namespace MoveToCode {
             while(CurrentlyDraggingCodeBlockSnap == this && pointer != null){
                 Vector3 rayOrigin = pointer.Position;
                 Vector3 direction = transform.position - rayOrigin;
-                Debug.DrawRay(rayOrigin, direction * 100, Color.cyan);
                 if(Physics.Raycast(rayOrigin,direction, out rayHitData)){
-                    Debug.Log(rayHitData.transform.name);
-                    SnapCollider sc = rayHitData.transform.GetComponent<SnapCollider>();
+                    SnapCollider sc = rayHitData.collider.transform.GetComponent<SnapCollider>();
                     if(sc != null){
-                        Debug.Log(sc.gameObject.name);
+                        if(!curSnapCollidersInContact.Contains(sc)){
+                            AddSnapColliderInContact(sc);
+                        }
                     }
                 }
-
                 yield return null;
             }
         }

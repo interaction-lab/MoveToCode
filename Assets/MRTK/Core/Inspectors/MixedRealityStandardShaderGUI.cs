@@ -29,7 +29,7 @@ namespace Microsoft.MixedReality.Toolkit.Editor
             public static string renderingOptionsTitle = "Rendering Options";
             public static string advancedOptionsTitle = "Advanced Options";
             public static string fluentOptionsTitle = "Fluent Options";
-            public static string instancedColorName = "_InstancedColor";
+            public static string instancedColorName = "_Color";
             public static string instancedColorFeatureName = "_INSTANCED_COLOR";
             public static string stencilComparisonName = "_StencilComparison";
             public static string stencilOperationName = "_StencilOperation";

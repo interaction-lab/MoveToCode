@@ -68,7 +68,7 @@ namespace MoveToCode {
         {
             RaycastHit rayHitData;
             SnapCollider lastSCLaserContact = null;
-            LayerMask lm = 1 << LayerMask.NameToLayer("SnapCollider");
+            LayerMask lm = 1 << LayerMask.NameToLayer(LayerMaskConstants.SNAPCOLLIDER);
             while(CurrentlyDraggingCodeBlockSnap == this && pointer != null){
                 Vector3 rayOrigin = pointer.Position;
                 Vector3 direction = transform.position - rayOrigin;

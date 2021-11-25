@@ -10,7 +10,7 @@ namespace MoveToCode {
 
         void CheckForAndPlaceOnGround() {
             RaycastHit rayHitData;
-            LayerMask lm = 1 << 31;//LayerMask.NameToLayer("Spatial Awareness");
+            LayerMask lm = 1 << LayerMask.NameToLayer(LayerMaskConstants.SPATIALAWARENESS);
             Vector3 rayOrigin = transform.position;
             if (Physics.Raycast(rayOrigin, Vector3.down, out rayHitData, 10, lm)) {
                 MoveToGroundPlane(rayHitData.transform, Vector3.down);

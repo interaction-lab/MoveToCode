@@ -44,6 +44,22 @@ namespace MoveToCode {
             return 0.5f * GetZScoreMovement() + 0.5f * GetZScoreCuriosity();
         }
 
+
+        public float NormalDist(float x, float mean, float variance) {
+            return Mathf.Pow(
+                (1.0f / Mathf.Sqrt(2.0f * Mathf.PI * variance)),
+                -Mathf.Pow(
+                    (x - mean) / (2 * variance),
+                    2)
+                );
+        }
+        public float GetCuriosityNorm() {
+            return NormalDist(curiosity_t, curiosity_average, GetCuriosityVariance())
+        }
+        public float GetMovementNorm() {
+            return NormalDist(movement_t, movement_average, GetCuriosityVariance())
+        }
+
         public int GetTimeQueueSizeNormalized() {
             return (int)(timeWindow / Time.deltaTime);
         }
@@ -116,10 +132,10 @@ namespace MoveToCode {
             int result = 0;
             if (LoggingManager.instance.GetValueInRowAt(ManipulationLoggingManager.GetColName()) != "") {
                 result = 1;
-            }
+            } 
             else if (LoggingManager.instance.GetValueInRowAt(SnapLoggingManager.GetSnapToColName()) != "") {
                 result = 1;
-            }
+            } 
             else if (LoggingManager.instance.GetValueInRowAt(SnapLoggingManager.GetSnapRemoveFromColName()) != "") {
                 result = 1;
             }

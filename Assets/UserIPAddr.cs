@@ -1,7 +1,5 @@
 using System.Net;
 using System.Net.Sockets;
-using System.Net.NetworkInformation;
-using UnityEngine;
 
 namespace MoveToCode {
     public class UserIPAddr : Singleton<UserIPAddr> {
@@ -16,7 +14,13 @@ namespace MoveToCode {
         }
 
         public string GetGlobalIPAddress() {
-            return new WebClient().DownloadString("http://icanhazip.com").Replace("\n","");
+            try {
+                return new WebClient().DownloadString("http://icanhazip.com").Replace("\n", "");
+            } 
+            catch (WebException) {
+                return "NOGLOBALIPFOUND";
+            }
+            return "NOGLOBALANDNOEXPECTION";
         }
     }
 }

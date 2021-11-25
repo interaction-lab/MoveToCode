@@ -9,8 +9,8 @@
         "NewLinesForBracesInProperties": false,
         "NewLinesForBracesInObjectCollectionArrayInitializers": false,
         "NewLinesForBracesInAccessors": false,
-        "NewLineForElse": false,
-        "NewLineForCatch": false,
-        "NewLineForFinally": false
+        "NewLineForElse": true,
+        "NewLineForCatch": true,
+        "NewLineForFinally": true
     }
 }

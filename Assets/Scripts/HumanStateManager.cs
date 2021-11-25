@@ -45,19 +45,32 @@ namespace MoveToCode {
         }
 
 
-        public float NormalDist(float x, float mean, float variance) {
-            return Mathf.Pow(
-                (1.0f / Mathf.Sqrt(2.0f * Mathf.PI * variance)),
-                -Mathf.Pow(
-                    (x - mean) / (2 * variance),
-                    2)
-                );
+        // constants
+        float a1 = 0.254829592f;
+        float a2 = -0.284496736f;
+        float a3 = 1.421413741f;
+        float a4 = -1.453152027f;
+        float a5 = 1.061405429f;
+        float p = 0.3275911f;
+        public float NormalDist(float x) {
+
+            float sign = 1f;
+            if (x < 0) {
+                sign = -1;
+            }
+            x = Mathf.Abs(x) / Mathf.Sqrt(2.0f);
+
+            // A&S formula 7.1.26
+            float t = 1.0f / (1.0f + p * x);
+            float y = 1.0f - (((((a5 * t + a4) * t) + a3) * t + a2) * t + a1) * t * Mathf.Exp(-x * x);
+
+            return 0.5f * (1.0f + sign * y);
         }
         public float GetCuriosityNorm() {
-            return NormalDist(curiosity_t, curiosity_average, GetCuriosityVariance())
+            return NormalDist(GetZScoreCuriosity());
         }
         public float GetMovementNorm() {
-            return NormalDist(movement_t, movement_average, GetCuriosityVariance())
+            return NormalDist(GetZScoreMovement());
         }
 
         public int GetTimeQueueSizeNormalized() {
@@ -132,11 +145,9 @@ namespace MoveToCode {
             int result = 0;
             if (LoggingManager.instance.GetValueInRowAt(ManipulationLoggingManager.GetColName()) != "") {
                 result = 1;
-            } 
-            else if (LoggingManager.instance.GetValueInRowAt(SnapLoggingManager.GetSnapToColName()) != "") {
+            } else if (LoggingManager.instance.GetValueInRowAt(SnapLoggingManager.GetSnapToColName()) != "") {
                 result = 1;
-            } 
-            else if (LoggingManager.instance.GetValueInRowAt(SnapLoggingManager.GetSnapRemoveFromColName()) != "") {
+            } else if (LoggingManager.instance.GetValueInRowAt(SnapLoggingManager.GetSnapRemoveFromColName()) != "") {
                 result = 1;
             }
             curiosity_t += result;

@@ -7,7 +7,19 @@ namespace MoveToCode {
         // Other components we need
         HumanStateManager humanStateManager;
 
-        // scores we care about
+
+        // Animation curves
+        public AnimationCurve movementCurve;
+
+        void Awake() {
+            humanStateManager = HumanStateManager.instance;
+        }
+
+    
+
+         void Update() {
+            Debug.Log(movementCurve.Evaluate(humanStateManager.GetMovementNorm()));
+        }
         
 
     }

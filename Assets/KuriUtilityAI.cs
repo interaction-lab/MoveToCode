@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KuriUtilityAI : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+namespace MoveToCode {
+    public class KuriUtilityAI : MonoBehaviour {
+        // Other components we need
+        HumanStateManager humanStateManager;
 
-    // Update is called once per frame
-    void Update()
-    {
+        // scores we care about
         
+
     }
 }

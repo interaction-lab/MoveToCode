@@ -66,10 +66,10 @@ namespace MoveToCode {
 
             return 0.5f * (1.0f + sign * y);
         }
-        public float GetCuriosityNorm() {
+        public float GetCuriosityCDF() {
             return NormalDist(GetZScoreCuriosity());
         }
-        public float GetMovementNorm() {
+        public float GetMovementCDF() {
             return NormalDist(GetZScoreMovement());
         }
 
@@ -138,6 +138,7 @@ namespace MoveToCode {
             }
         }
 
+        // TODO: make this about novelty of action as opposed to just any action
         private void UpdateCuriosity(int len) {
             while (GetInforSeekingActionQueue().Count > len) {
                 curiosity_t -= infoSeekingActionQueue.Dequeue();

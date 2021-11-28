@@ -9,34 +9,55 @@ namespace MoveToCode {
         public float robotKC;
         [HideInInspector]
         public bool usePhysicalKuri = true;
-        static string rISACol = "robotISA",
-            robotKCLevel = "robotKCLevel",
-            kuriPhysicalEmoteActionCol = "kuriPhysicalAction",
-            kuriMovementActionCol = "kuriMovementAction";
-
+        static string robotKCLevel = "robotKCLevel";
 
         PoseStampedPublisher poseStampPublisher;
-        float timeSinceLastAction, timeWindow;
+
+        public float TimeLastActionStarted { get; set; } = 0;
+        public float TimeLastActionEnded { get; set; } = 0;
+        public float TimeWindow { get; set; }
 
         public Transform KuriGoalPoseTransform;
-        KuriController kuriController;
+
+        KuriController kuriControllerBackingVar = null;
+        public KuriController kuriController {
+            get {
+                if (kuriController == null) {
+                    if (usePhysicalKuri) {
+                        kuriControllerBackingVar = FindObjectOfType<PhysicalKuriController>().GetComponent<KuriController>();
+                    }
+                    else {
+                        kuriControllerBackingVar = FindObjectOfType<VirtualKuriController>().GetComponent<KuriController>();
+                    }
+                }
+                return kuriControllerBackingVar;
+            }
+        }
+
+        KuriAI kuriAIBackingVar = null;
+        KuriAI kuriAI {
+            get {
+                if (kuriAIBackingVar == null) {
+                    if (kuriAIToUse == KuriAI.KURIAI.Utility) {
+                        kuriAIBackingVar = FindObjectOfType<KuriUtilityAI>().GetComponent<KuriUtilityAI>();
+                    }
+                    else if (kuriAIToUse == KuriAI.KURIAI.RuleBased) {
+                        kuriAIBackingVar = FindObjectOfType<KuriRuleBasedAI>().GetComponent<KuriUtilityAI>();
+                    }
+                }
+                return kuriAIBackingVar;
+            }
+        }
+        public KuriAI.KURIAI kuriAIToUse;
 
         bool inStartUp;
+        bool wasKuriDoingActionLastTick;
 
         private void Awake() {
             OptionSelectionManager.instance.Init();
-            if (usePhysicalKuri) {
-                kuriController = FindObjectOfType<PhysicalKuriController>().GetComponent<KuriController>();
-            }
-            else {
-                kuriController = FindObjectOfType<VirtualKuriController>().GetComponent<KuriController>();
-            }
-            timeWindow = HumanStateManager.instance.timeWindow;
-            timeSinceLastAction = 0;
-            LoggingManager.instance.AddLogColumn(rISACol, "");
+            TimeWindow = HumanStateManager.instance.timeWindow;
+            wasKuriDoingActionLastTick = kuriController.IsDoingAction;
             LoggingManager.instance.AddLogColumn(robotKCLevel, "");
-            LoggingManager.instance.AddLogColumn(kuriPhysicalEmoteActionCol, "");
-            LoggingManager.instance.AddLogColumn(kuriMovementActionCol, "");
             KuriGoalPoseTransform = transform.GetChild(0); // TODO: this is awful
         }
 
@@ -59,57 +80,48 @@ namespace MoveToCode {
             inStartUp = false;
         }
 
-
-
         private void Update() {
+            Tick();
+        }
+
+        public void AlertActionStarted() {
+            TimeLastActionStarted = Time.time;
+        }
+
+
+        private void Tick() {
             if (inStartUp) {
                 return;
             }
-            Tick();
-            timeSinceLastAction += Time.deltaTime;
-        }
-
-        public void AlertActionMade() {
-            timeSinceLastAction = 0;
-        }
-
-        private void Tick() {
-            if (timeSinceLastAction < timeWindow) {
-                return;
+            kuriAI.Tick();
+            if (!wasKuriDoingActionLastTick && kuriController.IsDoingAction) {
+                TimeLastActionStarted = Time.time;
             }
-            float kctS = HumanStateManager.instance.GetKCt();
-            if (kctS < robotKC) {
-                TakeISAAction();
-                //TakeMovementAction();
+            else if (wasKuriDoingActionLastTick && !kuriController.IsDoingAction) {
+                TimeLastActionEnded = Time.time;
             }
-            else {
-                kuriController.DoRandomPositiveAction();
-            }
-            AlertActionMade();
+            UpdateEndOfTickVariables();
         }
 
-        private void TakeISAAction() {
-            string actionMade = kuriController.TakeISAAction();
-            Debug.Log(actionMade);
-            LoggingManager.instance.UpdateLogColumn(rISACol, actionMade);
+        void UpdateEndOfTickVariables() {
+            wasKuriDoingActionLastTick = kuriController.IsDoingAction;
         }
 
-        private void TakeMovementAction() {
+        public void TakeMovementAction() {
             KuriGoalPoseTransform.position = ExerciseInformationSeekingActions.goOfFocus.transform.position;
             KuriGoalPoseTransform.rotation = Quaternion.LookRotation(ExerciseInformationSeekingActions.goOfFocus.transform.forward);
             string actionMade = kuriController.TakeMovementAction();
-            LoggingManager.instance.UpdateLogColumn(kuriMovementActionCol, actionMade);
+            //LoggingManager.instance.UpdateLogColumn(kuriMovementActionCol, actionMade);
         }
 
         public void SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT toa) {
             kuriController.TurnTowardsUser();
             string actionMade = kuriController.DoRandomPositiveAction();
-            LoggingManager.instance.UpdateLogColumn(kuriPhysicalEmoteActionCol,
-                actionMade);
+           // LoggingManager.instance.UpdateLogColumn(kuriPhysicalEmoteActionCol,
+           //     actionMade);
 
             KuriTextManager.instance.Clear(KuriTextManager.PRIORITY.low);
             KuriTextManager.instance.SayRandomPositiveAffect(toa);
-            AlertActionMade();
         }
 
         public void SayExerciseGoal() {
@@ -117,13 +129,11 @@ namespace MoveToCode {
                 "Goal: ",
                 ExerciseManager.instance.GetCurExercise().GetGoalString()),
                 KuriTextManager.PRIORITY.high);
-            AlertActionMade();
         }
 
         public void DoScaffoldingDialogue() {
             kuriController.TurnTowardsUser();
             ExerciseManager.instance.GetCurExercise().GetComponent<ExerciseScaffolding>().SayNextScaffold();
-            AlertActionMade();
         }
     }
 }

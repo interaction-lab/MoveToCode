@@ -9,6 +9,8 @@
 - `KuriManager`: 
   - Decides on which controller to use for actions (i.e., physical vs virtual)
   - Controls Kuri tunable params (curiosity/movement)
+  - Controls the tick rate (just calls from update)
+  - Keeps track of any Kuri state (e.g., `LastActionStartTime`)
 - `HumanStateManager`: controls and keeps track of any human related state (e.g., curiosity and movement)
 - `KuriController`: base class for all action APIS
   - `KuriPhysicalController`: action API for all physical kuri actions

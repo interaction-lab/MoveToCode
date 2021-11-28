@@ -21,7 +21,6 @@ namespace MoveToCode {
             Init();
         }
 
-
         void Init() {
             if (initialized) {
                 return;
@@ -64,6 +63,9 @@ namespace MoveToCode {
         /// <param name="value">Value for Column</param>
         /// <returns>True if key not already in row, false otherwise</returns>
         public bool AddLogColumn(string key, string value) {
+            if(!initialized){
+                Init(); // jank protection against init order, need to fix singleton init order
+            }
             bool isNewColumn = !GetColumnLookUp().ContainsKey(key);
             if (isNewColumn) {
                 columnLookup[key] = GetRow().Count;

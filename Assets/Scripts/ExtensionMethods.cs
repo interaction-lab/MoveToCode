@@ -126,5 +126,10 @@ namespace MoveToCode {
             om.TwoHandedManipulationType = om.TwoHandedManipulationType &
                 (Microsoft.MixedReality.Toolkit.Utilities.TransformFlags.Move | Microsoft.MixedReality.Toolkit.Utilities.TransformFlags.Rotate);
         }
+
+        // Float
+        public static float TimeSince(this float f){
+            return Time.time - f;
+        }
     }
 }

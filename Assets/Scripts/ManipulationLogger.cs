@@ -29,12 +29,12 @@ namespace MoveToCode {
             }
         }
 
-        State lastState = null; // will automatically update on first state change
+        State myLastState = null; // will automatically update on first state change
         public override void OnStateChange(InteractableStates state, Interactable source) {
             base.OnStateChange(state, source);
-            if(lastState != state.CurrentState()){ // state change
-                lastState = state.CurrentState();
-                if(lastState.Name == "Pressed" && !currentlyManipulating){
+            if(myLastState != state.CurrentState()){ // state change
+                myLastState = state.CurrentState();
+                if(myLastState.Name == "Pressed" && !currentlyManipulating){
                     LogManipulationStartButtonPress();
                 }
                 else{

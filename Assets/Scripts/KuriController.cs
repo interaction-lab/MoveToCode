@@ -18,7 +18,9 @@ namespace MoveToCode {
             close_eyes
         }
         static string rISACol = "robotISA", kuriPhysicalEmoteActionCol = "kuriPhysicalAction", kuriMovementActionCol = "kuriMovementAction";
+        [HideInInspector]
         public bool IsDoingAction = false;
+        [HideInInspector]
         public string CurAction = "";
         public static EMOTIONS[] PositiveEmotions =
             new EMOTIONS[] {

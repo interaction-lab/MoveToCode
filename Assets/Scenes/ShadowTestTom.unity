@@ -5329,7 +5329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c78149086eaff5439ffe528177bac5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeWindow: 20
+  timeWindow: 5
 --- !u!4 &689636195 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2204069623020599746, guid: 3f1f46cbecbe08e46a303ccfdb5b498a,
@@ -5651,6 +5651,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ba3cdcc6dc9948e2a53f2f67db464e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsTalking: 0
 --- !u!82 &741588998
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11780,7 +11781,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsDoingAction: 0
-  currentAction: 
+  CurAction: 
 --- !u!82 &1434147717
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11976,6 +11977,72 @@ MonoBehaviour:
       value: 0
       inSlope: -0.38154116
       outSlope: -0.38154116
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  curiosityCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -2.9531035
+      outSlope: -2.9531035
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.24049926
+      value: 0.2897808
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.38154116
+      outSlope: -0.38154116
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  doNothingCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -0.90145826
+      outSlope: -0.90145826
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.8194973
+      value: 0.26125738
+      inSlope: -0.030121312
+      outSlope: -0.030121312
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.44238386
+    - serializedVersion: 3
+      time: 1
+      value: 0.2
+      inSlope: -0.33937094
+      outSlope: -0.33937094
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -12557,7 +12624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsDoingAction: 0
-  currentAction: 
+  CurAction: 
 --- !u!114 &1504993769
 MonoBehaviour:
   m_ObjectHideFlags: 0

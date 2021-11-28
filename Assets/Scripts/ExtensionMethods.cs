@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using System;
 
 namespace MoveToCode {
     public static class ExtensionMethods {
@@ -9,6 +10,27 @@ namespace MoveToCode {
         // List Extensions
         public static bool Empty<T>(this List<T> l) {
             return l.Count == 0;
+        }
+
+        public static int MaxIndex<T>(this IEnumerable<T> source) {
+            IComparer<T> comparer = Comparer<T>.Default;
+            using (var iterator = source.GetEnumerator()) {
+                if (!iterator.MoveNext()) {
+                    throw new InvalidOperationException("Empty sequence");
+                }
+                int maxIndex = 0;
+                T maxElement = iterator.Current;
+                int index = 0;
+                while (iterator.MoveNext()) {
+                    index++;
+                    T element = iterator.Current;
+                    if (comparer.Compare(element, maxElement) > 0) {
+                        maxElement = element;
+                        maxIndex = index;
+                    }
+                }
+                return maxIndex;
+            }
         }
 
         public static void Resize<T>(this List<T> l, int desiredSize) {
@@ -128,7 +150,7 @@ namespace MoveToCode {
         }
 
         // Float
-        public static float TimeSince(this float f){
+        public static float TimeSince(this float f) {
             return Time.time - f;
         }
     }

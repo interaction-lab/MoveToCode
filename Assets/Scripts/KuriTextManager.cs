@@ -30,6 +30,8 @@ namespace MoveToCode {
             low
         }
 
+        public bool IsTalking = false;
+
         TextMeshProUGUI kuriTextMesh;
         Queue<TextCommand> commandQueue;
         Queue<TextCommand> highPriorityCommands;
@@ -78,7 +80,7 @@ namespace MoveToCode {
 
         IEnumerator ProcessText(int myCommandNum) {
             yield return new WaitUntil(() => curCommandNum == myCommandNum);
-
+            IsTalking = true;
             TextCommand processTuple = commandQueue.Peek();
             commandQueue.Dequeue();
 
@@ -106,9 +108,8 @@ namespace MoveToCode {
                     highPriorityCommands.Clear();
                 }
             }
-
-
             ++curCommandNum;
+            IsTalking = false;
         }
 
         public enum TYPEOFAFFECT {

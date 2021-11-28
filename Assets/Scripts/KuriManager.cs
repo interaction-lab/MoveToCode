@@ -15,7 +15,11 @@ namespace MoveToCode {
 
         public float TimeLastActionStarted { get; set; } = 0;
         public float TimeLastActionEnded { get; set; } = 0;
-        public float TimeWindow { get; set; }
+        public float TimeWindow {
+            get {
+                return HumanStateManager.instance.timeWindow;
+            }
+        }
 
         public Transform KuriGoalPoseTransform;
 
@@ -53,12 +57,14 @@ namespace MoveToCode {
 
         bool inStartUp;
         bool wasKuriDoingActionLastTick;
+        
+        LoggingManager loggingManager;
 
         private void Awake() {
             OptionSelectionManager.instance.Init();
-            TimeWindow = HumanStateManager.instance.timeWindow;
+            loggingManager = LoggingManager.instance;
             wasKuriDoingActionLastTick = kuriController.IsDoingAction;
-            LoggingManager.instance.AddLogColumn(robotKCLevel, "");
+            loggingManager.AddLogColumn(robotKCLevel, "");
             KuriGoalPoseTransform = transform.GetChild(0); // TODO: this is awful
         }
 
@@ -85,11 +91,6 @@ namespace MoveToCode {
             Tick();
         }
 
-        public void AlertActionStarted() {
-            TimeLastActionStarted = Time.time;
-        }
-
-
         private void Tick() {
             if (inStartUp) {
                 return;
@@ -106,35 +107,6 @@ namespace MoveToCode {
 
         void UpdateEndOfTickVariables() {
             wasKuriDoingActionLastTick = kuriController.IsDoingAction;
-        }
-
-        public void TakeMovementAction() {
-            KuriGoalPoseTransform.position = ExerciseInformationSeekingActions.goOfFocus.transform.position;
-            KuriGoalPoseTransform.rotation = Quaternion.LookRotation(ExerciseInformationSeekingActions.goOfFocus.transform.forward);
-            string actionMade = kuriController.TakeMovementAction();
-            //LoggingManager.instance.UpdateLogColumn(kuriMovementActionCol, actionMade);
-        }
-
-        public void SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT toa) {
-            kuriController.TurnTowardsUser();
-            string actionMade = kuriController.DoRandomPositiveAction();
-           // LoggingManager.instance.UpdateLogColumn(kuriPhysicalEmoteActionCol,
-           //     actionMade);
-
-            KuriTextManager.instance.Clear(KuriTextManager.PRIORITY.low);
-            KuriTextManager.instance.SayRandomPositiveAffect(toa);
-        }
-
-        public void SayExerciseGoal() {
-            KuriTextManager.instance.Addline(string.Join("",
-                "Goal: ",
-                ExerciseManager.instance.GetCurExercise().GetGoalString()),
-                KuriTextManager.PRIORITY.high);
-        }
-
-        public void DoScaffoldingDialogue() {
-            kuriController.TurnTowardsUser();
-            ExerciseManager.instance.GetCurExercise().GetComponent<ExerciseScaffolding>().SayNextScaffold();
         }
     }
 }

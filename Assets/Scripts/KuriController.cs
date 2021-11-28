@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace MoveToCode {
 
@@ -21,7 +19,7 @@ namespace MoveToCode {
         }
         static string rISACol = "robotISA", kuriPhysicalEmoteActionCol = "kuriPhysicalAction", kuriMovementActionCol = "kuriMovementAction";
         public bool IsDoingAction = false;
-        public string currentAction = "";
+        public string CurAction = "";
         public static EMOTIONS[] PositiveEmotions =
             new EMOTIONS[] {
                 EMOTIONS.happy,
@@ -36,15 +34,45 @@ namespace MoveToCode {
                 EMOTIONS.confused
             };
 
+        protected KuriTextManager kuriTextManager;
+        protected LoggingManager loggingManager;
         private void Awake() {
-            LoggingManager.instance.AddLogColumn(rISACol, "");
-            LoggingManager.instance.AddLogColumn(kuriPhysicalEmoteActionCol, "");
-            LoggingManager.instance.AddLogColumn(kuriMovementActionCol, "");
+            loggingManager = LoggingManager.instance;
+            kuriTextManager = KuriTextManager.instance;
+            loggingManager.AddLogColumn(rISACol, "");
+            loggingManager.AddLogColumn(kuriPhysicalEmoteActionCol, "");
+            loggingManager.AddLogColumn(kuriMovementActionCol, "");
         }
         public string TakeISAAction() {
             string actionString = ExerciseManager.instance.GetCurExercise().GetComponent<ExerciseInformationSeekingActions>().DoISAAction();
-            LoggingManager.instance.UpdateLogColumn(rISACol, actionString);
+            loggingManager.UpdateLogColumn(rISACol, actionString);
             return actionString;
+        }
+
+        public void SayExerciseGoal() {
+            kuriTextManager.Addline(string.Join("",
+                 "Goal: ",
+                 ExerciseManager.instance.GetCurExercise().GetGoalString()),
+                 KuriTextManager.PRIORITY.high);
+        }
+
+        public void SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT toa) {
+            TurnTowardsUser();
+            string actionMade = DoRandomPositiveAction();
+            loggingManager.UpdateLogColumn(kuriPhysicalEmoteActionCol,
+                 actionMade);
+
+            kuriTextManager.Clear(KuriTextManager.PRIORITY.low);
+            kuriTextManager.SayRandomPositiveAffect(toa);
+        }
+
+        public void DoScaffoldingDialogue() {
+            TurnTowardsUser();
+            ExerciseManager.instance.GetCurExercise().GetComponent<ExerciseScaffolding>().SayNextScaffold();
+        }
+
+        private void Update() {
+            IsDoingAction = KuriTextManager.instance.IsTalking;
         }
 
         public abstract string TakeMovementAction();

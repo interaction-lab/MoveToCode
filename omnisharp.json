@@ -11,6 +11,8 @@
         "NewLinesForBracesInAccessors": false,
         "NewLineForElse": true,
         "NewLineForCatch": true,
-        "NewLineForFinally": true
+        "NewLineForFinally": true,
+        "WrappingPreserveSingleLine": false,
+        "WrappingKeepStatementsOnSingleLine": false
     }
 }

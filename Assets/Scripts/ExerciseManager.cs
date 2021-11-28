@@ -38,13 +38,13 @@ namespace MoveToCode {
         public bool AlertCodeFinished() {
             if (curExercise != null) { // This if is to guard against initializing interpreter
                 if (curExercise.IsExerciseCorrect()) {
-                    KuriManager.instance.SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT.Congratulation);
+                    KuriManager.instance.kuriController.SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT.Congratulation);
                     LoggingManager.instance.UpdateLogColumn(exerciseSubmissionResultCol, "Correct");
                     lastExerciseCompleted = true;
                     return true;
                 }
                 else {
-                    KuriManager.instance.DoScaffoldingDialogue();
+                    KuriManager.instance.kuriController.DoScaffoldingDialogue();
                     LoggingManager.instance.UpdateLogColumn(exerciseSubmissionResultCol, "InCorrect");
                     return false;
                 }

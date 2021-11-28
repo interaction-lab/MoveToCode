@@ -17,7 +17,7 @@ namespace MoveToCode {
         }
 
         public override void Tick() {
-            Debug.Log(movementCurve.Evaluate(humanStateManager.GetMovementCDF()));
+            
         }
     }
 }

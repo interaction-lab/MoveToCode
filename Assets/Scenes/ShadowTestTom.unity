@@ -5272,6 +5272,7 @@ MonoBehaviour:
   robotKC: 0.1
   usePhysicalKuri: 0
   KuriGoalPoseTransform: {fileID: 0}
+  kuriAIToUse: 0
 --- !u!4 &671810406 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5335814774712488528, guid: dddf9b2e6c0fcd546b30a826b21b6e2b,
@@ -11778,6 +11779,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1932d9e89484cf45961a1e05b6d8004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsDoingAction: 0
+  currentAction: 
 --- !u!82 &1434147717
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11980,6 +11983,18 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1434147723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434147715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0d958421478644bfa0d3e4afb91b466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1434483032
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12541,6 +12556,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f9d90e23171484d9fcca6d8e75b845, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsDoingAction: 0
+  currentAction: 
 --- !u!114 &1504993769
 MonoBehaviour:
   m_ObjectHideFlags: 0

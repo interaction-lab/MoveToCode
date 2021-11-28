@@ -22,7 +22,7 @@ namespace MoveToCode {
         KuriController kuriControllerBackingVar = null;
         public KuriController kuriController {
             get {
-                if (kuriController == null) {
+                if (kuriControllerBackingVar == null) {
                     if (usePhysicalKuri) {
                         kuriControllerBackingVar = FindObjectOfType<PhysicalKuriController>().GetComponent<KuriController>();
                     }
@@ -39,6 +39,7 @@ namespace MoveToCode {
             get {
                 if (kuriAIBackingVar == null) {
                     if (kuriAIToUse == KuriAI.KURIAI.Utility) {
+                        Debug.Log("fdslkj");
                         kuriAIBackingVar = FindObjectOfType<KuriUtilityAI>().GetComponent<KuriUtilityAI>();
                     }
                     else if (kuriAIToUse == KuriAI.KURIAI.RuleBased) {

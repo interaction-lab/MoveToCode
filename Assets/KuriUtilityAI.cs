@@ -18,7 +18,7 @@ namespace MoveToCode {
     
 
          void Update() {
-            Debug.Log(movementCurve.Evaluate(humanStateManager.GetMovementNorm()));
+            //Debug.Log(movementCurve.Evaluate(humanStateManager.GetMovementNorm()));
         }
         
 

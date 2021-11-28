@@ -36,14 +36,14 @@ namespace MoveToCode {
                 EMOTIONS.confused
             };
 
- //private void Awake(){
-           // LoggingManager.instance.AddLogColumn(rISACol, "");
-           // LoggingManager.instance.AddLogColumn(kuriPhysicalEmoteActionCol, "");
-           // LoggingManager.instance.AddLogColumn(kuriMovementActionCol, "");
-      //  }
+        private void Awake() {
+            LoggingManager.instance.AddLogColumn(rISACol, "");
+            LoggingManager.instance.AddLogColumn(kuriPhysicalEmoteActionCol, "");
+            LoggingManager.instance.AddLogColumn(kuriMovementActionCol, "");
+        }
         public string TakeISAAction() {
             string actionString = ExerciseManager.instance.GetCurExercise().GetComponent<ExerciseInformationSeekingActions>().DoISAAction();
-            //LoggingManager.instance.UpdateLogColumn(rISACol, actionString);
+            LoggingManager.instance.UpdateLogColumn(rISACol, actionString);
             return actionString;
         }
 

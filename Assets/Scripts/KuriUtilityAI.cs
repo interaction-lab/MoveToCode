@@ -12,13 +12,11 @@ namespace MoveToCode {
         public AnimationCurve movementCurve;
 
         void Awake() {
-           // humanStateManager = HumanStateManager.instance;
-         //   kuriManager = KuriManager.instance;
+            humanStateManager = HumanStateManager.instance;
+            kuriManager = KuriManager.instance;
         }
 
-    
-
-        public override void Tick(){
+        public override void Tick() {
             Debug.Log(movementCurve.Evaluate(humanStateManager.GetMovementCDF()));
         }
     }

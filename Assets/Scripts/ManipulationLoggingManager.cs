@@ -21,7 +21,6 @@ namespace MoveToCode {
         private void AddManipHandlerToComponent<T>() {
             foreach (var go in Resources.FindObjectsOfTypeAll(typeof(T)) as Object[]) {
                 GameObject g = (go as Component).gameObject;
-                Debug.Log(g.name);
                 if (g.GetComponent<ManipulationLogger>() == null) {
                     g.AddComponent<ManipulationLogger>();
                 }

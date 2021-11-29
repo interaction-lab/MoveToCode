@@ -10,6 +10,7 @@ namespace MoveToCode {
         public static string WATER = "Water";
         public static string SNAPCOLLIDER = "SnapCollider";
         public static string POSTPROCESSING = "PostProcessing";
+        public static string KURI = "Kuri";
         public static string SPATIALAWARENESS = "Spatial Awareness";
     }
 }

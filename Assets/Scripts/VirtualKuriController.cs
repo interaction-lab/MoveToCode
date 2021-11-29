@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityMovementAI;
 
 namespace MoveToCode {
     public class VirtualKuriController : KuriController {
@@ -24,6 +25,16 @@ namespace MoveToCode {
             }
         }
 
+        FollowPathUnit followPathUnitM;
+        FollowPathUnit FollowPathUnitM {
+            get {
+                if (followPathUnitM == null) {
+                    followPathUnitM = GetComponent<FollowPathUnit>();
+                }
+                return followPathUnitM;
+            }
+        }
+
         public override string DoAnimationAction(EMOTIONS e) {
             string action = e.ToString();
             Anim.SetTrigger(action);
@@ -42,14 +53,17 @@ namespace MoveToCode {
             //move to user
             Vector3 goal = Camera.main.transform.position;
             goal.y = KuriManager.instance.transform.position.y;
-           // StartCoroutine(MoveTo(goal, 0.2f));
+            FollowPathUnitM.path = new LinePath(new[]{KuriManager.instance.transform.position, goal});
+            FollowPathUnitM.enabled = true;
+
+            // StartCoroutine(MoveTo(goal, 0.2f));
             return "moving";
         }
 
         // IEnumerator MoveFromTo(Vector3 goal, float distThreshold) {
         //     Vector3 curPos = transform.position;
         //     while (Vector3.Distance(curPos, goal) > distThreshold) {
-                
+
         //         yield return null;
         //     }
         // }

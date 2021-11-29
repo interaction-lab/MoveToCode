@@ -26,7 +26,7 @@ namespace MoveToCode {
             }
         }
 
-        public override string DoAction(EMOTIONS e) {
+        public override string DoAnimationAction(EMOTIONS e) {
             KuriEmoteStringPub.PublishAction(e);
             return e.ToString();
         }

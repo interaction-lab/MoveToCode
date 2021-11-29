@@ -18,7 +18,7 @@ public class KeyboardTestingScript : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Alpha0)) {
             // Interpreter.instance.RunNextInstruction();
             // KuriManager.instance
-            FindObjectOfType<VirtualKuriController>().GetComponent<VirtualKuriController>().TurnTowardsUser();
+            FindObjectOfType<VirtualKuriController>().GetComponent<VirtualKuriController>().TakeMovementAction();
         }
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
 

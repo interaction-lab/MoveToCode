@@ -4545,7 +4545,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400128, guid: aeb85e1648e1a534a85e6711b3f10b01, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 400128, guid: aeb85e1648e1a534a85e6711b3f10b01, type: 3}
       propertyPath: m_LocalRotation.x
@@ -4553,7 +4553,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400128, guid: aeb85e1648e1a534a85e6711b3f10b01, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 400128, guid: aeb85e1648e1a534a85e6711b3f10b01, type: 3}
       propertyPath: m_LocalRotation.z
@@ -4565,7 +4565,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400128, guid: aeb85e1648e1a534a85e6711b3f10b01, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 400128, guid: aeb85e1648e1a534a85e6711b3f10b01, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -12409,10 +12409,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6f58141e9f357e448fd2fa6f1afc1f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxVelocity: 3.5
-  maxAcceleration: 10
-  turnSpeed: 20
-  targetRadius: 0.005
+  maxVelocity: 1
+  maxAcceleration: 5
+  turnSpeed: 1
+  targetRadius: 0.01
   slowRadius: 1
   timeToTarget: 0.1
   smoothing: 1
@@ -12493,7 +12493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 049423ef460e2524186c56ba0e274368, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stopRadius: 0.005
+  stopRadius: 0.3
   pathOffset: 0.71
   pathDirection: 1
 --- !u!1001 &1434483032

@@ -20,13 +20,14 @@ namespace MoveToCode {
         Vector3 lastHeadPoseEnqueued;
         long totalTimeSteps = 1;
 
-        static string humanCurtCol = "humanCurt", humanMovetCol = "humanMovet", humanMoveZScore = "humanMoveZScore", humanCurZScore = "humanCurZScore";
+        static string humanCurtCol = "humanCurt", humanMovetCol = "humanMovet", humanMoveZScore = "humanMoveZScore", humanCurZScore = "humanCurZScore", humanCurAction = "humanCurAction";
 
         private void Start() {
             LoggingManager.instance.AddLogColumn(humanCurtCol, "");
             LoggingManager.instance.AddLogColumn(humanMoveZScore, "");
             LoggingManager.instance.AddLogColumn(humanMovetCol, "");
             LoggingManager.instance.AddLogColumn(humanCurZScore, "");
+            LoggingManager.instance.AddLogColumn(humanCurAction, "");
             //StartCoroutine(WaitForScoresToAverageOut());
         }
 
@@ -96,6 +97,7 @@ namespace MoveToCode {
         void Update() {
             if(IsDoingAction){
                 LastTimeHumanDidAction = Time.time;
+                LoggingManager.instance.UpdateLogColumn(humanCurAction, 1); // TODO: get the actual aciton
             }
         }
         public void DebugLogData() {

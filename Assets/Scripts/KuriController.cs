@@ -59,6 +59,7 @@ namespace MoveToCode {
             loggingManager.AddLogColumn(rISACol, "");
             loggingManager.AddLogColumn(kuriPhysicalEmoteActionCol, "");
             loggingManager.AddLogColumn(kuriMovementActionCol, "");
+            loggingManager.AddLogColumn(kuriCurAction, "");
         }
         public string TakeISAAction() {
             string actionString = ExerciseManager.instance.GetCurExercise().GetComponent<ExerciseInformationSeekingActions>().DoISAAction();

@@ -10,6 +10,8 @@ namespace MoveToCode {
         Interactable interactable;
         LoggingManager loggingManager;
         public static bool currentlyManipulating = false;
+        public static string CurAction {get;set;} = "";
+        string grabInteractableS = "GrabInteractable", pressButtonS = "PressButton";
 
         void Start() {
             manipHandler = GetComponent<ManipulationHandler>();
@@ -20,7 +22,7 @@ namespace MoveToCode {
             }
             pressButton = GetComponent<PressableButtonHoloLens2>();
             if (pressButton != null) {
-                pressButton.ButtonPressed.AddListener(LogManipulationStartButtonPress);
+                pressButton.ButtonPressed.AddListener(LogManipulationStart);
                 pressButton.ButtonReleased.AddListener(StopLogging);
             }
             interactable = GetComponent<Interactable>();
@@ -35,7 +37,8 @@ namespace MoveToCode {
             if(myLastState != state.CurrentState()){ // state change
                 myLastState = state.CurrentState();
                 if(myLastState.Name == "Pressed" && !currentlyManipulating){
-                    LogManipulationStartButtonPress();
+                    CurAction = grabInteractableS;
+                    LogManipulationStart();
                 }
                 else{
                     StopLogging();
@@ -43,13 +46,17 @@ namespace MoveToCode {
             }
         }
         
-        private void LogManipulationStartButtonPress() {
+        private void LogManipulationStart() {
             currentlyManipulating = true;
+            if(CurAction == ""){
+                CurAction = pressButtonS;
+            }
             StartCoroutine(LogManipulationUntilDone());
         }
 
         private void LogManipulationStart(ManipulationEventData arg0) {
-            LogManipulationStartButtonPress();
+            CurAction = grabInteractableS;
+            LogManipulationStart();
         }
 
         IEnumerator LogManipulationUntilDone() {
@@ -57,6 +64,7 @@ namespace MoveToCode {
                 loggingManager.UpdateLogColumn(ManipulationLoggingManager.GetColName(), gameObject.TryGetNiceNameOfObjectForLogging());
                 yield return null;
             }
+            CurAction = "";
         }
 
         void StopLogging() {

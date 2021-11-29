@@ -83,9 +83,9 @@ namespace MoveToCode {
             inStartUp = true;
             yield return null;
             yield return new WaitForSeconds(3);
-            kuriController.DoAction(EMOTIONS.close_eyes);
+            kuriController.DoAnimationAction(EMOTIONS.close_eyes);
             yield return new WaitForSeconds(InteractionManager.instance.MinToSeconds(InteractionManager.instance.warmUpTimeMinutes) - 3f);
-            kuriController.DoAction(EMOTIONS.happy);
+            kuriController.DoAnimationAction(EMOTIONS.happy);
             inStartUp = false;
         }
 

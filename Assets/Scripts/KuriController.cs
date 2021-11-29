@@ -20,7 +20,7 @@ namespace MoveToCode {
             love,
             close_eyes
         }
-        static string rISACol = "robotISA", kuriPhysicalEmoteActionCol = "kuriPhysicalAction", kuriMovementActionCol = "kuriMovementAction", kuriCurAction = "kuriCurAction";
+        protected static string rISACol = "robotISA", kuriPhysicalEmoteActionCol = "kuriPhysicalAction", kuriMovementActionCol = "kuriMovementAction", kuriCurAction = "kuriCurAction";
         //[HideInInspector]
         public bool IsDoingAction {get; set;} = false;
         //[HideInInspector]
@@ -97,7 +97,7 @@ namespace MoveToCode {
         public abstract string TakeMovementAction();
         public abstract string DoRandomPositiveAction();
         public abstract string DoRandomNegativeAction();
-        public abstract string DoAction(EMOTIONS e);
+        public abstract string DoAnimationAction(EMOTIONS e);
         public abstract void TurnTowardsUser();
         // Returns true if currently doing action
         protected abstract bool UpdateCurrentActionString();

@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 namespace MoveToCode {
     public class VirtualKuriController : KuriController {
+        public float ForwardSpeed, BackwardSpeed, TurnSpeed;
         Animator anim;
         Animator Anim {
             get {
@@ -22,23 +24,35 @@ namespace MoveToCode {
             }
         }
 
-        public override string DoAction(EMOTIONS e) {
+        public override string DoAnimationAction(EMOTIONS e) {
             string action = e.ToString();
             Anim.SetTrigger(action);
             return action;
         }
 
         public override string DoRandomNegativeAction() {
-            return DoAction(NegativeEmotions[Random.Range(0, NegativeEmotions.Length)]);
+            return DoAnimationAction(NegativeEmotions[Random.Range(0, NegativeEmotions.Length)]);
         }
 
         public override string DoRandomPositiveAction() {
-            return DoAction(PositiveEmotions[Random.Range(0, NegativeEmotions.Length)]);
+            return DoAnimationAction(PositiveEmotions[Random.Range(0, NegativeEmotions.Length)]);
         }
 
         public override string TakeMovementAction() {
-            throw new System.NotImplementedException();
+            //move to user
+            Vector3 goal = Camera.main.transform.position;
+            goal.y = KuriManager.instance.transform.position.y;
+           // StartCoroutine(MoveTo(goal, 0.2f));
+            return "moving";
         }
+
+        // IEnumerator MoveFromTo(Vector3 goal, float distThreshold) {
+        //     Vector3 curPos = transform.position;
+        //     while (Vector3.Distance(curPos, goal) > distThreshold) {
+                
+        //         yield return null;
+        //     }
+        // }
 
         public override void TurnTowardsUser() {
             Mtlau.LookAtUser();
@@ -48,10 +62,10 @@ namespace MoveToCode {
         protected override bool UpdateCurrentActionString() {
             string doingAnim = Anim.GetCurrentAnimatorClipInfo(0)[0].clip.name;
             CurAction = "";
-            if(doingAnim != "neutral"){
+            if (doingAnim != "neutral") {
                 CurAction = actionSeperator + doingAnim;
             }
-            if(kuriTextManager.IsTalking){
+            if (kuriTextManager.IsTalking) {
                 CurAction += actionSeperator + kuriTextManager.CurTextCommand.ToString();
             }
             // TODO: Movement when doing the movement actions

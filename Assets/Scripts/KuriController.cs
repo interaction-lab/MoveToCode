@@ -20,9 +20,9 @@ namespace MoveToCode {
             love,
             close_eyes
         }
-        static string rISACol = "robotISA", kuriPhysicalEmoteActionCol = "kuriPhysicalAction", kuriMovementActionCol = "kuriMovementAction";
+        static string rISACol = "robotISA", kuriPhysicalEmoteActionCol = "kuriPhysicalAction", kuriMovementActionCol = "kuriMovementAction", kuriCurAction = "kuriCurAction";
         //[HideInInspector]
-        public bool IsDoingAction = false;
+        public bool IsDoingAction {get; set;} = false;
         //[HideInInspector]
         public string CurAction = "";
         public string actionSeperator = "~||~"; // used for data later
@@ -90,6 +90,7 @@ namespace MoveToCode {
 
         private void Update() {
             IsDoingAction = UpdateCurrentActionString();
+            loggingManager.UpdateLogColumn(kuriCurAction, CurAction);
         }
 
         public abstract string TakeMovementAction();

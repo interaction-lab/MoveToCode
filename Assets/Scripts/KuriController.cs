@@ -1,4 +1,7 @@
 ﻿using UnityEngine;
+using System.Linq;
+using System;
+using System.Collections.Generic;
 
 namespace MoveToCode {
 
@@ -35,6 +38,17 @@ namespace MoveToCode {
                 EMOTIONS.sassy,
                 EMOTIONS.confused
             };
+        public enum ACTIONS {
+            VirtualISA,
+            Movement,
+            Idle,
+            PositiveAffect,
+            Scaffolding
+        }
+
+        public Dictionary<ACTIONS, float> lastTimeDidAction = Enum
+        .GetValues(typeof(ACTIONS)).Cast<ACTIONS>()
+        .ToDictionary(t => t, t => 0f);
 
         protected KuriTextManager kuriTextManager;
         protected LoggingManager loggingManager;

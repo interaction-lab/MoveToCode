@@ -37,3 +37,12 @@
 - hardcoded actions
   - give exercise -> when exercise starts
   - congrats dialogue  -> when exercise completed
+
+### Setup
+```C#
+// scores -> actions
+// actions -> scores -> actions
+// base scores combined -> composite scores -> actions
+```
+
+## [Mac Omnisharp Fix Versions](https://forum.unity.com/threads/psa-if-your-vs-code-c-extension-stopped-working.841255/page-3)

@@ -73,6 +73,7 @@ namespace MoveToCode {
                 tmpargBlock.GetCodeBlockObjectMesh().ResizeChain();
                 // need to resize myself as well
                 MyCodeBlock.GetCodeBlockObjectMesh().ResizeChain();
+                // somehow has hori issue on unsnap, not resizing its parents?
                 AudioManager.instance.PlaySoundAtObject(MyCodeBlock.transform, AudioManager.popAudioClip);
                 // TODO: probably needs a log
             }

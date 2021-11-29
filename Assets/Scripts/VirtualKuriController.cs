@@ -54,6 +54,7 @@ namespace MoveToCode {
             if(kuriTextManager.IsTalking){
                 CurAction += actionSeperator + kuriTextManager.CurTextCommand.ToString();
             }
+            // TODO: Movement when doing the movement actions
             return CurAction != "";
         }
     }

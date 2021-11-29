@@ -45,7 +45,7 @@ namespace MoveToCode {
             foreach (COMPOSITE_SCORES i in Enum.GetValues(typeof(COMPOSITE_SCORES))) {
                 compositeScores[(int)i] = GetCompositeScore(i);
             }
-            Debug.Log(((COMPOSITE_SCORES)compositeScores.MaxIndex()).ToString());
+           // Debug.Log(((COMPOSITE_SCORES)compositeScores.MaxIndex()).ToString());
         }
 
         float GetCompositeScore(COMPOSITE_SCORES cs) {

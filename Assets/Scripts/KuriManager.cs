@@ -28,10 +28,12 @@ namespace MoveToCode {
             get {
                 if (kuriControllerBackingVar == null) {
                     if (usePhysicalKuri) {
-                        kuriControllerBackingVar = FindObjectOfType<PhysicalKuriController>().GetComponent<KuriController>();
+                        FindObjectOfType<VirtualKuriController>().GetComponent<VirtualKuriController>().enabled = false;
+                        kuriControllerBackingVar = FindObjectOfType<PhysicalKuriController>().GetComponent<PhysicalKuriController>();
                     }
                     else {
-                        kuriControllerBackingVar = FindObjectOfType<VirtualKuriController>().GetComponent<KuriController>();
+                        FindObjectOfType<PhysicalKuriController>().GetComponent<PhysicalKuriController>().enabled = false;
+                        kuriControllerBackingVar = FindObjectOfType<VirtualKuriController>().GetComponent<VirtualKuriController>();
                     }
                 }
                 return kuriControllerBackingVar;
@@ -57,7 +59,7 @@ namespace MoveToCode {
 
         bool inStartUp;
         bool wasKuriDoingActionLastTick;
-        
+
         LoggingManager loggingManager;
 
         private void Awake() {

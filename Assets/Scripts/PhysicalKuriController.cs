@@ -46,5 +46,9 @@ namespace MoveToCode {
         public override string DoRandomNegativeAction() {
             return KuriEmoteStringPub.PubRandomNegative();
         }
+
+        protected override bool UpdateCurrentActionString() {
+            throw new System.NotImplementedException();
+        }
     }
 }

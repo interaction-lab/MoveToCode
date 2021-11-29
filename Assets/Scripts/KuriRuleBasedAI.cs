@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace MoveToCode {
     public class KuriRuleBasedAI : KuriAI {
         KuriManager kuriManager;
@@ -18,7 +14,7 @@ namespace MoveToCode {
             }
             float kctS = HumanStateManager.instance.GetKCt();
             if (kctS < kuriManager.robotKC) {
-                kuriController.TakeISAAction(); // this should be moved to kuri controller
+                kuriController.TakeISAAction();
                 //TakeMovementAction();
             }
             else {

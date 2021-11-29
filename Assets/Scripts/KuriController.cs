@@ -21,10 +21,11 @@ namespace MoveToCode {
             close_eyes
         }
         static string rISACol = "robotISA", kuriPhysicalEmoteActionCol = "kuriPhysicalAction", kuriMovementActionCol = "kuriMovementAction";
-        [HideInInspector]
+        //[HideInInspector]
         public bool IsDoingAction = false;
-        [HideInInspector]
+        //[HideInInspector]
         public string CurAction = "";
+        public string actionSeperator = "~||~"; // used for data later
         public static EMOTIONS[] PositiveEmotions =
             new EMOTIONS[] {
                 EMOTIONS.happy,
@@ -88,7 +89,7 @@ namespace MoveToCode {
         }
 
         private void Update() {
-            IsDoingAction = KuriTextManager.instance.IsTalking;
+            IsDoingAction = UpdateCurrentActionString();
         }
 
         public abstract string TakeMovementAction();
@@ -96,5 +97,7 @@ namespace MoveToCode {
         public abstract string DoRandomNegativeAction();
         public abstract string DoAction(EMOTIONS e);
         public abstract void TurnTowardsUser();
+        // Returns true if currently doing action
+        protected abstract bool UpdateCurrentActionString();
     }
 }

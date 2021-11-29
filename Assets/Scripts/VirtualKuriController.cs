@@ -43,5 +43,18 @@ namespace MoveToCode {
         public override void TurnTowardsUser() {
             Mtlau.LookAtUser();
         }
+
+
+        protected override bool UpdateCurrentActionString() {
+            string doingAnim = Anim.GetCurrentAnimatorClipInfo(0)[0].clip.name;
+            CurAction = "";
+            if(doingAnim != "neutral"){
+                CurAction = actionSeperator + doingAnim;
+            }
+            if(kuriTextManager.IsTalking){
+                CurAction += actionSeperator + kuriTextManager.CurTextCommand.ToString();
+            }
+            return CurAction != "";
+        }
     }
 }

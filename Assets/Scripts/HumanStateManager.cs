@@ -5,6 +5,15 @@ using UnityEngine;
 namespace MoveToCode {
     public class HumanStateManager : Singleton<HumanStateManager> {
         public float timeWindow;
+
+        public bool IsDoingAction {
+            get {
+                return ManipulationLogger.currentlyManipulating;
+            }
+        }
+
+        public float LastTimeHumanDidAction { get; set; } = 0f;
+
         float curiosity_t = 0f, movement_t = 0f, curiosity_average = 0f, movement_average = 0f, curiosity_SSE = 0f, movement_SSE = 0f;
         Queue<float> infoSeekingActionQueue;
         Queue<Vector3> headposeQueue;
@@ -84,6 +93,11 @@ namespace MoveToCode {
             UpdateMovement(timeLength);
         }
 
+        void Update() {
+            if(IsDoingAction){
+                LastTimeHumanDidAction = Time.time;
+            }
+        }
         public void DebugLogData() {
             Debug.Log("C " + GetZScoreCuriosity().ToString());
             Debug.Log("M " + GetZScoreMovement().ToString());
@@ -146,9 +160,11 @@ namespace MoveToCode {
             int result = 0;
             if (LoggingManager.instance.GetValueInRowAt(ManipulationLoggingManager.GetColName()) != "") {
                 result = 1;
-            } else if (LoggingManager.instance.GetValueInRowAt(SnapLoggingManager.GetSnapToColName()) != "") {
+            }
+            else if (LoggingManager.instance.GetValueInRowAt(SnapLoggingManager.GetSnapToColName()) != "") {
                 result = 1;
-            } else if (LoggingManager.instance.GetValueInRowAt(SnapLoggingManager.GetSnapRemoveFromColName()) != "") {
+            }
+            else if (LoggingManager.instance.GetValueInRowAt(SnapLoggingManager.GetSnapRemoveFromColName()) != "") {
                 result = 1;
             }
             curiosity_t += result;
@@ -158,7 +174,6 @@ namespace MoveToCode {
             curiosity_SSE += et * (curiosity_t - curiosity_average);
 
             infoSeekingActionQueue.Enqueue(result);
-
 
             LoggingManager.instance.UpdateLogColumn(humanCurtCol, curiosity_t.ToString("F3"));
             float zCur = GetZScoreCuriosity();

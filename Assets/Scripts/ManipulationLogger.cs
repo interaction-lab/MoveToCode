@@ -9,7 +9,7 @@ namespace MoveToCode {
         PressableButtonHoloLens2 pressButton;
         Interactable interactable;
         LoggingManager loggingManager;
-        bool currentlyManipulating = false;
+        public static bool currentlyManipulating = false;
 
         void Start() {
             manipHandler = GetComponent<ManipulationHandler>();
@@ -25,7 +25,7 @@ namespace MoveToCode {
             }
             interactable = GetComponent<Interactable>();
             if (interactable != null) {
-                //interactable.OnClick.AddListener(StopLogging); // On release
+                // handled by `OnStateChange`
             }
         }
 

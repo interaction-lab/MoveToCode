@@ -97,7 +97,7 @@ namespace MoveToCode {
         void Update() {
             if(IsDoingAction){
                 LastTimeHumanDidAction = Time.time;
-                LoggingManager.instance.UpdateLogColumn(humanCurAction, 1); // TODO: get the actual aciton
+                LoggingManager.instance.UpdateLogColumn(humanCurAction, ManipulationLogger.CurAction); // TODO: get the actual aciton
             }
         }
         public void DebugLogData() {

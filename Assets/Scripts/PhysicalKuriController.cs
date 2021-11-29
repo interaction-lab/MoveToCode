@@ -26,7 +26,7 @@ namespace MoveToCode {
             }
         }
 
-        public override string DoAction(EMOTIONS e) {
+        public override string DoAnimationAction(EMOTIONS e) {
             KuriEmoteStringPub.PublishAction(e);
             return e.ToString();
         }
@@ -45,6 +45,10 @@ namespace MoveToCode {
 
         public override string DoRandomNegativeAction() {
             return KuriEmoteStringPub.PubRandomNegative();
+        }
+
+        protected override bool UpdateCurrentActionString() {
+            throw new System.NotImplementedException();
         }
     }
 }

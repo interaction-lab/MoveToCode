@@ -29,7 +29,7 @@ MonoBehaviour:
   globalRightHandVisualizer: {fileID: 1788309537287834, guid: 132c9402d5843aa4f94380840186fd41,
     type: 3}
   controllerVisualizationSettings:
-  - description: Windows Mixed Reality Controller
+  - description: Undefined Controller
     controllerType:
       reference: Microsoft.MixedReality.Toolkit.WindowsMixedReality.Input.WindowsMixedRealityController,
         Microsoft.MixedReality.Toolkit.Providers.WindowsMixedReality
@@ -40,7 +40,7 @@ MonoBehaviour:
     controllerVisualizationType:
       reference: Microsoft.MixedReality.Toolkit.Input.WindowsMixedRealityControllerVisualizer,
         Microsoft.MixedReality.Toolkit.SDK
-  - description: Windows Mixed Reality Controller
+  - description: Undefined Controller
     controllerType:
       reference: Microsoft.MixedReality.Toolkit.WindowsMixedReality.Input.WindowsMixedRealityController,
         Microsoft.MixedReality.Toolkit.Providers.WindowsMixedReality

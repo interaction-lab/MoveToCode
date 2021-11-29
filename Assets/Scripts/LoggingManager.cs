@@ -21,25 +21,23 @@ namespace MoveToCode {
             Init();
         }
 
-
         void Init() {
             if (initialized) {
                 return;
-            }
-            else {
+            } else {
                 initialized = true;
             }
-#if WINDOWS_UWP
+#if !UNITY_EDITOR
             logData = true;
 #endif
             if (logData) {
                 Debug.Log("Currently logging data: " + logData.ToString());
-                csvFilename = System.DateTime.Now.ToString().Replace(' ', '_').Replace('\\', '_').Replace('/', '_').Replace(':', '-') + ".csv";
+                csvFilename = System.DateTime.Now.ToString().Replace(' ', '_').Replace('\\', '_').Replace('/', '_').Replace(':', '-') + "_IP_" + UserIPAddr.instance.GetLocalIPAddress() + 
+                "_" + UserIPAddr.instance.GetGlobalIPAddress() + ".csv";
                 filePath = Path.Combine(Application.persistentDataPath, csvFilename);
                 Debug.Log(filePath);
                 streamWriter = new StreamWriter(new FileStream(filePath, FileMode.Create));
-            }
-            else {
+            } else {
                 Debug.LogWarning("NOT LOGGING DATA, data is autologged when deployed to the Hololens 2 but not by default for the Unity editor. If you want logging, check the \"logData\" public box of the LoggingManager component");
             }
         }
@@ -65,6 +63,9 @@ namespace MoveToCode {
         /// <param name="value">Value for Column</param>
         /// <returns>True if key not already in row, false otherwise</returns>
         public bool AddLogColumn(string key, string value) {
+            if(!initialized){
+                Init(); // jank protection against init order, need to fix singleton init order
+            }
             bool isNewColumn = !GetColumnLookUp().ContainsKey(key);
             if (isNewColumn) {
                 columnLookup[key] = GetRow().Count;

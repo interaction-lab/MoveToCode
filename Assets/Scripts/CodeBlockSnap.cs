@@ -1,4 +1,5 @@
 ﻿using Microsoft.MixedReality.Toolkit.UI;
+using Microsoft.MixedReality.Toolkit.Input;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,6 @@ namespace MoveToCode {
         /// </summary>
         ManipulationHandler manipulationHandler;
 
-
         SnapColliderGroup snapColliderGroup;
 
         /// <summary>
@@ -60,6 +60,50 @@ namespace MoveToCode {
             CurrentlyDraggingCodeBlockSnap = this;
             CodeBlockManager.instance.EnableCollidersCompatibleCodeBlock(MyCodeBlock);
             snapColliderGroup?.DisableAllCollidersAndChildrenColliders();
+            // run raycast
+            StartCoroutine(ShootRayFromHandThroughSnapColliders(call.Pointer));
+        }
+
+        IEnumerator ShootRayFromHandThroughSnapColliders(IMixedRealityPointer pointer)
+        {
+            RaycastHit rayHitData;
+            SnapCollider lastSCLaserContact = null;
+            LayerMask lm = 1 << LayerMask.NameToLayer(LayerMaskConstants.SNAPCOLLIDER);
+            while(CurrentlyDraggingCodeBlockSnap == this && pointer != null){
+                Vector3 rayOrigin = pointer.Position;
+                Vector3 direction = transform.position - rayOrigin;
+                if(Physics.Raycast(rayOrigin,direction, out rayHitData, 10, lm)){
+                    SnapCollider sc = rayHitData.collider.transform.GetComponent<SnapCollider>();
+                    if(sc != null){
+                        if(lastSCLaserContact != null){
+                            RemoveAsCurSnapColliderInContact(lastSCLaserContact);
+                            lastSCLaserContact = null;
+                        }   
+                        lastSCLaserContact = sc;
+                        if(!curSnapCollidersInContact.Contains(lastSCLaserContact)){
+                            AddSnapColliderInContact(lastSCLaserContact);
+                        }
+                    }
+                }
+                else{
+                    if(lastSCLaserContact != null){
+                        RemoveAsCurSnapColliderInContact(lastSCLaserContact);
+                        lastSCLaserContact = null;
+                    }
+                }
+                yield return null;
+            }
+        }
+
+        /// <summary>
+        /// Evaulates what snap action to take and then resets CBS
+        /// </summary>
+        /// <param name="call">End manipuation event</param>
+        void OnManipulationEnd(ManipulationEventData call) {
+            EvaluateBestCandidateCollider();
+            CodeBlockManager.instance.DisableCollidersCompatibleCodeBlock(MyCodeBlock);
+            ResetCBS();
+            CurrentlyDraggingCodeBlockSnap = null;
         }
 
         /// <summary>
@@ -110,17 +154,6 @@ namespace MoveToCode {
             if (sc == bestCandidateSnapCollider) {
                 AddSnapColliderInContact(null);
             }
-        }
-
-        /// <summary>
-        /// Evaulates what snap action to take and then resets CBS
-        /// </summary>
-        /// <param name="call">End manipuation event</param>
-        void OnManipulationEnd(ManipulationEventData call) {
-            EvaluateBestCandidateCollider();
-            CodeBlockManager.instance.DisableCollidersCompatibleCodeBlock(MyCodeBlock);
-            ResetCBS();
-            CurrentlyDraggingCodeBlockSnap = null;
         }
 
         /// <summary>

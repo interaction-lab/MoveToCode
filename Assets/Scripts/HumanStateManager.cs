@@ -5,19 +5,29 @@ using UnityEngine;
 namespace MoveToCode {
     public class HumanStateManager : Singleton<HumanStateManager> {
         public float timeWindow;
+
+        public bool IsDoingAction {
+            get {
+                return ManipulationLogger.currentlyManipulating;
+            }
+        }
+
+        public float LastTimeHumanDidAction { get; set; } = 0f;
+
         float curiosity_t = 0f, movement_t = 0f, curiosity_average = 0f, movement_average = 0f, curiosity_SSE = 0f, movement_SSE = 0f;
         Queue<float> infoSeekingActionQueue;
         Queue<Vector3> headposeQueue;
         Vector3 lastHeadPoseEnqueued;
         long totalTimeSteps = 1;
 
-        static string humanCurtCol = "humanCurt", humanMovetCol = "humanMovet", humanMoveZScore = "humanMoveZScore", humanCurZScore = "humanCurZScore";
+        static string humanCurtCol = "humanCurt", humanMovetCol = "humanMovet", humanMoveZScore = "humanMoveZScore", humanCurZScore = "humanCurZScore", humanCurAction = "humanCurAction";
 
         private void Start() {
             LoggingManager.instance.AddLogColumn(humanCurtCol, "");
             LoggingManager.instance.AddLogColumn(humanMoveZScore, "");
             LoggingManager.instance.AddLogColumn(humanMovetCol, "");
             LoggingManager.instance.AddLogColumn(humanCurZScore, "");
+            LoggingManager.instance.AddLogColumn(humanCurAction, "");
             //StartCoroutine(WaitForScoresToAverageOut());
         }
 
@@ -44,6 +54,35 @@ namespace MoveToCode {
             return 0.5f * GetZScoreMovement() + 0.5f * GetZScoreCuriosity();
         }
 
+
+        // constants
+        float a1 = 0.254829592f;
+        float a2 = -0.284496736f;
+        float a3 = 1.421413741f;
+        float a4 = -1.453152027f;
+        float a5 = 1.061405429f;
+        float p = 0.3275911f;
+        public float NormalDist(float x) {
+
+            float sign = 1f;
+            if (x < 0) {
+                sign = -1;
+            }
+            x = Mathf.Abs(x) / Mathf.Sqrt(2.0f);
+
+            // A&S formula 7.1.26
+            float t = 1.0f / (1.0f + p * x);
+            float y = 1.0f - (((((a5 * t + a4) * t) + a3) * t + a2) * t + a1) * t * Mathf.Exp(-x * x);
+
+            return 0.5f * (1.0f + sign * y);
+        }
+        public float GetCuriosityCDF() {
+            return NormalDist(GetZScoreCuriosity());
+        }
+        public float GetMovementCDF() {
+            return NormalDist(GetZScoreMovement());
+        }
+
         public int GetTimeQueueSizeNormalized() {
             return (int)(timeWindow / Time.deltaTime);
         }
@@ -55,6 +94,12 @@ namespace MoveToCode {
             UpdateMovement(timeLength);
         }
 
+        void Update() {
+            if(IsDoingAction){
+                LastTimeHumanDidAction = Time.time;
+                LoggingManager.instance.UpdateLogColumn(humanCurAction, ManipulationLogger.CurAction); // TODO: get the actual aciton
+            }
+        }
         public void DebugLogData() {
             Debug.Log("C " + GetZScoreCuriosity().ToString());
             Debug.Log("M " + GetZScoreMovement().ToString());
@@ -109,6 +154,7 @@ namespace MoveToCode {
             }
         }
 
+        // TODO: make this about novelty of action as opposed to just any action
         private void UpdateCuriosity(int len) {
             while (GetInforSeekingActionQueue().Count > len) {
                 curiosity_t -= infoSeekingActionQueue.Dequeue();
@@ -130,7 +176,6 @@ namespace MoveToCode {
             curiosity_SSE += et * (curiosity_t - curiosity_average);
 
             infoSeekingActionQueue.Enqueue(result);
-
 
             LoggingManager.instance.UpdateLogColumn(humanCurtCol, curiosity_t.ToString("F3"));
             float zCur = GetZScoreCuriosity();

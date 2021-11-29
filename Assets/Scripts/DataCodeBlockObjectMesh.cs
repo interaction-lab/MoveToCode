@@ -13,11 +13,11 @@ namespace MoveToCode {
         }
 
         public override float GetBlockHorizontalSize() {
-            return top.localScale.x;
+            return 0.5f;
         }
 
         public override float GetBlockVerticalSize() {
-            return top.localScale.y;
+            return 0.5f;
         }
 
         protected override void ResizeObjectMesh() {

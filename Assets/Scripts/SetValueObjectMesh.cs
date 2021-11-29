@@ -103,8 +103,8 @@ namespace MoveToCode {
 
             float? horizontalSize = GetComponent<SnapColliderGroup>().SnapColliderSet[CommonSCKeys.Variable]?.MyCodeBlockArg?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
             if (horizontalSize != null) {
-                rescale.x = (float)horizontalSize;
-                reposition.x = reposition.x + (rescale.x - 0.5f) / 2.0f;
+                rescale.x = (float)horizontalSize / 0.5f;                
+                reposition.x = reposition.x + ((float)horizontalSize - 0.5f) / 2f; // horizontal is in units of real world
             }
             variable.localPosition = reposition;
             variable.localScale = rescale;
@@ -127,9 +127,9 @@ namespace MoveToCode {
 
             float? horizontalSize = GetComponent<SnapColliderGroup>().SnapColliderSet[CommonSCKeys.Value]?.MyCodeBlockArg?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
             if (horizontalSize != null) {
-                rescale.x = (float)horizontalSize;
+                rescale.x = (float)horizontalSize / 0.5f;                
+                reposition.x = reposition.x + ((float)horizontalSize - 0.5f) / 2f + GetVariableBlockHorizontalAddition(); // horizontal is in units of real world
             }
-            reposition.x = reposition.x + (rescale.x - 0.5f) / 2.0f + GetVariableBlockHorizontalAddition();
             valueTo.localPosition = reposition;
             valueTo.localScale = rescale;
         }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace MoveToCode {
     public class KuriTextManager : Singleton<KuriTextManager> {
-        struct TextCommand {
+        public class TextCommand {
             public COMMANDS commandType;
             public PRIORITY priority;
             public string text;
@@ -21,7 +21,7 @@ namespace MoveToCode {
 
         float textTypingTime = 0.05f;
         static string textLogCol = "KuriDialogue";
-        enum COMMANDS {
+        public enum COMMANDS {
             add,
             erase
         }
@@ -30,6 +30,15 @@ namespace MoveToCode {
             low
         }
 
+
+
+        public TextCommand CurTextCommand { get; set; } = null;
+        public bool IsTalking {
+            get {
+                return CurTextCommand != null &&
+                       CurTextCommand.commandType == COMMANDS.add;
+            }
+        }
         TextMeshProUGUI kuriTextMesh;
         Queue<TextCommand> commandQueue;
         Queue<TextCommand> highPriorityCommands;
@@ -78,26 +87,25 @@ namespace MoveToCode {
 
         IEnumerator ProcessText(int myCommandNum) {
             yield return new WaitUntil(() => curCommandNum == myCommandNum);
-
-            TextCommand processTuple = commandQueue.Peek();
+            CurTextCommand = commandQueue.Peek();
             commandQueue.Dequeue();
 
-            LoggingManager.instance.UpdateLogColumn(textLogCol, processTuple.ToString());
+            LoggingManager.instance.UpdateLogColumn(textLogCol, CurTextCommand.ToString());
 
-            if (processTuple.commandType == COMMANDS.add) {
-                if (processTuple.priority == PRIORITY.high) {
-                    highPriorityCommands.Enqueue(processTuple);
+            if (CurTextCommand.commandType == COMMANDS.add) {
+                if (CurTextCommand.priority == PRIORITY.high) {
+                    highPriorityCommands.Enqueue(CurTextCommand);
                 }
                 audioSource.Play();
-                foreach (char letter in processTuple.text) {
+                foreach (char letter in CurTextCommand.text) {
                     kuriTextMesh.text += letter;
                     yield return new WaitForSeconds(textTypingTime);
                 }
                 audioSource.Pause();
             }
-            else if (processTuple.commandType == COMMANDS.erase) {
+            else if (CurTextCommand.commandType == COMMANDS.erase) {
                 kuriTextMesh.text = "";
-                if (processTuple.priority == PRIORITY.low) {
+                if (CurTextCommand.priority == PRIORITY.low) {
                     foreach (TextCommand txtCmd in highPriorityCommands) {
                         kuriTextMesh.text += txtCmd.text;
                     }
@@ -106,9 +114,8 @@ namespace MoveToCode {
                     highPriorityCommands.Clear();
                 }
             }
-
-
             ++curCommandNum;
+            CurTextCommand = null; // used for check of not talking
         }
 
         public enum TYPEOFAFFECT {

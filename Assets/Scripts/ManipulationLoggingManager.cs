@@ -12,15 +12,17 @@ namespace MoveToCode {
         }
 
         IEnumerator AddLoggersToManipulationHandlers() {
-            yield return null;
-            foreach (var go in Resources.FindObjectsOfTypeAll(typeof(ManipulationHandler)) as ManipulationHandler[]) {
-                if (go.GetComponent<ManipulationLogger>() == null) {
-                    go.gameObject.AddComponent<ManipulationLogger>();
-                }
-            }
-            foreach (var go in Resources.FindObjectsOfTypeAll(typeof(PressableButtonHoloLens2)) as PressableButtonHoloLens2[]) {
-                if (go.GetComponent<ManipulationLogger>() == null) {
-                    go.gameObject.AddComponent<ManipulationLogger>();
+            yield return null; // need to wait a frame before finding / adding components
+            AddManipHandlerToComponent<ManipulationHandler>();
+            AddManipHandlerToComponent<PressableButtonHoloLens2>();
+            AddManipHandlerToComponent<Interactable>();
+        }
+
+        private void AddManipHandlerToComponent<T>() {
+            foreach (var go in Resources.FindObjectsOfTypeAll(typeof(T)) as Object[]) {
+                GameObject g = (go as Component).gameObject;
+                if (g.GetComponent<ManipulationLogger>() == null) {
+                    g.AddComponent<ManipulationLogger>();
                 }
             }
         }

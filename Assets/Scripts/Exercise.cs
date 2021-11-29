@@ -41,7 +41,7 @@ namespace MoveToCode {
             SnapAllBlocksToBlockManager();
             AddAllVariables();
             KuriTextManager.instance.Clear(KuriTextManager.PRIORITY.high);
-            KuriManager.instance.SayExerciseGoal();
+            KuriManager.instance.kuriController.SayExerciseGoal();
         }
 
         private void AddAllVariables() {

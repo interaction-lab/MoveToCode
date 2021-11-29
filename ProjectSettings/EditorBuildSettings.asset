@@ -6,25 +6,23 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
     path: Assets/Scenes/Ipek_MDebug.unity
     guid: d2efcc8a45e87404d96a7229a3a1bc36
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main.unity
     guid: 6ee034c939d19aa4b81befc2df9d1047
+  - enabled: 0
+    path: Assets/Scenes/karen.unity
+    guid: 0a65cdb8fa90d6542bb849a927f4f855
+  - enabled: 1
+    path: Assets/Scenes/ShadowTestTom.unity
+    guid: 303e1182994bb4fbda65e56a3a306c01
   m_configObjects:
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: b26fb7ef3a6e56b46acf7ab1e79f9de5,
+      type: 2}
+    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 7a45d92513a864cc48289fc209579013,
+      type: 2}
+    UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: e878fefe20ed24fd6bbc9fb234882a1d,
       type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 87faa2ee344eb4f1caced2099ed91b6b,
       type: 2}

@@ -35,6 +35,16 @@ namespace MoveToCode {
             }
         }
 
+        FollowPath followPathM;
+        FollowPath FollowPathM {
+            get {
+                if (followPathM == null) {
+                    followPathM = GetComponent<FollowPath>();
+                }
+                return followPathM;
+            }
+        }
+
         public override string DoAnimationAction(EMOTIONS e) {
             string action = e.ToString();
             Anim.SetTrigger(action);
@@ -51,22 +61,22 @@ namespace MoveToCode {
 
         public override string TakeMovementAction() {
             //move to user
-            Vector3 goal = Camera.main.transform.position;
-            goal.y = KuriManager.instance.transform.position.y;
-            FollowPathUnitM.path = new LinePath(new[]{KuriManager.instance.transform.position, goal});
-            FollowPathUnitM.enabled = true;
-
-            // StartCoroutine(MoveTo(goal, 0.2f));
+            StartCoroutine(GoToUser());
             return "moving";
         }
 
-        // IEnumerator MoveFromTo(Vector3 goal, float distThreshold) {
-        //     Vector3 curPos = transform.position;
-        //     while (Vector3.Distance(curPos, goal) > distThreshold) {
-
-        //         yield return null;
-        //     }
-        // }
+        IEnumerator GoToUser() {
+            Vector3 goal = Camera.main.transform.position;
+            goal.y = KuriManager.instance.transform.position.y;
+            FollowPathUnitM.path = new LinePath(new[] { KuriManager.instance.transform.position, goal });
+            FollowPathUnitM.enabled = true;
+            yield return null; // wait frame to be enabled
+            while (!FollowPathM.IsAtEndOfPath(FollowPathUnitM.path)) {
+                LoggingManager.instance.UpdateLogColumn(kuriMovementActionCol, transform.position.ToString());
+                yield return null;
+            }
+            followPathUnitM.enabled = false;
+        }
 
         public override void TurnTowardsUser() {
             Mtlau.LookAtUser();

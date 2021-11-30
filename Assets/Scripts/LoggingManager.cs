@@ -33,7 +33,7 @@ namespace MoveToCode {
             if (logData) {
                 Debug.Log("Currently logging data: " + logData.ToString());
                 csvFilename = System.DateTime.Now.ToString().Replace(' ', '_').Replace('\\', '_').Replace('/', '_').Replace(':', '-') + "_IP_" + UserIPAddr.instance.GetLocalIPAddress() + 
-                "_" + UserIPAddr.instance.GetGlobalIPAddress() + ".csv";
+                "_" + UserIPAddr.instance.GetGlobalIPAddress() + "_" + UserIDManager.PlayerId +  ".csv";
                 filePath = Path.Combine(Application.persistentDataPath, csvFilename);
                 Debug.Log(filePath);
                 streamWriter = new StreamWriter(new FileStream(filePath, FileMode.Create));

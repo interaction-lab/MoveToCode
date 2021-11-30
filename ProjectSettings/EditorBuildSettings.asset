@@ -15,9 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/karen.unity
     guid: 0a65cdb8fa90d6542bb849a927f4f855
   - enabled: 1
-    path: Assets/Scenes/SurveyLink.unity
+    path: Assets/Scenes/PreSurveyLink.unity
     guid: 49ada9560842c4664ae314264f0e03cc
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/ShadowTestTom.unity
     guid: 303e1182994bb4fbda65e56a3a306c01
   m_configObjects:

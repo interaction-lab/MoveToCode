@@ -24,6 +24,7 @@ namespace MoveToCode {
         private progressBarController progressBar;
         private TextMeshProUGUI progressText;
         private Button uploadBtn;
+        private UrlButton urlButton;
         private long totalBytes = 0;
         private long transferredBytes = 0;
         protected static string UriFileScheme = Uri.UriSchemeFile + "://";
@@ -33,6 +34,7 @@ namespace MoveToCode {
             progressText = GetComponentInChildren<Canvas>().GetComponentInChildren<TextMeshProUGUI>();
             progressBar = GetComponentInChildren<Canvas>().GetComponentInChildren<Slider>().GetComponent<progressBarController>();
             uploadBtn = GetComponentInChildren<Canvas>().GetComponentInChildren<Button>();
+            urlButton = uploadBtn.GetComponent<UrlButton>();
             PlaceUploadCanvas();
         }
 
@@ -113,6 +115,7 @@ namespace MoveToCode {
                     Application.Quit();
                     StartCoroutine(RestartBtn());
                     Debug.Log("Upload finished.");
+                    urlButton.OpenPostSurveyURL();
                 }
             });
         }

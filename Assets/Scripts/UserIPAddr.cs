@@ -23,7 +23,6 @@ namespace MoveToCode {
             catch (WebException) {
                 // Throw up warning
                 GameObject go = (Resources.FindObjectsOfTypeAll(typeof(NotConnectedToInternetPanelManager)) as NotConnectedToInternetPanelManager[])[0].gameObject;
-                print(go.name);
                 go.SetActive(true);
                 return "NOGLOBALIPFOUND";
             }

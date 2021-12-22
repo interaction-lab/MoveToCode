@@ -58,35 +58,35 @@ namespace MoveToCode {
         /// <param name="call">Manipulation Event when user grabs block</param>
         void OnManipulationStart(ManipulationEventData call) {
             CurrentlyDraggingCodeBlockSnap = this;
+            enabled = true;
             CodeBlockManager.instance.EnableCollidersCompatibleCodeBlock(MyCodeBlock);
             snapColliderGroup?.DisableAllCollidersAndChildrenColliders();
             // run raycast
             StartCoroutine(ShootRayFromHandThroughSnapColliders(call.Pointer));
         }
 
-        IEnumerator ShootRayFromHandThroughSnapColliders(IMixedRealityPointer pointer)
-        {
+        IEnumerator ShootRayFromHandThroughSnapColliders(IMixedRealityPointer pointer) {
             RaycastHit rayHitData;
             SnapCollider lastSCLaserContact = null;
             LayerMask lm = 1 << LayerMask.NameToLayer(LayerMaskConstants.SNAPCOLLIDER);
-            while(CurrentlyDraggingCodeBlockSnap == this && pointer != null){
+            while (CurrentlyDraggingCodeBlockSnap == this && pointer != null) {
                 Vector3 rayOrigin = pointer.Position;
                 Vector3 direction = transform.position - rayOrigin;
-                if(Physics.Raycast(rayOrigin,direction, out rayHitData, 10, lm)){
+                if (Physics.Raycast(rayOrigin, direction, out rayHitData, 10, lm)) {
                     SnapCollider sc = rayHitData.collider.transform.GetComponent<SnapCollider>();
-                    if(sc != null){
-                        if(lastSCLaserContact != null){
+                    if (sc != null) {
+                        if (lastSCLaserContact != null) {
                             RemoveAsCurSnapColliderInContact(lastSCLaserContact);
                             lastSCLaserContact = null;
-                        }   
+                        }
                         lastSCLaserContact = sc;
-                        if(!curSnapCollidersInContact.Contains(lastSCLaserContact)){
+                        if (!curSnapCollidersInContact.Contains(lastSCLaserContact)) {
                             AddSnapColliderInContact(lastSCLaserContact);
                         }
                     }
                 }
-                else{
-                    if(lastSCLaserContact != null){
+                else {
+                    if (lastSCLaserContact != null) {
                         RemoveAsCurSnapColliderInContact(lastSCLaserContact);
                         lastSCLaserContact = null;
                     }
@@ -104,6 +104,7 @@ namespace MoveToCode {
             CodeBlockManager.instance.DisableCollidersCompatibleCodeBlock(MyCodeBlock);
             ResetCBS();
             CurrentlyDraggingCodeBlockSnap = null;
+            enabled = false;
         }
 
         /// <summary>
@@ -112,35 +113,48 @@ namespace MoveToCode {
         /// </summary>
         /// <param name="sc">Snap collider in contact. Can be null.</param>
         public void AddSnapColliderInContact(SnapCollider sc) {
-            DisableLastBestCandidatesOutline();
-            UpdateBestSnapCollider(sc);
-        }
-
-        /// <summary>
-        /// If `sc` is not null, will update best candidate to `sc`
-        /// If `sc` is null, will attempt to add any snapcolliders still in contact
-        /// Due to the set up, best candidate will be null if both `sc` is null and
-        /// the set of colliders in contact is empty.
-        /// </summary>
-        /// <param name="sc">Snap collider in contact. Can be null.</param>
-        private void UpdateBestSnapCollider(SnapCollider sc) {
-            bestCandidateSnapCollider = sc;
-            if (bestCandidateSnapCollider != null) {
-                bestCandidateSnapCollider.MyMeshOutline.enabled = true;
-                curSnapCollidersInContact.Add(bestCandidateSnapCollider);
-            }
-            else if (!curSnapCollidersInContact.Empty()) {
-                bestCandidateSnapCollider = curSnapCollidersInContact.ElementAt(0);
-                bestCandidateSnapCollider.MyMeshOutline.enabled = true;
+            if (sc != null) {
+                curSnapCollidersInContact.Add(sc);
             }
         }
 
-        /// <summary>
-        /// Turns off outline of the last best snap collider
-        /// </summary>
-        private void DisableLastBestCandidatesOutline() {
+        void Update() {
+            UpdateBestSnapColliderCandidate();
+        }
+
+        private void UpdateBestSnapColliderCandidate() {
+            if (!curSnapCollidersInContact.Empty()) {
+                FindAndUpdateBestSC();
+            }
+            else {
+                DisableBestCandidateCollider();
+            }
+        }
+
+        private void FindAndUpdateBestSC() {
+            SnapCollider lastBest = bestCandidateSnapCollider;
+            bestCandidateSnapCollider = null;
+            float bestDist = -1f;
+            foreach (SnapCollider sc in curSnapCollidersInContact) {
+                // Compare SnapCollider to this Codeblock's position
+                float compareToDist = (transform.position - sc.transform.position).sqrMagnitude; // faster than Vector3.Distance bc no sqrt
+                if (bestCandidateSnapCollider == null || compareToDist < bestDist) {
+                    bestCandidateSnapCollider = sc;
+                    bestDist = compareToDist;
+                }
+            }
+            if (lastBest != bestCandidateSnapCollider) {
+                bestCandidateSnapCollider.MyMeshOutline.enabled = true;
+                if (lastBest != null) {
+                    lastBest.MyMeshOutline.enabled = false;
+                }
+            }
+        }
+
+        private void DisableBestCandidateCollider() {
             if (bestCandidateSnapCollider != null) {
                 bestCandidateSnapCollider.MyMeshOutline.enabled = false;
+                bestCandidateSnapCollider = null;
             }
         }
 
@@ -178,6 +192,9 @@ namespace MoveToCode {
         private void ResetCBS() {
             curSnapCollidersInContact.Clear();
             AddSnapColliderInContact(null);
+            if (enabled) {
+                enabled = false;
+            }
         }
 
         private void OnEnable() {

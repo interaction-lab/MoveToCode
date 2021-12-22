@@ -1,5 +1,6 @@
 using System.Net;
 using System.Net.Sockets;
+using UnityEngine;
 
 namespace MoveToCode {
     public class UserIPAddr : Singleton<UserIPAddr> {
@@ -20,6 +21,10 @@ namespace MoveToCode {
                 return new WebClient().DownloadString("http://icanhazip.com").Replace("\n", "");
             } 
             catch (WebException) {
+                // Throw up warning
+                GameObject go = (Resources.FindObjectsOfTypeAll(typeof(NotConnectedToInternetPanelManager)) as NotConnectedToInternetPanelManager[])[0].gameObject;
+                print(go.name);
+                go.SetActive(true);
                 return "NOGLOBALIPFOUND";
             }
             return "NOGLOBALANDNOEXPECTION";

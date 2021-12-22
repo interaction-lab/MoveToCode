@@ -44,7 +44,7 @@ namespace MoveToCode {
                     goOfFocus = MenuManager.instance.GetPlayButton().gameObject;
                 }
                 else {
-                    result = FreePlayMenuManager.instance.FakePressRandomButton();
+                    result = BlockShelfManager.instance.FakePressRandomButton();
                 }
                 ++count;
             }

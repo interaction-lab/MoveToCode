@@ -15,7 +15,7 @@ namespace MoveToCode {
         }
 
         private void SpawnVariableBlock() {
-            FreePlayMenuManager.instance.InstantiateVariableBlockCollection();
+            BlockShelfManager.instance.InstantiateVariableBlockCollection();
         }
     }
 }

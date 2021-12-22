@@ -1,7 +1,7 @@
 ﻿using Microsoft.MixedReality.Toolkit.UI;
 using UnityEngine;
 namespace MoveToCode {
-    public class FreePlayMenuManager : Singleton<FreePlayMenuManager> {
+    public class BlockShelfManager : Singleton<BlockShelfManager> {
 
         GameObject printBlock, conditionBlock, ifBlock, intBlock, mathBlock, setVarBlock, stringBlock, whileBlock, charBlock, arrayBlock, arrayIndexBlock;
         PressableButtonHoloLens2[] pressableButtons;

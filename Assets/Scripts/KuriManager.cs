@@ -45,7 +45,6 @@ namespace MoveToCode {
             get {
                 if (kuriAIBackingVar == null) {
                     if (kuriAIToUse == KuriAI.KURIAI.Utility) {
-                        Debug.Log("fdslkj");
                         kuriAIBackingVar = FindObjectOfType<KuriUtilityAI>().GetComponent<KuriUtilityAI>();
                     }
                     else if (kuriAIToUse == KuriAI.KURIAI.RuleBased) {

@@ -76,7 +76,7 @@ namespace MoveToCode {
         }
 
         public override string ToString() {
-            return "an array";
+            return ""; // Empty for arrays as no text is needed
         }
 
         public override Type GetCastType() {

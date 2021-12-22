@@ -23,7 +23,7 @@ namespace MoveToCode {
         public static string WhileCodeBlockPrefab = CodeBlockPrefabFolder + "WhileCodeBlock";
         public static string CharCodeBlockPrefab = CodeBlockPrefabFolder + "CharCodeBlock";
         public static string ArrayCodeBlockPrefab = CodeBlockPrefabFolder + "ArrayCodeBlock";
-        public static string ArrayElementCodeBlockPrefab = CodeBlockPrefabFolder + "ArrayElementCodeBlock";
+        public static string ArrayElementPrefab = CodeBlockPrefabFolder + "ArrayElement";
         public static string ArrayIndexCodeBlockPrefab = CodeBlockPrefabFolder + "ArrayIndexCodeBlock";
         public static string ExercisePrefab = PrefabFolder + "Exercise";
 

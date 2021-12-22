@@ -90,11 +90,7 @@ namespace MoveToCode {
 
         private void InstantiateElementsAsMeshChildren() {
             for (int i = 0; i < numElements; i++) {
-                GameObject ElementGameObject = Instantiate(
-                    Resources.Load<GameObject>(ResourcePathConstants.ArrayElementCodeBlockPrefab), transform.parent) as GameObject;
-                ElementGameObject.SetActive(false);
-                ElementGameObject.transform.SnapToParent(this.transform);
-                ElementGameObject.SetActive(true);
+                GameObject ElementGameObject = Instantiate(Resources.Load<GameObject>(ResourcePathConstants.ArrayElementPrefab), transform) as GameObject;
             }
         }
 

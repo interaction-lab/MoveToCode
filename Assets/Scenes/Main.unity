@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1274,6 +1274,7 @@ GameObject:
   m_Component:
   - component: {fileID: 170076735}
   - component: {fileID: 170076734}
+  - component: {fileID: 170076736}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -1358,6 +1359,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &170076736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170076733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!4 &193044441 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 257811355727027398, guid: c05362a0194eef748b0f801c2e5c77a9,
@@ -5011,6 +5032,7 @@ MonoBehaviour:
   robotKC: 0.1
   usePhysicalKuri: 0
   KuriGoalPoseTransform: {fileID: 0}
+  kuriAIToUse: 1
 --- !u!4 &671810406 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5335814774712488528, guid: dddf9b2e6c0fcd546b30a826b21b6e2b,
@@ -10895,6 +10917,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1932d9e89484cf45961a1e05b6d8004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurAction: 
+  actionSeperator: ~||~
+  ForwardSpeed: 0
+  BackwardSpeed: 0
+  TurnSpeed: 0
 --- !u!82 &1434147717
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11576,6 +11603,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f9d90e23171484d9fcca6d8e75b845, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurAction: 
+  actionSeperator: ~||~
 --- !u!114 &1504993769
 MonoBehaviour:
   m_ObjectHideFlags: 0

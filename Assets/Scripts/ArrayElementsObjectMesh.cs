@@ -59,9 +59,6 @@ namespace MoveToCode {
         private void SetUpElements() {
             elements = new Transform[numElements];
             InstantiateElementsAsMeshChildren();
-            for (int i = 0; i < elements.Length; i++) {
-                elements[i] = transform.GetChild(i);
-            }
             SetUpOriginalScale();
             SetUpOriginalPositions();
             SetElementArgPositions();
@@ -81,16 +78,17 @@ namespace MoveToCode {
             }
         }
 
-        // TODO: fix for arrays
         private void SetElementArgPositions() {
-            for (int i = 0; i < numElements; i++) {
-                //  elements[i].GetChild(0).GetComponent<SnapCollider>().SetMyArgumentPosition(i);
+            // This must go top down so that 0 base index reregisters with SnapColliderGroup last
+            for (int i = numElements - 1; i >= 0; --i) {
+                elements[i].GetChild(0).GetComponent<SnapColliderArrayElement>().SetIndex(i);
             }
         }
 
         private void InstantiateElementsAsMeshChildren() {
             for (int i = 0; i < numElements; i++) {
                 GameObject ElementGameObject = Instantiate(Resources.Load<GameObject>(ResourcePathConstants.ArrayElementPrefab), transform) as GameObject;
+                elements[i] = ElementGameObject.transform;
             }
         }
 

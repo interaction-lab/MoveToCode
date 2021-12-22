@@ -12,7 +12,7 @@ namespace MoveToCode {
         public override InstructionReturnValue RunInstruction() {
             ConsoleManager.instance.AddLine(startString);
             return new InstructionReturnValue(null, GetArgument(
-                new KeyValuePair<System.Type, int>(typeof(SnapColliderNext), 0)) as StandAloneInstruction);
+                new KeyValuePair<System.Type, int>(typeof(NextSnapCollider), 0)) as StandAloneInstruction);
         }
 
         public override string ToString() {

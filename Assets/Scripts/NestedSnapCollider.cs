@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace MoveToCode {
-    public class SnapColliderNested : SnapCollider {
+    public class NestedSnapCollider : SnapCollider {
         public override Vector3 SnapPosition { 
             get{
             return new Vector3(0.15f, transform.localPosition.y, 0);

@@ -13,7 +13,7 @@ namespace MoveToCode {
         KeyValuePair<Type, int> arrIndexArgKey;
 
         public ArrayIndexInstruction(CodeBlock cbIn) : base(cbIn) {
-            arrIndexArgKey = new KeyValuePair<System.Type, int>(typeof(SnapColliderArrayElement), indexVal);
+            arrIndexArgKey = new KeyValuePair<System.Type, int>(typeof(ArrayElementSnapCollider), indexVal);
         }
 
         public override void EvaluateArgumentsOfInstruction() {

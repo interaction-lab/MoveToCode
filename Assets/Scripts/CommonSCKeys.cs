@@ -9,37 +9,37 @@ namespace MoveToCode {
     /// </summary>
     public class CommonSCKeys : MonoBehaviour {
         public static KeyValuePair<Type, int> Next = new KeyValuePair<Type, int>(
-                    typeof(SnapColliderNext),
+                    typeof(NextSnapCollider),
                     0);
         public static KeyValuePair<Type, int> Nested = new KeyValuePair<Type, int>(
-                    typeof(SnapColliderNested),
+                    typeof(NestedSnapCollider),
                     0);
         public static KeyValuePair<Type, int> LeftConditional = new KeyValuePair<Type, int>(
-                    typeof(SnapColliderLeftOfConditional),
+                    typeof(LeftOfConditionalSnapCollider),
                     0);
         public static KeyValuePair<Type, int> RightConditional = new KeyValuePair<Type, int>(
-                    typeof(SnapColliderRightOfConditional),
+                    typeof(RightOfConditionalSnapCollider),
                     0);
         public static KeyValuePair<Type, int> Array = new KeyValuePair<Type, int>(
-                    typeof(SnapColliderArray),
+                    typeof(ArraySnapCollider),
                     0);
         public static KeyValuePair<Type, int> Conditional = new KeyValuePair<Type, int>(
-                    typeof(SnapColliderConditional),
+                    typeof(ConditionalSnapCollider),
                     0);
         public static KeyValuePair<Type, int> LeftNumber = new KeyValuePair<Type, int>(
-                    typeof(SnapColliderLeftNumber),
+                    typeof(LeftNumberSnapCollider),
                     0);
         public static KeyValuePair<Type, int> RightNumber = new KeyValuePair<Type, int>(
-                    typeof(SnapColliderRightNumber),
+                    typeof(RightNumberSnapCollider),
                     0);
         public static KeyValuePair<Type, int> Printable = new KeyValuePair<Type, int>(
-                    typeof(SnapColliderPrintable),
+                    typeof(PrintableSnapCollider),
                     0);
         public static KeyValuePair<Type, int> Value = new KeyValuePair<Type, int>(
-                    typeof(SnapColliderValue),
+                    typeof(ValueSnapCollider),
                     0);
         public static KeyValuePair<Type, int> Variable = new KeyValuePair<Type, int>(
-                    typeof(SnapColliderVariable),
+                    typeof(VariableSnapCollider),
                     0);
     }
 }

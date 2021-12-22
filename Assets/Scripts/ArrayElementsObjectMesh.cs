@@ -81,7 +81,7 @@ namespace MoveToCode {
         private void SetElementArgPositions() {
             // This must go top down so that 0 base index reregisters with SnapColliderGroup last
             for (int i = numElements - 1; i >= 0; --i) {
-                elements[i].GetChild(0).GetComponent<SnapColliderArrayElement>().SetIndex(i);
+                elements[i].GetChild(0).GetComponent<ArrayElementSnapCollider>().SetIndex(i);
             }
         }
 

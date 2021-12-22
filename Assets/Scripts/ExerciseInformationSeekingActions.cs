@@ -74,16 +74,16 @@ namespace MoveToCode {
         }
 
         Dictionary<SNAPARGTYPES, Type> snapColCovertMap = new Dictionary<SNAPARGTYPES, Type>(){
-            {SNAPARGTYPES.CONDITIONAL, typeof(SnapColliderConditional) },
-            {SNAPARGTYPES.LEFTCONDITIONAL, typeof(SnapColliderLeftOfConditional) },
-            {SNAPARGTYPES.RIGHTCONDITIONAL, typeof(SnapColliderRightOfConditional)},
-             {SNAPARGTYPES.LEFTNUM, typeof(SnapColliderLeftNumber) },
-            {SNAPARGTYPES.RIGHTNUM, typeof(SnapColliderRightNumber) },
-            {SNAPARGTYPES.NESTED, typeof(SnapColliderNested)},
-             {SNAPARGTYPES.NEXT, typeof(SnapColliderNext) },
-            {SNAPARGTYPES.PRINTABLE, typeof(SnapColliderPrintable) },
-            {SNAPARGTYPES.VALUE, typeof(SnapColliderValue)},
-            {SNAPARGTYPES.VARIABLE, typeof(SnapColliderVariable)},
+            {SNAPARGTYPES.CONDITIONAL, typeof(ConditionalSnapCollider) },
+            {SNAPARGTYPES.LEFTCONDITIONAL, typeof(LeftOfConditionalSnapCollider) },
+            {SNAPARGTYPES.RIGHTCONDITIONAL, typeof(RightOfConditionalSnapCollider)},
+             {SNAPARGTYPES.LEFTNUM, typeof(LeftNumberSnapCollider) },
+            {SNAPARGTYPES.RIGHTNUM, typeof(RightNumberSnapCollider) },
+            {SNAPARGTYPES.NESTED, typeof(NestedSnapCollider)},
+             {SNAPARGTYPES.NEXT, typeof(NextSnapCollider) },
+            {SNAPARGTYPES.PRINTABLE, typeof(PrintableSnapCollider) },
+            {SNAPARGTYPES.VALUE, typeof(ValueSnapCollider)},
+            {SNAPARGTYPES.VARIABLE, typeof(VariableSnapCollider)},
             {SNAPARGTYPES.REMOVE, null}
             };
         public Type ConvertToSnapColClass(SNAPARGTYPES sa) {

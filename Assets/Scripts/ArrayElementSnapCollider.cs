@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace MoveToCode {
-    public class SnapColliderArrayElement : SnapCollider {
+    public class ArrayElementSnapCollider : SnapCollider {
         public int index;
 
         public void SetIndex(int index_in){
@@ -19,7 +19,7 @@ namespace MoveToCode {
         protected override void RegisterToSnapColliderGroup(){
             MyCodeBlock.GetSnapColliderGroup().RegisterSnapCollider(
                 new KeyValuePair<Type, int>(
-                    typeof(SnapColliderArrayElement),
+                    typeof(ArrayElementSnapCollider),
                     index),
                 this);
         }

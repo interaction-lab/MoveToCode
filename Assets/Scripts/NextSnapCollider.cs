@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace MoveToCode {
-    public class SnapColliderNext : SnapCollider {
+    public class NextSnapCollider : SnapCollider {
         public override Vector3 SnapPosition {
             get {
                 // if (MyCodeBlock as SetVariableCodeBlock != null) {

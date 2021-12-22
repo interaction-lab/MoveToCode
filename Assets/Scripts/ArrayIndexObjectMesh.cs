@@ -51,20 +51,17 @@ namespace MoveToCode {
 
         private void InstantiateBracketText() {
             leftBrackCodeBlockTextGameObject = Instantiate(
-                Resources.Load<GameObject>(ResourcePathConstants.CodeBlockTextPrefab), GetMyCodeBlock().transform) as GameObject;
+                Resources.Load<GameObject>(ResourcePathConstants.CodeBlockTextPrefab), leftBracket) as GameObject;
             rightBrackCodeBlockTextGameObject = Instantiate(
-                Resources.Load<GameObject>(ResourcePathConstants.CodeBlockTextPrefab), GetMyCodeBlock().transform) as GameObject;
-            leftBrackCodeBlockTextGameObject.transform.SnapToParent(leftBracket);
-            rightBrackCodeBlockTextGameObject.transform.SnapToParent(rightBracket);
+                Resources.Load<GameObject>(ResourcePathConstants.CodeBlockTextPrefab), rightBracket) as GameObject;
         }
 
         private void RepositionBracketText() {
-            Vector3 tmpRight = rightBrackCodeBlockTextGameObject.transform.localPosition;
-            Vector3 tmpLeft = leftBrackCodeBlockTextGameObject.transform.localPosition;
-            tmpRight.x = tmpLeft.x = 0.25f;
-            tmpRight.y = tmpLeft.y = -0.25f;
-            rightBrackCodeBlockTextGameObject.transform.localPosition = tmpRight;
-            leftBrackCodeBlockTextGameObject.transform.localPosition = tmpLeft;
+            Vector3 newLocalPos = new Vector3(0.1f, 0.1f, -0.28f);
+            rightBrackCodeBlockTextGameObject.GetComponent<TextMeshPro>().alignment = TextAlignmentOptions.Center;
+            rightBrackCodeBlockTextGameObject.transform.localPosition = newLocalPos;
+            leftBrackCodeBlockTextGameObject.GetComponent<TextMeshPro>().alignment = TextAlignmentOptions.Center;
+            leftBrackCodeBlockTextGameObject.transform.localPosition = newLocalPos;
         }
 
         private void RescaleBracketText() {

@@ -425,7 +425,7 @@ GameObject:
   - component: {fileID: 5984162907952264058}
   - component: {fileID: 5984162907952264054}
   - component: {fileID: 5984162907952264055}
-  - component: {fileID: 8050061764217321802}
+  - component: {fileID: 1144298124145015227}
   - component: {fileID: 1412973403}
   m_Layer: 0
   m_Name: CollectionSC
@@ -499,7 +499,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5984162907952264059}
   m_Mesh: {fileID: 4300000, guid: f4d89a1272f4d4fe3a9fda1049c7a06d, type: 2}
---- !u!114 &8050061764217321802
+--- !u!114 &1144298124145015227
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -508,7 +508,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5984162907952264059}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d22914b3ab7802240a4f225a2742e77d, type: 3}
+  m_Script: {fileID: 11500000, guid: 56131075ed4468749947e3383a05a63c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!135 &1412973403
@@ -743,8 +743,8 @@ GameObject:
   - component: {fileID: 5984162909096327950}
   - component: {fileID: 5984162909096327946}
   - component: {fileID: 5984162909096327947}
-  - component: {fileID: 5984162909096327948}
   - component: {fileID: 145002698585021411}
+  - component: {fileID: 5984162909096327948}
   m_Layer: 0
   m_Name: NextInstructionDown
   m_TagString: Untagged
@@ -822,14 +822,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &5984162909096327948
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5984162909096327951}
-  m_Mesh: {fileID: -2432090755550338912, guid: a78be1cf8c70545a5b9bb9eec8cf9782, type: 3}
 --- !u!114 &145002698585021411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -842,6 +834,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3c6296b8edd61d4480af17a0f5fe4e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!33 &5984162909096327948
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5984162909096327951}
+  m_Mesh: {fileID: -2432090755550338912, guid: a78be1cf8c70545a5b9bb9eec8cf9782, type: 3}
 --- !u!1 &5984162909159336268
 GameObject:
   m_ObjectHideFlags: 0

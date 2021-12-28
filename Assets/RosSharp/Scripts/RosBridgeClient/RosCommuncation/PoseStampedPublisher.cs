@@ -1,4 +1,4 @@
-﻿/*
+/*
 © Siemens AG, 2017-2018
 Author: Dr. Martin Bischoff (martin.bischoff@siemens.com)
 
@@ -63,7 +63,7 @@ namespace RosSharp.RosBridgeClient {
 
         public void PubTurnTowardUser() {
             Quaternion rotationGoal = Quaternion.LookRotation(Camera.main.transform.forward);
-            Vector3 curPos = KuriManager.instance.KuriGoalPoseTransform.position;
+            Vector3 curPos = TutorKuriManager.instance.KuriGoalPoseTransform.position;
             PublishPosition(curPos, rotationGoal);
         }
 

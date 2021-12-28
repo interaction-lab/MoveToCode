@@ -7,7 +7,7 @@ namespace MoveToCode {
 
         public void SayNextScaffold() {
             if (curScaffold >= scafoldDialogue.Length) {
-                KuriManager.instance.kuriController.SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT.Encouragement);
+                TutorKuriManager.instance.kuriController.SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT.Encouragement);
                 return;
             }
             KuriTextManager.instance.Addline(scafoldDialogue[curScaffold++]);

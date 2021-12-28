@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace MoveToCode {
@@ -41,7 +41,7 @@ namespace MoveToCode {
             SnapAllBlocksToBlockManager();
             AddAllVariables();
             KuriTextManager.instance.Clear(KuriTextManager.PRIORITY.high);
-            KuriManager.instance.kuriController.SayExerciseGoal();
+            TutorKuriManager.instance.kuriController.SayExerciseGoal();
         }
 
         private void AddAllVariables() {

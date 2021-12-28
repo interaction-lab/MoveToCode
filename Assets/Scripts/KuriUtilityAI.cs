@@ -24,14 +24,14 @@ namespace MoveToCode {
 
         // Other components we need
         HumanStateManager humanStateManager;
-        KuriManager kuriManager;
+        TutorKuriManager kuriManager;
 
         // Animation curves
         public AnimationCurve movementCurve, curiosityCurve, doNothingCurve;
 
         void Awake() {
             humanStateManager = HumanStateManager.instance;
-            kuriManager = KuriManager.instance;
+            kuriManager = TutorKuriManager.instance;
         }
 
         public override void Tick() {

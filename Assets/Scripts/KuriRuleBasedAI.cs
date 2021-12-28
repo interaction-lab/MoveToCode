@@ -1,10 +1,10 @@
 namespace MoveToCode {
     public class KuriRuleBasedAI : KuriAI {
-        KuriManager kuriManager;
+        TutorKuriManager kuriManager;
         KuriController kuriController;
 
         private void Awake() {
-            kuriManager = KuriManager.instance;   
+            kuriManager = TutorKuriManager.instance;   
             kuriController = kuriManager.kuriController; 
         }
 

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityMovementAI;
 
@@ -67,8 +67,8 @@ namespace MoveToCode {
 
         IEnumerator GoToUser() {
             Vector3 goal = Camera.main.transform.position;
-            goal.y = KuriManager.instance.transform.position.y;
-            FollowPathUnitM.path = new LinePath(new[] { KuriManager.instance.transform.position, goal });
+            goal.y = TutorKuriManager.instance.transform.position.y;
+            FollowPathUnitM.path = new LinePath(new[] { TutorKuriManager.instance.transform.position, goal });
             FollowPathUnitM.enabled = true;
             while (!FollowPathM.IsAtEndOfPath(FollowPathUnitM.path)) {
                 LoggingManager.instance.UpdateLogColumn(kuriMovementActionCol, transform.position.ToString());

@@ -4,7 +4,7 @@ using UnityEngine;
 using static MoveToCode.KuriController;
 
 namespace MoveToCode {
-    public class KuriManager : Singleton<KuriManager> {
+    public class TutorKuriManager : Singleton<TutorKuriManager> {
         [Range(-3.0f, 3.0f)]
         public float robotKC;
         [HideInInspector]

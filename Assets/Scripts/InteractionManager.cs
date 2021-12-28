@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 
 namespace MoveToCode {
@@ -19,12 +19,12 @@ namespace MoveToCode {
         }
 
         IEnumerator PolicySwapCoroutine() {
-            KuriManager.instance.SetKC(reallyHighKC);
+            TutorKuriManager.instance.SetKC(reallyHighKC);
             yield return new WaitForSeconds(MinToSeconds(warmUpTimeMinutes));
             float timeLeft = MinToSeconds(fullInteractionTimeMinutes) - MinToSeconds(warmUpTimeMinutes);
             float intervalTime = timeLeft / numIntervals;
             for (int i = 0; i < numIntervals; ++i) {
-                KuriManager.instance.SetKC(ChooseKCRAtInterval(i));
+                TutorKuriManager.instance.SetKC(ChooseKCRAtInterval(i));
                 yield return new WaitForSeconds(intervalTime);
             }
             Application.Quit();

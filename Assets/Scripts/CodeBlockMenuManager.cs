@@ -25,7 +25,7 @@ namespace MoveToCode {
         }
 
         private void OnEnable() {
-            GetComponent<ObjectManipulator>().RemoveTwoHandedScaling();
+            GetComponent<ObjectManipulator>()?.RemoveTwoHandedScaling();
         }
 
         public void TurnMenuOff() {

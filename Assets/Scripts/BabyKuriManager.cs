@@ -8,7 +8,6 @@ namespace MoveToCode {
         [Range(-3.0f, 3.0f)]
         public float robotKC;
         [HideInInspector]
-        public bool usePhysicalKuri = true;
         static string robotKCLevel = "robotKCLevel";
 
         PoseStampedPublisher poseStampPublisher;
@@ -27,14 +26,8 @@ namespace MoveToCode {
         public KuriController kuriController {
             get {
                 if (kuriControllerBackingVar == null) {
-                    if (usePhysicalKuri) {
-                        FindObjectOfType<VirtualKuriController>().GetComponent<VirtualKuriController>().enabled = false;
-                        kuriControllerBackingVar = FindObjectOfType<PhysicalKuriController>().GetComponent<PhysicalKuriController>();
-                    }
-                    else {
-                        FindObjectOfType<PhysicalKuriController>().GetComponent<PhysicalKuriController>().enabled = false;
-                        kuriControllerBackingVar = FindObjectOfType<VirtualKuriController>().GetComponent<VirtualKuriController>();
-                    }
+                    FindObjectOfType<PhysicalKuriController>().GetComponent<PhysicalKuriController>().enabled = false;
+                    kuriControllerBackingVar = FindObjectOfType<VirtualKuriController>().GetComponent<VirtualKuriController>();
                 }
                 return kuriControllerBackingVar;
             }
@@ -81,7 +74,7 @@ namespace MoveToCode {
         IEnumerator StartRoutine() {
             inStartUp = true;
             yield return null;
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(0.1f);
             kuriController.DoAnimationAction(EMOTIONS.close_eyes);
             yield return new WaitForSeconds(InteractionManager.instance.MinToSeconds(InteractionManager.instance.warmUpTimeMinutes) - 3f);
             kuriController.DoAnimationAction(EMOTIONS.happy);

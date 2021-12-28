@@ -11,7 +11,7 @@ namespace MoveToCode {
 
         public override InstructionReturnValue RunInstruction() {
             EvaluateArgumentsOfInstruction();
-            Debug.Log("Move forward");
+            BabyKuriManager.instance.kuriController.TakeMovementAction();
             return new InstructionReturnValue(null, GetNextInstruction());
         }
 

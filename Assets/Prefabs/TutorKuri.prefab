@@ -1149,6 +1149,7 @@ GameObject:
   - component: {fileID: 2840021485951289707}
   - component: {fileID: 2840021485951289706}
   - component: {fileID: 2840021485951289700}
+  - component: {fileID: 1434147722}
   m_Layer: 0
   m_Name: TutorKuri
   m_TagString: Untagged
@@ -1439,6 +1440,18 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1434147722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2840021487166628976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0d958421478644bfa0d3e4afb91b466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2840021487166628978
 GameObject:
   m_ObjectHideFlags: 0

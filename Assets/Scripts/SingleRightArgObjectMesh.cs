@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace MoveToCode {
-    public class SingleRightArgObjectMesh : CodeBlockObjectMesh {
-        Transform top, argRight;
-        Vector3 origScaleArgRight;
-        Vector3 origPositionArgRight;
+    public abstract class SingleRightArgObjectMesh : CodeBlockObjectMesh {
+        protected Transform top, argRight;
+        protected Vector3 origScaleArgRight;
+        protected Vector3 origPositionArgRight;
 
         public override void SetUpObject() {
             top = transform.GetChild(0);
@@ -22,7 +22,7 @@ namespace MoveToCode {
         }
 
         public override float GetBlockHorizontalSize() {
-            return  1 /*top*/ + argRight.localScale.x * 0.5f /*argright*/;
+            return 1 /*top*/ + argRight.localScale.x * 0.5f /*argright*/;
         }
 
         public override float GetBlockVerticalSize() {
@@ -31,21 +31,6 @@ namespace MoveToCode {
 
         public override Vector3 GetCenterPosition() {
             return Vector3.zero; // todo later
-        }
-
-        protected override void ResizeObjectMesh() {
-            // need to resize arg right based upon horizontal size of arg
-            Vector3 rescale = origScaleArgRight;        // this is all Vector3.one
-            Vector3 reposition = origPositionArgRight;  // this is always 0.75, 0, 0
-
-            float? horizontalSize = GetComponent<SnapColliderGroup>().SnapColliderSet[CommonSCKeys.Printable]?.MyCodeBlockArg?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();
-            
-            if (horizontalSize != null) {
-                rescale.x = (float)horizontalSize / 0.5f;                
-                reposition.x = reposition.x + ((float)horizontalSize - 0.5f) / 2f; // horizontal is in units of real world
-            }
-            argRight.localPosition = reposition;
-            argRight.localScale = rescale;
         }
     }
 }

@@ -1,17 +1,17 @@
 using UnityEngine;
 namespace MoveToCode {
     public class MoveInstruction : SnappableStandAloneInstruction {
-        string output;
+        CodeBlockEnums.Move output;
 
         public MoveInstruction(CodeBlock cbIn) : base(cbIn) { }
 
         public override void EvaluateArgumentsOfInstruction() {
-            //output = GetArgument(CommonSCKeys.Printable)?.EvaluateArgument()?.ToString();
+            output = (CodeBlockEnums.Move)(GetArgument(CommonSCKeys.Move)?.EvaluateArgument() as MoveDataType).GetValue();
         }
 
         public override InstructionReturnValue RunInstruction() {
             EvaluateArgumentsOfInstruction();
-            BabyKuriManager.instance.kuriController.TakeMovementAction();
+            Debug.Log(output);
             return new InstructionReturnValue(null, GetNextInstruction());
         }
 
@@ -20,7 +20,7 @@ namespace MoveToCode {
         }
 
         public override string DescriptiveInstructionToString() {
-            return string.Join("", "<color=purple>" + ToString() + "</color>(", GetArgument(CommonSCKeys.Printable)?.DescriptiveInstructionToString() + ")");
+            return string.Join("", "<color=purple>" + ToString() + "</color>(", GetArgument(CommonSCKeys.Move)?.DescriptiveInstructionToString() + ")");
         }
     }
 }

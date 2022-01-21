@@ -10,7 +10,7 @@ namespace MoveToCode {
         #region members
         public string CurMovementAction = "";
         public static string babyKuriMovementActionCol = "babyKuriMovementAction";
-        public float speed = 1f;
+        private float moveSpeed = 1f, turnSpeed = 50f;
         public AnimationCurve speedCurve;
         BabyKuriManager bkm;
         BabyKuriManager babyKuriManager {
@@ -24,11 +24,13 @@ namespace MoveToCode {
         public Vector3 OriginalPosition { get; set; }
 
         public static string MoveLogString { get; } = "Moving ";
+        public static string TurnLogString { get; } = "Turning ";
 
         private Regex moveRe = new Regex(@"^" + MoveLogString);
+        private Regex turnRe = new Regex(@"^" + TurnLogString);
         public bool IsMoving {
             get {
-                return moveRe.IsMatch(CurMovementAction);
+                return moveRe.IsMatch(CurMovementAction) || turnRe.IsMatch(CurMovementAction);
             }
         }
 
@@ -50,8 +52,20 @@ namespace MoveToCode {
                 babyKuriManager.transform.position = value;
             }
         }
+        private Quaternion KuriQuat {
+            get {
+                return KuriTransform.rotation;
+            }
+            set {
+                KuriTransform.rotation = value;
+            }
+        }
 
-        Queue<float> MoveQueue { get; set; } = new Queue<float>();
+        /// <summary>
+        /// Type is the type of movement
+        /// float is the amount of movement (degrees for turns, dist in meters for moving)
+        /// </summary>
+        Queue<KeyValuePair<Type, float>> MoveQueue { get; set; } = new Queue<KeyValuePair<Type, float>>();
 
         #endregion
 
@@ -68,12 +82,13 @@ namespace MoveToCode {
 
         #region public
         public void MoveOverTime(float dist) {
-            MoveQueue.Enqueue(dist);
+            MoveQueue.Enqueue(new KeyValuePair<Type, float>(typeof(CodeBlockEnums.Move), dist));
             StartNextMovement();
         }
 
-        public void TurnOverTime(float v) {
-            Debug.Log("Turn " + v.ToString());
+        public void TurnOverTime(float degrees) {
+            MoveQueue.Enqueue(new KeyValuePair<Type, float>(typeof(CodeBlockEnums.Turn), degrees));
+            StartNextMovement();
         }
 
         public void ResetOrigPos() {
@@ -83,12 +98,15 @@ namespace MoveToCode {
         #endregion
 
         #region private
-
-
         private void StartNextMovement() {
             if (!MoveQueue.Empty() && !IsMoving) {
-                float dist = MoveQueue.Dequeue();
-                StartCoroutine(GoToPosition(KuriPos + KuriForward * dist, dist > 0));
+                KeyValuePair<Type, float> p = MoveQueue.Dequeue();
+                if (p.Key == typeof(CodeBlockEnums.Move)) {
+                    StartCoroutine(GoToPosition(KuriPos + KuriForward * p.Value, p.Value > 0));
+                }
+                else if (p.Key == typeof(CodeBlockEnums.Turn)) {
+                    StartCoroutine(TurnToAngle(Quaternion.Euler(KuriQuat.eulerAngles + KuriTransform.up * p.Value), p.Value > 0));
+                }
             }
         }
 
@@ -100,10 +118,10 @@ namespace MoveToCode {
             }
             CurMovementAction = MoveLogString + (forward ? "FORWARD" : "BACKWARD") + " to " + goal.ToString();
             float totalDist = Vector3.Distance(KuriPos, goal);
-            float curDist = Vector3.Distance(KuriPos, goal);
+            float curDist = totalDist;
             while (curDist > goalDistDelta) {
                 Vector3 dir = goal - KuriPos;
-                float curSpeed = speed * speedCurve.Evaluate(curDist / totalDist);
+                float curSpeed = moveSpeed * speedCurve.Evaluate(curDist / totalDist);
                 KuriPos = KuriPos + dir * curSpeed * Time.deltaTime;
                 curDist = Vector3.Distance(KuriPos, goal);
                 yield return null;
@@ -112,6 +130,26 @@ namespace MoveToCode {
             ResetCurMovementAction();
             StartNextMovement();
         }
+
+        private float goalDegreeDelta = 3f;
+        public IEnumerator TurnToAngle(Quaternion goal, bool right) {
+            if (IsMoving) {
+                throw new InvalidOperationException("Baby Kuri already moving, check moveQueue queueing code");
+            }
+            CurMovementAction = MoveLogString + (right ? "RIGHT" : "LEFT") + " to " + goal.ToString();
+            float totalDist = Quaternion.Angle(KuriQuat, goal);
+            float curDist = totalDist;
+            while (Mathf.Abs(curDist) > goalDegreeDelta) {
+                float curSpeed = turnSpeed * speedCurve.Evaluate(curDist / totalDist);
+                KuriQuat = Quaternion.Euler(KuriQuat.eulerAngles + KuriTransform.up * curSpeed * Time.deltaTime);
+                curDist = Quaternion.Angle(KuriQuat, goal);
+                yield return null;
+            }
+            KuriQuat = goal;
+            ResetCurMovementAction();
+            StartNextMovement();
+        }
+
 
 
         private void ResetCurMovementAction() {

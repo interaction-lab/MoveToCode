@@ -30,8 +30,6 @@ namespace MoveToCode {
             low
         }
 
-
-
         public TextCommand CurTextCommand { get; set; } = null;
         public bool IsTalking {
             get {

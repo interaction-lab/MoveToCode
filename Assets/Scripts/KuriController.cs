@@ -22,7 +22,7 @@ namespace MoveToCode {
         }
         protected static string rISACol = "robotISA", kuriPhysicalEmoteActionCol = "kuriPhysicalAction", kuriMovementActionCol = "kuriMovementAction", kuriCurAction = "kuriCurAction";
         //[HideInInspector]
-        public bool IsDoingAction {get; set;} = false;
+        public bool IsDoingAction { get; set; } = false;
         //[HideInInspector]
         public string CurAction = "";
         public string actionSeperator = "~||~"; // used for data later
@@ -51,11 +51,27 @@ namespace MoveToCode {
         .GetValues(typeof(ACTIONS)).Cast<ACTIONS>()
         .ToDictionary(t => t, t => 0f);
 
-        protected KuriTextManager kuriTextManager;
-        protected LoggingManager loggingManager;
+        KuriTextManager ktm;
+        protected KuriTextManager kuriTextManager {
+            get {
+                if (ktm == null) {
+                    ktm = KuriTextManager.instance;
+                }
+                return ktm;
+            }
+        }
+
+
+        LoggingManager lm;
+        protected LoggingManager loggingManager {
+            get {
+                if (lm == null) {
+                    lm = LoggingManager.instance;
+                }
+                return lm;
+            }
+        }
         private void Awake() {
-            loggingManager = LoggingManager.instance;
-            kuriTextManager = KuriTextManager.instance;
             loggingManager.AddLogColumn(rISACol, "");
             loggingManager.AddLogColumn(kuriPhysicalEmoteActionCol, "");
             loggingManager.AddLogColumn(kuriMovementActionCol, "");

@@ -2,6 +2,8 @@ using UnityEngine;
 namespace MoveToCode {
     public class MoveInstruction : SnappableStandAloneInstruction {
         CodeBlockEnums.Move output;
+        BabyVirtualKuriController babyVirtualKuriController { get; } = (BabyVirtualKuriController)Object.FindObjectOfType(typeof(BabyVirtualKuriController));
+        float moveDist = 1f;
 
         public MoveInstruction(CodeBlock cbIn) : base(cbIn) { }
 
@@ -11,7 +13,12 @@ namespace MoveToCode {
 
         public override InstructionReturnValue RunInstruction() {
             EvaluateArgumentsOfInstruction();
-            Debug.Log(output);
+            if (output == CodeBlockEnums.Move.Forward) {
+                babyVirtualKuriController.MoveOverTime(moveDist);
+            }
+            else {
+                babyVirtualKuriController.MoveOverTime(-moveDist);
+            }
             return new InstructionReturnValue(null, GetNextInstruction());
         }
 

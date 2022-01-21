@@ -61,12 +61,16 @@ namespace MoveToCode {
 
         public override string TakeMovementAction() {
             //move to user
-            StartCoroutine(GoToUser());
+            GoToUser();
             return "moving";
         }
 
-        IEnumerator GoToUser() {
-            Vector3 goal = Camera.main.transform.position;
+        public void GoToUser() {
+            CurAction = "GoingToUser";
+            StartCoroutine(GoToPosition(Camera.main.transform.position));
+        }
+
+        public IEnumerator GoToPosition(Vector3 goal) {
             goal.y = TutorKuriManager.instance.transform.position.y;
             FollowPathUnitM.path = new LinePath(new[] { TutorKuriManager.instance.transform.position, goal });
             FollowPathUnitM.enabled = true;
@@ -75,6 +79,7 @@ namespace MoveToCode {
                 yield return null;
             }
             followPathUnitM.enabled = false;
+            CurAction = "";
         }
 
         public override void TurnTowardsUser() {
@@ -91,6 +96,7 @@ namespace MoveToCode {
             if (kuriTextManager.IsTalking) {
                 CurAction += actionSeperator + kuriTextManager.CurTextCommand.ToString();
             }
+
             // TODO: Movement when doing the movement actions
             return CurAction != "";
         }

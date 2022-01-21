@@ -1,10 +1,8 @@
 ﻿using UnityEngine;
 
-namespace UnityMovementAI
-{
+namespace UnityMovementAI {
     [RequireComponent(typeof(FollowPath))]
-    public class FollowPathUnit : MonoBehaviour
-    {
+    public class FollowPathUnit : MonoBehaviour {
         public bool pathLoop = false;
 
         public bool reversePath = false;
@@ -14,19 +12,19 @@ namespace UnityMovementAI
         SteeringBasics steeringBasics;
         FollowPath followPath;
 
-        void Start()
-        {
+        void Start() {
             path.CalcDistances();
             steeringBasics = GetComponent<SteeringBasics>();
             followPath = GetComponent<FollowPath>();
         }
 
-        void FixedUpdate()
-        {
+        void FixedUpdate() {
+            if (path == null || followPath == null) {
+                return;
+            }
             path.Draw();
 
-            if (reversePath && followPath.IsAtEndOfPath(path))
-            {
+            if (reversePath && followPath.IsAtEndOfPath(path)) {
                 path.ReversePath();
             }
 

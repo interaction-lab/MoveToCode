@@ -36,6 +36,7 @@ namespace MoveToCode {
             MemoryManager.instance.ResetMemoryState();
             numInstructionsRun = 0;
             StaticNextChallengeButton.instance.gameObject.SetActive(false);
+            BabyKuriManager.instance.ResetKuri();
         }
 
         public void RunNextInstruction() {

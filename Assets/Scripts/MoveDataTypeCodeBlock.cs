@@ -1,5 +1,3 @@
-using System;
-
 namespace MoveToCode {
 
     public class MoveDataTypeCodeBlock : DataCodeBlock {

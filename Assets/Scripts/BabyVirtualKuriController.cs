@@ -24,6 +24,7 @@ namespace MoveToCode {
         public Vector3 OriginalPosition { get; set; }
 
         public static string MoveLogString { get; } = "Moving ";
+
         private Regex moveRe = new Regex(@"^" + MoveLogString);
         public bool IsMoving {
             get {
@@ -69,6 +70,10 @@ namespace MoveToCode {
         public void MoveOverTime(float dist) {
             MoveQueue.Enqueue(dist);
             StartNextMovement();
+        }
+
+        public void TurnOverTime(float v) {
+            Debug.Log("Turn " + v.ToString());
         }
 
         public void ResetOrigPos() {

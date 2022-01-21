@@ -54,6 +54,11 @@ namespace MoveToCode {
             return h.Count == 0;
         }
 
+        // Queue Extensions
+        public static bool Empty<T>(this Queue<T> h) {
+            return h.Count == 0;
+        }
+
         // String Extensions
         public static string ReplaceFirst(this string text, string search, string replace) {
             int pos = text.IndexOf(search);

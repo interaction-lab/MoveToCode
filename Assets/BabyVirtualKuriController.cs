@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using System.Text.RegularExpressions;
+using System.Collections.Generic;
+using System;
 
 namespace MoveToCode {
     public class BabyVirtualKuriController : MonoBehaviour {
@@ -47,6 +49,9 @@ namespace MoveToCode {
                 babyKuriManager.transform.position = value;
             }
         }
+
+        Queue<float> MoveQueue { get; set; } = new Queue<float>();
+
         #endregion
 
         #region unity
@@ -62,7 +67,8 @@ namespace MoveToCode {
 
         #region public
         public void MoveOverTime(float dist) {
-            StartCoroutine(GoToPosition(KuriPos + KuriForward * dist, dist > 0));
+            MoveQueue.Enqueue(dist);
+            StartNextMovement();
         }
 
         public void ResetOrigPos() {
@@ -72,10 +78,20 @@ namespace MoveToCode {
         #endregion
 
         #region private
+
+
+        private void StartNextMovement() {
+            if (!MoveQueue.Empty() && !IsMoving) {
+                float dist = MoveQueue.Dequeue();
+                StartCoroutine(GoToPosition(KuriPos + KuriForward * dist, dist > 0));
+            }
+        }
+
+
         private float goalDistDelta = 0.02f;
         public IEnumerator GoToPosition(Vector3 goal, bool forward) {
             if (IsMoving) {
-                Debug.LogError("Already moving"); // TODO: need to make queueing sysatem
+                throw new InvalidOperationException("Baby Kuri already moving, check moveQueue queueing code");
             }
             CurMovementAction = MoveLogString + (forward ? "FORWARD" : "BACKWARD") + " to " + goal.ToString();
             float totalDist = Vector3.Distance(KuriPos, goal);
@@ -83,13 +99,13 @@ namespace MoveToCode {
             while (curDist > goalDistDelta) {
                 Vector3 dir = goal - KuriPos;
                 float curSpeed = speed * speedCurve.Evaluate(curDist / totalDist);
-                Debug.Log(curSpeed);
                 KuriPos = KuriPos + dir * curSpeed * Time.deltaTime;
                 curDist = Vector3.Distance(KuriPos, goal);
                 yield return null;
             }
             KuriPos = goal;
             ResetCurMovementAction();
+            StartNextMovement();
         }
 
 

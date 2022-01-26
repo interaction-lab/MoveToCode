@@ -57196,7 +57196,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1383772383
 Transform:
   m_ObjectHideFlags: 0
@@ -89343,7 +89343,7 @@ GameObject:
   - component: {fileID: 2123741229}
   - component: {fileID: 2123741228}
   m_Layer: 0
-  m_Name: MixedRealityToolkit
+  m_Name: MixedRealityToolkit (Inactive)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

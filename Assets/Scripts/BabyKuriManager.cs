@@ -19,7 +19,7 @@ namespace MoveToCode {
 
         #region public
         public void ResetKuri() {
-            kuriController.ResetOrigPos();
+            kuriController.ResetOrigPosAndRot();
         }
         #endregion
 

@@ -21,7 +21,8 @@ namespace MoveToCode {
                 return bkm;
             }
         }
-        public Vector3 OriginalPosition { get; set; }
+        public Vector3 OriginalPosition { get; private set; }
+        public Quaternion OriginalRotation { get; private set; }
 
         public static string MoveLogString { get; } = "Moving ";
         public static string TurnLogString { get; } = "Turning ";
@@ -52,7 +53,8 @@ namespace MoveToCode {
                 babyKuriManager.transform.position = value;
             }
         }
-        private Quaternion KuriQuat {
+
+        private Quaternion KuriRot {
             get {
                 return KuriTransform.rotation;
             }
@@ -67,11 +69,13 @@ namespace MoveToCode {
         /// </summary>
         Queue<KeyValuePair<Type, float>> MoveQueue { get; set; } = new Queue<KeyValuePair<Type, float>>();
 
+
         #endregion
 
         #region unity
         private void Awake() {
             OriginalPosition = babyKuriManager.transform.position;
+            OriginalRotation = babyKuriManager.transform.rotation;
             LoggingManager.instance.AddLogColumn(babyKuriMovementActionCol, "");
         }
 
@@ -91,8 +95,9 @@ namespace MoveToCode {
             StartNextMovement();
         }
 
-        public void ResetOrigPos() {
+        public void ResetOrigPosAndRot() {
             KuriPos = OriginalPosition;
+            KuriRot = OriginalRotation;
         }
 
         #endregion
@@ -105,7 +110,7 @@ namespace MoveToCode {
                     StartCoroutine(GoToPosition(KuriPos + KuriForward * p.Value, p.Value > 0));
                 }
                 else if (p.Key == typeof(CodeBlockEnums.Turn)) {
-                    StartCoroutine(TurnToAngle(Quaternion.Euler(KuriQuat.eulerAngles + KuriTransform.up * p.Value), p.Value > 0));
+                    StartCoroutine(TurnToAngle(Quaternion.Euler(KuriRot.eulerAngles + KuriTransform.up * p.Value), p.Value > 0));
                 }
             }
         }
@@ -137,15 +142,15 @@ namespace MoveToCode {
                 throw new InvalidOperationException("Baby Kuri already moving, check moveQueue queueing code");
             }
             CurMovementAction = MoveLogString + (right ? "RIGHT" : "LEFT") + " to " + goal.ToString();
-            float totalDist = Quaternion.Angle(KuriQuat, goal);
+            float totalDist = Quaternion.Angle(KuriRot, goal);
             float curDist = totalDist;
             while (Mathf.Abs(curDist) > goalDegreeDelta) {
                 float curSpeed = turnSpeed * speedCurve.Evaluate(curDist / totalDist);
-                KuriQuat = Quaternion.Euler(KuriQuat.eulerAngles + KuriTransform.up * curSpeed * Time.deltaTime);
-                curDist = Quaternion.Angle(KuriQuat, goal);
+                KuriRot = Quaternion.Euler(KuriRot.eulerAngles + KuriTransform.up * curSpeed * Time.deltaTime);
+                curDist = Quaternion.Angle(KuriRot, goal);
                 yield return null;
             }
-            KuriQuat = goal;
+            KuriRot = goal;
             ResetCurMovementAction();
             StartNextMovement();
         }

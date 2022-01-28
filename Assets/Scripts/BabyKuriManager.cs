@@ -1,3 +1,4 @@
+using UnityEngine;
 namespace MoveToCode {
     public class BabyKuriManager : Singleton<BabyKuriManager> {
 
@@ -19,7 +20,10 @@ namespace MoveToCode {
 
         #region public
         public void ResetKuri() {
-            kuriController.ResetOrigPosAndRot();
+            kuriController.ResetToOrigState();
+        }
+        public void ChangeKuriColor(Color color) {
+            kuriController.SetColor(color);
         }
         #endregion
 

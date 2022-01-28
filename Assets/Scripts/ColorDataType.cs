@@ -21,7 +21,7 @@ namespace MoveToCode {
         }
 
         public override string ToString() {
-            return ExtColorToNames.FindColor((Color)value).Replace(" ", Environment.NewLine);
+            return ExtColorToNames.FindColor((Color)value).Replace(" ", Environment.NewLine).Replace("/", "/" + Environment.NewLine); // Newline is better spacing on the codeblock
         }
 
     }

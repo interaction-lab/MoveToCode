@@ -13,7 +13,7 @@ namespace MoveToCode {
 
         public override InstructionReturnValue RunInstruction() {
             EvaluateArgumentsOfInstruction();
-            Debug.Log(output.ToString());
+            BabyKuriManager.instance.ChangeKuriColor(output);
             return new InstructionReturnValue(null, GetNextInstruction());
         }
 

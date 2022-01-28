@@ -12,6 +12,8 @@ namespace MoveToCode {
         public static string babyKuriMovementActionCol = "babyKuriMovementAction";
         private float moveSpeed = 1f, turnSpeed = 50f;
         public AnimationCurve speedCurve;
+        public MeshRenderer bodyPlateRend;
+
         BabyKuriManager bkm;
         BabyKuriManager babyKuriManager {
             get {
@@ -23,6 +25,7 @@ namespace MoveToCode {
         }
         public Vector3 OriginalPosition { get; private set; }
         public Quaternion OriginalRotation { get; private set; }
+        public Color OriginalColor { get; private set; }
 
         public static string MoveLogString { get; } = "Moving ";
         public static string TurnLogString { get; } = "Turning ";
@@ -63,19 +66,28 @@ namespace MoveToCode {
             }
         }
 
+        public Color KuriColor {
+            get {
+                return bodyPlateRend.material.color;
+            }
+            private set {
+                bodyPlateRend.material.color = value;
+            }
+        }
+
         /// <summary>
         /// Type is the type of movement
         /// float is the amount of movement (degrees for turns, dist in meters for moving)
         /// </summary>
         Queue<KeyValuePair<Type, float>> MoveQueue { get; set; } = new Queue<KeyValuePair<Type, float>>();
 
-
         #endregion
 
         #region unity
         private void Awake() {
-            OriginalPosition = babyKuriManager.transform.position;
-            OriginalRotation = babyKuriManager.transform.rotation;
+            OriginalPosition = KuriPos;
+            OriginalRotation = KuriRot;
+            OriginalColor = KuriColor;
             LoggingManager.instance.AddLogColumn(babyKuriMovementActionCol, "");
         }
 
@@ -95,9 +107,14 @@ namespace MoveToCode {
             StartNextMovement();
         }
 
-        public void ResetOrigPosAndRot() {
+        public void ResetToOrigState() {
             KuriPos = OriginalPosition;
             KuriRot = OriginalRotation;
+            KuriColor = OriginalColor;
+        }
+
+        public void SetColor(Color color) {
+            KuriColor = color;
         }
 
         #endregion

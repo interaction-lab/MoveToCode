@@ -148,7 +148,7 @@ namespace MoveToCode {
             UpdateText();
         }
 
-        private void UpdateText() {
+        public void UpdateText() {
             if (textMesh == null) {
                 textMesh = codeBlockTextGameObject?.GetComponent<TextMeshPro>();
             }

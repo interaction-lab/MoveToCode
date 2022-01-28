@@ -23,6 +23,7 @@ namespace MoveToCode {
         public override void SetOutput(object value) {
             output = (Color)value;
             UpdateColor();
+            base.SetOutput(value);
         }
 
         private void UpdateColor() {

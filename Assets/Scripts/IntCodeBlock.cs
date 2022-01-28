@@ -11,6 +11,7 @@ namespace MoveToCode {
 
         public override void SetOutput(object value) {
             output = Int32.Parse(value.ToString());
+            base.SetOutput(value);
         }
     }
 }

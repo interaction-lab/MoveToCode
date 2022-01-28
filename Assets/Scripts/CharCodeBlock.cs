@@ -12,6 +12,7 @@ namespace MoveToCode {
 
         public override void SetOutput(object value) {
             output = Convert.ToChar(value);
+            base.SetOutput(value);
         }
     }
 }

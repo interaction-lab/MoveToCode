@@ -21,7 +21,7 @@ namespace MoveToCode {
         }
 
         public override string ToString() {
-            return ExtColorToNames.FindColor((Color)value);
+            return ExtColorToNames.FindColor((Color)value).Replace(" ", Environment.NewLine);
         }
 
     }

@@ -45,7 +45,10 @@ namespace MoveToCode {
                     typeof(MoveSnapCollider),
                     0);
         public static KeyValuePair<Type, int> Turn = new KeyValuePair<Type, int>(
-            typeof(TurnSnapCollider),
-            0);
+                    typeof(TurnSnapCollider),
+                    0);
+        public static KeyValuePair<Type, int> Color = new KeyValuePair<Type, int>(
+                    typeof(ColorSnapCollider),
+                    0);
     }
 }

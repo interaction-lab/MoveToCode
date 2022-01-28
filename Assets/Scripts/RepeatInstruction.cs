@@ -35,7 +35,7 @@ namespace MoveToCode {
         }
 
         public override string ToString() {
-            return "Repeat " + curIter.ToString() + " of ";
+            return "Repeat " + curIter.ToString() + " : ";
         }
         public override string DescriptiveInstructionToString() {
             return string.Join("", "<color=purple>", ToString(), "</color>", GetArgument(CommonSCKeys.RightNumber)?.DescriptiveInstructionToString(), ": ", GetNestedInstructionsAsString());

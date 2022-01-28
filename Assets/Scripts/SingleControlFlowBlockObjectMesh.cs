@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace MoveToCode {
     public class SingleControlFlowBlockObjectMesh : ControlFlowBlockObjectMesh {
-        Transform top, argRight, side, bot;
-        Vector3 origScaleArgRight;
-        Vector3 origPositionArgRight;
+        protected Transform top, argRight, side, bot;
+        protected Vector3 origScaleArgRight;
+        protected Vector3 origPositionArgRight;
 
         float TopSizeHBC { get; } = 0.8f;
         float TopSizeVBC { get; } = 0.5f;
@@ -82,7 +82,7 @@ namespace MoveToCode {
             scaler.y = (top.localPosition.y + bot.localPosition.y) / 2.0f;
             side.localPosition = scaler;
         }
-        private void ResizeArgRight() {
+        protected virtual void ResizeArgRight() {
             Vector3 rescale = origScaleArgRight;
             Vector3 reposition = origPositionArgRight;
             float? horizontalSize = GetComponent<SnapColliderGroup>().SnapColliderSet[CommonSCKeys.Conditional]?.MyCodeBlockArg?.GetCodeBlockObjectMesh().GetBlockHorizontalSize();

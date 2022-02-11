@@ -40,9 +40,5 @@ namespace MoveToCode {
         public override string DescriptiveInstructionToString() {
             return string.Join("", "<color=purple>", ToString(), "</color>", GetArgument(CommonSCKeys.RightNumber)?.DescriptiveInstructionToString(), ": ", GetNestedInstructionsAsString());
         }
-
-        private void SetIterNum(int num) {
-            ((GetArgument(CommonSCKeys.RightNumber) as INumberDataType)?.MyCodeBlock as IntCodeBlock)?.SetOutput(num);
-        }
     }
 }

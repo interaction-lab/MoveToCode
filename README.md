@@ -5,9 +5,10 @@ MoveToCode is an open source augmeted reality visual programming language (VPL) 
 
 MoveToCode is built for the [Microsoft Hololens 2](https://www.microsoft.com/en-us/hololens/hardware), as well as [ARCore supported mobile devices](https://developers.google.com/ar/devices), using the [Mixed Reality Toolkit](https://github.com/microsoft/MixedRealityToolkit-Unity). Currently it is set up to work with the [Mayfield Kuri robot](https://www.heykuri.com/explore-kuri/) but can be modified for any [ROS](https://www.ros.org/) supported robot via [ROS#](https://github.com/siemens/ros-sharp) and [rosbridge](http://wiki.ros.org/rosbridge_suite). A virtual, high fidelity model, Kuri robot is also currently availble with limited capabilities.
 
-Here is a [video](https://www.youtube.com/watch?v=s7udZXa2wEw) of MoveToCode + a robot tutor using the Hololens 2.
-
 Doxygen documentation can be found here: https://interaction-lab.github.io/MoveToCode/html/index.html
+
+## Videos
+- [MoveToCode + a robot tutor using the Hololens 2](https://www.youtube.com/watch?v=s7udZXa2wEw) - this is when we were have student code text based exercises having since moved to phone based AR coding a robot (video coming soon).
 
 ## Study Commits
 ![](Images/newconcise.png)

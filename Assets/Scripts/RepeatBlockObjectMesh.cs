@@ -1,5 +1,3 @@
-using Microsoft.MixedReality.Toolkit.Utilities;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace MoveToCode {

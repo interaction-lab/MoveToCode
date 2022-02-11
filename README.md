@@ -8,7 +8,7 @@ MoveToCode is built for the [Microsoft Hololens 2](https://www.microsoft.com/en-
 Doxygen documentation can be found here: https://interaction-lab.github.io/MoveToCode/html/index.html
 
 ## Videos
-- [MoveToCode + a robot tutor using the Hololens 2](https://www.youtube.com/watch?v=s7udZXa2wEw) - this is when we were have student code text based exercises having since moved to phone based AR coding a robot (video coming soon).
+- [MoveToCode + a robot tutor using the Hololens 2](https://www.youtube.com/watch?v=s7udZXa2wEw) - this is when students coded text based exercises. We have since moved to phone based AR coding a robot (video coming soon).
 
 ## Study Commits
 ![](Images/newconcise.png)

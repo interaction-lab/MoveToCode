@@ -1827,18 +1827,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9215a7c858170d74fb2257375d5feaf1, type: 3}
---- !u!4 &8159790426146837936 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 586303850521236049, guid: 9215a7c858170d74fb2257375d5feaf1,
-    type: 3}
-  m_PrefabInstance: {fileID: 8727868428328536033}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &3374018212467406988 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 6326842415924641645, guid: 9215a7c858170d74fb2257375d5feaf1,
-    type: 3}
-  m_PrefabInstance: {fileID: 8727868428328536033}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1712153382927011348 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7988634196090784245, guid: 9215a7c858170d74fb2257375d5feaf1,
@@ -2004,3 +1992,15 @@ MonoBehaviour:
   proximityType: 3
   constraintOnRotation: 5
   useLocalSpaceForConstraint: 0
+--- !u!23 &3374018212467406988 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6326842415924641645, guid: 9215a7c858170d74fb2257375d5feaf1,
+    type: 3}
+  m_PrefabInstance: {fileID: 8727868428328536033}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8159790426146837936 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 586303850521236049, guid: 9215a7c858170d74fb2257375d5feaf1,
+    type: 3}
+  m_PrefabInstance: {fileID: 8727868428328536033}
+  m_PrefabAsset: {fileID: 0}

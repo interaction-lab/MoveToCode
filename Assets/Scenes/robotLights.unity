@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44402242, g: 0.49316543, b: 0.5722324, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3655,6 +3655,7 @@ MonoBehaviour:
   robotKC: 0.1
   usePhysicalKuri: 1
   KuriGoalPoseTransform: {fileID: 0}
+  kuriAIToUse: 0
 --- !u!4 &671810406 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5335814774712488528, guid: dddf9b2e6c0fcd546b30a826b21b6e2b,

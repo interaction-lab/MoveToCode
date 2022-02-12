@@ -13482,7 +13482,7 @@ MonoBehaviour:
   m_sharedMaterial: {fileID: -8818436585577003887, guid: f653327fd665c44548139a226b8de124,
     type: 2}
   m_fontSharedMaterials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: -8818436585577003887, guid: f653327fd665c44548139a226b8de124, type: 2}
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:

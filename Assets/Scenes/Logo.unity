@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44767052, g: 0.49701148, b: 0.5726966, a: 1}
+  m_IndirectSpecularColor: {r: 0.44402242, g: 0.49316543, b: 0.5722324, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -21444,7 +21444,8 @@ MonoBehaviour:
   m_fontAsset: {fileID: 11400000, guid: ae90044bba8fd4ced8f2e0e5a800c7b4, type: 2}
   m_sharedMaterial: {fileID: 8169086999154064765, guid: ae90044bba8fd4ced8f2e0e5a800c7b4,
     type: 2}
-  m_fontSharedMaterials: []
+  m_fontSharedMaterials:
+  - {fileID: 8169086999154064765, guid: ae90044bba8fd4ced8f2e0e5a800c7b4, type: 2}
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
@@ -32543,6 +32544,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  bodyPlateRend: {fileID: 0}
 --- !u!114 &824289297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57196,7 +57198,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1383772383
 Transform:
   m_ObjectHideFlags: 0
@@ -68270,7 +68272,8 @@ MonoBehaviour:
   m_fontAsset: {fileID: 11400000, guid: f653327fd665c44548139a226b8de124, type: 2}
   m_sharedMaterial: {fileID: -8818436585577003887, guid: f653327fd665c44548139a226b8de124,
     type: 2}
-  m_fontSharedMaterials: []
+  m_fontSharedMaterials:
+  - {fileID: -8818436585577003887, guid: f653327fd665c44548139a226b8de124, type: 2}
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
@@ -82496,7 +82499,8 @@ MonoBehaviour:
   m_fontAsset: {fileID: 11400000, guid: 91478fc0a419d4e099171b55b39a2ec3, type: 2}
   m_sharedMaterial: {fileID: -9077838312527541476, guid: 91478fc0a419d4e099171b55b39a2ec3,
     type: 2}
-  m_fontSharedMaterials: []
+  m_fontSharedMaterials:
+  - {fileID: -9077838312527541476, guid: 91478fc0a419d4e099171b55b39a2ec3, type: 2}
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44402242, g: 0.49316543, b: 0.5722324, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5011,6 +5011,7 @@ MonoBehaviour:
   robotKC: 0.1
   usePhysicalKuri: 0
   KuriGoalPoseTransform: {fileID: 0}
+  kuriAIToUse: 0
 --- !u!4 &671810406 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5335814774712488528, guid: dddf9b2e6c0fcd546b30a826b21b6e2b,
@@ -10895,6 +10896,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1932d9e89484cf45961a1e05b6d8004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurAction: 
+  actionSeperator: ~||~
+  ForwardSpeed: 0
+  BackwardSpeed: 0
+  TurnSpeed: 0
 --- !u!82 &1434147717
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11576,6 +11582,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f9d90e23171484d9fcca6d8e75b845, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurAction: 
+  actionSeperator: ~||~
 --- !u!114 &1504993769
 MonoBehaviour:
   m_ObjectHideFlags: 0

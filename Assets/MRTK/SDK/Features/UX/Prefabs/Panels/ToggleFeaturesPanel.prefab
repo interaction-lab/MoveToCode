@@ -2152,12 +2152,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5064501110533230779}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &5650399960645272298 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 586303850521236049, guid: 9215a7c858170d74fb2257375d5feaf1,
-    type: 3}
-  m_PrefabInstance: {fileID: 5064501110533230779}
-  m_PrefabAsset: {fileID: 0}
 --- !u!65 &5374263260114166598
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2331,6 +2325,12 @@ MonoBehaviour:
   proximityType: 3
   constraintOnRotation: 5
   useLocalSpaceForConstraint: 0
+--- !u!4 &5650399960645272298 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 586303850521236049, guid: 9215a7c858170d74fb2257375d5feaf1,
+    type: 3}
+  m_PrefabInstance: {fileID: 5064501110533230779}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7927425398529021326
 PrefabInstance:
   m_ObjectHideFlags: 0

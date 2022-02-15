@@ -84,10 +84,10 @@ namespace MoveToCode {
         }
 
         public void SayExerciseGoal() {
-            kuriTextManager.Addline(string.Join("",
+           /* kuriTextManager.Addline(string.Join("",
                  "Goal: ",
                  ExerciseManager.instance.GetCurExercise().GetGoalString()),
-                 KuriTextManager.PRIORITY.high);
+                 KuriTextManager.PRIORITY.high);*/
         }
 
         public void SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT toa) {

@@ -1,9 +1,21 @@
+using RosSharp.RosBridgeClient;
 using UnityEngine;
 namespace MoveToCode {
     public class TurnInstruction : SnappableStandAloneInstruction {
         CodeBlockEnums.Turn output;
         BabyVirtualKuriController babyVirtualKuriController { get; } = (BabyVirtualKuriController)Object.FindObjectOfType(typeof(BabyVirtualKuriController));
         float turnAngle = 90f;
+
+
+        MoveTwistPublisher mtp = null;
+        MoveTwistPublisher Mtp {
+            get {
+                if (mtp == null) {
+                    mtp = GameObject.FindObjectOfType<MoveTwistPublisher>();
+                }
+                return mtp;
+            }
+        }
 
         public TurnInstruction(CodeBlock cbIn) : base(cbIn) { }
 
@@ -13,13 +25,31 @@ namespace MoveToCode {
 
         public override InstructionReturnValue RunInstruction() {
             EvaluateArgumentsOfInstruction();
+            if (OptionSelectionManager.instance.usePhysicalKuri) {
+                TurnPhysicalKuri();
+            }
+            else { 
+                TurnVirtualBabyKuri();
+            }
+            return new InstructionReturnValue(null, GetNextInstruction());
+        }
+
+        private void TurnPhysicalKuri() {
+            if (output == CodeBlockEnums.Turn.Left) {
+                Mtp.UpdateMessage(0,-turnAngle);
+            }
+            else {
+                Mtp.UpdateMessage(0, -turnAngle);
+            }
+        }
+
+        private void TurnVirtualBabyKuri() {
             if (output == CodeBlockEnums.Turn.Left) {
                 babyVirtualKuriController.TurnOverTime(-turnAngle);
             }
             else {
                 babyVirtualKuriController.TurnOverTime(turnAngle);
             }
-            return new InstructionReturnValue(null, GetNextInstruction());
         }
 
         public override string ToString() {

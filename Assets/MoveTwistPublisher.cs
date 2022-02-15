@@ -16,7 +16,7 @@ namespace RosSharp.RosBridgeClient {
         }
         public void UpdateMessage(float vertical, float rotationDeg) {
             message.linear.x = vertical;
-            message.angular.y = rotationDeg;
+            message.angular.y = message.angular.x = message.angular.z = Mathf.Deg2Rad *  rotationDeg;
             Publish(message);
         }
 

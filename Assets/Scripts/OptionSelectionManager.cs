@@ -28,7 +28,7 @@ namespace MoveToCode {
             }
 #elif UNITY_IOS || UNITY_ANDROID
             LoggingManager.instance.logData = true;
-            KuriManager.instance.usePhysicalKuri = false;
+           // KuriManager.instance.usePhysicalKuri = false;
 #else
             LoggingManager.instance.logData = true;
             KuriManager.instance.usePhysicalKuri = true;

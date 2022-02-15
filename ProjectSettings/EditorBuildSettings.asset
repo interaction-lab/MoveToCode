@@ -14,12 +14,15 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/karen.unity
     guid: 0a65cdb8fa90d6542bb849a927f4f855
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PreSurveyLink.unity
     guid: 49ada9560842c4664ae314264f0e03cc
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ShadowTestTom.unity
     guid: 303e1182994bb4fbda65e56a3a306c01
+  - enabled: 1
+    path: Assets/Scenes/Tom.unity
+    guid: 23d83a1b7fbe44dff99032e67ec7923f
   m_configObjects:
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: b26fb7ef3a6e56b46acf7ab1e79f9de5,
       type: 2}
@@ -28,4 +31,6 @@ EditorBuildSettings:
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: e878fefe20ed24fd6bbc9fb234882a1d,
       type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 87faa2ee344eb4f1caced2099ed91b6b,
+      type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 6f6a5186e4e899949828bcf76429ef25,
       type: 2}

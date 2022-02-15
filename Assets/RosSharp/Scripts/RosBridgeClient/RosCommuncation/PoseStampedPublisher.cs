@@ -1,4 +1,4 @@
-/*
+﻿/*
 © Siemens AG, 2017-2018
 Author: Dr. Martin Bischoff (martin.bischoff@siemens.com)
 
@@ -13,75 +13,64 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using MoveToCode;
+// Added allocation free alternatives
+// UoK , 2019, Odysseas Doumas (od79@kent.ac.uk / odydoum@gmail.com)
+
 using UnityEngine;
 
-namespace RosSharp.RosBridgeClient {
-    public class PoseStampedPublisher : Publisher<Messages.Geometry.PoseStamped> {
-        public string FrameId = "map";
-        static string poseGoalCol = "poseGoalSent";
-        private Messages.Geometry.PoseStamped message;
-        bool initialized = false;
-        public Vector3 offset;
+namespace RosSharp.RosBridgeClient
+{
+    public class PoseStampedPublisher : UnityPublisher<MessageTypes.Geometry.PoseStamped>
+    {
+        public Transform PublishedTransform;
+        public string FrameId = "Unity";
 
-        protected override void Start() {
+        private MessageTypes.Geometry.PoseStamped message;
+
+        protected override void Start()
+        {
             base.Start();
             InitializeMessage();
-            //LoggingManager.instance.AddLogColumn(poseGoalCol, "");
-            initialized = true;
         }
 
-        private void InitializeMessage() {
-            message = new Messages.Geometry.PoseStamped {
-                header = new Messages.Standard.Header() {
+        private void FixedUpdate()
+        {
+            UpdateMessage();
+        }
+
+        private void InitializeMessage()
+        {
+            message = new MessageTypes.Geometry.PoseStamped
+            {
+                header = new MessageTypes.Std.Header()
+                {
                     frame_id = FrameId
                 }
             };
         }
 
-        private void PublishMessage(Vector3 lin, Quaternion ang) {
-            if (!initialized) {
-                return;
-            }
-            lin = lin + offset;
+        private void UpdateMessage()
+        {
             message.header.Update();
-            message.pose.position = GetGeometryPoint(lin.Unity2Ros());
-            message.pose.orientation = GetGeometryQuaternion(ang.Unity2Ros());
+            GetGeometryPoint(PublishedTransform.position.Unity2Ros(), message.pose.position);
+            GetGeometryQuaternion(PublishedTransform.rotation.Unity2Ros(), message.pose.orientation);
 
-            //Publish(message);
-            //LoggingManager.instance.UpdateLogColumn(poseGoalCol,
-            //    string.Join(";", lin.ToString("F3").Replace(',', ';'), ang.ToString("F3").Replace(',', ';')));
+            Publish(message);
         }
 
-        public void PublishPosition(Vector3 lin, Quaternion ang) {
-            PublishMessage(lin, ang);
-        }
-
-        public void PublishPosition(Transform t) {
-            PublishPosition(t.position, t.rotation);
-        }
-
-        public void PubTurnTowardUser() {
-            Quaternion rotationGoal = Quaternion.LookRotation(Camera.main.transform.forward);
-            Vector3 curPos = TutorKuriManager.instance.KuriGoalPoseTransform.position;
-            PublishPosition(curPos, rotationGoal);
-        }
-
-        private Messages.Geometry.Point GetGeometryPoint(Vector3 position) {
-            Messages.Geometry.Point geometryPoint = new Messages.Geometry.Point();
+        private static void GetGeometryPoint(Vector3 position, MessageTypes.Geometry.Point geometryPoint)
+        {
             geometryPoint.x = position.x;
             geometryPoint.y = position.y;
             geometryPoint.z = position.z;
-            return geometryPoint;
         }
 
-        private Messages.Geometry.Quaternion GetGeometryQuaternion(Quaternion quaternion) {
-            Messages.Geometry.Quaternion geometryQuaternion = new Messages.Geometry.Quaternion();
+        private static void GetGeometryQuaternion(Quaternion quaternion, MessageTypes.Geometry.Quaternion geometryQuaternion)
+        {
             geometryQuaternion.x = quaternion.x;
             geometryQuaternion.y = quaternion.y;
             geometryQuaternion.z = quaternion.z;
             geometryQuaternion.w = quaternion.w;
-            return geometryQuaternion;
         }
 
     }

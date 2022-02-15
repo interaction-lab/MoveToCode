@@ -40,7 +40,7 @@ namespace MoveToCode {
         }
 
         public override void TurnTowardsUser() {
-            PoseStampPub?.PubTurnTowardUser();
+            //PoseStampPub?.PubTurnTowardUser(); // TODO: Fix later
         }
 
         public override string DoRandomNegativeAction() {

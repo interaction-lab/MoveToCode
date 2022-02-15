@@ -3,9 +3,9 @@ using UnityEngine;
 using static MoveToCode.KuriController;
 
 namespace RosSharp.RosBridgeClient {
-    public class KuriEmoteStringPublisher : Publisher<Messages.Standard.String> {
+    public class KuriEmoteStringPublisher : UnityPublisher<MessageTypes.Std.String> {
 
-        private Messages.Standard.String message;
+        private MessageTypes.Std.String message;
 
         protected override void Start() {
             base.Start();
@@ -34,7 +34,7 @@ namespace RosSharp.RosBridgeClient {
         }
 
         private void InitializeMessage() {
-            message = new Messages.Standard.String {
+            message = new MessageTypes.Std.String {
                 data = EMOTIONS.happy.ToString()
             };
         }

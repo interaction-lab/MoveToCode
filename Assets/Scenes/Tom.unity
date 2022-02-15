@@ -1573,7 +1573,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 3e-45}
+  m_BoundingSphereOverride: {x: 0, y: 9.1835e-41, z: 1.4785519e-38, w: 8.953961e-39}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -12888,9 +12888,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff98778ae051cfd40a6e4effdf851ebd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Timeout: 10
-  Serializer: 1
-  Protocol: 0
+  SecondsTimeout: 10
+  Serializer: 2
+  protocol: 0
   RosBridgeServerUrl: ws://192.168.1.13:9090
 --- !u!114 &1504993767
 MonoBehaviour:
@@ -12947,8 +12947,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Topic: /move_base_simple/goal
+  PublishedTransform: {fileID: 0}
   FrameId: map
-  offset: {x: 0, y: 0, z: 0.6}
 --- !u!114 &1504993772
 MonoBehaviour:
   m_ObjectHideFlags: 0

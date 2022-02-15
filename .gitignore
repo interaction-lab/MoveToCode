@@ -132,4 +132,8 @@ Assets/Plugins/Android/Firebase/
 # Assets/Plugins/Android/*.aar
 
 # for Unity layouts
-UserSettings/Layouts/default-2021.dwlt
+UserSettings/Layouts/*
+
+Assets/Plugins/Android/*
+Assets/Plugins/iOS/*
+Assets/Editor\ Default\ Resources/Firebase/*

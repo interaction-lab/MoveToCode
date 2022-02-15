@@ -1,8 +1,19 @@
 ﻿using UnityEngine;
+using RosSharp.RosBridgeClient;
 namespace MoveToCode {
     public class SetColorInstruction : SnappableStandAloneInstruction {
 
         Color output;
+        ChestLedPublisher cledp = null;
+        ChestLedPublisher Cledp {
+            get {
+                if(cledp == null) {
+                    cledp = GameObject.FindObjectOfType<ChestLedPublisher>();
+                }
+                return cledp;
+            }
+        }
+
         BabyVirtualKuriController babyVirtualKuriController { get; } = (BabyVirtualKuriController)Object.FindObjectOfType(typeof(BabyVirtualKuriController));
 
         public SetColorInstruction(CodeBlock cbIn) : base(cbIn) { }
@@ -13,7 +24,12 @@ namespace MoveToCode {
 
         public override InstructionReturnValue RunInstruction() {
             EvaluateArgumentsOfInstruction();
-            BabyKuriManager.instance.ChangeKuriColor(output);
+            if (OptionSelectionManager.instance.usePhysicalKuri) {
+                Cledp.SetColor(output);
+            }
+            else {
+                BabyKuriManager.instance.ChangeKuriColor(output);
+            }
             return new InstructionReturnValue(null, GetNextInstruction());
         }
 

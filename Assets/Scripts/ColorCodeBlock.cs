@@ -2,7 +2,6 @@ using System;
 using UnityEngine;
 
 namespace MoveToCode {
-
     public class ColorCodeBlock : DataCodeBlock {
         public Color output;
         private MeshRenderer topRend;

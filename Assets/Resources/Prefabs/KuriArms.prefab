@@ -42,7 +42,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 476382791733038135}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87e97e2f3f1d5604a8539c7b0bd00747, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a4cd0f5eba1e3f429dc244be53bdf16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rootBone: {fileID: 476382793086154333}
@@ -50,9 +50,9 @@ MonoBehaviour:
   endBone: {fileID: 476382792203647203}
   targetIK: {fileID: 476382792028325167}
   elbowIK: {fileID: 476382793099924830}
-  debugLines: 1
+  debugLines: 0
   handRotation: 0
-  isEnabled: 1
+  isEnabled: 0
 --- !u!1 &476382792028325160
 GameObject:
   m_ObjectHideFlags: 0
@@ -866,7 +866,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2487772825360762766}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87e97e2f3f1d5604a8539c7b0bd00747, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a4cd0f5eba1e3f429dc244be53bdf16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rootBone: {fileID: 2487772825411896842}
@@ -874,7 +874,7 @@ MonoBehaviour:
   endBone: {fileID: 2487772824737618663}
   targetIK: {fileID: 2487772824640976378}
   elbowIK: {fileID: 2487772826522895856}
-  debugLines: 1
+  debugLines: 0
   handRotation: 0
   isEnabled: 0
 --- !u!1 &2487772825409844851

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44402242, g: 0.49316543, b: 0.5722324, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -78651,8 +78651,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Topic: /move_base_simple/goal
+  PublishedTransform: {fileID: 0}
   FrameId: map
-  offset: {x: 0, y: 0, z: 0.6}
 --- !u!114 &1823856374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78678,9 +78678,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff98778ae051cfd40a6e4effdf851ebd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Timeout: 10
+  SecondsTimeout: 10
   Serializer: 1
-  Protocol: 0
+  protocol: 0
   RosBridgeServerUrl: ws://192.168.1.253:9091
 --- !u!1 &1825469707
 GameObject:

@@ -1,5 +1,8 @@
-﻿using RosSharp.RosBridgeClient;
+﻿using Microsoft.MixedReality.Toolkit.UI;
+using RosSharp.RosBridgeClient;
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using static MoveToCode.KuriController;
 
@@ -86,6 +89,42 @@ namespace MoveToCode {
             yield return new WaitForSeconds(InteractionManager.instance.MinToSeconds(InteractionManager.instance.warmUpTimeMinutes) - 3f);
             kuriController.DoAnimationAction(EMOTIONS.happy);
             inStartUp = false;
+            if (kuriAI == null) {
+                SetUpMoveableInvisibleKuri();
+            }
+        }
+
+        private void SetUpMoveableInvisibleKuri() {
+            Transform kuri_t = transform.GetChild(1);
+            ManipulationHandler manipHandler = gameObject.AddComponent<ManipulationHandler>();
+            //manipHandler.TwoHandedManipulationType = ManipulationHandler.TwoHandedManipulation.MoveRotate;
+            TurnOffMeshRenderers(kuri_t);
+
+        }
+
+        void TurnOffAllMeshRenderers(Transform[] goArr) {
+            foreach (Transform go in goArr) {
+                TurnOffMeshRenderers(go);
+            }
+        }
+
+        void TurnOffMeshRenderers(Transform go) {
+            if (go.name == "KuriArms") {
+                return; // don't turn these off
+            }
+
+            if (go.transform.childCount > 0) {
+                List<Transform> goArr = new List<Transform>();
+                foreach (Transform t in go.transform) {
+                    goArr.Add(t);
+                }
+                TurnOffAllMeshRenderers(goArr.ToArray());
+            }
+
+            MeshRenderer rend = go.GetComponent<MeshRenderer>();
+            if (rend) {
+                rend.enabled = false;
+            }
         }
 
         private void Update() {
@@ -96,7 +135,7 @@ namespace MoveToCode {
             if (inStartUp) {
                 return;
             }
-            kuriAI.Tick();
+            kuriAI?.Tick();
             if (!wasKuriDoingActionLastTick && kuriController.IsDoingAction) {
                 TimeLastActionStarted = Time.time;
             }

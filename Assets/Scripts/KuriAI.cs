@@ -5,7 +5,8 @@ namespace MoveToCode {
         // All possible Kuri AIs
         public enum KURIAI {
             RuleBased,
-            Utility
+            Utility,
+            None
         }
 
         public abstract void Tick();

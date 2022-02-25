@@ -137,6 +137,9 @@ PlayerSettings:
   bundleVersion: 0.1
   preloadedAssets:
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -855,7 +858,7 @@ PlayerSettings:
   metroSplashScreenUseBackgroundColor: 0
   platformCapabilities:
     WindowsStoreApps:
-      CodeGeneration: False
+      EnterpriseAuthentication: False
       OfflineMapsManagement: False
       HumanInterfaceDevice: False
       Location: False
@@ -891,8 +894,8 @@ PlayerSettings:
       Contacts: False
       Proximity: False
       InternetClient: True
+      CodeGeneration: False
       BackgroundMediaPlayback: False
-      EnterpriseAuthentication: False
   metroTargetDeviceFamilies:
     Desktop: False
     Holographic: False

@@ -75,6 +75,8 @@ namespace MoveToCode {
             }
         }
 
+        bool origStateIsSet = false;
+
         /// <summary>
         /// Type is the type of movement
         /// float is the amount of movement (degrees for turns, dist in meters for moving)
@@ -85,10 +87,17 @@ namespace MoveToCode {
 
         #region unity
         private void Awake() {
+            LoggingManager.instance.AddLogColumn(babyKuriMovementActionCol, "");
+            if (!origStateIsSet) {
+                SetOrigState();
+            }
+        }
+
+        private void SetOrigState() {
             OriginalPosition = KuriPos;
             OriginalRotation = KuriRot;
             OriginalColor = KuriColor;
-            LoggingManager.instance.AddLogColumn(babyKuriMovementActionCol, "");
+            origStateIsSet = true;
         }
 
         private void FixedUpdate() {
@@ -108,6 +117,9 @@ namespace MoveToCode {
         }
 
         public void ResetToOrigState() {
+            if (!origStateIsSet) {
+                SetOrigState();
+            }
             KuriPos = OriginalPosition;
             KuriRot = OriginalRotation;
             KuriColor = OriginalColor;

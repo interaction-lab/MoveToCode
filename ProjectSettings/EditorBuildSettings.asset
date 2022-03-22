@@ -20,9 +20,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/ShadowTestTom.unity
     guid: 303e1182994bb4fbda65e56a3a306c01
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tom.unity
     guid: 23d83a1b7fbe44dff99032e67ec7923f
+  - enabled: 1
+    path: Assets/Scenes/TrackingTest.unity
+    guid: d440069f9bd4c29448fc9c62bb08c55c
   m_configObjects:
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: b26fb7ef3a6e56b46acf7ab1e79f9de5,
       type: 2}

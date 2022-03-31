@@ -1,4 +1,4 @@
-# MoveToCode: A Augmeted Reality Visual Programming Language
+# MoveToCode: An Augmeted Reality Visual Programming Language
 ![](https://zenodo.org/badge/228872749.svg)
 ![](Images/logo.gif)
 MoveToCode is an open source augmeted reality visual programming language (VPL) created by the [Interaction Lab](http://robotics.usc.edu/interaction/) led by [Maja J Matric](https://robotics.usc.edu/~maja/index.html). The VPL is used to study [student kinesthetic curiostiy](https://tgroechel.github.io/kin_cur.html).  The VPL can be thought of similar to [Scratch](https://scratch.mit.edu/) in 3D. 

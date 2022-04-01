@@ -20,6 +20,9 @@ namespace MoveToCode {
         #endregion
 
         #region unity
+        private void Awake() {
+            GetARTrackedImageManager().maxNumberOfMovingImages = ResourcePathConstants.mazeObjectDict.Count;
+        }
         private void OnEnable() {
             GetARTrackedImageManager().trackedImagesChanged += ImageChanged;
         }
@@ -48,16 +51,14 @@ namespace MoveToCode {
 
 
         private void ImageUpdated(ARTrackedImage img) {
-            TrackedObjDict[img.ImgName()].transform.position = img.transform.position;
-            TrackedObjDict[img.ImgName()].transform.rotation = img.transform.rotation;
+            TrackedObjDict[img.ImgName()].transform.rotation = Quaternion.Euler(0, img.transform.rotation.eulerAngles.y, 0); // need to keep level with the ground
         }
 
         private void ImageAdded(ARTrackedImage img) {
             if (!TrackedObjDict.ContainsKey(img.ImgName())) {
                 TrackedObjDict.Add(img.ImgName(), Instantiate(ResourcePathConstants.mazeObjectDict[img.ImgName()]) as GameObject);
-                //TrackedObjDict[img.ImgName()].transform.position = img.transform.position;
-                //TrackedObjDict[img.ImgName()].transform.rotation = img.transform.rotation;
-                //TrackedObjDict[img.ImgName()].transform.SetParent(img.transform);
+                TrackedObjDict[img.ImgName()].transform.position = img.transform.position;
+                TrackedObjDict[img.ImgName()].transform.SetParent(img.transform); // keeps tracking position
             }
             ImageUpdated(img);
         }

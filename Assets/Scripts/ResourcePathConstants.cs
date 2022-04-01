@@ -84,15 +84,18 @@ namespace MoveToCode {
         // ARImages
         public static string str_wall_1 = "wall_1";
         public static string str_wall_2 = "wall_2";
+        public static string str_wall_3 = "wall_3";
 
         public static string ARImageFolder = "ARImageReferences/";
         public static string MazePrefabFolder = ARImageFolder + "MazePrefabs/";
         public static string Wall_1 = MazePrefabFolder + str_wall_1;
         public static string Wall_2 = MazePrefabFolder + str_wall_2;
+        public static string Wall_3 = MazePrefabFolder + str_wall_3;
 
         public static Dictionary<string, GameObject> mazeObjectDict = new Dictionary<string, GameObject> {
             {str_wall_1, Resources.Load<GameObject>(Wall_1)},
             {str_wall_2, Resources.Load<GameObject>(Wall_2)},
+            {str_wall_3, Resources.Load<GameObject>(Wall_3)},
         };
 
         // AWS Credentials

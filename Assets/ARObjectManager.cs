@@ -51,14 +51,18 @@ namespace MoveToCode {
 
 
         private void ImageUpdated(ARTrackedImage img) {
+            TrackedObjDict[img.ImgName()].transform.position = img.transform.position;
             TrackedObjDict[img.ImgName()].transform.rotation = Quaternion.Euler(0, img.transform.rotation.eulerAngles.y, 0); // need to keep level with the ground
         }
 
         private void ImageAdded(ARTrackedImage img) {
             if (!TrackedObjDict.ContainsKey(img.ImgName())) {
-                TrackedObjDict.Add(img.ImgName(), Instantiate(ResourcePathConstants.mazeObjectDict[img.ImgName()]) as GameObject);
-                TrackedObjDict[img.ImgName()].transform.position = img.transform.position;
-                TrackedObjDict[img.ImgName()].transform.SetParent(img.transform); // keeps tracking position
+                if (img.ImgName() != ResourcePathConstants.kuri_start) {
+                    TrackedObjDict.Add(img.ImgName(), Instantiate(ResourcePathConstants.mazeObjectDict[img.ImgName()]) as GameObject);
+                }
+                else {
+                    TrackedObjDict.Add(img.ImgName(), BabyKuriManager.instance.gameObject); // special case for baby Kuri
+                }
             }
             ImageUpdated(img);
         }

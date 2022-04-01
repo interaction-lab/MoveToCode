@@ -85,6 +85,7 @@ namespace MoveToCode {
         public static string str_wall_1 = "wall_1";
         public static string str_wall_2 = "wall_2";
         public static string str_wall_3 = "wall_3";
+        public static string kuri_start = "kuri_start";
 
         public static string ARImageFolder = "ARImageReferences/";
         public static string MazePrefabFolder = ARImageFolder + "MazePrefabs/";

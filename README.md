@@ -10,9 +10,22 @@ Doxygen documentation can be found here: https://interaction-lab.github.io/MoveT
 ## Videos
 - [MoveToCode + a robot tutor using the Hololens 2](https://www.youtube.com/watch?v=s7udZXa2wEw) - this is when students coded text based exercises. We have since moved to phone based AR coding a robot (video coming soon).
 
-## Study Commits
+## Papers and Study Commits
+
+
+
+[Augmented Reality Appendages for Robots: Design Considerations and Recommendations for Maximizing Social and Functional Perception](https://tgroechel.github.io/publications/appendages.pdf)
+```
+@inproceedings{goktan2022augmented,
+  title={Augmented Reality Appendages for Robots: Design Considerations and Recommendations for Maximizing Social and Functional Perception},
+  author={Goktan, Ipek and Ly, Karen and Groechel, Thomas Roy and Mataric, Maja},
+  booktitle={5th International Workshop on Virtual, Augmented, and Mixed Reality for HRI},
+  year={2022}
+}
+```
+
 ![](Images/newconcise.png)
-Currently the study commit for all papers: [0765f1d1ab46373f1bc1be90d9d5b07fafc2a533](https://github.com/interaction-lab/MoveToCode/commit/0765f1d1ab46373f1bc1be90d9d5b07fafc2a533)
+Commit for all papers below this: [0765f1d1ab46373f1bc1be90d9d5b07fafc2a533](https://github.com/interaction-lab/MoveToCode/commit/0765f1d1ab46373f1bc1be90d9d5b07fafc2a533)
 
 [Kinesthetic Curiosity: Towards Personalized Embodied Learning with a Robot Tutor Teaching Programming in Mixed Reality](https://robotics.usc.edu/publications/media/uploads/pubs/pubdb_1110_b3d5df607edd4a42993486ba993c6bf7.pdf)
 ```

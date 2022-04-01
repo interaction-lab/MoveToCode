@@ -24,6 +24,15 @@ namespace MoveToCode {
                 return _interpreter;
             }
         }
+        BabyVirtualKuriController _bvkc;
+        BabyVirtualKuriController BVKC {
+            get {
+                if (_bvkc == null) {
+                    _bvkc = BKM.kuriController;
+                }
+                return _bvkc;
+            }
+        }
         #endregion
 
         #region unity
@@ -31,9 +40,11 @@ namespace MoveToCode {
 
         #region public
         public override void UpdateBehavior(ARTrackedImage img) {
-            if (!interpreter.CodeIsRunning()) {
+            if (!interpreter.IsInResetState()) {
                 transform.position = img.transform.position;
                 transform.rotation = Quaternion.Euler(0, img.transform.rotation.y, 0);
+                BVKC.OriginalPosition = transform.position;
+                BVKC.OriginalRotation = transform.rotation;
             }
         }
         #endregion

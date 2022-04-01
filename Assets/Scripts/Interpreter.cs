@@ -104,8 +104,16 @@ namespace MoveToCode {
             fullSteppingCode = false;
         }
 
-        public bool CodeIsRunning() {
+        /// <summary>
+        /// Code running for internal interpreter use only
+        /// </summary>
+        /// <returns></returns>
+        private bool CodeIsRunning() {
             return curInstruction != null;
+        }
+
+        public bool IsInResetState() {
+            return curInstruction == (StartCodeBlock.instance.GetMyIArgument() as Instruction);
         }
 
         public void AddToInstructionStack(Instruction iIn) {

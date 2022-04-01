@@ -14,7 +14,7 @@ namespace MoveToCode {
         #region public
         public override void UpdateBehavior(ARTrackedImage img) {
             transform.position = img.transform.position;
-            transform.rotation = Quaternion.Euler(0, img.transform.rotation.y, 0);
+            transform.rotation = Quaternion.Euler(0, img.transform.rotation.eulerAngles.y, 0);
         }
         #endregion
 

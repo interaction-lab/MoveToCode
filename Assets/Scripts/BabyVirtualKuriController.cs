@@ -23,8 +23,8 @@ namespace MoveToCode {
                 return bkm;
             }
         }
-        public Vector3 OriginalPosition { get; private set; }
-        public Quaternion OriginalRotation { get; private set; }
+        public Vector3 OriginalPosition { get; set; }
+        public Quaternion OriginalRotation { get; set; }
         public Color OriginalColor { get; private set; }
 
         public static string MoveLogString { get; } = "Moving ";

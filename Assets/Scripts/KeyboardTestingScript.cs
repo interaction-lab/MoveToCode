@@ -28,6 +28,7 @@ public class KeyboardTestingScript : MonoBehaviour {
             //  HumanStateManager.instance.DebugLogData();
             //FindObjectOfType<KuriEmoteStringPublisher>().PubRandomNegative();
         }
+        Debug.Log(Interpreter.instance.IsInResetState());
 
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using System;
+using UnityEngine.XR.ARFoundation;
 
 namespace MoveToCode {
     public static class ExtensionMethods {
@@ -157,6 +158,11 @@ namespace MoveToCode {
         // Float
         public static float TimeSince(this float f) {
             return Time.time - f;
+        }
+
+        // AR
+        public static string ImgName(this ARTrackedImage img) {
+            return img.referenceImage.name;
         }
     }
 }

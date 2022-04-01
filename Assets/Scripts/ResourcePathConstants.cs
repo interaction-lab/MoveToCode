@@ -81,7 +81,19 @@ namespace MoveToCode {
         public static string KuriFart = KuriNegativeSoundFolder + "Fart";
         public static string KuriPonderSad = KuriNegativeSoundFolder + "PONDER_SAD";
 
+        // ARImages
+        public static string str_wall_1 = "wall_1";
+        public static string str_wall_2 = "wall_2";
 
+        public static string ARImageFolder = "ARImageReferences/";
+        public static string MazePrefabFolder = ARImageFolder + "MazePrefabs/";
+        public static string Wall_1 = MazePrefabFolder + str_wall_1;
+        public static string Wall_2 = MazePrefabFolder + str_wall_2;
+
+        public static Dictionary<string, GameObject> mazeObjectDict = new Dictionary<string, GameObject> {
+            {str_wall_1, Resources.Load<GameObject>(Wall_1)},
+            {str_wall_2, Resources.Load<GameObject>(Wall_2)},
+        };
 
         // AWS Credentials
         public static string AWSPollyAPI = "PollyAPI1";

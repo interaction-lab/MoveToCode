@@ -7,11 +7,11 @@ using UnityEngine.XR.ARFoundation;
 namespace MoveToCode {
     public class ARObjectManager : MonoBehaviour {
         #region members
-        Dictionary<string, GameObject> trackedObjDict;
-        Dictionary<string, GameObject> TrackedObjDict {
+        Dictionary<string, ARTrackBehavior> trackedObjDict;
+        Dictionary<string, ARTrackBehavior> TrackedObjDict {
             get {
                 if (trackedObjDict == null) {
-                    trackedObjDict = new Dictionary<string, GameObject>();
+                    trackedObjDict = new Dictionary<string, ARTrackBehavior>();
                 }
                 return trackedObjDict;
             }
@@ -51,17 +51,16 @@ namespace MoveToCode {
 
 
         private void ImageUpdated(ARTrackedImage img) {
-            TrackedObjDict[img.ImgName()].transform.position = img.transform.position;
-            TrackedObjDict[img.ImgName()].transform.rotation = Quaternion.Euler(0, img.transform.rotation.eulerAngles.y, 0); // need to keep level with the ground
+            TrackedObjDict[img.ImgName()].UpdateBehavior(img);
         }
 
         private void ImageAdded(ARTrackedImage img) {
             if (!TrackedObjDict.ContainsKey(img.ImgName())) {
                 if (img.ImgName() != ResourcePathConstants.kuri_start) {
-                    TrackedObjDict.Add(img.ImgName(), Instantiate(ResourcePathConstants.mazeObjectDict[img.ImgName()]) as GameObject);
+                    TrackedObjDict.Add(img.ImgName(), Instantiate(ResourcePathConstants.mazeObjectDict[img.ImgName()]).GetComponent<ARTrackBehavior>());
                 }
                 else {
-                    TrackedObjDict.Add(img.ImgName(), BabyKuriManager.instance.gameObject); // special case for baby Kuri
+                    TrackedObjDict.Add(img.ImgName(), BabyKuriManager.instance.gameObject.GetComponent<ARTrackBehavior>()); // special case for baby Kuri
                 }
             }
             ImageUpdated(img);

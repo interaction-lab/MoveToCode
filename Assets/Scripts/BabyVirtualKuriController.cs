@@ -123,6 +123,8 @@ namespace MoveToCode {
             KuriPos = OriginalPosition;
             KuriRot = OriginalRotation;
             KuriColor = OriginalColor;
+            MoveQueue.Clear();
+            ResetCurMovementAction();
         }
 
         public void SetColor(Color color) {
@@ -153,14 +155,16 @@ namespace MoveToCode {
             CurMovementAction = MoveLogString + (forward ? "FORWARD" : "BACKWARD") + " to " + goal.ToString();
             float totalDist = Vector3.Distance(KuriPos, goal);
             float curDist = totalDist;
-            while (curDist > goalDistDelta) {
-                Vector3 dir = goal - KuriPos;
+            while (curDist > goalDistDelta || !IsMoving) {
+                Vector3 dir = (goal - KuriPos).normalized;
                 float curSpeed = moveSpeed * speedCurve.Evaluate(curDist / totalDist);
                 KuriPos = KuriPos + dir * curSpeed * Time.deltaTime;
                 curDist = Vector3.Distance(KuriPos, goal);
                 yield return null;
             }
-            KuriPos = goal;
+            if (IsMoving) {
+                KuriPos = goal;
+            }
             ResetCurMovementAction();
             StartNextMovement();
         }

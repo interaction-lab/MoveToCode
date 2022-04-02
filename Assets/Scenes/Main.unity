@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44402242, g: 0.49316543, b: 0.5722324, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -12380,6 +12380,7 @@ GameObject:
   - component: {fileID: 1423415393}
   - component: {fileID: 1423415394}
   - component: {fileID: 1423415395}
+  - component: {fileID: 1423415396}
   m_Layer: 0
   m_Name: BabyKuriManager
   m_TagString: Untagged
@@ -12425,6 +12426,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 793826cab2bc4eb4a9b808543a3d9035, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1423415396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423415392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64fef5214068e42eaae85251fa632bf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1423633134
@@ -14508,7 +14521,7 @@ PrefabInstance:
     - target: {fileID: 476382791733038134, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.08407041
+      value: 0.08407033
       objectReference: {fileID: 0}
     - target: {fileID: 476382791733038134, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}

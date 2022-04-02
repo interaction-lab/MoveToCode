@@ -23,9 +23,16 @@ namespace MoveToCode {
                 return bkm;
             }
         }
-        public Vector3 OriginalPosition { get; set; }
-        public Quaternion OriginalRotation { get; set; }
-        public Color OriginalColor { get; private set; }
+
+        private BabyKuriTransformManager _bktransformmanager;
+        public BabyKuriTransformManager BKTransformManager {
+            get {
+                if (_bktransformmanager == null) {
+                    _bktransformmanager = transform.parent.GetComponent<BabyKuriTransformManager>();
+                }
+                return _bktransformmanager;
+            }
+        }
 
         public static string MoveLogString { get; } = "Moving ";
         public static string TurnLogString { get; } = "Turning ";
@@ -34,48 +41,18 @@ namespace MoveToCode {
         private Regex turnRe = new Regex(@"^" + TurnLogString);
         public bool IsMoving {
             get {
-                return moveRe.IsMatch(CurMovementAction) || turnRe.IsMatch(CurMovementAction);
+                return (moveRe.IsMatch(CurMovementAction) || turnRe.IsMatch(CurMovementAction)) && !interpreter.IsInResetState();
             }
         }
-
-        private Transform KuriTransform {
+        Interpreter _interpreter;
+        Interpreter interpreter {
             get {
-                return babyKuriManager.transform;
+                if (_interpreter == null) {
+                    _interpreter = Interpreter.instance;
+                }
+                return _interpreter;
             }
         }
-        Vector3 KuriForward {
-            get {
-                return KuriTransform.forward * -1f;
-            }
-        }
-        private Vector3 KuriPos {
-            get {
-                return babyKuriManager.transform.position;
-            }
-            set {
-                babyKuriManager.transform.position = value;
-            }
-        }
-
-        private Quaternion KuriRot {
-            get {
-                return KuriTransform.rotation;
-            }
-            set {
-                KuriTransform.rotation = value;
-            }
-        }
-
-        public Color KuriColor {
-            get {
-                return bodyPlateRend.material.color;
-            }
-            private set {
-                bodyPlateRend.material.color = value;
-            }
-        }
-
-        bool origStateIsSet = false;
 
         /// <summary>
         /// Type is the type of movement
@@ -88,18 +65,7 @@ namespace MoveToCode {
         #region unity
         private void Awake() {
             LoggingManager.instance.AddLogColumn(babyKuriMovementActionCol, "");
-            if (!origStateIsSet) {
-                SetOrigState();
-            }
         }
-
-        private void SetOrigState() {
-            OriginalPosition = KuriPos;
-            OriginalRotation = KuriRot;
-            OriginalColor = KuriColor;
-            origStateIsSet = true;
-        }
-
         private void FixedUpdate() {
             LoggingManager.instance.UpdateLogColumn(babyKuriMovementActionCol, CurMovementAction);
         }
@@ -117,18 +83,11 @@ namespace MoveToCode {
         }
 
         public void ResetToOrigState() {
-            if (!origStateIsSet) {
-                SetOrigState();
-            }
-            KuriPos = OriginalPosition;
-            KuriRot = OriginalRotation;
-            KuriColor = OriginalColor;
-            MoveQueue.Clear();
-            ResetCurMovementAction();
+            BKTransformManager.ResetToOriginalState();
         }
 
         public void SetColor(Color color) {
-            KuriColor = color;
+            bodyPlateRend.material.color = color;
         }
 
         #endregion
@@ -138,10 +97,10 @@ namespace MoveToCode {
             if (!MoveQueue.Empty() && !IsMoving) {
                 KeyValuePair<Type, float> p = MoveQueue.Dequeue();
                 if (p.Key == typeof(CodeBlockEnums.Move)) {
-                    StartCoroutine(GoToPosition(KuriPos + KuriForward * p.Value, p.Value > 0));
+                    StartCoroutine(GoToPosition(BKTransformManager.KuriPos + BKTransformManager.Forward * p.Value, p.Value > 0));
                 }
                 else if (p.Key == typeof(CodeBlockEnums.Turn)) {
-                    StartCoroutine(TurnToAngle(Quaternion.Euler(KuriRot.eulerAngles + KuriTransform.up * p.Value), p.Value > 0));
+                    StartCoroutine(TurnToAngle(Quaternion.Euler(BKTransformManager.KuriRot.eulerAngles + BKTransformManager.Up * p.Value), p.Value > 0));
                 }
             }
         }
@@ -153,17 +112,17 @@ namespace MoveToCode {
                 throw new InvalidOperationException("Baby Kuri already moving, check moveQueue queueing code");
             }
             CurMovementAction = MoveLogString + (forward ? "FORWARD" : "BACKWARD") + " to " + goal.ToString();
-            float totalDist = Vector3.Distance(KuriPos, goal);
+            float totalDist = Vector3.Distance(BKTransformManager.KuriPos, goal);
             float curDist = totalDist;
-            while (curDist > goalDistDelta || !IsMoving) {
-                Vector3 dir = (goal - KuriPos).normalized;
+            while (curDist > goalDistDelta && IsMoving) {
+                Vector3 dir = (goal - BKTransformManager.KuriPos).normalized;
                 float curSpeed = moveSpeed * speedCurve.Evaluate(curDist / totalDist);
-                KuriPos = KuriPos + dir * curSpeed * Time.deltaTime;
-                curDist = Vector3.Distance(KuriPos, goal);
+                BKTransformManager.KuriPos = BKTransformManager.KuriPos + dir * curSpeed * Time.deltaTime;
+                curDist = Vector3.Distance(BKTransformManager.KuriPos, goal);
                 yield return null;
             }
             if (IsMoving) {
-                KuriPos = goal;
+                BKTransformManager.KuriPos = goal;
             }
             ResetCurMovementAction();
             StartNextMovement();
@@ -175,20 +134,18 @@ namespace MoveToCode {
                 throw new InvalidOperationException("Baby Kuri already moving, check moveQueue queueing code");
             }
             CurMovementAction = MoveLogString + (right ? "RIGHT" : "LEFT") + " to " + goal.ToString();
-            float totalDist = Quaternion.Angle(KuriRot, goal);
+            float totalDist = Quaternion.Angle(BKTransformManager.KuriRot, goal);
             float curDist = totalDist;
-            while (Mathf.Abs(curDist) > goalDegreeDelta) {
+            while (Mathf.Abs(curDist) > goalDegreeDelta && IsMoving) {
                 float curSpeed = turnSpeed * speedCurve.Evaluate(curDist / totalDist);
-                KuriRot = Quaternion.Euler(KuriRot.eulerAngles + KuriTransform.up * curSpeed * Time.deltaTime);
-                curDist = Quaternion.Angle(KuriRot, goal);
+                BKTransformManager.KuriRot = Quaternion.Euler(BKTransformManager.KuriRot.eulerAngles + BKTransformManager.Up * curSpeed * Time.deltaTime);
+                curDist = Quaternion.Angle(BKTransformManager.KuriRot, goal);
                 yield return null;
             }
-            KuriRot = goal;
+            BKTransformManager.KuriRot = goal;
             ResetCurMovementAction();
             StartNextMovement();
         }
-
-
 
         private void ResetCurMovementAction() {
             CurMovementAction = "";

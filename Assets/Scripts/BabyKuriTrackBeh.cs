@@ -24,13 +24,13 @@ namespace MoveToCode {
                 return _interpreter;
             }
         }
-        BabyVirtualKuriController _bvkc;
-        BabyVirtualKuriController BVKC {
+        BabyKuriTransformManager _bktransformmanager;
+        BabyKuriTransformManager BKTransformManager {
             get {
-                if (_bvkc == null) {
-                    _bvkc = BKM.kuriController;
+                if (_bktransformmanager == null) {
+                    _bktransformmanager = GetComponent<BabyKuriTransformManager>();
                 }
-                return _bvkc;
+                return _bktransformmanager;
             }
         }
         #endregion
@@ -41,11 +41,10 @@ namespace MoveToCode {
         #region public
         public override void UpdateBehavior(ARTrackedImage img) {
             if (!interpreter.IsInResetState()) {
-                transform.position = img.transform.position;
+                BKTransformManager.KuriPos = img.transform.position;
                 // This needs to be rotated 180 degrees to match the paper arrow rotation
-                transform.rotation = Quaternion.Euler(0, img.transform.rotation.y + 180, 0);
-                BVKC.OriginalPosition = transform.position;
-                BVKC.OriginalRotation = transform.rotation;
+                BKTransformManager.KuriRot = Quaternion.Euler(0, img.transform.rotation.y + 180, 0);
+                BKTransformManager.SetOriginalState();
             }
         }
         #endregion

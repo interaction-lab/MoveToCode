@@ -1,9 +1,9 @@
 ﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using Microsoft.MixedReality.Toolkit.Input;
 using Microsoft.MixedReality.Toolkit.UI;
 using Microsoft.MixedReality.Toolkit.Utilities;
-using Microsoft.MixedReality.Toolkit.Utilities.Editor;
 using UnityEditor;
 using UnityEngine;
 
@@ -17,6 +17,7 @@ namespace Microsoft.MixedReality.Toolkit.Editor
     [CanEditMultipleObjects]
     public class ObjectManipulatorInspector : UnityEditor.Editor
     {
+        private ObjectManipulator instance;
         private SerializedProperty hostTransform;
         private SerializedProperty manipulationType;
         private SerializedProperty allowFarManipulation;
@@ -29,6 +30,7 @@ namespace Microsoft.MixedReality.Toolkit.Editor
 
         private SerializedProperty releaseBehavior;
 
+        private SerializedProperty transformSmoothingLogicType;
         private SerializedProperty smoothingFar;
         private SerializedProperty smoothingNear;
         private SerializedProperty moveLerpTime;
@@ -48,12 +50,15 @@ namespace Microsoft.MixedReality.Toolkit.Editor
         bool oneHandedFoldout = true;
         bool twoHandedFoldout = true;
         bool constraintsFoldout = true;
+        bool nearInteractionFoldout = true;
         bool physicsFoldout = true;
         bool smoothingFoldout = true;
         bool eventsFoldout = true;
 
         public void OnEnable()
         {
+            instance = target as ObjectManipulator;
+
             // General properties
             hostTransform = serializedObject.FindProperty("hostTransform");
             manipulationType = serializedObject.FindProperty("manipulationType");
@@ -71,6 +76,7 @@ namespace Microsoft.MixedReality.Toolkit.Editor
             useForcesForNearManipulation = serializedObject.FindProperty("useForcesForNearManipulation");
 
             // Smoothing
+            transformSmoothingLogicType = serializedObject.FindProperty("transformSmoothingLogicType");
             smoothingFar = serializedObject.FindProperty("smoothingFar");
             smoothingNear = serializedObject.FindProperty("smoothingNear");
             moveLerpTime = serializedObject.FindProperty("moveLerpTime");
@@ -97,6 +103,26 @@ namespace Microsoft.MixedReality.Toolkit.Editor
             EditorGUILayout.PropertyField(manipulationType);
             EditorGUILayout.PropertyField(allowFarManipulation);
 
+            // Near Interaction Support foldout
+            nearInteractionFoldout = EditorGUILayout.Foldout(nearInteractionFoldout, "Near Interaction Support", true);
+
+            if (nearInteractionFoldout)
+            {
+                if (instance.GetComponent<NearInteractionGrabbable>() == null)
+                {
+                    EditorGUILayout.HelpBox($"By default, {nameof(ObjectManipulator)} only responds to far interaction input.  Add a {nameof(NearInteractionGrabbable)} component to enable near interaction support.", MessageType.Warning);
+
+                    if (GUILayout.Button("Add Near Interaction Grabbable"))
+                    {
+                        instance.gameObject.AddComponent<NearInteractionGrabbable>();
+                    }
+                }
+                else
+                {
+                    EditorGUILayout.HelpBox($"A {nameof(NearInteractionGrabbable)} is attached to this object, near interaction support is enabled.", MessageType.Info);
+                }
+            }
+
             var handedness = (ManipulationHandFlags)manipulationType.intValue;
 
             EditorGUILayout.Space();
@@ -107,7 +133,7 @@ namespace Microsoft.MixedReality.Toolkit.Editor
 
             if (oneHandedFoldout)
             {
-                if (handedness.HasFlag(ManipulationHandFlags.OneHanded))
+                if (handedness.IsMaskSet(ManipulationHandFlags.OneHanded))
                 {
                     EditorGUILayout.PropertyField(oneHandRotationModeNear);
                     EditorGUILayout.PropertyField(oneHandRotationModeFar);
@@ -123,7 +149,7 @@ namespace Microsoft.MixedReality.Toolkit.Editor
 
             if (twoHandedFoldout)
             {
-                if (handedness.HasFlag(ManipulationHandFlags.TwoHanded))
+                if (handedness.IsMaskSet(ManipulationHandFlags.TwoHanded))
                 {
                     EditorGUILayout.PropertyField(twoHandedManipulationType);
                 }
@@ -164,6 +190,7 @@ namespace Microsoft.MixedReality.Toolkit.Editor
 
             if (smoothingFoldout)
             {
+                EditorGUILayout.PropertyField(transformSmoothingLogicType);
                 EditorGUILayout.PropertyField(smoothingFar);
                 EditorGUILayout.PropertyField(smoothingNear);
                 EditorGUILayout.PropertyField(moveLerpTime);

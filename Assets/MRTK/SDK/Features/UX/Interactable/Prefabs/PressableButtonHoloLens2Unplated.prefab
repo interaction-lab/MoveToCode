@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 316800719}
   - component: {fileID: 2034987663884019302}
   - component: {fileID: 7652376644636595447}
-  - component: {fileID: -3709252118191713494}
+  - component: {fileID: 1188955276628880093}
   m_Layer: 0
   m_Name: PressableButtonHoloLens2Unplated
   m_TagString: Untagged
@@ -202,7 +202,7 @@ MonoBehaviour:
   startDimensionIndex: 0
   CanSelect: 0
   CanDeselect: 0
-  VoiceCommand: Select
+  voiceCommand: Select
   voiceRequiresFocus: 1
   profiles:
   - Target: {fileID: 329340111926477333}
@@ -516,7 +516,7 @@ MonoBehaviour:
   mainLabelText: {fileID: 937783102}
   interactable: {fileID: 7440800412470431853}
   seeItSayItLabel: {fileID: 329340111926477333}
-  seeItSatItLabelText: {fileID: 9181818329810857364}
+  seeItSayItLabelText: {fileID: 9181818329810857364}
   iconStyle: 0
   iconCharLabel: {fileID: 5182697764271180019}
   iconCharFont: {fileID: 0}
@@ -530,7 +530,7 @@ MonoBehaviour:
     type: 2}
   iconSet: {fileID: 11400000, guid: 8b386ef895f7c924f8c4b03d1d3ed683, type: 2}
   defaultIconSet: {fileID: 11400000, guid: 8b386ef895f7c924f8c4b03d1d3ed683, type: 2}
---- !u!114 &-3709252118191713494
+--- !u!114 &1188955276628880093
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1031,7 +1031,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1213,7 +1213,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Say "Button"
+  m_text: Say "Select"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6a84f857bec7e7345843ae29404c57ce, type: 2}
   m_sharedMaterial: {fileID: 21202819797275496, guid: 6a84f857bec7e7345843ae29404c57ce,

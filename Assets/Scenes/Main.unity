@@ -2034,7 +2034,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 223377334}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14539,7 +14539,7 @@ PrefabInstance:
     - target: {fileID: 476382791733038134, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.08407041
+      value: 0.084070355
       objectReference: {fileID: 0}
     - target: {fileID: 476382791733038134, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
@@ -14549,7 +14549,7 @@ PrefabInstance:
     - target: {fileID: 476382791733038134, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.10051056
+      value: -0.10051057
       objectReference: {fileID: 0}
     - target: {fileID: 476382791733038134, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
@@ -14599,12 +14599,12 @@ PrefabInstance:
     - target: {fileID: 476382793086154333, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9581521
+      value: 0.95815206
       objectReference: {fileID: 0}
     - target: {fileID: 476382793086154333, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.2862597
+      value: -0.28625983
       objectReference: {fileID: 0}
     - target: {fileID: 476382793099924830, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
@@ -14734,12 +14734,12 @@ PrefabInstance:
     - target: {fileID: 2487772825070479730, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.3115576
+      value: 0.31155783
       objectReference: {fileID: 0}
     - target: {fileID: 2487772825070479730, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.95022726
+      value: 0.9502272
       objectReference: {fileID: 0}
     - target: {fileID: 2487772825360762764, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
@@ -14779,12 +14779,12 @@ PrefabInstance:
     - target: {fileID: 2487772825411896842, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9375613
+      value: 0.9375612
       objectReference: {fileID: 0}
     - target: {fileID: 2487772825411896842, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.34782013
+      value: -0.34782043
       objectReference: {fileID: 0}
     - target: {fileID: 2487772825955322132, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
@@ -15837,7 +15837,6 @@ GameObject:
   - component: {fileID: 1800814699}
   - component: {fileID: 1800814698}
   - component: {fileID: 1800814702}
-  - component: {fileID: 1800814703}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -15911,8 +15910,8 @@ Camera:
   m_GameObject: {fileID: 1800814695}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -15926,7 +15925,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 1000
+  far clip plane: 50
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -15978,29 +15977,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!114 &1800814703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1800814695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf98dd1206224111a38765365e98e207, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lockCursorWhenFocusLocked: 1
-  setCursorInvisibleWhenFocusLocked: 0
-  maxGazeCollisionDistance: 10
-  raycastLayerMasks:
-  - serializedVersion: 2
-    m_Bits: 4294967291
-  stabilizer:
-    storedStabilitySamples: 60
-  gazeTransform: {fileID: 0}
-  minHeadVelocityThreshold: 0.5
-  maxHeadVelocityThreshold: 2
 --- !u!4 &1805447509 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2204069623020599746, guid: 3f1f46cbecbe08e46a303ccfdb5b498a,

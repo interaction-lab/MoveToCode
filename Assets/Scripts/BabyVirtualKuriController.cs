@@ -143,7 +143,9 @@ namespace MoveToCode {
                 curDist = Quaternion.Angle(BKTransformManager.KuriRot, goal);
                 yield return null;
             }
-            BKTransformManager.KuriRot = goal;
+            if(IsMoving){
+                BKTransformManager.KuriRot = goal;
+            }
             ResetCurMovementAction();
             StartNextMovement();
         }

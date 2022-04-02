@@ -20,27 +20,11 @@ public class KeyboardTestingScript : MonoBehaviour {
         anim = GetComponent<Animator>();
     }
 
-    private void OnEnable() {
-        ARTrackingManagerInstance.OnTrackingStarted.AddListener(StartTracking);
-        ARTrackingManagerInstance.OnTrackingEnded.AddListener(StopTracking);
-    }
-
-    private void OnDisable() {
-        ARTrackingManagerInstance.OnTrackingStarted.RemoveListener(StartTracking);
-        ARTrackingManagerInstance.OnTrackingEnded.RemoveListener(StopTracking);
-    }
-
-    private void StartTracking() {
-        KuriTextManager.instance.Addline("Start Tracking");
-    }
-    private void StopTracking() {
-        KuriTextManager.instance.Addline("Stop Tracking");
-    }
-
 
     void Update() {
         if (Input.GetKeyDown("h")) {
             //anim.SetTrigger("HighFive");
+            Interpreter.instance.ResetCodeState();
         }
         if (Input.GetKeyDown(KeyCode.Alpha0)) {
             // Interpreter.instance.RunNextInstruction();

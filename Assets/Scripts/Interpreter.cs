@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 namespace MoveToCode {
+    #region members
     public class Interpreter : Singleton<Interpreter> {
         Stack<Instruction> instructionStack = new Stack<Instruction>();
         public InstructionReturnValue lastInstructionReturn;
@@ -16,13 +17,21 @@ namespace MoveToCode {
         public float stepSpeed = 0.5f;
 
         public UnityEvent OnCodeReset, OnCodeStart, OnCodeEnd, OnCodeError;
+        #endregion
 
-        private void Awake() {
-            ResetCodeState();
+        #region unity
+        private void OnEnable() {
             LoggingManager.instance.AddLogColumn(instructionRunCol, "");
             LoggingManager.instance.AddLogColumn(codeErrorCol, "");
+            StartCoroutine(WaitFor1Frame()); // wait for 1 frame or else highlight and events will not work correctly
         }
+        IEnumerator WaitFor1Frame() {
+            yield return new WaitForEndOfFrame();
+            ResetCodeState();
+        }
+        #endregion
 
+        #region public
         public void ResetCodeState() {
             if (instructionStack == null) {
                 instructionStack = new Stack<Instruction>();
@@ -31,10 +40,11 @@ namespace MoveToCode {
             ExerciseManager.instance.AlertCodeReset();
             ConsoleManager.instance.ClearConsole();
             curInstruction?.GetCodeBlock()?.ToggleOutline(false);
-            instructionStack.Clear();
-            lastInstructionReturn = null;
             curInstruction = StartCodeBlock.instance.GetMyIArgument() as Instruction;
             StartCodeBlock.instance.ToggleOutline(true);
+            instructionStack.Clear();
+            lastInstructionReturn = null;
+
             CodeBlockManager.instance.ResetAllCodeBlockInternalState();
             MemoryManager.instance.ResetMemoryState();
             numInstructionsRun = 0;
@@ -49,33 +59,59 @@ namespace MoveToCode {
             }
             else {
                 if (curInstruction == StartCodeBlock.instance.GetMyIArgument() as Instruction) {
-                    MemoryManager.instance.SaveMemoryState();
-                    OnCodeStart.Invoke();
+                    SignalCodeStart();
                 }
                 try {
-                    ++numInstructionsRun;
-                    LoggingManager.instance.UpdateLogColumn(instructionRunCol, curInstruction?.DescriptiveInstructionToString());
-                    lastInstructionReturn = curInstruction.RunInstruction();
-                    UpdateCurInstruction();
-                    if (numInstructionsRun > instructionRunLimit) {
-                        throw new Exception("Too man instructions run, maybe an infinite loop?");
-                    }
+                    RunInstruction_Private();
                 }
                 catch (Exception ex) {
-                    string lineToAdd = ex.ToString();
-                    if (lineToAdd.Contains("NULL")) {
-                        lineToAdd = "Instruction Block Incomplete";
-                    }
-                    ConsoleManager.instance.AddLine(string.Join("", lineToAdd, ", Code Resetting"));
-                    LoggingManager.instance.UpdateLogColumn(codeErrorCol, lineToAdd);
-                    Debug.LogWarning(ex.ToString());
-                    OnCodeError.Invoke();
-                    ResetCodeState();
+                    CatchCodeError(ex);
                 }
             }
         }
 
-        void UpdateCurInstruction() {
+        public bool IsInResetState() {
+            return curInstruction == (StartCodeBlock.instance.GetMyIArgument() as Instruction);
+        }
+
+        public void AddToInstructionStack(Instruction iIn) {
+            instructionStack.Push(iIn);
+        }
+
+        public void FullStepCode() {
+            StartCoroutine(StepThroughCode());
+        }
+        #endregion
+
+        #region private
+        private void CatchCodeError(Exception ex) {
+            string lineToAdd = ex.ToString();
+            if (lineToAdd.Contains("NULL")) {
+                lineToAdd = "Instruction Block Incomplete";
+            }
+            ConsoleManager.instance.AddLine(string.Join("", lineToAdd, ", Code Resetting"));
+            LoggingManager.instance.UpdateLogColumn(codeErrorCol, lineToAdd);
+            Debug.LogWarning(ex.ToString());
+            OnCodeError.Invoke();
+            ResetCodeState();
+        }
+
+        private void RunInstruction_Private() {
+            ++numInstructionsRun;
+            LoggingManager.instance.UpdateLogColumn(instructionRunCol, curInstruction?.DescriptiveInstructionToString());
+            lastInstructionReturn = curInstruction.RunInstruction();
+            UpdateCurInstruction();
+            if (numInstructionsRun > instructionRunLimit) {
+                throw new Exception("Too man instructions run, maybe an infinite loop?");
+            }
+        }
+
+        private void SignalCodeStart() {
+            MemoryManager.instance.SaveMemoryState();
+            OnCodeStart.Invoke();
+        }
+
+        private void UpdateCurInstruction() {
             curInstruction?.GetCodeBlock()?.ToggleOutline(false);
             curInstruction = lastInstructionReturn?.GetNextInstruction();
             if (curInstruction == null) {
@@ -93,10 +129,6 @@ namespace MoveToCode {
                 }
                 ConsoleManager.instance.AddFinishLine();
             }
-        }
-
-        public void FullStepCode() {
-            StartCoroutine(StepThroughCode());
         }
 
         IEnumerator StepThroughCode() {
@@ -118,13 +150,6 @@ namespace MoveToCode {
         private bool CodeIsRunning() {
             return curInstruction != null;
         }
-
-        public bool IsInResetState() {
-            return curInstruction == (StartCodeBlock.instance.GetMyIArgument() as Instruction);
-        }
-
-        public void AddToInstructionStack(Instruction iIn) {
-            instructionStack.Push(iIn);
-        }
+        #endregion
     }
 }

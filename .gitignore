@@ -145,3 +145,4 @@ Assets/StreamingAssets/
 ProjectSettings/ProjectSettings.asset
 ProjectSettings/QualitySettings.asset
 UserSettings/EditorUserSettings.asset
+mono_crash*

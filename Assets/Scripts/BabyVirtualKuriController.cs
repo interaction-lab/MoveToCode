@@ -134,10 +134,11 @@ namespace MoveToCode {
                 throw new InvalidOperationException("Baby Kuri already moving, check moveQueue queueing code");
             }
             CurMovementAction = MoveLogString + (right ? "RIGHT" : "LEFT") + " to " + goal.ToString();
+            int spinDir = right ? 1 : -1;
             float totalDist = Quaternion.Angle(BKTransformManager.KuriRot, goal);
             float curDist = totalDist;
             while (Mathf.Abs(curDist) > goalDegreeDelta && IsMoving) {
-                float curSpeed = turnSpeed * speedCurve.Evaluate(curDist / totalDist);
+                float curSpeed = spinDir * turnSpeed * speedCurve.Evaluate(curDist / totalDist);
                 BKTransformManager.KuriRot = Quaternion.Euler(BKTransformManager.KuriRot.eulerAngles + BKTransformManager.Up * curSpeed * Time.deltaTime);
                 curDist = Quaternion.Angle(BKTransformManager.KuriRot, goal);
                 yield return null;

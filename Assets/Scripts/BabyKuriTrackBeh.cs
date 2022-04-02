@@ -34,6 +34,16 @@ namespace MoveToCode {
             }
         }
 
+        ARTrackingManager _artrackingmanager;
+        ARTrackingManager ARTrackingManagerInstance {
+            get {
+                if (_artrackingmanager == null) {
+                    _artrackingmanager = ARTrackingManager.instance;
+                }
+                return _artrackingmanager;
+            }
+        }
+
         #endregion
 
         #region unity
@@ -41,10 +51,10 @@ namespace MoveToCode {
 
         #region public
         public override void UpdateBehavior(ARTrackedImage img) {
-            if (!interpreter.IsInResetState()) {
+            if (ARTrackingManagerInstance.IsTracking) {
                 BKTransformManager.KuriPos = img.transform.position;
                 // This needs to be rotated 180 degrees to match the paper arrow rotation
-                BKTransformManager.KuriRot = Quaternion.Euler(0, img.transform.rotation.y + 180, 0);
+                BKTransformManager.KuriRot = Quaternion.Euler(0, (img.transform.rotation.y + 180) % 360, 0);
                 BKTransformManager.SetOriginalState();
             }
         }

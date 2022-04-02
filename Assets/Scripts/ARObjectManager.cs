@@ -54,9 +54,6 @@ namespace MoveToCode {
 
         #region private
         private void ImageChanged(ARTrackedImagesChangedEventArgs eventArgs) {
-            if(!ARTrackingManagerInstance.IsTracking){
-                return;
-            }
             foreach (ARTrackedImage img in eventArgs.added) {
                 KuriTextManager.instance.Addline(img.ImgName());
                 ImageAdded(img);
@@ -71,7 +68,9 @@ namespace MoveToCode {
 
 
         private void ImageUpdated(ARTrackedImage img) {
-            TrackedObjDict[img.ImgName()].UpdateBehavior(img);
+            if (ARTrackingManagerInstance.IsTracking) {
+                TrackedObjDict[img.ImgName()].UpdateBehavior(img);
+            }
         }
 
         private void ImageAdded(ARTrackedImage img) {

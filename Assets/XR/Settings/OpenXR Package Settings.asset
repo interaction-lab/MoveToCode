@@ -318,7 +318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   features: []
   m_renderMode: 1
-  m_depthSubmissionMode: 0
+  m_depthSubmissionMode: 1
 --- !u!114 &-470753983921412422
 MonoBehaviour:
   m_ObjectHideFlags: 0

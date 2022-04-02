@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b71cb900fa9dec5488df2deb180db58f, type: 3}
-  m_Name: New MixedRealityInputSystemProfile 1
+  m_Name: iOSInputProvider
   m_EditorClassIdentifier: 
   isCustomProfile: 1
   dataProviderConfigurations:
   - componentType:
-      reference: Microsoft.MixedReality.Toolkit.XRSDK.WindowsMixedReality.WindowsMixedRealityDeviceManager,
-        Microsoft.MixedReality.Toolkit.Providers.XRSDK.WindowsMixedReality
-    componentName: XRSDK Windows Mixed Reality Device Manager
+      reference: Microsoft.MixedReality.Toolkit.WindowsMixedReality.Input.WindowsMixedRealityDeviceManager,
+        Microsoft.MixedReality.Toolkit.Providers.WindowsMixedReality
+    componentName: Windows Mixed Reality Device Manager
     priority: 0
-    runtimePlatform: 265
+    runtimePlatform: 8
     deviceManagerProfile: {fileID: 0}
   - componentType:
       reference: Microsoft.MixedReality.Toolkit.OpenVR.Input.OpenVRDeviceManager,

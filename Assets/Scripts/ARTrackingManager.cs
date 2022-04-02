@@ -32,10 +32,12 @@ namespace MoveToCode {
 
         #region unity
         void OnEnable(){
+            StartTracking();
             InterpreterInstance.OnCodeReset.AddListener(OnCodeReset);
             InterpreterInstance.OnCodeStart.AddListener(OnCodeStart);
         }
         void OnDisable(){
+            StopTracking();
             InterpreterInstance.OnCodeReset.RemoveListener(OnCodeReset);
             InterpreterInstance.OnCodeStart.RemoveListener(OnCodeStart);
         }

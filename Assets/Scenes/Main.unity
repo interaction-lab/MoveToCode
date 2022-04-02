@@ -7580,6 +7580,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   instructionRunLimit: 30
   stepSpeed: 1
+  OnCodeReset:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCodeStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCodeEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCodeError:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &916564989
 GameObject:
   m_ObjectHideFlags: 0
@@ -13833,7 +13845,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83d9acc7968244a8886f3af591305bcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeProfile: {fileID: 11400000, guid: f9ee94d74242148528020ea6690726b4, type: 2}
+  activeProfile: {fileID: 11400000, guid: f1265e324ae484b81a34fb8444f97e82, type: 2}
 --- !u!4 &1617816952
 Transform:
   m_ObjectHideFlags: 0
@@ -15818,8 +15830,8 @@ GameObject:
   - component: {fileID: 1800814700}
   - component: {fileID: 1800814699}
   - component: {fileID: 1800814698}
-  - component: {fileID: 1800814697}
   - component: {fileID: 1800814702}
+  - component: {fileID: 1800814703}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -15842,29 +15854,6 @@ Transform:
   m_Father: {fileID: 1753918635}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1800814697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1800814695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf98dd1206224111a38765365e98e207, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lockCursorWhenFocusLocked: 1
-  setCursorInvisibleWhenFocusLocked: 0
-  maxGazeCollisionDistance: 10
-  raycastLayerMasks:
-  - serializedVersion: 2
-    m_Bits: 4294967291
-  stabilizer:
-    storedStabilitySamples: 60
-  gazeTransform: {fileID: 0}
-  minHeadVelocityThreshold: 0.5
-  maxHeadVelocityThreshold: 2
 --- !u!114 &1800814698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15983,6 +15972,29 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &1800814703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800814695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf98dd1206224111a38765365e98e207, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lockCursorWhenFocusLocked: 1
+  setCursorInvisibleWhenFocusLocked: 0
+  maxGazeCollisionDistance: 10
+  raycastLayerMasks:
+  - serializedVersion: 2
+    m_Bits: 4294967291
+  stabilizer:
+    storedStabilitySamples: 60
+  gazeTransform: {fileID: 0}
+  minHeadVelocityThreshold: 0.5
+  maxHeadVelocityThreshold: 2
 --- !u!4 &1805447509 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2204069623020599746, guid: 3f1f46cbecbe08e46a303ccfdb5b498a,

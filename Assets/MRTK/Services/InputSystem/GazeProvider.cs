@@ -17,7 +17,6 @@ namespace Microsoft.MixedReality.Toolkit.Input
     [AddComponentMenu("Scripts/MRTK/Services/GazeProvider")]
     public class GazeProvider :
         InputSystemGlobalHandlerListener,
-        IMixedRealityGazeProvider,
         IMixedRealityGazeProviderHeadOverride,
         IMixedRealityEyeGazeProvider,
         IMixedRealityInputHandler
@@ -211,6 +210,7 @@ namespace Microsoft.MixedReality.Toolkit.Input
             private static readonly ProfilerMarker OnPreSceneQueryPerfMarker = new ProfilerMarker("[MRTK] InternalGazePointer.OnPreSceneQuery");
 
             /// <inheritdoc />
+            /// On pre-scene query, the gaze pointer will set up it's raycast ray to use either the eye gaze ray or the head gaze ray, depending on IsEyeTrackingEnabledAndValid
             public override void OnPreSceneQuery()
             {
                 using (OnPreSceneQueryPerfMarker.Auto())
@@ -253,8 +253,6 @@ namespace Microsoft.MixedReality.Toolkit.Input
 
                     Vector3 endPoint = newGazeOrigin + (newGazeNormal * pointerExtent);
                     Rays[0].UpdateRayStep(ref newGazeOrigin, ref endPoint);
-
-                    gazeProvider.HitPosition = Rays[0].Origin + (gazeProvider.lastHitDistance * Rays[0].Direction);
                 }
             }
 
@@ -444,9 +442,9 @@ namespace Microsoft.MixedReality.Toolkit.Input
         private void OnDestroy()
         {
             // Because GazeCursor is not derived from UnityEngine.Object, we need to manually perform null check against Unity's null
-            if (GazeCursor != null && !GazeCursor.Equals(null))
+            if (GazeCursor.TryGetMonoBehaviour(out MonoBehaviour gazeCursor))
             {
-                Destroy(GazeCursor.GameObjectReference);
+                Destroy(gazeCursor.gameObject);
             }
         }
 
@@ -551,6 +549,12 @@ namespace Microsoft.MixedReality.Toolkit.Input
         public void UpdateGazeInfoFromHit(MixedRealityRaycastHit raycastHit)
         {
             HitInfo = raycastHit;
+
+            if (IsEyeTrackingEnabledAndValid)
+            {
+                UpdateEyeGaze(null, GazePointer.Rays[0], DateTime.UtcNow);
+            }
+
             if (raycastHit.transform != null)
             {
                 GazeTarget = raycastHit.transform.gameObject;
@@ -610,6 +614,7 @@ namespace Microsoft.MixedReality.Toolkit.Input
         public void UpdateEyeGaze(IMixedRealityEyeGazeDataProvider provider, Ray eyeRay, DateTime timestamp)
         {
             LatestEyeGaze = eyeRay;
+
             latestEyeTrackingUpdate = DateTime.UtcNow;
             Timestamp = timestamp;
         }

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEditor;
-
 using UnityEngine;
 
 namespace Microsoft.MixedReality.Toolkit.Utilities.Editor
@@ -431,7 +430,7 @@ namespace Microsoft.MixedReality.Toolkit.Utilities.Editor
         {
             Color prevColor = GUI.color;
 
-            GUI.color = ColorTint100;
+            GUI.color = ColorTint50;
             using (new EditorGUILayout.VerticalScope(EditorStyles.textArea))
             {
                 EditorGUILayout.LabelField(notice, EditorStyles.wordWrappedMiniLabel);
@@ -536,7 +535,7 @@ namespace Microsoft.MixedReality.Toolkit.Utilities.Editor
             EditorGUI.BeginProperty(position, label, prop);
             {
                 result = EditorGUI.EnumPopup(position, label, propValue);
-                prop.enumValueIndex = Convert.ToInt32(result);
+                prop.intValue = Convert.ToInt32(result);
             }
             EditorGUI.EndProperty();
 
@@ -639,9 +638,9 @@ namespace Microsoft.MixedReality.Toolkit.Utilities.Editor
                     // case 5: only show the link
 
                     // case 5 -> can't create and/or store the local scriptable above - show link
-                    bool isStoredAsset = (scriptable.objectReferenceValue == null) ? false : AssetDatabase.Contains(scriptable.objectReferenceValue);
+                    bool isStoredAsset = scriptable.objectReferenceValue != null && AssetDatabase.Contains(scriptable.objectReferenceValue);
                     bool isEmptyInStagedPrefab = !isStoredAsset && ((Component)scriptable.serializedObject.targetObject).gameObject.scene.path == "";
-                    if (scriptable.objectReferenceValue == null ||  isEmptyInStagedPrefab)
+                    if (scriptable.objectReferenceValue == null || isEmptyInStagedPrefab)
                     {
                         EditorGUILayout.HelpBox("No scriptable " + scriptable.displayName + " linked to this prefab. Prefabs can't store " +
                             "local versions of scriptables and need to be linked to a scriptable asset.", MessageType.Warning);
@@ -650,14 +649,23 @@ namespace Microsoft.MixedReality.Toolkit.Utilities.Editor
                     else
                     {
                         bool isNestedInCurrentPrefab = false;
+#if UNITY_2021_2_OR_NEWER
                         var prefabStage = UnityEditor.SceneManagement.PrefabStageUtility.GetCurrentPrefabStage();
+#else
+                        var prefabStage = UnityEditor.Experimental.SceneManagement.PrefabStageUtility.GetCurrentPrefabStage();
+#endif
                         if (prefabStage != null)
                         {
                             var instancePath = AssetDatabase.GetAssetPath(scriptable.objectReferenceValue);
-                            isNestedInCurrentPrefab = (instancePath != "" && instancePath == prefabStage.prefabAssetPath);
+                            isNestedInCurrentPrefab = instancePath != "" &&
+#if UNITY_2020_1_OR_NEWER
+                                instancePath == prefabStage.assetPath
+#else
+                                instancePath == prefabStage.prefabAssetPath
+#endif
+                            ;
                         }
-                        
-                        
+
                         if (isStoredAsset && !isNestedInCurrentPrefab)
                         {
                             // case 3 & 4 - greyed out drawer
@@ -693,8 +701,6 @@ namespace Microsoft.MixedReality.Toolkit.Utilities.Editor
                             EditorGUILayout.PropertyField(scriptable, new GUIContent(scriptable.displayName + " (local): "));
                             DrawScriptableSubEditor(scriptable);
                         }
-
-                        
                     }
                 }
             }
@@ -704,14 +710,14 @@ namespace Microsoft.MixedReality.Toolkit.Utilities.Editor
 
         /// <summary>
         /// Draws a foldout enlisting all components (or derived types) of the given type attached to the passed gameobject.
-        /// Adds a button for adding any of the component (or dervied types) and a follow button to highlight existing attached components.
+        /// Adds a button for adding any of the component (or derived types) and a follow button to highlight existing attached components.
         /// </summary>
         static public bool DrawComponentTypeFoldout<T>(GameObject gameObject, bool isExpanded, string typeDescription) where T : MonoBehaviour
         {
             isExpanded = EditorGUILayout.Foldout(isExpanded, typeDescription + "s", true);
 
             if (isExpanded)
-            { 
+            {
                 if (EditorGUILayout.DropdownButton(new GUIContent("Add " + typeDescription), FocusType.Keyboard))
                 {
                     // create the menu and add items to it

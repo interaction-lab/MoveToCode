@@ -27,10 +27,11 @@
 //------------------------------------------------------------------------------ -
 
 // Copyright (c) Microsoft Corporation.
-// Licensed under the MIT License.﻿
+// Licensed under the MIT License.
 
+using System;
 using UnityEngine;
-using UnityEngine.XR;
+using UnityEngine.Serialization;
 
 namespace Microsoft.MixedReality.Toolkit.XRSDK.Oculus.Input
 {
@@ -38,7 +39,7 @@ namespace Microsoft.MixedReality.Toolkit.XRSDK.Oculus.Input
     /// The profile for the Oculus XRSDK Device Manager. The settings for this profile can be viewed if the Leap Motion Device Manager input data provider is 
     /// added to the MRTK input configuration profile.
     /// </summary>
-    [CreateAssetMenu(menuName = "Mixed Reality Toolkit/Profiles/Mixed Reality Oculus XRSDK Profile", fileName = "OculusXRSDKDeviceManagerProfile", order = 4)]
+    [CreateAssetMenu(menuName = "Mixed Reality Toolkit/Profiles/Mixed Reality Oculus XR SDK Profile", fileName = "OculusXRSDKDeviceManagerProfile", order = 4)]
     [MixedRealityServiceProfile(typeof(OculusXRSDKDeviceManager))]
     public class OculusXRSDKDeviceManagerProfile : BaseMixedRealityProfile
     {
@@ -61,15 +62,23 @@ namespace Microsoft.MixedReality.Toolkit.XRSDK.Oculus.Input
 
 
         [SerializeField]
+        [FormerlySerializedAs("renderAvatarHandsInsteadOfControllers")]
         [Tooltip("Using avatar hands requires a local avatar prefab. Failure to provide one will result in nothing being displayed. \n\n" +
          "Note: In order to render avatar hands, you will need to set an app id in Assets/Resources/OvrAvatarSettings. Any number will do, but it needs to be set.")]
-        private bool renderAvatarHandsInsteadOfControllers = true;
+        private bool renderAvatarHandsWithControllers = true;
 
         /// <summary>
         /// Using avatar hands requires a local avatar prefab. Failure to provide one will result in nothing being displayed.
         /// "Note: In order to render avatar hands, you will need to set an app id in Assets/Resources/OvrAvatarSettings. Any number will do, but it needs to be set.")]
         /// </summary>
-        public bool RenderAvatarHandsInsteadOfController => renderAvatarHandsInsteadOfControllers;
+        [Obsolete("Use RenderAvatarHandsWithControllers instead")]
+        public bool RenderAvatarHandsInsteadOfController => renderAvatarHandsWithControllers;
+
+        /// <summary>
+        /// Using avatar hands requires a local avatar prefab. Failure to provide one will result in nothing being displayed.
+        /// "Note: In order to render avatar hands, you will need to set an app id in Assets/Resources/OvrAvatarSettings. Any number will do, but it needs to be set.")]
+        /// </summary>
+        public bool RenderAvatarHandsWithControllers => renderAvatarHandsWithControllers;
 
         [SerializeField]
         [Tooltip("Prefab reference for LocalAvatar to load, if none are found in scene.")]
@@ -83,57 +92,6 @@ namespace Microsoft.MixedReality.Toolkit.XRSDK.Oculus.Input
             get { return localAvatarPrefab; }
             set { localAvatarPrefab = value; }
         }
-
-        [Header("Hand Mesh Visualization")]
-        [SerializeField]
-        [Tooltip("If true, hand mesh material will be replaced with custom material.")]
-        private bool useCustomHandMaterial = true;
-
-        /// <summary>
-        /// If true, hand mesh material will be replaced with custom material.
-        /// </summary>
-        public bool UseCustomHandMaterial => useCustomHandMaterial;
-
-        [SerializeField]
-        [Tooltip("Custom hand material to use for hand tracking hand mesh. Use Custom Hand Material must be set to true for this material to be applied")]
-        private Material customHandMaterial = null;
-
-        /// <summary>
-        /// Event triggered when the custom material for hand mesh is updated.
-        /// </summary>
-        public System.Action OnCustomHandMaterialUpdate;
-
-        /// <summary>
-        /// Custom hand material to use for hand tracking hand mesh.
-        /// </summary>
-        public Material CustomHandMaterial
-        {
-            get => customHandMaterial;
-
-            set
-            {
-                customHandMaterial = value;
-                OnCustomHandMaterialUpdate?.Invoke();
-            }
-        }
-
-        [SerializeField]
-        [Tooltip("If true, will update material pinch strength using OVR Values.")]
-        private bool updateMaterialPinchStrengthValue = true;
-
-        /// <summary>
-        /// If true, will update material pinch strength using OVR Values.
-        /// </summary>
-        public bool UpdateMaterialPinchStrengthValue => UseCustomHandMaterial && updateMaterialPinchStrengthValue;
-
-        [SerializeField]
-        [Tooltip("Property in custom material used to visualize pinch strength.")]
-        private string pinchStrengthMaterialProperty = "_PressIntensity";
-
-        /// <summary>
-        /// Property in custom material used to visualize pinch strength.
-        /// </summary>
-        public string PinchStrengthMaterialProperty => pinchStrengthMaterialProperty;
 
 #if OCULUSINTEGRATION_PRESENT
         [Header("Hand Tracking Configuration")]
@@ -230,7 +188,7 @@ namespace Microsoft.MixedReality.Toolkit.XRSDK.Oculus.Input
         public void ApplyConfiguredPerformanceSettings()
         {
 #if OCULUSINTEGRATION_PRESENT
-            XRSettings.eyeTextureResolutionScale = resolutionScale;
+            UnityEngine.XR.XRSettings.eyeTextureResolutionScale = resolutionScale;
             OVRManager.cpuLevel = CPULevel;
             OVRManager.gpuLevel = GPULevel;
 

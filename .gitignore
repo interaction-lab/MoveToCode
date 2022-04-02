@@ -137,3 +137,9 @@ UserSettings/Layouts/*
 Assets/Plugins/Android/*
 Assets/Plugins/iOS/*
 Assets/Editor\ Default\ Resources/Firebase/*
+
+# Mac issues
+Assets/ExternalDependencyManager/Editor/1.2.167.meta
+Assets/StreamingAssets.meta
+Assets/StreamingAssets/
+ProjectSettings/ProjectSettings.asset

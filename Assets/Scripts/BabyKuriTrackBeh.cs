@@ -42,7 +42,8 @@ namespace MoveToCode {
         public override void UpdateBehavior(ARTrackedImage img) {
             if (!interpreter.IsInResetState()) {
                 transform.position = img.transform.position;
-                transform.rotation = Quaternion.Euler(0, img.transform.rotation.y, 0);
+                // This needs to be rotated 180 degrees to match the paper arrow rotation
+                transform.rotation = Quaternion.Euler(0, img.transform.rotation.y + 180, 0);
                 BVKC.OriginalPosition = transform.position;
                 BVKC.OriginalRotation = transform.rotation;
             }

@@ -143,3 +143,5 @@ Assets/ExternalDependencyManager/Editor/1.2.167.meta
 Assets/StreamingAssets.meta
 Assets/StreamingAssets/
 ProjectSettings/ProjectSettings.asset
+ProjectSettings/QualitySettings.asset
+UserSettings/EditorUserSettings.asset

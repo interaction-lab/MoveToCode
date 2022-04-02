@@ -146,7 +146,7 @@ namespace MoveToCode {
             ResetCurMovementAction();
             StartNextMovement();
         }
-
+        
         private void ResetCurMovementAction() {
             CurMovementAction = "";
         }

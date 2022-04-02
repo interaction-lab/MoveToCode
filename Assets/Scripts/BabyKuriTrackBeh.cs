@@ -54,7 +54,7 @@ namespace MoveToCode {
             if (ARTrackingManagerInstance.IsTracking) {
                 BKTransformManager.KuriPos = img.transform.position;
                 // This needs to be rotated 180 degrees to match the paper arrow rotation
-                BKTransformManager.KuriRot = Quaternion.Euler(0, (img.transform.rotation.y + 180) % 360, 0);
+                BKTransformManager.KuriRot = Quaternion.Euler(0, (img.transform.rotation.eulerAngles.y + 180) % 360, 0);
                 BKTransformManager.SetOriginalState();
             }
         }

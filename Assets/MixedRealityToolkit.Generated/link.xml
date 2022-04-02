@@ -32,4 +32,7 @@
   <assembly fullname="Microsoft.MixedReality.Toolkit.Extensions.HandPhysics" preserve="all" ignoreIfMissing="1" />
   <assembly fullname="Microsoft.MixedReality.Toolkit.Extensions.Tracking" preserve="all" ignoreIfMissing="1" />
   <assembly fullname="Microsoft.MixedReality.Toolkit.Extensions.SceneTransitionService" preserve="all" ignoreIfMissing="1" />
+  <!--OpenXR-->
+  <assembly fullname = "Microsoft.MixedReality.Toolkit.Providers.OpenXR" preserve="all"/>
+
 </linker>

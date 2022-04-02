@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace MoveToCode {
     public class Interpreter : Singleton<Interpreter> {
@@ -13,6 +14,8 @@ namespace MoveToCode {
         public int instructionRunLimit = 30;
         bool fullSteppingCode = false;
         public float stepSpeed = 0.5f;
+
+        public UnityEvent OnCodeReset, OnCodeStart, OnCodeEnd, OnCodeError;
 
         private void Awake() {
             ResetCodeState();
@@ -37,6 +40,7 @@ namespace MoveToCode {
             numInstructionsRun = 0;
             StaticNextChallengeButton.instance.gameObject.SetActive(false);
             BabyKuriManager.instance.ResetKuri();
+            OnCodeReset.Invoke();
         }
 
         public void RunNextInstruction() {
@@ -46,6 +50,7 @@ namespace MoveToCode {
             else {
                 if (curInstruction == StartCodeBlock.instance.GetMyIArgument() as Instruction) {
                     MemoryManager.instance.SaveMemoryState();
+                    OnCodeStart.Invoke();
                 }
                 try {
                     ++numInstructionsRun;
@@ -64,6 +69,7 @@ namespace MoveToCode {
                     ConsoleManager.instance.AddLine(string.Join("", lineToAdd, ", Code Resetting"));
                     LoggingManager.instance.UpdateLogColumn(codeErrorCol, lineToAdd);
                     Debug.LogWarning(ex.ToString());
+                    OnCodeError.Invoke();
                     ResetCodeState();
                 }
             }
@@ -81,6 +87,7 @@ namespace MoveToCode {
                 curInstruction.GetCodeBlock().ToggleOutline(true);
             }
             else {
+                OnCodeEnd.Invoke();
                 if (ExerciseManager.instance.AlertCodeFinished()) {
                     StaticNextChallengeButton.instance.gameObject.SetActive(true);
                 }

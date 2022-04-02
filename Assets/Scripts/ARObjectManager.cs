@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
@@ -17,17 +15,36 @@ namespace MoveToCode {
             }
         }
         ARTrackedImageManager arTrackedImageManager;
+        ARTrackedImageManager ARTrackedImageManagerInstance {
+            get {
+                if (arTrackedImageManager == null) {
+                    arTrackedImageManager = FindObjectOfType<ARTrackedImageManager>();
+                }
+                return arTrackedImageManager;
+            }
+        }
+
+        ARTrackingManager arTrackingManager;
+        ARTrackingManager ARTrackingManagerInstance {
+            get {
+                if (arTrackingManager == null) {
+                    arTrackingManager = ARTrackingManager.instance;
+                }
+                return arTrackingManager;
+            }
+        }
+
         #endregion
 
         #region unity
         private void Awake() {
-            GetARTrackedImageManager().maxNumberOfMovingImages = ResourcePathConstants.mazeObjectDict.Count;
+            ARTrackedImageManagerInstance.maxNumberOfMovingImages = ResourcePathConstants.mazeObjectDict.Count;
         }
         private void OnEnable() {
-            GetARTrackedImageManager().trackedImagesChanged += ImageChanged;
+            ARTrackedImageManagerInstance.trackedImagesChanged += ImageChanged;
         }
         private void OnDisable() {
-            GetARTrackedImageManager().trackedImagesChanged -= ImageChanged;
+            ARTrackedImageManagerInstance.trackedImagesChanged -= ImageChanged;
         }
         #endregion
 
@@ -37,6 +54,9 @@ namespace MoveToCode {
 
         #region private
         private void ImageChanged(ARTrackedImagesChangedEventArgs eventArgs) {
+            if(!ARTrackingManagerInstance.IsTracking){
+                return;
+            }
             foreach (ARTrackedImage img in eventArgs.added) {
                 KuriTextManager.instance.Addline(img.ImgName());
                 ImageAdded(img);
@@ -66,12 +86,6 @@ namespace MoveToCode {
             ImageUpdated(img);
         }
 
-        private ARTrackedImageManager GetARTrackedImageManager() {
-            if (arTrackedImageManager == null) {
-                arTrackedImageManager = FindObjectOfType<ARTrackedImageManager>();
-            }
-            return arTrackedImageManager;
-        }
         #endregion
     }
 }

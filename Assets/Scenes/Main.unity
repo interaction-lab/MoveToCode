@@ -18053,8 +18053,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2016588465}
   - component: {fileID: 2016588466}
+  - component: {fileID: 2016588467}
   m_Layer: 0
-  m_Name: ARObjectManager
+  m_Name: ARManagers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18087,6 +18088,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34b754dd718368b46b3cb5f6ba25e58a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2016588467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016588464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8b27c507b6364945bc7426d3fcc7b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnTrackingStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTrackingEnded:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &2022208059
 PrefabInstance:
   m_ObjectHideFlags: 0

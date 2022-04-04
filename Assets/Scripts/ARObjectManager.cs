@@ -34,6 +34,15 @@ namespace MoveToCode {
             }
         }
 
+        MazeManager mazeManager;
+        MazeManager MazeManagerInstance {
+            get {
+                if (mazeManager == null) {
+                    mazeManager = MazeManager.instance;
+                }
+                return mazeManager;
+            }
+        }
         #endregion
 
         #region unity
@@ -76,7 +85,8 @@ namespace MoveToCode {
         private void ImageAdded(ARTrackedImage img) {
             if (!TrackedObjDict.ContainsKey(img.ImgName())) {
                 if (img.ImgName() != ResourcePathConstants.kuri_start) {
-                    TrackedObjDict.Add(img.ImgName(), Instantiate(ResourcePathConstants.mazeObjectDict[img.ImgName()]).GetComponent<ARTrackBehavior>());
+                    GameObject go = MazeManagerInstance.GetMazeObject(img.ImgName());
+                    TrackedObjDict.Add(img.ImgName(), go.GetComponent<ARTrackBehavior>());
                 }
                 else {
                     TrackedObjDict.Add(img.ImgName(), BabyKuriManager.instance.gameObject.GetComponent<ARTrackBehavior>()); // special case for baby Kuri

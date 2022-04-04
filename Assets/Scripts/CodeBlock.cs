@@ -46,7 +46,10 @@ namespace MoveToCode {
 
         private void AddMRTKComponents() {
             manipHandler = gameObject.AddComponent<ManipulationHandler>();
-            manipHandler.TwoHandedManipulationType = ManipulationHandler.TwoHandedManipulation.MoveRotate;
+            manipHandler.ManipulationType = ManipulationHandler.HandMovementType.OneHandedOnly;
+            manipHandler.AllowFarManipulation = true;
+            manipHandler.OneHandRotationModeFar = ManipulationHandler.RotateInOneHandType.FaceAwayFromUser;
+            manipHandler.OneHandRotationModeNear = ManipulationHandler.RotateInOneHandType.FaceAwayFromUser;
         }
 
         private void AddSnapColliderComponents() {

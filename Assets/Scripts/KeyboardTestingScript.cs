@@ -16,6 +16,16 @@ public class KeyboardTestingScript : MonoBehaviour {
             return arTrackingManager;
         }
     }
+
+    ARObjectManager _arObjectManager;
+    ARObjectManager ARObjectManagerInstance {
+        get {
+            if (_arObjectManager == null) {
+                _arObjectManager = FindObjectOfType<ARObjectManager>();
+            }
+            return _arObjectManager;
+        }
+    }
     void Start() {
         anim = GetComponent<Animator>();
     }
@@ -24,12 +34,11 @@ public class KeyboardTestingScript : MonoBehaviour {
     void Update() {
         if (Input.GetKeyDown("h")) {
             //anim.SetTrigger("HighFive");
-            Interpreter.instance.ResetCodeState();
+
+
         }
         if (Input.GetKeyDown(KeyCode.Alpha0)) {
-            // Interpreter.instance.RunNextInstruction();
-            // KuriManager.instance
-            FindObjectOfType<VirtualKuriController>().GetComponent<VirtualKuriController>().TakeMovementAction();
+            MazeManager.instance.GetMazeObject("goal");
         }
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
 

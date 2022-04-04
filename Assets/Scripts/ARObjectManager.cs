@@ -82,7 +82,7 @@ namespace MoveToCode {
             }
         }
 
-        private void ImageAdded(ARTrackedImage img) {
+        public void ImageAdded(ARTrackedImage img) {
             if (!TrackedObjDict.ContainsKey(img.ImgName())) {
                 if (img.ImgName() != ResourcePathConstants.kuri_start) {
                     GameObject go = MazeManagerInstance.GetMazeObject(img.ImgName());

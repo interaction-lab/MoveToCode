@@ -18,9 +18,9 @@ namespace MoveToCode {
 
         #region public
         public GameObject GetMazeObject(string name) {
-            foreach (GameObject child in transform) {
+            foreach (Transform child in transform) {
                 if (child.name == name) {
-                    return child;
+                    return child.gameObject;
                 }
             }
             return null;

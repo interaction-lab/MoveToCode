@@ -4,12 +4,12 @@ namespace MoveToCode {
     public class MoveInstruction : SnappableStandAloneInstruction {
         CodeBlockEnums.Move output;
         BabyVirtualKuriController babyVirtualKuriController { get; } = (BabyVirtualKuriController)Object.FindObjectOfType(typeof(BabyVirtualKuriController));
-        float moveDist = 1f;
+        float moveDist = 0.1f;
 
         MoveTwistPublisher mtp = null;
         MoveTwistPublisher Mtp {
             get {
-                if(mtp == null) {
+                if (mtp == null) {
                     mtp = GameObject.FindObjectOfType<MoveTwistPublisher>();
                 }
                 return mtp;
@@ -35,10 +35,10 @@ namespace MoveToCode {
 
         private void MovePhysicalKuri() {
             if (output == CodeBlockEnums.Move.Forward) {
-                Mtp.UpdateMessage(moveDist,0);
+                Mtp.UpdateMessage(moveDist, 0);
             }
             else {
-                Mtp.UpdateMessage(-moveDist,0);
+                Mtp.UpdateMessage(-moveDist, 0);
             }
         }
 

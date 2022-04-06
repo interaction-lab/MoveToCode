@@ -71,7 +71,6 @@ namespace MoveToCode {
                 Color c = rend.material.color;
                 c.a = CalculateAlpha(c.a);
                 rend.material.color = c;
-                KuriTextManager.instance.Addline(c.a.ToString());
             }
         }
         protected void ResetMeshAlphas() {

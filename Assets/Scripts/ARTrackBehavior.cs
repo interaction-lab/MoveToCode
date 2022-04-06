@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.XR.ARFoundation;
 
 namespace MoveToCode {
@@ -40,6 +41,9 @@ namespace MoveToCode {
                 return aRTrackingManager;
             }
         }
+
+        public UnityEvent OnImgStartedTracking, OnImgStoppedTracking;
+        bool isTracking = false;
         #endregion
 
         #region unity
@@ -55,9 +59,17 @@ namespace MoveToCode {
         public void UpdateBehaviorCommon(ARTrackedImage img) {
             if (img.trackingState == UnityEngine.XR.ARSubsystems.TrackingState.Tracking) {
                 PulseAlphaMeshes();
+                if (!isTracking) {
+                    OnImgStartedTracking.Invoke();
+                    isTracking = true;
+                }
             }
             else {
                 ResetMeshAlphas();
+                if (isTracking) {
+                    OnImgStoppedTracking.Invoke();
+                    isTracking = false;
+                }
             }
             UpdateBehaviorSpecific(img);
         }

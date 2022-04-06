@@ -12,13 +12,15 @@ namespace MoveToCode {
         #endregion
 
         #region public
-        public override void UpdateBehavior(ARTrackedImage img) {
-            transform.position = img.transform.position;
-            transform.rotation = Quaternion.Euler(0, img.transform.rotation.eulerAngles.y, 0);
-        }
         #endregion
 
-        #region private
+        #region protected
+        protected override void UpdateBehaviorSpecific(ARTrackedImage img) {
+            if (img.trackingState == UnityEngine.XR.ARSubsystems.TrackingState.Tracking) {
+                transform.position = img.transform.position;
+                transform.rotation = Quaternion.Euler(0, img.transform.rotation.eulerAngles.y, 0);
+            }
+        }
         #endregion
 
     }

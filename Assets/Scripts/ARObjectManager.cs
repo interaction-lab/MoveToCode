@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
@@ -71,18 +72,17 @@ namespace MoveToCode {
                 ImageUpdated(img);
             }
             foreach (ARTrackedImage img in eventArgs.removed) {
-                // put img remove events
+                // image removed
             }
         }
-
 
         private void ImageUpdated(ARTrackedImage img) {
             if (ARTrackingManagerInstance.IsTracking) {
-                TrackedObjDict[img.ImgName()].UpdateBehavior(img);
+                TrackedObjDict[img.ImgName()].UpdateBehaviorCommon(img);
             }
         }
 
-        public void ImageAdded(ARTrackedImage img) {
+        private void ImageAdded(ARTrackedImage img) {
             if (!TrackedObjDict.ContainsKey(img.ImgName())) {
                 if (img.ImgName() != ResourcePathConstants.kuri_start) {
                     GameObject go = MazeManagerInstance.GetMazeObject(img.ImgName());

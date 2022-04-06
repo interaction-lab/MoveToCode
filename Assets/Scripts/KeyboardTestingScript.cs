@@ -48,6 +48,9 @@ public class KeyboardTestingScript : MonoBehaviour {
             //  HumanStateManager.instance.DebugLogData();
             //FindObjectOfType<KuriEmoteStringPublisher>().PubRandomNegative();
         }
+        if (Input.GetKey(KeyCode.Alpha3)) {
+            //FindObjectOfType<GoalTrackBeh>().UpdateAlphaTest();
+        }
         // Debug.Log(Interpreter.instance.IsInResetState());
 
     }

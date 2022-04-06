@@ -24,8 +24,6 @@ namespace MoveToCode {
             }
         }
 
-        public Transform KuriGoalPoseTransform;
-
         KuriController kuriControllerBackingVar = null;
         public KuriController kuriController {
             get {
@@ -69,7 +67,6 @@ namespace MoveToCode {
             loggingManager = LoggingManager.instance;
             wasKuriDoingActionLastTick = kuriController.IsDoingAction;
             loggingManager.AddLogColumn(robotKCLevel, "");
-            KuriGoalPoseTransform = transform.GetChild(0); // TODO: this is awful
         }
 
         private void Start() {
@@ -98,7 +95,7 @@ namespace MoveToCode {
             Transform kuri_t = transform.GetChild(1);
             ManipulationHandler manipHandler = gameObject.AddComponent<ManipulationHandler>();
             //manipHandler.TwoHandedManipulationType = ManipulationHandler.TwoHandedManipulation.MoveRotate;
-            TurnOffMeshRenderers(kuri_t);
+            // TurnOffMeshRenderers(kuri_t);
 
         }
 

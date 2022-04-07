@@ -88,6 +88,7 @@ namespace MoveToCode {
         public static string kuri_start = "kuri_start";
         public static string goal = "goal";
         public static string turn_1 = "turn_1";
+        public static string connection = "Connection";
 
         public static string ARImageFolder = "ARImageReferences/";
         public static string MazePrefabFolder = ARImageFolder + "MazePrefabs/";
@@ -96,6 +97,8 @@ namespace MoveToCode {
         public static string Wall_3 = MazePrefabFolder + str_wall_3;
         public static string Goal = MazePrefabFolder + goal;
         public static string Turn_1 = MazePrefabFolder + turn_1;
+
+        public static string ConnectionP = MazePrefabFolder + connection;
 
         public static Dictionary<string, GameObject> mazeObjectDict = new Dictionary<string, GameObject> {
             {str_wall_1, Resources.Load<GameObject>(Wall_1)},

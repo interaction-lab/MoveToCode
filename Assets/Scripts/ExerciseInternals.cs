@@ -9,7 +9,7 @@ namespace MoveToCode {
         public string[] varNames;
         public int[] initialVariableValues;
         public object[] finalVariableGoalValues;
-        public Pair[] exerciseBlocks;
+        public CodeBlockIDValuePair[] exerciseBlocks;
         public string[] scaffoldDialogue;
 
         public string GetConsoleStringGoal() {
@@ -40,7 +40,7 @@ namespace MoveToCode {
             return finalVariableGoalValues;
         }
 
-        public Pair[] GetExerciseBlocks() {
+        public CodeBlockIDValuePair[] GetExerciseBlocks() {
             return exerciseBlocks;
         }
 

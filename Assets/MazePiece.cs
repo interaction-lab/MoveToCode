@@ -41,13 +41,14 @@ namespace MoveToCode {
         private void OnEnable() {
             arTrackBehavior.OnImgStartedTracking.AddListener(OnImgStartedTracking);
             arTrackBehavior.OnImgStoppedTracking.AddListener(OnImgStoppedTracking);
+            StartCoroutine(WaitForEndOfFrame());
 #if UNITY_EDITOR
+            // Add manipulation handler in the case where we aren't building to the real world
             if (manipHandler == null) {
                 manipHandler = gameObject.AddComponent<ManipulationHandler>();
                 manipHandler.ManipulationType = ManipulationHandler.HandMovementType.OneHandedOnly;
                 manipHandler.AllowFarManipulation = true;
             }
-            StartCoroutine(WaitForEndOfFrame());
 #endif
         }
         private void OnDisable() {
@@ -79,10 +80,9 @@ namespace MoveToCode {
 
         IEnumerator WaitForEndOfFrame() {
             yield return new WaitForEndOfFrame();
-            yield return new WaitForEndOfFrame();
             OnImgStoppedTracking(); // sets the state of the maze piece as if it was not being tracked
 #if UNITY_EDITOR
-            OnImgStartedTracking();
+            OnImgStartedTracking(); // pretend tracking if working in the editor
 #endif
         }
         #endregion

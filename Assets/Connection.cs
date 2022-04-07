@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace MoveToCode {
     public class Connection : MonoBehaviour {
@@ -19,6 +20,12 @@ namespace MoveToCode {
         bool oneMemberHasRequestedADisconnect = false;
 
         public Color connectedColor;
+
+        public bool BothPiecesAreAnchored {
+            get {
+                return IsPopulated() && mazeConnectors.First.IsAnchored && mazeConnectors.Second.IsAnchored;
+            }
+        }
 
         #endregion
 
@@ -58,14 +65,32 @@ namespace MoveToCode {
             mazeConnectors.Second = otherMazeConnector;
             otherMazeConnector.MyConnection = this;
 
-            mazeConnector.MyMazePiece.transform.parent = transform;
-            otherMazeConnector.MyMazePiece.transform.parent = transform;
-
             connectedColor = UnityEngine.Random.ColorHSV(0f, 1f, 0.5f, 1f, 0.5f, 1f, 1f, 1f);
             mazeConnector.SetColor(connectedColor);
             otherMazeConnector.SetColor(connectedColor);
 
             MazeManagerInstance.AddPopulatedConnection(this);
+        }
+
+        internal void AnchorNeighboringPiece() {
+            Assert.IsTrue(IsPopulated());
+            // find if pieces are anchored already
+            if (mazeConnectors.First.IsAnchored && mazeConnectors.Second.IsAnchored) {
+                return;
+            }
+            // find which piece is already anchored
+            MazeConnector anchorPiece = null;
+            MazeConnector nonAnchorPiece = null;
+            if (mazeConnectors.First.IsAnchored) {
+                anchorPiece = mazeConnectors.First;
+                nonAnchorPiece = mazeConnectors.Second;
+            }
+            else if (mazeConnectors.Second.IsAnchored) {
+                anchorPiece = mazeConnectors.Second;
+                nonAnchorPiece = mazeConnectors.First;
+            }
+            // anchor the non-anchor piece to the anchor piece
+            nonAnchorPiece.AnchorTo(anchorPiece);
         }
         #endregion
 

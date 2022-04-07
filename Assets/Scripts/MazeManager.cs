@@ -11,6 +11,7 @@ namespace MoveToCode {
         Queue<Connection> openConnections = new Queue<Connection>();
         HashSet<Connection> populatedConnections = new HashSet<Connection>();
         HashSet<Pair<MazeConnector, MazeConnector>> connectRequests = new HashSet<Pair<MazeConnector, MazeConnector>>();
+        MazePiece bkMazePiece;
         ARTrackingManager aRTrackingManager;
         ARTrackingManager ARTrackingManagerInstance {
             get {
@@ -104,9 +105,26 @@ namespace MoveToCode {
         }
 
         private void OnTrackingStarted() {
+            ReleasePieces();
         }
         private void OnTrackingEnded() {
             // where we snap the maze to each other + floor + grid
+            SnapPiecesTogether();
+        }
+
+        private void ReleasePieces() {
+            foreach (Transform child in transform) {
+                MazePiece mazePiece = child.GetComponent<MazePiece>();
+                if (mazePiece != null) {
+                    mazePiece.UnAnchor();
+                }
+            }
+        }
+
+        private void SnapPiecesTogether() {
+            // tell kuri maze piece to recruse through rest of peices
+            // this will be a problem at some point because I am too lazy to make a new maze piece specifically for baby kuri
+            BabyKuriManager.instance.transform.parent.GetComponent<MazePiece>().SnapConnections();
         }
         #endregion
     }

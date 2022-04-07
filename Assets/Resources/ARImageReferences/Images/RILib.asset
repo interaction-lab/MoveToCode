@@ -55,7 +55,7 @@ MonoBehaviour:
       m_GuidHigh: 16738582487485677849
     m_Size: {x: 0.2159, y: 0.27974284}
     m_SpecifySize: 1
-    m_Name: kuri_start
+    m_Name: BKMazePiece
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
       m_GuidLow: 5322947904429665498

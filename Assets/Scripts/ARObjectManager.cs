@@ -78,19 +78,14 @@ namespace MoveToCode {
 
         private void ImageUpdated(ARTrackedImage img) {
             if (ARTrackingManagerInstance.IsTracking) {
-                TrackedObjDict[img.ImgName()].UpdateBehaviorCommon(img);
+                TrackedObjDict[img.ImgName()].UpdateBehavior(img);
             }
         }
 
         private void ImageAdded(ARTrackedImage img) {
             if (!TrackedObjDict.ContainsKey(img.ImgName())) {
-                if (img.ImgName() != ResourcePathConstants.kuri_start) {
-                    GameObject go = MazeManagerInstance.GetMazeObject(img.ImgName());
-                    TrackedObjDict.Add(img.ImgName(), go.GetComponent<ARTrackBehavior>());
-                }
-                else {
-                    TrackedObjDict.Add(img.ImgName(), BabyKuriManager.instance.gameObject.GetComponent<ARTrackBehavior>()); // special case for baby Kuri
-                }
+                GameObject go = MazeManagerInstance.GetMazeObject(img.ImgName());
+                TrackedObjDict.Add(img.ImgName(), go.GetComponent<ARTrackBehavior>());
             }
             ImageUpdated(img);
         }

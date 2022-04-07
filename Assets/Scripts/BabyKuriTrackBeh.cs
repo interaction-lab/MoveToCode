@@ -28,7 +28,7 @@ namespace MoveToCode {
         BabyKuriTransformManager BKTransformManager {
             get {
                 if (_bktransformmanager == null) {
-                    _bktransformmanager = GetComponent<BabyKuriTransformManager>();
+                    _bktransformmanager = BKM.GetComponent<BabyKuriTransformManager>();
                 }
                 return _bktransformmanager;
             }
@@ -55,8 +55,8 @@ namespace MoveToCode {
         #region protected
         protected override void UpdateBehaviorSpecific(ARTrackedImage img) {
             if (ARTrackingManagerInstance.IsTracking) {
-                BKTransformManager.KuriPos = img.transform.position;
-                BKTransformManager.KuriRot = Quaternion.Euler(0, (img.transform.rotation.eulerAngles.y) % 360, 0);
+                transform.position = img.transform.position;
+                transform.rotation = Quaternion.Euler(0, (img.transform.rotation.eulerAngles.y) % 360, 0);
                 BKTransformManager.SetOriginalState();
             }
         }

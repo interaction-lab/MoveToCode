@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace MoveToCode {
     public class MazeConnector : MonoBehaviour {
@@ -42,6 +44,11 @@ namespace MoveToCode {
         }
         public Connection MyConnection = null;
         Color origColor;
+        public bool IsAnchored {
+            get {
+                return MyMazePiece.IsAnchored;
+            }
+        }
         #endregion
 
         #region unity
@@ -82,14 +89,37 @@ namespace MoveToCode {
             return MyConnection != null;
         }
 
+        internal void AnchorNeighboringPiece() {
+            Assert.IsTrue(IsAnchored);
+            if (IsConnected()) {
+                MyConnection.AnchorNeighboringPiece();
+            }
+        }
+
         internal void Disconnect() {
             MyConnection = null;
             MyMazePiece.transform.parent = MazeManagerInstance.transform;
             SetColor(origColor);
         }
+
+        internal void AnchorTo(MazeConnector anchorPiece) {
+            TurnOffConnector(); // TODO: this will have to be moved to a higher level later
+            anchorPiece.TurnOffConnector();
+
+            Vector3 anchorRelativePos = anchorPiece.transform.position - anchorPiece.MyMazePiece.transform.position;
+            MyMazePiece.transform.position = anchorPiece.transform.position;
+            MyMazePiece.transform.rotation = Quaternion.LookRotation(anchorRelativePos.normalized);
+
+            Vector3 relativePos = transform.position - MyMazePiece.transform.position;
+            transform.position -= relativePos;
+
+            MyMazePiece.SnapConnections();
+        }
+
         internal void SetColor(Color c) {
             MeshRend.material.color = c;
         }
+
         #endregion
 
         #region private

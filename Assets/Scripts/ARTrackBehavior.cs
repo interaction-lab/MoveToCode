@@ -56,7 +56,7 @@ namespace MoveToCode {
         #endregion
 
         #region public
-        public void UpdateBehaviorCommon(ARTrackedImage img) {
+        public void UpdateBehavior(ARTrackedImage img) {
             if (img.trackingState == UnityEngine.XR.ARSubsystems.TrackingState.Tracking) {
                 PulseAlphaMeshes();
                 if (!isTracking) {
@@ -78,6 +78,7 @@ namespace MoveToCode {
 
         #region protected
         protected abstract void UpdateBehaviorSpecific(ARTrackedImage img);
+
         protected void PulseAlphaMeshes() {
             foreach (MeshRenderer rend in meshRenderers) {
                 Color c = rend.material.color;

@@ -35,6 +35,7 @@ namespace MoveToCode {
         }
 
         ManipulationHandler manipHandler;
+        public bool IsAnchored { get; set; }
         #endregion
 
         #region unity
@@ -61,6 +62,17 @@ namespace MoveToCode {
         internal void RegisterConnector(CONNECTDIR connectionDir, MazeConnector mazeConnector) {
             ConnectionDict.Add(connectionDir, mazeConnector);
         }
+
+        internal void SnapConnections() {
+            IsAnchored = true;
+            foreach (KeyValuePair<CONNECTDIR, MazeConnector> kvp in ConnectionDict) {
+                TriggerAnchorToThisPiece(kvp.Value);
+            }
+        }
+
+        internal void Unanchor() {
+            IsAnchored = false;
+        }
         #endregion
 
         #region protected
@@ -73,9 +85,12 @@ namespace MoveToCode {
             }
         }
         private void OnImgStoppedTracking() {
-            foreach (MazeConnector mazeConnector in ConnectionDict.Values) {
-                mazeConnector.TurnOffConnector(); // unlikely what will actually do
+        }
+        private void TriggerAnchorToThisPiece(MazeConnector mazeConnector) {
+            if (!mazeConnector.IsConnected()) {
+                return;
             }
+            mazeConnector.AnchorNeighboringPiece();
         }
 
         IEnumerator WaitForEndOfFrame() {
@@ -84,6 +99,13 @@ namespace MoveToCode {
 #if UNITY_EDITOR
             OnImgStartedTracking(); // pretend tracking if working in the editor
 #endif
+        }
+
+        internal void UnAnchor() {
+            IsAnchored = false;
+            foreach (MazeConnector mazeConnector in ConnectionDict.Values) {
+                mazeConnector.TurnOnConnector();
+            }
         }
         #endregion
     }

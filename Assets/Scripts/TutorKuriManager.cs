@@ -92,7 +92,7 @@ namespace MoveToCode {
         }
 
         private void SetUpMoveableInvisibleKuri() {
-            Transform kuri_t = transform.GetChild(1);
+            //Transform kuri_t = transform.GetChild(1);
             ManipulationHandler manipHandler = gameObject.AddComponent<ManipulationHandler>();
             //manipHandler.TwoHandedManipulationType = ManipulationHandler.TwoHandedManipulation.MoveRotate;
             // TurnOffMeshRenderers(kuri_t);

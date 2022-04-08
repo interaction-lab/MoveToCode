@@ -14688,12 +14688,12 @@ PrefabInstance:
     - target: {fileID: 2487772825411896842, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9375612
+      value: 0.93756115
       objectReference: {fileID: 0}
     - target: {fileID: 2487772825411896842, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.34782043
+      value: -0.34782046
       objectReference: {fileID: 0}
     - target: {fileID: 2487772825955322132, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
@@ -16052,7 +16052,7 @@ MonoBehaviour:
   oneHandRotationModeFar: 3
   releaseBehavior: 3
   constraintOnRotation: 0
-  useLocalSpaceForConstraint: 0
+  useLocalSpaceForConstraint: 1
   constraintOnMovement: 0
   smoothingActive: 1
   smoothingAmountOneHandManip: 0.001

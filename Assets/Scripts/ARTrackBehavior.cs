@@ -80,18 +80,14 @@ namespace MoveToCode {
         protected abstract void UpdateBehaviorSpecific(ARTrackedImage img);
 
         protected void PulseAlphaMeshes() {
-            foreach (MeshRenderer rend in meshRenderers) {
-                Color c = rend.material.color;
-                c.a = CalculateAlpha(c.a);
-                rend.material.color = c;
-            }
+            MeshRenderer rend = GetComponent<MeshRenderer>();
+            Color c = rend.material.color;
+            c.a = CalculateAlpha(c.a);
+            rend.material.color = c;
         }
         protected void ResetMeshAlphas() {
-            for (int i = 0; i < meshRenderers.Count; i++) {
-                Color c = meshRenderers[i].material.color;
-                c.a = originalColors[i].a;
-                meshRenderers[i].material.color = c;
-            }
+            MeshRenderer rend = GetComponent<MeshRenderer>();
+            rend.material.color = originalColors[0]; // TODO make this more efficient/actually fix it
         }
         protected float CalculateAlpha(float curAlpha) {
             float tmpA = (curAlpha - alphaFloor) / (alphaCeil - alphaFloor); // normalize alpha

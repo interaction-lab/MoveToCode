@@ -103,12 +103,13 @@ namespace MoveToCode {
 
         internal void AnchorTo(MazeConnector anchorConnector) {
             Vector3 Upward = anchorConnector.MyMazePiece.transform.up;
-            Vector3 myRealtivePos = transform.position - MyMazePiece.transform.position;
+
             MyMazePiece.transform.position = anchorConnector.MyMazePiece.transform.position;
             MyMazePiece.transform.rotation = anchorConnector.MyMazePiece.transform.rotation;
             float angle = GetAngleOfConnectorRelativeToForward(anchorConnector);
             MyMazePiece.transform.RotateAround(MyMazePiece.transform.position, Upward, angle);
             MyMazePiece.transform.position = anchorConnector.transform.position;
+            Vector3 myRealtivePos = transform.position - MyMazePiece.transform.position;
             MyMazePiece.transform.position -= myRealtivePos;
 
             MyMazePiece.SnapConnections();

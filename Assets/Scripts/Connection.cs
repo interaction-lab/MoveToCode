@@ -1,11 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace MoveToCode {
-    public class Connection : MonoBehaviour {
+    public class Connection  {
         #region members
         MazeManager mazeManager;
         MazeManager MazeManagerInstance {
@@ -27,9 +24,6 @@ namespace MoveToCode {
             }
         }
 
-        #endregion
-
-        #region unity
         #endregion
 
         #region public

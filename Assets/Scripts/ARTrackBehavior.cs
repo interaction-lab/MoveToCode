@@ -8,25 +8,21 @@ using UnityEngine.XR.ARFoundation;
 namespace MoveToCode {
     public abstract class ARTrackBehavior : MonoBehaviour {
         #region members
-        List<Color> originalColors;
-        List<MeshRenderer> _meshRenderers;
-        List<MeshRenderer> meshRenderers {
+        Color _origColor = default;
+        Color OrigColor {get; set;}
+        MeshRenderer _meshRenderer;
+        MeshRenderer MeshRend {
             get {
-                if (_meshRenderers == null) {
-                    _meshRenderers = new List<MeshRenderer>();
-                    foreach (Transform child in transform) {
-                        _meshRenderers.AddRange(child.GetComponentsInChildren<MeshRenderer>());
+                if (_meshRenderer == null) {
+                    _meshRenderer = GetComponent<MeshRenderer>();
+                    if(_meshRenderer != null) { 
+                        _origColor = _meshRenderer.material.color;
                     }
-                    MeshRenderer myRend = GetComponent<MeshRenderer>();
-                    if (myRend != null) {
-                        _meshRenderers.Add(myRend);
-                    }
-                    originalColors = new List<Color>();
-                    foreach (MeshRenderer rend in _meshRenderers) {
-                        originalColors.Add(rend.material.color);
+                    else {
+                        Debug.LogError("No renderer on tracked object " + transform.name);
                     }
                 }
-                return _meshRenderers;
+                return _meshRenderer;
             }
         }
         float alphaFloor = 0.2f, alphaCeil = 1.0f, alphaRatePerSec = 1.5f; // 1.5f per sec
@@ -58,14 +54,14 @@ namespace MoveToCode {
         #region public
         public void UpdateBehavior(ARTrackedImage img) {
             if (img.trackingState == UnityEngine.XR.ARSubsystems.TrackingState.Tracking) {
-                PulseAlphaMeshes();
+                PulseAlphaMesh();
                 if (!isTracking) {
                     OnImgStartedTracking.Invoke();
                     isTracking = true;
                 }
             }
             else {
-                ResetMeshAlphas();
+                ResetMeshAlpha();
                 if (isTracking) {
                     OnImgStoppedTracking.Invoke();
                     isTracking = false;
@@ -79,15 +75,14 @@ namespace MoveToCode {
         #region protected
         protected abstract void UpdateBehaviorSpecific(ARTrackedImage img);
 
-        protected void PulseAlphaMeshes() {
-            MeshRenderer rend = GetComponent<MeshRenderer>();
-            Color c = rend.material.color;
+        protected void PulseAlphaMesh() {
+            Color c = MeshRend.material.color;
             c.a = CalculateAlpha(c.a);
-            rend.material.color = c;
+            MeshRend.material.color = c;
         }
-        protected void ResetMeshAlphas() {
+        protected void ResetMeshAlpha() {
             MeshRenderer rend = GetComponent<MeshRenderer>();
-            rend.material.color = originalColors[0]; // TODO make this more efficient/actually fix it
+            rend.material.color = OrigColor; // TODO make this more efficient/actually fix it
         }
         protected float CalculateAlpha(float curAlpha) {
             float tmpA = (curAlpha - alphaFloor) / (alphaCeil - alphaFloor); // normalize alpha
@@ -108,7 +103,7 @@ namespace MoveToCode {
 
         #region private
         private void OnTrackingEnded() {
-            ResetMeshAlphas();
+            ResetMeshAlpha();
         }
         #endregion
     }

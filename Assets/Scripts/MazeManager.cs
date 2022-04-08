@@ -87,13 +87,8 @@ namespace MoveToCode {
             if (!openConnections.Empty()) {
                 return openConnections.Dequeue();
             }
-            GameObject connectionGO = Instantiate(Resources.Load<GameObject>(ResourcePathConstants.ConnectionP));
-            connectionGO.transform.SetParent(transform);
-            return connectionGO.GetComponent<Connection>();
+            return new Connection();
         }
-
-
-
         private void AddManipulationHandlersForUnityEditor() {
             foreach (Transform child in transform) {
                 if (child.GetComponent<ManipulationHandler>()) {

@@ -59,7 +59,6 @@ namespace MoveToCode {
         private void OnTriggerEnter(Collider other) {
             MazeConnector otherMazeConnector = other.gameObject.GetComponent<MazeConnector>();
             if (otherMazeConnector != null) {
-                Debug.Log("OnTriggerEnter: " + otherMazeConnector.transform.name);
                 RequestAndConnect(otherMazeConnector);
             }
         }

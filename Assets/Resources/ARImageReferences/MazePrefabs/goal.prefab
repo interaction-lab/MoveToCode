@@ -179,6 +179,7 @@ GameObject:
   - component: {fileID: 1721173592288550609}
   - component: {fileID: 7103207624729551642}
   - component: {fileID: 4618563489752139886}
+  - component: {fileID: 2108851047683681488}
   m_Layer: 0
   m_Name: goal
   m_TagString: Untagged
@@ -287,6 +288,18 @@ MonoBehaviour:
   OnImgStoppedTracking:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2108851047683681488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5325848489276756805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b46317937099bce44817bd1effe9f890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6003331746439481127
 GameObject:
   m_ObjectHideFlags: 0

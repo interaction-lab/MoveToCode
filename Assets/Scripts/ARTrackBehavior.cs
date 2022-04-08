@@ -8,7 +8,6 @@ using UnityEngine.XR.ARFoundation;
 namespace MoveToCode {
     public abstract class ARTrackBehavior : MonoBehaviour {
         #region members
-        Color _origColor = default;
         Color OrigColor {get; set;}
         MeshRenderer _meshRenderer;
         MeshRenderer MeshRend {
@@ -16,7 +15,7 @@ namespace MoveToCode {
                 if (_meshRenderer == null) {
                     _meshRenderer = GetComponent<MeshRenderer>();
                     if(_meshRenderer != null) { 
-                        _origColor = _meshRenderer.material.color;
+                        OrigColor = _meshRenderer.material.color;
                     }
                     else {
                         Debug.LogError("No renderer on tracked object " + transform.name);

@@ -180,6 +180,8 @@ GameObject:
   - component: {fileID: 7103207624729551642}
   - component: {fileID: 4618563489752139886}
   - component: {fileID: 2108851047683681488}
+  - component: {fileID: 6884469534536099091}
+  - component: {fileID: 5870808934157139040}
   m_Layer: 0
   m_Name: goal
   m_TagString: Untagged
@@ -300,6 +302,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b46317937099bce44817bd1effe9f890, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6884469534536099091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5325848489276756805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6739860a0a8d8e04899cf52960db7c96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &5870808934157139040
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5325848489276756805}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &6003331746439481127
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,7 +441,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   connectionDir: 0
-  MyConnection: {fileID: 0}
 --- !u!1 &7937718328642269381
 GameObject:
   m_ObjectHideFlags: 0
@@ -772,4 +801,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   connectionDir: 1
-  MyConnection: {fileID: 0}

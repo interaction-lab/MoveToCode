@@ -98,22 +98,57 @@ namespace MoveToCode {
 
         internal void Disconnect() {
             MyConnection = null;
-            MyMazePiece.transform.parent = MazeManagerInstance.transform;
             SetColor(origColor);
         }
 
-        internal void AnchorTo(MazeConnector anchorPiece) {
-            TurnOffConnector(); // TODO: this will have to be moved to a higher level later
-            anchorPiece.TurnOffConnector();
-
-            Vector3 anchorRelativePos = anchorPiece.transform.position - anchorPiece.MyMazePiece.transform.position;
-            MyMazePiece.transform.position = anchorPiece.transform.position;
-            MyMazePiece.transform.rotation = Quaternion.LookRotation(anchorRelativePos.normalized);
-
-            Vector3 relativePos = transform.position - MyMazePiece.transform.position;
-            transform.position -= relativePos;
+        internal void AnchorTo(MazeConnector anchorConnector) {
+            Vector3 Upward = anchorConnector.MyMazePiece.transform.up;
+            Vector3 myRealtivePos = transform.position - MyMazePiece.transform.position;
+            MyMazePiece.transform.position = anchorConnector.MyMazePiece.transform.position;
+            MyMazePiece.transform.rotation = anchorConnector.MyMazePiece.transform.rotation;
+            float angle = GetAngleOfConnectorRelativeToForward(anchorConnector);
+            MyMazePiece.transform.RotateAround(MyMazePiece.transform.position, Upward, angle);
+            MyMazePiece.transform.position = anchorConnector.transform.position;
+            MyMazePiece.transform.position -= myRealtivePos;
 
             MyMazePiece.SnapConnections();
+            TurnOffConnector(); // TODO: this will have to be moved to a higher level later
+            anchorConnector.TurnOffConnector();
+            AudioManager.instance.PlaySoundAtObject(gameObject, AudioManager.snapAudioClip);
+        }
+
+        private float GetAngleOfConnectorRelativeToForward(MazeConnector anchorMC) {
+            float angle = 0;
+            switch (connectionDir) {
+                case MazePiece.CONNECTDIR.North:
+                    angle = 180;
+                    break;
+                case MazePiece.CONNECTDIR.East:
+                    angle = 90;
+                    break;
+                case MazePiece.CONNECTDIR.South:
+                    angle = 0;
+                    break;
+                case MazePiece.CONNECTDIR.West:
+                    angle = 270;
+                    break;
+            }
+            switch (anchorMC.connectionDir) {
+                case MazePiece.CONNECTDIR.North:
+                    angle += 0;
+                    break;
+                case MazePiece.CONNECTDIR.East:
+                    angle += 270;
+                    break;
+                case MazePiece.CONNECTDIR.South:
+                    angle += 180;
+                    break;
+                case MazePiece.CONNECTDIR.West:
+                    angle += 90;
+                    break;
+            }
+
+            return angle % 360;
         }
 
         internal void SetColor(Color c) {

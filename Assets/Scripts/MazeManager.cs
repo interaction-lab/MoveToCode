@@ -125,6 +125,7 @@ namespace MoveToCode {
             // tell kuri maze piece to recruse through rest of peices
             // this will be a problem at some point because I am too lazy to make a new maze piece specifically for baby kuri
             BabyKuriManager.instance.transform.parent.GetComponent<MazePiece>().SnapConnections();
+            BabyKuriManager.instance.GetComponent<BabyKuriTransformManager>().SetOriginalState();
         }
         #endregion
     }

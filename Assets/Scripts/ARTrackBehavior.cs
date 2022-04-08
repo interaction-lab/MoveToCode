@@ -8,13 +8,13 @@ using UnityEngine.XR.ARFoundation;
 namespace MoveToCode {
     public abstract class ARTrackBehavior : MonoBehaviour {
         #region members
-        Color OrigColor {get; set;}
+        Color OrigColor { get; set; }
         MeshRenderer _meshRenderer;
         MeshRenderer MeshRend {
             get {
                 if (_meshRenderer == null) {
                     _meshRenderer = GetComponent<MeshRenderer>();
-                    if(_meshRenderer != null) { 
+                    if (_meshRenderer != null) {
                         OrigColor = _meshRenderer.material.color;
                     }
                     else {
@@ -80,8 +80,7 @@ namespace MoveToCode {
             MeshRend.material.color = c;
         }
         protected void ResetMeshAlpha() {
-            MeshRenderer rend = GetComponent<MeshRenderer>();
-            rend.material.color = OrigColor; // TODO make this more efficient/actually fix it
+            MeshRend.material.color = OrigColor; // TODO make this more efficient/actually fix it
         }
         protected float CalculateAlpha(float curAlpha) {
             float tmpA = (curAlpha - alphaFloor) / (alphaCeil - alphaFloor); // normalize alpha

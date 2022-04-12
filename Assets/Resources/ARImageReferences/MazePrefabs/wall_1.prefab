@@ -199,6 +199,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8573f79ee79946439de2a25f3b98969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnImgStartedTracking:
+    m_PersistentCalls:
+      m_Calls: []
+  OnImgStoppedTracking:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2598413472218450087
 MonoBehaviour:
   m_ObjectHideFlags: 0

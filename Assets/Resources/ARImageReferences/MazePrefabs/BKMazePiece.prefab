@@ -111,7 +111,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   connectionDir: 1
-  MyConnection: {fileID: 0}
 --- !u!1 &4421739133660021652
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,7 +222,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   connectionDir: 0
-  MyConnection: {fileID: 0}
 --- !u!1 &4618637902796521928
 GameObject:
   m_ObjectHideFlags: 0

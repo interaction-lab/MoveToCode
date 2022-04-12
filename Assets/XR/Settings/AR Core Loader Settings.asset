@@ -12,4 +12,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00cb13c61b2744fd786f9f969ce96149, type: 3}
   m_Name: AR Core Loader Settings
   m_EditorClassIdentifier: 
-  m_StartAndStopSubsystems: 0

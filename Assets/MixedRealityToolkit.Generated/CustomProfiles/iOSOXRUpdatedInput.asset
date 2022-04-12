@@ -19,7 +19,7 @@ MonoBehaviour:
         Microsoft.MixedReality.Toolkit.Providers.OpenXR
     componentName: OpenXR XRSDK Device Manager
     priority: 0
-    runtimePlatform: -1
+    runtimePlatform: 2031
     deviceManagerProfile: {fileID: 0}
   - componentType:
       reference: Microsoft.MixedReality.Toolkit.OpenVR.Input.OpenVRDeviceManager,
@@ -81,6 +81,12 @@ MonoBehaviour:
     componentName: Input Playback Service
     priority: 0
     runtimePlatform: 208
+    deviceManagerProfile: {fileID: 0}
+  - componentType:
+      reference: Microsoft.MixedReality.Toolkit.XRSDK.Input.XRSDKDeviceManager, Microsoft.MixedReality.Toolkit.Providers.XRSDK
+    componentName: XR SDK Device Manager
+    priority: 0
+    runtimePlatform: 31
     deviceManagerProfile: {fileID: 0}
   focusProviderType:
     reference: Microsoft.MixedReality.Toolkit.Input.FocusProvider, Microsoft.MixedReality.Toolkit.Services.InputSystem

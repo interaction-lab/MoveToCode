@@ -60,6 +60,7 @@ namespace MoveToCode {
             MazeConnector otherMazeConnector = other.gameObject.GetComponent<MazeConnector>();
             if (otherMazeConnector != null) {
                 RequestAndConnect(otherMazeConnector);
+                ReliableOnTriggerExit.NotifyTriggerEnter(other, gameObject, OnTriggerExit);
             }
         }
         private void OnTriggerExit(Collider other) {
@@ -69,6 +70,7 @@ namespace MoveToCode {
             MazeConnector otherMazeConnector = other.gameObject.GetComponent<MazeConnector>();
             if (otherMazeConnector?.MyConnection == MyConnection) {
                 MyConnection.RequestDisconnect();
+                ReliableOnTriggerExit.NotifyTriggerExit(other, gameObject);
             }
         }
         #endregion

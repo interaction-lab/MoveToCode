@@ -8,10 +8,35 @@ using UnityEngine.Assertions;
 namespace MoveToCode {
     public class MazeManager : Singleton<MazeManager> {
         #region members
-        Queue<Connection> openConnections = new Queue<Connection>();
         HashSet<Connection> populatedConnections = new HashSet<Connection>();
         HashSet<Pair<MazeConnector, MazeConnector>> connectRequests = new HashSet<Pair<MazeConnector, MazeConnector>>();
+        BabyKuriManager _babyKuriManager;
+        BabyKuriManager BabyKuriManagerInstance {
+            get {
+                if (_babyKuriManager == null) {
+                    _babyKuriManager = BabyKuriManager.instance;
+                }
+                return _babyKuriManager;
+            }
+        }
         MazePiece bkMazePiece;
+        MazePiece BKMazePiece {
+            get{
+                if (bkMazePiece == null) {
+                    bkMazePiece = BabyKuriManagerInstance.transform.parent.GetComponent<MazePiece>();
+                }
+                return bkMazePiece;
+            }
+        }
+        BabyKuriTransformManager _bkTransformManager;
+        BabyKuriTransformManager BKTransformManager {
+            get {
+                if (_bkTransformManager == null) {
+                    _bkTransformManager = BabyKuriManagerInstance.GetComponent<BabyKuriTransformManager>();
+                }
+                return _bkTransformManager;
+            }
+        }
         ARTrackingManager aRTrackingManager;
         ARTrackingManager ARTrackingManagerInstance {
             get {
@@ -67,7 +92,6 @@ namespace MoveToCode {
         public void ReturnOpenConnectionToPool(Connection connection) {
             Assert.IsTrue(connection.IsOpen());
             populatedConnections.Remove(connection);
-            openConnections.Enqueue(connection);
         }
         #endregion
 
@@ -84,9 +108,6 @@ namespace MoveToCode {
             return false;
         }
         private Connection GetOpenConnection() {
-            if (!openConnections.Empty()) {
-                return openConnections.Dequeue();
-            }
             return new Connection();
         }
         private void AddManipulationHandlersForUnityEditor() {
@@ -117,10 +138,8 @@ namespace MoveToCode {
         }
 
         private void SnapPiecesTogether() {
-            // tell kuri maze piece to recruse through rest of peices
-            // this will be a problem at some point because I am too lazy to make a new maze piece specifically for baby kuri
-            BabyKuriManager.instance.transform.parent.GetComponent<MazePiece>().SnapConnections();
-            BabyKuriManager.instance.GetComponent<BabyKuriTransformManager>().SetOriginalState();
+            BKMazePiece.SnapConnections();
+            BKTransformManager.SetOriginalState();
         }
         #endregion
     }

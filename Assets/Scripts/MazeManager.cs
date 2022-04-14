@@ -114,6 +114,11 @@ namespace MoveToCode {
             Assert.IsTrue(connection.IsFullyOpen());
             populatedConnections.Remove(connection);
         }
+
+        public void GetMazeLayout() {
+            MazePiece curMazePiece = BKMazePiece;
+
+        }
         #endregion
 
         #region private

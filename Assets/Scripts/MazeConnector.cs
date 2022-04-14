@@ -22,6 +22,15 @@ namespace MoveToCode {
                 _mazePiece = value;
             }
         }
+
+        public MazePiece ConnectedMP {
+            get {
+                if (MyConnection == null) {
+                    return null;
+                }
+                return MyConnection.GetConnectedPiece(this);
+            }
+        }
         Rigidbody rb;
         Collider mcolider;
         MeshRenderer _meshRenderer;

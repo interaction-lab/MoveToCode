@@ -26,6 +26,16 @@ public class KeyboardTestingScript : MonoBehaviour {
             return _arObjectManager;
         }
     }
+    MazePiece bkMP;
+    MazePiece BKMazePiece {
+        get {
+            if (bkMP == null) {
+                bkMP = FindObjectOfType<BabyKuriTrackBeh>().GetComponent<MazePiece>();
+            }
+            return bkMP;
+        }
+    }
+
     void Start() {
         anim = GetComponent<Animator>();
     }
@@ -38,7 +48,9 @@ public class KeyboardTestingScript : MonoBehaviour {
 
         }
         if (Input.GetKeyDown(KeyCode.Alpha0)) {
-            MazeManager.instance.GetMazeObject("goal");
+            MazeGraph myMaze = new MazeGraph(BKMazePiece);
+
+            Debug.Log(myMaze.HasSubGraph(myMaze));
         }
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
 

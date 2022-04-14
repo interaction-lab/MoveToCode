@@ -15,12 +15,22 @@ namespace MoveToCode {
         }
 
         Dictionary<CONNECTDIR, MazeConnector> connectionsDict;
-        Dictionary<CONNECTDIR, MazeConnector> ConnectionDict {
+        public Dictionary<CONNECTDIR, MazeConnector> ConnectionDict {
             get {
                 if (connectionsDict == null) {
                     connectionsDict = new Dictionary<CONNECTDIR, MazeConnector>();
                 }
                 return connectionsDict;
+            }
+        }
+
+        MPType mpType;
+        public MPType MyMPType {
+            get {
+                if (mpType == null || mpType.IsNull()) {
+                    mpType = new MPType(ConnectionDict, IsBabyKuriPiece, IsGoalPiece); // depends on connectionDict to be initialized
+                }
+                return mpType;
             }
         }
 
@@ -34,8 +44,19 @@ namespace MoveToCode {
             }
         }
 
+
         ManipulationHandler manipHandler;
         public bool IsAnchored { get; set; }
+        public bool IsBabyKuriPiece {
+            get {
+                return GetComponent<BabyKuriTrackBeh>() != null;
+            }
+        }
+        public bool IsGoalPiece {
+            get {
+                return GetComponent<GoalTrackBeh>() != null;
+            }
+        }
         #endregion
 
         #region unity

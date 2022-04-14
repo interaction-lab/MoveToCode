@@ -31,6 +31,14 @@ namespace MoveToCode {
             Connect(first, second);
         }
 
+        internal MazePiece GetConnectedPiece(MazeConnector requestingConnector) {
+            Assert.IsTrue(IsPopulated());
+            if (requestingConnector == mazeConnectors.First) {
+                return mazeConnectors.Second.MyMazePiece;
+            }
+            return mazeConnectors.First.MyMazePiece;
+        }
+
         public bool IsPopulated() {
             return mazeConnectors.First != null && mazeConnectors.Second != null;
         }

@@ -69,6 +69,15 @@ namespace MoveToCode {
             return text.Substring(0, pos) + replace + text.Substring(pos + search.Length);
         }
 
+        public static string TrimLastCharacter(this string str) {
+            if (string.IsNullOrEmpty(str)) {
+                return str;
+            }
+            else {
+                return str.TrimEnd(str[str.Length - 1]);
+            }
+        }
+
         // TextMesh Extensions
         public static void ForceTextUpdate(this TextMeshPro tmp) {
             tmp.enabled = false;

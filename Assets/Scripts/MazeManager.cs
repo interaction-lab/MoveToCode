@@ -88,7 +88,7 @@ namespace MoveToCode {
             connectRequests[requestingMazeConnector].Add(collidedMazeConnector);
         }
 
-        internal void RemoveConnectionRequest(MazeConnector requestingMazeConnector, MazeConnector collidedMazeConnector) {
+        internal void RemoveRequest(MazeConnector requestingMazeConnector, MazeConnector collidedMazeConnector) {
             Assert.IsTrue(connectRequests.ContainsKey(requestingMazeConnector));
             Assert.IsTrue(connectRequests[requestingMazeConnector].Contains(collidedMazeConnector));
             connectRequests[requestingMazeConnector].Remove(collidedMazeConnector);
@@ -106,13 +106,13 @@ namespace MoveToCode {
         }
 
         public void AddPopulatedConnection(Connection connection) {
+            Assert.IsTrue(connection.IsPopulated());
             populatedConnections.Add(connection);
         }
 
-        public void ReturnOpenConnectionToPool(Connection connection, MazeConnector first, MazeConnector second) {
-            Assert.IsTrue(connection.IsOpen());
+        public void ReturnOpenConnectionToPool(Connection connection) {
+            Assert.IsTrue(connection.IsFullyOpen());
             populatedConnections.Remove(connection);
-
         }
         #endregion
 

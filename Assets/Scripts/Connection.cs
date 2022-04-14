@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -14,8 +15,7 @@ namespace MoveToCode {
             }
         }
         Pair<MazeConnector, MazeConnector> mazeConnectors = new Pair<MazeConnector, MazeConnector>(null, null);
-        bool oneMemberHasRequestedADisconnect = false;
-
+        bool oneMemberHasAttemptedDisconnect = false;
         public Color connectedColor;
 
         public bool BothPiecesAreAnchored {
@@ -35,21 +35,13 @@ namespace MoveToCode {
             return mazeConnectors.First != null && mazeConnectors.Second != null;
         }
 
-        public bool IsOpen() {
-            return !IsPopulated();
+        public bool IsPartiallyOpen() {
+            return !IsPopulated() && (mazeConnectors.First != null || mazeConnectors.Second != null);
         }
 
-        internal void BreakConnection() {
-            MazeConnector first = mazeConnectors.First;
-            MazeConnector second = mazeConnectors.Second;
-            mazeConnectors.First.Disconnect();
-            mazeConnectors.Second.Disconnect();
-            mazeConnectors.First = null;
-            mazeConnectors.Second = null;
-
-            MazeManagerInstance.ReturnOpenConnectionToPool(this, first, second);
+        public bool IsFullyOpen() {
+            return !IsPopulated() && !IsPartiallyOpen();
         }
-
 
         internal void AnchorNeighboringPiece() {
             Assert.IsTrue(IsPopulated());
@@ -84,6 +76,18 @@ namespace MoveToCode {
             otherMazeConnector.SetColor(connectedColor);
 
             MazeManagerInstance.AddPopulatedConnection(this);
+        }
+
+        internal void RequestDisconnect() {
+            if (oneMemberHasAttemptedDisconnect) {
+                mazeConnectors.First.Disconnect();
+                mazeConnectors.Second.Disconnect();
+                mazeConnectors.First = mazeConnectors.Second = null;
+                MazeManagerInstance.ReturnOpenConnectionToPool(this);
+            }
+            else {
+                oneMemberHasAttemptedDisconnect = true;
+            }
         }
         #endregion
     }

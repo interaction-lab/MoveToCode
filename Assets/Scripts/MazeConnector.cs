@@ -65,13 +65,13 @@ namespace MoveToCode {
         }
         private void OnTriggerExit(Collider other) {
             MazeConnector otherMazeConnector = other.gameObject.GetComponent<MazeConnector>();
-            MazeManagerInstance.RemoveConnectionRequest(this, otherMazeConnector);
-
-            if (otherMazeConnector?.MyConnection == MyConnection) {
-                MyConnection.RequestDisconnect();
+            if (otherMazeConnector != null) {
+                RemoveRequestAndAttemptConnect(otherMazeConnector);
+                ReliableOnTriggerExit.NotifyTriggerExit(other, gameObject);
             }
-            ReliableOnTriggerExit.NotifyTriggerExit(other, gameObject);
         }
+
+
         #endregion
 
         #region public
@@ -97,9 +97,9 @@ namespace MoveToCode {
         }
 
         internal void Disconnect() {
-            MyConnection = null;
-            // tell maze manager to try to request again
+            MyConnection = null; // this can only happen after it is fully broken
             SetColor(origColor);
+            AttemptNewConnection();
         }
 
         internal void AnchorTo(MazeConnector anchorConnector) {
@@ -173,6 +173,16 @@ namespace MoveToCode {
         }
         private void AddRequestAndAttemptConnect(MazeConnector otherMazeConnector) {
             MazeManagerInstance.AddConnectionRequest(this, otherMazeConnector);
+            AttemptNewConnection();
+        }
+        private void RemoveRequestAndAttemptConnect(MazeConnector otherMazeConnector) {
+            MazeManagerInstance.RemoveRequest(this, otherMazeConnector);
+            if (otherMazeConnector?.MyConnection == MyConnection) {
+                MyConnection.RequestDisconnect();
+            }
+        }
+
+        private void AttemptNewConnection() {
             if (MyConnection == null) {
                 MyConnection = MazeManagerInstance.GetConnection(this);
             }

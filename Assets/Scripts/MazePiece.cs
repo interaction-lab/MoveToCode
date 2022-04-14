@@ -49,33 +49,23 @@ namespace MoveToCode {
         public bool IsAnchored { get; set; }
         public bool IsBabyKuriPiece {
             get {
-                return GetComponent<BabyKuriTrackBeh>() != null;
+                return GetComponent<MazeBabyKuri>() != null;
             }
         }
         public bool IsGoalPiece {
             get {
-                return GetComponent<GoalTrackBeh>() != null;
+                return GetComponent<MazeGoal>() != null;
             }
         }
         #endregion
 
         #region unity
         private void OnEnable() {
-            arTrackBehavior.OnImgStartedTracking.AddListener(OnImgStartedTracking);
-            arTrackBehavior.OnImgStoppedTracking.AddListener(OnImgStoppedTracking);
-            StartCoroutine(WaitForEndOfFrame());
-#if UNITY_EDITOR
-            // Add manipulation handler in the case where we aren't building to the real world
-            if (manipHandler == null) {
-                manipHandler = gameObject.AddComponent<ManipulationHandler>();
-                manipHandler.ManipulationType = ManipulationHandler.HandMovementType.OneHandedOnly;
-                manipHandler.AllowFarManipulation = true;
-            }
-#endif
+            SetUpOnEnable();
         }
+
         private void OnDisable() {
-            arTrackBehavior.OnImgStartedTracking.RemoveListener(OnImgStartedTracking);
-            arTrackBehavior.OnImgStoppedTracking.RemoveListener(OnImgStoppedTracking);
+            RunOnDisable();
         }
         #endregion
 
@@ -91,12 +81,33 @@ namespace MoveToCode {
             }
         }
 
-        internal void Unanchor() {
+        internal void UnAnchor() {
             IsAnchored = false;
+            foreach (MazeConnector mazeConnector in ConnectionDict.Values) {
+                mazeConnector.TurnOnConnector();
+            }
         }
+
         #endregion
 
         #region protected
+        protected virtual void SetUpOnEnable() {
+            arTrackBehavior.OnImgStartedTracking.AddListener(OnImgStartedTracking);
+            arTrackBehavior.OnImgStoppedTracking.AddListener(OnImgStoppedTracking);
+            StartCoroutine(WaitForEndOfFrame());
+#if UNITY_EDITOR
+            // Add manipulation handler in the case where we aren't building to the real world
+            if (manipHandler == null) {
+                manipHandler = gameObject.AddComponent<ManipulationHandler>();
+                manipHandler.ManipulationType = ManipulationHandler.HandMovementType.OneHandedOnly;
+                manipHandler.AllowFarManipulation = true;
+            }
+#endif
+        }
+        protected virtual void RunOnDisable() {
+            arTrackBehavior.OnImgStartedTracking.RemoveListener(OnImgStartedTracking);
+            arTrackBehavior.OnImgStoppedTracking.RemoveListener(OnImgStoppedTracking);
+        }
         #endregion
 
         #region private
@@ -120,13 +131,6 @@ namespace MoveToCode {
 #if UNITY_EDITOR
             OnImgStartedTracking(); // pretend tracking if working in the editor
 #endif
-        }
-
-        internal void UnAnchor() {
-            IsAnchored = false;
-            foreach (MazeConnector mazeConnector in ConnectionDict.Values) {
-                mazeConnector.TurnOnConnector();
-            }
         }
         #endregion
     }

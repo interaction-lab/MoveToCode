@@ -48,9 +48,9 @@ public class KeyboardTestingScript : MonoBehaviour {
 
         }
         if (Input.GetKeyDown(KeyCode.Alpha0)) {
-            MazeGraph myMaze = new MazeGraph(BKMazePiece);
-
-            Debug.Log(myMaze.HasSubGraph(myMaze));
+            MazeGraph myMaze = new MazeGraph(MazeManager.instance.BKMazePiece);
+            MazeGraph solMaze = new MazeGraph(SolMazeManager.instance.BKMazePiece);
+            Debug.Log(myMaze.HasSubGraph(solMaze));
         }
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
 

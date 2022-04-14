@@ -58,6 +58,9 @@ namespace MoveToCode {
                 return MyMazePiece.IsAnchored;
             }
         }
+
+
+
         #endregion
 
         #region unity
@@ -67,14 +70,14 @@ namespace MoveToCode {
 
         private void OnTriggerEnter(Collider other) {
             MazeConnector otherMazeConnector = other.gameObject.GetComponent<MazeConnector>();
-            if (otherMazeConnector != null) {
+            if (otherMazeConnector != null && IsSameMazePieceType(otherMazeConnector.MyMazePiece)) {
                 AddRequestAndAttemptConnect(otherMazeConnector);
                 ReliableOnTriggerExit.NotifyTriggerEnter(other, gameObject, OnTriggerExit);
             }
         }
         private void OnTriggerExit(Collider other) {
             MazeConnector otherMazeConnector = other.gameObject.GetComponent<MazeConnector>();
-            if (otherMazeConnector != null) {
+            if (otherMazeConnector != null && IsSameMazePieceType(otherMazeConnector.MyMazePiece)) {
                 RemoveRequestAndAttemptConnect(otherMazeConnector);
                 ReliableOnTriggerExit.NotifyTriggerExit(other, gameObject);
             }
@@ -94,6 +97,11 @@ namespace MoveToCode {
             mcolider.enabled = false;
         }
 
+        public bool IsSameMazePieceType(MazePiece otherMP) { // super jank, but it works to change the difference in solution maze pieces and generic maze pieces
+            bool iamsol = (MyMazePiece as SolMazePiece) != null;
+            bool theyaresol = (otherMP as SolMazePiece) != null;
+            return iamsol == theyaresol;
+        }
         public bool IsConnected() {
             return MyConnection != null;
         }

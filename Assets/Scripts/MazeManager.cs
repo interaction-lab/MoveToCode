@@ -21,10 +21,14 @@ namespace MoveToCode {
             }
         }
         MazePiece bkMazePiece;
-        MazePiece BKMazePiece {
+        public MazePiece BKMazePiece {
             get {
                 if (bkMazePiece == null) {
-                    bkMazePiece = BabyKuriManagerInstance.transform.parent.GetComponent<MazePiece>();
+                    foreach (Transform t in transform) {
+                        if (t.GetComponent<MazeBabyKuri>() != null) {
+                            bkMazePiece = t.GetComponent<MazePiece>();
+                        }
+                    }
                 }
                 return bkMazePiece;
             }
@@ -45,6 +49,16 @@ namespace MoveToCode {
                     aRTrackingManager = ARTrackingManager.instance;
                 }
                 return aRTrackingManager;
+            }
+        }
+
+        SolMazeManager solMazeManager;
+        SolMazeManager SolMazeManagerInstance {
+            get {
+                if (solMazeManager == null) {
+                    solMazeManager = SolMazeManager.instance;
+                }
+                return solMazeManager;
             }
         }
         #endregion
@@ -114,11 +128,6 @@ namespace MoveToCode {
             Assert.IsTrue(connection.IsFullyOpen());
             populatedConnections.Remove(connection);
         }
-
-        public void GetMazeLayout() {
-            MazePiece curMazePiece = BKMazePiece;
-
-        }
         #endregion
 
         #region private
@@ -147,11 +156,13 @@ namespace MoveToCode {
                     mazePiece.UnAnchor();
                 }
             }
+            SolMazeManagerInstance.ReleasePieces();
         }
 
         private void SnapPiecesTogether() {
             BKMazePiece.SnapConnections();
             BKTransformManager.SetOriginalState();
+            SolMazeManagerInstance.SnapPiecesTogether();
         }
         #endregion
     }

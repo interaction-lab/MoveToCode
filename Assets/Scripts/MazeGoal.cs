@@ -18,6 +18,9 @@ namespace MoveToCode {
 
         #region unity
         private void OnEnable() {
+            if (transform.name.Contains("sol")) {
+                return; // Hackiest thing ever that defintely won't lead to problems down the road
+            }
             MyCollider.enabled = true;
             MyCollider.isTrigger = true;
         }

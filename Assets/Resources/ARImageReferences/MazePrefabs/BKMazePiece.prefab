@@ -237,6 +237,7 @@ GameObject:
   - component: {fileID: 2621599854828402998}
   - component: {fileID: 7972435335476059517}
   - component: {fileID: 6901866813824938003}
+  - component: {fileID: 4026801412166460510}
   m_Layer: 0
   m_Name: BKMazePiece
   m_TagString: Untagged
@@ -374,6 +375,18 @@ MonoBehaviour:
   OnImgStoppedTracking:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4026801412166460510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4618637902796521928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8b5fcb4318e31b49bccc730f59ba67e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7866082886209537792
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,6 +456,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BabyKuri
+      objectReference: {fileID: 0}
+    - target: {fileID: 7860648254707541567, guid: 82ce1369e69574be8bad08dbb6c94d16,
+        type: 3}
+      propertyPath: m_Name
+      value: BKBody
       objectReference: {fileID: 0}
     - target: {fileID: 7860648254707644957, guid: 82ce1369e69574be8bad08dbb6c94d16,
         type: 3}

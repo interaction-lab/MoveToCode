@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace MoveToCode {
-    public class Connection  {
+    public class Connection {
         #region members
         MazeManager mazeManager;
         MazeManager MazeManagerInstance {
@@ -27,6 +27,10 @@ namespace MoveToCode {
         #endregion
 
         #region public
+        public Connection(MazeConnector first, MazeConnector second) {
+            Connect(first, second);
+        }
+
         public bool IsPopulated() {
             return mazeConnectors.First != null && mazeConnectors.Second != null;
         }
@@ -35,36 +39,17 @@ namespace MoveToCode {
             return !IsPopulated();
         }
 
-        public void RequestDisconnect() {
-            if (oneMemberHasRequestedADisconnect) {
-                BreakConnection();
-                oneMemberHasRequestedADisconnect = false;
-            }
-            else {
-                oneMemberHasRequestedADisconnect = true;
-            }
-        }
-
         internal void BreakConnection() {
+            MazeConnector first = mazeConnectors.First;
+            MazeConnector second = mazeConnectors.Second;
             mazeConnectors.First.Disconnect();
             mazeConnectors.Second.Disconnect();
             mazeConnectors.First = null;
             mazeConnectors.Second = null;
 
-            MazeManagerInstance.ReturnOpenConnectionToPool(this);
+            MazeManagerInstance.ReturnOpenConnectionToPool(this, first, second);
         }
 
-        internal void Connect(MazeConnector mazeConnector, MazeConnector otherMazeConnector) {
-            mazeConnectors.First = mazeConnector;
-            mazeConnectors.Second = otherMazeConnector;
-            otherMazeConnector.MyConnection = this;
-
-            connectedColor = UnityEngine.Random.ColorHSV(0f, 1f, 0.5f, 1f, 0.5f, 1f, 1f, 1f);
-            mazeConnector.SetColor(connectedColor);
-            otherMazeConnector.SetColor(connectedColor);
-
-            MazeManagerInstance.AddPopulatedConnection(this);
-        }
 
         internal void AnchorNeighboringPiece() {
             Assert.IsTrue(IsPopulated());
@@ -89,6 +74,17 @@ namespace MoveToCode {
         #endregion
 
         #region private
+        private void Connect(MazeConnector mazeConnector, MazeConnector otherMazeConnector) {
+            mazeConnectors.First = mazeConnector;
+            mazeConnectors.Second = otherMazeConnector;
+            otherMazeConnector.MyConnection = this;
+
+            connectedColor = UnityEngine.Random.ColorHSV(0f, 1f, 0.5f, 1f, 0.5f, 1f, 1f, 1f);
+            mazeConnector.SetColor(connectedColor);
+            otherMazeConnector.SetColor(connectedColor);
+
+            MazeManagerInstance.AddPopulatedConnection(this);
+        }
         #endregion
     }
 }

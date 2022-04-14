@@ -4,12 +4,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
+using System.Linq;
 
 namespace MoveToCode {
     public class MazeManager : Singleton<MazeManager> {
         #region members
         HashSet<Connection> populatedConnections = new HashSet<Connection>();
-        HashSet<Pair<MazeConnector, MazeConnector>> connectRequests = new HashSet<Pair<MazeConnector, MazeConnector>>();
+        Dictionary<MazeConnector, HashSet<MazeConnector>> connectRequests = new Dictionary<MazeConnector, HashSet<MazeConnector>>();
         BabyKuriManager _babyKuriManager;
         BabyKuriManager BabyKuriManagerInstance {
             get {
@@ -21,7 +22,7 @@ namespace MoveToCode {
         }
         MazePiece bkMazePiece;
         MazePiece BKMazePiece {
-            get{
+            get {
                 if (bkMazePiece == null) {
                     bkMazePiece = BabyKuriManagerInstance.transform.parent.GetComponent<MazePiece>();
                 }
@@ -78,9 +79,28 @@ namespace MoveToCode {
         /// <param name="requestingMazeConnector">see name</param>
         /// <param name="collidedMazeConnector">see name</param>
         /// <returns></returns>
-        internal Connection RequestConnection(MazeConnector requestingMazeConnector, MazeConnector collidedMazeConnector) {
-            if (CheckForMatchingRequest(requestingMazeConnector, collidedMazeConnector)) {
-                return GetOpenConnection();
+        internal void AddConnectionRequest(MazeConnector requestingMazeConnector, MazeConnector collidedMazeConnector) {
+            // add request to dictionary
+            if (!connectRequests.ContainsKey(requestingMazeConnector)) {
+                connectRequests.Add(requestingMazeConnector, new HashSet<MazeConnector>());
+            }
+            Assert.IsTrue(!connectRequests[requestingMazeConnector].Contains(collidedMazeConnector));
+            connectRequests[requestingMazeConnector].Add(collidedMazeConnector);
+        }
+
+        internal void RemoveConnectionRequest(MazeConnector requestingMazeConnector, MazeConnector collidedMazeConnector) {
+            Assert.IsTrue(connectRequests.ContainsKey(requestingMazeConnector));
+            Assert.IsTrue(connectRequests[requestingMazeConnector].Contains(collidedMazeConnector));
+            connectRequests[requestingMazeConnector].Remove(collidedMazeConnector);
+        }
+
+        internal Connection GetConnection(MazeConnector requestingMazeConnector) {
+            Assert.IsTrue(connectRequests.ContainsKey(requestingMazeConnector));
+            foreach (var mc in from MazeConnector mc in connectRequests[requestingMazeConnector]// check for matching request
+                               where connectRequests.ContainsKey(mc) && connectRequests[mc].Contains(requestingMazeConnector) && mc.MyConnection == null
+                               select mc) {
+                // check for matching connection
+                return new Connection(requestingMazeConnector, mc);
             }
             return null;
         }
@@ -89,27 +109,14 @@ namespace MoveToCode {
             populatedConnections.Add(connection);
         }
 
-        public void ReturnOpenConnectionToPool(Connection connection) {
+        public void ReturnOpenConnectionToPool(Connection connection, MazeConnector first, MazeConnector second) {
             Assert.IsTrue(connection.IsOpen());
             populatedConnections.Remove(connection);
+
         }
         #endregion
 
         #region private
-        private bool CheckForMatchingRequest(MazeConnector requestingMazeConnector, MazeConnector collidedMazeConnector) {
-            // connection requests holds connections in order of (requester, collided)
-            Pair<MazeConnector, MazeConnector> potentialMatchingRequest = new Pair<MazeConnector, MazeConnector>(collidedMazeConnector, requestingMazeConnector);
-            bool hasMatchingRequest = connectRequests.Contains(potentialMatchingRequest);
-            if (hasMatchingRequest) {
-                connectRequests.Remove(potentialMatchingRequest);
-                return true;
-            }
-            connectRequests.Add(new Pair<MazeConnector, MazeConnector>(requestingMazeConnector, collidedMazeConnector));
-            return false;
-        }
-        private Connection GetOpenConnection() {
-            return new Connection();
-        }
         private void AddManipulationHandlersForUnityEditor() {
             foreach (Transform child in transform) {
                 if (child.GetComponent<ManipulationHandler>()) {

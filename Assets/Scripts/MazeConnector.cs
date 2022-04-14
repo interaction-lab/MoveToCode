@@ -59,19 +59,18 @@ namespace MoveToCode {
         private void OnTriggerEnter(Collider other) {
             MazeConnector otherMazeConnector = other.gameObject.GetComponent<MazeConnector>();
             if (otherMazeConnector != null) {
-                RequestAndConnect(otherMazeConnector);
+                AddRequestAndAttemptConnect(otherMazeConnector);
                 ReliableOnTriggerExit.NotifyTriggerEnter(other, gameObject, OnTriggerExit);
             }
         }
         private void OnTriggerExit(Collider other) {
-            if (!IsConnected()) {
-                return;
-            }
             MazeConnector otherMazeConnector = other.gameObject.GetComponent<MazeConnector>();
+            MazeManagerInstance.RemoveConnectionRequest(this, otherMazeConnector);
+
             if (otherMazeConnector?.MyConnection == MyConnection) {
                 MyConnection.RequestDisconnect();
-                ReliableOnTriggerExit.NotifyTriggerExit(other, gameObject);
             }
+            ReliableOnTriggerExit.NotifyTriggerExit(other, gameObject);
         }
         #endregion
 
@@ -99,6 +98,7 @@ namespace MoveToCode {
 
         internal void Disconnect() {
             MyConnection = null;
+            // tell maze manager to try to request again
             SetColor(origColor);
         }
 
@@ -171,10 +171,10 @@ namespace MoveToCode {
                 mcolider.isTrigger = true;
             }
         }
-        private void RequestAndConnect(MazeConnector otherMazeConnector) {
-            MyConnection = MazeManagerInstance.RequestConnection(this, otherMazeConnector);
-            if (MyConnection != null) {
-                MyConnection.Connect(this, otherMazeConnector);
+        private void AddRequestAndAttemptConnect(MazeConnector otherMazeConnector) {
+            MazeManagerInstance.AddConnectionRequest(this, otherMazeConnector);
+            if (MyConnection == null) {
+                MyConnection = MazeManagerInstance.GetConnection(this);
             }
         }
         #endregion

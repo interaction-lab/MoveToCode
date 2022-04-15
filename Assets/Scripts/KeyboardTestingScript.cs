@@ -50,12 +50,13 @@ public class KeyboardTestingScript : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Alpha0)) {
             MazeGraph myMaze = new MazeGraph(MazeManager.instance.BKMazePiece);
             MazeGraph solMaze = new MazeGraph(SolMazeManager.instance.BKMazePiece);
-            foreach(MPEdge edge in myMaze.GetAllEdges()) {
+            foreach (MPEdge edge in myMaze.GetAllEdges()) {
                 Debug.Log(edge);
             }
-            foreach(MPEdge edge in solMaze.GetAllEdges()) {
+            foreach (MPEdge edge in solMaze.GetAllEdges()) {
                 Debug.Log(edge);
             }
+            Debug.Log("ContainsSubgraph: " + myMaze.ContainsSubgraph(solMaze));
         }
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
 

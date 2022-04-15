@@ -11,6 +11,7 @@ namespace MoveToCode {
             private set;
         }
         HashSet<Pair<MazePiece, CONNECTDIR>> visited;
+        HashSet<MazePiece> visitedPieces;
         #endregion
 
         #region public
@@ -35,33 +36,13 @@ namespace MoveToCode {
         #region private
 
         private List<MPEdge> TraverseForAllPieces(MazePiece current, List<MPEdge> allPieces) {
-            if (visited.Contains(new Pair<MazePiece, CONNECTDIR>(current, CONNECTDIR.North))) {
+            if (visitedPieces.Contains(current)) {
                 return allPieces;
             }
-            visited.Add(new Pair<MazePiece, CONNECTDIR>(current, CONNECTDIR.North));
-            if (current.MyMPType.North) {
-                allPieces.Add(new MPEdge(new MPNode(current, CONNECTDIR.North), new MPNode(current.North, CONNECTDIR.South)));
-            }
-            if (current.MyMPType.South) {
-                allPieces.Add(new MPEdge(new MPNode(current, CONNECTDIR.South), new MPNode(current.South, CONNECTDIR.North)));
-            }
-            if (current.MyMPType.East) {
-                allPieces.Add(new MPEdge(new MPNode(current, CONNECTDIR.East), new MPNode(current.East, CONNECTDIR.West)));
-            }
-            if (current.MyMPType.West) {
-                allPieces.Add(new MPEdge(new MPNode(current, CONNECTDIR.West), new MPNode(current.West, CONNECTDIR.East)));
-            }
-            if (current.MyMPType.North) {
-                TraverseForAllPieces(current.North, allPieces);
-            }
-            if (current.MyMPType.South) {
-                TraverseForAllPieces(current.South, allPieces);
-            }
-            if (current.MyMPType.East) {
-                TraverseForAllPieces(current.East, allPieces);
-            }
-            if (current.MyMPType.West) {
-                TraverseForAllPieces(current.West, allPieces);
+            visitedPieces.Add(current);
+            foreach (CONNECTDIR dir in current.ConnectionDict.Keys) {
+                MazePiece nextPiece = current.ConnectionDict[dir].ConnectedMP;
+
             }
             return allPieces;
         }
@@ -74,7 +55,7 @@ namespace MoveToCode {
             if (!SamePieceType(myPiece, otherPiece)) { // make sure to compare types of maze pieces as opposed to pointers
                 return false;
             }
-            if(otherPiece == null){
+            if (otherPiece == null) {
                 return true;
             }
             visited.Add(new Pair<MazePiece, CONNECTDIR>(myPiece, dir));

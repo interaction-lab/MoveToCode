@@ -53,6 +53,9 @@ public class KeyboardTestingScript : MonoBehaviour {
             foreach(MPEdge edge in myMaze.GetAllEdges()) {
                 Debug.Log(edge);
             }
+            foreach(MPEdge edge in solMaze.GetAllEdges()) {
+                Debug.Log(edge);
+            }
         }
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
 

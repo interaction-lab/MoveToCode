@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace MoveToCode {
     public readonly struct MPEdge {
         public readonly Pair<MPNode, MPNode> Nodes;
@@ -12,6 +8,15 @@ namespace MoveToCode {
 
         public override string ToString() {
             return "{" + "'N1': " + Nodes.First.ToString() + ", 'N2': " + Nodes.Second.ToString() + "}";
+        }
+
+        public override bool Equals(object obj) {
+            if (obj is MPEdge) {
+                MPEdge other = (MPEdge)obj;
+                return (Nodes.First.Equals(other.Nodes.First) && Nodes.Second.Equals(other.Nodes.Second))
+                || (Nodes.First.Equals(other.Nodes.Second) && Nodes.Second.Equals(other.Nodes.First));
+            }
+            return false;
         }
     }
 }

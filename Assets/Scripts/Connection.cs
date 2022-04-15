@@ -31,6 +31,12 @@ namespace MoveToCode {
             Connect(first, second);
         }
 
+        public MPEdge GetMPEdge() {
+            MPNode node1 = new MPNode(mazeConnectors.First.MyMazePiece, mazeConnectors.First.connectionDir);
+            MPNode node2 = new MPNode(mazeConnectors.Second.MyMazePiece, mazeConnectors.Second.connectionDir);
+            return new MPEdge(node1, node2);
+        }
+
         internal MazePiece GetConnectedPiece(MazeConnector requestingConnector) {
             Assert.IsTrue(IsPopulated());
             if (requestingConnector == mazeConnectors.First) {

@@ -23,9 +23,49 @@ namespace MoveToCode {
             return TraverseForSubGraphDiscrepency(Root, other.Root, CONNECTDIR.North);
 
         }
+
+        public List<MPEdge> GetAllPieces() {
+            List<MPEdge> allPieces = new List<MPEdge>();
+            // traverse through whole maze and collect MPEdges
+            return TraverseForAllPieces(Root, allPieces);
+        }
+
         #endregion
 
         #region private
+
+        private List<MPEdge> TraverseForAllPieces(MazePiece current, List<MPEdge> allPieces) {
+            if (visited.Contains(new Pair<MazePiece, CONNECTDIR>(current, CONNECTDIR.North))) {
+                return allPieces;
+            }
+            visited.Add(new Pair<MazePiece, CONNECTDIR>(current, CONNECTDIR.North));
+            if (current.MyMPType.North) {
+                allPieces.Add(new MPEdge(new MPNode(current, CONNECTDIR.North), new MPNode(current.North, CONNECTDIR.South)));
+            }
+            if (current.MyMPType.South) {
+                allPieces.Add(new MPEdge(new MPNode(current, CONNECTDIR.South), new MPNode(current.South, CONNECTDIR.North)));
+            }
+            if (current.MyMPType.East) {
+                allPieces.Add(new MPEdge(new MPNode(current, CONNECTDIR.East), new MPNode(current.East, CONNECTDIR.West)));
+            }
+            if (current.MyMPType.West) {
+                allPieces.Add(new MPEdge(new MPNode(current, CONNECTDIR.West), new MPNode(current.West, CONNECTDIR.East)));
+            }
+            if (current.MyMPType.North) {
+                TraverseForAllPieces(current.North, allPieces);
+            }
+            if (current.MyMPType.South) {
+                TraverseForAllPieces(current.South, allPieces);
+            }
+            if (current.MyMPType.East) {
+                TraverseForAllPieces(current.East, allPieces);
+            }
+            if (current.MyMPType.West) {
+                TraverseForAllPieces(current.West, allPieces);
+            }
+            return allPieces;
+        }
+
         private bool SamePieceType(MazePiece a, MazePiece b) {
             return a?.MyMPType == b?.MyMPType;
         }

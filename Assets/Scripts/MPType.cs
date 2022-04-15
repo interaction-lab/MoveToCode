@@ -60,9 +60,11 @@ namespace MoveToCode {
             return !(left == right);
         }
 
+        // json output of mptype
         public override string ToString() {
-            return "North(" + North + ")_South(" + South + ")_East(" + East + ")_West(" + West + ")_BabyKuri(" + BabyKuri + ")_Goal(" + Goal + ")";
+            return "{" + $"'N': {North}, 'S': {South}, 'E': {East}, 'W': {West}, 'B': {BabyKuri}, 'G': {Goal}" + "}";
         }
+
 
         public bool IsNull() {
             return !(North || South || East || West || BabyKuri || Goal);

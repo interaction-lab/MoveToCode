@@ -50,7 +50,9 @@ public class KeyboardTestingScript : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Alpha0)) {
             MazeGraph myMaze = new MazeGraph(MazeManager.instance.BKMazePiece);
             MazeGraph solMaze = new MazeGraph(SolMazeManager.instance.BKMazePiece);
-            Debug.Log(myMaze.HasSubGraph(solMaze));
+            foreach(MPEdge edge in myMaze.GetAllEdges()) {
+                Debug.Log(edge);
+            }
         }
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
 

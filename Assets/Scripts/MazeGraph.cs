@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static MoveToCode.MazePiece;
 
 namespace MoveToCode {
     public class MazeGraph {
@@ -9,7 +10,7 @@ namespace MoveToCode {
             get;
             private set;
         }
-        HashSet<MazePiece> visited;
+        HashSet<Pair<MazePiece, CONNECTDIR>> visited;
         #endregion
 
         #region public
@@ -19,33 +20,62 @@ namespace MoveToCode {
 
         public bool HasSubGraph(MazeGraph other) {
             ResetVisited();
-            return TraverseForSubGraphDiscrepency(Root, other.Root);
+            return TraverseForSubGraphDiscrepency(Root, other.Root, CONNECTDIR.North);
 
         }
         #endregion
 
         #region private
-        private bool TraverseForSubGraphDiscrepency(MazePiece myPiece, MazePiece otherPiece) {
-            if (myPiece?.MyMPType != otherPiece?.MyMPType) { // make sure to compare types of maze pieces as opposed to pointers
+        private bool SamePieceType(MazePiece a, MazePiece b) {
+            return a?.MyMPType == b?.MyMPType;
+        }
+
+        private bool TraverseForSubGraphDiscrepency(MazePiece myPiece, MazePiece otherPiece, CONNECTDIR dir) {
+            if (!SamePieceType(myPiece, otherPiece)) { // make sure to compare types of maze pieces as opposed to pointers
                 return false;
             }
-            visited.Add(myPiece);
-            foreach (MazePiece.CONNECTDIR direction in otherPiece.ConnectionDict.Keys) {
+            if(otherPiece == null){
+                return true;
+            }
+            visited.Add(new Pair<MazePiece, CONNECTDIR>(myPiece, dir));
+            foreach (CONNECTDIR direction in otherPiece.ConnectionDict.Keys) {
                 MazePiece otherNextPiece = otherPiece.ConnectionDict[direction].ConnectedMP;
-                MazePiece myNextPiece = myPiece.ConnectionDict[direction].ConnectedMP;
-                if (otherNextPiece == null || visited.Contains(myNextPiece)) {
+                if (otherNextPiece == null) {
                     continue;
                 }
-                if (!TraverseForSubGraphDiscrepency(myNextPiece, otherNextPiece)) {
-                    return false;
+
+                if (direction == CONNECTDIR.North || direction == CONNECTDIR.South) {
+                    // check north and south
+                    MazePiece myNorthPiece = myPiece.ConnectionDict[CONNECTDIR.North].ConnectedMP;
+                    bool northTraversal = TraverseForSubGraphDiscrepency(myNorthPiece, otherNextPiece, CONNECTDIR.North);
+                    MazePiece mySouthPiece = myPiece.ConnectionDict[CONNECTDIR.South].ConnectedMP;
+                    bool southTraversal = TraverseForSubGraphDiscrepency(mySouthPiece, otherNextPiece, CONNECTDIR.South);
+                    return northTraversal || southTraversal;
+
+                }
+                else {
+                    // check east and west
+                    MazePiece myEastPiece = myPiece.ConnectionDict[CONNECTDIR.East].ConnectedMP;
+                    bool eastTraversal = TraverseForSubGraphDiscrepency(myEastPiece, otherNextPiece, CONNECTDIR.East);
+                    MazePiece myWestPiece = myPiece.ConnectionDict[CONNECTDIR.West].ConnectedMP;
+                    bool westTraversal = TraverseForSubGraphDiscrepency(myWestPiece, otherNextPiece, CONNECTDIR.West);
+                    return eastTraversal || westTraversal;
                 }
             }
             return true;
         }
 
         private void ResetVisited() {
-            visited = new HashSet<MazePiece>();
-            visited.Add(null); // pretend visited all of the frontier of a graph
+            visited = new HashSet<Pair<MazePiece, CONNECTDIR>>();
+            // pretend visited all of the frontier of a graph
+            visited.Add(new Pair<MazePiece, CONNECTDIR>(null, CONNECTDIR.North));
+            visited.Add(new Pair<MazePiece, CONNECTDIR>(null, CONNECTDIR.South));
+            visited.Add(new Pair<MazePiece, CONNECTDIR>(null, CONNECTDIR.East));
+            visited.Add(new Pair<MazePiece, CONNECTDIR>(null, CONNECTDIR.West));
+            // pretend visited root from all directions except north (north starts the traversal)]
+            visited.Add(new Pair<MazePiece, CONNECTDIR>(Root, CONNECTDIR.South));
+            visited.Add(new Pair<MazePiece, CONNECTDIR>(Root, CONNECTDIR.East));
+            visited.Add(new Pair<MazePiece, CONNECTDIR>(Root, CONNECTDIR.West));
         }
         #endregion
     }

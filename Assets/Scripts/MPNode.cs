@@ -27,11 +27,15 @@ namespace MoveToCode {
 
         // Deals with symtrical directions
         public bool SameDirClass(CONNECTDIR dir) {
-            return MyDir == dir || 
+            return MyDir == dir ||
             (MyDir == CONNECTDIR.North && dir == CONNECTDIR.South) ||
             (MyDir == CONNECTDIR.South && dir == CONNECTDIR.North) ||
             (MyDir == CONNECTDIR.East && dir == CONNECTDIR.West) ||
             (MyDir == CONNECTDIR.West && dir == CONNECTDIR.East);
+        }
+
+        public override int GetHashCode() {
+            return base.GetHashCode();
         }
 
     }

@@ -14,6 +14,15 @@ namespace MoveToCode {
         public bool BabyKuri { get; }
         public bool Goal { get; }
 
+        private static long _id = 0;
+        public static long IDCoutnter {
+            get {
+                _id++;
+                return _id;
+            }
+        }
+        private readonly long MyID { get; }
+
         #endregion
 
         #region public
@@ -24,6 +33,7 @@ namespace MoveToCode {
             West = west;
             BabyKuri = babyKuri;
             Goal = goal;
+            MyID = IDCoutnter;
         }
 
         public MPType(Dictionary<CONNECTDIR, MazeConnector> connectionsDict, bool babyKuri, bool goal) {
@@ -33,6 +43,7 @@ namespace MoveToCode {
             West = connectionsDict.ContainsKey(CONNECTDIR.West) && connectionsDict[CONNECTDIR.West] != null;
             BabyKuri = babyKuri;
             Goal = goal;
+            MyID = IDCoutnter;
         }
 
         public override bool Equals(object obj) {
@@ -62,7 +73,7 @@ namespace MoveToCode {
 
         // json output of mptype
         public override string ToString() {
-            return "{" + $"'N': {North}, 'S': {South}, 'E': {East}, 'W': {West}, 'B': {BabyKuri}, 'G': {Goal}" + "}";
+            return "{" + $"'ID': {MyID}, 'N': {North}, 'S': {South}, 'E': {East}, 'W': {West}, 'B': {BabyKuri}, 'G': {Goal}" + "}";
         }
 
 

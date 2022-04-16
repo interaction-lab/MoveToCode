@@ -24,6 +24,7 @@ namespace MoveToCode {
             PopulateEdges(Root);
             return edges;
         }
+
         public bool ContainsSubgraph(MazeGraph other) {
             GetAllEdges();
             foreach (MPEdge otherEdge in other.GetAllEdges()) {

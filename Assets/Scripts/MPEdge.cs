@@ -18,5 +18,9 @@ namespace MoveToCode {
             }
             return false;
         }
+
+        public override int GetHashCode() {
+            return (Nodes.First.GetHashCode() + 1) ^ Nodes.Second.GetHashCode();
+        }
     }
 }

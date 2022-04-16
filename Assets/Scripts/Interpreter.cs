@@ -54,11 +54,11 @@ namespace MoveToCode {
         }
 
         public void RunNextInstruction() {
-            if (!CodeIsRunning()) {
+            if (CodeIsFinished()) {
                 ResetCodeState();
             }
             else {
-                if (curInstruction == StartCodeBlock.instance.GetMyIArgument() as Instruction) {
+                if (CodeIsAtStart()) {
                     SignalCodeStart();
                 }
                 try {
@@ -69,8 +69,15 @@ namespace MoveToCode {
                 }
             }
         }
+        public bool CodeIsRunning() {
+            return !CodeIsAtStart() && !CodeIsFinished();
+        }
 
-        public bool IsInResetState() {
+        public bool CodeIsFinished() {
+            return curInstruction == null;
+        }
+
+        public bool CodeIsAtStart() {
             return curInstruction == (StartCodeBlock.instance.GetMyIArgument() as Instruction);
         }
 
@@ -136,19 +143,11 @@ namespace MoveToCode {
                 yield break;
             }
             fullSteppingCode = true;
-            while (fullSteppingCode && CodeIsRunning()) {
+            while (fullSteppingCode && !CodeIsFinished()) {
                 RunNextInstruction();
                 yield return new WaitForSeconds(stepSpeed);
             }
             fullSteppingCode = false;
-        }
-
-        /// <summary>
-        /// Code running for internal interpreter use only
-        /// </summary>
-        /// <returns></returns>
-        private bool CodeIsRunning() {
-            return curInstruction != null;
         }
         #endregion
     }

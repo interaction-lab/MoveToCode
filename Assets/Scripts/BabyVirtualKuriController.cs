@@ -41,7 +41,7 @@ namespace MoveToCode {
         private Regex turnRe = new Regex(@"^" + TurnLogString);
         public bool IsMoving {
             get {
-                return (moveRe.IsMatch(CurMovementAction) || turnRe.IsMatch(CurMovementAction)) && !interpreter.IsInResetState();
+                return (moveRe.IsMatch(CurMovementAction) || turnRe.IsMatch(CurMovementAction)) && !interpreter.CodeIsAtStart();
             }
         }
         Interpreter _interpreter;

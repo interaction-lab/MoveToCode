@@ -1,14 +1,14 @@
 using Microsoft.MixedReality.Toolkit.UI;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 using System.Linq;
+using UnityEngine.Events;
 
 namespace MoveToCode {
     public class MazeManager : Singleton<MazeManager> {
         #region members
+        public UnityEvent OnMazeLocked, OnMazeUnlocked;
         HashSet<Connection> populatedConnections = new HashSet<Connection>();
         Dictionary<MazeConnector, HashSet<MazeConnector>> connectRequests = new Dictionary<MazeConnector, HashSet<MazeConnector>>();
         BabyKuriManager _babyKuriManager;
@@ -61,6 +61,7 @@ namespace MoveToCode {
                 return solMazeManager;
             }
         }
+        bool IsLocked = false;
         #endregion
 
         #region unity
@@ -128,6 +129,15 @@ namespace MoveToCode {
             Assert.IsTrue(connection.IsFullyOpen());
             populatedConnections.Remove(connection);
         }
+
+        public void ToggleMazeLock() {
+            if (IsLocked) {
+                ReleasePieces();
+            }
+            else {
+                SnapPiecesTogether();
+            }
+        }
         #endregion
 
         #region private
@@ -150,6 +160,9 @@ namespace MoveToCode {
         }
 
         private void ReleasePieces() {
+            if (!IsLocked) {
+                return;
+            }
             foreach (Transform child in transform) {
                 MazePiece mazePiece = child.GetComponent<MazePiece>();
                 if (mazePiece != null) {
@@ -157,12 +170,19 @@ namespace MoveToCode {
                 }
             }
             SolMazeManagerInstance.ReleasePieces();
+            IsLocked = false;
+            OnMazeUnlocked.Invoke();
         }
 
         private void SnapPiecesTogether() {
+            if (IsLocked) {
+                return;
+            }
             BKMazePiece.SnapConnections();
             BKTransformManager.SetOriginalState();
             SolMazeManagerInstance.SnapPiecesTogether();
+            IsLocked = true;
+            OnMazeLocked.Invoke();
         }
         #endregion
     }

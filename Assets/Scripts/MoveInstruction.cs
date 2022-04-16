@@ -4,7 +4,7 @@ namespace MoveToCode {
     public class MoveInstruction : SnappableStandAloneInstruction {
         CodeBlockEnums.Move output;
         BabyVirtualKuriController babyVirtualKuriController { get; } = (BabyVirtualKuriController)Object.FindObjectOfType(typeof(BabyVirtualKuriController));
-        float moveDist = 0.5f;
+        float moveDist = 0.34f;
 
         MoveTwistPublisher mtp = null;
         MoveTwistPublisher Mtp {

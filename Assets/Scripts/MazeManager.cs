@@ -70,6 +70,8 @@ namespace MoveToCode {
             ARTrackingManagerInstance.OnTrackingEnded.AddListener(OnTrackingEnded);
 #if UNITY_EDITOR
             AddManipulationHandlersForUnityEditor();
+#else
+            MoveOutOfView(); // Move the maze out of view so that it doesn't get in the way of the user when deployed to a device
 #endif
         }
         private void OnDisable() {
@@ -141,6 +143,9 @@ namespace MoveToCode {
         #endregion
 
         #region private
+        private void MoveOutOfView() {
+            transform.position = new Vector3(0, 100, 0);
+        }
         private void AddManipulationHandlersForUnityEditor() {
             foreach (Transform child in transform) {
                 if (child.GetComponent<ManipulationHandler>()) {

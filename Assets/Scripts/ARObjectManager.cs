@@ -65,7 +65,6 @@ namespace MoveToCode {
         #region private
         private void ImageChanged(ARTrackedImagesChangedEventArgs eventArgs) {
             foreach (ARTrackedImage img in eventArgs.added) {
-                KuriTextManager.instance.Addline(img.ImgName());
                 ImageAdded(img);
             }
             foreach (ARTrackedImage img in eventArgs.updated) {

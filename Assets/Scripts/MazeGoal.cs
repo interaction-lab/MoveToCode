@@ -14,6 +14,15 @@ namespace MoveToCode {
                 return _collider;
             }
         }
+        ParticleSystem ps;
+        ParticleSystem Particles {
+            get {
+                if (ps == null) {
+                    ps = GetComponentInChildren<ParticleSystem>();
+                }
+                return ps;
+            }
+        }
         #endregion
 
         #region unity
@@ -23,6 +32,9 @@ namespace MoveToCode {
             }
             MyCollider.enabled = true;
             MyCollider.isTrigger = true;
+            Particles.Stop();
+            var main = Particles.main;
+            main.loop = false;
         }
 
         private void OnDisable() {
@@ -30,8 +42,11 @@ namespace MoveToCode {
         }
 
         private void OnTriggerEnter(Collider other) {
-            if (other.name == "BKBody") {
+            if (other.name == "BKBody" && !Interpreter.instance.CodeIsAtStart()) {
                 KuriTextManager.instance.Addline("You win!");
+                Particles.Play();
+                AudioManager.instance.PlaySoundAtObject(transform, AudioManager.correctAudioClip);
+                // jank for now and will make this much better later, this is the OnWin event basically
             }
         }
         #endregion

@@ -57,6 +57,13 @@ namespace MoveToCode {
                 return GetComponent<MazeGoal>() != null;
             }
         }
+
+        public Vector3 Center {
+            get {
+                return transform.position;
+            }
+        }
+
         #endregion
 
         #region unity

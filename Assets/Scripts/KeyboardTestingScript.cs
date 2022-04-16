@@ -59,6 +59,8 @@ public class KeyboardTestingScript : MonoBehaviour {
             Debug.Log("ContainsSubgraph: " + myMaze.ContainsSubgraph(solMaze));
         }
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
+            Transform goal = FindObjectOfType<GoalTrackBeh>().transform;
+            Debug.Log(BabyKuriManager.instance.transform.position - goal.position);
 
         }
         if (Input.GetKeyDown(KeyCode.Alpha2)) {

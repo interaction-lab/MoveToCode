@@ -26,32 +26,44 @@ namespace MoveToCode {
             }
         }
 
-        public bool IsTracking{ get; private set; } = false; // default to not tracking
-        
+        public bool IsTracking { get; private set; } = false; // default to not tracking
+        MazeManager mazeManager;
+        MazeManager MazeManagerInstance {
+            get {
+                if (mazeManager == null) {
+                    mazeManager = MazeManager.instance;
+                }
+                return mazeManager;
+            }
+        }
         #endregion
 
         #region unity
-        void OnEnable(){
+        void OnEnable() {
             StartTracking();
             InterpreterInstance.OnCodeReset.AddListener(OnCodeReset);
             InterpreterInstance.OnCodeStart.AddListener(OnCodeStart);
+            MazeManagerInstance.OnMazeLocked.AddListener(OnMazeLocked);
+            MazeManagerInstance.OnMazeUnlocked.AddListener(OnMazeUnlocked);
         }
-        void OnDisable(){
+        void OnDisable() {
             StopTracking();
             InterpreterInstance.OnCodeReset.RemoveListener(OnCodeReset);
             InterpreterInstance.OnCodeStart.RemoveListener(OnCodeStart);
+            MazeManagerInstance.OnMazeLocked.RemoveListener(OnMazeLocked);
+            MazeManagerInstance.OnMazeUnlocked.RemoveListener(OnMazeUnlocked);
         }
         #endregion
 
         #region public
         public void StartTracking() {
-            if(!IsTracking){
+            if (!IsTracking) {
                 IsTracking = true;
                 OnTrackingStarted.Invoke();
             }
         }
         public void StopTracking() {
-            if(IsTracking){
+            if (IsTracking) {
                 IsTracking = false;
                 OnTrackingEnded.Invoke();
             }
@@ -66,7 +78,15 @@ namespace MoveToCode {
         private void OnCodeStart() {
             StopTracking();
         }
-        
+
+        private void OnMazeUnlocked() {
+            StartTracking();
+        }
+
+        private void OnMazeLocked() {
+            StopTracking();
+        }
+
         #endregion
     }
 }

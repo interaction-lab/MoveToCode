@@ -45,6 +45,7 @@ namespace MoveToCode {
         private void OnEnable() {
             ARTrackingManagerInstance.OnTrackingEnded.AddListener(OnTrackingEnded);
         }
+
         private void OnDisable() {
             ARTrackingManagerInstance.OnTrackingEnded.RemoveListener(OnTrackingEnded);
         }

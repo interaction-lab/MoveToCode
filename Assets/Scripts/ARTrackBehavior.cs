@@ -8,7 +8,9 @@ using UnityEngine.XR.ARFoundation;
 namespace MoveToCode {
     public abstract class ARTrackBehavior : MonoBehaviour {
         #region members
-        Color OrigColor { get; set; }
+        Color OrigColor {
+            get; set;
+        }
         MeshRenderer _meshRenderer;
         MeshRenderer MeshRend {
             get {
@@ -36,17 +38,35 @@ namespace MoveToCode {
                 return aRTrackingManager;
             }
         }
+        TrackingIndicator _trackingIndicator;
+        TrackingIndicator TrackingIndicator {
+            get {
+                if (_trackingIndicator == null) {
+                    _trackingIndicator = GetComponentInChildren<TrackingIndicator>();
+                }
+                return _trackingIndicator;
+            }
+        }
 
         public UnityEvent OnImgStartedTracking, OnImgStoppedTracking;
         bool isTracking = false;
+        bool hasBeenInitialized = false;
         #endregion
 
         #region unity
         private void OnEnable() {
+            if (!hasBeenInitialized) {
+                TrackingIndicator.TurnOff();
+                hasBeenInitialized = true;
+            }                
+            OnImgStartedTracking.AddListener(OnImgStartedTrackingListener);
+            OnImgStoppedTracking.AddListener(OnImgStoppedTrackingListener);
             ARTrackingManagerInstance.OnTrackingEnded.AddListener(OnTrackingEnded);
         }
 
         private void OnDisable() {
+            OnImgStartedTracking.RemoveListener(OnImgStartedTrackingListener);
+            OnImgStoppedTracking.RemoveListener(OnImgStoppedTrackingListener);
             ARTrackingManagerInstance.OnTrackingEnded.RemoveListener(OnTrackingEnded);
         }
         #endregion
@@ -101,6 +121,12 @@ namespace MoveToCode {
         #endregion
 
         #region private
+        private void OnImgStartedTrackingListener() {
+            TrackingIndicator.TurnOn();
+        }
+        private void OnImgStoppedTrackingListener() {
+            TrackingIndicator.TurnOff();
+        }
         private void OnTrackingEnded() {
             ResetMeshAlpha();
         }

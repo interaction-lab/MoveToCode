@@ -15,7 +15,8 @@ namespace MoveToCode {
 
         #region protected
         protected override void SetUpOnEnable() {
-            // do nothing
+            // change my layer to default
+            SetUpLayerMask(LayerMask.NameToLayer(LayerMaskConstants.DEFAULT)); // avoids raycast issues with MazePieces
         }
         protected override void RunOnDisable() {
             // do nothing

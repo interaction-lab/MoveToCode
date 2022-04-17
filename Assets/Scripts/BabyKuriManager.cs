@@ -12,6 +12,15 @@ namespace MoveToCode {
                 return kuriControllerBackingVar;
             }
         }
+        BabyKuriTransformManager _bkTransformManager;
+        public BabyKuriTransformManager BKTransformManager {
+            get {
+                if (_bkTransformManager == null) {
+                    _bkTransformManager = GetComponent<BabyKuriTransformManager>();
+                }
+                return _bkTransformManager;
+            }
+        }
 
         #endregion
 

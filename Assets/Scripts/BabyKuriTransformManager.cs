@@ -5,9 +5,15 @@ using UnityEngine;
 namespace MoveToCode {
     public class BabyKuriTransformManager : MonoBehaviour {
         #region members
-        public Vector3 OriginalPosition { get; private set; }
-        public Quaternion OriginalRotation { get; private set; }
-        public Color OriginalColor { get; private set; }
+        public Vector3 OriginalPosition {
+            get; private set;
+        }
+        public Quaternion OriginalRotation {
+            get; private set;
+        }
+        public Color OriginalColor {
+            get; private set;
+        }
 
         public Vector3 KuriPos {
             get {
@@ -43,6 +49,12 @@ namespace MoveToCode {
             }
         }
 
+        public Vector3 Down{
+            get {
+                return -1f * Up;
+            }
+        }
+
         private MeshRenderer _bodyPlateRend;
         public MeshRenderer BodyPlateRend {
             get {
@@ -64,13 +76,29 @@ namespace MoveToCode {
             OriginalColor = BodyPlateRend.material.color;
             _origstateset = true;
         }
-        public void ResetToOriginalState(){
-            if(!OrigStateSet){
+        public void ResetToOriginalState() {
+            if (!OrigStateSet) {
                 SetOriginalState();
             }
             transform.position = OriginalPosition;
             transform.rotation = OriginalRotation;
             BodyPlateRend.material.color = OriginalColor;
+        }
+
+        public MazePiece GetCurrentMazePiece() {
+            // shoot raycast down to find maze piece
+            // only use MazePiece layer mask
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, Down, out hit, Mathf.Infinity, LayerMask.GetMask(LayerMaskConstants.MAZEPIECE))) {
+                Debug.Log("hit " + hit.collider.gameObject.name);
+                return hit.collider.GetComponent<MazePiece>();
+            }
+            return null; // if no maze piece found
+        }
+
+        private void Update() {
+            // show downward raycast
+            Debug.DrawRay(transform.position,-Up,Color.red);
         }
         #endregion
 

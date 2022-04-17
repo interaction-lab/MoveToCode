@@ -164,6 +164,10 @@ namespace MoveToCode {
                 SnapPiecesTogether();
             }
         }
+
+        public MazePiece GetClosestKuriMazePiece(){
+            return MyMazeGraph.GetClosestKuriMazePiece(BabyKuriManagerInstance.BKTransformManager.KuriPos);
+        }
         #endregion
 
         #region private

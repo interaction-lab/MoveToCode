@@ -46,7 +46,9 @@ namespace MoveToCode {
 
 
         ManipulationHandler manipHandler;
-        public bool IsAnchored { get; set; }
+        public bool IsAnchored {
+            get; set;
+        }
         public bool IsBabyKuriPiece {
             get {
                 return GetComponent<MazeBabyKuri>() != null;
@@ -101,6 +103,7 @@ namespace MoveToCode {
         protected virtual void SetUpOnEnable() {
             arTrackBehavior.OnImgStartedTracking.AddListener(OnImgStartedTracking);
             arTrackBehavior.OnImgStoppedTracking.AddListener(OnImgStoppedTracking);
+            SetUpLayerMask(LayerMask.NameToLayer(LayerMaskConstants.MAZEPIECE));
             StartCoroutine(WaitForEndOfFrame());
 #if UNITY_EDITOR
             // Add manipulation handler in the case where we aren't building to the real world
@@ -114,6 +117,14 @@ namespace MoveToCode {
         protected virtual void RunOnDisable() {
             arTrackBehavior.OnImgStartedTracking.RemoveListener(OnImgStartedTracking);
             arTrackBehavior.OnImgStoppedTracking.RemoveListener(OnImgStoppedTracking);
+        }
+
+        protected void SetUpLayerMask(LayerMask lm) {
+            gameObject.layer = lm;
+        }
+
+        public override string ToString() {
+            return MyMPType.ToString();
         }
         #endregion
 

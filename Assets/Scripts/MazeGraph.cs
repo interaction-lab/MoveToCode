@@ -10,6 +10,7 @@ namespace MoveToCode {
             get;
             private set;
         }
+        // TODO: check for dirty edges so I can cache when needed
         HashSet<MPEdge> edges;
         HashSet<MazePiece> visitedPieces;
         #endregion
@@ -45,12 +46,31 @@ namespace MoveToCode {
         public override string ToString() {
             return '[' + string.Join(',', GetAllEdges()) + ']';
         }
+        public MazePiece GetClosestKuriMazePiece(Vector3 pos) {
+            float closestDist = float.MaxValue;
+            ResetGraph();
+            GetAllEdges(); // populates all maze pieces // Note this is quite "inefficient" but the number of nodes is minimal
+            MazePiece closestPiece = null;
+            foreach (MazePiece piece in visitedPieces) {
+                float dist = Vector3.Distance(pos, piece.transform.position);
+                if (dist < closestDist) {
+                    closestDist = dist;
+                    closestPiece = piece;
+                }
+            }
+            return closestPiece;
+        }
         #endregion
 
         #region private
         private void ResetGraph() {
-            edges = new HashSet<MPEdge>();
-            visitedPieces = new HashSet<MazePiece>();
+            if (visitedPieces == null) {
+                visitedPieces = new HashSet<MazePiece>();
+                edges = new HashSet<MPEdge>();
+
+            }
+            edges.Clear();
+            visitedPieces.Clear();
         }
         private void PopulateEdges(MazePiece current) {
             if (visitedPieces.Contains(current)) {

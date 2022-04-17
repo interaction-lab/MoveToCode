@@ -73,7 +73,7 @@ namespace MoveToCode {
         }
         bool IsLocked = false;
         bool hasBeenInitialized = false;
-        MazeGraph mazeGraph;
+        MazeGraph mazeGraph = null;
         public MazeGraph MyMazeGraph {
             get {
                 if (mazeGraph == null) {
@@ -148,11 +148,13 @@ namespace MoveToCode {
 
         public void AddPopulatedConnection(Connection connection) {
             Assert.IsTrue(connection.IsPopulated());
+            MarkMazeDirty();
             populatedConnections.Add(connection);
         }
 
         public void ReturnOpenConnectionToPool(Connection connection) {
             Assert.IsTrue(connection.IsFullyOpen());
+            MarkMazeDirty();
             populatedConnections.Remove(connection);
         }
 
@@ -165,7 +167,11 @@ namespace MoveToCode {
             }
         }
 
-        public MazePiece GetClosestKuriMazePiece(){
+        public void MarkMazeDirty() {
+            MyMazeGraph.MarkDirty();
+        }
+
+        public MazePiece GetClosestKuriMazePiece() {
             return MyMazeGraph.GetClosestKuriMazePiece(BabyKuriManagerInstance.BKTransformManager.KuriPos);
         }
         #endregion

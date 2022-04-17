@@ -9,6 +9,7 @@ namespace MoveToCode {
     public class MazeManager : Singleton<MazeManager> {
         #region members
         public UnityEvent OnMazeLocked, OnMazeUnlocked;
+        public static string mazeLogCol = "UserMaze";
         HashSet<Connection> populatedConnections = new HashSet<Connection>();
         Dictionary<MazeConnector, HashSet<MazeConnector>> connectRequests = new Dictionary<MazeConnector, HashSet<MazeConnector>>();
         BabyKuriManager _babyKuriManager;
@@ -61,13 +62,36 @@ namespace MoveToCode {
                 return solMazeManager;
             }
         }
+        LoggingManager loggingManager;
+        LoggingManager LoggingManagerInstance {
+            get {
+                if (loggingManager == null) {
+                    loggingManager = LoggingManager.instance;
+                }
+                return loggingManager;
+            }
+        }
         bool IsLocked = false;
+        bool hasBeenInitialized = false;
+        MazeGraph mazeGraph;
+        public MazeGraph MyMazeGraph {
+            get {
+                if (mazeGraph == null) {
+                    mazeGraph = new MazeGraph(BKMazePiece);
+                }
+                return mazeGraph;
+            }
+        }
         #endregion
 
         #region unity
         private void OnEnable() {
             ARTrackingManagerInstance.OnTrackingStarted.AddListener(OnTrackingStarted);
             ARTrackingManagerInstance.OnTrackingEnded.AddListener(OnTrackingEnded);
+            if (!hasBeenInitialized) {
+                LoggingManagerInstance.AddLogColumn(mazeLogCol, "");
+                hasBeenInitialized = true;
+            }
 #if UNITY_EDITOR
             AddManipulationHandlersForUnityEditor();
 #else
@@ -188,6 +212,7 @@ namespace MoveToCode {
             SolMazeManagerInstance.SnapPiecesTogether();
             IsLocked = true;
             OnMazeLocked.Invoke();
+            LoggingManagerInstance.UpdateLogColumn(mazeLogCol, MyMazeGraph.ToString());
         }
         #endregion
     }

@@ -41,6 +41,10 @@ namespace MoveToCode {
             }
             return true;
         }
+
+        public override string ToString() {
+            return '[' + string.Join(',', GetAllEdges()) + ']';
+        }
         #endregion
 
         #region private

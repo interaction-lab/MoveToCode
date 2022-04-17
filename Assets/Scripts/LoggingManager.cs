@@ -77,8 +77,19 @@ namespace MoveToCode {
         }
 
         public void UpdateLogColumn(string key, string value) {
-            row[columnLookup[key]] = value;
+            row[columnLookup[key]] = CleanCSVString(value);
             Assert.AreEqual(columnLookup.Keys.Count, row.Count);
+        }
+
+        private static string CleanCSVString(string value) {
+            if (value.Contains("\"")) {
+                value = value.Replace("\"", "\"\"");
+                value = string.Format("\"{0}\"", value);
+            }
+            else if (value.Contains(",") || value.Contains(System.Environment.NewLine)) {
+                value = string.Format("\"{0}\"", value);
+            }
+            return value;
         }
 
         public string GetValueInRowAt(string key) {

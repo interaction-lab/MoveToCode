@@ -6,7 +6,7 @@ namespace MoveToCode {
     public class SolMazeManager : Singleton<SolMazeManager> {
         #region members
         MazePiece bkMazePiece;
-
+        public static string solutionMazeCol = "SolutionMaze";
         public MazePiece BKMazePiece {
             get {
                 if (bkMazePiece == null) {
@@ -19,9 +19,35 @@ namespace MoveToCode {
                 return bkMazePiece;
             }
         }
+        LoggingManager _loggingManager;
+        LoggingManager LoggingManagerInstance {
+            get {
+                if (_loggingManager == null) {
+                    _loggingManager = LoggingManager.instance;
+                }
+                return _loggingManager;
+            }
+        }
+        MazeGraph mazeGraph;
+        public MazeGraph MyMazeGraph {
+            get {
+                if (mazeGraph == null) {
+                    mazeGraph = new MazeGraph(BKMazePiece);
+                }
+                return mazeGraph;
+            }
+        }
+
+        bool hasBeenInitialized = false;
         #endregion
 
         #region unity
+        private void OnEnable() {
+            if (!hasBeenInitialized) {
+                LoggingManagerInstance.AddLogColumn(solutionMazeCol, "");
+                hasBeenInitialized = true;
+            }
+        }
         #endregion
         // need to turn off all the connectors that are not currently in contact with something
         // or I could just turn them all off and not worry about it
@@ -37,6 +63,7 @@ namespace MoveToCode {
 
         public void SnapPiecesTogether() {
             BKMazePiece.SnapConnections();
+            LoggingManagerInstance.UpdateLogColumn(solutionMazeCol, MyMazeGraph.ToString());
         }
         #endregion
 

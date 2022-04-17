@@ -15,9 +15,9 @@ namespace MoveToCode {
         //json output of mpnode
         public override string ToString() {
             return "{" +
-            "'MP': " + MyPiece.GetHashCode() +
-            ", 'D': " + MyDir +
-            ", 'MT': " + MyType.ToString() +
+            "\"MP\": " + MyPiece.GetHashCode() +
+            ", \"D\": \"" + MyDir +
+            "\", \"MT\": " + MyType.ToString() +
             "}";
         }
 

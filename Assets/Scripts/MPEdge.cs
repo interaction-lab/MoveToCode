@@ -7,7 +7,7 @@ namespace MoveToCode {
         }
 
         public override string ToString() {
-            return "{" + "'N1': " + Nodes.First.ToString() + ", 'N2': " + Nodes.Second.ToString() + "}";
+            return "{" + "\"N1\": " + Nodes.First.ToString() + ", \"N2\": " + Nodes.Second.ToString() + "}";
         }
 
         public override bool Equals(object obj) {

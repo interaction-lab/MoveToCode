@@ -7,12 +7,24 @@ using static MoveToCode.MazePiece;
 namespace MoveToCode {
     public readonly struct MPType : IEquatable<MPType> {
         #region members
-        public bool North { get; }
-        public bool South { get; }
-        public bool East { get; }
-        public bool West { get; }
-        public bool BabyKuri { get; }
-        public bool Goal { get; }
+        public bool North {
+            get;
+        }
+        public bool South {
+            get;
+        }
+        public bool East {
+            get;
+        }
+        public bool West {
+            get;
+        }
+        public bool BabyKuri {
+            get;
+        }
+        public bool Goal {
+            get;
+        }
 
         private static long _id = 0;
         public static long IDCoutnter {
@@ -21,7 +33,9 @@ namespace MoveToCode {
                 return _id;
             }
         }
-        private readonly long MyID { get; }
+        private readonly long MyID {
+            get;
+        }
 
         #endregion
 
@@ -73,7 +87,7 @@ namespace MoveToCode {
 
         // json output of mptype
         public override string ToString() {
-            return "{" + $"'ID': {MyID}, 'N': {North}, 'S': {South}, 'E': {East}, 'W': {West}, 'B': {BabyKuri}, 'G': {Goal}" + "}";
+            return "{" + $"\"ID\": {MyID}, \"N\": {Convert.ToInt32(North)}, \"S\": {Convert.ToInt32(South)}, \"E\": {Convert.ToInt32(East)}, \"W\": {Convert.ToInt32(West)}, \"B\": {Convert.ToInt32(BabyKuri)}, \"G\": {Convert.ToInt32(Goal)}" + "}";
         }
 
 

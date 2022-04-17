@@ -76,6 +76,8 @@ namespace MoveToCode {
             }
         }
         private void OnTriggerExit(Collider other) {
+            // HERE likely due to trigger exit when collider goes off but we should just have the collider not go off?
+            // TODO: when maze is locked, careful with the colliders
             MazeConnector otherMazeConnector = other.gameObject.GetComponent<MazeConnector>();
             if (otherMazeConnector != null && IsSameMazePieceType(otherMazeConnector.MyMazePiece)) {
                 RemoveRequestAndAttemptConnect(otherMazeConnector);
@@ -89,12 +91,10 @@ namespace MoveToCode {
         #region public
         internal void TurnOnConnector() {
             MeshRend.enabled = true;
-            mcolider.enabled = true;
         }
 
         internal void TurnOffConnector() {
             MeshRend.enabled = false;
-            mcolider.enabled = false;
         }
 
         public bool IsSameMazePieceType(MazePiece otherMP) { // super jank, but it works to change the difference in solution maze pieces and generic maze pieces

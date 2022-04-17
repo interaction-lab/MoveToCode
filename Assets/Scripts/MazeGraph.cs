@@ -95,11 +95,6 @@ namespace MoveToCode {
                 return;
             }
             mazePieces.Add(current);
-            string str = UnityEngine.StackTraceUtility.ExtractStackTrace();
-            Debug.LogError(str);
-            Debug.LogError("Populating edges for " + current);
-            Debug.LogError("Mygraph name" + MapID);
-
             foreach (MazePiece.CONNECTDIR dir in current.ConnectionDict.Keys) {
                 MazePiece nextPiece = current.ConnectionDict[dir].ConnectedMP;
                 if (nextPiece != null) {

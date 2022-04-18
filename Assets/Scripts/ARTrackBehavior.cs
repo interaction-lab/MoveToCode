@@ -51,6 +51,15 @@ namespace MoveToCode {
         public UnityEvent OnImgStartedTracking, OnImgStoppedTracking;
         bool isTracking = false;
         bool hasBeenInitialized = false;
+        MazeManager _mazeManager;
+        MazeManager MazeManagerInstance {
+            get {
+                if (_mazeManager == null) {
+                    _mazeManager = MazeManager.instance;
+                }
+                return _mazeManager;
+            }
+        }
         #endregion
 
         #region unity
@@ -58,24 +67,21 @@ namespace MoveToCode {
             if (!hasBeenInitialized) {
                 TrackingIndicator.TurnOff();
                 hasBeenInitialized = true;
-            }                
-            OnImgStartedTracking.AddListener(OnImgStartedTrackingListener);
-            OnImgStoppedTracking.AddListener(OnImgStoppedTrackingListener);
+            }
             ARTrackingManagerInstance.OnTrackingEnded.AddListener(OnTrackingEnded);
         }
 
         private void OnDisable() {
-            OnImgStartedTracking.RemoveListener(OnImgStartedTrackingListener);
-            OnImgStoppedTracking.RemoveListener(OnImgStoppedTrackingListener);
             ARTrackingManagerInstance.OnTrackingEnded.RemoveListener(OnTrackingEnded);
         }
         #endregion
 
         #region public
         public void UpdateBehavior(ARTrackedImage img) {
-            if (img.trackingState == UnityEngine.XR.ARSubsystems.TrackingState.Tracking) {
+            if (img.trackingState == UnityEngine.XR.ARSubsystems.TrackingState.Tracking && !MazeManagerInstance.IsLocked) {
                 PulseAlphaMesh();
                 if (!isTracking) {
+                    TrackingIndicator.TurnOn();
                     OnImgStartedTracking.Invoke();
                     isTracking = true;
                 }
@@ -83,6 +89,7 @@ namespace MoveToCode {
             else {
                 ResetMeshAlpha();
                 if (isTracking) {
+                    TrackingIndicator.TurnOff();
                     OnImgStoppedTracking.Invoke();
                     isTracking = false;
                 }
@@ -121,12 +128,6 @@ namespace MoveToCode {
         #endregion
 
         #region private
-        private void OnImgStartedTrackingListener() {
-            TrackingIndicator.TurnOn();
-        }
-        private void OnImgStoppedTrackingListener() {
-            TrackingIndicator.TurnOff();
-        }
         private void OnTrackingEnded() {
             ResetMeshAlpha();
         }

@@ -71,7 +71,7 @@ namespace MoveToCode {
                 return loggingManager;
             }
         }
-        bool IsLocked = false;
+        public bool IsLocked = false;
         bool hasBeenInitialized = false;
         MazeGraph mazeGraph = null;
         public MazeGraph MyMazeGraph {

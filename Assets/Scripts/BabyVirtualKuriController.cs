@@ -107,9 +107,7 @@ namespace MoveToCode {
                 KeyValuePair<Type, float> p = MoveQueue.Dequeue();
                 if (p.Key == typeof(CodeBlockEnums.Move)) {
                     // Note this only works for moving forward, not backward, will fix later
-                    CodeBlockEnums.Move move = CodeBlockEnums.Move.Forward;
-                    Enum.TryParse(Convert.ToInt32(p.Key).ToString(), out move);
-
+                    CodeBlockEnums.Move move = p.Value > 0 ? CodeBlockEnums.Move.Forward : CodeBlockEnums.Move.Backward;
                     MazePiece potentialNextPiece = MazeManagerInstance.GetPotentialNextMP(move);
                     if(potentialNextPiece == null){
                         throw new Exception($"Kuri moving {move.ToString()}, but no next piece");

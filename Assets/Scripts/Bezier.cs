@@ -55,6 +55,7 @@ namespace MoveToCode {
         public Bezier(BezierType bezierType, Vector3[] controlPoints) {
             MyBezierType = bezierType;
             MyControlPoints = controlPoints;
+            MyBezierPoints = GetBezierPoints(controlPoints.Length);
         }
 
         public Vector3[] GetBezierPoints(int numPoints) {
@@ -73,7 +74,6 @@ namespace MoveToCode {
                 case BezierType.Linear:
                     return LinearBezier(t);
                 case BezierType.Quadratic:
-
                     return QuadraticBezier(t);
                 case BezierType.Cubic:
                     return CubicBezier(t);

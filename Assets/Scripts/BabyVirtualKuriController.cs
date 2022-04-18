@@ -107,20 +107,19 @@ namespace MoveToCode {
                 KeyValuePair<Type, float> p = MoveQueue.Dequeue();
                 if (p.Key == typeof(CodeBlockEnums.Move)) {
                     // Note this only works for moving forward, not backward, will fix later
-                    StartCoroutine(GoToPosition(BKTransformManager.KuriPos + BKTransformManager.Forward * GetDistanceToPotentialPiece(), p.Value > 0));
+                    CodeBlockEnums.Move move = CodeBlockEnums.Move.Forward;
+                    Enum.TryParse(Convert.ToInt32(p.Key).ToString(), out move);
+
+                    MazePiece potentialNextPiece = MazeManagerInstance.GetPotentialNextMP(move);
+                    if(potentialNextPiece == null){
+                        throw new Exception($"Kuri moving {move.ToString()}, but no next piece");
+                    }
+                    StartCoroutine(GoToPosition(MazeManagerInstance.GetPotentialNextMP(move).Center, move == CodeBlockEnums.Move.Forward));
                 }
                 else if (p.Key == typeof(CodeBlockEnums.Turn)) {
                     StartCoroutine(TurnToAngle(Quaternion.Euler(BKTransformManager.KuriRot.eulerAngles + BKTransformManager.Up * p.Value), p.Value > 0));
                 }
             }
-        }
-
-        private float GetDistanceToPotentialPiece() {
-            MazePiece potentialNextPiece = MazeManagerInstance.GetPotentialNextMazePieceForward();
-            if (potentialNextPiece != null) {
-                return Vector3.Distance(potentialNextPiece.transform.position, BKTransformManager.KuriPos);
-            }
-            return 0f; // error
         }
 
         private float goalDistDelta = 0.02f;
@@ -129,13 +128,13 @@ namespace MoveToCode {
                 throw new InvalidOperationException("Baby Kuri already moving, check moveQueue queueing code");
             }
             CurMovementAction = MoveLogString + (forward ? "FORWARD" : "BACKWARD") + " to " + goal.ToString();
-            float totalDist = Vector3.Distance(BKTransformManager.KuriPos, goal);
-            float curDist = totalDist;
-            while (curDist > goalDistDelta && IsMoving) {
-                Vector3 dir = (goal - BKTransformManager.KuriPos).normalized;
-                float curSpeed = moveSpeed * speedCurve.Evaluate(curDist / totalDist);
-                BKTransformManager.KuriPos = BKTransformManager.KuriPos + dir * curSpeed * Time.deltaTime;
-                curDist = Vector3.Distance(BKTransformManager.KuriPos, goal);
+
+            // need to use this curve nicely for different connections in the maze
+            Bezier curve = new Bezier(Bezier.BezierType.Quadratic, new Vector3[]{BKTransformManager.KuriPos, BKTransformManager.KuriPos + BKTransformManager.Up * 0.5f, goal, goal});
+            float t = 0f, totalTime = 1f;
+            while (Vector3.Distance(BKTransformManager.KuriPos, goal) > goalDistDelta) {
+                BKTransformManager.KuriPos = curve.GetBezierPoint(t/totalTime);
+                t += Time.deltaTime;
                 yield return null;
             }
             if (IsMoving) {

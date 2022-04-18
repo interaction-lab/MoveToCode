@@ -175,15 +175,17 @@ namespace MoveToCode {
             return MyMazeGraph.GetClosestKuriMazePiece(BabyKuriManagerInstance.BKTransformManager.KuriPos);
         }
 
-        public MazeConnector GetMazeConnectorKuriIsFacing() {
+        // TODO: make this work for both forward and backward
+        public MazeConnector GetMazeConnectorRelBKInDir(CodeBlockEnums.Move direction) {
             MazePiece kuriMP = GetClosestKuriMazePiece();
             Assert.IsNotNull(kuriMP);
-            Vector3 kuriDir = kuriMP.transform.InverseTransformDirection(BabyKuriManagerInstance.BKTransformManager.Forward);
+            Vector3 dir = direction == CodeBlockEnums.Move.Forward ? BabyKuriManagerInstance.BKTransformManager.Forward : BabyKuriManagerInstance.BKTransformManager.Backward;
+            Vector3 kuriDir = kuriMP.transform.InverseTransformDirection(dir);
             return kuriMP.GetConnector(kuriDir);
         }
 
-        public MazePiece GetPotentialNextMazePieceForward(){
-            return GetMazeConnectorKuriIsFacing()?.ConnectedMP;
+        public MazePiece GetPotentialNextMP(CodeBlockEnums.Move direction) {
+            return GetMazeConnectorRelBKInDir(direction)?.ConnectedMP;
         }
 
         #endregion

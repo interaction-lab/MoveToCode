@@ -59,8 +59,8 @@ public class KeyboardTestingScript : MonoBehaviour {
             Debug.Log("ContainsSubgraph: " + myMaze.ContainsSubgraph(solMaze));
         }
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
-            Debug.Log(MazeManager.instance.GetPotentialNextMazePieceForward());
-            Debug.Log(MazeManager.instance.GetPotentialNextMazePieceForward().Center);
+            Debug.Log(MazeManager.instance.GetPotentialNextMP(CodeBlockEnums.Move.Forward)?.Center);
+            Debug.Log(MazeManager.instance.GetPotentialNextMP(CodeBlockEnums.Move.Backward)?.Center);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
             //  MenuManager.instance.FakePressPlay();

@@ -36,6 +36,11 @@ namespace MoveToCode {
                 return transform.forward * -1f;
             }
         }
+        public Vector3 Backward {
+            get {
+                return -1f * Forward;
+            }
+        }
         private bool _origstateset = false;
         public bool OrigStateSet {
             get {
@@ -49,7 +54,7 @@ namespace MoveToCode {
             }
         }
 
-        public Vector3 Down{
+        public Vector3 Down {
             get {
                 return -1f * Up;
             }
@@ -98,7 +103,7 @@ namespace MoveToCode {
 
         private void Update() {
             // show downward raycast
-            Debug.DrawRay(transform.position,-Up,Color.red);
+            Debug.DrawRay(transform.position, -Up, Color.red);
         }
         #endregion
 

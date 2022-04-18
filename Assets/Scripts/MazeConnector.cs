@@ -59,6 +59,11 @@ namespace MoveToCode {
             }
         }
 
+        public bool On {
+            get {
+                return MeshRend.enabled;
+            }
+        }
 
 
         #endregion
@@ -70,7 +75,8 @@ namespace MoveToCode {
 
         private void OnTriggerEnter(Collider other) {
             MazeConnector otherMazeConnector = other.gameObject.GetComponent<MazeConnector>();
-            if (otherMazeConnector != null && IsSameMazePieceType(otherMazeConnector.MyMazePiece)) {
+            if ((otherMazeConnector != null && IsSameMazePieceType(otherMazeConnector.MyMazePiece)) &&
+            On && otherMazeConnector.On) { // BUG possible: the On parts may not work correctly, this may need to be done in MazeManager
                 AddRequestAndAttemptConnect(otherMazeConnector);
                 ReliableOnTriggerExit.NotifyTriggerEnter(other, gameObject, OnTriggerExit);
             }
@@ -79,7 +85,8 @@ namespace MoveToCode {
             // HERE likely due to trigger exit when collider goes off but we should just have the collider not go off?
             // TODO: when maze is locked, careful with the colliders
             MazeConnector otherMazeConnector = other.gameObject.GetComponent<MazeConnector>();
-            if (otherMazeConnector != null && IsSameMazePieceType(otherMazeConnector.MyMazePiece)) {
+            if ((otherMazeConnector != null && IsSameMazePieceType(otherMazeConnector.MyMazePiece)) &&
+            On && otherMazeConnector.On) {
                 RemoveRequestAndAttemptConnect(otherMazeConnector);
                 ReliableOnTriggerExit.NotifyTriggerExit(other, gameObject);
             }
@@ -131,8 +138,6 @@ namespace MoveToCode {
             MyMazePiece.transform.position -= myRealtivePos;
 
             MyMazePiece.SnapConnections();
-            TurnOffConnector(); // TODO: this will have to be moved to a higher level later
-            anchorConnector.TurnOffConnector();
             AudioManager.instance.PlaySoundAtObject(gameObject, AudioManager.snapAudioClip);
         }
 

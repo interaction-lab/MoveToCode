@@ -174,6 +174,15 @@ namespace MoveToCode {
         public MazePiece GetClosestKuriMazePiece() {
             return MyMazeGraph.GetClosestKuriMazePiece(BabyKuriManagerInstance.BKTransformManager.KuriPos);
         }
+
+        public MazeConnector GetMazeConnectorKuriIsFacing() {
+            MazePiece kuriMP = GetClosestKuriMazePiece();
+            Assert.IsNotNull(kuriMP);
+            // get direction kuri is facing relative to kuriMP
+            Vector3 kuriDir = kuriMP.transform.InverseTransformDirection(BabyKuriManagerInstance.BKTransformManager.Forward);
+            // get connector kuri is facing
+            return kuriMP.GetConnector(kuriDir);
+        }
         #endregion
 
         #region private

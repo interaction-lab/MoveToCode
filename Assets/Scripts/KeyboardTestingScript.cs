@@ -59,7 +59,7 @@ public class KeyboardTestingScript : MonoBehaviour {
             Debug.Log("ContainsSubgraph: " + myMaze.ContainsSubgraph(solMaze));
         }
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
-            Debug.Log(MazeManager.instance.GetClosestKuriMazePiece().ToString());
+            Debug.Log(MazeManager.instance.GetMazeConnectorKuriIsFacing().ToString());
         }
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
             //  MenuManager.instance.FakePressPlay();

@@ -14,6 +14,13 @@ namespace MoveToCode {
             West
         }
 
+        public static Dictionary<CONNECTDIR, Vector3> dirToVector = new Dictionary<CONNECTDIR, Vector3> {
+            {CONNECTDIR.North, new Vector3(0, 0, 1)},
+            {CONNECTDIR.South, new Vector3(0, 0, -1)},
+            {CONNECTDIR.East, new Vector3(1, 0, 0)},
+            {CONNECTDIR.West, new Vector3(-1, 0, 0)}
+        };
+
         Dictionary<CONNECTDIR, MazeConnector> connectionsDict;
         public Dictionary<CONNECTDIR, MazeConnector> ConnectionDict {
             get {
@@ -87,6 +94,7 @@ namespace MoveToCode {
             IsAnchored = true;
             foreach (KeyValuePair<CONNECTDIR, MazeConnector> kvp in ConnectionDict) {
                 TriggerAnchorToThisPiece(kvp.Value);
+                kvp.Value?.TurnOffConnector();
             }
         }
 
@@ -95,6 +103,19 @@ namespace MoveToCode {
             foreach (MazeConnector mazeConnector in ConnectionDict.Values) {
                 mazeConnector.TurnOnConnector();
             }
+        }
+
+        public MazeConnector GetConnector(Vector3 direction) {
+            // round direction to north, south, east, west
+            Vector3 roundedDir = new Vector3(Mathf.Round(direction.x), 0, Mathf.Round(direction.z));
+            Debug.Log(roundedDir);
+            // get connector that is facing direction
+            foreach (KeyValuePair<CONNECTDIR, MazeConnector> kvp in ConnectionDict) {
+                if (dirToVector[kvp.Key] == roundedDir) {
+                    return kvp.Value;
+                }
+            }
+            return null;
         }
 
         #endregion

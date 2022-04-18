@@ -186,7 +186,7 @@ namespace MoveToCode {
         // Write out columns, will be at end of file
         void OnApplicationQuit() {
             // Commented out line below for uploading CSV
-            //   FinishLogging(true); 
+            FinishLogging(true); 
         }
     }
 }

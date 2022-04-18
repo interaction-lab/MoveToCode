@@ -37,7 +37,8 @@ namespace MoveToCode {
 
         public bool AlertCodeFinished() {
             if (curExercise != null) { // This if is to guard against initializing interpreter
-                if (curExercise.IsExerciseCorrect()) {
+                                       // TODO: this is a jank exercise check for the same maze graph on alert goal
+                if (curExercise.IsExerciseCorrect() && MazeManager.instance.MyMazeGraph.ContainsSubgraph(SolMazeManager.instance.MyMazeGraph)) {
                     TutorKuriManager.instance.kuriController.SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT.Congratulation);
                     LoggingManager.instance.UpdateLogColumn(exerciseSubmissionResultCol, "Correct");
                     lastExerciseCompleted = true;

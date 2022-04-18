@@ -66,10 +66,20 @@ namespace MoveToCode {
         private void OnEnable() {
             if (!hasBeenInitialized) {
                 TrackingIndicator.TurnOff();
+                MazeManagerInstance.OnMazeLocked.AddListener(OnMazeLocked);
+                MazeManagerInstance.OnMazeUnlocked.AddListener(OnMazeUnlocked);
                 hasBeenInitialized = true;
             }
             ARTrackingManagerInstance.OnTrackingEnded.AddListener(OnTrackingEnded);
         }
+
+        private void OnMazeLocked() {
+            UpdateResetTrackImg();
+        }
+        private void OnMazeUnlocked() {
+            // UpdateTrackImg();
+        }
+
 
         private void OnDisable() {
             ARTrackingManagerInstance.OnTrackingEnded.RemoveListener(OnTrackingEnded);
@@ -77,24 +87,34 @@ namespace MoveToCode {
         #endregion
 
         #region public
+        // TODO: fix all the naming conventions here for tracking/not tracking etc as this is terrible
         public void UpdateBehavior(ARTrackedImage img) {
             if (img.trackingState == UnityEngine.XR.ARSubsystems.TrackingState.Tracking && !MazeManagerInstance.IsLocked) {
-                PulseAlphaMesh();
-                if (!isTracking) {
-                    TrackingIndicator.TurnOn();
-                    OnImgStartedTracking.Invoke();
-                    isTracking = true;
-                }
+                UpdateTrackImg();
             }
             else {
-                ResetMeshAlpha();
-                if (isTracking) {
-                    TrackingIndicator.TurnOff();
-                    OnImgStoppedTracking.Invoke();
-                    isTracking = false;
-                }
+                UpdateResetTrackImg();
             }
             UpdateBehaviorSpecific(img);
+        }
+
+        private void UpdateResetTrackImg() {
+            ResetMeshAlpha();
+            if (isTracking) {
+                TrackingIndicator.TurnOff();
+                OnImgStoppedTracking.Invoke();
+                isTracking = false;
+            }
+
+        }
+
+        private void UpdateTrackImg() {
+            PulseAlphaMesh();
+            if (!isTracking) {
+                TrackingIndicator.TurnOn();
+                OnImgStartedTracking.Invoke();
+                isTracking = true;
+            }
         }
 
         #endregion

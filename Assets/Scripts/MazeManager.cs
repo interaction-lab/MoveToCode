@@ -178,11 +178,14 @@ namespace MoveToCode {
         public MazeConnector GetMazeConnectorKuriIsFacing() {
             MazePiece kuriMP = GetClosestKuriMazePiece();
             Assert.IsNotNull(kuriMP);
-            // get direction kuri is facing relative to kuriMP
             Vector3 kuriDir = kuriMP.transform.InverseTransformDirection(BabyKuriManagerInstance.BKTransformManager.Forward);
-            // get connector kuri is facing
             return kuriMP.GetConnector(kuriDir);
         }
+
+        public MazePiece GetPotentialNextMazePieceForward(){
+            return GetMazeConnectorKuriIsFacing()?.ConnectedMP;
+        }
+
         #endregion
 
         #region private

@@ -106,10 +106,7 @@ namespace MoveToCode {
         }
 
         public MazeConnector GetConnector(Vector3 direction) {
-            // round direction to north, south, east, west
             Vector3 roundedDir = new Vector3(Mathf.Round(direction.x), 0, Mathf.Round(direction.z));
-            Debug.Log(roundedDir);
-            // get connector that is facing direction
             foreach (KeyValuePair<CONNECTDIR, MazeConnector> kvp in ConnectionDict) {
                 if (dirToVector[kvp.Key] == roundedDir) {
                     return kvp.Value;

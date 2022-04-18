@@ -15,6 +15,15 @@ namespace MoveToCode {
                 return mtp;
             }
         }
+        MazeManager _mazeManager;
+        MazeManager MazeManagerInstance {
+            get {
+                if (_mazeManager == null) {
+                    _mazeManager = MazeManager.instance;
+                }
+                return _mazeManager;
+            }
+        }
 
         public MoveInstruction(CodeBlock cbIn) : base(cbIn) { }
 

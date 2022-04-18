@@ -53,6 +53,15 @@ namespace MoveToCode {
                 return _interpreter;
             }
         }
+        MazeManager _mazeManager;
+        MazeManager MazeManagerInstance {
+            get {
+                if (_mazeManager == null) {
+                    _mazeManager = MazeManager.instance;
+                }
+                return _mazeManager;
+            }
+        }
 
         /// <summary>
         /// Type is the type of movement
@@ -97,7 +106,8 @@ namespace MoveToCode {
             if (!MoveQueue.Empty() && !IsMoving) {
                 KeyValuePair<Type, float> p = MoveQueue.Dequeue();
                 if (p.Key == typeof(CodeBlockEnums.Move)) {
-                    StartCoroutine(GoToPosition(BKTransformManager.KuriPos + BKTransformManager.Forward * p.Value, p.Value > 0));
+                    // Note this only works for moving forward, not backward, will fix later
+                    StartCoroutine(GoToPosition(BKTransformManager.KuriPos + BKTransformManager.Forward * GetDistanceToPotentialPiece(), p.Value > 0));
                 }
                 else if (p.Key == typeof(CodeBlockEnums.Turn)) {
                     StartCoroutine(TurnToAngle(Quaternion.Euler(BKTransformManager.KuriRot.eulerAngles + BKTransformManager.Up * p.Value), p.Value > 0));
@@ -105,6 +115,13 @@ namespace MoveToCode {
             }
         }
 
+        private float GetDistanceToPotentialPiece() {
+            MazePiece potentialNextPiece = MazeManagerInstance.GetPotentialNextMazePieceForward();
+            if (potentialNextPiece != null) {
+                return Vector3.Distance(potentialNextPiece.transform.position, BKTransformManager.KuriPos);
+            }
+            return 0f; // error
+        }
 
         private float goalDistDelta = 0.02f;
         public IEnumerator GoToPosition(Vector3 goal, bool forward) {
@@ -143,13 +160,13 @@ namespace MoveToCode {
                 curDist = Quaternion.Angle(BKTransformManager.KuriRot, goal);
                 yield return null;
             }
-            if(IsMoving){
+            if (IsMoving) {
                 BKTransformManager.KuriRot = goal;
             }
             ResetCurMovementAction();
             StartNextMovement();
         }
-        
+
         private void ResetCurMovementAction() {
             CurMovementAction = "";
         }

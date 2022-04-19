@@ -44,7 +44,7 @@ public class KeyboardTestingScript : MonoBehaviour {
     void Update() {
         if (Input.GetKeyDown("h")) {
             //anim.SetTrigger("HighFive");
-
+            anim.SetTrigger("happy");
 
         }
         if (Input.GetKeyDown(KeyCode.Alpha0)) {

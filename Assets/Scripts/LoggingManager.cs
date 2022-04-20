@@ -33,7 +33,12 @@ namespace MoveToCode {
 #endif
             if (logData) {
                 Debug.Log("Currently logging data: " + logData.ToString());
-                csvFilename = System.DateTime.Now.ToString().Replace(' ', '_').Replace('\\', '_').Replace('/', '_').Replace(':', '-') + "_" + UserIDManager.PlayerId + ".csv";
+                csvFilename = System.DateTime.Now.ToString().Replace(' ', '-').Replace('\\', '-').Replace('/', '-').Replace(':', '-') +
+                    "_" +
+                    UserIDManager.DeviceId +
+                    '_' +
+                    UserIDManager.PlayerId +
+                    ".csv";
                 filePath = Path.Combine(Application.persistentDataPath, csvFilename);
                 Debug.Log(filePath);
                 streamWriter = new StreamWriter(new FileStream(filePath, FileMode.Create));
@@ -186,7 +191,7 @@ namespace MoveToCode {
         // Write out columns, will be at end of file
         void OnApplicationQuit() {
             // Commented out line below for uploading CSV
-            FinishLogging(true); 
+            FinishLogging(true);
         }
     }
 }

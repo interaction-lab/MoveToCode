@@ -54,7 +54,9 @@ namespace MoveToCode {
             ARTrackedImageManagerInstance.trackedImagesChanged += ImageChanged;
         }
         private void OnDisable() {
-            ARTrackedImageManagerInstance?.trackedImagesChanged -= ImageChanged;
+            if (ARTrackedImageManagerInstance != null) {
+                ARTrackedImageManagerInstance.trackedImagesChanged -= ImageChanged;
+            }
         }
         #endregion
 

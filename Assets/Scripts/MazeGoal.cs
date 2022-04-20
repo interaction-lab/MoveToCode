@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace MoveToCode {
     public class MazeGoal : MonoBehaviour {
@@ -23,6 +24,7 @@ namespace MoveToCode {
                 return ps;
             }
         }
+        public static UnityEvent OnGoalReached;
         #endregion
 
         #region unity
@@ -46,7 +48,7 @@ namespace MoveToCode {
                 KuriTextManager.instance.Addline("You win!");
                 Particles.Play();
                 AudioManager.instance.PlaySoundAtObject(transform, AudioManager.correctAudioClip);
-                // jank for now and will make this much better later, this is the OnWin event basically
+                OnGoalReached.Invoke();
             }
         }
         #endregion

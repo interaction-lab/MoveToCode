@@ -89,22 +89,6 @@ namespace MoveToCode {
             transform.rotation = OriginalRotation;
             BodyPlateRend.material.color = OriginalColor;
         }
-
-        public MazePiece GetCurrentMazePiece() {
-            // shoot raycast down to find maze piece
-            // only use MazePiece layer mask
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, Down, out hit, Mathf.Infinity, LayerMask.GetMask(LayerMaskConstants.MAZEPIECE))) {
-                Debug.Log("hit " + hit.collider.gameObject.name);
-                return hit.collider.GetComponent<MazePiece>();
-            }
-            return null; // if no maze piece found
-        }
-
-        private void Update() {
-            // show downward raycast
-            Debug.DrawRay(transform.position, -Up, Color.red);
-        }
         #endregion
 
         #region private

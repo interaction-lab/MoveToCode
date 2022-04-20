@@ -82,6 +82,8 @@ namespace MoveToCode {
                 return mazeGraph;
             }
         }
+
+        public bool BKAtGoal = false;
         #endregion
 
         #region unity
@@ -112,6 +114,10 @@ namespace MoveToCode {
                 }
             }
             return null;
+        }
+
+        public bool ContainsSolutionMaze() {
+            return MyMazeGraph.ContainsSubgraph(SolMazeManagerInstance.MyMazeGraph);
         }
 
         /// <summary>
@@ -185,7 +191,14 @@ namespace MoveToCode {
         }
 
         public MazePiece GetPotentialNextMP(CodeBlockEnums.Move direction) {
-            return GetMazeConnectorRelBKInDir(direction)?.ConnectedMP;
+            MazePiece res = GetMazeConnectorRelBKInDir(direction)?.ConnectedMP;
+            if (res.GetComponent<MazeGoal>() != null) {
+                BKAtGoal = true;
+            }
+            else {
+                BKAtGoal = false;
+            }
+            return res;
         }
 
         #endregion

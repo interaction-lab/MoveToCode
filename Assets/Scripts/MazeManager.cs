@@ -211,7 +211,9 @@ namespace MoveToCode {
 
         public void LogMaze() {
             LoggingManagerInstance.UpdateLogColumn(mazeLogCol, MyMazeGraph.ToString());
-            LoggingManagerInstance.UpdateLogColumn(containsSolCol, ContainsSolutionMaze() ? "1" : "0");
+            bool containsSolMaze = ContainsSolutionMaze();
+            LoggingManagerInstance.UpdateLogColumn(containsSolCol, containsSolMaze ? "1" : "0");
+            SolMazeCheckMark.instance.ToggleCheckMark(containsSolMaze);
         }
         #endregion
 
@@ -228,7 +230,6 @@ namespace MoveToCode {
                 manipHandler.ManipulationType = ManipulationHandler.HandMovementType.OneHandedOnly;
             }
         }
-
         private void OnTrackingStarted() {
             ReleasePieces();
         }
@@ -236,7 +237,6 @@ namespace MoveToCode {
             // where we snap the maze to each other + floor + grid
             SnapPiecesTogether();
         }
-
         private void ReleasePieces() {
             if (!IsLocked) {
                 return;
@@ -252,7 +252,6 @@ namespace MoveToCode {
             OnMazeUnlocked.Invoke();
             LoggingManagerInstance.UpdateLogColumn(mazeLockCol, "Unlocked");
         }
-
         private void SnapPiecesTogether() {
             if (IsLocked) {
                 return;

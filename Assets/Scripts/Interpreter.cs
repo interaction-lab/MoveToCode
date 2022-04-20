@@ -142,6 +142,10 @@ namespace MoveToCode {
             if (fullSteppingCode) {
                 yield break;
             }
+            if (CodeIsFinished()) {
+                ResetCodeState();
+                yield break;
+            }
             fullSteppingCode = true;
             while (fullSteppingCode && !CodeIsFinished()) {
                 RunNextInstruction();

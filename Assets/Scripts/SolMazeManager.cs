@@ -5,20 +5,8 @@ using UnityEngine;
 namespace MoveToCode {
     public class SolMazeManager : Singleton<SolMazeManager> {
         #region members
-        MazePiece bkMazePiece;
         public static string solutionMazeCol = "SolutionMaze";
-        public MazePiece BKMazePiece {
-            get {
-                if (bkMazePiece == null) {
-                    foreach (Transform t in transform) {
-                        if (t.GetComponent<MazeBabyKuri>() != null) {
-                            bkMazePiece = t.GetComponent<MazePiece>();
-                        }
-                    }
-                }
-                return bkMazePiece;
-            }
-        }
+
         LoggingManager _loggingManager;
         LoggingManager LoggingManagerInstance {
             get {
@@ -28,13 +16,29 @@ namespace MoveToCode {
                 return _loggingManager;
             }
         }
-        MazeGraph mazeGraph;
-        public MazeGraph MyMazeGraph {
+        SolMaze curActiveSolMaze = null;
+        public SolMaze CurActiveSolMaze {
             get {
-                if (mazeGraph == null) {
-                    mazeGraph = new MazeGraph(BKMazePiece);
+                if (curActiveSolMaze == null) {
+                    curActiveSolMaze = AllSolMazes[0];
                 }
-                return mazeGraph;
+                return curActiveSolMaze;
+            }
+        }
+        List<SolMaze> _allSolMazes;
+        List<SolMaze> AllSolMazes {
+            get {
+                if (_allSolMazes == null) {
+                    _allSolMazes = new List<SolMaze>();
+                    _allSolMazes.AddRange(GetComponentsInChildren<SolMaze>(true));
+                }
+                return _allSolMazes;
+            }
+        }
+
+        public MazeGraph ActiveSolMazeGraph {
+            get {
+                return CurActiveSolMaze.MyMazeGraph;
             }
         }
 
@@ -46,6 +50,7 @@ namespace MoveToCode {
             if (!hasBeenInitialized) {
                 LoggingManagerInstance.AddLogColumn(solutionMazeCol, "");
                 hasBeenInitialized = true;
+                CurActiveSolMaze.gameObject.SetActive(true);
             }
         }
         #endregion
@@ -57,23 +62,18 @@ namespace MoveToCode {
             StartCoroutine(LogMazeCoroutine());
         }
         public void ReleasePieces() {
-            foreach (Transform child in transform) {
-                MazePiece mazePiece = child.GetComponent<MazePiece>();
-                if (mazePiece != null) {
-                    mazePiece.UnAnchor();
-                }
-            }
+            curActiveSolMaze.ReleasePieces();
         }
 
         public void SnapPiecesTogether() {
-            BKMazePiece.SnapConnections();
+            curActiveSolMaze.SnapPiecesTogether();
         }
         #endregion
 
         #region private
         IEnumerator LogMazeCoroutine() {
             yield return new WaitForEndOfFrame();
-            LoggingManagerInstance.UpdateLogColumn(solutionMazeCol, MyMazeGraph.ToString());
+            LoggingManagerInstance.UpdateLogColumn(solutionMazeCol, curActiveSolMaze.MyMazeGraph.ToString());
         }
         #endregion
     }

@@ -11,12 +11,27 @@ namespace MoveToCode {
             get {
                 if (img == null) {
                     img = GetComponent<Image>();
-                    origColor = img.color;
+                    origButtonColor = img.color;
+                    origMaterialColor = img.material.color;
+                    materialWFullAlpha = img.material.color;
+                    materialWFullAlpha.a = 1;
                 }
                 return img;
             }
         }
-        Color origColor;
+
+        Material _mat;
+        Material MyMaterial {
+            get {
+                if (_mat == null) {
+                    _mat = new Material(Img.material);
+                    Img.material = _mat;
+                }
+                return _mat;
+            }
+        }
+
+        Color origButtonColor, origMaterialColor, materialWFullAlpha;
 
         public bool IsPulsing = false;
         #endregion
@@ -41,10 +56,12 @@ namespace MoveToCode {
             }
             IsPulsing = true;
             while (IsPulsing) {
-                Img.color = Color.Lerp(origColor, Color.red, Mathf.PingPong(Time.time, 1));
+                Img.color = Color.Lerp(origButtonColor, Color.red, Mathf.PingPong(Time.time, 1));
+                MyMaterial.color = Color.Lerp(origMaterialColor, materialWFullAlpha, Mathf.PingPong(Time.time, 1));
                 yield return null;
             }
-            Img.color = origColor;
+            Img.color = origButtonColor;
+            MyMaterial.color = origMaterialColor;
         }
         #endregion
     }

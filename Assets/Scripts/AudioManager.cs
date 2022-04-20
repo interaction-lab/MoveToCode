@@ -21,11 +21,11 @@ namespace MoveToCode {
         }
 
         public void PlayButtonClick() {
-            PlaySoundAtObject(ScreenMenuManager.instance.transform, MRTKButtonPress);
+            PlaySoundAtObject(Camera.main.transform, MRTKButtonPress);
         }
 
         public void PlayReleaseClick() {
-            PlaySoundAtObject(ScreenMenuManager.instance.transform, MRTKButtonUnpress);
+            PlaySoundAtObject(Camera.main.transform, MRTKButtonUnpress);
         }
 
         public void PlaySoundAtObject(GameObject go, AudioClip ac) {

@@ -34,12 +34,12 @@ namespace MoveToCode {
         }
         bool IsUIButton {
             get {
-                return PulseImg != null;
+                return PulseIMG != null;
             }
         }
 
         PulseImg _pulseImg;
-        PulseImg PulseImg {
+        PulseImg PulseIMG {
             get {
                 if (_pulseImg == null) {
                     _pulseImg = transform.parent.GetComponent<PulseImg>(); // FLimsy, for 2D UI
@@ -62,7 +62,7 @@ namespace MoveToCode {
         #region private
         private void OnCodeReset() {
             if (IsUIButton) {
-                PulseImg.StopPulse();
+                PulseIMG.StopPulse();
             }
             else {
                 Pulse.StopPulse();
@@ -71,7 +71,7 @@ namespace MoveToCode {
 
         private void OnCodeEnd() {
             if (IsUIButton) {
-                PulseImg.StartPulse();
+                PulseIMG.StartPulse();
             }
             else {
                 Pulse.StartPulse();

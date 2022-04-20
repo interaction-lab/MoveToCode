@@ -141,7 +141,7 @@ namespace MoveToCode {
                     if (potentialNextPiece == null) {
                         throw new Exception($"Kuri moving {move.ToString()}, but no next piece");
                     }
-                    StartCoroutine(GoToPosition(MazeManagerInstance.GetPotentialNextMP(move).Center, move == CodeBlockEnums.Move.Forward));
+                    StartCoroutine(GoToPosition(potentialNextPiece.Center, move == CodeBlockEnums.Move.Forward));
                 }
                 else if (p.Key == typeof(CodeBlockEnums.Turn)) {
                     StartCoroutine(TurnToAngle(Quaternion.Euler(BKTransformManager.KuriRot.eulerAngles + BKTransformManager.Up * p.Value), p.Value > 0));

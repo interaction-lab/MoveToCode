@@ -121,7 +121,7 @@ namespace MoveToCode {
         }
 
         public bool ContainsSolutionMaze() {
-            return MyMazeGraph.ContainsSubgraph(SolMazeManagerInstance.MyMazeGraph);
+            return MyMazeGraph.ContainsSubgraph(SolMazeManagerInstance.ActiveSolMazeGraph);
         }
 
         /// <summary>

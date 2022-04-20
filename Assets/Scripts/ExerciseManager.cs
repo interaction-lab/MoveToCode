@@ -7,7 +7,7 @@ using UnityEngine.Events;
 namespace MoveToCode {
     public class ExerciseManager : Singleton<ExerciseManager> {
         public static string curExcersieCol = "CurExercise", exerciseSubmissionResultCol = "ExerciseSubmissionResult";
-        public UnityEvent OnExerciseCorrect;
+        public UnityEvent OnExerciseCorrect, OnCyleNewExercise;
         Exercise curExercise;
         List<Exercise> exerciseList;
         public int curExercisePos = 0;
@@ -38,7 +38,7 @@ namespace MoveToCode {
 
         public bool AlertCodeFinished() {
             if (curExercise != null) { // This if is to guard against initializing interpreter
-            // curExercise.IsExerciseCorrect() old code
+                                       // curExercise.IsExerciseCorrect() old code
                 if (MazeManager.instance.BKAtGoal && MazeManager.instance.ContainsSolutionMaze()) {
                     TutorKuriManager.instance.kuriController.SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT.Congratulation);
                     LoggingManager.instance.UpdateLogColumn(exerciseSubmissionResultCol, "Correct");
@@ -71,6 +71,7 @@ namespace MoveToCode {
             LoggingManager.instance.UpdateLogColumn(curExcersieCol, curExercisePos.ToString());
             curExercise = exerciseList[curExercisePos];
             ToggleCurrentExercise(true);
+            OnCyleNewExercise.Invoke();
 
         }
 

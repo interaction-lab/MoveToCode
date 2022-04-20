@@ -18,6 +18,9 @@ namespace MoveToCode {
         #endregion
 
         #region unity
+        private void Awake() {
+            ToggleCheckMark(false);
+        }
         #endregion
 
         #region public

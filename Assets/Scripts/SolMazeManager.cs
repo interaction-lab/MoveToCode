@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,8 +32,20 @@ namespace MoveToCode {
                 if (_allSolMazes == null) {
                     _allSolMazes = new List<SolMaze>();
                     _allSolMazes.AddRange(GetComponentsInChildren<SolMaze>(true));
+                    foreach (SolMaze solMaze in _allSolMazes) {
+                        solMaze.gameObject.SetActive(false);
+                    }
                 }
                 return _allSolMazes;
+            }
+        }
+        MazeManager _mazeManager;
+        MazeManager MazeManagerInstance {
+            get {
+                if (_mazeManager == null) {
+                    _mazeManager = MazeManager.instance;
+                }
+                return _mazeManager;
             }
         }
 
@@ -51,6 +64,9 @@ namespace MoveToCode {
                 LoggingManagerInstance.AddLogColumn(solutionMazeCol, "");
                 hasBeenInitialized = true;
                 CurActiveSolMaze.gameObject.SetActive(true);
+                ExerciseManager.instance.OnExerciseCorrect.AddListener(OnExerciseCorrect);
+                ExerciseManager.instance.OnCyleNewExercise.AddListener(OnCyleNewExercise);
+                IsExercise0 = true;
             }
         }
         #endregion
@@ -74,6 +90,24 @@ namespace MoveToCode {
         IEnumerator LogMazeCoroutine() {
             yield return new WaitForEndOfFrame();
             LoggingManagerInstance.UpdateLogColumn(solutionMazeCol, curActiveSolMaze.MyMazeGraph.ToString());
+        }
+
+        private void OnExerciseCorrect() {
+            // cylce to next sol maze
+
+        }
+
+        private void OnCyleNewExercise() {
+            int curIndex = AllSolMazes.IndexOf(CurActiveSolMaze);
+
+            if (curIndex + 1 < AllSolMazes.Count) {
+                curActiveSolMaze.gameObject.SetActive(false);
+                curActiveSolMaze = AllSolMazes[curIndex + 1];
+                curActiveSolMaze.gameObject.SetActive(true);
+            }
+
+
+            MazeManagerInstance.LogMaze(); // this is a bit of a hack that also launchs the solution check
         }
         #endregion
     }

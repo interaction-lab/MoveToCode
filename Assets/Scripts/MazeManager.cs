@@ -213,7 +213,7 @@ namespace MoveToCode {
             LoggingManagerInstance.UpdateLogColumn(mazeLogCol, MyMazeGraph.ToString());
             bool containsSolMaze = ContainsSolutionMaze();
             LoggingManagerInstance.UpdateLogColumn(containsSolCol, containsSolMaze ? "1" : "0");
-            SolMazeCheckMark.instance.ToggleCheckMark(containsSolMaze);
+            SolMazeCheckMark.instance.ToggleCheckMark(containsSolMaze); // this is super hacky
         }
         #endregion
 

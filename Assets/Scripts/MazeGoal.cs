@@ -43,7 +43,7 @@ namespace MoveToCode {
                 return; // Hackiest thing ever that defintely won't lead to problems down the road
             }
             if (!hasBeenInitialized) {
-                MazeManagerInstance.OnBKAtGoal.AddListener(OnBKAtGoal);
+                ExerciseManager.instance.OnExerciseCorrect.AddListener(OnExerciseCorrect);
                 hasBeenInitialized = true;
             }
             MyCollider.enabled = true;
@@ -62,7 +62,7 @@ namespace MoveToCode {
         #endregion
 
         #region private
-        private void OnBKAtGoal() {
+        private void OnExerciseCorrect() {
             KuriTextManager.instance.Addline("Maze completed!");
             Particles.Play();
             AudioManager.instance.PlaySoundAtObject(transform, AudioManager.correctAudioClip);

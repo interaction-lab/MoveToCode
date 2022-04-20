@@ -2,11 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace MoveToCode {
     public class ExerciseManager : Singleton<ExerciseManager> {
         public static string curExcersieCol = "CurExercise", exerciseSubmissionResultCol = "ExerciseSubmissionResult";
-
+        public UnityEvent OnExerciseCorrect;
         Exercise curExercise;
         List<Exercise> exerciseList;
         public int curExercisePos = 0;
@@ -42,6 +43,7 @@ namespace MoveToCode {
                     TutorKuriManager.instance.kuriController.SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT.Congratulation);
                     LoggingManager.instance.UpdateLogColumn(exerciseSubmissionResultCol, "Correct");
                     lastExerciseCompleted = true;
+                    OnExerciseCorrect.Invoke();
                     // this is where I should do the explosion at the goal
                     return true;
                 }

@@ -1,5 +1,6 @@
 using Microsoft.MixedReality.Toolkit.UI;
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -44,9 +45,21 @@ namespace MoveToCode {
             }
         }
 
+
+
         public bool IsScreenButton {
             get {
                 return MyButton != null;
+            }
+        }
+
+        TextMeshProUGUI _tmp;
+        TextMeshProUGUI MyText {
+            get {
+                if (_tmp == null) {
+                    _tmp = GetComponentInChildren<TextMeshProUGUI>();
+                }
+                return _tmp;
             }
         }
         #endregion
@@ -68,19 +81,39 @@ namespace MoveToCode {
 
         #region private
         private void OnCodeReset() {
-            gameObject.SetActive(true);
+            if (IsScreenButton) {
+                transform.parent.gameObject.SetActive(true);
+            }
+            else {
+                gameObject.SetActive(true);
+            }
         }
 
         private void OnCodeStart() {
-            gameObject.SetActive(false);
+            if (IsScreenButton) {
+                transform.parent.gameObject.SetActive(false);
+            }
+            else {
+                gameObject.SetActive(false);
+            }
         }
 
         private void OnMazeUnlocked() {
-            ButtonConfig.MainLabelText = "Lock Maze";
+            if (IsScreenButton) {
+                MyText.text = "Lock Maze";
+            }
+            else {
+                ButtonConfig.MainLabelText = "Lock Maze";
+            }
         }
 
         private void OnMazeLocked() {
-            ButtonConfig.MainLabelText = "Unlock Maze";
+            if (IsScreenButton) {
+                MyText.text = "Unlock Maze";
+            }
+            else {
+                ButtonConfig.MainLabelText = "Unlock Maze";
+            }
         }
 
         private void OnScreenClick() {

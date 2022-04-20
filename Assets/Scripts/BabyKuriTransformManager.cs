@@ -69,9 +69,28 @@ namespace MoveToCode {
                 return _bodyPlateRend;
             }
         }
+
+        Transform _bkMazePieceTransform;
+        public Transform BKMazePieceTransform {
+            get {
+                if (_bkMazePieceTransform == null) {
+                    _bkMazePieceTransform = FindObjectOfType<BabyKuriTrackBeh>().transform;
+                }
+                return _bkMazePieceTransform;
+            }
+        }
         #endregion
 
         #region unity
+#if UNITY_EDITOR
+        private void Update() {
+            // move babykuri to the BabyKuriTrackBeh piece unless tracking
+            if (ARTrackingManager.instance.IsTracking) {
+                KuriPos = BKMazePieceTransform.position;
+                KuriRot = BKMazePieceTransform.rotation;
+            }
+        }
+#endif
         #endregion
 
         #region public

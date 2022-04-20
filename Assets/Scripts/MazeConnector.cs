@@ -138,7 +138,7 @@ namespace MoveToCode {
             MyMazePiece.transform.position -= myRealtivePos;
 
             MyMazePiece.SnapConnections();
-            AudioManager.instance.PlaySoundAtObject(gameObject, AudioManager.snapAudioClip);
+            AudioManager.instance?.PlaySoundAtObject(gameObject, AudioManager.snapAudioClip);
         }
 
         private float GetAngleOfConnectorRelativeToForward(MazeConnector anchorMC) {
@@ -209,7 +209,7 @@ namespace MoveToCode {
                 MyConnection = MazeManagerInstance.GetConnection(this);
             }
             // tell the maze to log itself here as long as it is not a solution maze
-            if(!(MyMazePiece is SolMazePiece)) {
+            if (!(MyMazePiece is SolMazePiece)) {
                 MazeManagerInstance.LogMaze();
             }
         }

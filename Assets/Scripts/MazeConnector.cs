@@ -208,6 +208,10 @@ namespace MoveToCode {
             if (MyConnection == null) {
                 MyConnection = MazeManagerInstance.GetConnection(this);
             }
+            // tell the maze to log itself here as long as it is not a solution maze
+            if(!(MyMazePiece is SolMazePiece)) {
+                MazeManagerInstance.LogMaze();
+            }
         }
         #endregion
     }

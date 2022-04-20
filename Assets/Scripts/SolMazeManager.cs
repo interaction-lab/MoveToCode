@@ -52,6 +52,10 @@ namespace MoveToCode {
         // need to turn off all the connectors that are not currently in contact with something
         // or I could just turn them all off and not worry about it
         #region public
+        public void LogMaze() {
+            // wait one frame to allow for collisions to be set up
+            StartCoroutine(LogMazeCoroutine());
+        }
         public void ReleasePieces() {
             foreach (Transform child in transform) {
                 MazePiece mazePiece = child.GetComponent<MazePiece>();
@@ -63,11 +67,14 @@ namespace MoveToCode {
 
         public void SnapPiecesTogether() {
             BKMazePiece.SnapConnections();
-            LoggingManagerInstance.UpdateLogColumn(solutionMazeCol, MyMazeGraph.ToString());
         }
         #endregion
 
         #region private
+        IEnumerator LogMazeCoroutine() {
+            yield return new WaitForEndOfFrame();
+            LoggingManagerInstance.UpdateLogColumn(solutionMazeCol, MyMazeGraph.ToString());
+        }
         #endregion
     }
 }

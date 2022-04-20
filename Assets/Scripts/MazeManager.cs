@@ -9,7 +9,7 @@ namespace MoveToCode {
     public class MazeManager : Singleton<MazeManager> {
         #region members
         public UnityEvent OnMazeLocked, OnMazeUnlocked;
-        public static string mazeLogCol = "UserMaze";
+        public static string mazeLogCol = "UserMaze", mazeLockCol = "mazeLock", containsSolCol = "containsSol";
         HashSet<Connection> populatedConnections = new HashSet<Connection>();
         Dictionary<MazeConnector, HashSet<MazeConnector>> connectRequests = new Dictionary<MazeConnector, HashSet<MazeConnector>>();
         BabyKuriManager _babyKuriManager;
@@ -84,6 +84,7 @@ namespace MoveToCode {
         }
 
         public bool BKAtGoal = false;
+        public UnityEvent OnBKAtGoal;
         #endregion
 
         #region unity
@@ -92,7 +93,10 @@ namespace MoveToCode {
             ARTrackingManagerInstance.OnTrackingEnded.AddListener(OnTrackingEnded);
             if (!hasBeenInitialized) {
                 LoggingManagerInstance.AddLogColumn(mazeLogCol, "");
+                LoggingManagerInstance.AddLogColumn(mazeLockCol, "");
+                LoggingManagerInstance.AddLogColumn(containsSolCol, "");
                 hasBeenInitialized = true;
+                OnBKAtGoal = new UnityEvent();
             }
 #if UNITY_EDITOR
             AddManipulationHandlersForUnityEditor();
@@ -193,6 +197,10 @@ namespace MoveToCode {
         public MazePiece GetPotentialNextMP(CodeBlockEnums.Move direction) {
             MazePiece res = GetMazeConnectorRelBKInDir(direction)?.ConnectedMP;
             if (res.GetComponent<MazeGoal>() != null) {
+                if (!BKAtGoal) {
+                    BKAtGoal = true;
+                    OnBKAtGoal.Invoke();
+                }
                 BKAtGoal = true;
             }
             else {
@@ -201,6 +209,10 @@ namespace MoveToCode {
             return res;
         }
 
+        public void LogMaze() {
+            LoggingManagerInstance.UpdateLogColumn(mazeLogCol, MyMazeGraph.ToString());
+            LoggingManagerInstance.UpdateLogColumn(containsSolCol, ContainsSolutionMaze() ? "1" : "0");
+        }
         #endregion
 
         #region private
@@ -238,6 +250,7 @@ namespace MoveToCode {
             SolMazeManagerInstance.ReleasePieces();
             IsLocked = false;
             OnMazeUnlocked.Invoke();
+            LoggingManagerInstance.UpdateLogColumn(mazeLockCol, "Unlocked");
         }
 
         private void SnapPiecesTogether() {
@@ -249,7 +262,7 @@ namespace MoveToCode {
             SolMazeManagerInstance.SnapPiecesTogether();
             IsLocked = true;
             OnMazeLocked.Invoke();
-            LoggingManagerInstance.UpdateLogColumn(mazeLogCol, MyMazeGraph.ToString());
+            LoggingManagerInstance.UpdateLogColumn(mazeLockCol, "Locked");
         }
         #endregion
     }

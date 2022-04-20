@@ -42,6 +42,7 @@ namespace MoveToCode {
                     TutorKuriManager.instance.kuriController.SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT.Congratulation);
                     LoggingManager.instance.UpdateLogColumn(exerciseSubmissionResultCol, "Correct");
                     lastExerciseCompleted = true;
+                    // this is where I should do the explosion at the goal
                     return true;
                 }
                 else {
@@ -79,6 +80,7 @@ namespace MoveToCode {
                 CodeBlockMenuManager.instance.TurnMenuOff();
             }
             curExercise.gameObject.SetActive(desiredActiveState);
+            SolMazeManager.instance.LogMaze();
         }
     }
 }

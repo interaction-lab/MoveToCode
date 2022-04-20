@@ -1,6 +1,7 @@
 using Microsoft.MixedReality.Toolkit.UI;
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace MoveToCode {
     public class LockMazeButton : MonoBehaviour {
@@ -32,10 +33,29 @@ namespace MoveToCode {
                 return _interpreter;
             }
         }
+
+        Button _button;
+        Button MyButton {
+            get {
+                if (_button == null) {
+                    _button = GetComponent<Button>();
+                }
+                return _button;
+            }
+        }
+
+        public bool IsScreenButton {
+            get {
+                return MyButton != null;
+            }
+        }
         #endregion
 
         #region unity
         private void Awake() {
+            if (IsScreenButton) {
+                MyButton.onClick.AddListener(OnScreenClick);
+            }
             MazeManagerInstance.OnMazeLocked.AddListener(OnMazeLocked);
             MazeManagerInstance.OnMazeUnlocked.AddListener(OnMazeUnlocked);
             InterpreterInstance.OnCodeStart.AddListener(OnCodeStart);
@@ -61,6 +81,10 @@ namespace MoveToCode {
 
         private void OnMazeLocked() {
             ButtonConfig.MainLabelText = "Unlock Maze";
+        }
+
+        private void OnScreenClick() {
+            MazeManagerInstance.ToggleMazeLock();
         }
     }
     #endregion

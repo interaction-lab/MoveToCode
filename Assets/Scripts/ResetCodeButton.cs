@@ -27,9 +27,24 @@ namespace MoveToCode {
         PulseMeshRend Pulse {
             get {
                 if (_pulse == null) {
-                    _pulse = transform.GetChild(3).GetComponentInChildren<PulseMeshRend>(); // Flimsy
+                    _pulse = transform.GetChild(3).GetComponentInChildren<PulseMeshRend>(); // Flimsy, for in scene/3D UI
                 }
                 return _pulse;
+            }
+        }
+        bool IsUIButton {
+            get {
+                return PulseImg != null;
+            }
+        }
+
+        PulseImg _pulseImg;
+        PulseImg PulseImg {
+            get {
+                if (_pulseImg == null) {
+                    _pulseImg = transform.parent.GetComponent<PulseImg>(); // FLimsy, for 2D UI
+                }
+                return _pulseImg;
             }
         }
         #endregion
@@ -46,11 +61,21 @@ namespace MoveToCode {
 
         #region private
         private void OnCodeReset() {
-            Pulse.StopPulse();
+            if (IsUIButton) {
+                PulseImg.StopPulse();
+            }
+            else {
+                Pulse.StopPulse();
+            }
         }
 
         private void OnCodeEnd() {
-            Pulse.StartPulse();
+            if (IsUIButton) {
+                PulseImg.StartPulse();
+            }
+            else {
+                Pulse.StartPulse();
+            }
         }
         #endregion
     }

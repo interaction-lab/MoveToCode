@@ -50,6 +50,12 @@
         "com.microsoft.mixedreality.toolkit.foundation": "2.7.3"
       }
     },
+    "com.unity.2d.sprite": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
+    },
     "com.unity.analytics": {
       "version": "3.6.12",
       "depth": 0,

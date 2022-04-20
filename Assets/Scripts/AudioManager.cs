@@ -20,6 +20,14 @@ namespace MoveToCode {
             PlaySoundAtObject(tran.gameObject, ac);
         }
 
+        public void PlayButtonClick() {
+            PlaySoundAtObject(ScreenMenuManager.instance.transform, MRTKButtonPress);
+        }
+
+        public void PlayReleaseClick() {
+            PlaySoundAtObject(ScreenMenuManager.instance.transform, MRTKButtonUnpress);
+        }
+
         public void PlaySoundAtObject(GameObject go, AudioClip ac) {
             AudioSource aos = go.GetComponent<AudioSource>();
             if (aos == null) {

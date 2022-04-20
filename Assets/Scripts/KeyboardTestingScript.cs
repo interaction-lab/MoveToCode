@@ -40,7 +40,9 @@ public class KeyboardTestingScript : MonoBehaviour {
         anim = GetComponent<Animator>();
     }
 
-
+    public void TestButton() {
+        Debug.Log("Button pressed");
+    }
     void Update() {
         if (Input.GetKeyDown("h")) {
             //anim.SetTrigger("HighFive");

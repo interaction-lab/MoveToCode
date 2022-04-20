@@ -12,7 +12,31 @@ namespace MoveToCode {
         public static string babyKuriMovementActionCol = "babyKuriMovementAction";
         private float moveSpeed = 1f, turnSpeed = 50f;
         public AnimationCurve speedCurve;
-        public MeshRenderer bodyPlateRend;
+        List<MeshRenderer> _bodyPlatesToChangeColor;
+        List<MeshRenderer> BodyPlatesToChangeColor {
+            get {
+                if (_bodyPlatesToChangeColor == null) {
+                    _bodyPlatesToChangeColor = new List<MeshRenderer>();
+                    foreach (KuriColorChangingPlate kccp in GetComponentsInChildren<KuriColorChangingPlate>()) {
+                        _bodyPlatesToChangeColor.Add(kccp.MeshRend);
+                    }
+                }
+                return _bodyPlatesToChangeColor;
+            }
+        }
+
+        List<Color> origColors;
+        List<Color> OrigColors {
+            get {
+                if (origColors == null) {
+                    origColors = new List<Color>();
+                    foreach (MeshRenderer mr in BodyPlatesToChangeColor) {
+                        origColors.Add(mr.material.color);
+                    }
+                }
+                return origColors;
+            }
+        }
 
         BabyKuriManager bkm;
         BabyKuriManager babyKuriManager {
@@ -93,10 +117,15 @@ namespace MoveToCode {
 
         public void ResetToOrigState() {
             BKTransformManager.ResetToOriginalState();
+            for (int i = 0; i < BodyPlatesToChangeColor.Count; i++) {
+                BodyPlatesToChangeColor[i].material.color = OrigColors[i];
+            }
         }
 
         public void SetColor(Color color) {
-            bodyPlateRend.material.color = color;
+            foreach (MeshRenderer mr in BodyPlatesToChangeColor) {
+                mr.material.color = color;
+            }
         }
 
         #endregion
@@ -109,7 +138,7 @@ namespace MoveToCode {
                     // Note this only works for moving forward, not backward, will fix later
                     CodeBlockEnums.Move move = p.Value > 0 ? CodeBlockEnums.Move.Forward : CodeBlockEnums.Move.Backward;
                     MazePiece potentialNextPiece = MazeManagerInstance.GetPotentialNextMP(move);
-                    if(potentialNextPiece == null){
+                    if (potentialNextPiece == null) {
                         throw new Exception($"Kuri moving {move.ToString()}, but no next piece");
                     }
                     StartCoroutine(GoToPosition(MazeManagerInstance.GetPotentialNextMP(move).Center, move == CodeBlockEnums.Move.Forward));
@@ -128,10 +157,10 @@ namespace MoveToCode {
             CurMovementAction = MoveLogString + (forward ? "FORWARD" : "BACKWARD") + " to " + goal.ToString();
 
             // need to use this curve nicely for different connections in the maze
-            Bezier curve = new Bezier(Bezier.BezierType.Quadratic, new Vector3[]{BKTransformManager.KuriPos, BKTransformManager.KuriPos + BKTransformManager.Up * 0.5f, goal, goal});
+            Bezier curve = new Bezier(Bezier.BezierType.Quadratic, new Vector3[] { BKTransformManager.KuriPos, BKTransformManager.KuriPos + BKTransformManager.Up * 0.5f, goal, goal });
             float t = 0f, totalTime = 1f;
             while (Vector3.Distance(BKTransformManager.KuriPos, goal) > goalDistDelta) {
-                BKTransformManager.KuriPos = curve.GetBezierPoint(t/totalTime);
+                BKTransformManager.KuriPos = curve.GetBezierPoint(t / totalTime);
                 t += Time.deltaTime;
                 yield return null;
             }

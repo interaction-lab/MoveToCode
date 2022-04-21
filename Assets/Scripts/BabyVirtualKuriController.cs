@@ -17,7 +17,7 @@ namespace MoveToCode {
             get {
                 if (_bodyPlatesToChangeColor == null) {
                     _bodyPlatesToChangeColor = new List<MeshRenderer>();
-                    foreach (KuriColorChangingPlate kccp in GetComponentsInChildren<KuriColorChangingPlate>()) {
+                    foreach (KuriColorChangingPlate kccp in GetComponentsInChildren<KuriColorChangingPlate>(true)) {
                         _bodyPlatesToChangeColor.Add(kccp.MeshRend);
                     }
                 }

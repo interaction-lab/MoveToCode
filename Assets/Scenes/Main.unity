@@ -21450,7 +21450,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1284974616
 Transform:
   m_ObjectHideFlags: 0
@@ -21558,7 +21558,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1299940477
 Transform:
   m_ObjectHideFlags: 0
@@ -28403,12 +28403,12 @@ PrefabInstance:
     - target: {fileID: 2487772825070479730, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.31155816
+      value: 0.31155807
       objectReference: {fileID: 0}
     - target: {fileID: 2487772825070479730, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.9502271
+      value: 0.95022714
       objectReference: {fileID: 0}
     - target: {fileID: 2487772825360762764, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
@@ -28448,12 +28448,12 @@ PrefabInstance:
     - target: {fileID: 2487772825411896842, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9375614
+      value: 0.9375613
       objectReference: {fileID: 0}
     - target: {fileID: 2487772825411896842, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.34781995
+      value: -0.34782013
       objectReference: {fileID: 0}
     - target: {fileID: 2487772825955322132, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
@@ -45722,6 +45722,7 @@ GameObject:
   - component: {fileID: 1852460486712402610}
   - component: {fileID: 1852460486709535374}
   - component: {fileID: 1852460486710632526}
+  - component: {fileID: 1852460486712835731}
   m_Layer: 0
   m_Name: BodyBackTop
   m_TagString: Untagged
@@ -45729,6 +45730,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1852460486712835731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852460486712835730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f073bb8109e1a2548819e9cc9285f6a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1852460486712835732
 GameObject:
   m_ObjectHideFlags: 0
@@ -46128,6 +46141,7 @@ GameObject:
   - component: {fileID: 1852460486712402562}
   - component: {fileID: 1852460486709535384}
   - component: {fileID: 1852460486710632536}
+  - component: {fileID: 1852460486712835811}
   m_Layer: 0
   m_Name: BodyFrontTop
   m_TagString: Untagged
@@ -46135,6 +46149,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1852460486712835811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852460486712835810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f073bb8109e1a2548819e9cc9285f6a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1852460486712835812
 GameObject:
   m_ObjectHideFlags: 0
@@ -46897,6 +46923,7 @@ GameObject:
   - component: {fileID: 1852460486712402652}
   - component: {fileID: 1852460486709535438}
   - component: {fileID: 1852460486710632590}
+  - component: {fileID: 1852460486712835901}
   m_Layer: 0
   m_Name: HeadTop
   m_TagString: Untagged
@@ -46904,6 +46931,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1852460486712835901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852460486712835900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f073bb8109e1a2548819e9cc9285f6a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1852460486712835902
 GameObject:
   m_ObjectHideFlags: 0

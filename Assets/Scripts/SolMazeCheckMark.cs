@@ -7,6 +7,7 @@ using UnityEngine.UI;
 namespace MoveToCode {
     public class SolMazeCheckMark : Singleton<SolMazeCheckMark> {
         #region members
+        public Sprite greenCheckImg, redXimg;
         Image _img;
         Image IMG {
             get {
@@ -34,9 +35,13 @@ namespace MoveToCode {
             yield return new WaitForEndOfFrame();
             yield return new WaitForEndOfFrame(); // hack for some race conditions
             bool toggle = MazeManager.instance.ContainsSolutionMaze();
-            IMG.enabled = toggle;
             if (toggle) {
+                IMG.sprite = greenCheckImg;
                 AudioManager.instance.PlayButtonClick();
+            }
+            else {
+                IMG.sprite = redXimg;
+                AudioManager.instance.PlayReleaseClick();
             }
         }
         #endregion

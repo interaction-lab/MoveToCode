@@ -110,4 +110,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3bcfa56da36244428aa2e0d3d18652f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connectionDir: 0
+  connectionDir: 3

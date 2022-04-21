@@ -1,5 +1,6 @@
 using Microsoft.MixedReality.Toolkit.UI;
 using System;
+using TMPro;
 using UnityEngine;
 
 namespace MoveToCode {
@@ -47,12 +48,23 @@ namespace MoveToCode {
                 return _pulseImg;
             }
         }
+
+        TextMeshProUGUI tmp;
+        TextMeshProUGUI TXT {
+            get {
+                if (tmp == null) {
+                    tmp = GetComponentInChildren<TextMeshProUGUI>();
+                }
+                return tmp;
+            }
+        }
         #endregion
 
         #region unity
         private void Awake() {
             InterpreterInstance.OnCodeEnd.AddListener(OnCodeEnd);
             InterpreterInstance.OnCodeReset.AddListener(OnCodeReset);
+            ExerciseManager.instance.OnExerciseCorrect.AddListener(OnExerciseCorrect);
         }
         #endregion
 
@@ -63,6 +75,8 @@ namespace MoveToCode {
         private void OnCodeReset() {
             if (IsUIButton) {
                 PulseIMG.StopPulse();
+                TXT.text = "Reset";
+
             }
             else {
                 Pulse.StopPulse();
@@ -71,10 +85,18 @@ namespace MoveToCode {
 
         private void OnCodeEnd() {
             if (IsUIButton) {
-                PulseIMG.StartPulse();
+                PulseIMG.StartPulse(Color.red);
             }
             else {
                 Pulse.StartPulse();
+            }
+        }
+
+        void OnExerciseCorrect() {
+            if (IsUIButton) {
+                TXT.text = "Next Maze";
+                PulseIMG.StopPulse();
+                PulseIMG.StartPulse(Color.blue);
             }
         }
         #endregion

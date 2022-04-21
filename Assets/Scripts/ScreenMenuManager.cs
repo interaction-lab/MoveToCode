@@ -18,7 +18,7 @@ namespace MoveToCode {
 
         #region unity
         void OnEnable() {
-            if (MyScreenToggleMenuButton.ChildButtonsOn) {
+            if (!MyScreenToggleMenuButton.ChildButtonsOn) {
                 MyScreenToggleMenuButton.Toggle();
             }
         }

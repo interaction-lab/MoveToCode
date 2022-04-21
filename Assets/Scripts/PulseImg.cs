@@ -40,8 +40,8 @@ namespace MoveToCode {
         #endregion
 
         #region public
-        public void StartPulse() {
-            StartCoroutine(PulseRoutine());
+        public void StartPulse(Color pulseColor) {
+            StartCoroutine(PulseRoutine(pulseColor));
         }
 
         public void StopPulse() {
@@ -50,13 +50,13 @@ namespace MoveToCode {
         #endregion
 
         #region private
-        IEnumerator PulseRoutine() {
+        IEnumerator PulseRoutine(Color pulseColor) {
             if (IsPulsing) {
                 yield break;
             }
             IsPulsing = true;
             while (IsPulsing) {
-                Img.color = Color.Lerp(origButtonColor, Color.red, Mathf.PingPong(Time.time, 1));
+                Img.color = Color.Lerp(origButtonColor, pulseColor, Mathf.PingPong(Time.time, 1));
                 MyMaterial.color = Color.Lerp(origMaterialColor, materialWFullAlpha, Mathf.PingPong(Time.time, 1));
                 yield return null;
             }

@@ -155,18 +155,18 @@ namespace MoveToCode {
                     angle = 270;
                     break;
             }
-            switch (anchorMC.connectionDir) {
+            switch (anchorMC.connectionDir) { // parent
                 case MazePiece.CONNECTDIR.North:
                     angle += 0;
                     break;
                 case MazePiece.CONNECTDIR.East:
-                    angle += 270;
+                    angle += 90;
                     break;
                 case MazePiece.CONNECTDIR.South:
                     angle += 180;
                     break;
                 case MazePiece.CONNECTDIR.West:
-                    angle += 90;
+                    angle += 270;
                     break;
             }
 

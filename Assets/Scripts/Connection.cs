@@ -85,7 +85,9 @@ namespace MoveToCode {
             mazeConnectors.Second = otherMazeConnector;
             otherMazeConnector.MyConnection = this;
 
-            connectedColor = UnityEngine.Random.ColorHSV(0f, 1f, 0.5f, 1f, 0.5f, 1f, 1f, 1f);
+            // connectedColor = UnityEngine.Random.ColorHSV(0f, 1f, 0.5f, 1f, 0.5f, 1f, 1f, 1f);
+            // connectedColor should be average color of both pieces
+            connectedColor = Color.Lerp(mazeConnector.MyMazePiece.MyColor, otherMazeConnector.MyMazePiece.MyColor, 0.5f);
             mazeConnector.SetColor(connectedColor);
             otherMazeConnector.SetColor(connectedColor);
 

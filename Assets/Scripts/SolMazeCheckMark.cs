@@ -22,6 +22,7 @@ namespace MoveToCode {
         #region unity
         private void Awake() {
             ToggleCheckMark();
+            Interpreter.instance.OnCodeReset.AddListener(ToggleCheckMark);
         }
         #endregion
 

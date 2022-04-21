@@ -10,7 +10,7 @@ namespace MoveToCode {
         #region members
         public string CurMovementAction = "";
         public static string babyKuriMovementActionCol = "babyKuriMovementAction";
-        private float moveSpeed = 1f, turnSpeed = 50f;
+        private float moveSpeed = 1f, turnSpeed = 200f; // need to be fast for now as everything is under a 1 window time slot, super flimsy
         public AnimationCurve speedCurve;
         List<MeshRenderer> _bodyPlatesToChangeColor;
         List<MeshRenderer> BodyPlatesToChangeColor {
@@ -158,7 +158,7 @@ namespace MoveToCode {
 
             // need to use this curve nicely for different connections in the maze
             Bezier curve = new Bezier(Bezier.BezierType.Quadratic, new Vector3[] { BKTransformManager.KuriPos, BKTransformManager.KuriPos + BKTransformManager.Up * 0.5f, goal, goal });
-            float t = 0f, totalTime = 1f;
+            float t = 0f, totalTime = 0.9f;
             while (Vector3.Distance(BKTransformManager.KuriPos, goal) > goalDistDelta) {
                 BKTransformManager.KuriPos = curve.GetBezierPoint(t / totalTime);
                 t += Time.deltaTime;

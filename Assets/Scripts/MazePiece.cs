@@ -72,7 +72,15 @@ namespace MoveToCode {
                 return transform.position;
             }
         }
-
+        Color _color = Color.magenta;
+        public Color MyColor {
+            get {
+                if (_color == Color.magenta) {
+                    _color = GetComponent<Renderer>().material.color;
+                }
+                return _color;
+            }
+        }
         #endregion
 
         #region unity

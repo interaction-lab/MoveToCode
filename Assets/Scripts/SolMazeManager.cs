@@ -66,7 +66,6 @@ namespace MoveToCode {
                 CurActiveSolMaze.gameObject.SetActive(true);
                 ExerciseManager.instance.OnExerciseCorrect.AddListener(OnExerciseCorrect);
                 ExerciseManager.instance.OnCyleNewExercise.AddListener(OnCyleNewExercise);
-                IsExercise0 = true;
             }
         }
         #endregion
@@ -99,15 +98,12 @@ namespace MoveToCode {
 
         private void OnCyleNewExercise() {
             int curIndex = AllSolMazes.IndexOf(CurActiveSolMaze);
-
             if (curIndex + 1 < AllSolMazes.Count) {
                 curActiveSolMaze.gameObject.SetActive(false);
                 curActiveSolMaze = AllSolMazes[curIndex + 1];
                 curActiveSolMaze.gameObject.SetActive(true);
             }
-
-
-            MazeManagerInstance.LogMaze(); // this is a bit of a hack that also launchs the solution check
+            SolMazeCheckMark.instance.ToggleCheckMark();
         }
         #endregion
     }

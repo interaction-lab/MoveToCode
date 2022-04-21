@@ -69,7 +69,7 @@ namespace MoveToCode {
         #endregion
 
         #region unity
-        private void OnEnable() {
+        private void Awake() {
             SetUpMazeConnector();
         }
 
@@ -82,8 +82,6 @@ namespace MoveToCode {
             }
         }
         private void OnTriggerExit(Collider other) {
-            // HERE likely due to trigger exit when collider goes off but we should just have the collider not go off?
-            // TODO: when maze is locked, careful with the colliders
             MazeConnector otherMazeConnector = other.gameObject.GetComponent<MazeConnector>();
             if ((otherMazeConnector != null && IsSameMazePieceType(otherMazeConnector.MyMazePiece)) &&
             On && otherMazeConnector.On) {

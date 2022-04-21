@@ -37,6 +37,7 @@ namespace MoveToCode {
         }
 
         public HashSet<MPEdge> GetAllEdges() {
+            isDirty = true; // temporary caching fix
             if (isDirty) {
                 ResetGraph();
                 PopulateEdges(Root);

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using System.Linq;
 using UnityEngine.Events;
+using System.Collections;
 
 namespace MoveToCode {
     public class MazeManager : Singleton<MazeManager> {
@@ -185,7 +186,6 @@ namespace MoveToCode {
             return MyMazeGraph.GetClosestKuriMazePiece(BabyKuriManagerInstance.BKTransformManager.KuriPos);
         }
 
-        // TODO: make this work for both forward and backward
         public MazeConnector GetMazeConnectorRelBKInDir(CodeBlockEnums.Move direction) {
             MazePiece kuriMP = GetClosestKuriMazePiece();
             Assert.IsNotNull(kuriMP);
@@ -194,6 +194,8 @@ namespace MoveToCode {
             return kuriMP.GetConnector(kuriDir);
         }
 
+        // issue is that this is never called when a move command is not the last thing called
+        // need a better way to update the next piece given the final command
         public MazePiece GetPotentialNextMP(CodeBlockEnums.Move direction) {
             MazePiece res = GetMazeConnectorRelBKInDir(direction)?.ConnectedMP;
             if (res.GetComponent<MazeGoal>() != null) {
@@ -209,15 +211,31 @@ namespace MoveToCode {
             return res;
         }
 
+        // TODO: fix this so that it is event driven only or at least handles correctly
+        private void Update() {
+            BKAtGoal = false;
+        }
+
         public void LogMaze() {
-            LoggingManagerInstance.UpdateLogColumn(mazeLogCol, MyMazeGraph.ToString());
-            bool containsSolMaze = ContainsSolutionMaze();
-            LoggingManagerInstance.UpdateLogColumn(containsSolCol, containsSolMaze ? "1" : "0");
-            SolMazeCheckMark.instance.ToggleCheckMark(containsSolMaze); // this is super hacky
+            // log maze a single time at end of frame using coroutine
+            StartCoroutine(LogMazeCoroutine());
         }
         #endregion
 
         #region private
+        bool loggedThisFrame = false;
+        IEnumerator LogMazeCoroutine() {
+            yield return new WaitForEndOfFrame();
+            if (loggedThisFrame) {
+                yield break;
+            }
+            loggedThisFrame = true;
+            LoggingManagerInstance.UpdateLogColumn(mazeLogCol, MyMazeGraph.ToString());
+            LoggingManagerInstance.UpdateLogColumn(containsSolCol, ContainsSolutionMaze() ? "1" : "0");
+            SolMazeCheckMark.instance.ToggleCheckMark(); // this is super hacky
+            yield return new WaitForEndOfFrame();
+            loggedThisFrame = false;
+        }
         private void MoveOutOfView() {
             transform.position = new Vector3(0, 100, 0);
         }

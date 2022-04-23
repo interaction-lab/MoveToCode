@@ -115,9 +115,9 @@ namespace MoveToCode {
         private void UpdateResetTrackImg() {
             ResetMeshAlpha();
             if (isTracking) {
+                isTracking = false;
                 TrackingIndicator.TurnOff();
                 OnImgStoppedTracking.Invoke();
-                isTracking = false;
             }
 
         }
@@ -125,9 +125,9 @@ namespace MoveToCode {
         private void UpdateTrackImg() {
             PulseAlphaMesh();
             if (!isTracking) {
+                isTracking = true;
                 TrackingIndicator.TurnOn();
                 OnImgStartedTracking.Invoke();
-                isTracking = true;
             }
         }
 

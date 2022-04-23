@@ -42,10 +42,10 @@ namespace MoveToCode {
             arTrackBehavior.OnImgStartedTracking.AddListener(ToggleState);
             arTrackBehavior.OnImgStoppedTracking.AddListener(ToggleState);
             MazeManager.instance.OnMazeLocked.AddListener(ToggleState);
+            ToggleState();
         }
         #endregion
-        #region public
-        #endregion
+
         #region private
         void OnTrashButtonClick() {
             MyMazePiece.DisableMyPiece();

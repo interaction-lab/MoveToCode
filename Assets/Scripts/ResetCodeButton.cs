@@ -88,7 +88,7 @@ namespace MoveToCode {
                 PulseIMG.StartPulse(Color.red);
             }
             else {
-                Pulse3DMeshRend.StartPulse();
+                Pulse3DMeshRend.StartPulse(Color.red);
             }
         }
 
@@ -100,7 +100,8 @@ namespace MoveToCode {
             }
             else {
                 ButtonConfig.MainLabelText = "Next Maze";
-                Pulse3DMeshRend.StartPulse(); // need to abstract to color
+                Pulse3DMeshRend.StopPulse();
+                Pulse3DMeshRend.StartPulse(Color.blue);
             }
         }
         #endregion

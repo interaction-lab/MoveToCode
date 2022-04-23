@@ -35,6 +35,8 @@ namespace MoveToCode {
             SetUpManipulationLogger();
             dragScript = gameObject.AddComponent<CloneOnDrag>(); // TODO: clean this up
             UpdateText();
+            // turn alpha of all meshes below this to 230
+            codeBlockObjectMesh.SetAlpha(230);
         }
 
 

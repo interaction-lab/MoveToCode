@@ -86,7 +86,7 @@ namespace MoveToCode {
         #region unity
         void Awake() {
             IsAnchored = false;
-            // add TrashButtonCanvas using resource loading
+            
             if (GetComponentInChildren<TrashButton>() == null) {
                 Instantiate(Resources.Load<GameObject>(ResourcePathConstants.TrashButtonCanvasPrefab), transform);
             }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
+using System.Linq;
 
 namespace MoveToCode {
     public abstract class CodeBlockObjectMesh : MonoBehaviour {
@@ -10,6 +11,17 @@ namespace MoveToCode {
         protected List<MeshOutline> meshOutlineList;
         protected static Material outlineMaterial;
         protected SnapColliderGroup snapColliderGroup;
+
+        // get list property of all materials on this gameobject and its children
+        List<Material> _allObjectMats;
+        public List<Material> AllObjectMats {
+            get {
+                if (_allObjectMats == null) {
+                    _allObjectMats = new List<Material>(GetComponentsInChildren<MeshRenderer>().Select(mr => mr.material));
+                }
+                return _allObjectMats;
+            }
+        }
 
         // Set up
         void Awake() {
@@ -24,7 +36,7 @@ namespace MoveToCode {
         public void ConfigureOutlines() {
             foreach (MeshOutline mo in meshOutlineList) {
                 mo.OutlineMaterial = GetOutlineMaterial();
-                mo.OutlineWidth = 0.05f;
+                mo.OutlineWidth = 0.01f;
                 mo.enabled = false;
                 Rigidbody rigidBody = mo.gameObject.AddComponent<Rigidbody>();
                 rigidBody.isKinematic = true;
@@ -63,6 +75,13 @@ namespace MoveToCode {
             }
             else {
                 ChainResizeDown();
+            }
+        }
+
+        public void SetAlpha(float _a){
+            foreach (Material mat in AllObjectMats) {
+                //set material alpha to _a
+                mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, _a);
             }
         }
 

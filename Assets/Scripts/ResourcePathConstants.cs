@@ -26,8 +26,7 @@ namespace MoveToCode {
         public static string ArrayElementPrefab = CodeBlockPrefabFolder + "ArrayElement";
         public static string ArrayIndexCodeBlockPrefab = CodeBlockPrefabFolder + "ArrayIndexCodeBlock";
         public static string ExercisePrefab = PrefabFolder + "Exercise";
-
-
+        public static string TrashButtonCanvasPrefab = PrefabFolder + "TrashButtonCanvas";
 
         public static Dictionary<string, GameObject> codeBlockDictionary = new Dictionary<string, GameObject> {
             {"Print", Resources.Load<GameObject>(PrintCodeBlockPrefab)},

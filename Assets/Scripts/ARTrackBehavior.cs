@@ -60,6 +60,20 @@ namespace MoveToCode {
                 return _mazeManager;
             }
         }
+        TrashButton _trashButton;
+        TrashButton MyTrashButton {
+            get {
+                if (_trashButton == null) {
+                    _trashButton = GetComponentInChildren<TrashButton>(true);
+                }
+                return _trashButton;
+            }
+        }
+        public bool IsTracking {
+            get {
+                return isTracking;
+            }
+        }
         #endregion
 
         #region unity

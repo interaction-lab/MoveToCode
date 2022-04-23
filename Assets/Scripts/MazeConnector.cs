@@ -83,8 +83,8 @@ namespace MoveToCode {
         }
         private void OnTriggerExit(Collider other) {
             MazeConnector otherMazeConnector = other.gameObject.GetComponent<MazeConnector>();
-            if ((otherMazeConnector != null && IsSameMazePieceType(otherMazeConnector.MyMazePiece)) &&
-            On && otherMazeConnector.On) {
+            if ((otherMazeConnector != null && IsSameMazePieceType(otherMazeConnector.MyMazePiece)) 
+            && On && otherMazeConnector.On) {
                 RemoveRequestAndAttemptConnect(otherMazeConnector);
                 ReliableOnTriggerExit.NotifyTriggerExit(other, gameObject);
             }

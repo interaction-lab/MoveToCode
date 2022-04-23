@@ -62,6 +62,10 @@ namespace MoveToCode {
                 return _tmp;
             }
         }
+
+        public GameObject screenPlayButtonObject;
+        public GameObject screenResetButtonObject;
+        public TextMeshProUGUI modeText;
         #endregion
 
         #region unity
@@ -73,6 +77,7 @@ namespace MoveToCode {
             MazeManagerInstance.OnMazeUnlocked.AddListener(OnMazeUnlocked);
             InterpreterInstance.OnCodeStart.AddListener(OnCodeStart);
             InterpreterInstance.OnCodeReset.AddListener(OnCodeReset);
+            OnMazeUnlocked();
         }
         #endregion
 
@@ -99,20 +104,28 @@ namespace MoveToCode {
         }
 
         private void OnMazeUnlocked() {
+            string newTxt = "Switch Mode";
             if (IsScreenButton) {
-                MyText.text = "Lock Maze";
+                MyText.text = newTxt;
+                screenPlayButtonObject.SetActive(false); // remember to do this for non-UI maybe
+                screenResetButtonObject.SetActive(false);
+                modeText.text = "Maze Building";
             }
             else {
-                ButtonConfig.MainLabelText = "Lock Maze";
+                ButtonConfig.MainLabelText = newTxt;
             }
         }
 
         private void OnMazeLocked() {
+            string newTxt = "Switch Mode";
             if (IsScreenButton) {
-                MyText.text = "Unlock Maze";
+                MyText.text = newTxt;
+                screenPlayButtonObject.SetActive(true);
+                screenResetButtonObject.SetActive(true);
+                modeText.text = "Coding";
             }
             else {
-                ButtonConfig.MainLabelText = "Unlock Maze";
+                ButtonConfig.MainLabelText = newTxt;
             }
         }
 

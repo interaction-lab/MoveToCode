@@ -24,8 +24,8 @@ namespace MoveToCode {
                 return _interpreter;
             }
         }
-        PulseMeshRend _pulse;
-        PulseMeshRend Pulse {
+        PulseMeshRend _pulse = null;
+        PulseMeshRend Pulse3DMeshRend {
             get {
                 if (_pulse == null) {
                     _pulse = transform.GetChild(3).GetComponentInChildren<PulseMeshRend>(); // Flimsy, for in scene/3D UI
@@ -49,13 +49,13 @@ namespace MoveToCode {
             }
         }
 
-        TextMeshProUGUI tmp;
-        TextMeshProUGUI TXT {
+        TextMeshProUGUI tmpUI;
+        TextMeshProUGUI TXTUI {
             get {
-                if (tmp == null) {
-                    tmp = GetComponentInChildren<TextMeshProUGUI>();
+                if (tmpUI == null) {
+                    tmpUI = GetComponentInChildren<TextMeshProUGUI>();
                 }
-                return tmp;
+                return tmpUI;
             }
         }
         #endregion
@@ -75,11 +75,11 @@ namespace MoveToCode {
         private void OnCodeReset() {
             if (IsUIButton) {
                 PulseIMG.StopPulse();
-                TXT.text = "Reset";
-
+                TXTUI.text = "Reset";
             }
             else {
-                Pulse.StopPulse();
+                Pulse3DMeshRend.StopPulse();
+                ButtonConfig.MainLabelText = "Reset";
             }
         }
 
@@ -88,15 +88,19 @@ namespace MoveToCode {
                 PulseIMG.StartPulse(Color.red);
             }
             else {
-                Pulse.StartPulse();
+                Pulse3DMeshRend.StartPulse();
             }
         }
 
         void OnExerciseCorrect() {
             if (IsUIButton) {
-                TXT.text = "Next Maze";
+                TXTUI.text = "Next Maze";
                 PulseIMG.StopPulse();
                 PulseIMG.StartPulse(Color.blue);
+            }
+            else {
+                ButtonConfig.MainLabelText = "Next Maze";
+                Pulse3DMeshRend.StartPulse(); // need to abstract to color
             }
         }
         #endregion

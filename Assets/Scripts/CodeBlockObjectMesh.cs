@@ -12,17 +12,6 @@ namespace MoveToCode {
         protected static Material outlineMaterial;
         protected SnapColliderGroup snapColliderGroup;
 
-        // get list property of all materials on this gameobject and its children
-        List<Material> _allObjectMats;
-        public List<Material> AllObjectMats {
-            get {
-                if (_allObjectMats == null) {
-                    _allObjectMats = new List<Material>(GetComponentsInChildren<MeshRenderer>().Select(mr => mr.material));
-                }
-                return _allObjectMats;
-            }
-        }
-
         // Set up
         void Awake() {
             SetUpObject();
@@ -75,13 +64,6 @@ namespace MoveToCode {
             }
             else {
                 ChainResizeDown();
-            }
-        }
-
-        public void SetAlpha(float _a){
-            foreach (Material mat in AllObjectMats) {
-                //set material alpha to _a
-                mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, _a);
             }
         }
 

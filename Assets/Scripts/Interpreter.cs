@@ -96,8 +96,7 @@ namespace MoveToCode {
             string lineToAdd = ex.ToString();
             if (lineToAdd.Contains(kuriOffMaze)) {
                 lineToAdd = "Rails Error, " + lineToAdd;
-                KuriTextManager.instance.Addline("Oh no, moving baby kuri off the maze!");
-                Debug.Log("fdskjl");
+                KuriTextManager.instance.Addline(kuriOffMaze);
             }
             else if (lineToAdd.Contains("NULL")) {
                 lineToAdd = "Instruction Block Incomplete, " + lineToAdd;

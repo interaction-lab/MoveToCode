@@ -65,7 +65,7 @@ namespace MoveToCode {
         public void StopTracking() {
             if (IsTracking) {
                 IsTracking = false;
-                OnTrackingEnded.Invoke();
+                OnTrackingEnded?.Invoke();
             }
         }
 

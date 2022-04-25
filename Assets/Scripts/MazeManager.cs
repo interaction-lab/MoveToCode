@@ -198,6 +198,7 @@ namespace MoveToCode {
         // need a better way to update the next piece given the final command
         public MazePiece GetPotentialNextMP(CodeBlockEnums.Move direction) {
             MazePiece res = GetMazeConnectorRelBKInDir(direction)?.ConnectedMP;
+            // also make sure to check if our current piece is the goal piece
             if (res?.GetComponent<MazeGoal>() != null) {
                 if (!BKAtGoal) {
                     BKAtGoal = true;
@@ -210,6 +211,11 @@ namespace MoveToCode {
             }
             return res;
         }
+
+        public bool IsBKAtTheGoalNow() {
+            return BKAtGoal || GetClosestKuriMazePiece()?.GetComponent<MazeGoal>() != null; ;
+        }
+
 
         // TODO: fix this so that it is event driven only or at least handles correctly
         private void Update() {

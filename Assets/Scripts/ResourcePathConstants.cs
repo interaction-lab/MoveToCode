@@ -82,6 +82,7 @@ namespace MoveToCode {
         public static string KuriPonderSad = KuriNegativeSoundFolder + "PONDER_SAD";
 
         // ARImages
+        // TODO: outdated but not needed either
         public static string str_wall_1 = "wall_1";
         public static string str_wall_2 = "wall_2";
         public static string str_wall_3 = "wall_3";

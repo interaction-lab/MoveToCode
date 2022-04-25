@@ -104,8 +104,8 @@ namespace MoveToCode {
             }
             ConsoleManager.instance.AddLine(string.Join("", lineToAdd, ", Code Resetting"));
             LoggingManager.instance.UpdateLogColumn(codeErrorCol, lineToAdd);
-            Debug.LogWarning(ex.ToString());
             OnCodeError.Invoke();
+            ResetCodeState();
         }
 
         private void RunInstruction_Private() {
@@ -136,9 +136,7 @@ namespace MoveToCode {
             }
             else {
                 OnCodeEnd.Invoke();
-                if (ExerciseManager.instance.AlertCodeFinished()) {
-                    StaticNextChallengeButton.instance.gameObject.SetActive(true);
-                }
+                ExerciseManager.instance.AlertCodeFinished(); // this really should just be the event but oh well
                 ConsoleManager.instance.AddFinishLine();
             }
         }
@@ -159,6 +157,7 @@ namespace MoveToCode {
                     BabyKuriManager.instance.KuriIsOffRails = false;
                     fullSteppingCode = false;
                     CatchCodeError(new Exception(kuriOffMaze));
+                    yield break;
                 }
             }
             fullSteppingCode = false;

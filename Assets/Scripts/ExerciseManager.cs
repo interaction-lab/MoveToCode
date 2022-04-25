@@ -39,7 +39,7 @@ namespace MoveToCode {
         public bool AlertCodeFinished() {
             if (curExercise != null) { // This if is to guard against initializing interpreter
                                        // curExercise.IsExerciseCorrect() -> old code
-                if (MazeManager.instance.BKAtGoal && MazeManager.instance.ContainsSolutionMaze()) {
+                if (MazeManager.instance.IsBKAtTheGoalNow() && MazeManager.instance.ContainsSolutionMaze()) {
                     TutorKuriManager.instance.kuriController.SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT.Congratulation);
                     LoggingManager.instance.UpdateLogColumn(exerciseSubmissionResultCol, "Correct");
                     lastExerciseCompleted = true;

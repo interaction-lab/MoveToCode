@@ -249,7 +249,7 @@ namespace MoveToCode {
             }
         }
         private void OnTrackingStarted() {
-            ReleasePieces();
+            // ReleasePieces(); // vistigial old and now commented out to fix for the sitch mode persistence
         }
         private void OnTrackingEnded() {
             // where we snap the maze to each other + floor + grid

@@ -139,7 +139,8 @@ namespace MoveToCode {
                     CodeBlockEnums.Move move = p.Value > 0 ? CodeBlockEnums.Move.Forward : CodeBlockEnums.Move.Backward;
                     MazePiece potentialNextPiece = MazeManagerInstance.GetPotentialNextMP(move);
                     if (potentialNextPiece == null) {
-                        throw new Exception($"Kuri moving {move.ToString()}, but no next piece");
+                        ThrowKuriOffTheRails(p.Value > 0);
+                        throw new Exception($"Kuri moving {move.ToString()}, but no next piece"); // deal with kuri of the rails
                     }
                     StartCoroutine(GoToPosition(potentialNextPiece.Center, move == CodeBlockEnums.Move.Forward));
                 }
@@ -147,6 +148,12 @@ namespace MoveToCode {
                     StartCoroutine(TurnToAngle(Quaternion.Euler(BKTransformManager.KuriRot.eulerAngles + BKTransformManager.Up * p.Value), p.Value > 0));
                 }
             }
+        }
+
+        private void ThrowKuriOffTheRails(bool forward) {
+            float dist = forward ? 0.34f : -0.34f;
+            GoToPosition((forward ? BKTransformManager.Forward : BKTransformManager.Backward) * dist, forward);
+
         }
 
         private float goalDistDelta = 0.02f;

@@ -37,6 +37,10 @@ namespace MoveToCode {
         #endregion
 
         #region unity
+        private void OnDisable() {
+            MyMaterial.color = origMaterialColor;
+            Img.color = origButtonColor;
+        }
         #endregion
 
         #region public

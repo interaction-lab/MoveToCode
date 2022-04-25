@@ -65,6 +65,8 @@ namespace MoveToCode {
 
         public GameObject screenPlayButtonObject;
         public GameObject screenResetButtonObject;
+        public GameObject inscenePlayButtonObject;
+        public GameObject insceneResetButtonObject;
         public TextMeshProUGUI modeText;
         #endregion
 
@@ -107,9 +109,11 @@ namespace MoveToCode {
             string newTxt = "Switch Mode";
             if (IsScreenButton) {
                 MyText.text = newTxt;
-                screenPlayButtonObject.SetActive(false); // remember to do this for non-UI maybe
+                screenPlayButtonObject.SetActive(false);
                 screenResetButtonObject.SetActive(false);
-                modeText.text = "Maze Building";
+                inscenePlayButtonObject.SetActive(false);
+                insceneResetButtonObject.SetActive(false);
+                modeText.text = "Mode: Maze Building";
             }
             else {
                 ButtonConfig.MainLabelText = newTxt;
@@ -122,7 +126,9 @@ namespace MoveToCode {
                 MyText.text = newTxt;
                 screenPlayButtonObject.SetActive(true);
                 screenResetButtonObject.SetActive(true);
-                modeText.text = "Coding";
+                inscenePlayButtonObject.SetActive(true);
+                insceneResetButtonObject.SetActive(true);
+                modeText.text = "Mode: Coding";
             }
             else {
                 ButtonConfig.MainLabelText = newTxt;

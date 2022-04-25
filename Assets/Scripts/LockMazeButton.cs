@@ -79,6 +79,7 @@ namespace MoveToCode {
             MazeManagerInstance.OnMazeUnlocked.AddListener(OnMazeUnlocked);
             InterpreterInstance.OnCodeStart.AddListener(OnCodeStart);
             InterpreterInstance.OnCodeReset.AddListener(OnCodeReset);
+            ExerciseManager.instance.OnCyleNewExercise.AddListener(OnNewExercise);
             OnMazeUnlocked();
         }
         #endregion
@@ -87,6 +88,9 @@ namespace MoveToCode {
         #endregion
 
         #region private
+        private void OnNewExercise() {
+            OnMazeUnlocked(); // switch to build mode when we move to the newest exercise
+        }
         private void OnCodeReset() {
             if (IsScreenButton) {
                 transform.parent.gameObject.SetActive(true);

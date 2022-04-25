@@ -140,9 +140,10 @@ namespace MoveToCode {
                     MazePiece potentialNextPiece = MazeManagerInstance.GetPotentialNextMP(move);
                     if (potentialNextPiece == null) {
                         ThrowKuriOffTheRails(p.Value > 0);
-                        throw new Exception($"Kuri moving {move.ToString()}, but no next piece"); // deal with kuri of the rails
                     }
-                    StartCoroutine(GoToPosition(potentialNextPiece.Center, move == CodeBlockEnums.Move.Forward));
+                    else {
+                        StartCoroutine(GoToPosition(potentialNextPiece.Center, move == CodeBlockEnums.Move.Forward, false));
+                    }
                 }
                 else if (p.Key == typeof(CodeBlockEnums.Turn)) {
                     StartCoroutine(TurnToAngle(Quaternion.Euler(BKTransformManager.KuriRot.eulerAngles + BKTransformManager.Up * p.Value), p.Value > 0));
@@ -152,12 +153,16 @@ namespace MoveToCode {
 
         private void ThrowKuriOffTheRails(bool forward) {
             float dist = forward ? 0.34f : -0.34f;
-            GoToPosition((forward ? BKTransformManager.Forward : BKTransformManager.Backward) * dist, forward);
-
+            StartCoroutine(GoToPosition(BKTransformManager.KuriPos +
+                Vector3.down +
+                (forward ? BKTransformManager.Forward : BKTransformManager.Backward) *
+                dist,
+                forward,
+                true));
         }
 
         private float goalDistDelta = 0.02f;
-        public IEnumerator GoToPosition(Vector3 goal, bool forward) {
+        public IEnumerator GoToPosition(Vector3 goal, bool forward, bool wasError) {
             if (IsMoving) {
                 throw new InvalidOperationException("Baby Kuri already moving, check moveQueue queueing code");
             }
@@ -171,10 +176,14 @@ namespace MoveToCode {
                 t += Time.deltaTime;
                 yield return null;
             }
+
             if (IsMoving) {
                 BKTransformManager.KuriPos = goal;
             }
             ResetCurMovementAction();
+            if (wasError) {
+                throw new Exception("Baby Kuri was thrown off the rails");
+            }
             StartNextMovement();
         }
 

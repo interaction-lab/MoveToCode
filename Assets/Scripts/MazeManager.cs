@@ -198,7 +198,7 @@ namespace MoveToCode {
         // need a better way to update the next piece given the final command
         public MazePiece GetPotentialNextMP(CodeBlockEnums.Move direction) {
             MazePiece res = GetMazeConnectorRelBKInDir(direction)?.ConnectedMP;
-            if (res.GetComponent<MazeGoal>() != null) {
+            if (res?.GetComponent<MazeGoal>() != null) {
                 if (!BKAtGoal) {
                     BKAtGoal = true;
                     OnBKAtGoal.Invoke();

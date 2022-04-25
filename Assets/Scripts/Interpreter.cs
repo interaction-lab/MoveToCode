@@ -109,7 +109,7 @@ namespace MoveToCode {
             lastInstructionReturn = curInstruction.RunInstruction();
             UpdateCurInstruction();
             if (numInstructionsRun > instructionRunLimit) {
-                throw new Exception("Too man instructions run, maybe an infinite loop?");
+                throw new Exception("Too many instructions run, maybe an infinite loop?");
             }
         }
 

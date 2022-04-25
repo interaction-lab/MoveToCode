@@ -119,11 +119,12 @@ namespace MoveToCode {
                 screenResetButtonObject.SetActive(false);
                 inscenePlayButtonObject.SetActive(false);
                 insceneResetButtonObject.SetActive(false);
-                modeText.text = "Mode: Maze Building";
+                modeText.text = "Mode 1: Maze Building";
             }
             else {
                 ButtonConfig.MainLabelText = newTxt;
             }
+            CodeBlockManager.instance.HideCodeBlocks();
         }
 
         private void OnMazeLocked() {
@@ -134,11 +135,12 @@ namespace MoveToCode {
                 screenResetButtonObject.SetActive(true);
                 inscenePlayButtonObject.SetActive(true);
                 insceneResetButtonObject.SetActive(true);
-                modeText.text = "Mode: Coding";
+                modeText.text = "Mode 2: Coding";
             }
             else {
                 ButtonConfig.MainLabelText = newTxt;
             }
+            CodeBlockManager.instance.ShowCodeBlocks();
         }
 
         private void OnScreenClick() {

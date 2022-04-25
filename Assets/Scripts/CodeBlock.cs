@@ -172,6 +172,7 @@ namespace MoveToCode {
 
         private void OnEnable() {
             CodeBlockManager.instance.RegisterCodeBlock(this);
+            UpdateText();
         }
 
         private void OnDestroy() {

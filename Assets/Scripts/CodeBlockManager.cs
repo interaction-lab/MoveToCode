@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 namespace MoveToCode {
     public class CodeBlockManager : Singleton<CodeBlockManager> {
         HashSet<CodeBlock> codeBlocks;
@@ -53,6 +52,14 @@ namespace MoveToCode {
             foreach (CodeBlock c in GetAllCodeBlocks()) {
                 c.ResetInstructionInternalState();
             }
+        }
+
+        public void HideCodeBlocks() {
+            gameObject.SetActive(false);
+        }
+
+        public void ShowCodeBlocks() {
+            gameObject.SetActive(true);
         }
 
     }

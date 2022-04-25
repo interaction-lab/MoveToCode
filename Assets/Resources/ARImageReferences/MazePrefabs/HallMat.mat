@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MazeFloor3
+  m_Name: HallMat
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ShaderKeywords: _SURFACE_TYPE_TRANSPARENT
   m_LightmapFlags: 4
@@ -193,9 +193,9 @@ Material:
     - _ZTest: 4
     - _ZWrite: 0
     m_Colors:
-    - _BaseColor: {r: 0.5254902, g: 0.9582113, b: 1, a: 0.8235294}
+    - _BaseColor: {r: 1, g: 0.4198113, b: 0.7383835, a: 0.8235294}
     - _ClippingBorderColor: {r: 1, g: 0.2, b: 0, a: 1}
-    - _Color: {r: 0.5254902, g: 0.9582113, b: 1, a: 0.8235294}
+    - _Color: {r: 1, g: 0.4198113, b: 0.7383835, a: 0.8235294}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _EmissiveColor: {r: 0, g: 0, b: 0, a: 1}
     - _EnvironmentColorX: {r: 1, g: 0, b: 0, a: 1}

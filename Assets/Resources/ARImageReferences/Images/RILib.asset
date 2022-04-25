@@ -79,3 +79,23 @@ MonoBehaviour:
     m_SpecifySize: 1
     m_Name: turnnw_1
     m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4815614136922111940
+      m_GuidHigh: 10697192142537670550
+    m_SerializedTextureGuid:
+      m_GuidLow: 3338512136989137727
+      m_GuidHigh: 4427254576317399561
+    m_Size: {x: 0.2159, y: 0.2794}
+    m_SpecifySize: 1
+    m_Name: turnnw_2
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5495334490298494412
+      m_GuidHigh: 17119135774368657855
+    m_SerializedTextureGuid:
+      m_GuidLow: 13476139538608530557
+      m_GuidHigh: 18074612343257305577
+    m_Size: {x: 0.2159, y: 0.2794}
+    m_SpecifySize: 1
+    m_Name: turnnw_3
+    m_Texture: {fileID: 0}

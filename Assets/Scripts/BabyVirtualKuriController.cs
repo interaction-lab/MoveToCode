@@ -132,7 +132,7 @@ namespace MoveToCode {
 
         #region private
         private void StartNextMovement() {
-            if (!MoveQueue.Empty() && !IsMoving) {
+            if (!MoveQueue.Empty() && !IsMoving && !KuriIsOffRails) {
                 KeyValuePair<Type, float> p = MoveQueue.Dequeue();
                 if (p.Key == typeof(CodeBlockEnums.Move)) {
                     // Note this only works for moving forward, not backward, will fix later
@@ -151,14 +151,18 @@ namespace MoveToCode {
             }
         }
 
+        public bool KuriIsOffRails = false;
         private void ThrowKuriOffTheRails(bool forward) {
             float dist = forward ? 0.34f : -0.34f;
-            StartCoroutine(GoToPosition(BKTransformManager.KuriPos +
-                Vector3.down +
-                (forward ? BKTransformManager.Forward : BKTransformManager.Backward) *
-                dist,
-                forward,
-                true));
+            KuriIsOffRails = true;
+            StartCoroutine(
+                GoToPosition(BKTransformManager.KuriPos +
+                             Vector3.down +
+                             (forward ? BKTransformManager.Forward : BKTransformManager.Backward) *
+                             dist,
+                             forward,
+                             true)
+                );
         }
 
         private float goalDistDelta = 0.02f;
@@ -169,6 +173,7 @@ namespace MoveToCode {
             CurMovementAction = MoveLogString + (forward ? "FORWARD" : "BACKWARD") + " to " + goal.ToString();
             if (wasError) {
                 AudioManager.instance.PlaySoundAtObject(gameObject, AudioManager.whistleFallAudioClip);
+                KuriIsOffRails = true;
             }
             // need to use this curve nicely for different connections in the maze
             Bezier curve = new Bezier(Bezier.BezierType.Quadratic, new Vector3[] { BKTransformManager.KuriPos, BKTransformManager.KuriPos + BKTransformManager.Up * 0.5f, goal, goal });
@@ -183,9 +188,6 @@ namespace MoveToCode {
                 BKTransformManager.KuriPos = goal;
             }
             ResetCurMovementAction();
-            if (wasError) {
-                throw new Exception("Baby Kuri was thrown off the rails");
-            }
             StartNextMovement();
         }
 

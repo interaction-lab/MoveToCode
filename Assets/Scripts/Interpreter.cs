@@ -15,6 +15,7 @@ namespace MoveToCode {
         public int instructionRunLimit = 30;
         bool fullSteppingCode = false;
         public float stepSpeed = 0.5f;
+        string kuriOffMaze = "Oh no, baby Kuri fell off the maze!";
 
         public UnityEvent OnCodeReset, OnCodeStart, OnCodeEnd, OnCodeError;
         #endregion
@@ -93,14 +94,19 @@ namespace MoveToCode {
         #region private
         private void CatchCodeError(Exception ex) {
             string lineToAdd = ex.ToString();
-            if (lineToAdd.Contains("NULL")) {
-                lineToAdd = "Instruction Block Incomplete";
+            if (lineToAdd.Contains(kuriOffMaze)) {
+                lineToAdd = "Rails Error, " + lineToAdd;
+                KuriTextManager.instance.Addline("Oh no, moving baby kuri off the maze!");
+                Debug.Log("fdskjl");
+            }
+            else if (lineToAdd.Contains("NULL")) {
+                lineToAdd = "Instruction Block Incomplete, " + lineToAdd;
+                KuriTextManager.instance.Addline("Code block is incomplete");
             }
             ConsoleManager.instance.AddLine(string.Join("", lineToAdd, ", Code Resetting"));
             LoggingManager.instance.UpdateLogColumn(codeErrorCol, lineToAdd);
             Debug.LogWarning(ex.ToString());
             OnCodeError.Invoke();
-            ResetCodeState();
         }
 
         private void RunInstruction_Private() {
@@ -150,6 +156,11 @@ namespace MoveToCode {
             while (fullSteppingCode && !CodeIsFinished()) {
                 RunNextInstruction();
                 yield return new WaitForSeconds(stepSpeed);
+                if (BabyKuriManager.instance.KuriIsOffRails) {
+                    BabyKuriManager.instance.KuriIsOffRails = false;
+                    fullSteppingCode = false;
+                    CatchCodeError(new Exception(kuriOffMaze));
+                }
             }
             fullSteppingCode = false;
         }

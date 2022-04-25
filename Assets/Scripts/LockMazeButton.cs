@@ -89,7 +89,9 @@ namespace MoveToCode {
 
         #region private
         private void OnNewExercise() {
-            OnMazeUnlocked(); // switch to build mode when we move to the newest exercise
+            if (MazeManagerInstance.IsLocked) {
+                OnScreenClick(); // fake a click when the new exercise is loaded
+            }
         }
         private void OnCodeReset() {
             if (IsScreenButton) {

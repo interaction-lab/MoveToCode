@@ -38,7 +38,7 @@ namespace MoveToCode {
 
         public bool AlertCodeFinished() {
             if (curExercise != null) { // This if is to guard against initializing interpreter
-                                       // curExercise.IsExerciseCorrect() old code
+                                       // curExercise.IsExerciseCorrect() -> old code
                 if (MazeManager.instance.BKAtGoal && MazeManager.instance.ContainsSolutionMaze()) {
                     TutorKuriManager.instance.kuriController.SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT.Congratulation);
                     LoggingManager.instance.UpdateLogColumn(exerciseSubmissionResultCol, "Correct");
@@ -72,7 +72,6 @@ namespace MoveToCode {
             curExercise = exerciseList[curExercisePos];
             ToggleCurrentExercise(true);
             OnCyleNewExercise.Invoke();
-
         }
 
         private void ToggleCurrentExercise(bool desiredActiveState) {

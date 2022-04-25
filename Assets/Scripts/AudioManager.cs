@@ -2,7 +2,7 @@
 
 namespace MoveToCode {
     public class AudioManager : Singleton<AudioManager> {
-        public static AudioClip correctAudioClip, incorrectAudioClip, poofAudioClip, popAudioClip, snapAudioClip, spwanAudioClip;
+        public static AudioClip correctAudioClip, incorrectAudioClip, poofAudioClip, popAudioClip, snapAudioClip, spwanAudioClip, whistleFallAudioClip;
         public AudioClip MRTKButtonPress, MRTKButtonUnpress;
         static string audioLogCol = "AudioPlayed";
 
@@ -13,6 +13,7 @@ namespace MoveToCode {
             popAudioClip = Resources.Load<AudioClip>(ResourcePathConstants.PopSound);
             snapAudioClip = Resources.Load<AudioClip>(ResourcePathConstants.SnapSound);
             spwanAudioClip = Resources.Load<AudioClip>(ResourcePathConstants.SpawnSound);
+            whistleFallAudioClip = Resources.Load<AudioClip>(ResourcePathConstants.WhistleFallSound);
             LoggingManager.instance.AddLogColumn(audioLogCol, "");
         }
 

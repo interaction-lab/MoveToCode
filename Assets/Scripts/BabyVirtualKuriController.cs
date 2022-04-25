@@ -167,7 +167,9 @@ namespace MoveToCode {
                 throw new InvalidOperationException("Baby Kuri already moving, check moveQueue queueing code");
             }
             CurMovementAction = MoveLogString + (forward ? "FORWARD" : "BACKWARD") + " to " + goal.ToString();
-
+            if (wasError) {
+                AudioManager.instance.PlaySoundAtObject(gameObject, AudioManager.whistleFallAudioClip);
+            }
             // need to use this curve nicely for different connections in the maze
             Bezier curve = new Bezier(Bezier.BezierType.Quadratic, new Vector3[] { BKTransformManager.KuriPos, BKTransformManager.KuriPos + BKTransformManager.Up * 0.5f, goal, goal });
             float t = 0f, totalTime = 0.9f;

@@ -38,7 +38,7 @@ namespace MoveToCode {
             MeshRend = GetComponent<MeshRenderer>();
             MeshRend.enabled = false;
             GetComponent<Collider>().isTrigger = true;
-            gameObject.layer =  LayerMask.NameToLayer("SnapCollider");
+            gameObject.layer = LayerMask.NameToLayer("SnapCollider");
             gameObject.SetActive(false);
             RegisterToSnapColliderGroup();
             CodeBlockManager.instance.RegisterSnapCollider(this);
@@ -138,6 +138,7 @@ namespace MoveToCode {
 
         private void OnDisable() {
             MeshRend.enabled = false;
+            MyMeshOutline.enabled = false;
         }
 
         private void OnDestroy() {

@@ -8,6 +8,7 @@ using static MoveToCode.KuriController;
 
 namespace MoveToCode {
     public class TutorKuriManager : Singleton<TutorKuriManager> {
+        #region members
         [Range(-3.0f, 3.0f)]
         public float robotKC;
         [HideInInspector]
@@ -61,7 +62,8 @@ namespace MoveToCode {
         bool wasKuriDoingActionLastTick;
 
         LoggingManager loggingManager;
-
+        #endregion
+        #region unity
         private void Awake() {
             OptionSelectionManager.instance.Init();
             loggingManager = LoggingManager.instance;
@@ -72,12 +74,16 @@ namespace MoveToCode {
         private void Start() {
             StartCoroutine(StartRoutine());
         }
+        #endregion
 
+        #region public
         public void SetKC(float kcRIn) {
             robotKC = kcRIn;
             LoggingManager.instance.UpdateLogColumn(robotKCLevel, robotKC.ToString("F3"));
         }
+        #endregion
 
+        #region private
         IEnumerator StartRoutine() {
             inStartUp = true;
             yield return null;
@@ -145,5 +151,6 @@ namespace MoveToCode {
         void UpdateEndOfTickVariables() {
             wasKuriDoingActionLastTick = kuriController.IsDoingAction;
         }
+        #endregion
     }
 }

@@ -1,8 +1,7 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 namespace MoveToCode {
     public class SolMazeCheckMark : Singleton<SolMazeCheckMark> {
@@ -17,6 +16,7 @@ namespace MoveToCode {
                 return _img;
             }
         }
+        public UnityEvent OnMazeCorrect, OnMazeIncorrect;
         #endregion
 
         #region unity
@@ -39,10 +39,12 @@ namespace MoveToCode {
             if (toggle) {
                 IMG.sprite = greenCheckImg;
                 AudioManager.instance.PlayButtonClick();
+                OnMazeCorrect.Invoke();
             }
             else {
                 IMG.sprite = redXimg;
                 AudioManager.instance.PlayReleaseClick();
+                OnMazeIncorrect.Invoke();
             }
         }
         #endregion

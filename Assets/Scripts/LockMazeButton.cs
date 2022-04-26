@@ -68,6 +68,15 @@ namespace MoveToCode {
         public GameObject inscenePlayButtonObject;
         public GameObject insceneResetButtonObject;
         public TextMeshProUGUI modeText;
+        PulseImg _pulseImg;
+        PulseImg PulseIMG {
+            get {
+                if (_pulseImg == null) {
+                    _pulseImg = transform.parent.GetComponent<PulseImg>(); // FLimsy, for 2D UI
+                }
+                return _pulseImg;
+            }
+        }
         #endregion
 
         #region unity
@@ -80,6 +89,10 @@ namespace MoveToCode {
             InterpreterInstance.OnCodeStart.AddListener(OnCodeStart);
             InterpreterInstance.OnCodeReset.AddListener(OnCodeReset);
             ExerciseManager.instance.OnCyleNewExercise.AddListener(OnNewExercise);
+            SolMazeCheckMark.instance.OnMazeCorrect.AddListener(OnMazeCorrect);
+            SolMazeCheckMark.instance.OnMazeIncorrect.AddListener(OnMazeIncorrect);
+            // need onmazecorrect and onmazeincorrect
+
             OnMazeUnlocked();
         }
         #endregion
@@ -88,6 +101,12 @@ namespace MoveToCode {
         #endregion
 
         #region private
+        private void OnMazeCorrect(){
+            PulseIMG.StartPulse(Color.green);
+        }
+        private void OnMazeIncorrect(){
+            PulseIMG.StopPulse();
+        }
         private void OnNewExercise() {
             if (MazeManagerInstance.IsLocked) {
                 OnScreenClick(); // fake a click when the new exercise is loaded
@@ -117,7 +136,7 @@ namespace MoveToCode {
                 MyText.text = newTxt;
                 screenPlayButtonObject.SetActive(false);
                 screenResetButtonObject.SetActive(false);
-                inscenePlayButtonObject.SetActive(false);
+                inscenePlayButtonObject.SetActive(false); // these no longer exist but keeping this here to turn them off
                 insceneResetButtonObject.SetActive(false);
                 modeText.text = "Mode 1: Maze Building";
             }
@@ -133,14 +152,15 @@ namespace MoveToCode {
                 MyText.text = newTxt;
                 screenPlayButtonObject.SetActive(true);
                 screenResetButtonObject.SetActive(true);
-                inscenePlayButtonObject.SetActive(true);
-                insceneResetButtonObject.SetActive(true);
+                //inscenePlayButtonObject.SetActive(true);
+                //insceneResetButtonObject.SetActive(true);
                 modeText.text = "Mode 2: Coding";
             }
             else {
                 ButtonConfig.MainLabelText = newTxt;
             }
             CodeBlockManager.instance.ShowCodeBlocks();
+            PulseIMG.StopPulse();
         }
 
         private void OnScreenClick() {

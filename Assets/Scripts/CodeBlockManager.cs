@@ -82,6 +82,9 @@ namespace MoveToCode {
                 ExerciseManager.instance.OnCyleNewExercise.AddListener(LogAllCodeBlocks);
                 LogAllCodeBlocks();
             }
+            // move code blocks close to BKMazePiece
+            transform.position = MazeManager.instance.BKMazePiece.transform.position +
+                                (Vector3.up + Vector3.left) * 0.2f; // arbitrrary scaling factor
         }
 
         public void LogAllCodeBlocks() {

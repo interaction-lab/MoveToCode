@@ -40,5 +40,15 @@ namespace MoveToCode {
         public override string DescriptiveInstructionToString() {
             return string.Join("", "<color=purple>", ToString(), "</color>", GetArgument(CommonSCKeys.RightNumber)?.DescriptiveInstructionToString(), ": ", GetNestedInstructionsAsString());
         }
+
+        public override string ToJSON() {
+            return string.Join(",", new string[] {
+                "{\"name\": \"" + ToString() + "\"",
+                "\"type\": \"" + GetType().ToString() + "\"",
+                "\"args\":{\"condition\": " + GetArgumentJSON(CommonSCKeys.RightNumber),
+                "\"nested\": " + GetArgumentJSON(CommonSCKeys.Nested),
+                "\"next\": " + GetArgumentJSON(CommonSCKeys.Next) + "}}"
+            });
+        }
     }
 }

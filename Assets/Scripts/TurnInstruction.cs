@@ -28,7 +28,7 @@ namespace MoveToCode {
             if (OptionSelectionManager.instance.usePhysicalKuri) {
                 TurnPhysicalKuri();
             }
-            else { 
+            else {
                 TurnVirtualBabyKuri();
             }
             return new InstructionReturnValue(null, GetNextInstruction());
@@ -36,7 +36,7 @@ namespace MoveToCode {
 
         private void TurnPhysicalKuri() {
             if (output == CodeBlockEnums.Turn.Left) {
-                Mtp.UpdateMessage(0,-turnAngle);
+                Mtp.UpdateMessage(0, -turnAngle);
             }
             else {
                 Mtp.UpdateMessage(0, -turnAngle);
@@ -58,6 +58,15 @@ namespace MoveToCode {
 
         public override string DescriptiveInstructionToString() {
             return string.Join("", "<color=purple>" + ToString() + "</color>(", GetArgument(CommonSCKeys.Turn)?.DescriptiveInstructionToString() + ")");
+        }
+
+        public override string ToJSON() {
+            return string.Join(",", new string[] {
+                "{\"name\": \"" + ToString() + "\"",
+                "\"type\": \"" + GetType().ToString(), "\"",
+                "\"args\":{\"turn\": " + GetArgumentJSON(CommonSCKeys.Turn),
+                "\"next\": " + GetArgumentJSON(CommonSCKeys.Next) + "}}"
+            });
         }
     }
 }

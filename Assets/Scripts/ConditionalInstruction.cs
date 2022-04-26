@@ -29,5 +29,15 @@ namespace MoveToCode {
                         " ",
                         GetArgument(rightArgKey)?.DescriptiveInstructionToString());
         }
+
+        public override string ToJSON() {
+            return string.Join(",", new string[] {
+                "{\"name\": \"", ToString() + "\"",
+                "\"op\": \"", GetCodeString() + "\"",
+                "\"type\": \"", GetType().ToString(), "\"",
+                "\"args\":{\"left\": ", GetArgument(leftArgKey)?.ToJSON(),
+                ", \"right\": ", GetArgument(rightArgKey)?.ToJSON(), "}"
+            });
+        }
     }
 }

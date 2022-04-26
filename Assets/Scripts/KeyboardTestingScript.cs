@@ -50,7 +50,9 @@ public class KeyboardTestingScript : MonoBehaviour {
 
         }
         if (Input.GetKeyDown(KeyCode.Alpha0)) {
-
+            foreach (CodeBlock cb in CodeBlockManager.instance.GetAllCodeBlocks()) {
+                Debug.Log(cb.GetMyIArgument().ToJSON());
+            }
         }
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
             Debug.Log(MazeManager.instance.GetPotentialNextMP(CodeBlockEnums.Move.Forward)?.Center);

@@ -8,5 +8,6 @@ namespace MoveToCode {
         public override string DescriptiveInstructionToString() {
             return string.Join("", "<color=purple>", ToString(), "</color>", GetArgument(CommonSCKeys.Conditional)?.DescriptiveInstructionToString(), ": ", GetNestedInstructionsAsString());
         }
+
     }
 }

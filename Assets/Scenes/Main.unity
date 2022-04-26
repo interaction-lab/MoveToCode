@@ -27707,7 +27707,7 @@ MonoBehaviour:
   OnCyleNewExercise:
     m_PersistentCalls:
       m_Calls: []
-  curExercisePos: 0
+  curExercisePos: 2
 --- !u!1 &1706427365
 GameObject:
   m_ObjectHideFlags: 0

@@ -86,6 +86,10 @@ namespace MoveToCode {
         public override string DescriptiveInstructionToString() {
             return "Arrary under development";
         }
+
+        public override string ToJSON() {
+            throw new NotImplementedException();
+        }
     }
 }
 

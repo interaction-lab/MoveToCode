@@ -19,5 +19,15 @@
         public override string ToString() {
             return "while ";
         }
+
+        public override string ToJSON() {
+            return string.Join(",", new string[] {
+                "{\"name\": \"" + ToString() + "\"",
+                "\"type\": \"" + GetType().ToString() + "\"",
+                "\"args\":{\"condition\": " + GetArgumentJSON(CommonSCKeys.Conditional),
+                "\"nested\": " + GetArgumentJSON(CommonSCKeys.Nested),
+                "\"next\": " + GetArgumentJSON(CommonSCKeys.Next) + "}}"
+            });
+        }
     }
 }

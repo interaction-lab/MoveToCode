@@ -40,5 +40,9 @@ namespace MoveToCode {
             return "foreach still under development";
         }
 
+        public override string ToJSON() {
+            throw new NotImplementedException(); // TODO: do one day
+        }
+
     }
 }

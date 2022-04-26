@@ -327,7 +327,7 @@ namespace MoveToCode {
                 return;
             }
             BKMazePiece.SnapConnections();
-            BKTransformManager.SetOriginalState();
+            BKTransformManager?.SetOriginalState();
             SolMazeManagerInstance.SnapPiecesTogether();
             IsLocked = true;
             OnMazeLocked.Invoke();

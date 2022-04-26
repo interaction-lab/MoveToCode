@@ -15,7 +15,7 @@ namespace MoveToCode {
             float kctS = HumanStateManager.instance.GetKCt();
             if (kctS < kuriManager.robotKC) {
                 kuriController.TakeISAAction();
-                //TakeMovementAction();
+                kuriController.TakeMovementAction();
             }
             else {
                 kuriController.DoRandomPositiveAction();

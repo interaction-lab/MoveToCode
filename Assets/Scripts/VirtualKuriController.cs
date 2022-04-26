@@ -82,9 +82,9 @@ namespace MoveToCode {
             float approxLength = bezierCurve.ApproximateTotalLength();
             float time = approxLength / speedinMS;
             float t = 0;
-            while (t < time && !TKTransformManager.IsAtPosition(end)) {
-                t += Time.deltaTime;
-                TKTransformManager.Position = bezierCurve.GetBezierPoint(t / time);
+            while (t < 1 && !TKTransformManager.IsAtPosition(end)) {
+                t += (Time.deltaTime / time);
+                TKTransformManager.Position = bezierCurve.GetBezierPoint(t);
                 // make TKTransformManager body rotation face the goal but rotate only about the y axis
                 if (t < 1) {
                     Vector3 goalDir = (goalPosition - TKTransformManager.Position).normalized;

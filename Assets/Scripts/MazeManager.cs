@@ -331,7 +331,9 @@ namespace MoveToCode {
             SolMazeManagerInstance.SnapPiecesTogether();
             IsLocked = true;
             // move all pieces that aren't in my graph way away
+#if !UNITY_EDITOR
             DeactivateUnusedMazePieces();
+#endif
             OnMazeLocked.Invoke();
             LoggingManagerInstance.UpdateLogColumn(mazeLockCol, "Locked");
         }

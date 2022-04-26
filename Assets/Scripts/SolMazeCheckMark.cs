@@ -34,6 +34,7 @@ namespace MoveToCode {
 
         private IEnumerator ToggleCheckMarkCoroutine() {
             yield return new WaitForEndOfFrame();
+            yield return new WaitForEndOfFrame();
             yield return new WaitForEndOfFrame(); // hack for some race conditions
             bool toggle = MazeManager.instance.ContainsSolutionMaze();
             if (toggle) {

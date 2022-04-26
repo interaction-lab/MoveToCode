@@ -93,6 +93,7 @@ namespace MoveToCode {
 
         #region private
         private void CatchCodeError(Exception ex) {
+            Debug.LogWarning(ex.Message);
             string lineToAdd = ex.ToString();
             if (lineToAdd.Contains(kuriOffMaze)) {
                 lineToAdd = "Rails Error, " + lineToAdd;
@@ -102,7 +103,9 @@ namespace MoveToCode {
                 lineToAdd = "Instruction Block Incomplete, " + lineToAdd;
                 KuriTextManager.instance.Addline("Code block is incomplete");
             }
-            ConsoleManager.instance.AddLine(string.Join("", lineToAdd, ", Code Resetting"));
+            else {
+                ConsoleManager.instance.AddLine("Code Error, resetting code");
+            }
             LoggingManager.instance.UpdateLogColumn(codeErrorCol, lineToAdd);
             OnCodeError.Invoke();
             ResetCodeState();

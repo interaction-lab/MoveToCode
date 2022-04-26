@@ -64,16 +64,7 @@ namespace MoveToCode {
         }
 
         public override string TakeMovementAction() {
-            //move to user
-            // options are
-            // 1. move close to the BKMazePiece
-            // 2. move close to the user
-            // 3. move close to the goal
-            // 4. move close to a piece that seems slightly misaligned
-
-            // Get random option from the above
             int option = Random.Range(0, 4);
-            Debug.Log(option);
             string action = "";
             switch (option) {
                 case 0:
@@ -97,29 +88,29 @@ namespace MoveToCode {
             return start + dir.normalized * (dir.magnitude - distAway);
         }
         private string MoveToBKMazePiece() {
-            CurAction = "MoveToBKMazePiece";
+            CurAction += actionSeperator + "MoveToBKMazePiece";
             Transform BKMakePieceT = MazeManager.instance.BKMazePiece.transform;
             MoveToMazePiece(BKMakePieceT);
             return CurAction;
         }
         public string MoveToUser() {
-            CurAction = "MoveToUser";
-            Vector3 newPos = GetPosWDistAway(TKTransformManager.Position, UserTransform.position, 1f);
+            CurAction = actionSeperator + "MoveToUser";
+            Vector3 newPos = GetPosWDistAway(TKTransformManager.Position, UserTransform.position, 1.5f);
             StartCoroutine(LookAtAndGoToAtSpeed(UserTransform, newPos, ForwardSpeed));
             return CurAction;
         }
 
         private string MoveToGoal() {
-            CurAction = "GoingToGoal";
+            CurAction = actionSeperator + "GoingToGoal";
             Transform goalMPT = MazeManager.instance.GoalMazePiece.transform;
             MoveToMazePiece(goalMPT);
             return CurAction;
         }
 
         private string MoveToMisalignedPiece() {
-            CurAction = "MoveToMisalignedPiece";
+            CurAction = actionSeperator + "MoveToMisalignedPiece";
             Transform misalignedPieceT = MazeManager.instance.GetMisalignedPiece().transform;
-            if(misalignedPieceT == null){
+            if (misalignedPieceT == null) {
                 return MoveToUser(); // default to move to user if the goal pieces are all good
             }
             MoveToMazePiece(misalignedPieceT);
@@ -127,7 +118,7 @@ namespace MoveToCode {
         }
 
         private void MoveToMazePiece(Transform mazePieceT) {
-            Vector3 newPos = GetPosWDistAway(transform.position, mazePieceT.position, 0.5f);
+            Vector3 newPos = GetPosWDistAway(transform.position, mazePieceT.position, 1f);
             StartCoroutine(LookAtAndGoToAtSpeed(mazePieceT, newPos, ForwardSpeed));
         }
         private IEnumerator LookAtAndGoToAtSpeed(Transform objectToLookAt, Vector3 goalPosition, float speedinMS) {
@@ -141,8 +132,14 @@ namespace MoveToCode {
             // get the ground plane and place all y values to the ground plane y
             Transform groundPlane = Pogp.GetGroundPlane();
             if (groundPlane != null) {
+                start.y = groundPlane.position.y;
                 end.y = groundPlane.position.y;
                 controlPoint.y = groundPlane.position.y;
+            }
+            else { // else use kuri's y
+                start.y = TKTransformManager.Position.y;
+                end.y = TKTransformManager.Position.y;
+                controlPoint.y = TKTransformManager.Position.y;
             }
             Bezier bezierCurve = new Bezier(Bezier.BezierType.Quadratic, new Vector3[] { start, controlPoint, end });
             float approxLength = bezierCurve.ApproximateTotalLength();
@@ -150,7 +147,7 @@ namespace MoveToCode {
             float t = 0;
             while (t < totalTime && !TKTransformManager.IsAtPosition(end)) {
                 t += Time.deltaTime;
-                TKTransformManager.Position = bezierCurve.GetBezierPoint(t/totalTime);
+                TKTransformManager.Position = bezierCurve.GetBezierPoint(t / totalTime);
                 // make TKTransformManager body rotation face the goal but rotate only about the y axis
                 if (t < 1) {
                     Vector3 goalDir = (goalPosition - TKTransformManager.Position).normalized;
@@ -164,12 +161,14 @@ namespace MoveToCode {
                 }
                 yield return null;
             }
-            Debug.Log("done");
             TKTransformManager.Position = end;
         }
 
         public override void TurnTowardsUser() {
-            throw new System.NotImplementedException();
+            // get distance from user
+            CurAction += actionSeperator + "TurnTowardsUser";
+            Vector3 end = GetPosWDistAway(TKTransformManager.Position, UserTransform.position, Vector3.Distance(TKTransformManager.Position, UserTransform.position) - 0.1f);
+            StartCoroutine(LookAtAndGoToAtSpeed(UserTransform, end, ForwardSpeed));
         }
         #endregion
         #region protected

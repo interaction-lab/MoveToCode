@@ -135,7 +135,6 @@ namespace MoveToCode {
             if (!MoveQueue.Empty() && !IsMoving && !KuriIsOffRails) {
                 KeyValuePair<Type, float> p = MoveQueue.Dequeue();
                 if (p.Key == typeof(CodeBlockEnums.Move)) {
-                    // Note this only works for moving forward, not backward, will fix later
                     CodeBlockEnums.Move move = p.Value > 0 ? CodeBlockEnums.Move.Forward : CodeBlockEnums.Move.Backward;
                     MazePiece potentialNextPiece = MazeManagerInstance.GetPotentialNextMP(move);
                     if (potentialNextPiece == null) {
@@ -178,15 +177,12 @@ namespace MoveToCode {
             // need to use this curve nicely for different connections in the maze
             Bezier curve = new Bezier(Bezier.BezierType.Quadratic, new Vector3[] { BKTransformManager.KuriPos, BKTransformManager.KuriPos + BKTransformManager.Up * 0.5f, goal, goal });
             float t = 0f, totalTime = 0.9f;
-            while (Vector3.Distance(BKTransformManager.KuriPos, goal) > goalDistDelta) {
+            while (Vector3.Distance(BKTransformManager.KuriPos, goal) > goalDistDelta && t < totalTime) {
                 BKTransformManager.KuriPos = curve.GetBezierPoint(t / totalTime);
                 t += Time.deltaTime;
                 yield return null;
             }
-
-            if (IsMoving) {
-                BKTransformManager.KuriPos = goal;
-            }
+            BKTransformManager.KuriPos = goal;
             ResetCurMovementAction();
             StartNextMovement();
         }
@@ -206,9 +202,7 @@ namespace MoveToCode {
                 curDist = Quaternion.Angle(BKTransformManager.KuriRot, goal);
                 yield return null;
             }
-            if (IsMoving) {
-                BKTransformManager.KuriRot = goal;
-            }
+            BKTransformManager.KuriRot = goal;
             ResetCurMovementAction();
             StartNextMovement();
         }

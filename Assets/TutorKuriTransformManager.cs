@@ -5,6 +5,7 @@ using UnityEngine;
 namespace MoveToCode {
     public class TutorKuriTransformManager : MonoBehaviour {
         #region members
+        public Transform _bodyTransform, _headTransform;
         public Vector3 Position {
             get {
                 return transform.position;
@@ -13,12 +14,20 @@ namespace MoveToCode {
                 transform.position = value;
             }
         }
-        public Quaternion Rotation {
+        public Quaternion BodyRotation{
             get {
-                return transform.rotation;
+                return _bodyTransform.rotation;
             }
             set {
-                transform.rotation = value;
+                _bodyTransform.rotation = value;
+            }
+        }
+        public Quaternion HeadRotation {
+            get {
+                return _headTransform.rotation;
+            }
+            set {
+               _headTransform.rotation = value;
             }
         }
         public Transform MyTransform {
@@ -30,6 +39,9 @@ namespace MoveToCode {
         #region unity
         #endregion
         #region public
+        public bool IsAtPosition(Vector3 position) {
+            return Vector3.Distance(position, Position) < 0.01f;
+        }
         #endregion
         #region private
         #endregion

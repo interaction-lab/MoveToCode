@@ -15,6 +15,7 @@ namespace MoveToCode {
             }
         }
         public float ForwardSpeed, BackwardSpeed, TurnSpeed;
+        public Transform goalTransform;
         Animator anim;
         Animator Anim {
             get {
@@ -22,16 +23,6 @@ namespace MoveToCode {
                     anim = GetComponent<Animator>();
                 }
                 return anim;
-            }
-        }
-
-        MakeTransformLookAtUser mtlau;
-        MakeTransformLookAtUser Mtlau {
-            get {
-                if (mtlau == null) {
-                    mtlau = GetComponent<MakeTransformLookAtUser>();
-                }
-                return mtlau;
             }
         }
 
@@ -71,7 +62,7 @@ namespace MoveToCode {
 
         public void GoToUser() {
             CurAction = "GoingToUser";
-            StartCoroutine(GoToPosition(Camera.main.transform.position));
+            StartCoroutine(GoToPosition(goalTransform.position));
         }
 
         public IEnumerator GoToPosition(Vector3 goal) {
@@ -83,28 +74,32 @@ namespace MoveToCode {
             Vector3 controlPoint = start + tangent * 0.5f + normal * 0.5f;
             // get the ground plane and place all y values to the ground plane y
             Transform groundPlane = Pogp.GetGroundPlane();
-            if(groundPlane != null) {
+            if (groundPlane != null) {
                 end.y = groundPlane.position.y;
                 controlPoint.y = groundPlane.position.y;
             }
-            Bezier bezierCurve = new Bezier(Bezier.BezierType.Quadratic,new Vector3[]{start, controlPoint, end});
+            Bezier bezierCurve = new Bezier(Bezier.BezierType.Quadratic, new Vector3[] { start, controlPoint, end });
             float t = 0;
-            while (t < 1) {
+            while (t < 1 && !TKTransformManager.IsAtPosition(end)) {
                 t += Time.deltaTime;
                 TKTransformManager.Position = bezierCurve.GetBezierPoint(t);
-                // make sure kuri is always facing the tangent
-                // I want the body to look at the tangent, but I don't know how to do that
-                // and then I want the head to look at the user
-
-                
-                TKTransformManager.transform.LookAt(TKTransformManager.Position + tangent);
+                // make TKTransformManager body rotation face the goal but rotate only about the y axis
+                if (t < 1) {
+                    Vector3 goalDir = (goal - TKTransformManager.Position).normalized;
+                    Vector3 goalRot = Quaternion.LookRotation(goalDir, Vector3.up).eulerAngles;
+                    Vector3 bodyRot = TKTransformManager.BodyRotation.eulerAngles;
+                    bodyRot.y = goalRot.y;
+                    TKTransformManager.BodyRotation = Quaternion.Euler(bodyRot);
+                    // make the TKTransformManager.HeadRotation face the main camera
+                    TKTransformManager.HeadRotation = Quaternion.LookRotation(Camera.main.transform.position - TKTransformManager.Position, Vector3.up);
+                }
                 yield return null;
             }
             TKTransformManager.Position = end;
         }
 
         public override void TurnTowardsUser() {
-            Mtlau.LookAtUser();
+            throw new System.NotImplementedException();
         }
         #endregion
         #region protected

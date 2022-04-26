@@ -14,6 +14,7 @@ namespace MoveToCode {
                 return tktm;
             }
         }
+        Transform groundPlane;
         #endregion
 
         #region unity
@@ -25,10 +26,12 @@ namespace MoveToCode {
             LayerMask lm = 1 << LayerMask.NameToLayer(LayerMaskConstants.SPATIALAWARENESS);
             Vector3 rayOrigin = transform.position;
             if (Physics.Raycast(rayOrigin, Vector3.down, out rayHitData, 10, lm)) {
-                return rayHitData.transform;
+                groundPlane = rayHitData.transform;
             }
-            Physics.Raycast(rayOrigin, Vector3.up, out rayHitData, 10, lm);
-            return rayHitData.transform;
+            else if(Physics.Raycast(rayOrigin, Vector3.up, out rayHitData, 10, lm)){ // likely to cause issues
+                groundPlane = rayHitData.transform;
+            }
+            return groundPlane; // note this can be null if no ground plane is found the first time it is called
         }
         #endregion
     }

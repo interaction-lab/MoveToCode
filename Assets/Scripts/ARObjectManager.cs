@@ -6,7 +6,6 @@ using UnityEngine.XR.ARFoundation;
 namespace MoveToCode {
     public class ARObjectManager : MonoBehaviour {
         #region members
-        public int numObjects = 10;
         Dictionary<string, ARTrackBehavior> trackedObjDict;
         Dictionary<string, ARTrackBehavior> TrackedObjDict {
             get {
@@ -48,9 +47,6 @@ namespace MoveToCode {
         #endregion
 
         #region unity
-        private void Awake() {
-            ARTrackedImageManagerInstance.maxNumberOfMovingImages = MazeManagerInstance.transform.childCount; // flimsy and should likely be handled by the maze manager
-        }
         private void OnEnable() {
             ARTrackedImageManagerInstance.trackedImagesChanged += ImageChanged;
         }

@@ -28053,12 +28053,12 @@ PrefabInstance:
     - target: {fileID: 2487772825070479730, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.31155807
+      value: 0.31155816
       objectReference: {fileID: 0}
     - target: {fileID: 2487772825070479730, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.95022714
+      value: 0.9502271
       objectReference: {fileID: 0}
     - target: {fileID: 2487772825360762764, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
@@ -28098,12 +28098,12 @@ PrefabInstance:
     - target: {fileID: 2487772825411896842, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9375613
+      value: 0.9375614
       objectReference: {fileID: 0}
     - target: {fileID: 2487772825411896842, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.34782013
+      value: -0.34781995
       objectReference: {fileID: 0}
     - target: {fileID: 2487772825955322132, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
@@ -28879,7 +28879,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SerializedLibrary: {fileID: 11400000, guid: e4f5d40f59af8a84bb87200e45d7d5b7,
     type: 2}
-  m_MaxNumberOfMovingImages: 3
+  m_MaxNumberOfMovingImages: 8
   m_TrackedImagePrefab: {fileID: 0}
 --- !u!114 &1753918637
 MonoBehaviour:
@@ -34580,7 +34580,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34b754dd718368b46b3cb5f6ba25e58a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numObjects: 10
 --- !u!114 &2016588467
 MonoBehaviour:
   m_ObjectHideFlags: 0

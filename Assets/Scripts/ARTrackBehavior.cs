@@ -52,7 +52,7 @@ namespace MoveToCode {
         bool isTracking = false;
         bool hasBeenInitialized = false;
         MazeManager _mazeManager;
-        MazeManager MazeManagerInstance {
+        protected MazeManager MazeManagerInstance {
             get {
                 if (_mazeManager == null) {
                     _mazeManager = MazeManager.instance;

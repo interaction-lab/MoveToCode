@@ -99,10 +99,12 @@ namespace MoveToCode {
         #endregion
 
         #region private
-        private void OnMazeCorrect(){
-            PulseIMG.StartPulse(Color.green);
+        private void OnMazeCorrect() {
+            if (!MazeManager.instance.IsLocked) {
+                PulseIMG.StartPulse(Color.green);
+            }
         }
-        private void OnMazeIncorrect(){
+        private void OnMazeIncorrect() {
             PulseIMG.StopPulse();
         }
         private void OnNewExercise() {

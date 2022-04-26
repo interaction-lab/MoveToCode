@@ -62,13 +62,13 @@ namespace MoveToCode {
 
         public void GoToUser() {
             CurAction = "GoingToUser";
-            StartCoroutine(GoToPosition(goalTransform.position));
+            StartCoroutine(GoToPosition(Camera.main.transform, goalTransform.position, 1.5f));
         }
 
-        public IEnumerator GoToPosition(Vector3 goal) {
-            // use a Bezier curve to get there in a smooth motion (not just straight line), making sure kuri is always facing tanget the curve
+        public IEnumerator GoToPosition(Transform objectToLookAt, Vector3 goalPosition, float speedinMS) {
+            // if objectToLookAt
             Vector3 start = TKTransformManager.Position;
-            Vector3 end = goal;
+            Vector3 end = goalPosition;
             Vector3 tangent = (end - start).normalized;
             Vector3 normal = Vector3.Cross(tangent, Vector3.up).normalized;
             Vector3 controlPoint = start + tangent * 0.5f + normal * 0.5f;
@@ -79,19 +79,22 @@ namespace MoveToCode {
                 controlPoint.y = groundPlane.position.y;
             }
             Bezier bezierCurve = new Bezier(Bezier.BezierType.Quadratic, new Vector3[] { start, controlPoint, end });
+            float approxLength = bezierCurve.ApproximateTotalLength();
+            float time = approxLength / speedinMS;
             float t = 0;
-            while (t < 1 && !TKTransformManager.IsAtPosition(end)) {
+            while (t < time && !TKTransformManager.IsAtPosition(end)) {
                 t += Time.deltaTime;
-                TKTransformManager.Position = bezierCurve.GetBezierPoint(t);
+                TKTransformManager.Position = bezierCurve.GetBezierPoint(t / time);
                 // make TKTransformManager body rotation face the goal but rotate only about the y axis
                 if (t < 1) {
-                    Vector3 goalDir = (goal - TKTransformManager.Position).normalized;
+                    Vector3 goalDir = (goalPosition - TKTransformManager.Position).normalized;
                     Vector3 goalRot = Quaternion.LookRotation(goalDir, Vector3.up).eulerAngles;
                     Vector3 bodyRot = TKTransformManager.BodyRotation.eulerAngles;
                     bodyRot.y = goalRot.y;
                     TKTransformManager.BodyRotation = Quaternion.Euler(bodyRot);
-                    // make the TKTransformManager.HeadRotation face the main camera
-                    TKTransformManager.HeadRotation = Quaternion.LookRotation(Camera.main.transform.position - TKTransformManager.Position, Vector3.up);
+                    if (objectToLookAt != null) {
+                        TKTransformManager.HeadRotation = Quaternion.LookRotation(objectToLookAt.position - TKTransformManager.Position, Vector3.up);
+                    }
                 }
                 yield return null;
             }

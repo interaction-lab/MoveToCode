@@ -82,6 +82,14 @@ namespace MoveToCode {
             }
         }
 
+        public float ApproximateTotalLength(){
+            float totalLength = 0;
+            for (int i = 0; i < MyBezierPoints.Length - 1; i++) {
+                totalLength += Vector3.Distance(MyBezierPoints[i], MyBezierPoints[i + 1]);
+            }
+            return totalLength;
+        }
+
         #endregion
 
         #region private

@@ -68,7 +68,7 @@ namespace MoveToCode {
             OptionSelectionManager.instance.Init();
             loggingManager = LoggingManager.instance;
             wasKuriDoingActionLastTick = kuriController.IsDoingAction;
-            loggingManager.AddLogColumn(robotKCLevel, "");
+            loggingManager.AddLogColumn(robotKCLevel, "");           
         }
 
         private void Start() {
@@ -94,6 +94,9 @@ namespace MoveToCode {
             inStartUp = false;
             if (kuriAI == null) {
                 SetUpMoveableInvisibleKuri();
+            }
+            if(!usePhysicalKuri) {
+                kuriController.GetComponent<VirtualKuriController>().MoveToUser(); // DOBEFORESTUDY: move this to an AI controller
             }
         }
 

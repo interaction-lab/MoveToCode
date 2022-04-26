@@ -31,7 +31,9 @@ namespace MoveToCode {
         }
 
         public void AddLine(string lineToAdd) {
-            GetMainConsole().text = string.Join("", GetMainConsole().text, lineToAdd, "\n");
+            // reroute to kuri textmanager
+            KuriTextManager.instance.Addline(lineToAdd);
+            // GetMainConsole().text = string.Join("", GetMainConsole().text, lineToAdd, "\n"); // vestigial but maybe useful later, rerouting everything to have kuri say it for now
         }
 
         public string GetHeaderText() {

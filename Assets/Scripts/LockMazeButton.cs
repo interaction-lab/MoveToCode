@@ -65,8 +65,6 @@ namespace MoveToCode {
 
         public GameObject screenPlayButtonObject;
         public GameObject screenResetButtonObject;
-        public GameObject inscenePlayButtonObject;
-        public GameObject insceneResetButtonObject;
         public TextMeshProUGUI modeText;
         PulseImg _pulseImg;
         PulseImg PulseIMG {
@@ -136,8 +134,6 @@ namespace MoveToCode {
                 MyText.text = newTxt;
                 screenPlayButtonObject.SetActive(false);
                 screenResetButtonObject.SetActive(false);
-                inscenePlayButtonObject.SetActive(false); // these no longer exist but keeping this here to turn them off
-                insceneResetButtonObject.SetActive(false);
                 modeText.text = "Mode 1: Maze Building";
             }
             else {
@@ -152,8 +148,6 @@ namespace MoveToCode {
                 MyText.text = newTxt;
                 screenPlayButtonObject.SetActive(true);
                 screenResetButtonObject.SetActive(true);
-                //inscenePlayButtonObject.SetActive(true);
-                //insceneResetButtonObject.SetActive(true);
                 modeText.text = "Mode 2: Coding";
             }
             else {

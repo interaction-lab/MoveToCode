@@ -102,9 +102,9 @@ namespace MoveToCode {
             MoveToMazePiece(BKMakePieceT);
             return CurAction;
         }
-        private string MoveToUser() {
+        public string MoveToUser() {
             CurAction = "MoveToUser";
-            Vector3 newPos = GetPosWDistAway(TKTransformManager.Position, UserTransform.position, 0.5f);
+            Vector3 newPos = GetPosWDistAway(TKTransformManager.Position, UserTransform.position, 1f);
             StartCoroutine(LookAtAndGoToAtSpeed(UserTransform, newPos, ForwardSpeed));
             return CurAction;
         }

@@ -15,6 +15,15 @@ namespace MoveToCode {
                 return _lm;
             }
         }
+        Transform _userTransform;
+        Transform UserTransform {
+            get {
+                if (_userTransform == null) {
+                    _userTransform = Camera.main.transform;
+                }
+                return _userTransform;
+            }
+        }
 
         public HashSet<CodeBlock> GetAllCodeBlocks() {
             if (codeBlocks == null) {
@@ -82,9 +91,17 @@ namespace MoveToCode {
                 ExerciseManager.instance.OnCyleNewExercise.AddListener(LogAllCodeBlocks);
                 LogAllCodeBlocks();
             }
+            PositionNextToBKMazePiece();
+        }
+
+        private void PositionNextToBKMazePiece() {
             // move code blocks close to BKMazePiece
             transform.position = MazeManager.instance.BKMazePiece.transform.position +
-                                (Vector3.up + Vector3.left) * 0.2f; // arbitrrary scaling factor
+                                (Vector3.up * 0.5f + Vector3.left * 0.2f); // arbitrrary scaling factor
+            // find the direction toward the user
+            Vector3 directionToUser = UserTransform.position - transform.position;
+            // rotate the code block to face the user
+            transform.rotation = Quaternion.LookRotation(-directionToUser);
         }
 
         public void LogAllCodeBlocks() {

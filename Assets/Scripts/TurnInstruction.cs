@@ -63,7 +63,7 @@ namespace MoveToCode {
         public override string ToJSON() {
             return string.Join(",", new string[] {
                 "{\"name\": \"" + ToString() + "\"",
-                "\"type\": \"" + GetType().ToString(), "\"",
+                "\"type\": \"" + GetType().ToString() + "\"",
                 "\"args\":{\"turn\": " + GetArgumentJSON(CommonSCKeys.Turn),
                 "\"next\": " + GetArgumentJSON(CommonSCKeys.Next) + "}}"
             });

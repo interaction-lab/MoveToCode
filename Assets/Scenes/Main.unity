@@ -4610,7 +4610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc2d53d40907b574da033fd21b3eef9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  logData: 1
+  logData: 0
   usePhysicalKuri: 0
 --- !u!4 &223377336
 Transform:
@@ -31558,7 +31558,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &1610584517
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -33660,12 +33660,12 @@ PrefabInstance:
     - target: {fileID: 2487772825070479730, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.31155816
+      value: 0.31155807
       objectReference: {fileID: 0}
     - target: {fileID: 2487772825070479730, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.9502271
+      value: 0.95022714
       objectReference: {fileID: 0}
     - target: {fileID: 2487772825360762764, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
@@ -33705,12 +33705,12 @@ PrefabInstance:
     - target: {fileID: 2487772825411896842, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9375614
+      value: 0.93756133
       objectReference: {fileID: 0}
     - target: {fileID: 2487772825411896842, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.34781995
+      value: -0.34782
       objectReference: {fileID: 0}
     - target: {fileID: 2487772825955322132, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
@@ -54739,6 +54739,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 648124168}
     m_Modifications:
+    - target: {fileID: 2840021485951289705, guid: 64a404c7faf344369ba1d423de506c10,
+        type: 3}
+      propertyPath: TurnSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2840021485951289705, guid: 64a404c7faf344369ba1d423de506c10,
+        type: 3}
+      propertyPath: ForwardSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2840021485951289705, guid: 64a404c7faf344369ba1d423de506c10,
+        type: 3}
+      propertyPath: BackwardSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2840021485951289705, guid: 64a404c7faf344369ba1d423de506c10,
         type: 3}
       propertyPath: goalTransform

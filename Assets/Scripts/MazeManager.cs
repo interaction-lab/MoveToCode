@@ -86,8 +86,29 @@ namespace MoveToCode {
 
         public bool BKAtGoal = false;
         public UnityEvent OnBKAtGoal;
-        #endregion
+        MazePiece _goalPiece;
+        public MazePiece GoalMazePiece {
+            get {
+                if (_goalPiece == null) {
+                    _goalPiece = GetComponentInChildren<MazeGoal>().GetComponent<MazePiece>();
+                }
+                return _goalPiece;
+            }
+        }
 
+        public HashSet<MazePiece> _allMazePieces;
+        public HashSet<MazePiece> AllMazePieces {
+            get {
+                if (_allMazePieces == null) {
+                    _allMazePieces = new HashSet<MazePiece>();
+                    foreach (MazePiece mp in GetComponentsInChildren<MazePiece>()) {
+                        _allMazePieces.Add(mp);
+                    }
+                }
+                return _allMazePieces;
+            }
+        }
+        #endregion
         #region unity
         private void OnEnable() {
             ARTrackingManagerInstance.OnTrackingStarted.AddListener(OnTrackingStarted);
@@ -110,7 +131,6 @@ namespace MoveToCode {
             ARTrackingManagerInstance.OnTrackingEnded.RemoveListener(OnTrackingEnded);
         }
         #endregion
-
         #region public
         public GameObject GetMazeObject(string name) {
             foreach (Transform child in transform) {
@@ -213,9 +233,20 @@ namespace MoveToCode {
         }
 
         public bool IsBKAtTheGoalNow() {
-            return BKAtGoal || GetClosestKuriMazePiece()?.GetComponent<MazeGoal>() != null; ;
+            return BKAtGoal || GetClosestKuriMazePiece()?.GetComponent<MazeGoal>() != null;
+            ;
         }
 
+        public MazePiece GetMisalignedPiece() {
+            Dictionary<MPType, int> solMPs = SolMazeManagerInstance.ActiveSolMazeGraph.GetConnectedMazePiecesCount();
+            Dictionary<MPType, int> mazeMPs = MyMazeGraph.GetConnectedMazePiecesCount();
+            foreach (KeyValuePair<MPType, int> kvp in solMPs) {
+                if (!mazeMPs.Keys.Contains(kvp.Key) || kvp.Value > mazeMPs[kvp.Key]) {
+                    return FindClosestPieceOfType(kvp.Key);
+                }
+            }
+            return null;
+        }
 
         // TODO: fix this so that it is event driven only or at least handles correctly
         private void Update() {
@@ -229,6 +260,21 @@ namespace MoveToCode {
         #endregion
 
         #region private
+        private MazePiece FindClosestPieceOfType(MPType type) {
+            HashSet<MazePiece> connectedPieces = MyMazeGraph.GetAllConnectedMazePieces();
+            MazePiece closest = null;
+            float closestDist = float.MaxValue;
+            foreach (MazePiece mp in AllMazePieces.Except(connectedPieces)) {
+                if (mp.MyMPType == type) {
+                    float dist = Vector3.Distance(mp.transform.position, BabyKuriManagerInstance.BKTransformManager.KuriPos);
+                    if (dist < closestDist) {
+                        closest = mp;
+                        closestDist = dist;
+                    }
+                }
+            }
+            return closest;
+        }
         bool loggedThisFrame = false;
         IEnumerator LogMazeCoroutine() {
             yield return new WaitForEndOfFrame();

@@ -1,8 +1,20 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
+
 namespace MoveToCode {
     public class CodeBlockManager : Singleton<CodeBlockManager> {
         HashSet<CodeBlock> codeBlocks;
         HashSet<SnapCollider> snapColliders;
+        public static string codeBlockJsonCol = "codeBlockJson";
+        LoggingManager _lm;
+        LoggingManager LoggingManagerInstance {
+            get {
+                if (_lm == null) {
+                    _lm = LoggingManager.instance;
+                }
+                return _lm;
+            }
+        }
 
         public HashSet<CodeBlock> GetAllCodeBlocks() {
             if (codeBlocks == null) {
@@ -60,6 +72,27 @@ namespace MoveToCode {
 
         public void ShowCodeBlocks() {
             gameObject.SetActive(true);
+        }
+
+        bool hasBeenInitialized = false;
+        void OnEnable() {
+            if (!hasBeenInitialized) {
+                hasBeenInitialized = true;
+                LoggingManagerInstance.AddLogColumn(codeBlockJsonCol, "");
+                ExerciseManager.instance.OnCyleNewExercise.AddListener(LogAllCodeBlocks);
+                LogAllCodeBlocks();
+            }
+        }
+
+        public void LogAllCodeBlocks() {
+            List<string> codeBlockJsonList = new List<string>();
+            foreach (Transform t in transform) {
+                CodeBlock c = t.GetComponent<CodeBlock>();
+                if (c != null) {
+                    codeBlockJsonList.Add(c.GetMyIArgument().ToJSON());
+                }
+            }
+            LoggingManagerInstance.UpdateLogColumn(codeBlockJsonCol, "[" + string.Join(",", codeBlockJsonList) + "]");
         }
 
     }

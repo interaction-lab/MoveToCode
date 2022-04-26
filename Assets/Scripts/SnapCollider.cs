@@ -61,6 +61,7 @@ namespace MoveToCode {
             if (collidedCodeBlock != null) {
                 AddNewCodeBlockArg(collidedCodeBlock);
             }
+            CodeBlockManager.instance.LogAllCodeBlocks();
         }
 
         private void RemoveCurrentBlockArg() {

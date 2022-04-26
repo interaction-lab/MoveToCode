@@ -26,6 +26,7 @@ namespace MoveToCode {
 
         // Start Up
         private void Awake() {
+            Assert.IsTrue(enabled == true); // race condition issues if this is starting disabled I think
             AddMRTKComponents();
             AddSnapColliderComponents();
             if (myBlockInternalArg == null) {

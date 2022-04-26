@@ -26,6 +26,7 @@ namespace MoveToCode {
         }
 
         public override void ResestInternalState() {
+            base.ResestInternalState();
             SetCurIter(0);
         }
 

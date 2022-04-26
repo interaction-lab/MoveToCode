@@ -330,8 +330,22 @@ namespace MoveToCode {
             BKTransformManager?.SetOriginalState();
             SolMazeManagerInstance.SnapPiecesTogether();
             IsLocked = true;
+            // move all pieces that aren't in my graph way away
+            DeactivateUnusedMazePieces();
             OnMazeLocked.Invoke();
             LoggingManagerInstance.UpdateLogColumn(mazeLockCol, "Locked");
+        }
+
+        private void DeactivateUnusedMazePieces() {
+            HashSet<MazePiece> connectedPieces = MyMazeGraph.GetAllConnectedMazePieces();
+            foreach (Transform child in transform) {
+                MazePiece mazePiece = child.GetComponent<MazePiece>();
+                if (mazePiece != null) {
+                    if (!connectedPieces.Contains(mazePiece)) {
+                        mazePiece.transform.position = new Vector3(0, 100, 0);
+                    }
+                }
+            }
         }
         #endregion
     }

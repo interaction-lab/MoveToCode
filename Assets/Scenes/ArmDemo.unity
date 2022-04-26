@@ -761,12 +761,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4754ba97d08794b618947e79626dd6c1, type: 3}
---- !u!1 &115411513 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4754ba97d08794b618947e79626dd6c1,
-    type: 3}
-  m_PrefabInstance: {fileID: 1717003467}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &115411514 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4754ba97d08794b618947e79626dd6c1,
@@ -10286,12 +10280,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 952459267}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &969605485 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4754ba97d08794b618947e79626dd6c1,
-    type: 3}
-  m_PrefabInstance: {fileID: 51175300}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &969605486 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4754ba97d08794b618947e79626dd6c1,
@@ -11959,7 +11947,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1827713049}
+      - m_Target: {fileID: 481690606}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -11971,7 +11959,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1946926908}
+      - m_Target: {fileID: 1099476647}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1851424269}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -11983,7 +11983,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 969605485}
+      - m_Target: {fileID: 41233424}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -11995,7 +11995,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 115411513}
+      - m_Target: {fileID: 1213380158}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -12005,7 +12005,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 1722668261}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
@@ -14910,12 +14910,6 @@ Transform:
   m_Father: {fileID: 181458227}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1827713049 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4754ba97d08794b618947e79626dd6c1,
-    type: 3}
-  m_PrefabInstance: {fileID: 1045975808}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1827713050 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4754ba97d08794b618947e79626dd6c1,
@@ -15622,12 +15616,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4754ba97d08794b618947e79626dd6c1,
     type: 3}
   m_PrefabInstance: {fileID: 1919042785}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1946926908 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4754ba97d08794b618947e79626dd6c1,
-    type: 3}
-  m_PrefabInstance: {fileID: 91800992}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1946926909 stripped
 Transform:

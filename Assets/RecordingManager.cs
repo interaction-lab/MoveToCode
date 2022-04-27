@@ -17,20 +17,15 @@ namespace MoveToCode {
 #if !PLATFORM_IOS
             Destroy(gameObject); // destroy if not on iOS
 #endif
-#if PLATFORM_IOS
-            try {
-                ReplayKit.ReplayKit.StartRecording(true, true);
-            }
-            catch (Exception e) {
-                Debug.Log(e.Message);
-            }
-#endif
+        }
+        private void Start() {
+            StartCoroutine(Record());
         }
 
         private void OnApplicationQuit() {
 #if PLATFORM_IOS
             try {
-                ReplayKit.ReplayKit.StopRecording();
+                ReplayKit.StopRecording();
             }
             catch (Exception e) {
                 Debug.Log(e.Message);
@@ -43,6 +38,28 @@ namespace MoveToCode {
         #endregion
 
         #region private
+        IEnumerator Record() {
+            while (true) {
+#if PLATFORM_IOS
+            try {
+                ReplayKit.StartRecording(true, true);
+            }
+            catch (Exception e) {
+                Debug.Log(e.Message);
+            }
+#endif
+                yield return new WaitForSeconds(20);
+#if PLATFORM_IOS
+                try {
+                    ReplayKit.StopRecording();
+                }
+                catch (Exception e) {
+                    Debug.Log(e.Message);
+                }
+#endif
+            }
+        }
         #endregion
     }
 }
+

@@ -149,7 +149,7 @@ namespace MoveToCode {
             float rightToCenter = centerPos.x - mostLeftPos.x;
             // move code blocks close to BKMazePiece
             transform.position = MazeManager.instance.BKMazePiece.transform.position +
-                                (Vector3.up * bottomToCenter * 2 + Vector3.left * rightToCenter);
+                                (Vector3.up * .25f + Vector3.right * .2f);
 
             // find the direction toward the user
             Vector3 directionToUser = UserTransform.position - transform.position;

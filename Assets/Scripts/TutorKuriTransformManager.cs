@@ -14,7 +14,7 @@ namespace MoveToCode {
                 transform.position = value;
             }
         }
-        public Quaternion BodyRotation{
+        public Quaternion BodyRotation {
             get {
                 return _bodyTransform.rotation;
             }
@@ -27,12 +27,18 @@ namespace MoveToCode {
                 return _headTransform.rotation;
             }
             set {
-               _headTransform.rotation = value;
+                _headTransform.rotation = value;
             }
         }
         public Transform MyTransform {
             get {
                 return transform;
+            }
+        }
+
+        public Vector3 Forward {
+            get {
+                return _bodyTransform.forward;
             }
         }
         #endregion

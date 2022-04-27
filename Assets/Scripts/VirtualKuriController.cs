@@ -157,9 +157,10 @@ namespace MoveToCode {
         }
         private IEnumerator LookAtAndGoToAtSpeed(Transform objectToLookAt, Vector3 goalPosition, float speedinMS) {
             Assert.IsTrue(speedinMS > 0);
+            Vector3 straightLine;
             Vector3 end;
             Bezier bezierCurve;
-            CalculateBezierPath(goalPosition, out end, out bezierCurve);
+            CalculateBezierPath(goalPosition, out end, out bezierCurve, out straightLine);
             float approxLength = bezierCurve.ApproximateTotalLength();
             float totalTime = approxLength / speedinMS;
             float t = 0;
@@ -172,8 +173,9 @@ namespace MoveToCode {
                 }
             }
             TKTransformManager.Position = end;
+            RotateBodyAndHeadAlongPath(objectToLookAt, end + straightLine);
         }
-        private void CalculateBezierPath(Vector3 goalPosition, out Vector3 end, out Bezier bezierCurve) {
+        private void CalculateBezierPath(Vector3 goalPosition, out Vector3 end, out Bezier bezierCurve, out Vector3 straightLine) {
             Vector3 start = TKTransformManager.Position;
             end = goalPosition;
             Vector3 tangent = (end - start).normalized;
@@ -192,6 +194,8 @@ namespace MoveToCode {
                 controlPoint.y = TKTransformManager.Position.y;
             }
             bezierCurve = new Bezier(Bezier.BezierType.Quadratic, new Vector3[] { start, controlPoint, end });
+            //calculate finalRotation as rotating from the start to the goal
+            straightLine = (goalPosition - start).normalized;
         }
         private string MoveToGoal() {
             CurAction = actionSeperator + "GoingToGoal";

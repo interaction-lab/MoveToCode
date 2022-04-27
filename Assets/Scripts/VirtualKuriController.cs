@@ -170,6 +170,12 @@ namespace MoveToCode {
             Vector3 end = GetPosWDistAway(TKTransformManager.Position, UserTransform.position, Vector3.Distance(TKTransformManager.Position, UserTransform.position) - 0.1f);
             StartCoroutine(LookAtAndGoToAtSpeed(UserTransform, end, ForwardSpeed));
         }
+
+        public override string TakeISAAction() {
+            string actionString = ExerciseManager.instance.GetCurExercise().GetComponent<ExerciseInformationSeekingActions>().DoISAAction();
+            loggingManager.UpdateLogColumn(rISACol, actionString);
+            return actionString;
+        }
         #endregion
         #region protected
         protected override bool UpdateCurrentActionString() {

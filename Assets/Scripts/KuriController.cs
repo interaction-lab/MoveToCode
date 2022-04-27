@@ -77,17 +77,13 @@ namespace MoveToCode {
             loggingManager.AddLogColumn(kuriMovementActionCol, "");
             loggingManager.AddLogColumn(kuriCurAction, "");
         }
-        public string TakeISAAction() {
-            string actionString = ExerciseManager.instance.GetCurExercise().GetComponent<ExerciseInformationSeekingActions>().DoISAAction();
-            loggingManager.UpdateLogColumn(rISACol, actionString);
-            return actionString;
-        }
+        public abstract string TakeISAAction();
 
         public void SayExerciseGoal() {
-           /* kuriTextManager.Addline(string.Join("",
-                 "Goal: ",
-                 ExerciseManager.instance.GetCurExercise().GetGoalString()),
-                 KuriTextManager.PRIORITY.high);*/
+            /* kuriTextManager.Addline(string.Join("",
+                  "Goal: ",
+                  ExerciseManager.instance.GetCurExercise().GetGoalString()),
+                  KuriTextManager.PRIORITY.high);*/
         }
 
         public void SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT toa) {

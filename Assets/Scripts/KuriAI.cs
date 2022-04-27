@@ -8,7 +8,6 @@ namespace MoveToCode {
             Utility,
             None
         }
-
         public abstract void Tick();
     }
 }

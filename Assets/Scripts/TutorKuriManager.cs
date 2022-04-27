@@ -85,19 +85,16 @@ namespace MoveToCode {
         #endregion
 
         #region private
-        IEnumerator StartRoutine() { // DOBEFORESTUDY: move this to an AI controller
+        IEnumerator StartRoutine() {
             inStartUp = true;
             yield return null;
             yield return new WaitForSeconds(3);
             if (!usePhysicalKuri) {
-                kuriController.GetComponent<VirtualKuriController>().MoveToUser(); // DOBEFORESTUDY: move this to an AI controller
+                kuriController.GetComponent<VirtualKuriController>().MoveToUser();
             }
             KuriTextManager.instance.Addline("Build a maze that matches the one on your screen.");
-            kuriController.DoAnimationAction(EMOTIONS.close_eyes);
             yield return new WaitForSeconds(InteractionManager.instance.MinToSeconds(InteractionManager.instance.warmUpTimeMinutes) - 3f);
-            kuriController.DoAnimationAction(EMOTIONS.happy);
             inStartUp = false;
-
         }
 
         void TurnOffAllMeshRenderers(Transform[] goArr) {

@@ -50,5 +50,9 @@ namespace MoveToCode {
         protected override bool UpdateCurrentActionString() {
             throw new System.NotImplementedException();
         }
+
+        public override string TakeISAAction() {
+            throw new System.NotImplementedException();
+        }
     }
 }

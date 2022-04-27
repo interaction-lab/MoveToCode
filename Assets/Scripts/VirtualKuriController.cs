@@ -185,7 +185,7 @@ namespace MoveToCode {
                 CurAction = actionSeperator + doingAnim;
             }
             if (kuriTextManager.IsTalking) {
-                CurAction += actionSeperator + kuriTextManager.CurTextCommand.ToString();
+                CurAction += actionSeperator + kuriTextManager.CurText;
             }
 
             // TODO: Movement when doing the movement actions

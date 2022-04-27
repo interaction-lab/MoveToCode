@@ -44,6 +44,12 @@ namespace MoveToCode {
         AudioClip computerNoiseClip;
         int curCommandNum, ticketCommandNum;
 
+        public string CurText {
+            get {
+                return kuriTextMesh.text;
+            }
+        }
+
         void Setup() {
             commandQueue = new Queue<TextCommand>();
             highPriorityCommands = new Queue<TextCommand>();

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace MoveToCode {
@@ -39,6 +40,21 @@ namespace MoveToCode {
             return snapColliders;
         }
         bool hasBeenInitialized = false;
+        List<CodeBlock> _activeCBs;
+        List<CodeBlock> ActiveCodeBlocks {
+            get {
+                if (_activeCBs == null) {
+                    _activeCBs = new List<CodeBlock>();
+                    foreach (Transform t in transform) {
+                        CodeBlock c = t.GetComponent<CodeBlock>();
+                        if (c != null) {
+                            _activeCBs.Add(c);
+                        }
+                    }
+                }
+                return _activeCBs;
+            }
+        }
         #endregion
 
         #region unity
@@ -86,12 +102,10 @@ namespace MoveToCode {
         }
         public void LogAllCodeBlocks() {
             List<string> codeBlockJsonList = new List<string>();
-            foreach (Transform t in transform) {
-                CodeBlock c = t.GetComponent<CodeBlock>();
-                if (c != null) {
-                    codeBlockJsonList.Add(c.GetMyIArgument().ToJSON());
-                }
+            foreach (CodeBlock c in ActiveCodeBlocks) {
+                codeBlockJsonList.Add(c.GetMyIArgument().ToJSON());
             }
+            _activeCBs = null; // reset every time we log, hacky but works for now
             LoggingManagerInstance.UpdateLogColumn(codeBlockJsonCol, "[" + string.Join(",", codeBlockJsonList) + "]");
         }
         #endregion
@@ -106,15 +120,12 @@ namespace MoveToCode {
             }
         }
         private void PositionNextToBKMazePiece() {
-            Vector3 highestPos = Vector3.zero;
-            Vector3 lowestPos = Vector3.zero;
-            Vector3 mostRightPos = Vector3.zero;
-            Vector3 mostLeftPos = Vector3.zero;
-            highestPos.y = -100;
-            lowestPos.y = 100;
-            mostRightPos.x = -100;
-            mostLeftPos.x = 100;
-            foreach (CodeBlock cb in GetAllCodeBlocks()) {
+            Vector3 fbcbT = ActiveCodeBlocks.First().transform.position;
+            Vector3 highestPos = fbcbT;
+            Vector3 lowestPos = fbcbT;
+            Vector3 mostRightPos = fbcbT;
+            Vector3 mostLeftPos = fbcbT;
+            foreach (CodeBlock cb in ActiveCodeBlocks) {
                 if (cb.GetIsMenuBlock()) {
                     continue;
                 }
@@ -133,17 +144,17 @@ namespace MoveToCode {
                 }
             }
             // find the average of the highest, lowest, most right, and most left code block positions
-            Vector3 averagePos = (highestPos + lowestPos + mostRightPos + mostLeftPos) / 4;
-            float lowestToaverageDiff = averagePos.y - lowestPos.y;
+            Vector2 centerPos = new Vector2(mostLeftPos.x + mostRightPos.x, lowestPos.y + highestPos.y) / 2;
+            float bottomToCenter = centerPos.y - lowestPos.y;
+            float rightToCenter = centerPos.x - mostLeftPos.x;
             // move code blocks close to BKMazePiece
             transform.position = MazeManager.instance.BKMazePiece.transform.position +
-                                (Vector3.up * lowestToaverageDiff + Vector3.left * 0.2f); // arbitrrary scaling factor
-                                                                                          // find the direction toward the user
-                                                                                          // rotate the code block to face the user
-            foreach (CodeBlock cb in GetAllCodeBlocks()) {
-                Vector3 directionToUser = UserTransform.position - cb.transform.position;
-                cb.transform.rotation = Quaternion.LookRotation(-directionToUser);
-            }
+                                (Vector3.up * bottomToCenter * 2 + Vector3.left * rightToCenter);
+
+            // find the direction toward the user
+            Vector3 directionToUser = UserTransform.position - transform.position;
+            // rotate the code block to face the user
+            transform.rotation = Quaternion.LookRotation(-directionToUser);
             #endregion
         }
     }

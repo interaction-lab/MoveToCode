@@ -15,7 +15,7 @@ namespace MoveToCode {
                 return tktm;
             }
         }
-        public float ForwardSpeed = 1.5f, BackwardSpeed = 1f, TurnSpeed = 1.5f;
+        float ForwardSpeed = 1f, BackwardSpeed = 0.8f, TurnSpeed = 1.5f, PointSpeed = 1f;
         Animator anim;
         Animator Anim {
             get {
@@ -45,24 +45,45 @@ namespace MoveToCode {
                 return _userTransform;
             }
         }
+        float headYConstraintAngle = 75f;
+        Transform _rightIKObject = null;
+        Transform _leftIKObject = null;
+        Transform RightIKObject {
+            get {
+                if (_rightIKObject == null) {
+                    SetUpIKArmObjects();
+                }
+                return _rightIKObject;
+            }
+        }
+        Transform LeftIKObject {
+            get {
+                if (_leftIKObject == null) {
+                    SetUpIKArmObjects();
+                }
+                return _leftIKObject;
+            }
+        }
+
+        public Animator ArmAnimator; // super flimsy
+
+        public bool IsPointing = false;
         #endregion
         #region unity
         #endregion
         #region public
+
         public override string DoAnimationAction(EMOTIONS e) {
             string action = e.ToString();
             Anim.SetTrigger(action);
             return action;
         }
-
         public override string DoRandomNegativeAction() {
             return DoAnimationAction(NegativeEmotions[Random.Range(0, NegativeEmotions.Length)]);
         }
-
         public override string DoRandomPositiveAction() {
             return DoAnimationAction(PositiveEmotions[Random.Range(0, NegativeEmotions.Length)]);
         }
-
         public override string TakeMovementAction() {
             int option = Random.Range(0, 4);
             string action = "";
@@ -82,50 +103,79 @@ namespace MoveToCode {
             }
             return action;
         }
-
-        private Vector3 GetPosWDistAway(Vector3 start, Vector3 end, float distAway) {
-            Vector3 dir = end - start;
-            return start + dir.normalized * (dir.magnitude - distAway);
-        }
-        private string MoveToBKMazePiece() {
-            CurAction += actionSeperator + "MoveToBKMazePiece";
-            Transform BKMakePieceT = MazeManager.instance.BKMazePiece.transform;
-            MoveToMazePiece(BKMakePieceT);
-            return CurAction;
-        }
         public string MoveToUser() {
-            CurAction = actionSeperator + "MoveToUser";
+            CurAction += actionSeperator + "MoveToUser";
             Vector3 newPos = GetPosWDistAway(TKTransformManager.Position, UserTransform.position, 1.5f);
             StartCoroutine(LookAtAndGoToAtSpeed(UserTransform, newPos, ForwardSpeed));
             return CurAction;
         }
-
-        private string MoveToGoal() {
-            CurAction = actionSeperator + "GoingToGoal";
-            Transform goalMPT = MazeManager.instance.GoalMazePiece.transform;
-            MoveToMazePiece(goalMPT);
-            return CurAction;
+        public override void TurnTowardsUser() {
+            // get distance from user
+            CurAction += actionSeperator + "TurnTowardsUser";
+            Vector3 end = GetPosWDistAway(TKTransformManager.Position, UserTransform.position, Vector3.Distance(TKTransformManager.Position, UserTransform.position) - 0.1f);
+            StartCoroutine(LookAtAndGoToAtSpeed(UserTransform, end, ForwardSpeed));
+        }
+        public override string TakeISAAction() {
+            string actionString = ExerciseManager.instance.GetCurExercise().GetComponent<ExerciseInformationSeekingActions>().DoISAAction();
+            loggingManager.UpdateLogColumn(rISACol, actionString);
+            return actionString;
+        }
+        public override string PointAtObject(Transform objectOfInterest, float time) {
+            CurAction += actionSeperator + "PointAtObject: " + objectOfInterest.ToString();
+            StartCoroutine(PointAtObjectOverTime(objectOfInterest, time));
+            Debug.Log("Pointing at object");
+            return "PointAtObject: " + objectOfInterest.ToString();
         }
 
-        private string MoveToMisalignedPiece() {
-            CurAction = actionSeperator + "MoveToMisalignedPiece";
-            Transform misalignedPieceT = MazeManager.instance.GetMisalignedPiece().transform;
-            if (misalignedPieceT == null) {
-                return MoveToUser(); // default to move to user if the goal pieces are all good
+        #endregion
+        #region protected
+        protected override bool UpdateCurrentActionString() {
+            string doingAnim = Anim.GetCurrentAnimatorClipInfo(0)[0].clip.name;
+            CurAction = "";
+            if (doingAnim != "neutral") {
+                CurAction = actionSeperator + doingAnim;
             }
-            MoveToMazePiece(misalignedPieceT);
-            return CurAction;
-        }
+            if (kuriTextManager.IsTalking) {
+                CurAction += actionSeperator + kuriTextManager.CurText;
+            }
 
-        private void MoveToMazePiece(Transform mazePieceT) {
-            Vector3 newPos = GetPosWDistAway(transform.position, mazePieceT.position, 1f);
-            StartCoroutine(LookAtAndGoToAtSpeed(mazePieceT, newPos, ForwardSpeed));
+            // TODO: Movement when doing the movement actions
+            return CurAction != "";
+        }
+        #endregion
+
+        #region private
+        private void SetUpIKArmObjects() {
+            foreach (TargetIKObject tiko in GetComponentsInChildren<TargetIKObject>()) {
+                if (tiko.IsRightArm) {
+                    _rightIKObject = tiko.transform;
+                }
+                else {
+                    _leftIKObject = tiko.transform;
+                }
+            }
         }
         private IEnumerator LookAtAndGoToAtSpeed(Transform objectToLookAt, Vector3 goalPosition, float speedinMS) {
             Assert.IsTrue(speedinMS > 0);
-
+            Vector3 end;
+            Bezier bezierCurve;
+            CalculateBezierPath(goalPosition, out end, out bezierCurve);
+            float approxLength = bezierCurve.ApproximateTotalLength();
+            float totalTime = approxLength / speedinMS;
+            float t = 0;
+            while (t < totalTime && !TKTransformManager.IsAtPosition(end)) {
+                t += Time.deltaTime;
+                TKTransformManager.Position = bezierCurve.GetBezierPoint(t / totalTime);
+                if (!TKTransformManager.IsAtPosition(end) && t < totalTime) {
+                    RotateBodyAndHeadAlongPath(objectToLookAt, goalPosition);
+                    yield return null;
+                }
+            }
+            TKTransformManager.Position = end;
+        }
+        private void CalculateBezierPath(Vector3 goalPosition, out Vector3 end, out Bezier bezierCurve) {
             Vector3 start = TKTransformManager.Position;
-            Vector3 end = goalPosition;
+            end = goalPosition;
             Vector3 tangent = (end - start).normalized;
             Vector3 normal = Vector3.Cross(tangent, Vector3.up).normalized;
             Vector3 controlPoint = start + tangent * 0.5f + normal * 0.5f;
@@ -141,55 +191,89 @@ namespace MoveToCode {
                 end.y = TKTransformManager.Position.y;
                 controlPoint.y = TKTransformManager.Position.y;
             }
-            Bezier bezierCurve = new Bezier(Bezier.BezierType.Quadratic, new Vector3[] { start, controlPoint, end });
-            float approxLength = bezierCurve.ApproximateTotalLength();
-            float totalTime = approxLength / speedinMS;
-            float t = 0;
-            while (t < totalTime && !TKTransformManager.IsAtPosition(end)) {
-                t += Time.deltaTime;
-                TKTransformManager.Position = bezierCurve.GetBezierPoint(t / totalTime);
-                // make TKTransformManager body rotation face the goal but rotate only about the y axis
-                if (t < 1) {
-                    Vector3 goalDir = (goalPosition - TKTransformManager.Position).normalized;
-                    Vector3 goalRot = Quaternion.LookRotation(goalDir, Vector3.up).eulerAngles;
-                    Vector3 bodyRot = TKTransformManager.BodyRotation.eulerAngles;
-                    bodyRot.y = goalRot.y;
-                    TKTransformManager.BodyRotation = Quaternion.Euler(bodyRot);
-                    if (objectToLookAt != null) {
-                        TKTransformManager.HeadRotation = Quaternion.LookRotation(objectToLookAt.position - TKTransformManager.Position, Vector3.up);
-                    }
+            bezierCurve = new Bezier(Bezier.BezierType.Quadratic, new Vector3[] { start, controlPoint, end });
+        }
+        private string MoveToGoal() {
+            CurAction = actionSeperator + "GoingToGoal";
+            Transform goalMPT = MazeManager.instance.GoalMazePiece.transform;
+            MoveToMazePiece(goalMPT);
+            return CurAction;
+        }
+        private string MoveToMisalignedPiece() {
+            CurAction = actionSeperator + "MoveToMisalignedPiece";
+            Transform misalignedPieceT = MazeManager.instance.GetMisalignedPiece().transform;
+            if (misalignedPieceT == null) {
+                return MoveToUser(); // default to move to user if the goal pieces are all good
+            }
+            MoveToMazePiece(misalignedPieceT);
+            return CurAction;
+        }
+        private void MoveToMazePiece(Transform mazePieceT) {
+            Vector3 newPos = GetPosWDistAway(transform.position, mazePieceT.position, 1f);
+            StartCoroutine(LookAtAndGoToAtSpeed(mazePieceT, newPos, ForwardSpeed));
+        }
+        private Vector3 GetPosWDistAway(Vector3 start, Vector3 end, float distAway) {
+            Vector3 dir = end - start;
+            return start + dir.normalized * (dir.magnitude - distAway);
+        }
+        private string MoveToBKMazePiece() {
+            CurAction += actionSeperator + "MoveToBKMazePiece";
+            Transform BKMakePieceT = MazeManager.instance.BKMazePiece.transform;
+            MoveToMazePiece(BKMakePieceT);
+            return CurAction;
+        }
+        private void RotateBodyAndHeadAlongPath(Transform objectToLookAt, Vector3 goalPosition) {
+            Vector3 goalDir = (goalPosition - TKTransformManager.Position).normalized;
+            Vector3 goalRot = Quaternion.LookRotation(goalDir, Vector3.up).eulerAngles;
+            Vector3 bodyRot = TKTransformManager.BodyRotation.eulerAngles;
+            bodyRot.y = goalRot.y;
+            TKTransformManager.BodyRotation = Quaternion.Euler(bodyRot);
+            if (objectToLookAt != null) {
+                TKTransformManager.HeadRotation = Quaternion.LookRotation(objectToLookAt.position - TKTransformManager.Position, Vector3.up);
+                // check head rotation is not outside of constraint relative to body rotation                
+                Vector3 headRot = TKTransformManager.HeadRotation.eulerAngles.Norm180Minus180();
+                // get head rotation relative to body rotation
+                headRot -= TKTransformManager.BodyRotation.eulerAngles.Norm180Minus180();
+                // check if head rotation is outside of constraint
+                if (headRot.y > headYConstraintAngle) {
+                    headRot.y = headYConstraintAngle;
                 }
+                else if (headRot.x < -headYConstraintAngle) {
+                    headRot.x = -headYConstraintAngle;
+                }
+                // set head rotation to be relative to body rotation
+                headRot += TKTransformManager.BodyRotation.eulerAngles.Norm180Minus180();
+                TKTransformManager.HeadRotation = Quaternion.Euler(headRot);
+            }
+        }
+
+        private IEnumerator PointAtObjectOverTime(Transform objectToPointAt, float time) {
+            if (IsPointing) {
+                IsPointing = false; // stop other pointing routine
                 yield return null;
             }
-            TKTransformManager.Position = end;
-        }
+            IsPointing = true;
+            ArmAnimator.enabled = false;
+            Vector3 origLocalPositionR = RightIKObject.localPosition;
+            Vector3 origLocalPositionL = LeftIKObject.localPosition;
+            Vector3 startRPos = RightIKObject.position;
+            Vector3 startLPos = LeftIKObject.position;
 
-        public override void TurnTowardsUser() {
-            // get distance from user
-            CurAction += actionSeperator + "TurnTowardsUser";
-            Vector3 end = GetPosWDistAway(TKTransformManager.Position, UserTransform.position, Vector3.Distance(TKTransformManager.Position, UserTransform.position) - 0.1f);
-            StartCoroutine(LookAtAndGoToAtSpeed(UserTransform, end, ForwardSpeed));
-        }
-
-        public override string TakeISAAction() {
-            string actionString = ExerciseManager.instance.GetCurExercise().GetComponent<ExerciseInformationSeekingActions>().DoISAAction();
-            loggingManager.UpdateLogColumn(rISACol, actionString);
-            return actionString;
-        }
-        #endregion
-        #region protected
-        protected override bool UpdateCurrentActionString() {
-            string doingAnim = Anim.GetCurrentAnimatorClipInfo(0)[0].clip.name;
-            CurAction = "";
-            if (doingAnim != "neutral") {
-                CurAction = actionSeperator + doingAnim;
+            float t = 0;
+            float approxLengthR = Vector3.Distance(RightIKObject.position, objectToPointAt.position);
+            float approxLengthL = Vector3.Distance(LeftIKObject.position, objectToPointAt.position);
+            float timeToR = approxLengthR / PointSpeed;
+            float timeToL = approxLengthL / PointSpeed;
+            while (t < time) {
+                t += Time.deltaTime;
+                RightIKObject.position = Vector3.Lerp(startRPos, objectToPointAt.position, Mathf.Min(t / timeToR, 1));
+                LeftIKObject.position = Vector3.Lerp(startLPos, objectToPointAt.position, Mathf.Min(t / timeToL, 1));
+                yield return null;
             }
-            if (kuriTextManager.IsTalking) {
-                CurAction += actionSeperator + kuriTextManager.CurText;
-            }
-
-            // TODO: Movement when doing the movement actions
-            return CurAction != "";
+            RightIKObject.localPosition = origLocalPositionR;
+            LeftIKObject.localPosition = origLocalPositionL;
+            IsPointing = false;
+            ArmAnimator.enabled = true;
         }
         #endregion
     }

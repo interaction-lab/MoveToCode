@@ -54,5 +54,9 @@ namespace MoveToCode {
         public override string TakeISAAction() {
             throw new System.NotImplementedException();
         }
+
+        public override string PointAtObject(Transform objectOfInterest, float time) {
+            throw new System.NotImplementedException();
+        }
     }
 }

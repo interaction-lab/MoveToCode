@@ -213,7 +213,7 @@ namespace MoveToCode {
                 return maxCuriosityScoreForTimestep;
             }
             float p1 = actionDecayCurve.Evaluate(numTimesDidAction / maxNumTimesDidAction);
-            float p2 = Mathf.Min(timeSinceLastAction / longestTimeAllowedForAction, 1f);
+            float p2 = Mathf.Min((timeSinceLastAction * timeSinceLastAction) / (longestTimeAllowedForAction * longestTimeAllowedForAction), 1f);
             return p1 + p2;
         }
 

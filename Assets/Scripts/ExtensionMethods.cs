@@ -173,5 +173,26 @@ namespace MoveToCode {
         public static string ImgName(this ARTrackedImage img) {
             return img.referenceImage.name;
         }
+
+        // Vector3
+        public static Vector3 Norm180Minus180(this Vector3 v) {
+            // normalize vector 3 angles between -180 and 180
+            v.x = NormalizeAngle(v.x);
+            v.y = NormalizeAngle(v.y);
+            v.z = NormalizeAngle(v.z);
+            return v;
+        }
+
+        private static float NormalizeAngle(float x) {
+            // normalize angle between -180 and 180
+            x = x % 360;
+            if (x < -180) {
+                x += 360;
+            }
+            else if (x > 180) {
+                x -= 360;
+            }
+            return x;
+        }
     }
 }

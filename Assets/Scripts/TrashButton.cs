@@ -53,14 +53,14 @@ namespace MoveToCode {
         }
 
         void ToggleState() {
-            if(arTrackBehavior.IsTracking){
+            if (arTrackBehavior.IsTracking) {
                 isTrashButtonPressed = false;
             }
             if (arTrackBehavior.IsTracking || MazeManager.instance.IsLocked) {
                 gameObject.SetActive(false);
             }
             else {
-                if(!isTrashButtonPressed) {
+                if (!isTrashButtonPressed) {
                     gameObject.SetActive(true);
                 }
             }

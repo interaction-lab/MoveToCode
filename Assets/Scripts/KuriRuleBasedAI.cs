@@ -63,7 +63,7 @@ namespace MoveToCode {
         }
 
         private void TakeISAAction() {
-            kuriController.TakeISAAction();
+            kuriController.PointAtObject(Camera.main.transform, 2f);
             ++ISACount;
         }
         #endregion

@@ -111,6 +111,7 @@ namespace MoveToCode {
         public abstract string DoRandomNegativeAction();
         public abstract string DoAnimationAction(EMOTIONS e);
         public abstract void TurnTowardsUser();
+        public abstract string PointAtObject(Transform objectOfInterest, float time);
         // Returns true if currently doing action
         protected abstract bool UpdateCurrentActionString();
     }

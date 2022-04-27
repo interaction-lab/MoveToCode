@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6179061453819326219}
   - component: {fileID: 6179061453819326230}
-  - component: {fileID: 6179061453819326231}
   - component: {fileID: 6179061453819326228}
   - component: {fileID: 6179061453819326229}
   m_Layer: 0
@@ -82,14 +81,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &6179061453819326231
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6179061453819326216}
-  m_Mesh: {fileID: 0}
 --- !u!222 &6179061453819326228
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -146,8 +137,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

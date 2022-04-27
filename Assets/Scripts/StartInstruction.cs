@@ -2,7 +2,7 @@
 
 namespace MoveToCode {
     public class StartInstruction : StandAloneInstruction {
-        public static string startString = "Code Start";
+        public static string startString = "First Block";
 
         public StartInstruction(CodeBlock cbIn) : base(cbIn) { }
 

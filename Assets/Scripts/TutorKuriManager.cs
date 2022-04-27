@@ -63,6 +63,7 @@ namespace MoveToCode {
 
         LoggingManager loggingManager;
         #endregion
+
         #region unity
         private void Awake() {
             OptionSelectionManager.instance.Init();

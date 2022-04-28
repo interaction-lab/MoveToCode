@@ -93,6 +93,13 @@ namespace MoveToCode {
 
             OnMazeUnlocked();
         }
+        void Update() {
+            if (IsScreenButton && !MazeManager.instance.IsLocked) {
+                // make sure my parent is active
+                transform.parent.gameObject.SetActive(true); // make sure to be active when in build mode
+            }
+        }
+
         #endregion
 
         #region public

@@ -2162,7 +2162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scafoldDialogue:
-  - .
+  - You can also put a move block inside as well as after the repeat block.
 --- !u!114 &117279366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2191,8 +2191,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consoleStringGoal: 
-  mazeGoalString: 
-  codingGoalString: 
+  mazeGoalString: Now add another hall!
+  codingGoalString: Move baby Kuri to the goal.
   varNames: []
   initialVariableValues: 
   finalVariableGoalValues: 
@@ -5669,7 +5669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a508445c8a81442a30343ce95a1691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  consoleStringGoal: Hello World
+  consoleStringGoal: 
   mazeGoalString: Use a turn piece in this maze.
   codingGoalString: Get baby Kuri to go around the corner.
   varNames: []
@@ -7203,7 +7203,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scafoldDialogue:
-  - HINTHERE
+  - You will want to code a single turn first.
+  - You can then put this single turn code inside the while loop
 --- !u!114 &351010937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7231,9 +7232,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a508445c8a81442a30343ce95a1691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  consoleStringGoal: Hello World
-  mazeGoalString: 
-  codingGoalString: 
+  consoleStringGoal: 
+  mazeGoalString: Final big turn maze.
+  codingGoalString: Use the repeat block to have baby Kuri turn twice.
   varNames: []
   initialVariableValues: 
   finalVariableGoalValues: 
@@ -9981,8 +9982,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scafoldDialogue:
-  - Turn baby Kuri around by using 2 turn blocks back to back.
-  - The set color blocks are not needed.
+  - Turning is the opposite when going backward.
 --- !u!114 &465564197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10010,9 +10010,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a508445c8a81442a30343ce95a1691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  consoleStringGoal: Hello World
-  mazeGoalString: You are making the backward maze again. You will use different
-    code blocks this time.
+  consoleStringGoal: 
+  mazeGoalString: Now make the turn maze backward.
   codingGoalString: Get baby Kuri to the goal!
   varNames: []
   initialVariableValues: 
@@ -27623,7 +27622,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1397671203
 Transform:
   m_ObjectHideFlags: 0
@@ -27658,7 +27657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scafoldDialogue:
-  - this should be contextual
+  - Turn baby Kuri around by using 2 turn blocks back to back.
 --- !u!114 &1397671205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27687,8 +27686,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consoleStringGoal: 
-  mazeGoalString: 
-  codingGoalString: 
+  mazeGoalString: You are making the backward maze again. You will use different
+    code blocks this time.
+  codingGoalString: Get baby Kuri to the goal!
   varNames: []
   initialVariableValues: 
   finalVariableGoalValues: 
@@ -30763,7 +30763,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scafoldDialogue:
-  - .
+  - To repeat moving forward twice, snap the Move block just below the repeat block.
 --- !u!114 &1592834596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30792,8 +30792,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consoleStringGoal: 
-  mazeGoalString: 
-  codingGoalString: 
+  mazeGoalString: You will use new blocks to solve this maze.
+  codingGoalString: Use the repeat block to get baby Kuri to the goal.
   varNames: []
   initialVariableValues: 
   finalVariableGoalValues: 
@@ -33116,12 +33116,12 @@ PrefabInstance:
     - target: {fileID: 476382793086154333, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9769502
+      value: 0.9769503
       objectReference: {fileID: 0}
     - target: {fileID: 476382793086154333, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.21346723
+      value: -0.21346709
       objectReference: {fileID: 0}
     - target: {fileID: 476382793099924830, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
@@ -33146,12 +33146,12 @@ PrefabInstance:
     - target: {fileID: 476382793195451065, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8517347
+      value: 0.8517349
       objectReference: {fileID: 0}
     - target: {fileID: 476382793195451065, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.5239733
+      value: 0.523973
       objectReference: {fileID: 0}
     - target: {fileID: 476382793195451071, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}

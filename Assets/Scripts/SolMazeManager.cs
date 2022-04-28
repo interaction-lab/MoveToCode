@@ -92,12 +92,13 @@ namespace MoveToCode {
 
         private void OnCyleNewExercise() {
             int curIndex = AllSolMazes.IndexOf(CurActiveSolMaze);
-            if (curIndex == AllSolMazes.Count - 1) {
+            curActiveSolMaze.gameObject.SetActive(false);
+
+            if (curIndex + 2 >= AllSolMazes.Count) {
                 // we are at freeplay
                 SolMazeCheckMark.instance.SetFreePlayText();
             }
-            else if (curIndex + 1 < AllSolMazes.Count) {
-                curActiveSolMaze.gameObject.SetActive(false);
+            else {
                 curActiveSolMaze = AllSolMazes[curIndex + 1];
                 curActiveSolMaze.gameObject.SetActive(true);
                 SolMazeCheckMark.instance.ToggleCheckMark();

@@ -87,11 +87,11 @@ namespace MoveToCode {
         }
         public override string TakeMovementAction(int option = -1) {
             if (option == -1) {
-                int topOfRange = 4;
+                int topOfRange = 3;
                 if (MazeManager.instance.ContainsSolutionMaze() || MazeManager.instance.IsLocked) { // avoid going to misaligned pieces if not in building mode
-                    topOfRange = 3;
+                    topOfRange = 2;
                 }
-                option = Random.Range(0, topOfRange);
+                option = Random.Range(0, topOfRange); // for some unforsaken reason the top end of the range on random.range is inclusive??? who made this decision? -> https://docs.unity3d.com/ScriptReference/Random.Range.html
             }
             string action = "";
             switch (option) {
@@ -112,7 +112,7 @@ namespace MoveToCode {
         }
         public string MoveToUser() {
             onFrameAction = "MoveToUser";
-            Vector3 newPos = GetPosWDistAway(TKTransformManager.Position, UserTransform.position, 1.5f);
+            Vector3 newPos = GetPosWDistAway(TKTransformManager.Position, UserTransform.position, 2f);
             StartCoroutine(LookAtAndGoToAtSpeed(UserTransform, newPos, ForwardSpeed));
             return onFrameAction;
         }
@@ -128,7 +128,7 @@ namespace MoveToCode {
             return onFrameAction;
         }
         public override string PointAtObject(Transform objectOfInterest, float time) {
-            onFrameAction += "PointAtObject: " + objectOfInterest.ToString();
+            onFrameAction += actionSeperator + "PointAtObject: " + objectOfInterest.ToString();
             StartCoroutine(PointAtObjectOverTime(objectOfInterest, time));
             return onFrameAction;
         }
@@ -221,8 +221,9 @@ namespace MoveToCode {
         private void MoveToMazePiece(Transform mazePieceT) {
             Vector3 newPos = GetPosWDistAway(transform.position, mazePieceT.position, 1f);
             StartCoroutine(LookAtAndGoToAtSpeed(mazePieceT, newPos, ForwardSpeed));
-            PointAtObject(mazePieceT, 1f);
-            KuriTextManager.instance.Addline("You might need this piece of the maze.");
+            PointAtObject(mazePieceT, 3f);
+            string mpTypeName = mazePieceT.GetComponent<MazePiece>().MyMPType.Name;
+            KuriTextManager.instance.Addline($"You might need this {mpTypeName} piece of the maze.");
         }
         private Vector3 GetPosWDistAway(Vector3 start, Vector3 end, float distAway) {
             Vector3 dir = end - start;

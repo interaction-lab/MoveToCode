@@ -52,7 +52,7 @@ namespace MoveToCode {
         }
 
         public void SetFreePlayText() {
-            mazesMatchText.text = "Free Play!";
+            mazesMatchText.text = "Free\nPlay!";
         }
         #endregion
 

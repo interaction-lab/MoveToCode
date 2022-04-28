@@ -32,7 +32,7 @@ namespace MoveToCode {
 
         public void AddLine(string lineToAdd) {
             // reroute to kuri textmanager
-            KuriTextManager.instance.Addline(lineToAdd);
+            // KuriTextManager.instance.Addline(lineToAdd); -> old, now just not doing anythign for this
             // GetMainConsole().text = string.Join("", GetMainConsole().text, lineToAdd, "\n"); // vestigial but maybe useful later, rerouting everything to have kuri say it for now
         }
 

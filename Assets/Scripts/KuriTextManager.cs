@@ -80,6 +80,7 @@ namespace MoveToCode {
         }
 
         public void Addline(string lIn = "", PRIORITY pIn = PRIORITY.low) {
+            Clear(); // low priority clear every time something is said to avoid overlap
             GetCommandQueue().Enqueue(new TextCommand(COMMANDS.add, pIn, string.Join("", lIn, "\n")));
             StartCoroutine(ProcessText(ticketCommandNum++));
         }

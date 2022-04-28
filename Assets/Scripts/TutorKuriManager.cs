@@ -128,21 +128,24 @@ namespace MoveToCode {
             Tick();
         }
 
+        void LateUpdate() {
+            UpdateEndOfTickVariables();
+        }
+
         private void Tick() {
             if (inStartUp) {
                 return;
             }
             kuriAI?.Tick();
+        }
+
+        void UpdateEndOfTickVariables() {
             if (!wasKuriDoingActionLastTick && kuriController.IsDoingAction) {
                 TimeLastActionStarted = Time.time;
             }
             else if (wasKuriDoingActionLastTick && !kuriController.IsDoingAction) {
                 TimeLastActionEnded = Time.time;
             }
-            UpdateEndOfTickVariables();
-        }
-
-        void UpdateEndOfTickVariables() {
             wasKuriDoingActionLastTick = kuriController.IsDoingAction;
         }
         #endregion

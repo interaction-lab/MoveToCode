@@ -41,7 +41,7 @@ namespace MoveToCode {
             gameObject.layer = LayerMask.NameToLayer("SnapCollider");
             gameObject.SetActive(false);
             RegisterToSnapColliderGroup();
-            CodeBlockManager.instance.RegisterSnapCollider(this);
+            CodeBlockManager.instance?.RegisterSnapCollider(this);
         }
 
         protected abstract void RegisterToSnapColliderGroup();

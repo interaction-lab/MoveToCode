@@ -45,7 +45,7 @@ namespace MoveToCode {
                 return _userTransform;
             }
         }
-        float headYConstraintAngle = 75f;
+        float headYConstraintAngle = 50f;
         Transform _rightIKObject = null;
         Transform _leftIKObject = null;
         Transform RightIKObject {
@@ -123,7 +123,6 @@ namespace MoveToCode {
         public override string PointAtObject(Transform objectOfInterest, float time) {
             CurAction += actionSeperator + "PointAtObject: " + objectOfInterest.ToString();
             StartCoroutine(PointAtObjectOverTime(objectOfInterest, time));
-            Debug.Log("Pointing at object");
             return "PointAtObject: " + objectOfInterest.ToString();
         }
 

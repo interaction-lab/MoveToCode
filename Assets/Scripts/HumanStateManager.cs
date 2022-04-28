@@ -30,7 +30,6 @@ namespace MoveToCode {
             LoggingManager.instance.AddLogColumn(humanMovetCol, "");
             LoggingManager.instance.AddLogColumn(humanCurZScore, "");
             LoggingManager.instance.AddLogColumn(humanCurAction, "");
-            //StartCoroutine(WaitForScoresToAverageOut());
         }
 
         IEnumerator WaitForScoresToAverageOut() {

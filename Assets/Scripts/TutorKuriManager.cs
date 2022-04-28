@@ -50,7 +50,7 @@ namespace MoveToCode {
                         kuriAIBackingVar = FindObjectOfType<KuriUtilityAI>().GetComponent<KuriUtilityAI>();
                     }
                     else if (kuriAIToUse == KuriAI.KURIAI.RuleBased) {
-                        kuriAIBackingVar = FindObjectOfType<KuriRuleBasedAI>().GetComponent<KuriUtilityAI>();
+                        kuriAIBackingVar = FindObjectOfType<KuriRuleBasedAI>().GetComponent<KuriRuleBasedAI>();
                     }
                 }
                 return kuriAIBackingVar;

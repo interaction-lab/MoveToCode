@@ -45,11 +45,10 @@ namespace MoveToCode {
             StartCodeBlock.instance.ToggleOutline(true);
             instructionStack.Clear();
             lastInstructionReturn = null;
-
-            CodeBlockManager.instance.ResetAllCodeBlockInternalState();
-            MemoryManager.instance.ResetMemoryState();
+            CodeBlockManager.instance?.ResetAllCodeBlockInternalState();
+            MemoryManager.instance?.ResetMemoryState();
             numInstructionsRun = 0;
-            StaticNextChallengeButton.instance.gameObject.SetActive(false);
+            //StaticNextChallengeButton.instance.gameObject.SetActive(false);
             BabyKuriManager.instance.ResetKuri();
             OnCodeReset.Invoke();
         }

@@ -12806,7 +12806,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d76eccb850124f644baa3d949508d147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  robotKC: 0.1
+  robotKC: -0.04
   usePhysicalKuri: 0
   kuriAIToUse: 0
 --- !u!114 &648124170
@@ -13285,7 +13285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c78149086eaff5439ffe528177bac5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeWindow: 20
+  timeWindow: 5
   actionDecayCurve:
     serializedVersion: 2
     m_Curve:
@@ -18075,8 +18075,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fullInteractionTimeMinutes: 20.2
-  warmUpTimeMinutes: 0.2
-  startKC: 0.5
+  warmUpTimeMinutes: 0.05
+  startKC: -0.5
   numIntervals: 2
   startLow: 1
 --- !u!1 &958217971

@@ -69,6 +69,7 @@ namespace MoveToCode {
 
         public bool IsPointing = false;
         string onFrameAction = ""; // hacky quick way to pass the curaction from within actual actions to the update action of the virtual aciton taker
+        public float timeSinceLastActionEndeded = 0;
         #endregion
         #region unity
         #endregion
@@ -105,6 +106,7 @@ namespace MoveToCode {
                     action = MoveToGoal();
                     break;
                 case 3:
+                    Debug.Log("idk");
                     action = MoveToMisalignedPiece();
                     break;
             }
@@ -112,7 +114,7 @@ namespace MoveToCode {
         }
         public string MoveToUser() {
             onFrameAction = "MoveToUser";
-            Vector3 newPos = GetPosWDistAway(TKTransformManager.Position, UserTransform.position, 2f);
+            Vector3 newPos = GetPosWDistAway(TKTransformManager.Position, UserTransform.position, 1.5f);
             StartCoroutine(LookAtAndGoToAtSpeed(UserTransform, newPos, ForwardSpeed));
             return onFrameAction;
         }
@@ -136,6 +138,7 @@ namespace MoveToCode {
         #endregion
         #region protected
         protected override bool UpdateCurrentActionString() {
+            timeSinceLastActionEndeded = TutorKuriManager.instance.TimeLastActionEnded.TimeSince();
             string doingAnim = Anim.GetCurrentAnimatorClipInfo(0)[0].clip.name;
             CurAction = onFrameAction;
             if (doingAnim != "neutral") {
@@ -166,10 +169,13 @@ namespace MoveToCode {
             Vector3 end;
             Bezier bezierCurve;
             CalculateBezierPath(goalPosition, out end, out bezierCurve, out straightLine);
+            float origDist = Vector3.Distance(TKTransformManager.Position, end);
+
             float approxLength = bezierCurve.ApproximateTotalLength();
             float totalTime = approxLength / speedinMS;
             float t = 0;
             while (t < totalTime && !TKTransformManager.IsAtPosition(end)) {
+                onFrameAction += actionSeperator + "LookAtAndGoToAtSpeed";
                 t += Time.deltaTime;
                 TKTransformManager.Position = bezierCurve.GetBezierPoint(t / totalTime);
                 if (!TKTransformManager.IsAtPosition(end) && t < totalTime) {
@@ -178,6 +184,10 @@ namespace MoveToCode {
                 }
             }
             TKTransformManager.Position = end;
+            if(origDist < Vector3.Distance(TKTransformManager.Position, end)){
+                CalculateBezierPath(goalPosition, out end, out bezierCurve, out straightLine); // recalc straightline from new spot
+            }
+            
             RotateBodyAndHeadAlongPath(objectToLookAt, end + straightLine);
         }
         private void CalculateBezierPath(Vector3 goalPosition, out Vector3 end, out Bezier bezierCurve, out Vector3 straightLine) {
@@ -221,7 +231,7 @@ namespace MoveToCode {
         private void MoveToMazePiece(Transform mazePieceT) {
             Vector3 newPos = GetPosWDistAway(transform.position, mazePieceT.position, 1f);
             StartCoroutine(LookAtAndGoToAtSpeed(mazePieceT, newPos, ForwardSpeed));
-            PointAtObject(mazePieceT, 3f);
+            PointAtObject(mazePieceT, 5f);
             string mpTypeName = mazePieceT.GetComponent<MazePiece>().MyMPType.Name;
             KuriTextManager.instance.Addline($"You might need this {mpTypeName} piece of the maze.");
         }
@@ -278,6 +288,7 @@ namespace MoveToCode {
             float timeToR = approxLengthR / PointSpeed;
             float timeToL = approxLengthL / PointSpeed;
             while (t < time) {
+                onFrameAction += actionSeperator + "Pointing";
                 t += Time.deltaTime;
                 RightIKObject.position = Vector3.Lerp(startRPos, objectToPointAt.position, Mathf.Min(t / timeToR, 1));
                 LeftIKObject.position = Vector3.Lerp(startLPos, objectToPointAt.position, Mathf.Min(t / timeToL, 1));

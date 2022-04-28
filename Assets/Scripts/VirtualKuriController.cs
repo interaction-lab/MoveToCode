@@ -128,7 +128,7 @@ namespace MoveToCode {
             return onFrameAction;
         }
         public override string PointAtObject(Transform objectOfInterest, float time) {
-            onFrameAction = "PointAtObject: " + objectOfInterest.ToString();
+            onFrameAction += "PointAtObject: " + objectOfInterest.ToString();
             StartCoroutine(PointAtObjectOverTime(objectOfInterest, time));
             return onFrameAction;
         }
@@ -209,7 +209,7 @@ namespace MoveToCode {
             return onFrameAction;
         }
         private string MoveToMisalignedPiece() {
-            // if we are in coding mode, don't do this
+            // should assert that the maze is not locked
             onFrameAction = "MoveToMisalignedPiece";
             Transform misalignedPieceT = MazeManager.instance.GetMisalignedPiece().transform;
             if (misalignedPieceT == null) {
@@ -221,6 +221,8 @@ namespace MoveToCode {
         private void MoveToMazePiece(Transform mazePieceT) {
             Vector3 newPos = GetPosWDistAway(transform.position, mazePieceT.position, 1f);
             StartCoroutine(LookAtAndGoToAtSpeed(mazePieceT, newPos, ForwardSpeed));
+            PointAtObject(mazePieceT, 1f);
+            KuriTextManager.instance.Addline("You might need this piece of the maze.");
         }
         private Vector3 GetPosWDistAway(Vector3 start, Vector3 end, float distAway) {
             Vector3 dir = end - start;

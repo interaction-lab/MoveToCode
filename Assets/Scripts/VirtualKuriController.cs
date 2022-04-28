@@ -85,8 +85,10 @@ namespace MoveToCode {
         public override string DoRandomPositiveAction() {
             return DoAnimationAction(PositiveEmotions[Random.Range(0, NegativeEmotions.Length)]);
         }
-        public override string TakeMovementAction() {
-            int option = Random.Range(0, 4);
+        public override string TakeMovementAction(int option = -1) {
+            if (option == -1) {
+                option = Random.Range(0, 4);
+            }
             string action = "";
             switch (option) {
                 case 0:

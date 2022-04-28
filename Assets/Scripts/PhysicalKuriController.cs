@@ -35,7 +35,7 @@ namespace MoveToCode {
             return KuriEmoteStringPub.PubRandomPositive();
         }
 
-        public override string TakeMovementAction() {
+        public override string TakeMovementAction(int option = -1) {
             throw new System.NotImplementedException();
         }
 

@@ -328,7 +328,7 @@ namespace MoveToCode {
             }
             BKMazePiece.SnapConnections();
             BKTransformManager?.SetOriginalState();
-            SolMazeManagerInstance.SnapPiecesTogether();
+            SolMazeManagerInstance?.SnapPiecesTogether();
             IsLocked = true;
             // move all pieces that aren't in my graph way away
 #if !UNITY_EDITOR

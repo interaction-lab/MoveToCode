@@ -6,10 +6,15 @@ namespace MoveToCode {
     [RequireComponent(typeof(ExerciseScaffolding))]
     public class Exercise : MonoBehaviour {
         public string consoleStringGoal;
-        public string kuriGoalString;
+        public string mazeGoalString;
+        public string codingGoalString;
         public string[] varNames;
         public int[] initialVariableValues;
         public int[] finalVariableGoalValues;
+
+        public bool SaidMazeGoal = false;
+        public bool SaidCodingGoal = false;
+
 
         public bool IsExerciseCorrect() {
             bool result = true;
@@ -41,7 +46,7 @@ namespace MoveToCode {
             SnapAllBlocksToBlockManager();
             AddAllVariables();
             KuriTextManager.instance.Clear(KuriTextManager.PRIORITY.high);
-            TutorKuriManager.instance.kuriController.SayExerciseGoal();
+            TutorKuriManager.instance.kuriController.SayMazeGoal();
         }
 
         private void AddAllVariables() {
@@ -56,8 +61,14 @@ namespace MoveToCode {
             MemoryManager.instance.RemoveAllVariables();
         }
 
-        public string GetGoalString() {
-            return kuriGoalString;
+        public string GetMazeGoalString() {
+            SaidMazeGoal = true;
+            return mazeGoalString;
+        }
+
+        public string GetCodeGoalString() {
+            SaidCodingGoal = true;
+            return codingGoalString;
         }
     }
 }

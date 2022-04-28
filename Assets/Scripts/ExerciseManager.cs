@@ -48,7 +48,7 @@ namespace MoveToCode {
                     return true;
                 }
                 else {
-                    TutorKuriManager.instance.kuriController.DoScaffoldingDialogue();
+                    TutorKuriManager.instance.kuriController.TriggerHelpfulAction();
                     LoggingManager.instance.UpdateLogColumn(exerciseSubmissionResultCol, "InCorrect");
                     return false;
                 }

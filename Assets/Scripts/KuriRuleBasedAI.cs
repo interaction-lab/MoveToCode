@@ -12,6 +12,8 @@ namespace MoveToCode {
         private void Awake() {
             kuriManager = TutorKuriManager.instance;
             kuriController = kuriManager.kuriController;
+            SolMazeCheckMark.instance.OnMazeCorrect.AddListener(OnMazeCorrect);
+            MazeManager.instance.OnMazeLocked.AddListener(OnMazeLocked);
         }
         #endregion
         #region public
@@ -63,8 +65,35 @@ namespace MoveToCode {
         }
 
         private void TakeISAAction() {
-            kuriController.PointAtObject(Camera.main.transform, 2f);
+            // if maze isn't built, move to specific maze piece
+            if (!MazeManager.instance.ContainsSolutionMaze()) {
+                kuriController.TakeMovementAction(3);
+            }
+            // if maze is built, try scaffolding
+            else {
+                ExerciseManager.instance.GetCurExercise().GetComponent<ExerciseScaffolding>().SayNextScaffold();
+            }
             ++ISACount;
+        }
+
+        public override void ForceHelpfulAction() {
+            TakeISAAction();
+        }
+
+        bool saidSwitchToCoding = false;
+        void OnMazeCorrect() {
+            if (ExerciseManager.instance.GetCurExercise().SaidMazeGoal && !saidSwitchToCoding) {
+                KuriTextManager.instance.Clear(KuriTextManager.PRIORITY.high);
+                KuriTextManager.instance.Addline("Maze is correct! Switch to coding mode.", KuriTextManager.PRIORITY.low);
+                saidSwitchToCoding = true;
+            }
+        }
+
+        void OnMazeLocked() {
+            if (ExerciseManager.instance.GetCurExercise().SaidCodingGoal) {
+                KuriTextManager.instance.Clear(KuriTextManager.PRIORITY.high);
+                kuriController.SayCodeGoal();
+            }
         }
         #endregion
     }

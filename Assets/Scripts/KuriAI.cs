@@ -9,5 +9,6 @@ namespace MoveToCode {
             None = 2
         }
         public abstract void Tick();
+        public abstract void ForceHelpfulAction();
     }
 }

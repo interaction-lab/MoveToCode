@@ -390,7 +390,7 @@ RectTransform:
   m_GameObject: {fileID: 25042201}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.00999999}
-  m_LocalScale: {x: 0.4, y: 0.33, z: 0.06000003}
+  m_LocalScale: {x: 0.4, y: 0.2, z: 0.06000003}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1700647547}
@@ -398,7 +398,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.15599999}
+  m_AnchoredPosition: {x: 0, y: -0.311}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &25042204
@@ -2191,10 +2191,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consoleStringGoal: 
-  kuriGoalString: Print "Hello World"
+  mazeGoalString: 
+  codingGoalString: 
   varNames: []
   initialVariableValues: 
   finalVariableGoalValues: 
+  SaidMazeGoal: 0
+  SaidCodingGoal: 0
 --- !u!1001 &121267191
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4435,7 +4438,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 223377334}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5637,7 +5640,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scafoldDialogue:
-  - HINTHERE
+  - Make sure baby Kuri moves forward first and then turns.
+  - Careful that baby Kuri doesn't fall off!
 --- !u!114 &259958626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5666,10 +5670,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consoleStringGoal: Hello World
-  kuriGoalString: Print "Hello World"
+  mazeGoalString: Use a turn piece in this maze.
+  codingGoalString: Get baby Kuri to go around the corner.
   varNames: []
   initialVariableValues: 
   finalVariableGoalValues: 
+  SaidMazeGoal: 0
+  SaidCodingGoal: 0
 --- !u!4 &261233807 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2204069623020599746, guid: 3f1f46cbecbe08e46a303ccfdb5b498a,
@@ -5846,10 +5853,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consoleStringGoal: Hello World
-  kuriGoalString: Print "Hello World"
+  mazeGoalString: 
+  codingGoalString: 
   varNames: []
   initialVariableValues: 
   finalVariableGoalValues: 
+  SaidMazeGoal: 0
+  SaidCodingGoal: 0
 --- !u!114 &270212280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7222,10 +7232,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consoleStringGoal: Hello World
-  kuriGoalString: Print "Hello World"
+  mazeGoalString: 
+  codingGoalString: 
   varNames: []
   initialVariableValues: 
   finalVariableGoalValues: 
+  SaidMazeGoal: 0
+  SaidCodingGoal: 0
 --- !u!1 &351704809
 GameObject:
   m_ObjectHideFlags: 0
@@ -7278,10 +7291,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consoleStringGoal: False
-  kuriGoalString: Print False
+  mazeGoalString: 
+  codingGoalString: 
   varNames: []
   initialVariableValues: 
   finalVariableGoalValues: 
+  SaidMazeGoal: 0
+  SaidCodingGoal: 0
 --- !u!114 &351704812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9510,10 +9526,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consoleStringGoal: 
-  kuriGoalString: 
+  mazeGoalString: 
+  codingGoalString: 
   varNames: []
   initialVariableValues: 
   finalVariableGoalValues: 
+  SaidMazeGoal: 0
+  SaidCodingGoal: 0
 --- !u!1001 &452166890
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9962,7 +9981,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scafoldDialogue:
-  - HINTHERE
+  - Turn baby Kuri around by using 2 turn blocks back to back.
+  - The set color blocks are not needed.
 --- !u!114 &465564197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9991,10 +10011,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consoleStringGoal: Hello World
-  kuriGoalString: Print "Hello World"
+  mazeGoalString: You are making the backward maze again. You will use different
+    code blocks this time.
+  codingGoalString: Get baby Kuri to the goal!
   varNames: []
   initialVariableValues: 
   finalVariableGoalValues: 
+  SaidMazeGoal: 0
+  SaidCodingGoal: 0
 --- !u!1001 &468253002
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11454,7 +11478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scafoldDialogue:
-  - .
+  - There are extra coding blocks you may not need.
 --- !u!114 &573092089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11483,10 +11507,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consoleStringGoal: 
-  kuriGoalString: Print "Hello World"
+  mazeGoalString: You will need to use a Hall piece for this maze.
+  codingGoalString: Code baby Kuri to go forward twice!
   varNames: []
   initialVariableValues: 
   finalVariableGoalValues: 
+  SaidMazeGoal: 0
+  SaidCodingGoal: 0
 --- !u!114 &584239309 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3828739441442808834, guid: 9d4fb95003569de428fba011a79f6f10,
@@ -12117,10 +12144,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consoleStringGoal: 
-  kuriGoalString: 
+  mazeGoalString: 
+  codingGoalString: 
   varNames: []
   initialVariableValues: 
   finalVariableGoalValues: 
+  SaidMazeGoal: 0
+  SaidCodingGoal: 0
 --- !u!1001 &605904415
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12458,7 +12488,7 @@ PrefabInstance:
     - target: {fileID: 257811355727027398, guid: 132d6dea90446324eb8347097ee2a535,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 257811355727027398, guid: 132d6dea90446324eb8347097ee2a535,
         type: 3}
@@ -13675,7 +13705,7 @@ PrefabInstance:
     - target: {fileID: 257811355727027398, guid: 861aab252d518fd4790fe20ea3cce073,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 257811355727027398, guid: 861aab252d518fd4790fe20ea3cce073,
         type: 3}
@@ -13752,8 +13782,6 @@ GameObject:
   - component: {fileID: 741588997}
   - component: {fileID: 741588998}
   - component: {fileID: 741588999}
-  - component: {fileID: 741589001}
-  - component: {fileID: 741589000}
   m_Layer: 0
   m_Name: KuriTextManager
   m_TagString: Untagged
@@ -13922,63 +13950,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &741589000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 741588995}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 181cd563a8349c34ea8978b0bc8d9c7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hostTransform: {fileID: 741588996}
-  manipulationType: 3
-  twoHandedManipulationType: 7
-  allowFarManipulation: 1
-  useForcesForNearManipulation: 0
-  oneHandRotationModeNear: 1
-  oneHandRotationModeFar: 1
-  releaseBehavior: 3
-  transformSmoothingLogicType:
-    reference: Microsoft.MixedReality.Toolkit.Utilities.DefaultTransformSmoothingLogic,
-      Microsoft.MixedReality.Toolkit.SDK
-  smoothingFar: 1
-  smoothingNear: 1
-  moveLerpTime: 0.001
-  rotateLerpTime: 0.001
-  scaleLerpTime: 0.001
-  enableConstraints: 1
-  constraintsManager: {fileID: 741589001}
-  elasticsManager: {fileID: 0}
-  onManipulationStarted:
-    m_PersistentCalls:
-      m_Calls: []
-  onManipulationEnded:
-    m_PersistentCalls:
-      m_Calls: []
-  onHoverEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  onHoverExited:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &741589001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 741588995}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a98de877dee5fc341b4eb59dfdab266c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  autoConstraintSelection: 1
-  selectedConstraints: []
 --- !u!1001 &753384895
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15566,7 +15537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scafoldDialogue:
-  - this should be contextual
+  - There are extra coding blocks you may not need.
 --- !u!114 &839259678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15595,10 +15566,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consoleStringGoal: 
-  kuriGoalString: 
+  mazeGoalString: The Goal piece will be behind the Kuri piece.
+  codingGoalString: Make baby Kuri move backward.
   varNames: []
   initialVariableValues: 
   finalVariableGoalValues: 
+  SaidMazeGoal: 0
+  SaidCodingGoal: 0
 --- !u!1 &839396793
 GameObject:
   m_ObjectHideFlags: 0
@@ -16435,7 +16409,7 @@ PrefabInstance:
     - target: {fileID: 5335814774712488528, guid: 06a12ff3aa9542d439658dd9010958b1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 5335814774712488528, guid: 06a12ff3aa9542d439658dd9010958b1,
         type: 3}
@@ -17361,7 +17335,7 @@ PrefabInstance:
     - target: {fileID: 5335814774712488528, guid: 06a12ff3aa9542d439658dd9010958b1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5335814774712488528, guid: 06a12ff3aa9542d439658dd9010958b1,
         type: 3}
@@ -17826,11 +17800,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consoleStringGoal: 5
-  kuriGoalString: Set Var1 to 5 and print it
+  mazeGoalString: 
+  codingGoalString: 
   varNames:
   - Var1
   initialVariableValues: 09000000
   finalVariableGoalValues: 05000000
+  SaidMazeGoal: 0
+  SaidCodingGoal: 0
 --- !u!114 &923277385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18131,10 +18108,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consoleStringGoal: 11
-  kuriGoalString: Print 11
+  mazeGoalString: 
+  codingGoalString: 
   varNames: []
   initialVariableValues: 
   finalVariableGoalValues: 
+  SaidMazeGoal: 0
+  SaidCodingGoal: 0
 --- !u!114 &958217974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23198,10 +23178,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consoleStringGoal: 1
-  kuriGoalString: Print 1
+  mazeGoalString: 
+  codingGoalString: 
   varNames: []
   initialVariableValues: 
   finalVariableGoalValues: 
+  SaidMazeGoal: 0
+  SaidCodingGoal: 0
 --- !u!114 &1180737058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25243,10 +25226,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consoleStringGoal: True
-  kuriGoalString: Print True
+  mazeGoalString: 
+  codingGoalString: 
   varNames: []
   initialVariableValues: 
   finalVariableGoalValues: 
+  SaidMazeGoal: 0
+  SaidCodingGoal: 0
 --- !u!114 &1263160918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27637,7 +27623,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1397671203
 Transform:
   m_ObjectHideFlags: 0
@@ -27701,10 +27687,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consoleStringGoal: 
-  kuriGoalString: 
+  mazeGoalString: 
+  codingGoalString: 
   varNames: []
   initialVariableValues: 
   finalVariableGoalValues: 
+  SaidMazeGoal: 0
+  SaidCodingGoal: 0
 --- !u!1 &1404938190
 GameObject:
   m_ObjectHideFlags: 0
@@ -30445,7 +30434,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scafoldDialogue:
-  - this should be contextual
+  - You will want to grab and snap the Move block to the bottom of the Robot Commands
+    block.
+  - When you are done, make sure to hit play code on the top left of your screen.
 --- !u!114 &1570364382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30474,10 +30465,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consoleStringGoal: 
-  kuriGoalString: 
+  mazeGoalString: Build a maze that matches the one on the bottom left of your screen.
+  codingGoalString: Code baby Kuri to the goal one step forward.
   varNames: []
   initialVariableValues: 
   finalVariableGoalValues: 
+  SaidMazeGoal: 0
+  SaidCodingGoal: 0
 --- !u!1001 &1587348183
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30798,10 +30792,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consoleStringGoal: 
-  kuriGoalString: Print "Hello World"
+  mazeGoalString: 
+  codingGoalString: 
   varNames: []
   initialVariableValues: 
   finalVariableGoalValues: 
+  SaidMazeGoal: 0
+  SaidCodingGoal: 0
 --- !u!1 &1596033191
 GameObject:
   m_ObjectHideFlags: 0
@@ -30837,7 +30834,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.185}
+  m_AnchoredPosition: {x: 0, y: -0.431}
   m_SizeDelta: {x: 500, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1596033193
@@ -30889,8 +30886,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 53.66
-  m_fontSizeBase: 53.66
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -30925,7 +30922,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -59.75833, y: 0, z: -72.49385, w: 255.18965}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -33119,12 +33116,12 @@ PrefabInstance:
     - target: {fileID: 476382793086154333, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9769503
+      value: 0.9769502
       objectReference: {fileID: 0}
     - target: {fileID: 476382793086154333, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.21346709
+      value: -0.21346723
       objectReference: {fileID: 0}
     - target: {fileID: 476382793099924830, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
@@ -33149,12 +33146,12 @@ PrefabInstance:
     - target: {fileID: 476382793195451065, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8517349
+      value: 0.8517347
       objectReference: {fileID: 0}
     - target: {fileID: 476382793195451065, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.523973
+      value: 0.5239733
       objectReference: {fileID: 0}
     - target: {fileID: 476382793195451071, guid: 884adbfcd11f41f488b4331181c29910,
         type: 3}
@@ -35997,10 +35994,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consoleStringGoal: 6
-  kuriGoalString: Print 6
+  mazeGoalString: 
+  codingGoalString: 
   varNames: []
   initialVariableValues: 
   finalVariableGoalValues: 
+  SaidMazeGoal: 0
+  SaidCodingGoal: 0
 --- !u!114 &1875823387
 MonoBehaviour:
   m_ObjectHideFlags: 0

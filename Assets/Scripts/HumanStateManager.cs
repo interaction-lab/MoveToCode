@@ -194,7 +194,9 @@ namespace MoveToCode {
                 return -1f;
             }
             float timeSinceLastAction = Time.time - LastTimeDidActionDict[action];
-            LastTimeDidActionDict[action] = Time.time;
+            if (timeSinceLastAction >= timeWindow) { // only update if action is outside of window
+                LastTimeDidActionDict[action] = Time.time;
+            }
             return timeSinceLastAction;
         }
 
@@ -207,11 +209,16 @@ namespace MoveToCode {
         float longestTimeAllowedForAction = 1f * 60f; // 2.5 minutes
         private float GetCuriosityScore(string action) {
             float timeSinceLastAction = GetTimeSinceLastAction(action);
-            float numTimesDidAction = GetNumTimesDidAction(action);
-            if (numTimesDidAction == 1) {
+            if (timeSinceLastAction < 0) {
+                GetNumTimesDidAction(action); // update num times did action to 1
                 return maxCuriosityScoreForTimestep;
             }
-            float p1 = actionDecayCurve.Evaluate(numTimesDidAction / maxNumTimesDidAction);
+            if (timeSinceLastAction < timeWindow) {
+                // this is the case where we already have the action in the queue
+                return 0;
+            }
+            float numTimesDidAction = GetNumTimesDidAction(action);
+            float p1 = 1 - (numTimesDidAction / maxNumTimesDidAction);
             float p2 = Mathf.Min((timeSinceLastAction * timeSinceLastAction) / (longestTimeAllowedForAction * longestTimeAllowedForAction), 1f);
             return p1 + p2;
         }

@@ -197,19 +197,19 @@ namespace MoveToCode {
             straightLine = (goalPosition - start).normalized;
         }
         private string MoveToGoal() {
-            CurAction = actionSeperator + "GoingToGoal";
+            onFrameAction = "GoingToGoal";
             Transform goalMPT = MazeManager.instance.GoalMazePiece.transform;
             MoveToMazePiece(goalMPT);
-            return CurAction;
+            return onFrameAction;
         }
         private string MoveToMisalignedPiece() {
-            CurAction = actionSeperator + "MoveToMisalignedPiece";
+            onFrameAction = "MoveToMisalignedPiece";
             Transform misalignedPieceT = MazeManager.instance.GetMisalignedPiece().transform;
             if (misalignedPieceT == null) {
                 return MoveToUser(); // default to move to user if the goal pieces are all good
             }
             MoveToMazePiece(misalignedPieceT);
-            return CurAction;
+            return onFrameAction;
         }
         private void MoveToMazePiece(Transform mazePieceT) {
             Vector3 newPos = GetPosWDistAway(transform.position, mazePieceT.position, 1f);
@@ -220,10 +220,10 @@ namespace MoveToCode {
             return start + dir.normalized * (dir.magnitude - distAway);
         }
         private string MoveToBKMazePiece() {
-            CurAction += actionSeperator + "MoveToBKMazePiece";
+            onFrameAction = "MoveToBKMazePiece";
             Transform BKMakePieceT = MazeManager.instance.BKMazePiece.transform;
             MoveToMazePiece(BKMakePieceT);
-            return CurAction;
+            return onFrameAction;
         }
         private void RotateBodyAndHeadAlongPath(Transform objectToLookAt, Vector3 goalPosition) {
             Vector3 goalDir = (goalPosition - TKTransformManager.Position).normalized;

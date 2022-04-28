@@ -18,7 +18,7 @@ namespace MoveToCode {
         #endregion
         #region public
         public override void Tick() {
-            if (!kuriController.IsDoingAction && kuriManager.TimeLastActionEnded.TimeSince() < kuriManager.TimeWindow) {
+            if (kuriController.IsDoingAction || kuriManager.TimeLastActionEnded.TimeSince() < kuriManager.TimeWindow) {
                 return;
             }
             float kctS = HumanStateManager.instance.GetKCt();

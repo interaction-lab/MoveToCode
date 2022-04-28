@@ -87,7 +87,11 @@ namespace MoveToCode {
         }
         public override string TakeMovementAction(int option = -1) {
             if (option == -1) {
-                option = Random.Range(0, 4);
+                int topOfRange = 4;
+                if (MazeManager.instance.ContainsSolutionMaze() || MazeManager.instance.IsLocked) { // avoid going to misaligned pieces if not in building mode
+                    topOfRange = 3;
+                }
+                option = Random.Range(0, topOfRange);
             }
             string action = "";
             switch (option) {
@@ -205,6 +209,7 @@ namespace MoveToCode {
             return onFrameAction;
         }
         private string MoveToMisalignedPiece() {
+            // if we are in coding mode, don't do this
             onFrameAction = "MoveToMisalignedPiece";
             Transform misalignedPieceT = MazeManager.instance.GetMisalignedPiece().transform;
             if (misalignedPieceT == null) {

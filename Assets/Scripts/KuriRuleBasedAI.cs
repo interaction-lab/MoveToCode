@@ -90,7 +90,7 @@ namespace MoveToCode {
         }
 
         void OnMazeLocked() {
-            if (ExerciseManager.instance.GetCurExercise().SaidCodingGoal) {
+            if (!ExerciseManager.instance.GetCurExercise().SaidCodingGoal) {
                 KuriTextManager.instance.Clear(KuriTextManager.PRIORITY.high);
                 kuriController.SayCodeGoal();
             }

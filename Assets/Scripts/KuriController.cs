@@ -98,14 +98,12 @@ namespace MoveToCode {
             string actionMade = DoRandomPositiveAction();
             loggingManager.UpdateLogColumn(kuriPhysicalEmoteActionCol,
                  actionMade);
-
-            kuriTextManager.Clear(KuriTextManager.PRIORITY.low);
             kuriTextManager.SayRandomPositiveAffect(toa);
         }
 
         public void TriggerHelpfulAction() {
-            TurnTowardsUser();
-            // ExerciseManager.instance.GetCurExercise().GetComponent<ExerciseScaffolding>().SayNextScaffold(); // old from when used to add specicif scaffolding for each maze, needs more contextual information
+            // TurnTowardsUser();
+            ExerciseManager.instance.GetCurExercise().GetComponent<ExerciseScaffolding>().SayNextScaffold(); // old from when used to add specicif scaffolding for each maze, needs more contextual information
         }
 
         private void Update() {

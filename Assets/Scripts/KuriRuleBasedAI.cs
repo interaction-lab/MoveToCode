@@ -26,7 +26,7 @@ namespace MoveToCode {
                 TakeKCAction();
             }
             else {
-                kuriController.DoRandomPositiveAction();
+                kuriController.SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT.Encouragement);
             }
         }
         #endregion
@@ -84,7 +84,7 @@ namespace MoveToCode {
         void OnMazeCorrect() {
             if (ExerciseManager.instance.GetCurExercise().SaidMazeGoal && !saidSwitchToCoding) {
                 KuriTextManager.instance.Clear(KuriTextManager.PRIORITY.high);
-                KuriTextManager.instance.Addline("Maze is correct! Switch to coding mode.", KuriTextManager.PRIORITY.low);
+                kuriController.SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT.Congratulation);
                 saidSwitchToCoding = true;
             }
         }

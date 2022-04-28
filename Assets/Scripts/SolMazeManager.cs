@@ -90,15 +90,18 @@ namespace MoveToCode {
             LoggingManagerInstance.UpdateLogColumn(solutionMazeCol, curActiveSolMaze.MyMazeGraph.ToString());
         }
 
+        bool freePlayIsActive = false;
         private void OnCyleNewExercise() {
             int curIndex = AllSolMazes.IndexOf(CurActiveSolMaze);
             curActiveSolMaze.gameObject.SetActive(false);
 
-            if (curIndex + 2 >= AllSolMazes.Count) {
+            if (curIndex + 2 >= AllSolMazes.Count && !freePlayIsActive) {
                 // we are at freeplay
                 SolMazeCheckMark.instance.SetFreePlayText();
+                freePlayIsActive = true;
             }
-            else {
+            // if so that we activate the final sol goal maze
+            if(curIndex + 1 < AllSolMazes.Count) {
                 curActiveSolMaze = AllSolMazes[curIndex + 1];
                 curActiveSolMaze.gameObject.SetActive(true);
                 SolMazeCheckMark.instance.ToggleCheckMark();

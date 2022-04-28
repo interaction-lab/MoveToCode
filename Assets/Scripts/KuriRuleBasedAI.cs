@@ -21,12 +21,14 @@ namespace MoveToCode {
             if (kuriController.IsDoingAction || kuriManager.TimeLastActionEnded.TimeSince() < kuriManager.TimeWindow) {
                 return;
             }
-            float kctS = HumanStateManager.instance.GetKCt();
+            float kctS = HumanStateManager.instance.GetKCt(); // encourage curiosity when they are doing low amounts of KCT
             if (kctS < kuriManager.robotKC) {
                 TakeKCAction();
             }
             else {
-                kuriController.SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT.Encouragement);
+                if (HumanStateManager.instance.LastTimeHumanDidAction.TimeSince() >= kuriManager.TimeWindow) { // only encrourage if the human isn't doing anything
+                    kuriController.SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT.Encouragement);
+                }
             }
         }
         #endregion

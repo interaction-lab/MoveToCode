@@ -106,7 +106,6 @@ namespace MoveToCode {
                     action = MoveToGoal();
                     break;
                 case 3:
-                    Debug.Log("idk");
                     action = MoveToMisalignedPiece();
                     break;
             }
@@ -148,7 +147,7 @@ namespace MoveToCode {
                 CurAction += actionSeperator + kuriTextManager.CurText;
             }
             onFrameAction = ""; // deals with movement actions, mega hacky
-            return CurAction != "";
+            return CurAction != ""; // note this is logged by the funciton that calls is
         }
         #endregion
 
@@ -184,10 +183,10 @@ namespace MoveToCode {
                 }
             }
             TKTransformManager.Position = end;
-            if(origDist < Vector3.Distance(TKTransformManager.Position, end)){
+            if (origDist < Vector3.Distance(TKTransformManager.Position, end)) {
                 CalculateBezierPath(goalPosition, out end, out bezierCurve, out straightLine); // recalc straightline from new spot
             }
-            
+
             RotateBodyAndHeadAlongPath(objectToLookAt, end + straightLine);
         }
         private void CalculateBezierPath(Vector3 goalPosition, out Vector3 end, out Bezier bezierCurve, out Vector3 straightLine) {
@@ -225,15 +224,17 @@ namespace MoveToCode {
             if (misalignedPieceT == null) {
                 return MoveToUser(); // default to move to user if the goal pieces are all good
             }
-            MoveToMazePiece(misalignedPieceT);
+            MoveToMazePiece(misalignedPieceT, true);
             return onFrameAction;
         }
-        private void MoveToMazePiece(Transform mazePieceT) {
+        private void MoveToMazePiece(Transform mazePieceT, bool isMisaligned = false) { // nothing quite like hacky optional params
             Vector3 newPos = GetPosWDistAway(transform.position, mazePieceT.position, 1f);
             StartCoroutine(LookAtAndGoToAtSpeed(mazePieceT, newPos, ForwardSpeed));
             PointAtObject(mazePieceT, 5f);
-            string mpTypeName = mazePieceT.GetComponent<MazePiece>().MyMPType.Name;
-            KuriTextManager.instance.Addline($"You might need this {mpTypeName} piece of the maze.");
+            if (isMisaligned) {
+                string mpTypeName = mazePieceT.GetComponent<MazePiece>().MyMPType.Name;
+                KuriTextManager.instance.Addline($"You might need this {mpTypeName} piece of the maze.");
+            }
         }
         private Vector3 GetPosWDistAway(Vector3 start, Vector3 end, float distAway) {
             Vector3 dir = end - start;

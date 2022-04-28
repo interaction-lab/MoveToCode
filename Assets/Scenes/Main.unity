@@ -19159,9 +19159,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93ee54678f3fe5e4ca42e57fc871b003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fullInteractionTimeMinutes: 20.2
-  warmUpTimeMinutes: 0.05
-  startKC: -0.5
+  fullInteractionTimeMinutes: 20.1
+  warmUpTimeMinutes: 0.1
+  startKC: 0.5
   numIntervals: 2
   startLow: 1
 --- !u!1 &958217971

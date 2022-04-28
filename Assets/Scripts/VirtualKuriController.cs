@@ -228,7 +228,7 @@ namespace MoveToCode {
             return onFrameAction;
         }
         private void MoveToMazePiece(Transform mazePieceT, bool isMisaligned = false) { // nothing quite like hacky optional params
-            Vector3 newPos = GetPosWDistAway(transform.position, mazePieceT.position, 1f);
+            Vector3 newPos = GetPosWDistAway(transform.position, mazePieceT.position, 1.2f);
             StartCoroutine(LookAtAndGoToAtSpeed(mazePieceT, newPos, ForwardSpeed));
             PointAtObject(mazePieceT, 5f);
             if (isMisaligned) {

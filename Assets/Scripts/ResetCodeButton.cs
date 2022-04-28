@@ -83,6 +83,14 @@ namespace MoveToCode {
             }
         }
 
+        void Update(){
+            if (IsUIButton && MazeManager.instance.IsLocked) {
+                                // make sure my parent is active
+                transform.parent.gameObject.SetActive(true);
+            }
+        }
+
+
         private void OnCodeEnd() {
             if (IsUIButton) {
                 PulseIMG.StartPulse(Color.red);

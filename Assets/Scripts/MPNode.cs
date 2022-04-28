@@ -27,6 +27,10 @@ namespace MoveToCode {
 
         // Deals with symtrical directions
         public bool SameDirClass(CONNECTDIR dir) {
+            // if it is a baby kuri then we only check that the connectors are the same as BK is directional
+            if(MyType.BabyKuri) {
+                return MyDir == dir;
+            }
             return MyDir == dir ||
             (MyDir == CONNECTDIR.North && dir == CONNECTDIR.South) ||
             (MyDir == CONNECTDIR.South && dir == CONNECTDIR.North) ||

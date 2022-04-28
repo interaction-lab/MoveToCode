@@ -68,6 +68,7 @@ namespace MoveToCode {
         public Animator ArmAnimator; // super flimsy
 
         public bool IsPointing = false;
+        string onFrameAction = ""; // hacky quick way to pass the curaction from within actual actions to the update action of the virtual aciton taker
         #endregion
         #region unity
         #endregion
@@ -104,41 +105,40 @@ namespace MoveToCode {
             return action;
         }
         public string MoveToUser() {
-            CurAction += actionSeperator + "MoveToUser";
+            onFrameAction = "MoveToUser";
             Vector3 newPos = GetPosWDistAway(TKTransformManager.Position, UserTransform.position, 1.5f);
             StartCoroutine(LookAtAndGoToAtSpeed(UserTransform, newPos, ForwardSpeed));
-            return CurAction;
+            return onFrameAction;
         }
         public override void TurnTowardsUser() {
             // get distance from user
-            CurAction += actionSeperator + "TurnTowardsUser";
+            onFrameAction = "TurnTowardsUser";
             Vector3 end = GetPosWDistAway(TKTransformManager.Position, UserTransform.position, Vector3.Distance(TKTransformManager.Position, UserTransform.position) - 0.1f);
             StartCoroutine(LookAtAndGoToAtSpeed(UserTransform, end, ForwardSpeed));
         }
         public override string TakeISAAction() {
-            string actionString = ExerciseManager.instance.GetCurExercise().GetComponent<ExerciseInformationSeekingActions>().DoISAAction();
-            loggingManager.UpdateLogColumn(rISACol, actionString);
-            return actionString;
+            onFrameAction = ExerciseManager.instance.GetCurExercise().GetComponent<ExerciseInformationSeekingActions>().DoISAAction();
+            loggingManager.UpdateLogColumn(rISACol, onFrameAction);
+            return onFrameAction;
         }
         public override string PointAtObject(Transform objectOfInterest, float time) {
-            CurAction += actionSeperator + "PointAtObject: " + objectOfInterest.ToString();
+            onFrameAction = "PointAtObject: " + objectOfInterest.ToString();
             StartCoroutine(PointAtObjectOverTime(objectOfInterest, time));
-            return "PointAtObject: " + objectOfInterest.ToString();
+            return onFrameAction;
         }
 
         #endregion
         #region protected
         protected override bool UpdateCurrentActionString() {
             string doingAnim = Anim.GetCurrentAnimatorClipInfo(0)[0].clip.name;
-            CurAction = "";
+            CurAction = onFrameAction;
             if (doingAnim != "neutral") {
-                CurAction = actionSeperator + doingAnim;
+                CurAction += actionSeperator + doingAnim;
             }
             if (kuriTextManager.IsTalking) {
                 CurAction += actionSeperator + kuriTextManager.CurText;
             }
-
-            // TODO: Movement when doing the movement actions
+            onFrameAction = ""; // deals with movement actions, mega hacky
             return CurAction != "";
         }
         #endregion

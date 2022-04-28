@@ -52,6 +52,8 @@ namespace MoveToCode {
             manipHandler.AllowFarManipulation = true;
             manipHandler.OneHandRotationModeFar = ManipulationHandler.RotateInOneHandType.FaceAwayFromUser;
             manipHandler.OneHandRotationModeNear = ManipulationHandler.RotateInOneHandType.FaceAwayFromUser;
+            manipHandler.ConstraintOnMovement = MovementConstraintType.FixDistanceFromHead;
+
         }
 
         private void AddSnapColliderComponents() {

@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using TMPro;
 
 namespace MoveToCode {
     public class SolMazeCheckMark : Singleton<SolMazeCheckMark> {
@@ -17,6 +18,7 @@ namespace MoveToCode {
             }
         }
         public UnityEvent OnMazeCorrect, OnMazeIncorrect;
+        public TextMeshProUGUI mazesMatchText;
         #endregion
 
         #region unity
@@ -47,6 +49,10 @@ namespace MoveToCode {
                 AudioManager.instance.PlayReleaseClick();
                 OnMazeIncorrect.Invoke();
             }
+        }
+
+        public void SetFreePlayText() {
+            mazesMatchText.text = "Free Play!";
         }
         #endregion
 

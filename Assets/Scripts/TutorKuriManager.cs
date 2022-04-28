@@ -91,12 +91,12 @@ namespace MoveToCode {
             if (!usePhysicalKuri) {
                 kuriController.GetComponent<VirtualKuriController>().TurnTowardsUser();
             }
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(5);
             if (!usePhysicalKuri) {
                 kuriController.GetComponent<VirtualKuriController>().MoveToUser();
             }
             KuriTextManager.instance.Addline("Build a maze that matches the one on your screen."); // move this out to the exercise to say it
-            yield return new WaitForSeconds(InteractionManager.instance.MinToSeconds(InteractionManager.instance.warmUpTimeMinutes) - 3f);
+            yield return new WaitForSeconds(InteractionManager.instance.MinToSeconds(InteractionManager.instance.warmUpTimeMinutes) - 5f);
             inStartUp = false;
         }
 

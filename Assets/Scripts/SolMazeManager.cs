@@ -64,7 +64,6 @@ namespace MoveToCode {
                 LoggingManagerInstance.AddLogColumn(solutionMazeCol, "");
                 hasBeenInitialized = true;
                 CurActiveSolMaze.gameObject.SetActive(true);
-                ExerciseManager.instance.OnExerciseCorrect.AddListener(OnExerciseCorrect);
                 ExerciseManager.instance.OnCyleNewExercise.AddListener(OnCyleNewExercise);
             }
         }
@@ -91,19 +90,18 @@ namespace MoveToCode {
             LoggingManagerInstance.UpdateLogColumn(solutionMazeCol, curActiveSolMaze.MyMazeGraph.ToString());
         }
 
-        private void OnExerciseCorrect() {
-            // cylce to next sol maze
-
-        }
-
         private void OnCyleNewExercise() {
             int curIndex = AllSolMazes.IndexOf(CurActiveSolMaze);
-            if (curIndex + 1 < AllSolMazes.Count) {
+            if (curIndex == AllSolMazes.Count - 1) {
+                // we are at freeplay
+                SolMazeCheckMark.instance.SetFreePlayText();
+            }
+            else if (curIndex + 1 < AllSolMazes.Count) {
                 curActiveSolMaze.gameObject.SetActive(false);
                 curActiveSolMaze = AllSolMazes[curIndex + 1];
                 curActiveSolMaze.gameObject.SetActive(true);
+                SolMazeCheckMark.instance.ToggleCheckMark();
             }
-            SolMazeCheckMark.instance.ToggleCheckMark();
         }
         #endregion
     }

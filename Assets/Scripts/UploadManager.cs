@@ -6,7 +6,7 @@ using UnityEngine;
 using Firebase;
 using System.Threading.Tasks;
 using System.Threading;
-using Firebase.Storage;
+//using Firebase.Storage;
 using Firebase.Extensions;
 using System;
 using UnityEngine.UI;
@@ -93,6 +93,7 @@ namespace MoveToCode {
         /// </summary>
         private void LogCSVToFirebase() {
             progressText.text = "Started upload";
+            /*
             var storage = FirebaseStorage.DefaultInstance;
             /// <value>count is the version number of the file. It keeps track of number of times the user uploads the same filename in one session.</value>
             var csvRef = storage.GetReference($"/csvfiles/({count}){LoggingManager.instance.getCSVFileName()}");
@@ -118,6 +119,7 @@ namespace MoveToCode {
                     urlButton.OpenPostSurveyURL();
                 }
             });
+            */
         }
     }
 }

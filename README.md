@@ -7,8 +7,9 @@ MoveToCode is built for the [Microsoft Hololens 2](https://www.microsoft.com/en-
 
 Doxygen documentation can be found here: https://interaction-lab.github.io/MoveToCode/html/index.html
 
-## Videos
+## Videos/Gifs
 - [MoveToCode + a robot tutor using the Hololens 2](https://www.youtube.com/watch?v=s7udZXa2wEw) - this is when students coded text based exercises. We have since moved to phone based AR coding a robot (video coming soon).
+- ![](Images/ipad0.gif) MoveToCode mobile captured from the iPad's point of view. In pairs, students first build mazes out of physical pieces of paper. Once the mazes match, students program the smaller robot to complete these mazes. Students must move around to complete the above tasks presenting programming in a physically situated environment.
 
 ## Papers and Study Commits
 

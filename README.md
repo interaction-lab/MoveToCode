@@ -14,9 +14,14 @@ Doxygen documentation can be found here: https://interaction-lab.github.io/MoveT
 
 ## Papers and Study Commits
 
+M2C Mobile Elementary Pilot next day outreach changes: [88c7fcbeee11265823d3d979b8108003c1b9a505](https://github.com/interaction-lab/MoveToCode/commit/88c7fcbeee11265823d3d979b8108003c1b9a505)
 
+---
 
-[Augmented Reality Appendages for Robots: Design Considerations and Recommendations for Maximizing Social and Functional Perception](https://tgroechel.github.io/publications/appendages.pdf)
+M2C Mobile Elementary Pilot: [b3780ab4b00eabf99acdcc934e9d9d88c6489ddb](https://github.com/interaction-lab/MoveToCode/commit/b3780ab4b00eabf99acdcc934e9d9d88c6489ddb)
+
+---
+[Augmented Reality Appendages for Robots: Design Considerations and Recommendations for Maximizing Social and Functional Perception](https://tgroechel.github.io/publications/appendages.pdf) (Commit:[d459dcc9a1fe267fa805064aabaf4a51934ca3f1](https://github.com/interaction-lab/MoveToCode/commit/d459dcc9a1fe267fa805064aabaf4a51934ca3f1) )
 ```
 @inproceedings{goktan2022augmented,
   title={Augmented Reality Appendages for Robots: Design Considerations and Recommendations for Maximizing Social and Functional Perception},
@@ -25,8 +30,9 @@ Doxygen documentation can be found here: https://interaction-lab.github.io/MoveT
   year={2022}
 }
 ```
-
+---
 ![](Images/newconcise.png)
+
 Commit for all papers below this: [0765f1d1ab46373f1bc1be90d9d5b07fafc2a533](https://github.com/interaction-lab/MoveToCode/commit/0765f1d1ab46373f1bc1be90d9d5b07fafc2a533)
 
 [Kinesthetic Curiosity: Towards Personalized Embodied Learning with a Robot Tutor Teaching Programming in Mixed Reality](https://robotics.usc.edu/publications/media/uploads/pubs/pubdb_1110_b3d5df607edd4a42993486ba993c6bf7.pdf)

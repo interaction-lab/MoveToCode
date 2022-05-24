@@ -26,7 +26,15 @@ namespace MoveToCode {
                 return _userTransform;
             }
         }
-
+        ExerciseManager exerciseManagerInstance;
+        ExerciseManager ExerciseManagerInstance {
+            get {
+                if (exerciseManagerInstance == null) {
+                    exerciseManagerInstance = ExerciseManager.instance;
+                }
+                return exerciseManagerInstance;
+            }
+        }
         public HashSet<CodeBlock> GetAllCodeBlocks() {
             if (codeBlocks == null) {
                 codeBlocks = new HashSet<CodeBlock>();
@@ -62,7 +70,7 @@ namespace MoveToCode {
             if (!hasBeenInitialized) {
                 hasBeenInitialized = true;
                 LoggingManagerInstance.AddLogColumn(codeBlockJsonCol, "");
-                ExerciseManager.instance.OnCyleNewExercise.AddListener(LogAllCodeBlocks);
+                ExerciseManagerInstance.OnCyleNewExercise.AddListener(OnCycleNewExercise);
                 LogAllCodeBlocks();
             }
             PositionNextToBKMazePiece();
@@ -111,6 +119,10 @@ namespace MoveToCode {
         #endregion
 
         #region private
+        private void OnCycleNewExercise(){
+            LogAllCodeBlocks();
+            StartCodeBlock.instance.ResetToLocalStartLocation();
+        }
         private void SetCompatibleColliderState(CodeBlock cIn, bool desiredActiveState) {
             IArgument internalArg = cIn.GetMyIArgument();
             foreach (SnapCollider sc in GetAllSnapColliders()) {
@@ -148,7 +160,7 @@ namespace MoveToCode {
             float bottomToCenter = centerPos.y - lowestPos.y;
             float rightToCenter = centerPos.x - mostLeftPos.x;
             // move code blocks close to BKMazePiece
-            transform.position = UserTransform.position + UserTransform.forward * 0.75f + UserTransform.right * 0.2f + UserTransform.up * 0.2f;
+            transform.position = UserTransform.position + UserTransform.forward * 0.75f; // + UserTransform.right * 0.2f + UserTransform.up * 0.2f;
             //MazeManager.instance.BKMazePiece.transform.position +
                                 //(Vector3.up * .25f + Vector3.right * .2f);
 

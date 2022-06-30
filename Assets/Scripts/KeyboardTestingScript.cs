@@ -48,7 +48,6 @@ public class KeyboardTestingScript : MonoBehaviour {
             //anim.SetTrigger("HighFive");
             //(TutorKuriManager.instance.kuriController as VirtualKuriController).GoToUser();
             TutorKuriManager.instance.kuriController.TakeMovementAction();
-
         }
         if (Input.GetKeyDown(KeyCode.Alpha0)) {
             foreach (CodeBlock cb in CodeBlockManager.instance.GetAllCodeBlocks()) {

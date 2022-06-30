@@ -8,6 +8,9 @@ namespace MoveToCode {
         #endregion
 
         #region unity
+        void Awake() {
+            IsAnchored = false; // super hacky workaround for MazePiece adding the TrashButtons
+        }
         #endregion
 
         #region public

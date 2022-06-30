@@ -31,6 +31,11 @@ namespace MoveToCode {
             return StartInstruction.startString;
         }
 
+        public void ResetToLocalStartLocation(){
+            transform.localPosition = Vector3.zero;
+            transform.localRotation = Quaternion.identity;
+        }
+
         protected override void SetMyBlockInternalArg() {
             myBlockInternalArg = new StartInstruction(this);
         }

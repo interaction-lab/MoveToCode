@@ -47,14 +47,13 @@ namespace MoveToCode {
         #endregion
 
         #region unity
-        private void Awake() {
-            ARTrackedImageManagerInstance.maxNumberOfMovingImages = ResourcePathConstants.mazeObjectDict.Count;
-        }
         private void OnEnable() {
             ARTrackedImageManagerInstance.trackedImagesChanged += ImageChanged;
         }
         private void OnDisable() {
-            ARTrackedImageManagerInstance.trackedImagesChanged -= ImageChanged;
+            if (ARTrackedImageManagerInstance != null) {
+                ARTrackedImageManagerInstance.trackedImagesChanged -= ImageChanged;
+            }
         }
         #endregion
 

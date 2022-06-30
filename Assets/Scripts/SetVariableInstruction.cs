@@ -36,5 +36,15 @@ namespace MoveToCode {
                 " to ",
                 GetArgument(CommonSCKeys.Value)?.DescriptiveInstructionToString());
         }
+
+        public override string ToJSON() {
+            return string.Join(",", new string[] {
+                "{\"name\": \"", ToString() + "\"",
+                "\"type\": \"", GetType().ToString(), "\"",
+                "\"args\":{\"var\": ", GetArgumentJSON(CommonSCKeys.Variable),
+                "\"to\": ", GetArgumentJSON(CommonSCKeys.Value),
+                "\"next\": ", GetArgumentJSON(CommonSCKeys.Next)+"}}"
+            });
+        }
     }
 }

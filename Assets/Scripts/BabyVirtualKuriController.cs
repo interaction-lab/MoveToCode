@@ -10,9 +10,33 @@ namespace MoveToCode {
         #region members
         public string CurMovementAction = "";
         public static string babyKuriMovementActionCol = "babyKuriMovementAction";
-        private float moveSpeed = 1f, turnSpeed = 50f;
+        private float moveSpeed = 1f, turnSpeed = 200f; // need to be fast for now as everything is under a 1 window time slot, super flimsy
         public AnimationCurve speedCurve;
-        public MeshRenderer bodyPlateRend;
+        List<MeshRenderer> _bodyPlatesToChangeColor;
+        List<MeshRenderer> BodyPlatesToChangeColor {
+            get {
+                if (_bodyPlatesToChangeColor == null) {
+                    _bodyPlatesToChangeColor = new List<MeshRenderer>();
+                    foreach (KuriColorChangingPlate kccp in GetComponentsInChildren<KuriColorChangingPlate>(true)) {
+                        _bodyPlatesToChangeColor.Add(kccp.MeshRend);
+                    }
+                }
+                return _bodyPlatesToChangeColor;
+            }
+        }
+
+        List<Color> origColors;
+        List<Color> OrigColors {
+            get {
+                if (origColors == null) {
+                    origColors = new List<Color>();
+                    foreach (MeshRenderer mr in BodyPlatesToChangeColor) {
+                        origColors.Add(mr.material.color);
+                    }
+                }
+                return origColors;
+            }
+        }
 
         BabyKuriManager bkm;
         BabyKuriManager babyKuriManager {
@@ -93,26 +117,32 @@ namespace MoveToCode {
 
         public void ResetToOrigState() {
             BKTransformManager.ResetToOriginalState();
+            for (int i = 0; i < BodyPlatesToChangeColor.Count; i++) {
+                BodyPlatesToChangeColor[i].material.color = OrigColors[i];
+            }
         }
 
         public void SetColor(Color color) {
-            bodyPlateRend.material.color = color;
+            foreach (MeshRenderer mr in BodyPlatesToChangeColor) {
+                mr.material.color = color;
+            }
         }
 
         #endregion
 
         #region private
         private void StartNextMovement() {
-            if (!MoveQueue.Empty() && !IsMoving) {
+            if (!MoveQueue.Empty() && !IsMoving && !KuriIsOffRails) {
                 KeyValuePair<Type, float> p = MoveQueue.Dequeue();
                 if (p.Key == typeof(CodeBlockEnums.Move)) {
-                    // Note this only works for moving forward, not backward, will fix later
                     CodeBlockEnums.Move move = p.Value > 0 ? CodeBlockEnums.Move.Forward : CodeBlockEnums.Move.Backward;
                     MazePiece potentialNextPiece = MazeManagerInstance.GetPotentialNextMP(move);
-                    if(potentialNextPiece == null){
-                        throw new Exception($"Kuri moving {move.ToString()}, but no next piece");
+                    if (potentialNextPiece == null) {
+                        ThrowKuriOffTheRails(p.Value > 0);
                     }
-                    StartCoroutine(GoToPosition(MazeManagerInstance.GetPotentialNextMP(move).Center, move == CodeBlockEnums.Move.Forward));
+                    else {
+                        StartCoroutine(GoToPosition(potentialNextPiece.Center, move == CodeBlockEnums.Move.Forward, false));
+                    }
                 }
                 else if (p.Key == typeof(CodeBlockEnums.Turn)) {
                     StartCoroutine(TurnToAngle(Quaternion.Euler(BKTransformManager.KuriRot.eulerAngles + BKTransformManager.Up * p.Value), p.Value > 0));
@@ -120,24 +150,39 @@ namespace MoveToCode {
             }
         }
 
+        public bool KuriIsOffRails = false;
+        private void ThrowKuriOffTheRails(bool forward) {
+            float dist = forward ? 0.34f : -0.34f;
+            KuriIsOffRails = true;
+            StartCoroutine(
+                GoToPosition(BKTransformManager.KuriPos +
+                             Vector3.down +
+                             (forward ? BKTransformManager.Forward : BKTransformManager.Backward) *
+                             dist,
+                             forward,
+                             true)
+                );
+        }
+
         private float goalDistDelta = 0.02f;
-        public IEnumerator GoToPosition(Vector3 goal, bool forward) {
+        public IEnumerator GoToPosition(Vector3 goal, bool forward, bool wasError) {
             if (IsMoving) {
                 throw new InvalidOperationException("Baby Kuri already moving, check moveQueue queueing code");
             }
             CurMovementAction = MoveLogString + (forward ? "FORWARD" : "BACKWARD") + " to " + goal.ToString();
-
+            if (wasError) {
+                AudioManager.instance.PlaySoundAtObject(gameObject, AudioManager.whistleFallAudioClip);
+                KuriIsOffRails = true;
+            }
             // need to use this curve nicely for different connections in the maze
-            Bezier curve = new Bezier(Bezier.BezierType.Quadratic, new Vector3[]{BKTransformManager.KuriPos, BKTransformManager.KuriPos + BKTransformManager.Up * 0.5f, goal, goal});
-            float t = 0f, totalTime = 1f;
-            while (Vector3.Distance(BKTransformManager.KuriPos, goal) > goalDistDelta) {
-                BKTransformManager.KuriPos = curve.GetBezierPoint(t/totalTime);
+            Bezier curve = new Bezier(Bezier.BezierType.Quadratic, new Vector3[] { BKTransformManager.KuriPos, BKTransformManager.KuriPos + BKTransformManager.Up * 0.5f, goal, goal });
+            float t = 0f, totalTime = 0.9f;
+            while (Vector3.Distance(BKTransformManager.KuriPos, goal) > goalDistDelta && t < totalTime) {
+                BKTransformManager.KuriPos = curve.GetBezierPoint(t / totalTime);
                 t += Time.deltaTime;
                 yield return null;
             }
-            if (IsMoving) {
-                BKTransformManager.KuriPos = goal;
-            }
+            BKTransformManager.KuriPos = goal;
             ResetCurMovementAction();
             StartNextMovement();
         }
@@ -157,9 +202,7 @@ namespace MoveToCode {
                 curDist = Quaternion.Angle(BKTransformManager.KuriRot, goal);
                 yield return null;
             }
-            if (IsMoving) {
-                BKTransformManager.KuriRot = goal;
-            }
+            BKTransformManager.KuriRot = goal;
             ResetCurMovementAction();
             StartNextMovement();
         }

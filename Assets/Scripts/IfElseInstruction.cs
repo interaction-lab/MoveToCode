@@ -21,5 +21,8 @@
         public override string DescriptiveInstructionToString() {
             return ToString(); // TODO fix one day
         }
+        public override string ToJSON() {
+            throw new System.NotImplementedException(); // TODO: fix one day
+        }
     }
 }

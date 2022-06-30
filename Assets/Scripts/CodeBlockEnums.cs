@@ -2,11 +2,13 @@ namespace MoveToCode {
     public class CodeBlockEnums {
         public enum Move {
             Forward,
-            Backward
+            Backward,
+            None
         }
         public enum Turn {
             Right,
-            Left
+            Left,
+            None
         }
     }
 }

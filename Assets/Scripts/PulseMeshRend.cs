@@ -16,15 +16,29 @@ namespace MoveToCode {
             }
         }
 
+        Material _mat;
+        Material MyMaterial {
+            get {
+                if (_mat == null) {
+                    _mat = new Material(MyRend.material);
+                    MyRend.material = _mat;
+                }
+                return _mat;
+            }
+        }
+
         public bool IsPulsing = false;
         #endregion
 
         #region unity
+        private void OnDisable() {
+            MyMaterial.color = origColor;
+        }
         #endregion
 
         #region public
-        public void StartPulse() {
-            StartCoroutine(PulseRoutine());
+        public void StartPulse(Color _c) {
+            StartCoroutine(PulseRoutine(_c));
         }
 
         public void StopPulse() {
@@ -33,16 +47,16 @@ namespace MoveToCode {
         #endregion
 
         #region private
-        IEnumerator PulseRoutine() {
+        IEnumerator PulseRoutine(Color _c) {
             if (IsPulsing) {
                 yield break;
             }
             IsPulsing = true;
             while (IsPulsing) {
-                MyRend.material.color = Color.Lerp(origColor, Color.red, Mathf.PingPong(Time.time, 1));
+                MyMaterial.color = Color.Lerp(origColor, _c, Mathf.PingPong(Time.time, 1));
                 yield return null;
             }
-            MyRend.material.color = origColor;
+            MyMaterial.color = origColor;
         }
         #endregion
     }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace MoveToCode {
     public class MazeGoal : MonoBehaviour {
@@ -23,12 +24,27 @@ namespace MoveToCode {
                 return ps;
             }
         }
+
+        MazeManager mazeManager;
+        MazeManager MazeManagerInstance {
+            get {
+                if (mazeManager == null) {
+                    mazeManager = MazeManager.instance;
+                }
+                return mazeManager;
+            }
+        }
         #endregion
 
         #region unity
+        bool hasBeenInitialized = false;
         private void OnEnable() {
             if (transform.name.Contains("sol")) {
                 return; // Hackiest thing ever that defintely won't lead to problems down the road
+            }
+            if (!hasBeenInitialized) {
+                ExerciseManager.instance.OnExerciseCorrect.AddListener(OnExerciseCorrect);
+                hasBeenInitialized = true;
             }
             MyCollider.enabled = true;
             MyCollider.isTrigger = true;
@@ -40,21 +56,17 @@ namespace MoveToCode {
         private void OnDisable() {
             MyCollider.enabled = false;
         }
-
-        private void OnTriggerEnter(Collider other) {
-            if (other.name == "BKBody" && !Interpreter.instance.CodeIsAtStart()) {
-                KuriTextManager.instance.Addline("You win!");
-                Particles.Play();
-                AudioManager.instance.PlaySoundAtObject(transform, AudioManager.correctAudioClip);
-                // jank for now and will make this much better later, this is the OnWin event basically
-            }
-        }
         #endregion
 
         #region public
         #endregion
 
         #region private
+        private void OnExerciseCorrect() {
+            KuriTextManager.instance.Addline("Maze completed!");
+            Particles.Play();
+            AudioManager.instance.PlaySoundAtObject(transform, AudioManager.correctAudioClip);
+        }
         #endregion
     }
 }

@@ -69,9 +69,28 @@ namespace MoveToCode {
                 return _bodyPlateRend;
             }
         }
+
+        Transform _bkMazePieceTransform;
+        public Transform BKMazePieceTransform {
+            get {
+                if (_bkMazePieceTransform == null) {
+                    _bkMazePieceTransform = FindObjectOfType<BabyKuriTrackBeh>().transform;
+                }
+                return _bkMazePieceTransform;
+            }
+        }
         #endregion
 
         #region unity
+#if UNITY_EDITOR
+        private void Update() {
+            // move babykuri to the BabyKuriTrackBeh piece unless tracking
+            if (ARTrackingManager.instance.IsTracking) {
+                KuriPos = BKMazePieceTransform.position;
+                KuriRot = BKMazePieceTransform.rotation;
+            }
+        }
+#endif
         #endregion
 
         #region public
@@ -88,22 +107,6 @@ namespace MoveToCode {
             transform.position = OriginalPosition;
             transform.rotation = OriginalRotation;
             BodyPlateRend.material.color = OriginalColor;
-        }
-
-        public MazePiece GetCurrentMazePiece() {
-            // shoot raycast down to find maze piece
-            // only use MazePiece layer mask
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, Down, out hit, Mathf.Infinity, LayerMask.GetMask(LayerMaskConstants.MAZEPIECE))) {
-                Debug.Log("hit " + hit.collider.gameObject.name);
-                return hit.collider.GetComponent<MazePiece>();
-            }
-            return null; // if no maze piece found
-        }
-
-        private void Update() {
-            // show downward raycast
-            Debug.DrawRay(transform.position, -Up, Color.red);
         }
         #endregion
 

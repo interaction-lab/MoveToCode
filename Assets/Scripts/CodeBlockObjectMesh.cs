@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
+using System.Linq;
 
 namespace MoveToCode {
     public abstract class CodeBlockObjectMesh : MonoBehaviour {
@@ -24,7 +25,7 @@ namespace MoveToCode {
         public void ConfigureOutlines() {
             foreach (MeshOutline mo in meshOutlineList) {
                 mo.OutlineMaterial = GetOutlineMaterial();
-                mo.OutlineWidth = 0.05f;
+                mo.OutlineWidth = 0.01f;
                 mo.enabled = false;
                 Rigidbody rigidBody = mo.gameObject.AddComponent<Rigidbody>();
                 rigidBody.isKinematic = true;

@@ -14,6 +14,8 @@ namespace MoveToCode {
 
         public float LastTimeHumanDidAction { get; set; } = 0f;
 
+        public AnimationCurve actionDecayCurve;
+
         float curiosity_t = 0f, movement_t = 0f, curiosity_average = 0f, movement_average = 0f, curiosity_SSE = 0f, movement_SSE = 0f;
         Queue<float> infoSeekingActionQueue;
         Queue<Vector3> headposeQueue;
@@ -28,7 +30,6 @@ namespace MoveToCode {
             LoggingManager.instance.AddLogColumn(humanMovetCol, "");
             LoggingManager.instance.AddLogColumn(humanCurZScore, "");
             LoggingManager.instance.AddLogColumn(humanCurAction, "");
-            //StartCoroutine(WaitForScoresToAverageOut());
         }
 
         IEnumerator WaitForScoresToAverageOut() {
@@ -95,7 +96,7 @@ namespace MoveToCode {
         }
 
         void Update() {
-            if(IsDoingAction){
+            if (IsDoingAction) {
                 LastTimeHumanDidAction = Time.time;
                 LoggingManager.instance.UpdateLogColumn(humanCurAction, ManipulationLogger.CurAction); // TODO: get the actual aciton
             }
@@ -155,20 +156,88 @@ namespace MoveToCode {
         }
 
         // TODO: make this about novelty of action as opposed to just any action
+        Dictionary<string, float> _lastTimeDidActionDict;
+        Dictionary<string, float> LastTimeDidActionDict {
+            get {
+                if (_lastTimeDidActionDict == null) {
+                    _lastTimeDidActionDict = new Dictionary<string, float>();
+                }
+                return _lastTimeDidActionDict;
+            }
+        }
+
+        Dictionary<string, int> _numTimesDidAction;
+        Dictionary<string, int> NumTimesDidAction {
+            get {
+                if (_numTimesDidAction == null) {
+                    _numTimesDidAction = new Dictionary<string, int>();
+                }
+                return _numTimesDidAction;
+            }
+        }
+        int maxNumTimesDidAction = 0;
+
+        public void UpdateNumTimesDidAction(string action) {
+            if (!NumTimesDidAction.ContainsKey(action)) {
+                NumTimesDidAction[action] = 0;
+            }
+            NumTimesDidAction[action]++;
+            if (NumTimesDidAction[action] > maxNumTimesDidAction) {
+                maxNumTimesDidAction = NumTimesDidAction[action];
+            }
+        }
+
+
+        private float GetTimeSinceLastAction(string action) {
+            if (!LastTimeDidActionDict.ContainsKey(action)) {
+                LastTimeDidActionDict[action] = Time.time;
+                return -1f;
+            }
+            float timeSinceLastAction = Time.time - LastTimeDidActionDict[action];
+            if (timeSinceLastAction >= timeWindow) { // only update if action is outside of window
+                LastTimeDidActionDict[action] = Time.time;
+            }
+            return timeSinceLastAction;
+        }
+
+        private float GetNumTimesDidAction(string action) {
+            UpdateNumTimesDidAction(action);
+            return NumTimesDidAction[action];
+        }
+
+        float maxCuriosityScoreForTimestep = 2f;
+        float longestTimeAllowedForAction = 1f * 60f; // 2.5 minutes
+        private float GetCuriosityScore(string action) {
+            float timeSinceLastAction = GetTimeSinceLastAction(action);
+            if (timeSinceLastAction < 0) {
+                GetNumTimesDidAction(action); // update num times did action to 1
+                return maxCuriosityScoreForTimestep;
+            }
+            if (timeSinceLastAction < timeWindow) {
+                // this is the case where we already have the action in the queue
+                return 0;
+            }
+            float numTimesDidAction = GetNumTimesDidAction(action);
+            float p1 = 1 - (numTimesDidAction / maxNumTimesDidAction);
+            float p2 = Mathf.Min((timeSinceLastAction * timeSinceLastAction) / (longestTimeAllowedForAction * longestTimeAllowedForAction), 1f);
+            return p1 + p2;
+        }
+
+
+        // possibly the condition will instead be about how the curiosity score works between the two different approaches (old being any action and new taking into account habituation)
         private void UpdateCuriosity(int len) {
             while (GetInforSeekingActionQueue().Count > len) {
                 curiosity_t -= infoSeekingActionQueue.Dequeue();
             }
-            int result = 0;
-            if (LoggingManager.instance.GetValueInRowAt(ManipulationLoggingManager.GetColName()) != "") {
-                result = 1;
-            }
-            else if (LoggingManager.instance.GetValueInRowAt(SnapLoggingManager.GetSnapToColName()) != "") {
-                result = 1;
-            }
-            else if (LoggingManager.instance.GetValueInRowAt(SnapLoggingManager.GetSnapRemoveFromColName()) != "") {
-                result = 1;
-            }
+
+            // make these about how long ago the action was performed
+            string curstr = string.Join("~",
+                LoggingManager.instance.GetValueInRowAt(ManipulationLoggingManager.GetColName()),
+                LoggingManager.instance.GetValueInRowAt(SnapLoggingManager.GetSnapToColName()),
+                LoggingManager.instance.GetValueInRowAt(SnapLoggingManager.GetSnapRemoveFromColName()));
+
+            float result = GetCuriosityScore(curstr);
+
             curiosity_t += result;
 
             float et = curiosity_t - curiosity_average;
@@ -177,13 +246,11 @@ namespace MoveToCode {
 
             infoSeekingActionQueue.Enqueue(result);
 
-            LoggingManager.instance.UpdateLogColumn(humanCurtCol, curiosity_t.ToString("F3"));
+            LoggingManager.instance.UpdateLogColumn(humanCurtCol, curiosity_t.ToString("F5"));
             float zCur = GetZScoreCuriosity();
             if (!float.IsInfinity(zCur) && !float.IsNaN(zCur)) {
-                LoggingManager.instance.UpdateLogColumn(humanCurZScore, zCur.ToString("F3"));
+                LoggingManager.instance.UpdateLogColumn(humanCurZScore, zCur.ToString("F5"));
             }
         }
-
-
     }
 }

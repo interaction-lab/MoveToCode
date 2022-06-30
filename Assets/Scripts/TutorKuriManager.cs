@@ -8,6 +8,7 @@ using static MoveToCode.KuriController;
 
 namespace MoveToCode {
     public class TutorKuriManager : Singleton<TutorKuriManager> {
+        #region members
         [Range(-3.0f, 3.0f)]
         public float robotKC;
         [HideInInspector]
@@ -49,7 +50,7 @@ namespace MoveToCode {
                         kuriAIBackingVar = FindObjectOfType<KuriUtilityAI>().GetComponent<KuriUtilityAI>();
                     }
                     else if (kuriAIToUse == KuriAI.KURIAI.RuleBased) {
-                        kuriAIBackingVar = FindObjectOfType<KuriRuleBasedAI>().GetComponent<KuriUtilityAI>();
+                        kuriAIBackingVar = FindObjectOfType<KuriRuleBasedAI>().GetComponent<KuriRuleBasedAI>();
                     }
                 }
                 return kuriAIBackingVar;
@@ -61,7 +62,9 @@ namespace MoveToCode {
         bool wasKuriDoingActionLastTick;
 
         LoggingManager loggingManager;
+        #endregion
 
+        #region unity
         private void Awake() {
             OptionSelectionManager.instance.Init();
             loggingManager = LoggingManager.instance;
@@ -72,31 +75,28 @@ namespace MoveToCode {
         private void Start() {
             StartCoroutine(StartRoutine());
         }
+        #endregion
 
+        #region public
         public void SetKC(float kcRIn) {
             robotKC = kcRIn;
             LoggingManager.instance.UpdateLogColumn(robotKCLevel, robotKC.ToString("F3"));
         }
+        #endregion
 
+        #region private
         IEnumerator StartRoutine() {
             inStartUp = true;
             yield return null;
-            yield return new WaitForSeconds(3);
-            kuriController.DoAnimationAction(EMOTIONS.close_eyes);
-            yield return new WaitForSeconds(InteractionManager.instance.MinToSeconds(InteractionManager.instance.warmUpTimeMinutes) - 3f);
-            kuriController.DoAnimationAction(EMOTIONS.happy);
-            inStartUp = false;
-            if (kuriAI == null) {
-                SetUpMoveableInvisibleKuri();
+            if (!usePhysicalKuri) {
+                kuriController.GetComponent<VirtualKuriController>().TurnTowardsUser();
             }
-        }
-
-        private void SetUpMoveableInvisibleKuri() {
-            //Transform kuri_t = transform.GetChild(1);
-            ManipulationHandler manipHandler = gameObject.AddComponent<ManipulationHandler>();
-            //manipHandler.TwoHandedManipulationType = ManipulationHandler.TwoHandedManipulation.MoveRotate;
-            // TurnOffMeshRenderers(kuri_t);
-
+            yield return new WaitForSeconds(5);
+            if (!usePhysicalKuri) {
+                kuriController.GetComponent<VirtualKuriController>().MoveToUser();
+            }
+            yield return new WaitForSeconds(InteractionManager.instance.MinToSeconds(InteractionManager.instance.warmUpTimeMinutes) - 5f);
+            inStartUp = false;
         }
 
         void TurnOffAllMeshRenderers(Transform[] goArr) {
@@ -128,22 +128,26 @@ namespace MoveToCode {
             Tick();
         }
 
+        void LateUpdate() {
+            UpdateEndOfTickVariables();
+        }
+
         private void Tick() {
             if (inStartUp) {
                 return;
             }
             kuriAI?.Tick();
+        }
+
+        void UpdateEndOfTickVariables() {
             if (!wasKuriDoingActionLastTick && kuriController.IsDoingAction) {
                 TimeLastActionStarted = Time.time;
             }
             else if (wasKuriDoingActionLastTick && !kuriController.IsDoingAction) {
                 TimeLastActionEnded = Time.time;
             }
-            UpdateEndOfTickVariables();
-        }
-
-        void UpdateEndOfTickVariables() {
             wasKuriDoingActionLastTick = kuriController.IsDoingAction;
         }
+        #endregion
     }
 }

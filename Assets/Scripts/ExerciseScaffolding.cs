@@ -10,10 +10,10 @@ namespace MoveToCode {
                 TutorKuriManager.instance.kuriController.SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT.Encouragement);
                 return;
             }
-            KuriTextManager.instance.Addline(scafoldDialogue[curScaffold++]);
+            KuriTextManager.instance.Addline(scafoldDialogue[curScaffold++], KuriTextManager.PRIORITY.high); // high so that it does disappear
         }
 
-        public void SetScaffoldDialogue(string [] dialogue) {
+        public void SetScaffoldDialogue(string[] dialogue) {
             scafoldDialogue = dialogue;
         }
     }

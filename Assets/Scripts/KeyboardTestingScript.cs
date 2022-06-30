@@ -40,23 +40,19 @@ public class KeyboardTestingScript : MonoBehaviour {
         anim = GetComponent<Animator>();
     }
 
-
+    public void TestButton() {
+        Debug.Log("Button pressed");
+    }
     void Update() {
         if (Input.GetKeyDown("h")) {
             //anim.SetTrigger("HighFive");
-            anim.SetTrigger("happy");
-
+            //(TutorKuriManager.instance.kuriController as VirtualKuriController).GoToUser();
+            TutorKuriManager.instance.kuriController.TakeMovementAction();
         }
         if (Input.GetKeyDown(KeyCode.Alpha0)) {
-            MazeGraph myMaze = new MazeGraph(MazeManager.instance.BKMazePiece);
-            MazeGraph solMaze = new MazeGraph(SolMazeManager.instance.BKMazePiece);
-            foreach (MPEdge edge in myMaze.GetAllEdges()) {
-                Debug.Log(edge);
+            foreach (CodeBlock cb in CodeBlockManager.instance.GetAllCodeBlocks()) {
+                Debug.Log(cb.GetMyIArgument().ToJSON());
             }
-            foreach (MPEdge edge in solMaze.GetAllEdges()) {
-                Debug.Log(edge);
-            }
-            Debug.Log("ContainsSubgraph: " + myMaze.ContainsSubgraph(solMaze));
         }
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
             Debug.Log(MazeManager.instance.GetPotentialNextMP(CodeBlockEnums.Move.Forward)?.Center);

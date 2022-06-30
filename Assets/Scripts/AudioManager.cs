@@ -2,7 +2,7 @@
 
 namespace MoveToCode {
     public class AudioManager : Singleton<AudioManager> {
-        public static AudioClip correctAudioClip, incorrectAudioClip, poofAudioClip, popAudioClip, snapAudioClip, spwanAudioClip;
+        public static AudioClip correctAudioClip, incorrectAudioClip, poofAudioClip, popAudioClip, snapAudioClip, spwanAudioClip, whistleFallAudioClip;
         public AudioClip MRTKButtonPress, MRTKButtonUnpress;
         static string audioLogCol = "AudioPlayed";
 
@@ -13,11 +13,20 @@ namespace MoveToCode {
             popAudioClip = Resources.Load<AudioClip>(ResourcePathConstants.PopSound);
             snapAudioClip = Resources.Load<AudioClip>(ResourcePathConstants.SnapSound);
             spwanAudioClip = Resources.Load<AudioClip>(ResourcePathConstants.SpawnSound);
+            whistleFallAudioClip = Resources.Load<AudioClip>(ResourcePathConstants.WhistleFallSound);
             LoggingManager.instance.AddLogColumn(audioLogCol, "");
         }
 
         public void PlaySoundAtObject(Transform tran, AudioClip ac) {
             PlaySoundAtObject(tran.gameObject, ac);
+        }
+
+        public void PlayButtonClick() {
+            PlaySoundAtObject(Camera.main.transform, MRTKButtonPress);
+        }
+
+        public void PlayReleaseClick() {
+            PlaySoundAtObject(Camera.main.transform, MRTKButtonUnpress);
         }
 
         public void PlaySoundAtObject(GameObject go, AudioClip ac) {

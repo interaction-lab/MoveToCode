@@ -22,6 +22,15 @@ namespace MoveToCode {
             }
         }
 
+        public bool KuriIsOffRails {
+            get {
+                return kuriController.KuriIsOffRails;
+            }
+            set {
+                kuriController.KuriIsOffRails = value;
+            }
+        }
+
         #endregion
 
         #region unity

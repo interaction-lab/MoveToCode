@@ -52,12 +52,26 @@ namespace MoveToCode {
         bool isTracking = false;
         bool hasBeenInitialized = false;
         MazeManager _mazeManager;
-        MazeManager MazeManagerInstance {
+        protected MazeManager MazeManagerInstance {
             get {
                 if (_mazeManager == null) {
                     _mazeManager = MazeManager.instance;
                 }
                 return _mazeManager;
+            }
+        }
+        TrashButton _trashButton;
+        TrashButton MyTrashButton {
+            get {
+                if (_trashButton == null) {
+                    _trashButton = GetComponentInChildren<TrashButton>(true);
+                }
+                return _trashButton;
+            }
+        }
+        public bool IsTracking {
+            get {
+                return isTracking;
             }
         }
         #endregion
@@ -101,9 +115,9 @@ namespace MoveToCode {
         private void UpdateResetTrackImg() {
             ResetMeshAlpha();
             if (isTracking) {
+                isTracking = false;
                 TrackingIndicator.TurnOff();
                 OnImgStoppedTracking.Invoke();
-                isTracking = false;
             }
 
         }
@@ -111,9 +125,9 @@ namespace MoveToCode {
         private void UpdateTrackImg() {
             PulseAlphaMesh();
             if (!isTracking) {
+                isTracking = true;
                 TrackingIndicator.TurnOn();
                 OnImgStartedTracking.Invoke();
-                isTracking = true;
             }
         }
 

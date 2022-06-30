@@ -39,5 +39,15 @@ namespace MoveToCode {
         public override string DescriptiveInstructionToString() {
             return ToString();
         }
+
+        public override string ToJSON() {
+            return string.Join(",", new string[] {
+                "{\"name\": \"", ToString() + "\"",
+                "\"type\": \"", GetType().ToString(), "\"",
+                "\"varname\": \"", myVariableCodeBlock.GetVariableNameFromBlockCollection(), "\"",
+                "\"val\": \"", GetMyData().ToJSON(), "\"",
+                "}"
+            });
+        }
     }
 }

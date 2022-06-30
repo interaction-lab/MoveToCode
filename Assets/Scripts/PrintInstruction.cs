@@ -22,5 +22,14 @@ namespace MoveToCode {
         public override string DescriptiveInstructionToString() {
             return string.Join("", "<color=purple>" + ToString() + "</color>(", GetArgument(CommonSCKeys.Printable)?.DescriptiveInstructionToString() + ")");
         }
+
+        public override string ToJSON() {
+            return string.Join(",", new string[] {
+                "{\"name\": \"" + ToString() + "\"",
+                "\"type\": \"" + GetType().ToString() + "\"",
+                "\"args\":{\"next\": " + GetArgumentJSON(CommonSCKeys.Next),
+                "\"print\": " + GetArgumentJSON(CommonSCKeys.Printable) + "}}"
+            });
+        }
     }
 }

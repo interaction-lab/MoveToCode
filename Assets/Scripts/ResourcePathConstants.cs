@@ -26,8 +26,7 @@ namespace MoveToCode {
         public static string ArrayElementPrefab = CodeBlockPrefabFolder + "ArrayElement";
         public static string ArrayIndexCodeBlockPrefab = CodeBlockPrefabFolder + "ArrayIndexCodeBlock";
         public static string ExercisePrefab = PrefabFolder + "Exercise";
-
-
+        public static string TrashButtonCanvasPrefab = PrefabFolder + "TrashButtonCanvas";
 
         public static Dictionary<string, GameObject> codeBlockDictionary = new Dictionary<string, GameObject> {
             {"Print", Resources.Load<GameObject>(PrintCodeBlockPrefab)},
@@ -61,6 +60,7 @@ namespace MoveToCode {
         public static string SnapSound = AudioFolder + "snap";
         public static string SpawnSound = AudioFolder + "spawn";
         public static string ComputerNoises = AudioFolder + "ComputerNoises";
+        public static string WhistleFallSound = AudioFolder + "WhistleFall";
 
         public static string SpeechFolder = AudioFolder + "PreloadSpeech/";
         public static string SpeechCacheFolder = AudioFolder + "CacheSpeech/";
@@ -82,6 +82,7 @@ namespace MoveToCode {
         public static string KuriPonderSad = KuriNegativeSoundFolder + "PONDER_SAD";
 
         // ARImages
+        // TODO: outdated but not needed either
         public static string str_wall_1 = "wall_1";
         public static string str_wall_2 = "wall_2";
         public static string str_wall_3 = "wall_3";

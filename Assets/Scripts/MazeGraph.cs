@@ -37,12 +37,32 @@ namespace MoveToCode {
         }
 
         public HashSet<MPEdge> GetAllEdges() {
+            isDirty = true; // temporary caching fix TODO: make this actually work
             if (isDirty) {
                 ResetGraph();
                 PopulateEdges(Root);
                 isDirty = false;
             }
             return edges;
+        }
+
+        public Dictionary<MPType, int> GetConnectedMazePiecesCount() {
+            GetAllEdges();
+            Dictionary<MPType, int> connectedPieces = new Dictionary<MPType, int>();
+            foreach (MazePiece mp in mazePieces) {
+                if (connectedPieces.ContainsKey(mp.MyMPType)) {
+                    connectedPieces[mp.MyMPType]++;
+                }
+                else {
+                    connectedPieces.Add(mp.MyMPType, 1);
+                }
+            }
+            return connectedPieces;
+        }
+
+        public HashSet<MazePiece> GetAllConnectedMazePieces() {
+            GetAllEdges();
+            return mazePieces;
         }
 
         public void MarkDirty() {

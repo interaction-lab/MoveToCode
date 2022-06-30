@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 namespace MoveToCode {
     public class UserIDManager {
@@ -10,6 +11,11 @@ namespace MoveToCode {
                     playerIDBackingVar = Guid.NewGuid().ToString();
                 }
                 return playerIDBackingVar;
+            }
+        }
+        public static string DeviceId {
+            get {
+                return SystemInfo.deviceUniqueIdentifier;
             }
         }
     }

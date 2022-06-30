@@ -1,4 +1,5 @@
 using RosSharp.RosBridgeClient;
+using System.Collections.Generic;
 using UnityEngine;
 namespace MoveToCode {
     public class MoveInstruction : SnappableStandAloneInstruction {
@@ -67,6 +68,15 @@ namespace MoveToCode {
 
         public override string DescriptiveInstructionToString() {
             return string.Join("", "<color=purple>" + ToString() + "</color>(", GetArgument(CommonSCKeys.Move)?.DescriptiveInstructionToString() + ")");
+        }
+
+        public override string ToJSON() {
+            return string.Join(",", new string[] {
+                "{\"name\": \"" + ToString() + "\"",
+                "\"type\": \"" + GetType().ToString() + "\"",
+                "\"args\":{\"next\": " + GetArgumentJSON(CommonSCKeys.Next),
+                "\"move\": " + GetArgumentJSON(CommonSCKeys.Move) + "}}"
+            });
         }
     }
 }

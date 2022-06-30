@@ -1,5 +1,6 @@
 using Microsoft.MixedReality.Toolkit.UI;
 using System;
+using TMPro;
 using UnityEngine;
 
 namespace MoveToCode {
@@ -23,13 +24,38 @@ namespace MoveToCode {
                 return _interpreter;
             }
         }
-        PulseMeshRend _pulse;
-        PulseMeshRend Pulse {
+        PulseMeshRend _pulse = null;
+        PulseMeshRend Pulse3DMeshRend {
             get {
                 if (_pulse == null) {
-                    _pulse = transform.GetChild(3).GetComponentInChildren<PulseMeshRend>(); // Flimsy
+                    _pulse = transform.GetChild(3).GetComponentInChildren<PulseMeshRend>(); // Flimsy, for in scene/3D UI
                 }
                 return _pulse;
+            }
+        }
+        bool IsUIButton {
+            get {
+                return PulseIMG != null;
+            }
+        }
+
+        PulseImg _pulseImg;
+        PulseImg PulseIMG {
+            get {
+                if (_pulseImg == null) {
+                    _pulseImg = transform.parent.GetComponent<PulseImg>(); // FLimsy, for 2D UI
+                }
+                return _pulseImg;
+            }
+        }
+
+        TextMeshProUGUI tmpUI;
+        TextMeshProUGUI TXTUI {
+            get {
+                if (tmpUI == null) {
+                    tmpUI = GetComponentInChildren<TextMeshProUGUI>();
+                }
+                return tmpUI;
             }
         }
         #endregion
@@ -38,6 +64,7 @@ namespace MoveToCode {
         private void Awake() {
             InterpreterInstance.OnCodeEnd.AddListener(OnCodeEnd);
             InterpreterInstance.OnCodeReset.AddListener(OnCodeReset);
+            ExerciseManager.instance.OnExerciseCorrect.AddListener(OnExerciseCorrect);
         }
         #endregion
 
@@ -46,11 +73,44 @@ namespace MoveToCode {
 
         #region private
         private void OnCodeReset() {
-            Pulse.StopPulse();
+            if (IsUIButton) {
+                PulseIMG.StopPulse();
+                TXTUI.text = "Reset";
+            }
+            else {
+                Pulse3DMeshRend.StopPulse();
+                ButtonConfig.MainLabelText = "Reset";
+            }
         }
 
+        void Update(){
+            if (IsUIButton && MazeManager.instance.IsLocked) {
+                                // make sure my parent is active
+                transform.parent.gameObject.SetActive(true);
+            }
+        }
+
+
         private void OnCodeEnd() {
-            Pulse.StartPulse();
+            if (IsUIButton) {
+                PulseIMG.StartPulse(Color.red);
+            }
+            else {
+                Pulse3DMeshRend.StartPulse(Color.red);
+            }
+        }
+
+        void OnExerciseCorrect() {
+            if (IsUIButton) {
+                TXTUI.text = "Next Maze";
+                PulseIMG.StopPulse();
+                PulseIMG.StartPulse(Color.blue);
+            }
+            else {
+                ButtonConfig.MainLabelText = "Next Maze";
+                Pulse3DMeshRend.StopPulse();
+                Pulse3DMeshRend.StartPulse(Color.blue);
+            }
         }
         #endregion
     }

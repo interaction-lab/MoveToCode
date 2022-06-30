@@ -2,7 +2,7 @@
 
 namespace MoveToCode {
     public class StartInstruction : StandAloneInstruction {
-        public static string startString = "Code Start";
+        public static string startString = "Robot Commands";
 
         public StartInstruction(CodeBlock cbIn) : base(cbIn) { }
 
@@ -21,6 +21,14 @@ namespace MoveToCode {
 
         public override string DescriptiveInstructionToString() {
             return ToString();
+        }
+
+        public override string ToJSON() {
+            return string.Join(",", new string[] {
+                "{\"name\": \"" + ToString() + "\"",
+                "\"type\": \"" + GetType().ToString() + "\"",
+                "\"args\":{\"next\": " + GetArgumentJSON(CommonSCKeys.Next) + "}}"
+            });
         }
     }
 }

@@ -77,17 +77,20 @@ namespace MoveToCode {
             loggingManager.AddLogColumn(kuriMovementActionCol, "");
             loggingManager.AddLogColumn(kuriCurAction, "");
         }
-        public string TakeISAAction() {
-            string actionString = ExerciseManager.instance.GetCurExercise().GetComponent<ExerciseInformationSeekingActions>().DoISAAction();
-            loggingManager.UpdateLogColumn(rISACol, actionString);
-            return actionString;
+        public abstract string TakeISAAction();
+
+        public void SayMazeGoal() {
+            kuriTextManager.Addline(string.Join("",
+                  "Goal: ",
+                  ExerciseManager.instance.GetCurExercise().GetMazeGoalString()),
+                  KuriTextManager.PRIORITY.high);
         }
 
-        public void SayExerciseGoal() {
-           /* kuriTextManager.Addline(string.Join("",
-                 "Goal: ",
-                 ExerciseManager.instance.GetCurExercise().GetGoalString()),
-                 KuriTextManager.PRIORITY.high);*/
+        public void SayCodeGoal() {
+            kuriTextManager.Addline(string.Join("",
+                  "Goal: ",
+                  ExerciseManager.instance.GetCurExercise().GetCodeGoalString()),
+                  KuriTextManager.PRIORITY.high);
         }
 
         public void SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT toa) {
@@ -95,14 +98,12 @@ namespace MoveToCode {
             string actionMade = DoRandomPositiveAction();
             loggingManager.UpdateLogColumn(kuriPhysicalEmoteActionCol,
                  actionMade);
-
-            kuriTextManager.Clear(KuriTextManager.PRIORITY.low);
             kuriTextManager.SayRandomPositiveAffect(toa);
         }
 
-        public void DoScaffoldingDialogue() {
-            TurnTowardsUser();
-            ExerciseManager.instance.GetCurExercise().GetComponent<ExerciseScaffolding>().SayNextScaffold();
+        public void TriggerHelpfulAction() {
+            // TurnTowardsUser();
+            ExerciseManager.instance.GetCurExercise().GetComponent<ExerciseScaffolding>().SayNextScaffold(); // old from when used to add specicif scaffolding for each maze, needs more contextual information
         }
 
         private void Update() {
@@ -110,11 +111,12 @@ namespace MoveToCode {
             loggingManager.UpdateLogColumn(kuriCurAction, CurAction);
         }
 
-        public abstract string TakeMovementAction();
+        public abstract string TakeMovementAction(int option = -1);
         public abstract string DoRandomPositiveAction();
         public abstract string DoRandomNegativeAction();
         public abstract string DoAnimationAction(EMOTIONS e);
         public abstract void TurnTowardsUser();
+        public abstract string PointAtObject(Transform objectOfInterest, float time);
         // Returns true if currently doing action
         protected abstract bool UpdateCurrentActionString();
     }

@@ -19,7 +19,7 @@ namespace MoveToCode {
             }
         }
 
-        float textTypingTime = 0.05f;
+        float textTypingTime = 0.0025f; // the lower the faster it is
         static string textLogCol = "KuriDialogue";
         public enum COMMANDS {
             add,
@@ -43,6 +43,12 @@ namespace MoveToCode {
         AudioSource audioSource;
         AudioClip computerNoiseClip;
         int curCommandNum, ticketCommandNum;
+
+        public string CurText {
+            get {
+                return kuriTextMesh.text;
+            }
+        }
 
         void Setup() {
             commandQueue = new Queue<TextCommand>();
@@ -74,6 +80,7 @@ namespace MoveToCode {
         }
 
         public void Addline(string lIn = "", PRIORITY pIn = PRIORITY.low) {
+            Clear(); // low priority clear every time something is said to avoid overlap
             GetCommandQueue().Enqueue(new TextCommand(COMMANDS.add, pIn, string.Join("", lIn, "\n")));
             StartCoroutine(ProcessText(ticketCommandNum++));
         }

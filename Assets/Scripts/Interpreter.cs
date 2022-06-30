@@ -15,6 +15,7 @@ namespace MoveToCode {
         public int instructionRunLimit = 30;
         bool fullSteppingCode = false;
         public float stepSpeed = 0.5f;
+        string kuriOffMaze = "Oh no, baby Kuri fell off the maze!";
 
         public UnityEvent OnCodeReset, OnCodeStart, OnCodeEnd, OnCodeError;
         #endregion
@@ -44,11 +45,10 @@ namespace MoveToCode {
             StartCodeBlock.instance.ToggleOutline(true);
             instructionStack.Clear();
             lastInstructionReturn = null;
-
-            CodeBlockManager.instance.ResetAllCodeBlockInternalState();
-            MemoryManager.instance.ResetMemoryState();
+            CodeBlockManager.instance?.ResetAllCodeBlockInternalState();
+            MemoryManager.instance?.ResetMemoryState();
             numInstructionsRun = 0;
-            StaticNextChallengeButton.instance.gameObject.SetActive(false);
+            //StaticNextChallengeButton.instance.gameObject.SetActive(false);
             BabyKuriManager.instance.ResetKuri();
             OnCodeReset.Invoke();
         }
@@ -92,13 +92,20 @@ namespace MoveToCode {
 
         #region private
         private void CatchCodeError(Exception ex) {
+            Debug.LogWarning(ex.Message);
             string lineToAdd = ex.ToString();
-            if (lineToAdd.Contains("NULL")) {
-                lineToAdd = "Instruction Block Incomplete";
+            if (lineToAdd.Contains(kuriOffMaze)) {
+                lineToAdd = "Rails Error, " + lineToAdd;
+                KuriTextManager.instance.Addline(kuriOffMaze);
             }
-            ConsoleManager.instance.AddLine(string.Join("", lineToAdd, ", Code Resetting"));
+            else if (lineToAdd.Contains("NULL")) {
+                lineToAdd = "Instruction Block Incomplete, " + lineToAdd;
+                KuriTextManager.instance.Addline("Code block is incomplete");
+            }
+            else {
+                ConsoleManager.instance.AddLine("Code Error, resetting code");
+            }
             LoggingManager.instance.UpdateLogColumn(codeErrorCol, lineToAdd);
-            Debug.LogWarning(ex.ToString());
             OnCodeError.Invoke();
             ResetCodeState();
         }
@@ -109,7 +116,7 @@ namespace MoveToCode {
             lastInstructionReturn = curInstruction.RunInstruction();
             UpdateCurInstruction();
             if (numInstructionsRun > instructionRunLimit) {
-                throw new Exception("Too man instructions run, maybe an infinite loop?");
+                throw new Exception("Too many instructions run, maybe an infinite loop?");
             }
         }
 
@@ -131,9 +138,7 @@ namespace MoveToCode {
             }
             else {
                 OnCodeEnd.Invoke();
-                if (ExerciseManager.instance.AlertCodeFinished()) {
-                    StaticNextChallengeButton.instance.gameObject.SetActive(true);
-                }
+                ExerciseManager.instance.AlertCodeFinished(); // this really should just be the event but oh well
                 ConsoleManager.instance.AddFinishLine();
             }
         }
@@ -142,10 +147,20 @@ namespace MoveToCode {
             if (fullSteppingCode) {
                 yield break;
             }
+            if (CodeIsFinished()) {
+                ResetCodeState();
+                yield break;
+            }
             fullSteppingCode = true;
             while (fullSteppingCode && !CodeIsFinished()) {
                 RunNextInstruction();
                 yield return new WaitForSeconds(stepSpeed);
+                if (BabyKuriManager.instance.KuriIsOffRails) {
+                    BabyKuriManager.instance.KuriIsOffRails = false;
+                    fullSteppingCode = false;
+                    CatchCodeError(new Exception(kuriOffMaze));
+                    yield break;
+                }
             }
             fullSteppingCode = false;
         }

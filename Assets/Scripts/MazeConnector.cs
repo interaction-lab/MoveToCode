@@ -69,7 +69,7 @@ namespace MoveToCode {
         #endregion
 
         #region unity
-        private void OnEnable() {
+        private void Awake() {
             SetUpMazeConnector();
         }
 
@@ -82,11 +82,9 @@ namespace MoveToCode {
             }
         }
         private void OnTriggerExit(Collider other) {
-            // HERE likely due to trigger exit when collider goes off but we should just have the collider not go off?
-            // TODO: when maze is locked, careful with the colliders
             MazeConnector otherMazeConnector = other.gameObject.GetComponent<MazeConnector>();
-            if ((otherMazeConnector != null && IsSameMazePieceType(otherMazeConnector.MyMazePiece)) &&
-            On && otherMazeConnector.On) {
+            if ((otherMazeConnector != null && IsSameMazePieceType(otherMazeConnector.MyMazePiece)) 
+            && On && otherMazeConnector.On) {
                 RemoveRequestAndAttemptConnect(otherMazeConnector);
                 ReliableOnTriggerExit.NotifyTriggerExit(other, gameObject);
             }
@@ -138,7 +136,7 @@ namespace MoveToCode {
             MyMazePiece.transform.position -= myRealtivePos;
 
             MyMazePiece.SnapConnections();
-            AudioManager.instance.PlaySoundAtObject(gameObject, AudioManager.snapAudioClip);
+            AudioManager.instance?.PlaySoundAtObject(gameObject, AudioManager.snapAudioClip);
         }
 
         private float GetAngleOfConnectorRelativeToForward(MazeConnector anchorMC) {
@@ -157,18 +155,18 @@ namespace MoveToCode {
                     angle = 270;
                     break;
             }
-            switch (anchorMC.connectionDir) {
+            switch (anchorMC.connectionDir) { // parent
                 case MazePiece.CONNECTDIR.North:
                     angle += 0;
                     break;
                 case MazePiece.CONNECTDIR.East:
-                    angle += 270;
+                    angle += 90;
                     break;
                 case MazePiece.CONNECTDIR.South:
                     angle += 180;
                     break;
                 case MazePiece.CONNECTDIR.West:
-                    angle += 90;
+                    angle += 270;
                     break;
             }
 
@@ -207,6 +205,10 @@ namespace MoveToCode {
         private void AttemptNewConnection() {
             if (MyConnection == null) {
                 MyConnection = MazeManagerInstance.GetConnection(this);
+            }
+            // tell the maze to log itself here as long as it is not a solution maze
+            if (!(MyMazePiece is SolMazePiece)) {
+                MazeManagerInstance.LogMaze();
             }
         }
         #endregion

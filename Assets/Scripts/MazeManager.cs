@@ -4,12 +4,13 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using System.Linq;
 using UnityEngine.Events;
+using System.Collections;
 
 namespace MoveToCode {
     public class MazeManager : Singleton<MazeManager> {
         #region members
         public UnityEvent OnMazeLocked, OnMazeUnlocked;
-        public static string mazeLogCol = "UserMaze";
+        public static string mazeLogCol = "UserMaze", mazeLockCol = "mazeLock", containsSolCol = "containsSol";
         HashSet<Connection> populatedConnections = new HashSet<Connection>();
         Dictionary<MazeConnector, HashSet<MazeConnector>> connectRequests = new Dictionary<MazeConnector, HashSet<MazeConnector>>();
         BabyKuriManager _babyKuriManager;
@@ -82,15 +83,42 @@ namespace MoveToCode {
                 return mazeGraph;
             }
         }
-        #endregion
 
+        public bool BKAtGoal = false;
+        public UnityEvent OnBKAtGoal;
+        MazePiece _goalPiece;
+        public MazePiece GoalMazePiece {
+            get {
+                if (_goalPiece == null) {
+                    _goalPiece = GetComponentInChildren<MazeGoal>().GetComponent<MazePiece>();
+                }
+                return _goalPiece;
+            }
+        }
+
+        public HashSet<MazePiece> _allMazePieces;
+        public HashSet<MazePiece> AllMazePieces {
+            get {
+                if (_allMazePieces == null) {
+                    _allMazePieces = new HashSet<MazePiece>();
+                    foreach (MazePiece mp in GetComponentsInChildren<MazePiece>()) {
+                        _allMazePieces.Add(mp);
+                    }
+                }
+                return _allMazePieces;
+            }
+        }
+        #endregion
         #region unity
         private void OnEnable() {
             ARTrackingManagerInstance.OnTrackingStarted.AddListener(OnTrackingStarted);
             ARTrackingManagerInstance.OnTrackingEnded.AddListener(OnTrackingEnded);
             if (!hasBeenInitialized) {
                 LoggingManagerInstance.AddLogColumn(mazeLogCol, "");
+                LoggingManagerInstance.AddLogColumn(mazeLockCol, "");
+                LoggingManagerInstance.AddLogColumn(containsSolCol, "");
                 hasBeenInitialized = true;
+                OnBKAtGoal = new UnityEvent();
             }
 #if UNITY_EDITOR
             AddManipulationHandlersForUnityEditor();
@@ -103,7 +131,6 @@ namespace MoveToCode {
             ARTrackingManagerInstance.OnTrackingEnded.RemoveListener(OnTrackingEnded);
         }
         #endregion
-
         #region public
         public GameObject GetMazeObject(string name) {
             foreach (Transform child in transform) {
@@ -112,6 +139,10 @@ namespace MoveToCode {
                 }
             }
             return null;
+        }
+
+        public bool ContainsSolutionMaze() {
+            return MyMazeGraph.ContainsSubgraph(SolMazeManagerInstance.ActiveSolMazeGraph);
         }
 
         /// <summary>
@@ -175,7 +206,6 @@ namespace MoveToCode {
             return MyMazeGraph.GetClosestKuriMazePiece(BabyKuriManagerInstance.BKTransformManager.KuriPos);
         }
 
-        // TODO: make this work for both forward and backward
         public MazeConnector GetMazeConnectorRelBKInDir(CodeBlockEnums.Move direction) {
             MazePiece kuriMP = GetClosestKuriMazePiece();
             Assert.IsNotNull(kuriMP);
@@ -184,13 +214,80 @@ namespace MoveToCode {
             return kuriMP.GetConnector(kuriDir);
         }
 
+        // issue is that this is never called when a move command is not the last thing called
+        // need a better way to update the next piece given the final command
         public MazePiece GetPotentialNextMP(CodeBlockEnums.Move direction) {
-            return GetMazeConnectorRelBKInDir(direction)?.ConnectedMP;
+            MazePiece res = GetMazeConnectorRelBKInDir(direction)?.ConnectedMP;
+            // also make sure to check if our current piece is the goal piece
+            if (res?.GetComponent<MazeGoal>() != null) {
+                if (!BKAtGoal) {
+                    BKAtGoal = true;
+                    OnBKAtGoal.Invoke();
+                }
+                BKAtGoal = true;
+            }
+            else {
+                BKAtGoal = false;
+            }
+            return res;
         }
 
+        public bool IsBKAtTheGoalNow() {
+            return BKAtGoal || GetClosestKuriMazePiece()?.GetComponent<MazeGoal>() != null;
+            ;
+        }
+
+        public MazePiece GetMisalignedPiece() {
+            Dictionary<MPType, int> solMPs = SolMazeManagerInstance.ActiveSolMazeGraph.GetConnectedMazePiecesCount();
+            Dictionary<MPType, int> mazeMPs = MyMazeGraph.GetConnectedMazePiecesCount();
+            foreach (KeyValuePair<MPType, int> kvp in solMPs) {
+                if (!mazeMPs.Keys.Contains(kvp.Key) || kvp.Value > mazeMPs[kvp.Key]) {
+                    return FindClosestPieceOfType(kvp.Key);
+                }
+            }
+            return null;
+        }
+
+        // TODO: fix this so that it is event driven only or at least handles correctly
+        private void Update() {
+            BKAtGoal = false;
+        }
+
+        public void LogMaze() {
+            // log maze a single time at end of frame using coroutine
+            StartCoroutine(LogMazeCoroutine());
+        }
         #endregion
 
         #region private
+        private MazePiece FindClosestPieceOfType(MPType type) {
+            HashSet<MazePiece> connectedPieces = MyMazeGraph.GetAllConnectedMazePieces();
+            MazePiece closest = null;
+            float closestDist = float.MaxValue;
+            foreach (MazePiece mp in AllMazePieces.Except(connectedPieces)) {
+                if (mp.MyMPType == type) {
+                    float dist = Vector3.Distance(mp.transform.position, BabyKuriManagerInstance.BKTransformManager.KuriPos);
+                    if (dist < closestDist) {
+                        closest = mp;
+                        closestDist = dist;
+                    }
+                }
+            }
+            return closest;
+        }
+        bool loggedThisFrame = false;
+        IEnumerator LogMazeCoroutine() {
+            yield return new WaitForEndOfFrame();
+            if (loggedThisFrame) {
+                yield break;
+            }
+            loggedThisFrame = true;
+            LoggingManagerInstance.UpdateLogColumn(mazeLogCol, MyMazeGraph.ToString());
+            LoggingManagerInstance.UpdateLogColumn(containsSolCol, ContainsSolutionMaze() ? "1" : "0");
+            SolMazeCheckMark.instance.ToggleCheckMark(); // this is super hacky
+            yield return new WaitForEndOfFrame();
+            loggedThisFrame = false;
+        }
         private void MoveOutOfView() {
             transform.position = new Vector3(0, 100, 0);
         }
@@ -203,15 +300,13 @@ namespace MoveToCode {
                 manipHandler.ManipulationType = ManipulationHandler.HandMovementType.OneHandedOnly;
             }
         }
-
         private void OnTrackingStarted() {
-            ReleasePieces();
+            // ReleasePieces(); // vistigial old and now commented out to fix for the sitch mode persistence
         }
         private void OnTrackingEnded() {
             // where we snap the maze to each other + floor + grid
             SnapPiecesTogether();
         }
-
         private void ReleasePieces() {
             if (!IsLocked) {
                 return;
@@ -225,18 +320,34 @@ namespace MoveToCode {
             SolMazeManagerInstance.ReleasePieces();
             IsLocked = false;
             OnMazeUnlocked.Invoke();
+            LoggingManagerInstance.UpdateLogColumn(mazeLockCol, "Unlocked");
         }
-
         private void SnapPiecesTogether() {
             if (IsLocked) {
                 return;
             }
             BKMazePiece.SnapConnections();
-            BKTransformManager.SetOriginalState();
-            SolMazeManagerInstance.SnapPiecesTogether();
+            BKTransformManager?.SetOriginalState();
+            SolMazeManagerInstance?.SnapPiecesTogether();
             IsLocked = true;
+            // move all pieces that aren't in my graph way away
+#if !UNITY_EDITOR
+            DeactivateUnusedMazePieces();
+#endif
             OnMazeLocked.Invoke();
-            LoggingManagerInstance.UpdateLogColumn(mazeLogCol, MyMazeGraph.ToString());
+            LoggingManagerInstance.UpdateLogColumn(mazeLockCol, "Locked");
+        }
+
+        private void DeactivateUnusedMazePieces() {
+            HashSet<MazePiece> connectedPieces = MyMazeGraph.GetAllConnectedMazePieces();
+            foreach (Transform child in transform) {
+                MazePiece mazePiece = child.GetComponent<MazePiece>();
+                if (mazePiece != null) {
+                    if (!connectedPieces.Contains(mazePiece)) {
+                        mazePiece.transform.position = new Vector3(0, 100, 0);
+                    }
+                }
+            }
         }
         #endregion
     }

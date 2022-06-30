@@ -64,5 +64,9 @@ namespace MoveToCode {
         public override string DescriptiveInstructionToString() {
             return string.Join("", GetArgument(arrIndexArgKey)?.DescriptiveInstructionToString(), " ", "[", " ", GetArgument(arrIndexArgKey), "]");
         }
+
+        public override string ToJSON() {
+            throw new NotImplementedException(); // TODO: implement this
+        }
     }
 }

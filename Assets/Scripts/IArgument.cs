@@ -31,6 +31,12 @@ namespace MoveToCode {
         public abstract string DescriptiveInstructionToString();
 
         /// <summary>
+        /// Converts argument to easily parsed json for data logging
+        /// </summary>
+        /// <returns>above description</returns>
+        public abstract string ToJSON();
+
+        /// <summary>
         /// When the `Interpreter` restarts running code, any internal instruction state is reset. Ex. see `WhileInstruction.cs`
         /// </summary>
         public virtual void ResestInternalState() {
@@ -75,8 +81,13 @@ namespace MoveToCode {
         /// </summary>
         /// <param name="snapArgLookUp">Key, item1: type of `SnapCollider` of argument, item2: index of argument, used for `ArrayIndexInstruction`</param>
         /// <returns></returns>
-        public IArgument GetArgument(KeyValuePair<Type,int> snapArgLookUp) {
+        public IArgument GetArgument(KeyValuePair<Type, int> snapArgLookUp) {
             return MyCodeBlock.GetSnapColliderGroup().SnapColliderSet[snapArgLookUp]?.MyCodeBlockArg?.GetMyIArgument();
+        }
+
+        public string GetArgumentJSON(KeyValuePair<Type, int> snapArgLookUp) {
+            IArgument arg = GetArgument(snapArgLookUp);
+            return arg != null ? arg.ToJSON() : "null";
         }
     }
 }

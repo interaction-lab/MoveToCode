@@ -2,11 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace MoveToCode {
     public class ExerciseManager : Singleton<ExerciseManager> {
         public static string curExcersieCol = "CurExercise", exerciseSubmissionResultCol = "ExerciseSubmissionResult";
-
+        public UnityEvent OnExerciseCorrect, OnCyleNewExercise;
         Exercise curExercise;
         List<Exercise> exerciseList;
         public int curExercisePos = 0;
@@ -37,15 +38,17 @@ namespace MoveToCode {
 
         public bool AlertCodeFinished() {
             if (curExercise != null) { // This if is to guard against initializing interpreter
-                                       // TODO: this is a jank exercise check for the same maze graph on alert goal
-                if (curExercise.IsExerciseCorrect() && MazeManager.instance.MyMazeGraph.ContainsSubgraph(SolMazeManager.instance.MyMazeGraph)) {
-                    TutorKuriManager.instance.kuriController.SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT.Congratulation);
+                                       // curExercise.IsExerciseCorrect() -> old code
+                if (MazeManager.instance.IsBKAtTheGoalNow() && MazeManager.instance.ContainsSolutionMaze()) {
+                    // TutorKuriManager.instance.kuriController.SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT.Congratulation); // -> this is now handled in the kuri controller
                     LoggingManager.instance.UpdateLogColumn(exerciseSubmissionResultCol, "Correct");
                     lastExerciseCompleted = true;
+                    OnExerciseCorrect.Invoke();
+                    // this is where I should do the explosion at the goal
                     return true;
                 }
                 else {
-                    TutorKuriManager.instance.kuriController.DoScaffoldingDialogue();
+                    TutorKuriManager.instance.kuriController.TriggerHelpfulAction();
                     LoggingManager.instance.UpdateLogColumn(exerciseSubmissionResultCol, "InCorrect");
                     return false;
                 }
@@ -68,7 +71,7 @@ namespace MoveToCode {
             LoggingManager.instance.UpdateLogColumn(curExcersieCol, curExercisePos.ToString());
             curExercise = exerciseList[curExercisePos];
             ToggleCurrentExercise(true);
-
+            OnCyleNewExercise.Invoke();
         }
 
         private void ToggleCurrentExercise(bool desiredActiveState) {
@@ -79,6 +82,7 @@ namespace MoveToCode {
                 CodeBlockMenuManager.instance.TurnMenuOff();
             }
             curExercise.gameObject.SetActive(desiredActiveState);
+            SolMazeManager.instance.LogMaze();
         }
     }
 }

@@ -37,6 +37,23 @@ namespace MoveToCode {
             get;
         }
 
+        public string Name{
+            get{
+                if(BabyKuri){
+                    return "BabyKuri";
+                }
+                else if(Goal){
+                    return "Goal";
+                }
+                else if(!West && !East){
+                    return "Hall";
+                }
+                else{
+                    return "TurnNW";
+                }
+            }
+        }
+
         #endregion
 
         #region public

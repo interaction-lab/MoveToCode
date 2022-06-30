@@ -38,10 +38,10 @@ namespace MoveToCode {
             MeshRend = GetComponent<MeshRenderer>();
             MeshRend.enabled = false;
             GetComponent<Collider>().isTrigger = true;
-            gameObject.layer =  LayerMask.NameToLayer("SnapCollider");
+            gameObject.layer = LayerMask.NameToLayer("SnapCollider");
             gameObject.SetActive(false);
             RegisterToSnapColliderGroup();
-            CodeBlockManager.instance.RegisterSnapCollider(this);
+            CodeBlockManager.instance?.RegisterSnapCollider(this);
         }
 
         protected abstract void RegisterToSnapColliderGroup();
@@ -61,6 +61,7 @@ namespace MoveToCode {
             if (collidedCodeBlock != null) {
                 AddNewCodeBlockArg(collidedCodeBlock);
             }
+            CodeBlockManager.instance.LogAllCodeBlocks();
         }
 
         private void RemoveCurrentBlockArg() {
@@ -138,6 +139,7 @@ namespace MoveToCode {
 
         private void OnDisable() {
             MeshRend.enabled = false;
+            MyMeshOutline.enabled = false;
         }
 
         private void OnDestroy() {

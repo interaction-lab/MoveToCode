@@ -7,7 +7,7 @@ namespace MoveToCode {
         ChestLedPublisher cledp = null;
         ChestLedPublisher Cledp {
             get {
-                if(cledp == null) {
+                if (cledp == null) {
                     cledp = GameObject.FindObjectOfType<ChestLedPublisher>();
                 }
                 return cledp;
@@ -39,6 +39,15 @@ namespace MoveToCode {
 
         public override string DescriptiveInstructionToString() {
             return string.Join("", "<color=purple>" + ToString() + "</color>(", GetArgument(CommonSCKeys.Color)?.DescriptiveInstructionToString() + ")");
+        }
+
+        public override string ToJSON() {
+            return string.Join(",", new string[] {
+                "{\"name\": \"" + ToString() + "\"",
+                "\"type\": \"" + GetType().ToString() + "\"",
+                "\"args\":{\"color\": " + GetArgumentJSON(CommonSCKeys.Color),
+                "\"next\": " + GetArgumentJSON(CommonSCKeys.Next) + "}}"
+            });
         }
     }
 }

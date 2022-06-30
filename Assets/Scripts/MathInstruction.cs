@@ -23,5 +23,16 @@ namespace MoveToCode {
         public override string DescriptiveInstructionToString() {
             return string.Join("", GetArgument(CommonSCKeys.LeftNumber)?.DescriptiveInstructionToString(), " ", GetMathSymbol(), " ", GetArgument(CommonSCKeys.RightNumber)?.DescriptiveInstructionToString());
         }
+
+        public override string ToJSON() {
+            return string.Join(",", new string[] {
+                "{\"name\": \"", ToString() + "\"",
+                "\"type\": \"", GetType().ToString(), "\"",
+                "\"op\": \"", GetMathSymbol(), "\"",
+                "\"args\":{\"left\":\"", GetArgument(CommonSCKeys.LeftNumber)?.ToJSON(), "\"",
+                "\"right\":\"", GetArgument(CommonSCKeys.RightNumber)?.ToJSON(), "\"",
+                "}"
+            });
+        }
     }
 }

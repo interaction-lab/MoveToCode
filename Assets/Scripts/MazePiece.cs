@@ -72,10 +72,25 @@ namespace MoveToCode {
                 return transform.position;
             }
         }
-
+        Color _color = Color.magenta;
+        public Color MyColor {
+            get {
+                if (_color == Color.magenta) {
+                    _color = GetComponent<Renderer>().material.color;
+                }
+                return _color;
+            }
+        }
         #endregion
 
         #region unity
+        void Awake() {
+            IsAnchored = false;
+            
+            if (GetComponentInChildren<TrashButton>() == null) {
+                Instantiate(Resources.Load<GameObject>(ResourcePathConstants.TrashButtonCanvasPrefab), transform);
+            }
+        }
         private void OnEnable() {
             SetUpOnEnable();
         }
@@ -113,6 +128,11 @@ namespace MoveToCode {
                 }
             }
             return null;
+        }
+
+        public void DisableMyPiece() {
+            // move my piece way off screen so that all systems work as if I removed the peice to another location
+            transform.position = new Vector3(0, -100, 0);
         }
 
         #endregion

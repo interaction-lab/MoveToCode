@@ -8,6 +8,7 @@ namespace MoveToCode {
         ManipulationHandler manipHandler;
         PressableButtonHoloLens2 pressButton;
         Interactable interactable;
+        Button button;
         LoggingManager loggingManager;
         public static bool currentlyManipulating = false;
         public static string CurAction {get;set;} = "";
@@ -28,6 +29,11 @@ namespace MoveToCode {
             interactable = GetComponent<Interactable>();
             if (interactable != null) {
                 // handled by `OnStateChange`
+            }
+            button = GetComponent<Button>();
+            if (button != null) {
+                button.onClick.AddListener(LogManipulationStart);
+                button.onClick.AddListener(StopLogging);
             }
         }
 

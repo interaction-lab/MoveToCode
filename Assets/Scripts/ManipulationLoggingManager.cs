@@ -16,6 +16,7 @@ namespace MoveToCode {
             AddManipHandlerToComponent<ManipulationHandler>();
             AddManipHandlerToComponent<PressableButtonHoloLens2>();
             AddManipHandlerToComponent<Interactable>();
+            AddManipHandlerToComponent<Button>();
         }
 
         private void AddManipHandlerToComponent<T>() {

@@ -1,0 +1,24 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/BT/BehaviourTree/UIBuilder/BehaviourTreeEditorStyle.uss?fileID=7433441132597879392&amp;guid=8781ca2a6e79ccf4da2e234c8c123d2f&amp;type=3#BehaviourTreeEditorStyle" />
+    <uie:Toolbar>
+        <uie:ToolbarMenu display-tooltip-when-elided="true" text="Assets " />
+    </uie:Toolbar>
+    <TheKiwiCoder.SplitView fixed-pane-initial-dimension="300">
+        <ui:VisualElement name="left-panel">
+            <TheKiwiCoder.SplitView orientation="Vertical" fixed-pane-initial-dimension="400">
+                <ui:VisualElement name="inspector-container">
+                    <ui:Label text="Inspector" display-tooltip-when-elided="true" style="background-color: rgb(37, 37, 37);" />
+                    <TheKiwiCoder.InspectorView />
+                </ui:VisualElement>
+                <ui:VisualElement name="blackboard-container">
+                    <ui:Label text="Blackboard" display-tooltip-when-elided="true" style="background-color: rgb(37, 37, 37);" />
+                    <ui:IMGUIContainer />
+                </ui:VisualElement>
+            </TheKiwiCoder.SplitView>
+        </ui:VisualElement>
+        <ui:VisualElement name="right-panel">
+            <ui:Label text="Tree View" display-tooltip-when-elided="true" style="background-color: rgb(37, 37, 37);" />
+            <TheKiwiCoder.BehaviourTreeView focusable="true" style="flex-grow: 1;" />
+        </ui:VisualElement>
+    </TheKiwiCoder.SplitView>
+</ui:UXML>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TheKiwiCoder;
 
-namespace NRISVTE{
+namespace MoveToCode{
     public class IsInEditor : ActionNode
     {
         protected override void OnStart() {

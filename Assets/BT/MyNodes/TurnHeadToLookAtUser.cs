@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TheKiwiCoder;
 
-namespace NRISVTE {
+namespace MoveToCode {
     public class TurnHeadToLookAtUser : ActionNode {
         public float speed = 5; // deg per second
         PlayerTransformManager _playerTransformManager;

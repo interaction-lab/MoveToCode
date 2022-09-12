@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TheKiwiCoder;
 
-namespace NRISVTE {
+namespace MoveToCode {
     public class TeleportToPose : ActionNode {
         private Vector3 goalPosition, goalRotation;
         protected override void OnStart() {

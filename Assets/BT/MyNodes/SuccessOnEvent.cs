@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using TheKiwiCoder;
 
-namespace NRISVTE {
+namespace MoveToCode {
     public class SuccessOnEvent : MonitorCondition {
         KuriBTEventRouter _eventRouter;
         KuriBTEventRouter eventRouter {

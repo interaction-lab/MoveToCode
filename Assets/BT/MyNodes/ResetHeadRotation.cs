@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TheKiwiCoder;
 
-namespace NRISVTE {
+namespace MoveToCode {
     public class ResetHeadRotation : ActionNode {
         KuriHeadPositionManager _kuriHeadPositionManager;
         KuriHeadPositionManager kuriHeadPositionManager {

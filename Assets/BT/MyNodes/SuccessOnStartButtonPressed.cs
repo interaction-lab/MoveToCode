@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using TheKiwiCoder;
 
-namespace NRISVTE {
+namespace MoveToCode {
     public class SuccessOnStartButtonPressed : SuccessOnEvent {
         protected override void OnStart() {
             eventName = EventNames.StartButtonPressed;

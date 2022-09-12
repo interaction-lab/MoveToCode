@@ -4,7 +4,7 @@ using UnityEngine;
 using TheKiwiCoder;
 using Newtonsoft.Json;
 
-namespace NRISVTE {
+namespace MoveToCode {
     public class SetGoalPoseFromLastSrvMsg : ActionNode {
         ConnectionManager connectionManager;
         ConnectionManager ConnectionManager_ {

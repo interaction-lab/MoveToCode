@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using TheKiwiCoder;
 
-namespace NRISVTE{
+namespace MoveToCode{
     public class AtDestinationCondition : MonitorCondition
     {
-        KuriTransformManager _kuriTransformManager;
-        KuriTransformManager kuriTransformManager {
+        TutorKuriTransformManager _kuriTransformManager;
+        TutorKuriTransformManager kuriTransformManager {
             get {
                 if (_kuriTransformManager == null) {
-                    _kuriTransformManager = KuriManager.instance.GetComponent<KuriTransformManager>();
+                    _kuriTransformManager = TutorKuriTransformManager.instance;
                 }
                 return _kuriTransformManager;
             }

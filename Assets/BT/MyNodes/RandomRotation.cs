@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TheKiwiCoder;
 
-namespace NRISVTE {
+namespace MoveToCode {
     public class RandomRotation : ActionNode {
         public float min = -180;
         public float max = 180;

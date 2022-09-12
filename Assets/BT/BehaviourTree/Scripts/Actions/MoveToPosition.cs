@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TheKiwiCoder;
-using NRISVTE;
+using MoveToCode;
 
 public class MoveToPosition : ActionNode {
     public float speed = 5;
@@ -10,17 +10,17 @@ public class MoveToPosition : ActionNode {
     public bool updateRotation = true;
     public float acceleration = 40.0f;
     public float tolerance = 1.0f;
-    KuriDriveAudioManager audioManager;
-    public KuriDriveAudioManager AudioManager {
+    VirtualKuriAudio audioManager;
+    public VirtualKuriAudio AudioManager {
         get {
             if (audioManager == null) {
-                audioManager = KuriDriveAudioManager.instance;
+                audioManager = TutorKuriTransformManager.instance.GetComponent<VirtualKuriAudio>();
             }
             return audioManager;
         }
     }
 
-    KuriTransformManager kuriTransformManager;
+    TutorKuriTransformManager kuriTransformManager;
 
     protected override void OnStart() {
         context.agent.stoppingDistance = stoppingDistance;
@@ -28,14 +28,14 @@ public class MoveToPosition : ActionNode {
         context.agent.destination = blackboard.goalPosition;
         context.agent.updateRotation = updateRotation;
         context.agent.acceleration = acceleration;
-        kuriTransformManager = KuriManager.instance.GetComponent<KuriTransformManager>();
+        kuriTransformManager = TutorKuriTransformManager.instance;
         context.agent.isStopped = false;
-        AudioManager.Play();
+        // AudioManager.Play(); // used to play kuri moving sound
     }
 
     protected override void OnStop() {
         context.agent.isStopped = true;
-        AudioManager.Stop();
+        // AudioManager.Stop();
     }
 
     protected override State OnUpdate() {

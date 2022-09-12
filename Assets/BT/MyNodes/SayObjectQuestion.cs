@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TheKiwiCoder;
 
-namespace NRISVTE {
+namespace MoveToCode {
     // really should be called say object
     public class SayObjectQuestion : ActionNode {
         DialogueManager _dialogueManager;

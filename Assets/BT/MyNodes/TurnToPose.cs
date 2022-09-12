@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TheKiwiCoder;
 
-namespace NRISVTE {
+namespace MoveToCode {
     public class TurnToPose : ActionNode {
         float turnSpeed = 120f; // degrees per second
         float goalYRot;

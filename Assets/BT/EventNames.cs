@@ -1,5 +1,5 @@
 
-namespace NRISVTE {
+namespace MoveToCode {
     public class EventNames {
         public static string StopButtonPressed = "StopButtonPressed";
         public static string StartButtonPressed = "StartButtonPressed";

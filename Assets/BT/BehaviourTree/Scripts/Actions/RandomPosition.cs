@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using TheKiwiCoder;
 
-namespace NRISVTE {
+namespace MoveToCode {
     public class RandomPosition : ActionNode {
         public Vector2 min = Vector2.one * -10;
         public Vector2 max = Vector2.one * 10;
-        KuriTransformManager _kuriTransformManager;
-        KuriTransformManager KuriT {
+        TutorKuriTransformManager _kuriTransformManager;
+        TutorKuriTransformManager KuriT {
             get {
                 if (_kuriTransformManager == null) {
-                    _kuriTransformManager = KuriManager.instance.GetComponent<KuriTransformManager>();
+                    _kuriTransformManager = TutorKuriTransformManager.instance;
                 }
                 return _kuriTransformManager;
             }

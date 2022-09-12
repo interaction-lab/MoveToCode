@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TheKiwiCoder;
 
-namespace NRISVTE {
+namespace MoveToCode {
     public class MoveToPose : ActionNode {
         public float speed = 1; // m/s
         public float slowDownDistance = 0.1f; // m

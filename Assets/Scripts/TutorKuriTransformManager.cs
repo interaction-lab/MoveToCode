@@ -31,6 +31,15 @@ namespace MoveToCode {
                 _bodyTransform.rotation = value;
             }
         }
+
+        public Quaternion Rotation { // default to body rotation, in compliance with NRI-SVET (aka I'm lazy)
+            get {
+                return BodyRotation;
+            }
+            set {
+                BodyRotation = value;
+            }
+        }
         public Quaternion HeadRotation {
             get {
                 return _headTransform.rotation;

@@ -13,7 +13,7 @@ namespace MoveToCode {
 
         protected override State OnUpdate() {
             PlayerTransformManager playerTransformManager = Camera.main.GetComponent<PlayerTransformManager>();
-            KuriTransformManager kuriTransformManager = KuriManager.instance.GetComponent<KuriTransformManager>();
+            TutorKuriTransformManager kuriTransformManager = TutorKuriTransformManager.instance;
             blackboard.goalPosition = playerTransformManager.Position;
             blackboard.goalPosition.y = kuriTransformManager.GroundYCord;
             blackboard.goalRotation = Quaternion.LookRotation(playerTransformManager.Position - kuriTransformManager.Position, Vector3.up).eulerAngles;

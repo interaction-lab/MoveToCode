@@ -10,7 +10,7 @@ namespace MoveToCode {
         KuriBTEventRouter eventRouter {
             get {
                 if (_eventRouter == null) {
-                    _eventRouter = KuriManager.instance.GetComponent<KuriBTEventRouter>();
+                    _eventRouter = KuriBTEventRouter.instance;
                 }
                 return _eventRouter;
             }

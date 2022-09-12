@@ -5,11 +5,11 @@ using TheKiwiCoder;
 
 namespace MoveToCode {
     public class SetGoalRotationTowardGoalPosition : ActionNode {
-        KuriTransformManager kuriTransformManager;
-        KuriTransformManager KuriT {
+        TutorKuriTransformManager kuriTransformManager;
+        TutorKuriTransformManager KuriT {
             get {
                 if (kuriTransformManager == null) {
-                    kuriTransformManager = KuriManager.instance.GetComponent<KuriTransformManager>();
+                    kuriTransformManager = TutorKuriTransformManager.instance;
                 }
                 return kuriTransformManager;
             }

@@ -8,24 +8,16 @@ namespace MoveToCode {
         float turnSpeed = 120f; // degrees per second
         float goalYRot;
         float minAngle;
-        KuriTransformManager kuriTransformManager;
-        KuriTransformManager KuriT {
+        TutorKuriTransformManager kuriTransformManager;
+        TutorKuriTransformManager KuriT {
             get {
                 if (kuriTransformManager == null) {
-                    kuriTransformManager = KuriManager.instance.GetComponent<KuriTransformManager>();
+                    kuriTransformManager = TutorKuriTransformManager.instance;
                 }
                 return kuriTransformManager;
             }
         }
         protected override void OnStart() {
-            // goalYRot = blackboard.goalRotation.y;
-            // // get goal roation between 0 and 360 degrees
-            // if (goalYRot < 0) {
-            //     goalYRot += 360;
-            // }
-            // if (goalYRot > 360) {
-            //     goalYRot -= 360;
-            // }
             minAngle = turnSpeed * Time.deltaTime * 2f;
         }
 

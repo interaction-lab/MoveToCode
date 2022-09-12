@@ -13,12 +13,12 @@ namespace MoveToCode {
         float minSpeed = 0.1f;
 
         PlayerTransformManager playerTransformManager;
-        KuriTransformManager kuriTransformManager;
+        TutorKuriTransformManager kuriTransformManager;
 
         protected override void OnStart() {
             SetGoalFromBB();
             playerTransformManager = Camera.main.GetComponent<PlayerTransformManager>();
-            kuriTransformManager = KuriManager.instance.GetComponent<KuriTransformManager>();
+            kuriTransformManager = TutorKuriTransformManager.instance;
         }
 
         protected override void OnStop() {

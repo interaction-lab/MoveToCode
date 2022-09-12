@@ -18,8 +18,7 @@ namespace TheKiwiCoder {
         public SphereCollider sphereCollider;
         public BoxCollider boxCollider;
         public CapsuleCollider capsuleCollider;
-        public KuriTransformManager kuriTransformManager;
-        public PlayerTransformManager playerTransformManager;
+        public TutorKuriTransformManager kuriTransformManager;
 
         // Add other game specific systems here
 
@@ -35,10 +34,8 @@ namespace TheKiwiCoder {
             context.boxCollider = gameObject.GetComponent<BoxCollider>();
             context.capsuleCollider = gameObject.GetComponent<CapsuleCollider>();
             
-            // SVTE specific components
-            context.kuriTransformManager = gameObject.GetComponent<KuriTransformManager>();
-            context.playerTransformManager = Camera.main.transform.GetComponent<PlayerTransformManager>();
-
+            // M2C specific components
+            context.kuriTransformManager = TutorKuriTransformManager.instance;
             return context;
         }
     }

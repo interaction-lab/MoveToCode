@@ -1,0 +1,2 @@
+- [ ] outline/clean up events
+- [ ] playtest

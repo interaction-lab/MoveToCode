@@ -79,7 +79,6 @@ namespace MoveToCode {
 
         void ButtonPressLog() {
             loggingManager.UpdateLogColumn(ManipulationLoggingManager.GetColName(), gameObject.TryGetNiceNameOfObjectForLogging());
-            Debug.Log(gameObject.TryGetNiceNameOfObjectForLogging());
         }
     }
 }

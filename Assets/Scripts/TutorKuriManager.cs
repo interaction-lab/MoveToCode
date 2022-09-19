@@ -60,7 +60,8 @@ namespace MoveToCode {
 
         bool inStartUp;
         bool wasKuriDoingActionLastTick;
-
+        public bool useBehaviorTree = false;
+        
         LoggingManager loggingManager;
         #endregion
 
@@ -70,6 +71,9 @@ namespace MoveToCode {
             loggingManager = LoggingManager.instance;
             wasKuriDoingActionLastTick = kuriController.IsDoingAction;
             loggingManager.AddLogColumn(robotKCLevel, "");
+            if (useBehaviorTree) {
+                enabled = false;
+            }
         }
 
         private void Start() {

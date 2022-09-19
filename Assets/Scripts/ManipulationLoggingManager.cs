@@ -15,7 +15,6 @@ namespace MoveToCode {
         IEnumerator AddLoggersToManipulationHandlers() {
             yield return null; // need to wait a frame before finding / adding components
             AddManipHandlerToComponent<ManipulationHandler>();
-            AddManipHandlerToComponent<PressableButtonHoloLens2>();
             AddManipHandlerToComponent<Interactable>();
             AddManipHandlerToComponent<Button>();
         }

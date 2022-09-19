@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
+using Needle;
 
 namespace MoveToCode {
     public class LoggingManager : Singleton<LoggingManager> {
@@ -120,9 +121,8 @@ namespace MoveToCode {
         /// Writes the values in row of CSV file if StreamWriter is open
         /// </summary>
         private void WriteValuesIfStreamWriterOpen() {
-            List<string> rowDuplicate = new List<string>(row);
             if (StreamWriterIsOpen()) {
-                streamWriter.WriteLine(string.Join(",", Time.time.ToString(), string.Join(",", rowDuplicate)));
+                streamWriter.WriteLine(string.Join(",", Time.time.ToString(), string.Join(",", row)));
             }
         }
 
@@ -136,8 +136,7 @@ namespace MoveToCode {
                 return;
             }
             WriteKeysIfStreamWriterOpen();
-            Debug.Log("Logged data to: " + filePath);
-
+            Debug.Log("Logged data to: " + filePath.LinkTo(filePath));
         }
 
         /// <summary>

@@ -7,7 +7,6 @@ using UnityEngine.XR.ARFoundation;
 
 namespace MoveToCode {
     public static class ExtensionMethods {
-
         // List Extensions
         public static bool Empty<T>(this List<T> l) {
             return l.Count == 0;

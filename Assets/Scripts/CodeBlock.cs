@@ -21,18 +21,28 @@ namespace MoveToCode {
 
         bool isMenuBlock;
 
+        CodeBlockManager _codeBlockManager;
+        CodeBlockManager codeBlockManagerInstance {
+            get {
+                if (_codeBlockManager == null) {
+                    _codeBlockManager = CodeBlockManager.instance;
+                }
+                return _codeBlockManager;
+            }
+        }
+
         // Abstract Methods
         protected abstract void SetMyBlockInternalArg();
 
         // Start Up
-        private void Awake() {
+        private void Start() {
             Assert.IsTrue(enabled == true); // race condition issues if this is starting disabled I think
             AddMRTKComponents();
             AddSnapColliderComponents();
             if (myBlockInternalArg == null) {
                 SetMyBlockInternalArg();
             }
-            CodeBlockManager.instance.RegisterCodeBlock(this);
+            codeBlockManagerInstance.RegisterCodeBlock(this);
             SetUpManipulationLogger();
             dragScript = gameObject.AddComponent<CloneOnDrag>(); // TODO: clean this up
             UpdateText();
@@ -107,6 +117,9 @@ namespace MoveToCode {
         }
 
         public void ResetInstructionInternalState() {
+            if (myBlockInternalArg == null) {
+                SetMyBlockInternalArg();
+            }
             myBlockInternalArg.ResestInternalState();
         }
 

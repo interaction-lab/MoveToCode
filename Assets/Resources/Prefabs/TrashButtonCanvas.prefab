@@ -276,6 +276,7 @@ GameObject:
   - component: {fileID: 1678040111860708517}
   - component: {fileID: 1678040111860708516}
   - component: {fileID: 1678040111860708523}
+  - component: {fileID: -3714357959914512069}
   m_Layer: 5
   m_Name: TrashButton
   m_TagString: Untagged
@@ -398,3 +399,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9c02c08a524c46b58b130a7d8d380e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-3714357959914512069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678040111860708521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fed2de112fda78547a9b01cacbbd9837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Interactable: {fileID: 0}
+  InteractableSearchScope: 0

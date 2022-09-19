@@ -81,5 +81,9 @@ namespace MoveToCode {
         void StopLogging(ManipulationEventData arg0) {
             StopLogging();
         }
+
+        void OnDisable(){
+            StopLogging();
+        }
     }
 }

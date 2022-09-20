@@ -82,6 +82,7 @@ The following are currently tested versions of required software. Higher version
 ## Licensing
 MoveToCode is open source under the [MIT License](https://en.wikipedia.org/wiki/MIT_License)
 
-
+## Credits
+- [Propeller Cap](https://sketchfab.com/3d-models/propeller-hat-ac50695f2ab24b2382ab7ebb8ba89d2d) created by [tamzidfarhan](https://sketchfab.com/tamzidfarhan)
 ## Questions or Contributions
 For any questions, you can contact Thomas Groechel at groechel@usc.edu. Feel free to fork for your own projects and/or submit pull requests.

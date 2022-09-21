@@ -1,74 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-6204983634410505869
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afb5496e8cd973748a10b3e3ef436ebd, type: 3}
-  m_Name: Repeat
-  m_EditorClassIdentifier: 
-  state: 0
-  started: 0
-  guid: 37fe49daa41eb664ba3dc4ccaf026157
-  position: {x: -69, y: 296}
-  blackboard:
-    goalPosition: {x: 0, y: 0, z: 0}
-    goalRotation: {x: 0, y: 0, z: 0}
-  description: 
-  drawGizmos: 0
-  child: {fileID: -2153829249717207754}
-  restartOnSuccess: 1
-  restartOnFailure: 0
---- !u!114 &-4352636275126761638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d787a84f9c139d04bb517c05c4db7e06, type: 3}
-  m_Name: DoAnimation
-  m_EditorClassIdentifier: 
-  state: 0
-  started: 0
-  guid: c142280878e3f284f9f55dc069b31f19
-  position: {x: -391, y: 622}
-  blackboard:
-    goalPosition: {x: 0, y: 0, z: 0}
-    goalRotation: {x: 0, y: 0, z: 0}
-  description: 
-  drawGizmos: 0
-  animationName: sad
---- !u!114 &-2153829249717207754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61431bba79d7d7843b82bf1de71703f5, type: 3}
-  m_Name: Sequencer
-  m_EditorClassIdentifier: 
-  state: 0
-  started: 0
-  guid: da8f1736dfde33f4c8ae0de5a27ddff8
-  position: {x: -219, y: 446}
-  blackboard:
-    goalPosition: {x: 0, y: 0, z: 0}
-    goalRotation: {x: 0, y: 0, z: 0}
-  description: 
-  drawGizmos: 0
-  children:
-  - {fileID: -4352636275126761638}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,9 +16,8 @@ MonoBehaviour:
   treeState: 0
   nodes:
   - {fileID: 3231384683707443026}
-  - {fileID: -4352636275126761638}
-  - {fileID: -2153829249717207754}
-  - {fileID: -6204983634410505869}
+  - {fileID: 5902925121112424646}
+  - {fileID: 6914482959658414674}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -106,10 +36,56 @@ MonoBehaviour:
   state: 0
   started: 1
   guid: 8e3ed244c658c4c498c61a9625675ca8
-  position: {x: -69, y: 107}
+  position: {x: 77.600006, y: 7.363129}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
   description: 
   drawGizmos: 0
-  child: {fileID: -6204983634410505869}
+  child: {fileID: 5902925121112424646}
+--- !u!114 &5902925121112424646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afb5496e8cd973748a10b3e3ef436ebd, type: 3}
+  m_Name: Repeat
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 5295e73d2a7e88442888335eda028f7a
+  position: {x: 76.79999, y: 139.68158}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+  description: 
+  drawGizmos: 0
+  child: {fileID: 6914482959658414674}
+  restartOnSuccess: 1
+  restartOnFailure: 0
+--- !u!114 &6914482959658414674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d787a84f9c139d04bb517c05c4db7e06, type: 3}
+  m_Name: DoAnimation
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: d07fff0e6eb5ac446b73e09af9ee8e34
+  position: {x: 12.600006, y: 345.8}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+  description: 
+  drawGizmos: 0
+  animationName: sad

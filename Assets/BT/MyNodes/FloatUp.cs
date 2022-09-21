@@ -2,29 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TheKiwiCoder;
-using MoveToCode;
 
-namespace NRISVTE{
+namespace MoveToCode{
     public class FloatUp : ActionNode
     {
-        public float distance = 1;
-        public float duration = 1;
+        public float distance;
+        public float timetofloat;
+        
         float startTime;
         TutorKuriTransformManager tk;
-
         protected override void OnStart() {
-            startTime = Time.time;
             tk = TutorKuriTransformManager.instance;
+            startTime = Time.time;
         }
 
         protected override void OnStop() {
         }
 
         protected override State OnUpdate() {
-            if(Time.time - startTime > duration) {
-                return State.Success;
+            if (Time.time - startTime < timetofloat) {
+                tk.Position = tk.Position + (Vector3.up * (distance / timetofloat * Time.deltaTime));
+                return State.Running;
             }
-            tk.Position = tk.Position + Vector3.up * (distance/duration * Time.deltaTime);
             return State.Success;
         }
     }

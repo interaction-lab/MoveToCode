@@ -44,16 +44,6 @@ namespace MoveToCode {
                 return _bkTransformManager;
             }
         }
-        ARTrackingManager aRTrackingManager;
-        ARTrackingManager ARTrackingManagerInstance {
-            get {
-                if (aRTrackingManager == null) {
-                    aRTrackingManager = ARTrackingManager.instance;
-                }
-                return aRTrackingManager;
-            }
-        }
-
         SolMazeManager solMazeManager;
         SolMazeManager SolMazeManagerInstance {
             get {
@@ -83,7 +73,6 @@ namespace MoveToCode {
                 return mazeGraph;
             }
         }
-
         public bool BKAtGoal = false;
         MazePiece _goalPiece;
         public MazePiece GoalMazePiece {
@@ -94,7 +83,6 @@ namespace MoveToCode {
                 return _goalPiece;
             }
         }
-
         public HashSet<MazePiece> _allMazePieces;
         public HashSet<MazePiece> AllMazePieces {
             get {
@@ -115,8 +103,6 @@ namespace MoveToCode {
                 LoggingManagerInstance.AddLogColumn(mazeLockCol, "");
                 LoggingManagerInstance.AddLogColumn(containsSolCol, "");
                 hasBeenInitialized = true;
-                OnBKGoalEnter = new UnityEvent();
-                OnBKGoalExit = new UnityEvent();
             }
 #if UNITY_EDITOR
             AddManipulationHandlersForUnityEditor();
@@ -303,14 +289,14 @@ namespace MoveToCode {
             bool lastIsAtGoal = BKAtGoal;
             if(mp?.GetComponent<MazeGoal>()) {
                 if (!lastIsAtGoal) {
-                    OnBKGoalEnter.Invoke();
                     BKAtGoal = true;
+                    OnBKGoalEnter.Invoke();
                 }
             }
             else {
                 if (lastIsAtGoal) {
-                    OnBKGoalExit.Invoke();
                     BKAtGoal = false;
+                    OnBKGoalExit.Invoke();
                 }
             }
         }

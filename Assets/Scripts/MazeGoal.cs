@@ -27,7 +27,7 @@ namespace MoveToCode {
         bool hasBeenInitialized = false;
         private void OnEnable() {
             if (!IsBKMazePiece) {
-                return; 
+                return;
             }
             if (!hasBeenInitialized) {
                 MazeManager.instance.OnBKGoalEnter.AddListener(OnBKGoalEnter);
@@ -37,6 +37,15 @@ namespace MoveToCode {
             Particles.Stop();
             var main = Particles.main;
             main.loop = false;
+#if UNITY_EDITOR
+            // remove trashbutton canvas so that we don't accidently remove the goal during debugging in the editor
+            foreach (Transform t in transform) {
+                if (t.name.Contains("Trash")) {
+                    Destroy(t.gameObject);
+                    break;
+                }
+            }
+#endif
         }
         #endregion
 

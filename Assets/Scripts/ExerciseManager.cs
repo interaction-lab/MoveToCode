@@ -38,13 +38,10 @@ namespace MoveToCode {
 
         public bool AlertCodeFinished() {
             if (curExercise != null) { // This if is to guard against initializing interpreter
-                                       // curExercise.IsExerciseCorrect() -> old code
                 if (MazeManager.instance.IsBKAtTheGoalNow() && MazeManager.instance.ContainsSolutionMaze()) {
-                    // TutorKuriManager.instance.kuriController.SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT.Congratulation); // -> this is now handled in the kuri controller
                     LoggingManager.instance.UpdateLogColumn(exerciseSubmissionResultCol, "Correct");
                     lastExerciseCompleted = true;
                     OnExerciseCorrect.Invoke();
-                    // this is where I should do the explosion at the goal
                     return true;
                 }
                 else {

@@ -1,20 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace MoveToCode {
     public class MazeGoal : MonoBehaviour {
         #region members
-        Collider _collider;
-        Collider MyCollider {
-            get {
-                if (_collider == null) {
-                    _collider = GetComponent<Collider>();
-                }
-                return _collider;
-            }
-        }
+
         ParticleSystem ps;
         ParticleSystem Particles {
             get {
@@ -25,13 +16,9 @@ namespace MoveToCode {
             }
         }
 
-        MazeManager mazeManager;
-        MazeManager MazeManagerInstance {
+        bool IsBKMazePiece {
             get {
-                if (mazeManager == null) {
-                    mazeManager = MazeManager.instance;
-                }
-                return mazeManager;
+                return transform.name.Contains("sol"); // Hackiest thing ever that defintely won't lead to problems down the road, got to love string comparisons of transform names that will never change for sure
             }
         }
         #endregion
@@ -39,22 +26,17 @@ namespace MoveToCode {
         #region unity
         bool hasBeenInitialized = false;
         private void OnEnable() {
-            if (transform.name.Contains("sol")) {
-                return; // Hackiest thing ever that defintely won't lead to problems down the road
+            if (!IsBKMazePiece) {
+                return; 
             }
             if (!hasBeenInitialized) {
-                ExerciseManager.instance.OnExerciseCorrect.AddListener(OnExerciseCorrect);
+                MazeManager.instance.OnBKGoalEnter.AddListener(OnBKGoalEnter);
+                MazeManager.instance.OnBKGoalExit.AddListener(OnBKGoalExit);
                 hasBeenInitialized = true;
             }
-            MyCollider.enabled = true;
-            MyCollider.isTrigger = true;
             Particles.Stop();
             var main = Particles.main;
             main.loop = false;
-        }
-
-        private void OnDisable() {
-            MyCollider.enabled = false;
         }
         #endregion
 
@@ -62,10 +44,14 @@ namespace MoveToCode {
         #endregion
 
         #region private
-        private void OnExerciseCorrect() {
+        private void OnBKGoalEnter() {
             KuriTextManager.instance.Addline("Maze completed!");
             Particles.Play();
             AudioManager.instance.PlaySoundAtObject(transform, AudioManager.correctAudioClip);
+        }
+
+        private void OnBKGoalExit() {
+            Particles.Stop(); // in case they quickly move to the next exercise
         }
         #endregion
     }

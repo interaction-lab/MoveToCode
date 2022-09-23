@@ -58,7 +58,7 @@ namespace MoveToCode {
         }
         public bool IsBabyKuriPiece {
             get {
-                return GetComponent<MazeBabyKuri>() != null;
+                return GetComponent<StartingBKMazePiece>() != null;
             }
         }
         public bool IsGoalPiece {
@@ -86,7 +86,7 @@ namespace MoveToCode {
         #region unity
         void Awake() {
             IsAnchored = false;
-            
+
             if (GetComponentInChildren<TrashButton>() == null) {
                 Instantiate(Resources.Load<GameObject>(ResourcePathConstants.TrashButtonCanvasPrefab), transform);
             }

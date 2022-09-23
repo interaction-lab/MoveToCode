@@ -9,7 +9,7 @@ using System.Collections;
 namespace MoveToCode {
     public class MazeManager : Singleton<MazeManager> {
         #region members
-        public UnityEvent OnMazeLocked, OnMazeUnlocked;
+        public UnityEvent OnMazeLocked, OnMazeUnlocked, OnBKGoalEnter, OnBKGoalExit;
         public static string mazeLogCol = "UserMaze", mazeLockCol = "mazeLock", containsSolCol = "containsSol";
         HashSet<Connection> populatedConnections = new HashSet<Connection>();
         Dictionary<MazeConnector, HashSet<MazeConnector>> connectRequests = new Dictionary<MazeConnector, HashSet<MazeConnector>>();
@@ -27,7 +27,7 @@ namespace MoveToCode {
             get {
                 if (bkMazePiece == null) {
                     foreach (Transform t in transform) {
-                        if (t.GetComponent<MazeBabyKuri>() != null) {
+                        if (t.GetComponent<StartingBKMazePiece>() != null) {
                             bkMazePiece = t.GetComponent<MazePiece>();
                         }
                     }
@@ -85,7 +85,6 @@ namespace MoveToCode {
         }
 
         public bool BKAtGoal = false;
-        public UnityEvent OnBKAtGoal;
         MazePiece _goalPiece;
         public MazePiece GoalMazePiece {
             get {
@@ -118,7 +117,8 @@ namespace MoveToCode {
                 LoggingManagerInstance.AddLogColumn(mazeLockCol, "");
                 LoggingManagerInstance.AddLogColumn(containsSolCol, "");
                 hasBeenInitialized = true;
-                OnBKAtGoal = new UnityEvent();
+                OnBKGoalEnter = new UnityEvent();
+                OnBKGoalExit = new UnityEvent();
             }
 #if UNITY_EDITOR
             AddManipulationHandlersForUnityEditor();
@@ -218,23 +218,12 @@ namespace MoveToCode {
         // need a better way to update the next piece given the final command
         public MazePiece GetPotentialNextMP(CodeBlockEnums.Move direction) {
             MazePiece res = GetMazeConnectorRelBKInDir(direction)?.ConnectedMP;
-            // also make sure to check if our current piece is the goal piece
-            if (res?.GetComponent<MazeGoal>() != null) {
-                if (!BKAtGoal) {
-                    BKAtGoal = true;
-                    OnBKAtGoal.Invoke();
-                }
-                BKAtGoal = true;
-            }
-            else {
-                BKAtGoal = false;
-            }
-            return res;
+            UpdateBKGoalEvents(res);
+            return GetMazeConnectorRelBKInDir(direction)?.ConnectedMP;
         }
 
         public bool IsBKAtTheGoalNow() {
             return BKAtGoal || GetClosestKuriMazePiece()?.GetComponent<MazeGoal>() != null;
-            ;
         }
 
         public MazePiece GetMisalignedPiece() {
@@ -321,6 +310,21 @@ namespace MoveToCode {
             IsLocked = false;
             OnMazeUnlocked.Invoke();
             LoggingManagerInstance.UpdateLogColumn(mazeLockCol, "Unlocked");
+        }
+        private void UpdateBKGoalEvents(MazePiece mp) {
+            bool lastIsAtGoal = BKAtGoal;
+            if(mp?.GetComponent<MazeGoal>()) {
+                if (!lastIsAtGoal) {
+                    OnBKGoalEnter.Invoke();
+                    BKAtGoal = true;
+                }
+            }
+            else {
+                if (lastIsAtGoal) {
+                    OnBKGoalExit.Invoke();
+                    BKAtGoal = false;
+                }
+            }
         }
         private void SnapPiecesTogether() {
             if (IsLocked) {

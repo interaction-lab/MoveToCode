@@ -10,7 +10,7 @@ namespace MoveToCode {
             get {
                 if (bkMazePiece == null) {
                     foreach (Transform t in transform) {
-                        if (t.GetComponent<MazeBabyKuri>() != null) {
+                        if (t.GetComponent<StartingBKMazePiece>() != null) {
                             bkMazePiece = t.GetComponent<MazePiece>();
                         }
                     }

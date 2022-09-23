@@ -16,7 +16,7 @@ namespace MoveToCode {
 
         #region protected
         protected override void UpdateBehaviorSpecific(ARTrackedImage img) {
-            if (img.trackingState == UnityEngine.XR.ARSubsystems.TrackingState.Tracking && !MazeManagerInstance.IsLocked) {
+            if (ARTrackingManagerInstance.IsTracking && img.trackingState == UnityEngine.XR.ARSubsystems.TrackingState.Tracking) {
                 transform.position = img.transform.position;
                 transform.rotation = Quaternion.Euler(0, img.transform.rotation.eulerAngles.y, 0);
             }

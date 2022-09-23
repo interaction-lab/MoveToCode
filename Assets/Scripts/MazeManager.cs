@@ -124,10 +124,6 @@ namespace MoveToCode {
             MoveOutOfView(); // Move the maze out of view so that it doesn't get in the way of the user when deployed to a device
 #endif
         }
-        private void OnDisable() {
-            ARTrackingManagerInstance.OnTrackingStarted.RemoveListener(OnTrackingStarted);
-            ARTrackingManagerInstance.OnTrackingEnded.RemoveListener(OnTrackingEnded);
-        }
         #endregion
         #region public
         public GameObject GetMazeObject(string name) {

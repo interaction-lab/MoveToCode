@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.XR.ARFoundation;
@@ -30,7 +27,7 @@ namespace MoveToCode {
         bool alphaRaising = true;
 
         ARTrackingManager aRTrackingManager;
-        ARTrackingManager ARTrackingManagerInstance {
+        protected ARTrackingManager ARTrackingManagerInstance {
             get {
                 if (aRTrackingManager == null) {
                     aRTrackingManager = ARTrackingManager.instance;
@@ -51,15 +48,6 @@ namespace MoveToCode {
         public UnityEvent OnImgStartedTracking, OnImgStoppedTracking;
         bool isTracking = false;
         bool hasBeenInitialized = false;
-        MazeManager _mazeManager;
-        protected MazeManager MazeManagerInstance {
-            get {
-                if (_mazeManager == null) {
-                    _mazeManager = MazeManager.instance;
-                }
-                return _mazeManager;
-            }
-        }
 
         public bool IsTracking {
             get {
@@ -72,39 +60,24 @@ namespace MoveToCode {
         private void OnEnable() {
             if (!hasBeenInitialized) {
                 TrackingIndicator.TurnOff();
-                MazeManagerInstance.OnMazeLocked.AddListener(OnMazeLocked);
-                MazeManagerInstance.OnMazeUnlocked.AddListener(OnMazeUnlocked);
                 hasBeenInitialized = true;
             }
-            ARTrackingManagerInstance.OnTrackingEnded.AddListener(OnTrackingEnded);
         }
 
-        private void OnMazeLocked() {
-            UpdateResetTrackImg();
-        }
-        private void OnMazeUnlocked() {
-            // UpdateTrackImg();
-        }
-
-
-        private void OnDisable() {
-            ARTrackingManagerInstance.OnTrackingEnded.RemoveListener(OnTrackingEnded);
-        }
         #endregion
 
         #region public
-        // TODO: fix all the naming conventions here for tracking/not tracking etc as this is terrible
         public void UpdateBehavior(ARTrackedImage img) {
-            if (img.trackingState == UnityEngine.XR.ARSubsystems.TrackingState.Tracking && !MazeManagerInstance.IsLocked) {
-                UpdateTrackImg();
+            if (ARTrackingManagerInstance.IsTracking && img.trackingState == UnityEngine.XR.ARSubsystems.TrackingState.Tracking) {
+                OnTrackingNow();
             }
             else {
-                UpdateResetTrackImg();
+                OnNotTracking();
             }
             UpdateBehaviorSpecific(img);
         }
 
-        private void UpdateResetTrackImg() {
+        private void OnNotTracking() {
             ResetMeshAlpha();
             if (isTracking) {
                 isTracking = false;
@@ -114,7 +87,7 @@ namespace MoveToCode {
 
         }
 
-        private void UpdateTrackImg() {
+        private void OnTrackingNow() {
             PulseAlphaMesh();
             if (!isTracking) {
                 isTracking = true;
@@ -134,7 +107,7 @@ namespace MoveToCode {
             MeshRend.material.color = c;
         }
         protected void ResetMeshAlpha() {
-            MeshRend.material.color = OrigColor; // TODO make this more efficient/actually fix it
+            MeshRend.material.color = OrigColor; // TODO make this more efficient/actually fix it -> meh no
         }
         protected float CalculateAlpha(float curAlpha) {
             float tmpA = (curAlpha - alphaFloor) / (alphaCeil - alphaFloor); // normalize alpha
@@ -154,9 +127,6 @@ namespace MoveToCode {
         #endregion
 
         #region private
-        private void OnTrackingEnded() {
-            ResetMeshAlpha();
-        }
         #endregion
     }
 }

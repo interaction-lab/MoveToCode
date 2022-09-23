@@ -18,7 +18,7 @@ namespace MoveToCode {
 
         bool IsBKMazePiece {
             get {
-                return transform.name.Contains("sol"); // Hackiest thing ever that defintely won't lead to problems down the road, got to love string comparisons of transform names that will never change for sure
+                return !transform.name.Contains("sol"); // Hackiest thing ever that defintely won't lead to problems down the road, got to love string comparisons of transform names that will never change for sure
             }
         }
         #endregion

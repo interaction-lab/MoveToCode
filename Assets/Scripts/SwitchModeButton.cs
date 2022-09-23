@@ -8,8 +8,18 @@ namespace MoveToCode {
     /// Main button in top left corner
     /// Also manages the states of the play and reset buttons(while probably shouldn't and that should be abstracted higher but whateva)
     /// </summary>
-    public class SwitchModeButton : MonoBehaviour {
+    public class SwitchModeButton : Singleton<SwitchModeButton> {
         #region members
+        public enum MODE {
+            MazeBuilding,
+            Coding
+        }
+
+        public MODE CurrentMode {
+            get;
+            private set;
+        }
+
         MazeManager _mazeManager;
         MazeManager MazeManagerInstance {
             get {
@@ -17,15 +27,6 @@ namespace MoveToCode {
                     _mazeManager = MazeManager.instance;
                 }
                 return _mazeManager;
-            }
-        }
-        ButtonConfigHelper bch;
-        ButtonConfigHelper ButtonConfig {
-            get {
-                if (bch == null) {
-                    bch = GetComponent<ButtonConfigHelper>();
-                }
-                return bch;
             }
         }
         Interpreter _interpreter;
@@ -65,14 +66,12 @@ namespace MoveToCode {
         #region unity
         private void Awake() {
             MyButton.onClick.AddListener(OnScreenClick);
-            MazeManagerInstance.OnMazeLocked.AddListener(OnMazeLocked);
-            MazeManagerInstance.OnMazeUnlocked.AddListener(OnMazeUnlocked);
             InterpreterInstance.OnCodeStart.AddListener(OnCodeStart);
             InterpreterInstance.OnCodeReset.AddListener(OnCodeReset);
             ExerciseManager.instance.OnCyleNewExercise.AddListener(OnNewExercise);
             SolMazeCheckMark.instance.OnMazeCorrect.AddListener(OnMazeCorrect);
             SolMazeCheckMark.instance.OnMazeIncorrect.AddListener(OnMazeIncorrect);
-            OnMazeUnlocked();
+            SwitchToMazeBuildingMode();
         }
         #endregion
 
@@ -88,8 +87,8 @@ namespace MoveToCode {
         }
         private void OnNewExercise() {
             PulseIMG.StopPulse();
-            if (MazeManagerInstance.IsLocked) {
-                OnScreenClick(); // fake a click when the new exercise is loaded, this will transition from locked -> onlocked
+            if (CurrentMode != MODE.MazeBuilding) {
+                SwitchToMazeBuildingMode();
             }
         }
         private void OnCodeReset() {
@@ -100,24 +99,32 @@ namespace MoveToCode {
             MyButton.enabled = false;
         }
 
-        private void OnMazeUnlocked() {
+        private void SwitchToMazeBuildingMode() {
+            CurrentMode = MODE.MazeBuilding;
+            MazeManagerInstance.UnlockMaze();
             screenPlayButtonObject.SetActive(false);
             screenResetButtonObject.SetActive(false);
             modeText.text = "Mode 1: Maze Building";
-            CodeBlockManager.instance.HideCodeBlocks();
+            CodeBlockManager.instance.HideCodeBlocks(); // this should be event driven from the codeblockmanager side
         }
 
-        private void OnMazeLocked() {
+        private void SwitchToCodingMode() {
+            CurrentMode = MODE.Coding;
+            MazeManagerInstance.LockMaze();
             screenPlayButtonObject.SetActive(true);
             screenResetButtonObject.SetActive(true);
             modeText.text = "Mode 2: Coding";
-
-            CodeBlockManager.instance.ShowCodeBlocks();
+            CodeBlockManager.instance.ShowCodeBlocks(); // this should be event driven from the codeblockmanager side
             PulseIMG.StopPulse();
         }
 
         private void OnScreenClick() {
-            MazeManagerInstance.ToggleMazeLock(); // the state of everything should really be up here and not in MazeManager
+            if (CurrentMode == MODE.MazeBuilding) {
+                SwitchToCodingMode();
+            }
+            else {
+                SwitchToMazeBuildingMode();
+            }
         }
     }
     #endregion

@@ -15,7 +15,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 2bb05b87cb16ed34aa2d84abf20911b3
-  position: {x: 78, y: 76}
+  position: {x: 78, y: 88}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}

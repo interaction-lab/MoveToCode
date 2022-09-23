@@ -41,6 +41,9 @@ namespace MoveToCode {
             MyMaterial.color = origMaterialColor;
             Img.color = origButtonColor;
         }
+        private void OnEnable() {
+            // make pulse if prior was pulsing...need to check enable/disable
+        }
         #endregion
 
         #region public

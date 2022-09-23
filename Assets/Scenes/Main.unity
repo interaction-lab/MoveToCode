@@ -4298,7 +4298,6 @@ MonoBehaviour:
   OnBKGoalExit:
     m_PersistentCalls:
       m_Calls: []
-  IsLocked: 0
   BKAtGoal: 0
 --- !u!1 &223377334
 GameObject:
@@ -15085,7 +15084,6 @@ GameObject:
   - component: {fileID: 792197898}
   - component: {fileID: 792197897}
   - component: {fileID: 792197896}
-  - component: {fileID: 792197899}
   m_Layer: 5
   m_Name: ScreenLockMazeImg
   m_TagString: Untagged
@@ -15166,19 +15164,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 792197894}
   m_CullTransparentMesh: 1
---- !u!114 &792197899
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 792197894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e1c85200d705594e88edec4bece6bef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsPulsing: 0
 --- !u!1001 &796534444
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30740,22 +30725,22 @@ PrefabInstance:
     - target: {fileID: 2259024666815131635, guid: 01467935cc2dacd4a918ea4e1bb054b6,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9769503
+      value: 0.9769502
       objectReference: {fileID: 0}
     - target: {fileID: 2259024666815131635, guid: 01467935cc2dacd4a918ea4e1bb054b6,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.21346709
+      value: -0.21346723
       objectReference: {fileID: 0}
     - target: {fileID: 2259024666991242007, guid: 01467935cc2dacd4a918ea4e1bb054b6,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8517349
+      value: 0.8517347
       objectReference: {fileID: 0}
     - target: {fileID: 2259024666991242007, guid: 01467935cc2dacd4a918ea4e1bb054b6,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.523973
+      value: 0.5239733
       objectReference: {fileID: 0}
     - target: {fileID: 2259024667631490456, guid: 01467935cc2dacd4a918ea4e1bb054b6,
         type: 3}
@@ -41879,7 +41864,7 @@ GameObject:
   - component: {fileID: 2078361699}
   - component: {fileID: 2078361702}
   m_Layer: 5
-  m_Name: ScreenLockMazeButton
+  m_Name: SwitchModeButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

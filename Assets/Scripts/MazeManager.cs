@@ -62,7 +62,20 @@ namespace MoveToCode {
                 return loggingManager;
             }
         }
-        public bool IsLocked = false;
+        SwitchModeButton smb;
+        SwitchModeButton SMB {
+            get {
+                if (smb == null) {
+                    smb = SwitchModeButton.instance;
+                }
+                return smb;
+            }
+        }
+        public bool IsLocked {
+            get {
+                return SMB.CurrentMode != SwitchModeButton.MODE.MazeBuilding;
+            }
+        }
         bool hasBeenInitialized = false;
         MazeGraph mazeGraph = null;
         public MazeGraph MyMazeGraph {
@@ -169,13 +182,18 @@ namespace MoveToCode {
             populatedConnections.Remove(connection);
         }
 
-        public void ToggleMazeLock() {
-            if (IsLocked) {
-                ReleasePieces();
-            }
-            else {
-                SnapPiecesTogether();
-            }
+
+        /// <summary>
+        /// Lock and unlock should only be called by `SwitchModeButton.cs` because it is the holder of the state
+        /// </summary>
+        public void LockMaze() {
+            SnapPiecesTogether();
+        }
+        /// <summary>
+        /// Lock and unlock should only be called by `SwitchModeButton.cs` because it is the holder of the state
+        /// </summary>
+        public void UnlockMaze() {
+            ReleasePieces();
         }
 
         public void MarkMazeDirty() {
@@ -269,7 +287,7 @@ namespace MoveToCode {
                 manipHandler.ManipulationType = ManipulationHandler.HandMovementType.OneHandedOnly;
             }
         }
-      
+
         private void ReleasePieces() {
             if (!IsLocked) {
                 return;
@@ -281,13 +299,12 @@ namespace MoveToCode {
                 }
             }
             SolMazeManagerInstance.ReleasePieces();
-            IsLocked = false;
             OnMazeUnlocked.Invoke();
             LoggingManagerInstance.UpdateLogColumn(mazeLockCol, "Unlocked");
         }
         private void UpdateBKGoalEvents(MazePiece mp) {
             bool lastIsAtGoal = BKAtGoal;
-            if(mp?.GetComponent<MazeGoal>()) {
+            if (mp?.GetComponent<MazeGoal>()) {
                 if (!lastIsAtGoal) {
                     BKAtGoal = true;
                     OnBKGoalEnter.Invoke();
@@ -307,7 +324,6 @@ namespace MoveToCode {
             BKMazePiece.SnapConnections();
             BKTransformManager?.SetOriginalState();
             SolMazeManagerInstance?.SnapPiecesTogether();
-            IsLocked = true;
             // move all pieces that aren't in my graph way away
 #if !UNITY_EDITOR
             DeactivateUnusedMazePieces();

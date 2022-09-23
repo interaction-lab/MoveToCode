@@ -12,6 +12,7 @@ namespace MoveToCode {
         public static string babyKuriMovementActionCol = "babyKuriMovementAction";
         private float moveSpeed = 1f, turnSpeed = 200f; // need to be fast for now as everything is under a 1 window time slot, super flimsy
         public AnimationCurve speedCurve;
+        public bool KuriIsOffRails = false;
         List<MeshRenderer> _bodyPlatesToChangeColor;
         List<MeshRenderer> BodyPlatesToChangeColor {
             get {
@@ -35,16 +36,6 @@ namespace MoveToCode {
                     }
                 }
                 return origColors;
-            }
-        }
-
-        BabyKuriManager bkm;
-        BabyKuriManager babyKuriManager {
-            get {
-                if (bkm == null) {
-                    bkm = BabyKuriManager.instance;
-                }
-                return bkm;
             }
         }
 
@@ -135,22 +126,30 @@ namespace MoveToCode {
             if (!MoveQueue.Empty() && !IsMoving && !KuriIsOffRails) {
                 KeyValuePair<Type, float> p = MoveQueue.Dequeue();
                 if (p.Key == typeof(CodeBlockEnums.Move)) {
-                    CodeBlockEnums.Move move = p.Value > 0 ? CodeBlockEnums.Move.Forward : CodeBlockEnums.Move.Backward;
-                    MazePiece potentialNextPiece = MazeManagerInstance.GetPotentialNextMP(move);
-                    if (potentialNextPiece == null) {
-                        ThrowKuriOffTheRails(p.Value > 0);
-                    }
-                    else {
-                        StartCoroutine(GoToPosition(potentialNextPiece.Center, move == CodeBlockEnums.Move.Forward, false));
-                    }
+                    MoveBK(p);
                 }
                 else if (p.Key == typeof(CodeBlockEnums.Turn)) {
-                    StartCoroutine(TurnToAngle(Quaternion.Euler(BKTransformManager.KuriRot.eulerAngles + BKTransformManager.Up * p.Value), p.Value > 0));
+                    TurnBK(p);
                 }
             }
         }
 
-        public bool KuriIsOffRails = false;
+        private void MoveBK(KeyValuePair<Type, float> p) {
+            CodeBlockEnums.Move move = p.Value > 0 ? CodeBlockEnums.Move.Forward : CodeBlockEnums.Move.Backward;
+            MazePiece potentialNextPiece = MazeManagerInstance.GetPotentialNextMP(move);
+            MazeManagerInstance.BKIsMovingToPiece(potentialNextPiece);
+            if (potentialNextPiece == null) {
+                ThrowKuriOffTheRails(move == CodeBlockEnums.Move.Forward);
+            }
+            else { 
+                StartCoroutine(GoToPosition(potentialNextPiece.Center, move == CodeBlockEnums.Move.Forward, false));
+            }
+        }
+
+        private void TurnBK(KeyValuePair<Type, float> p) {
+            StartCoroutine(TurnToAngle(Quaternion.Euler(BKTransformManager.KuriRot.eulerAngles + BKTransformManager.Up * p.Value), p.Value > 0));
+        }
+
         private void ThrowKuriOffTheRails(bool forward) {
             float dist = forward ? 0.34f : -0.34f;
             KuriIsOffRails = true;
@@ -165,7 +164,7 @@ namespace MoveToCode {
         }
 
         private float goalDistDelta = 0.02f;
-        public IEnumerator GoToPosition(Vector3 goal, bool forward, bool wasError) {
+        private IEnumerator GoToPosition(Vector3 goal, bool forward, bool wasError) {
             if (IsMoving) {
                 throw new InvalidOperationException("Baby Kuri already moving, check moveQueue queueing code");
             }
@@ -188,7 +187,7 @@ namespace MoveToCode {
         }
 
         private float goalDegreeDelta = 3f;
-        public IEnumerator TurnToAngle(Quaternion goal, bool right) {
+        private IEnumerator TurnToAngle(Quaternion goal, bool right) {
             if (IsMoving) {
                 throw new InvalidOperationException("Baby Kuri already moving, check moveQueue queueing code");
             }

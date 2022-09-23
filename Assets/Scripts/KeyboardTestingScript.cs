@@ -55,8 +55,8 @@ public class KeyboardTestingScript : MonoBehaviour {
             }
         }
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
-            Debug.Log(MazeManager.instance.GetPotentialNextMP(CodeBlockEnums.Move.Forward)?.Center);
-            Debug.Log(MazeManager.instance.GetPotentialNextMP(CodeBlockEnums.Move.Backward)?.Center);
+            // Debug.Log(MazeManager.instance.GetPotentialNextMP(CodeBlockEnums.Move.Forward)?.Center);
+            // Debug.Log(MazeManager.instance.GetPotentialNextMP(CodeBlockEnums.Move.Backward)?.Center);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
             //  MenuManager.instance.FakePressPlay();

@@ -214,12 +214,12 @@ namespace MoveToCode {
             return kuriMP.GetConnector(kuriDir);
         }
 
-        // issue is that this is never called when a move command is not the last thing called
-        // need a better way to update the next piece given the final command
         public MazePiece GetPotentialNextMP(CodeBlockEnums.Move direction) {
-            MazePiece res = GetMazeConnectorRelBKInDir(direction)?.ConnectedMP;
-            UpdateBKGoalEvents(res);
             return GetMazeConnectorRelBKInDir(direction)?.ConnectedMP;
+        }
+
+        public void BKIsMovingToPiece(MazePiece mp) {
+            UpdateBKGoalEvents(mp);
         }
 
         public bool IsBKAtTheGoalNow() {

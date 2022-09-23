@@ -1,11 +1,14 @@
 using Microsoft.MixedReality.Toolkit.UI;
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace MoveToCode {
-    public class LockMazeButton : MonoBehaviour {
+    /// <summary>
+    /// Main button in top left corner
+    /// Also manages the states of the play and reset buttons(while probably shouldn't and that should be abstracted higher but whateva)
+    /// </summary>
+    public class SwitchModeButton : MonoBehaviour {
         #region members
         MazeManager _mazeManager;
         MazeManager MazeManagerInstance {
@@ -45,24 +48,6 @@ namespace MoveToCode {
             }
         }
 
-
-
-        public bool IsScreenButton {
-            get {
-                return MyButton != null;
-            }
-        }
-
-        TextMeshProUGUI _tmp;
-        TextMeshProUGUI MyText {
-            get {
-                if (_tmp == null) {
-                    _tmp = GetComponentInChildren<TextMeshProUGUI>();
-                }
-                return _tmp;
-            }
-        }
-
         public GameObject screenPlayButtonObject;
         public GameObject screenResetButtonObject;
         public TextMeshProUGUI modeText;
@@ -79,9 +64,7 @@ namespace MoveToCode {
 
         #region unity
         private void Awake() {
-            if (IsScreenButton) {
-                MyButton.onClick.AddListener(OnScreenClick);
-            }
+            MyButton.onClick.AddListener(OnScreenClick);
             MazeManagerInstance.OnMazeLocked.AddListener(OnMazeLocked);
             MazeManagerInstance.OnMazeUnlocked.AddListener(OnMazeUnlocked);
             InterpreterInstance.OnCodeStart.AddListener(OnCodeStart);
@@ -89,17 +72,8 @@ namespace MoveToCode {
             ExerciseManager.instance.OnCyleNewExercise.AddListener(OnNewExercise);
             SolMazeCheckMark.instance.OnMazeCorrect.AddListener(OnMazeCorrect);
             SolMazeCheckMark.instance.OnMazeIncorrect.AddListener(OnMazeIncorrect);
-            // need onmazecorrect and onmazeincorrect
-
             OnMazeUnlocked();
         }
-        void Update() {
-            if (IsScreenButton && !MazeManager.instance.IsLocked) {
-                // make sure my parent is active
-                transform.parent.gameObject.SetActive(true); // make sure to be active when in build mode
-            }
-        }
-
         #endregion
 
         #region public
@@ -107,67 +81,43 @@ namespace MoveToCode {
 
         #region private
         private void OnMazeCorrect() {
-            if (!MazeManager.instance.IsLocked) {
-                PulseIMG.StartPulse(Color.green);
-            }
+            PulseIMG.StartPulse(Color.green);
         }
         private void OnMazeIncorrect() {
             PulseIMG.StopPulse();
         }
         private void OnNewExercise() {
+            PulseIMG.StopPulse();
             if (MazeManagerInstance.IsLocked) {
-                OnScreenClick(); // fake a click when the new exercise is loaded
+                OnScreenClick(); // fake a click when the new exercise is loaded, this will transition from locked -> onlocked
             }
         }
         private void OnCodeReset() {
-            if (IsScreenButton) {
-                transform.parent.gameObject.SetActive(true);
-            }
-            else {
-                gameObject.SetActive(true);
-            }
+            MyButton.enabled = true;
         }
 
         private void OnCodeStart() {
-            if (IsScreenButton) {
-                transform.parent.gameObject.SetActive(false);
-            }
-            else {
-                gameObject.SetActive(false);
-            }
+            MyButton.enabled = false;
         }
 
         private void OnMazeUnlocked() {
-            string newTxt = "Switch Mode";
-            if (IsScreenButton) {
-                MyText.text = newTxt;
-                screenPlayButtonObject.SetActive(false);
-                screenResetButtonObject.SetActive(false);
-                modeText.text = "Mode 1: Maze Building";
-            }
-            else {
-                ButtonConfig.MainLabelText = newTxt;
-            }
+            screenPlayButtonObject.SetActive(false);
+            screenResetButtonObject.SetActive(false);
+            modeText.text = "Mode 1: Maze Building";
             CodeBlockManager.instance.HideCodeBlocks();
         }
 
         private void OnMazeLocked() {
-            string newTxt = "Switch Mode";
-            if (IsScreenButton) {
-                MyText.text = newTxt;
-                screenPlayButtonObject.SetActive(true);
-                screenResetButtonObject.SetActive(true);
-                modeText.text = "Mode 2: Coding";
-            }
-            else {
-                ButtonConfig.MainLabelText = newTxt;
-            }
+            screenPlayButtonObject.SetActive(true);
+            screenResetButtonObject.SetActive(true);
+            modeText.text = "Mode 2: Coding";
+
             CodeBlockManager.instance.ShowCodeBlocks();
             PulseIMG.StopPulse();
         }
 
         private void OnScreenClick() {
-            MazeManagerInstance.ToggleMazeLock();
+            MazeManagerInstance.ToggleMazeLock(); // the state of everything should really be up here and not in MazeManager
         }
     }
     #endregion

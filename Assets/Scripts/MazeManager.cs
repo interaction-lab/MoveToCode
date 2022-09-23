@@ -289,9 +289,6 @@ namespace MoveToCode {
         }
 
         private void ReleasePieces() {
-            if (!IsLocked) {
-                return;
-            }
             foreach (Transform child in transform) {
                 MazePiece mazePiece = child.GetComponent<MazePiece>();
                 if (mazePiece != null) {
@@ -318,9 +315,6 @@ namespace MoveToCode {
             }
         }
         private void SnapPiecesTogether() {
-            if (IsLocked) {
-                return;
-            }
             BKMazePiece.SnapConnections();
             BKTransformManager?.SetOriginalState();
             SolMazeManagerInstance?.SnapPiecesTogether();

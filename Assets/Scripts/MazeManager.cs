@@ -110,8 +110,6 @@ namespace MoveToCode {
         #endregion
         #region unity
         private void OnEnable() {
-            ARTrackingManagerInstance.OnTrackingStarted.AddListener(OnTrackingStarted);
-            ARTrackingManagerInstance.OnTrackingEnded.AddListener(OnTrackingEnded);
             if (!hasBeenInitialized) {
                 LoggingManagerInstance.AddLogColumn(mazeLogCol, "");
                 LoggingManagerInstance.AddLogColumn(mazeLockCol, "");
@@ -289,13 +287,7 @@ namespace MoveToCode {
                 manipHandler.ManipulationType = ManipulationHandler.HandMovementType.OneHandedOnly;
             }
         }
-        private void OnTrackingStarted() {
-            // ReleasePieces(); // vistigial old and now commented out to fix for the sitch mode persistence
-        }
-        private void OnTrackingEnded() {
-            // where we snap the maze to each other + floor + grid
-            SnapPiecesTogether();
-        }
+      
         private void ReleasePieces() {
             if (!IsLocked) {
                 return;

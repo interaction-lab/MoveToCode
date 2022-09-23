@@ -92,15 +92,21 @@ namespace MoveToCode {
             }
         }
         private void OnCodeReset() {
-            MyButton.enabled = true;
+            SetVisibilityOfThisButton(true);
         }
 
         private void OnCodeStart() {
-            MyButton.enabled = false;
+            SetVisibilityOfThisButton(false);
         }
 
+        private void SetVisibilityOfThisButton(bool b) {
+            transform.parent.gameObject.SetActive(b);
+        }
+
+
+
         private void SwitchToMazeBuildingMode() {
-            CurrentMode = MODE.MazeBuilding;
+            CurrentMode = MODE.MazeBuilding; // need to be careful because changing state prior to actually running anything
             MazeManagerInstance.UnlockMaze();
             screenPlayButtonObject.SetActive(false);
             screenResetButtonObject.SetActive(false);
@@ -109,7 +115,7 @@ namespace MoveToCode {
         }
 
         private void SwitchToCodingMode() {
-            CurrentMode = MODE.Coding;
+            CurrentMode = MODE.Coding; // need to be careful because changing state prior to actually running anything
             MazeManagerInstance.LockMaze();
             screenPlayButtonObject.SetActive(true);
             screenResetButtonObject.SetActive(true);

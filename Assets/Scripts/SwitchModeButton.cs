@@ -2,6 +2,8 @@ using Microsoft.MixedReality.Toolkit.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
+using System.Collections;
 
 namespace MoveToCode {
     /// <summary>
@@ -61,6 +63,8 @@ namespace MoveToCode {
                 return _pulseImg;
             }
         }
+
+        public UnityEvent OnSwitchToMazeBuildingMode, OnSwitchToCodingMode;
         #endregion
 
         #region unity
@@ -71,7 +75,10 @@ namespace MoveToCode {
             ExerciseManager.instance.OnCyleNewExercise.AddListener(OnNewExercise);
             SolMazeCheckMark.instance.OnMazeCorrect.AddListener(OnMazeCorrect);
             SolMazeCheckMark.instance.OnMazeIncorrect.AddListener(OnMazeIncorrect);
-            SwitchToMazeBuildingMode();
+        }
+
+        private void Start() {
+            StartCoroutine(SwitchToBuildAfterOneFrame()); // allows switching to building / launching event after everything is done initializing; not the cleanest but should consistently work
         }
         #endregion
 
@@ -79,6 +86,10 @@ namespace MoveToCode {
         #endregion
 
         #region private
+        IEnumerator SwitchToBuildAfterOneFrame() {
+            yield return null;
+            SwitchToMazeBuildingMode();
+        }
         private void OnMazeCorrect() {
             PulseIMG.StartPulse(Color.green);
         }
@@ -111,7 +122,7 @@ namespace MoveToCode {
             screenPlayButtonObject.SetActive(false);
             screenResetButtonObject.SetActive(false);
             modeText.text = "Mode 1: Maze Building";
-            CodeBlockManager.instance.HideCodeBlocks(); // this should be event driven from the codeblockmanager side
+            OnSwitchToMazeBuildingMode.Invoke();
         }
 
         private void SwitchToCodingMode() {
@@ -120,8 +131,8 @@ namespace MoveToCode {
             screenPlayButtonObject.SetActive(true);
             screenResetButtonObject.SetActive(true);
             modeText.text = "Mode 2: Coding";
-            CodeBlockManager.instance.ShowCodeBlocks(); // this should be event driven from the codeblockmanager side
             PulseIMG.StopPulse();
+            OnSwitchToCodingMode.Invoke();
         }
 
         private void OnScreenClick() {

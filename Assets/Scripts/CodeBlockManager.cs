@@ -71,6 +71,8 @@ namespace MoveToCode {
                 hasBeenInitialized = true;
                 LoggingManagerInstance.AddLogColumn(codeBlockJsonCol, "");
                 ExerciseManagerInstance.OnCyleNewExercise.AddListener(OnCycleNewExercise);
+                SwitchModeButton.instance.OnSwitchToCodingMode.AddListener(OnSwitchToCodingMode);
+                SwitchModeButton.instance.OnSwitchToMazeBuildingMode.AddListener(OnSwitchToMazeBuildingMode);
                 LogAllCodeBlocks();
             }
             PositionNextToBKMazePiece();
@@ -119,6 +121,12 @@ namespace MoveToCode {
         #endregion
 
         #region private
+        void OnSwitchToCodingMode(){
+            ShowCodeBlocks();
+        }
+        void OnSwitchToMazeBuildingMode() {
+            HideCodeBlocks();
+        }
         private void OnCycleNewExercise(){
             LogAllCodeBlocks();
             StartCodeBlock.instance.ResetToLocalStartLocation();

@@ -72,11 +72,15 @@ namespace MoveToCode {
         #endregion
         #region unity
         private void Update() {
-            // place kuri on the ground using GroundYCord
-            //Vector3 groundPosition = Position;
-            //groundPosition.y = GroundYCord;
-            //Position = groundPosition;
+            PlaceKuriOnGround();
         }
+
+        private void PlaceKuriOnGround() {
+            Vector3 groundPosition = Position;
+            groundPosition.y = GroundYCord;
+            Position = groundPosition;
+        }
+
         private void FixedUpdate() {
             // raycast down to find ground
             RaycastHit hit;

@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Events;
+using UnityEngine.Assertions;
 
 namespace MoveToCode {
     public class UIArrow : MonoBehaviour {
         #region members
+        public static string OuterArrowName = "UIArrowOuter", InnerArrowName = "UIArrowInner";
         Image _arrowImage;
         Image ArrowImage {
             get {
@@ -40,6 +39,9 @@ namespace MoveToCode {
         #endregion
 
         #region unity
+        private void Awake() {
+            Assert.IsTrue(transform.name == OuterArrowName || transform.name == InnerArrowName, "UIArrow must be named either " + OuterArrowName + " or " + InnerArrowName + "due to string comparisons in `ArrowPointPrefab.cs`");
+        }
         void Update() {
             if (viewPortManager.IsOffScreen && !viewPortManager.IsBehindPlayer) {
                 ArrowImage.enabled = true;

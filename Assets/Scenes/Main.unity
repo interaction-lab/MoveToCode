@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5372,7 +5372,7 @@ Transform:
   - {fileID: 781074176}
   - {fileID: 1991226730}
   m_Father: {fileID: 1706335398}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &259958625
 MonoBehaviour:
@@ -9835,7 +9835,7 @@ GameObject:
   - component: {fileID: 465564197}
   - component: {fileID: 465564196}
   m_Layer: 0
-  m_Name: ExerciseMazeBackwardOpTurn
+  m_Name: ExerciseMazeLTurnBackward
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15815,7 +15815,7 @@ Transform:
   - {fileID: 731693031}
   - {fileID: 622619257}
   m_Father: {fileID: 1706335398}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &839259677
 MonoBehaviour:
@@ -30616,22 +30616,22 @@ PrefabInstance:
     - target: {fileID: 2259024666815131635, guid: 01467935cc2dacd4a918ea4e1bb054b6,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9769502
+      value: 0.9769503
       objectReference: {fileID: 0}
     - target: {fileID: 2259024666815131635, guid: 01467935cc2dacd4a918ea4e1bb054b6,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.21346715
+      value: -0.21346709
       objectReference: {fileID: 0}
     - target: {fileID: 2259024666991242007, guid: 01467935cc2dacd4a918ea4e1bb054b6,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.85173476
+      value: 0.8517349
       objectReference: {fileID: 0}
     - target: {fileID: 2259024666991242007, guid: 01467935cc2dacd4a918ea4e1bb054b6,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.52397317
+      value: 0.523973
       objectReference: {fileID: 0}
     - target: {fileID: 2259024667631490456, guid: 01467935cc2dacd4a918ea4e1bb054b6,
         type: 3}
@@ -30666,7 +30666,7 @@ PrefabInstance:
     - target: {fileID: 4270399135257058851, guid: 01467935cc2dacd4a918ea4e1bb054b6,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.2964811
+      value: -0.2964809
       objectReference: {fileID: 0}
     - target: {fileID: 4270399135257058851, guid: 01467935cc2dacd4a918ea4e1bb054b6,
         type: 3}
@@ -30676,12 +30676,12 @@ PrefabInstance:
     - target: {fileID: 4270399135257058851, guid: 01467935cc2dacd4a918ea4e1bb054b6,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.23153457
+      value: -0.23153448
       objectReference: {fileID: 0}
     - target: {fileID: 4270399135257058851, guid: 01467935cc2dacd4a918ea4e1bb054b6,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.8802408
+      value: 0.8802409
       objectReference: {fileID: 0}
     - target: {fileID: 4270399135352725412, guid: 01467935cc2dacd4a918ea4e1bb054b6,
         type: 3}
@@ -33978,8 +33978,8 @@ Transform:
   m_Children:
   - {fileID: 1570364380}
   - {fileID: 573092087}
-  - {fileID: 839259676}
   - {fileID: 259958624}
+  - {fileID: 839259676}
   - {fileID: 465564195}
   - {fileID: 1397671203}
   - {fileID: 1592834594}
@@ -35990,8 +35990,8 @@ Camera:
   m_GameObject: {fileID: 1800814695}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -36005,7 +36005,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 50
+  far clip plane: 1000
   field of view: 60
   orthographic: 0
   orthographic size: 5

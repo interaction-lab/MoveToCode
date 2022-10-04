@@ -186,6 +186,7 @@ namespace MoveToCode {
         private void OnCycleNewExercise() {
             LogAllCodeBlocks();
             transform.position = OriginalPos;
+            transform.rotation = Quaternion.identity;
             StartCodeBlock.instance.ResetToLocalStartLocation(); // TODO: double check where this goes
             StartLocationSet = false;
         }

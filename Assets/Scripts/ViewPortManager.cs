@@ -25,13 +25,14 @@ namespace MoveToCode {
 
         public void TurnOffArrow(Transform target) {
             gameObjToArrowPointDict[target].TurnOff();
-            ActiveArrowPoint = gameObjToArrowPointDict[target];
+            ActiveArrowPoint = null;
         }
         public void TurnOnArrow(Transform target) {
             if (ActiveArrowPoint != null) {
                 ActiveArrowPoint.TurnOff(); // only enable 1 at a time to avoid confusion/overwhelming the player (also avoids double text issues)
             }
             gameObjToArrowPointDict[target].TurnOn();
+            ActiveArrowPoint = gameObjToArrowPointDict[target];
         }
 
         public ArrowPointPrefab GetArrowPoint(Transform t) {

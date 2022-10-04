@@ -14,9 +14,6 @@ namespace MoveToCode {
         [HideInInspector]
         public bool usePhysicalKuri = true;
         static string robotKCLevel = "robotKCLevel";
-
-        PoseStampedPublisher poseStampPublisher;
-
         public float TimeLastActionStarted { get; set; } = 0;
         public float TimeLastActionEnded { get; set; } = 0;
         public float TimeWindow {
@@ -117,6 +114,7 @@ namespace MoveToCode {
                 Color.black, // outer color
                 Color.white,  // inner color
                 "Kuri Is Behind You");
+            TurnOffArrowPoint();
         }
         IEnumerator StartRoutine() {
             inStartUp = true;

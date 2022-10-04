@@ -12,7 +12,7 @@ namespace MoveToCode {
         public UnityEvent OnEnterViewPort, OnExitViewport;
         bool _isInViewPort;
         bool wasOutOfView = false;
-        bool updatingWhenObjectIsInactive = false;
+        bool updatingWhenObjectIsInactive = false; // needed to avoid infinte recursion on inactive updating on IsInViewPort
         public bool IsInViewPort {
             get {
                 if (!gameObject.activeSelf && !updatingWhenObjectIsInactive) {

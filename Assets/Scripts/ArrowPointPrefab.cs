@@ -12,8 +12,17 @@ namespace MoveToCode {
         public UnityEvent OnEnterViewPort, OnExitViewport;
         bool _isInViewPort;
         bool wasOutOfView = false;
+        bool updatingWhenObjectIsInactive = false;
         public bool IsInViewPort {
             get {
+                if (!gameObject.activeSelf && !updatingWhenObjectIsInactive) {
+                    updatingWhenObjectIsInactive = true;
+                    UpdateAllTargets();
+                    UpdateIsInViewPort(); // need to update just in case someone checks when it's disabled
+                }
+                else {
+                    updatingWhenObjectIsInactive = false;
+                }
                 return _isInViewPort;
             }
         }

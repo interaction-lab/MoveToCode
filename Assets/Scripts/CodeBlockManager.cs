@@ -96,7 +96,7 @@ namespace MoveToCode {
                 SpawnArrowPrefab();
                 LogAllCodeBlocks();
             }
-            PositionNextToBKMazePiece();
+            UpdateStartBlockLocation();
         }
         #endregion
 
@@ -144,11 +144,11 @@ namespace MoveToCode {
         #region private
         private void SpawnArrowPrefab() {
             startBlockArrowPoint = ViewPortManagerInstance.SpawnNewArrowPoint(StartBlockTransform,
-                new Vector3(0, 0.1f, 0),
+                Vector3.zero,
                 Color.white, // outer color
                 new Color32(0x0F, 0xBD, 0x8C, 0xFF),  // inner color, hardcoded from start block color, should be dynamic but nobody got time for that rn
                 "Start Block Is Behind You");
-           TurnOffArrow();
+            TurnOffArrow();
         }
         void OnSwitchToCodingMode() {
             ShowCodeBlocks();
@@ -159,14 +159,14 @@ namespace MoveToCode {
             TurnOffArrow();
         }
 
-        void TurnOffArrow(){
+        void TurnOffArrow() {
             ViewPortManagerInstance.TurnOffArrow(StartBlockTransform);
         }
 
         void SetUpArrow() {
             // if startblock is out of view, turn on arrow and subscribe to exit event
             if (startBlockArrowPoint.IsInViewPort) {
-               TurnOffArrow();
+                TurnOffArrow();
             }
             else {
                 ViewPortManagerInstance.TurnOnArrow(StartBlockTransform);
@@ -180,8 +180,18 @@ namespace MoveToCode {
 
         private void OnCycleNewExercise() {
             LogAllCodeBlocks();
-            StartCodeBlock.instance.ResetToLocalStartLocation();
+            StartLocationSet = false;
         }
+
+        bool StartLocationSet = false;
+        private void UpdateStartBlockLocation() {
+            if (!StartLocationSet) {
+                StartCodeBlock.instance.ResetToLocalStartLocation(); // TODO: double check where this goes
+                SpawnStartBlockInFrontOfPlayer();
+                StartLocationSet = true;
+            }
+        }
+
         private void SetCompatibleColliderState(CodeBlock cIn, bool desiredActiveState) {
             IArgument internalArg = cIn.GetMyIArgument();
             foreach (SnapCollider sc in GetAllSnapColliders()) {
@@ -190,7 +200,8 @@ namespace MoveToCode {
                 }
             }
         }
-        private void PositionNextToBKMazePiece() {
+
+        void SpawnStartBlockInFrontOfPlayer() {
             Vector3 fbcbT = ActiveCodeBlocks.First().transform.position;
             Vector3 highestPos = fbcbT;
             Vector3 lowestPos = fbcbT;
@@ -227,7 +238,7 @@ namespace MoveToCode {
             Vector3 directionToUser = UserTransform.position - transform.position;
             // rotate the code block to face the user
             transform.rotation = Quaternion.LookRotation(-directionToUser);
-            #endregion
         }
+        #endregion
     }
 }

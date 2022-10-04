@@ -3,7 +3,9 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
+#if UNITY_EDITOR
 using Needle;
+#endif
 
 namespace MoveToCode {
     public class LoggingManager : Singleton<LoggingManager> {
@@ -136,7 +138,11 @@ namespace MoveToCode {
                 return;
             }
             WriteKeysIfStreamWriterOpen();
+            #if UNITY_EDITOR
             Debug.Log("Logged data to: " + filePath.LinkTo(filePath));
+            #else
+            Debug.Log("Logged data to: " + filePath);
+            #endif
         }
 
         /// <summary>

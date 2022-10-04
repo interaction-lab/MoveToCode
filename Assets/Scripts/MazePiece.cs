@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 namespace MoveToCode {
     public class MazePiece : MonoBehaviour {
@@ -88,7 +89,9 @@ namespace MoveToCode {
             IsAnchored = false;
 
             if (GetComponentInChildren<TrashButton>() == null) {
-                Instantiate(Resources.Load<GameObject>(ResourcePathConstants.TrashButtonCanvasPrefab), transform);
+                GameObject trashButton = Instantiate(Resources.Load<GameObject>(ResourcePathConstants.TrashButtonCanvasPrefab), transform);
+                // TODO: remove later, used to debug images
+                trashButton.transform.GetChild(0).GetComponentInChildren<TextMeshProUGUI>().text = transform.name;
             }
         }
         private void OnEnable() {

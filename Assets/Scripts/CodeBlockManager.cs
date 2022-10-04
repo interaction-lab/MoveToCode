@@ -35,6 +35,26 @@ namespace MoveToCode {
                 return exerciseManagerInstance;
             }
         }
+        ViewPortManager _viewPortManager;
+        ViewPortManager ViewPortManagerInstance {
+            get {
+                if (_viewPortManager == null) {
+                    _viewPortManager = ViewPortManager.instance;
+                }
+                return _viewPortManager;
+            }
+        }
+        ArrowPointPrefab startBlockArrowPoint;
+        Transform startBlockTransform;
+        Transform StartBlockTransform {
+            get {
+                if (startBlockTransform == null) {
+                    startBlockTransform = StartCodeBlock.instance.transform;
+                }
+                return startBlockTransform;
+            }
+        }
+
         public HashSet<CodeBlock> GetAllCodeBlocks() {
             if (codeBlocks == null) {
                 codeBlocks = new HashSet<CodeBlock>();
@@ -73,6 +93,7 @@ namespace MoveToCode {
                 ExerciseManagerInstance.OnCyleNewExercise.AddListener(OnCycleNewExercise);
                 SwitchModeButton.instance.OnSwitchToCodingMode.AddListener(OnSwitchToCodingMode);
                 SwitchModeButton.instance.OnSwitchToMazeBuildingMode.AddListener(OnSwitchToMazeBuildingMode);
+                SpawnArrowPrefab();
                 LogAllCodeBlocks();
             }
             PositionNextToBKMazePiece();
@@ -121,13 +142,43 @@ namespace MoveToCode {
         #endregion
 
         #region private
-        void OnSwitchToCodingMode(){
+        private void SpawnArrowPrefab() {
+            startBlockArrowPoint = ViewPortManagerInstance.SpawnNewArrowPoint(StartBlockTransform,
+                new Vector3(0, 0.1f, 0),
+                Color.white, // outer color
+                new Color32(0x0F, 0xBD, 0x8C, 0xFF),  // inner color, hardcoded from start block color, should be dynamic but nobody got time for that rn
+                "Start Block Is Behind You");
+           TurnOffArrow();
+        }
+        void OnSwitchToCodingMode() {
             ShowCodeBlocks();
+            SetUpArrow();
         }
         void OnSwitchToMazeBuildingMode() {
             HideCodeBlocks();
+            TurnOffArrow();
         }
-        private void OnCycleNewExercise(){
+
+        void TurnOffArrow(){
+            ViewPortManagerInstance.TurnOffArrow(StartBlockTransform);
+        }
+
+        void SetUpArrow() {
+            // if startblock is out of view, turn on arrow and subscribe to exit event
+            if (startBlockArrowPoint.IsInViewPort) {
+               TurnOffArrow();
+            }
+            else {
+                ViewPortManagerInstance.TurnOnArrow(StartBlockTransform);
+                startBlockArrowPoint.OnEnterViewPort.AddListener(OnStartBlockEnterViewPort);
+            }
+        }
+
+        void OnStartBlockEnterViewPort() {
+            TurnOffArrow();
+        }
+
+        private void OnCycleNewExercise() {
             LogAllCodeBlocks();
             StartCodeBlock.instance.ResetToLocalStartLocation();
         }
@@ -169,8 +220,8 @@ namespace MoveToCode {
             float rightToCenter = centerPos.x - mostLeftPos.x;
             // move code blocks close to BKMazePiece
             transform.position = UserTransform.position + UserTransform.forward * 0.75f; // + UserTransform.right * 0.2f + UserTransform.up * 0.2f;
-            //MazeManager.instance.BKMazePiece.transform.position +
-                                //(Vector3.up * .25f + Vector3.right * .2f);
+                                                                                         //MazeManager.instance.BKMazePiece.transform.position +
+                                                                                         //(Vector3.up * .25f + Vector3.right * .2f);
 
             // find the direction toward the user
             Vector3 directionToUser = UserTransform.position - transform.position;

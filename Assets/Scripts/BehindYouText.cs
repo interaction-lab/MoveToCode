@@ -16,25 +16,29 @@ namespace MoveToCode {
             }
         }
 
-        ViewPortManager _viewPortManager;
-        ViewPortManager viewPortManager {
+        ArrowPointPrefab _arrowPoint;
+        ArrowPointPrefab arrowPoint {
             get {
-                if (_viewPortManager == null) {
-                    _viewPortManager = ViewPortManager.instance;
+                if (_arrowPoint == null) {
+                    _arrowPoint = GetComponentInParent<ArrowPointPrefab>();
                 }
-                return _viewPortManager;
+                return _arrowPoint;
             }
         }
         #endregion
-
         #region unity
         void Update() {
-            if (viewPortManager.IsBehindPlayer && viewPortManager.IsOffScreen) {
+            if (arrowPoint.IsBehindPlayer && arrowPoint.IsOffScreen) {
                 textMeshProUGUI.enabled = true;
             }
             else {
                 textMeshProUGUI.enabled = false;
             }
+        }
+        #endregion
+        #region public
+        public void SetText(string s) {
+            textMeshProUGUI.text = s;
         }
         #endregion
     }

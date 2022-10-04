@@ -26,16 +26,15 @@ namespace MoveToCode {
             }
         }
 
-        ViewPortManager _viewPortManager;
-        ViewPortManager viewPortManager {
+        ArrowPointPrefab _arrowPointPrefab;
+        ArrowPointPrefab arrowPointPrefab {
             get {
-                if (_viewPortManager == null) {
-                    _viewPortManager = ViewPortManager.instance; ;
+                if (_arrowPointPrefab == null) {
+                    _arrowPointPrefab = GetComponentInParent<ArrowPointPrefab>();
                 }
-                return _viewPortManager;
+                return _arrowPointPrefab;
             }
         }
-
         #endregion
 
         #region unity
@@ -43,7 +42,7 @@ namespace MoveToCode {
             Assert.IsTrue(transform.name == OuterArrowName || transform.name == InnerArrowName, "UIArrow must be named either " + OuterArrowName + " or " + InnerArrowName + "due to string comparisons in `ArrowPointPrefab.cs`");
         }
         void Update() {
-            if (viewPortManager.IsOffScreen && !viewPortManager.IsBehindPlayer) {
+            if (arrowPointPrefab.IsOffScreen && !arrowPointPrefab.IsBehindPlayer) {
                 ArrowImage.enabled = true;
                 UpdateArrowPosition();
             }
@@ -54,13 +53,16 @@ namespace MoveToCode {
         #endregion
 
         #region public
+        public void SetColor(Color c) {
+            ArrowImage.color = c;
+        }
         #endregion
 
         #region private
         void UpdateArrowPosition() {
             Vector2 screenPos = new Vector2(
-               (viewPortManager.viewPortPos.x * Screen.width) - (Screen.width / 2f),
-               (viewPortManager.viewPortPos.y * Screen.height) - (Screen.height / 2f)
+               (arrowPointPrefab.viewPortPos.x * Screen.width) - (Screen.width / 2f),
+               (arrowPointPrefab.viewPortPos.y * Screen.height) - (Screen.height / 2f)
            );
             // get largest offset from center
             float maxOffset = Mathf.Max(

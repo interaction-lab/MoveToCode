@@ -44,24 +44,16 @@ public class KeyboardTestingScript : MonoBehaviour {
         Debug.Log("Button pressed");
     }
     void Update() {
-        if (Input.GetKeyDown("h")) {
-            //anim.SetTrigger("HighFive");
-            //(TutorKuriManager.instance.kuriController as VirtualKuriController).GoToUser();
-            TutorKuriManager.instance.kuriController.TakeMovementAction();
-        }
         if (Input.GetKeyDown(KeyCode.Alpha0)) {
             foreach (CodeBlock cb in CodeBlockManager.instance.GetAllCodeBlocks()) {
                 Debug.Log(cb.GetMyIArgument().ToJSON());
             }
         }
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
-            // Debug.Log(MazeManager.instance.GetPotentialNextMP(CodeBlockEnums.Move.Forward)?.Center);
-            // Debug.Log(MazeManager.instance.GetPotentialNextMP(CodeBlockEnums.Move.Backward)?.Center);
+            TutorKuriManager.instance.TurnOffArrowPoint();
         }
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
-            //  MenuManager.instance.FakePressPlay();
-            //  HumanStateManager.instance.DebugLogData();
-            //FindObjectOfType<KuriEmoteStringPublisher>().PubRandomNegative();
+            TutorKuriManager.instance.TurnOnArrowPoint();
         }
         if (Input.GetKey(KeyCode.Alpha3)) {
             //FindObjectOfType<GoalTrackBeh>().UpdateAlphaTest();

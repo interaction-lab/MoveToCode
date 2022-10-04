@@ -61,8 +61,27 @@ namespace MoveToCode {
         bool inStartUp;
         bool wasKuriDoingActionLastTick;
         public bool useBehaviorTree = false;
-        
+
         LoggingManager loggingManager;
+        ViewPortManager _viewPortManager;
+        ViewPortManager viewPortManager {
+            get {
+                if (_viewPortManager == null) {
+                    _viewPortManager = ViewPortManager.instance;
+                }
+                return _viewPortManager;
+            }
+        }
+
+        TutorKuriTransformManager tutorKuriTransformManager;
+        TutorKuriTransformManager transformManager {
+            get {
+                if (tutorKuriTransformManager == null) {
+                    tutorKuriTransformManager = TutorKuriTransformManager.instance;
+                }
+                return tutorKuriTransformManager;
+            }
+        }
         #endregion
 
         #region unity
@@ -74,9 +93,6 @@ namespace MoveToCode {
             if (useBehaviorTree) {
                 enabled = false;
             }
-        }
-
-        private void Start() {
             StartCoroutine(StartRoutine());
         }
         #endregion
@@ -86,12 +102,26 @@ namespace MoveToCode {
             robotKC = kcRIn;
             LoggingManager.instance.UpdateLogColumn(robotKCLevel, robotKC.ToString("F3"));
         }
+        public void TurnOnArrowPoint() {
+            viewPortManager.TurnOnArrow(transformManager.OriginT);
+        }
+        public void TurnOffArrowPoint() {
+            viewPortManager.TurnOffArrow(transformManager.OriginT);
+        }
         #endregion
 
         #region private
+        private void SpawnArrowPointer() {
+            viewPortManager.SpawnNewArrowPoint(transformManager.OriginT, // body
+                new Vector3(0, 0.1f, 0),
+                Color.black, // outer color
+                Color.white,  // inner color
+                "Kuri Is Behind You");
+        }
         IEnumerator StartRoutine() {
             inStartUp = true;
             yield return null;
+            SpawnArrowPointer();
             if (!usePhysicalKuri) {
                 kuriController.GetComponent<VirtualKuriController>().TurnTowardsUser();
             }

@@ -5,6 +5,8 @@ using UnityEngine;
 namespace MoveToCode {
     public class CodeBlockManager : Singleton<CodeBlockManager> {
         #region members
+        Vector3 OriginalPos = Vector3.zero;
+
         HashSet<CodeBlock> codeBlocks;
         HashSet<SnapCollider> snapColliders;
         public static string codeBlockJsonCol = "codeBlockJson";
@@ -89,6 +91,7 @@ namespace MoveToCode {
         void OnEnable() {
             if (!hasBeenInitialized) {
                 hasBeenInitialized = true;
+                OriginalPos = transform.position;
                 LoggingManagerInstance.AddLogColumn(codeBlockJsonCol, "");
                 ExerciseManagerInstance.OnCyleNewExercise.AddListener(OnCycleNewExercise);
                 SwitchModeButton.instance.OnSwitchToCodingMode.AddListener(OnSwitchToCodingMode);
@@ -96,7 +99,9 @@ namespace MoveToCode {
                 SpawnArrowPrefab();
                 LogAllCodeBlocks();
             }
-            UpdateStartBlockLocation();
+            else {
+                UpdateStartBlockLocation();
+            }
         }
         #endregion
 
@@ -180,13 +185,14 @@ namespace MoveToCode {
 
         private void OnCycleNewExercise() {
             LogAllCodeBlocks();
+            transform.position = OriginalPos;
+            StartCodeBlock.instance.ResetToLocalStartLocation(); // TODO: double check where this goes
             StartLocationSet = false;
         }
 
         bool StartLocationSet = false;
         private void UpdateStartBlockLocation() {
             if (!StartLocationSet) {
-                StartCodeBlock.instance.ResetToLocalStartLocation(); // TODO: double check where this goes
                 SpawnStartBlockInFrontOfPlayer();
                 StartLocationSet = true;
             }
@@ -202,6 +208,7 @@ namespace MoveToCode {
         }
 
         void SpawnStartBlockInFrontOfPlayer() {
+            // this can stay, super fragile and does extra work but works for now
             Vector3 fbcbT = ActiveCodeBlocks.First().transform.position;
             Vector3 highestPos = fbcbT;
             Vector3 lowestPos = fbcbT;

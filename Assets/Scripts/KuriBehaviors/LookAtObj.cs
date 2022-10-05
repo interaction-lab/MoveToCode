@@ -30,7 +30,6 @@ namespace MoveToCode {
 
         protected override State OnUpdate() {
             Vector3 dir = objToLookAt.position - kuriHeadPositionManager.HeadPosition;
-            Debug.Log(dir);
             if (dir == Vector3.zero) {
                 return State.Success; // already looking at object
             }

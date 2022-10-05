@@ -5,21 +5,26 @@ using TheKiwiCoder;
 
 namespace MoveToCode {
     public class PointToObject : ActionNode {
-        VirtualKuriController virtualKuriController;
+        KuriController KController;
         Transform objToPointTo, ikTransform;
-        
+        Vector3 startPos, endPos;
+        private float speed;
+        private float maxArmVectorLength = 1; // idk just guessing here lol
+
         protected override void OnStart() {
-            virtualKuriController = context.virtualKuriController;
+            KController = context.KController;
             objToPointTo = blackboard.objToPointTo;
-            // get the right and left shoulder transforms
-            // see which is closer to the object
+            ikTransform = KController.IkObjRight.transform;
+            startPos = ikTransform.position;
+            endPos = objToPointTo.position;
         }
 
         protected override void OnStop() {
         }
 
         protected override State OnUpdate() {
-            
+            ikTransform.position = objToPointTo.position;
+
             return State.Success;
         }
     }

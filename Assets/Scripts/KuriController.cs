@@ -71,13 +71,33 @@ namespace MoveToCode {
                 return lm;
             }
         }
+
+        public TargetIKObject IkObjLeft, IkObjRight;
+
         private void Awake() {
+            SetUpLogColumns();
+            SetUpIKTargets();
+            Init();
+        }
+
+        private void SetUpIKTargets() {
+            foreach (TargetIKObject tik in FindObjectsOfType<TargetIKObject>()) {
+                if (tik.IsRightArm) {
+                    IkObjRight = tik;
+                }
+                else {
+                    IkObjLeft = tik;
+                }
+            }
+        }
+
+        private void SetUpLogColumns() {
             loggingManager.AddLogColumn(rISACol, "");
             loggingManager.AddLogColumn(kuriPhysicalEmoteActionCol, "");
             loggingManager.AddLogColumn(kuriMovementActionCol, "");
             loggingManager.AddLogColumn(kuriCurAction, "");
-            Init();
         }
+
         protected abstract void Init();
         public abstract string TakeISAAction();
 

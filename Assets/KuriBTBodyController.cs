@@ -97,7 +97,6 @@ namespace MoveToCode {
         }
         #endregion
 
-
         #region private
         #endregion
     }

@@ -81,6 +81,8 @@ namespace MoveToCode {
         }
         public override string MoveToObj(Transform obj) {
             KuriBlackBoard.objToMoveTo = obj;
+            KuriBlackBoard.objToLookAt = obj;
+            OnLookAtObj.Invoke();
             OnMoveToObj.Invoke();
             return "Moving to " + obj.name;
         }

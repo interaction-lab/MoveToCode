@@ -7,5 +7,6 @@ namespace MoveToCode {
         public static string OnUserOptionSelected = "OnUserOptionSelected";
         public static string ReceivedMessage = "ReceivedMessage";
         public static string OnServerConnected = "OnServerConnected";
+        public static string StartPointToObj = "PointToObj";
     }
 }

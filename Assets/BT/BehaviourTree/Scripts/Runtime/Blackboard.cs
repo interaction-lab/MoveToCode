@@ -13,5 +13,10 @@ namespace TheKiwiCoder {
     public class Blackboard {
         public Vector3 goalPosition;
         public Vector3 goalRotation;
+        public Transform objToPointTo;
+        public Transform objToLookAt;
+        public float headSpeed = 1f;
+        public float armSpeed = 1f;
+        public float bodySpeed = 1f;
     }
 }

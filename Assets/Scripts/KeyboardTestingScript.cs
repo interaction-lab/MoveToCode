@@ -35,6 +35,15 @@ public class KeyboardTestingScript : MonoBehaviour {
             return bkMP;
         }
     }
+    KuriAIBTRandom kuriAIBTRandom;
+    KuriAIBTRandom KuriAIBTRandomInstance {
+        get {
+            if (kuriAIBTRandom == null) {
+                kuriAIBTRandom = FindObjectOfType<KuriAIBTRandom>();
+            }
+            return kuriAIBTRandom;
+        }
+    }
 
     void Start() {
         anim = GetComponent<Animator>();
@@ -50,7 +59,7 @@ public class KeyboardTestingScript : MonoBehaviour {
             }
         }
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
-            TutorKuriManager.instance.TurnOffArrowPoint();
+            KuriAIBTRandomInstance.DoRandomBTAction();
         }
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
             TutorKuriManager.instance.TurnOnArrowPoint();

@@ -49,6 +49,9 @@ namespace MoveToCode {
                     else if (kuriAIToUse == KuriAI.KURIAI.RuleBased) {
                         kuriAIBackingVar = FindObjectOfType<KuriRuleBasedAI>().GetComponent<KuriRuleBasedAI>();
                     }
+                    else if (kuriAIToUse == KuriAI.KURIAI.BehaviorTreeRand) {
+                        kuriAIBackingVar = FindObjectOfType<KuriAIBTRandom>().GetComponent<KuriAIBTRandom>();
+                    }
                 }
                 return kuriAIBackingVar;
             }
@@ -57,7 +60,6 @@ namespace MoveToCode {
 
         bool inStartUp;
         bool wasKuriDoingActionLastTick;
-        public bool useBehaviorTree = false;
 
         LoggingManager loggingManager;
         ViewPortManager _viewPortManager;
@@ -87,9 +89,7 @@ namespace MoveToCode {
             loggingManager = LoggingManager.instance;
             wasKuriDoingActionLastTick = kuriController.IsDoingAction;
             loggingManager.AddLogColumn(robotKCLevel, "");
-            if (useBehaviorTree) {
-                enabled = false;
-            }
+           
             StartCoroutine(StartRoutine());
         }
         #endregion
@@ -121,11 +121,11 @@ namespace MoveToCode {
             yield return null;
             SpawnArrowPointer();
             if (!usePhysicalKuri) {
-                kuriController.GetComponent<VirtualKuriController>().TurnTowardsUser();
+                //kuriController.GetComponent<VirtualKuriController>().TurnTowardsUser();
             }
             yield return new WaitForSeconds(5);
             if (!usePhysicalKuri) {
-                kuriController.GetComponent<VirtualKuriController>().MoveToUser();
+                //kuriController.GetComponent<VirtualKuriController>().MoveToUser();
             }
             yield return new WaitForSeconds(InteractionManager.instance.MinToSeconds(InteractionManager.instance.warmUpTimeMinutes) - 5f);
             inStartUp = false;

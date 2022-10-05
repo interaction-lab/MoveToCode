@@ -5,9 +5,8 @@ using TheKiwiCoder;
 
 namespace MoveToCode {
     public class SuccessOnOptionSelected : SuccessOnEvent {
-        protected override void OnStart() {
+        protected override void SetEventName() {
             eventName = EventNames.OnUserOptionSelected;
-            base.OnStart();
         }
     }
 }

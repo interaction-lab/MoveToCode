@@ -5,9 +5,8 @@ using TheKiwiCoder;
 
 namespace MoveToCode {
     public class SuccessOnKuriEnterViewPort : SuccessOnEvent {
-        protected override void OnStart() {
+        protected override void SetEventName() {
             eventName = EventNames.KuriEnterViewPort;
-            base.OnStart();
         }
     }
 }

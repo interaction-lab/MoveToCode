@@ -6,9 +6,8 @@ using TheKiwiCoder;
 
 namespace MoveToCode {
     public class SuccessOnStartButtonPressed : SuccessOnEvent {
-        protected override void OnStart() {
+        protected override void SetEventName() {
             eventName = EventNames.StartButtonPressed;
-            base.OnStart();
         }
     }
 }

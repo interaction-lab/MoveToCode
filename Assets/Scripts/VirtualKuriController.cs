@@ -114,14 +114,14 @@ namespace MoveToCode {
         public string MoveToUser() {
             onFrameAction = "MoveToUser";
             Vector3 newPos = GetPosWDistAway(TKTransformManager.Position, UserTransform.position, 1.1f);
-            StartCoroutine(LookAtAndGoToAtSpeed(UserTransform, newPos, ForwardSpeed));
+            //StartCoroutine(LookAtAndGoToAtSpeed(UserTransform, newPos, ForwardSpeed));
             return onFrameAction;
         }
         public override void TurnTowardsUser() {
             // get distance from user
             onFrameAction = "TurnTowardsUser";
             Vector3 end = GetPosWDistAway(TKTransformManager.Position, UserTransform.position, Vector3.Distance(TKTransformManager.Position, UserTransform.position) - 0.1f);
-            StartCoroutine(LookAtAndGoToAtSpeed(UserTransform, end, ForwardSpeed));
+            //StartCoroutine(LookAtAndGoToAtSpeed(UserTransform, end, ForwardSpeed));
         }
         public override string TakeISAAction() {
             onFrameAction = ExerciseManager.instance.GetCurExercise().GetComponent<ExerciseInformationSeekingActions>().DoISAAction();
@@ -130,7 +130,7 @@ namespace MoveToCode {
         }
         public override string PointAtObject(Transform objectOfInterest, float time) {
             onFrameAction += actionSeperator + "PointAtObject: " + objectOfInterest.ToString();
-            StartCoroutine(PointAtObjectOverTime(objectOfInterest, time));
+            //StartCoroutine(PointAtObjectOverTime(objectOfInterest, time));
             return onFrameAction;
         }
 

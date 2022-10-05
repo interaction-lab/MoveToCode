@@ -4,9 +4,9 @@ using UnityEngine;
 using TheKiwiCoder;
 
 namespace MoveToCode {
-    public class WaitForServerResponse : SuccessOnEvent {
+    public class SuccessOnStartPointToObj : SuccessOnEvent {
         protected override void SetEventName() {
-            eventName = EventNames.ReceivedMessage;
+            eventName = EventNames.StartPointToObj;
         }
     }
 }

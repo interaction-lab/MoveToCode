@@ -5,7 +5,7 @@ using UnityEngine.Events;
 using TheKiwiCoder;
 
 namespace MoveToCode {
-    public class SuccessOnEvent : MonitorCondition {
+    public abstract class SuccessOnEvent : MonitorCondition {
         KuriBTEventRouter _eventRouter;
         KuriBTEventRouter eventRouter {
             get {
@@ -15,24 +15,26 @@ namespace MoveToCode {
                 return _eventRouter;
             }
         }
-        public string eventName;
+        public string eventName = "";
         UnityEvent evt;
 
         float timeEventHappened = -1f, lastFrameTime = -1f;
         bool processedEvent = true;
 
         protected override void OnStart() {
+            if (eventName == "") {
+                SetEventName();
+            }
+
             if (evt == null) {
                 evt = eventRouter.GetEvent(eventName);
-                if (evt == null) {
-                    //Debug.LogError("Event " + eventName + " not found, double check that you added the event correctly");
-                }
-                else {
+                if (evt != null) { // keep trying until event exists
                     evt.AddListener(OnEvent);
                 }
             }
         }
 
+        protected abstract void SetEventName();
         protected override void OnStop() {
         }
 

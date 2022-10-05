@@ -48,7 +48,7 @@ namespace MoveToCode {
         float headYConstraintAngle = 50f;
         Transform _rightIKObject = null;
         Transform _leftIKObject = null;
-        Transform RightIKObject {
+        public Transform RightIKObject {
             get {
                 if (_rightIKObject == null) {
                     SetUpIKArmObjects();
@@ -56,7 +56,7 @@ namespace MoveToCode {
                 return _rightIKObject;
             }
         }
-        Transform LeftIKObject {
+        public Transform LeftIKObject {
             get {
                 if (_leftIKObject == null) {
                     SetUpIKArmObjects();

@@ -1,5 +1,78 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7270678516503451307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afb5496e8cd973748a10b3e3ef436ebd, type: 3}
+  m_Name: Repeat
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 7aa6018060dc51a48b98d12a65def982
+  position: {x: 98, y: 38}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+  description: 
+  drawGizmos: 0
+  actionSeparator: ~||~
+  child: {fileID: 7254003893298568627}
+  restartOnSuccess: 1
+  restartOnFailure: 1
+--- !u!114 &-6657807638795716149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df9e411f4095d0a44acd9a25323f5e73, type: 3}
+  m_Name: Log
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 6cb873394f433ed4996625b1b90ab2d8
+  position: {x: 334.96, y: 572}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+  description: 
+  drawGizmos: 0
+  actionSeparator: ~||~
+  message: potato
+--- !u!114 &-2700928035580389055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 813a8b94c8c7d48158beb064e088e3df, type: 3}
+  m_Name: MonitorSequence
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: d4d5e6ee73eaf0d4b80d2fc84ce9ae9e
+  position: {x: 203, y: 419.00003}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+  description: 
+  drawGizmos: 0
+  actionSeparator: ~||~
+  children:
+  - {fileID: -1443311143692820558}
+  - {fileID: -6657807638795716149}
 --- !u!114 &-2044004838000024010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15,13 +88,37 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 2bb05b87cb16ed34aa2d84abf20911b3
-  position: {x: 78, y: 88}
+  position: {x: -32, y: 418.75995}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
   description: 
   drawGizmos: 0
-  message: Tutor Kuri BT log node weee
+  actionSeparator: ~||~
+  message: first one
+--- !u!114 &-1443311143692820558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a5134d9de14153468b48928d3e7359a, type: 3}
+  m_Name: Wait
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 6b31e26e4d296dc4a8a81f6748c142ea
+  position: {x: 78, y: 572.2}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+  description: 
+  drawGizmos: 0
+  actionSeparator: ~||~
+  duration: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39,6 +136,11 @@ MonoBehaviour:
   nodes:
   - {fileID: 3231384683707443026}
   - {fileID: -2044004838000024010}
+  - {fileID: -7270678516503451307}
+  - {fileID: 7254003893298568627}
+  - {fileID: -2700928035580389055}
+  - {fileID: -1443311143692820558}
+  - {fileID: -6657807638795716149}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -63,4 +165,30 @@ MonoBehaviour:
     goalRotation: {x: 0, y: 0, z: 0}
   description: 
   drawGizmos: 0
-  child: {fileID: -2044004838000024010}
+  actionSeparator: ~||~
+  child: {fileID: -7270678516503451307}
+--- !u!114 &7254003893298568627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2932073b8a6c3b34391576c45d359457, type: 3}
+  m_Name: Parallel
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 4d025aae693b89e4a9afb02015e6f9ed
+  position: {x: 78, y: 181}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+  description: 
+  drawGizmos: 0
+  actionSeparator: ~||~
+  children:
+  - {fileID: -2044004838000024010}
+  - {fileID: -2700928035580389055}

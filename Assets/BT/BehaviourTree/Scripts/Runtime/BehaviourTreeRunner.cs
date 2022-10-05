@@ -5,9 +5,6 @@ using MoveToCode;
 
 namespace TheKiwiCoder {
     public class BehaviourTreeRunner : MonoBehaviour {
-        [HideInInspector] public static string actionLogName = "RunningNode";
-        [HideInInspector] public static string actionLogState = "NodeStateReturned";
-        [HideInInspector] public static string actionLogExtra = "NodeExtraInfo";
 
         // The main behaviour tree asset
         public BehaviourTree tree;
@@ -17,8 +14,6 @@ namespace TheKiwiCoder {
 
         // Start is called before the first frame update
         void Start() {
-            LoggingManager.instance.AddLogColumn(actionLogName,"");
-            LoggingManager.instance.AddLogColumn(actionLogState, "");
             context = CreateBehaviourTreeContext();
             tree = tree.Clone();
             tree.Bind(context);

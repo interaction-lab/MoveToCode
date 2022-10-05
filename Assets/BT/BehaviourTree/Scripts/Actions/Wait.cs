@@ -18,7 +18,6 @@ namespace TheKiwiCoder {
             if (Time.time - startTime > duration) {
                 return State.Success;
             }
-            Debug.Log("Running");
             return State.Running;
         }
     }

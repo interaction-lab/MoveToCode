@@ -21,16 +21,7 @@ namespace TheKiwiCoder {
         [TextArea] public string description;
         public bool drawGizmos = false;
 
-        LoggingManager lm;
-        LoggingManager LoggingManagerInstance {
-            get {
-                if (lm == null) {
-                    lm = LoggingManager.instance;
-                }
-                return lm;
-            }
-        }
-        [HideInInspector] public string actionSeparator = ",";
+        [HideInInspector] public static string actionSeparator = ",";
 
 
         public State Update() {
@@ -41,7 +32,6 @@ namespace TheKiwiCoder {
             }
 
             state = OnUpdate();
-            LogNodeAndState();
 
             if (state != State.Running) {
                 OnStop();
@@ -49,26 +39,6 @@ namespace TheKiwiCoder {
             }
 
             return state;
-        }
-
-        private void LogNodeAndState() {
-            string nodeStr = LoggingManagerInstance.GetValueInRowAt(BehaviourTreeRunner.actionLogName);
-            if (nodeStr != "") {
-                nodeStr = string.Join(actionSeparator, nodeStr, this.name);
-            }
-            else {
-                nodeStr = this.name;
-            }
-            LoggingManagerInstance.AddLogColumn(BehaviourTreeRunner.actionLogName, nodeStr);
-
-            string stateStr = LoggingManagerInstance.GetValueInRowAt(BehaviourTreeRunner.actionLogState);
-            if (stateStr != "") {
-                stateStr = string.Join(actionSeparator, stateStr, state.ToString());
-            }
-            else {
-                stateStr = state.ToString();
-            }
-            LoggingManagerInstance.AddLogColumn(BehaviourTreeRunner.actionLogState, stateStr);
         }
 
         public virtual Node Clone() {

@@ -128,7 +128,7 @@ namespace MoveToCode {
             loggingManager.UpdateLogColumn(rISACol, onFrameAction);
             return onFrameAction;
         }
-        public override string PointAtObject(Transform objectOfInterest, float time) {
+        public override string PointAtObj(Transform objectOfInterest, float time) {
             onFrameAction += actionSeperator + "PointAtObject: " + objectOfInterest.ToString();
             //StartCoroutine(PointAtObjectOverTime(objectOfInterest, time));
             return onFrameAction;
@@ -230,7 +230,7 @@ namespace MoveToCode {
         private void MoveToMazePiece(Transform mazePieceT, bool isMisaligned = false) { // nothing quite like hacky optional params
             Vector3 newPos = GetPosWDistAway(transform.position, mazePieceT.position, 1.2f);
             StartCoroutine(LookAtAndGoToAtSpeed(mazePieceT, newPos, ForwardSpeed));
-            PointAtObject(mazePieceT, 5f);
+            PointAtObj(mazePieceT, 5f);
             if (isMisaligned) {
                 string mpTypeName = mazePieceT.GetComponent<MazePiece>().MyMPType.Name;
                 KuriTextManager.instance.Addline($"You might need this {mpTypeName} piece of the maze.");
@@ -299,6 +299,14 @@ namespace MoveToCode {
             LeftIKObject.localPosition = origLocalPositionL;
             IsPointing = false;
             ArmAnimator.enabled = true;
+        }
+
+        public override string MoveToObj(Transform obj) {
+            throw new System.NotImplementedException();
+        }
+
+        protected override void Init() {
+            throw new System.NotImplementedException();
         }
         #endregion
     }

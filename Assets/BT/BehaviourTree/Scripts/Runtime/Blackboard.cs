@@ -15,6 +15,8 @@ namespace TheKiwiCoder {
         public Vector3 goalRotation;
         public Transform objToPointTo;
         public Transform objToLookAt;
+        public Transform objToTurnTo;
+        public Transform objToMoveTo;
         public float headSpeed = 1f;
         public float armSpeed = 1f;
         public float bodySpeed = 1f;

@@ -11,7 +11,7 @@ namespace MoveToCode {
         #region unity
         private void Awake() {
             kuriManager = TutorKuriManager.instance;
-            kuriController = kuriManager.kuriController;
+            kuriController = kuriManager.KController;
             SolMazeCheckMark.instance.OnMazeCorrect.AddListener(OnMazeCorrect);
             MazeManager.instance.OnMazeLocked.AddListener(OnMazeLocked);
         }

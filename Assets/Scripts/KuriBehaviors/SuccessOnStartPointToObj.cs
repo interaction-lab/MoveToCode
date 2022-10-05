@@ -6,7 +6,7 @@ using TheKiwiCoder;
 namespace MoveToCode {
     public class SuccessOnStartPointToObj : SuccessOnEvent {
         protected override void SetEventName() {
-            eventName = EventNames.StartPointToObj;
+            eventName = EventNames.OnPointToObj;
         }
     }
 }

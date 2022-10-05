@@ -23,17 +23,10 @@ namespace MoveToCode {
         }
 
         KuriController kuriControllerBackingVar = null;
-        public KuriController kuriController {
+        public KuriController KController {
             get {
                 if (kuriControllerBackingVar == null) {
-                    if (usePhysicalKuri) {
-                        FindObjectOfType<VirtualKuriController>().GetComponent<VirtualKuriController>().enabled = false;
-                        kuriControllerBackingVar = FindObjectOfType<PhysicalKuriController>().GetComponent<PhysicalKuriController>();
-                    }
-                    else {
-                        FindObjectOfType<PhysicalKuriController>().GetComponent<PhysicalKuriController>().enabled = false;
-                        kuriControllerBackingVar = FindObjectOfType<VirtualKuriController>().GetComponent<VirtualKuriController>();
-                    }
+                    kuriControllerBackingVar = GetComponentInChildren<KuriBTBodyController>();
                 }
                 return kuriControllerBackingVar;
             }
@@ -87,9 +80,9 @@ namespace MoveToCode {
         private void Awake() {
             OptionSelectionManager.instance.Init();
             loggingManager = LoggingManager.instance;
-            wasKuriDoingActionLastTick = kuriController.IsDoingAction;
+            wasKuriDoingActionLastTick = KController.IsDoingAction;
             loggingManager.AddLogColumn(robotKCLevel, "");
-           
+
             StartCoroutine(StartRoutine());
         }
         #endregion
@@ -120,13 +113,9 @@ namespace MoveToCode {
             inStartUp = true;
             yield return null;
             SpawnArrowPointer();
-            if (!usePhysicalKuri) {
-                //kuriController.GetComponent<VirtualKuriController>().TurnTowardsUser();
-            }
+            KController.TurnTowardsUser();
             yield return new WaitForSeconds(5);
-            if (!usePhysicalKuri) {
-                //kuriController.GetComponent<VirtualKuriController>().MoveToUser();
-            }
+            KController.MoveToObj(Camera.main.transform);
             yield return new WaitForSeconds(InteractionManager.instance.MinToSeconds(InteractionManager.instance.warmUpTimeMinutes) - 5f);
             inStartUp = false;
         }
@@ -172,13 +161,13 @@ namespace MoveToCode {
         }
 
         void UpdateEndOfTickVariables() {
-            if (!wasKuriDoingActionLastTick && kuriController.IsDoingAction) {
+            if (!wasKuriDoingActionLastTick && KController.IsDoingAction) {
                 TimeLastActionStarted = Time.time;
             }
-            else if (wasKuriDoingActionLastTick && !kuriController.IsDoingAction) {
+            else if (wasKuriDoingActionLastTick && !KController.IsDoingAction) {
                 TimeLastActionEnded = Time.time;
             }
-            wasKuriDoingActionLastTick = kuriController.IsDoingAction;
+            wasKuriDoingActionLastTick = KController.IsDoingAction;
         }
         #endregion
     }

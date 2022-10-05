@@ -46,7 +46,7 @@ namespace MoveToCode {
             SnapAllBlocksToBlockManager();
             AddAllVariables();
             KuriTextManager.instance.Clear(KuriTextManager.PRIORITY.high);
-            TutorKuriManager.instance.kuriController.SayMazeGoal();
+            TutorKuriManager.instance.KController.SayMazeGoal();
         }
 
         private void AddAllVariables() {

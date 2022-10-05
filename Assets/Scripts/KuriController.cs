@@ -76,7 +76,9 @@ namespace MoveToCode {
             loggingManager.AddLogColumn(kuriPhysicalEmoteActionCol, "");
             loggingManager.AddLogColumn(kuriMovementActionCol, "");
             loggingManager.AddLogColumn(kuriCurAction, "");
+            Init();
         }
+        protected abstract void Init();
         public abstract string TakeISAAction();
 
         public void SayMazeGoal() {
@@ -112,11 +114,12 @@ namespace MoveToCode {
         }
 
         public abstract string TakeMovementAction(int option = -1);
+        public abstract string MoveToObj(Transform obj);
         public abstract string DoRandomPositiveAction();
         public abstract string DoRandomNegativeAction();
         public abstract string DoAnimationAction(EMOTIONS e);
         public abstract void TurnTowardsUser();
-        public abstract string PointAtObject(Transform objectOfInterest, float time);
+        public abstract string PointAtObj(Transform objectOfInterest, float time = -1);
         // Returns true if currently doing action
         protected abstract bool UpdateCurrentActionString();
     }

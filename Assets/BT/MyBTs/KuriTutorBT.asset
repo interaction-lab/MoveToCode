@@ -21,6 +21,8 @@ MonoBehaviour:
     goalRotation: {x: 0, y: 0, z: 0}
     objToPointTo: {fileID: 0}
     objToLookAt: {fileID: 0}
+    objToTurnTo: {fileID: 0}
+    objToMoveTo: {fileID: 0}
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
@@ -48,6 +50,8 @@ MonoBehaviour:
     goalRotation: {x: 0, y: 0, z: 0}
     objToPointTo: {fileID: 0}
     objToLookAt: {fileID: 0}
+    objToTurnTo: {fileID: 0}
+    objToMoveTo: {fileID: 0}
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
@@ -78,6 +82,8 @@ MonoBehaviour:
     goalRotation: {x: 0, y: 0, z: 0}
     objToPointTo: {fileID: 0}
     objToLookAt: {fileID: 0}
+    objToTurnTo: {fileID: 0}
+    objToMoveTo: {fileID: 0}
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
@@ -105,6 +111,8 @@ MonoBehaviour:
     goalRotation: {x: 0, y: 0, z: 0}
     objToPointTo: {fileID: 0}
     objToLookAt: {fileID: 0}
+    objToTurnTo: {fileID: 0}
+    objToMoveTo: {fileID: 0}
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
@@ -145,6 +153,8 @@ MonoBehaviour:
     goalRotation: {x: 0, y: 0, z: 0}
     objToPointTo: {fileID: 0}
     objToLookAt: {fileID: 0}
+    objToTurnTo: {fileID: 0}
+    objToMoveTo: {fileID: 0}
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
@@ -169,6 +179,8 @@ MonoBehaviour:
     goalRotation: {x: 0, y: 0, z: 0}
     objToPointTo: {fileID: 0}
     objToLookAt: {fileID: 0}
+    objToTurnTo: {fileID: 0}
+    objToMoveTo: {fileID: 0}
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
@@ -191,12 +203,14 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 0ceb806e27e8b8b4a819b6a362dae2bb
-  position: {x: 180, y: 339}
+  position: {x: 197, y: 144.19998}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
     objToPointTo: {fileID: 0}
     objToLookAt: {fileID: 0}
+    objToTurnTo: {fileID: 0}
+    objToMoveTo: {fileID: 0}
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
@@ -218,12 +232,14 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 0f18d641a27b3134082e1ced6fa33024
-  position: {x: -149, y: 339}
+  position: {x: -147.69215, y: 338.99997}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
     objToPointTo: {fileID: 0}
     objToLookAt: {fileID: 0}
+    objToTurnTo: {fileID: 0}
+    objToMoveTo: {fileID: 0}
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
@@ -251,6 +267,8 @@ MonoBehaviour:
     goalRotation: {x: 0, y: 0, z: 0}
     objToPointTo: {fileID: 0}
     objToLookAt: {fileID: 0}
+    objToTurnTo: {fileID: 0}
+    objToMoveTo: {fileID: 0}
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1

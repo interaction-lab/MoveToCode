@@ -35,7 +35,7 @@ namespace MoveToCode {
         }
 
         public override void Tick() {
-            if (!kuriManager.kuriController.IsDoingAction) {
+            if (!kuriManager.KController.IsDoingAction) {
                 ChooseNewAction();
             }
         }
@@ -82,7 +82,7 @@ namespace MoveToCode {
                                 1.0f);
             }
             else if (sc == RAW_SCORES.KuriDoingAction) {
-                return kuriManager.kuriController.IsDoingAction ? 1f : 0f;
+                return kuriManager.KController.IsDoingAction ? 1f : 0f;
             }
             else if (sc == RAW_SCORES.HumanDoingAction) {
                 return humanStateManager.IsDoingAction ? 1f : 0f;

@@ -7,33 +7,27 @@ using UnityEngine.Events;
 namespace MoveToCode {
     public class KuriAIBTRandom : KuriAI {
         #region members
-        UnityEvent OnStartPointToObj = new UnityEvent();
-
-        float timeLastActionStarted = 0;
-        Blackboard blackboard;
-        Blackboard KuriBlackBoard {
+        KuriController kc;
+        KuriController KController {
             get {
-                if (blackboard == null) {
-                    blackboard = GetComponent<BehaviourTreeRunner>().tree.blackboard;
+                if (kc == null) {
+                    kc = GetComponent<KuriController>();
                 }
-                return blackboard;
+                return kc;
             }
         }
-        KuriBTEventRouter _eventRouter;
-        KuriBTEventRouter eventRouter {
+        TutorKuriManager tkm;
+        TutorKuriManager TutorKuriManagerInstance {
             get {
-                if (_eventRouter == null) {
-                    _eventRouter = KuriBTEventRouter.instance;
+                if (tkm == null) {
+                    tkm = TutorKuriManager.instance;
                 }
-                return _eventRouter;
+                return tkm;
             }
         }
         #endregion
 
         #region unity
-        void Awake() {
-            eventRouter.AddEvent(EventNames.StartPointToObj, OnStartPointToObj);
-        }
         #endregion
 
         #region public
@@ -43,30 +37,31 @@ namespace MoveToCode {
 
         public override void Tick() {
             // launch event every 15 seconds
-            if (Time.time - timeLastActionStarted > 15) {
+            if (Time.time - TutorKuriManagerInstance.TimeLastActionEnded.TimeSince() > 15) {
                 DoRandomBTAction();
-                timeLastActionStarted = Time.time;
             }
         }
 
         public void DoRandomBTAction() {
-            // going to do point at obj
-            PointAtObj(Camera.main.transform);
+            // using kuri controller
+            // choose random number 0-2
+            // 0 = move to obj
+            // 1 = point at obj
+            // 2 = do animation
+            int rand = Random.Range(0, 3);
+            if(rand == 0) {
+                KController.MoveToObj(Camera.main.transform);
+            }
+            else if(rand == 1) {
+                KController.PointAtObj(Camera.main.transform);
+            }
+            else if (rand == 2) {
+                KController.TurnTowardsUser();
+            }
         }
         #endregion
 
         #region private
-
-
-
-        private void PointAtObj(Transform obj) {
-            KuriBlackBoard.objToPointTo = obj;
-            Debug.Log(KuriBlackBoard.objToPointTo);
-            KuriBlackBoard.objToLookAt = obj;
-            // fire event
-            OnStartPointToObj.Invoke();
-
-        }
         #endregion
     }
 }

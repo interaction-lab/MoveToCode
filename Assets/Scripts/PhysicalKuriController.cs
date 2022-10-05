@@ -55,7 +55,15 @@ namespace MoveToCode {
             throw new System.NotImplementedException();
         }
 
-        public override string PointAtObject(Transform objectOfInterest, float time) {
+        public override string PointAtObj(Transform objectOfInterest, float time) {
+            throw new System.NotImplementedException();
+        }
+
+        public override string MoveToObj(Transform obj) {
+            throw new System.NotImplementedException();
+        }
+
+        protected override void Init() {
             throw new System.NotImplementedException();
         }
     }

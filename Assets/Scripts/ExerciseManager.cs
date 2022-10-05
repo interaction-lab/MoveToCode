@@ -42,7 +42,7 @@ namespace MoveToCode {
                     return true;
                 }
                 else {
-                    TutorKuriManager.instance.kuriController.TriggerHelpfulAction();
+                    TutorKuriManager.instance.KController.TriggerHelpfulAction();
                     LoggingManager.instance.UpdateLogColumn(exerciseSubmissionResultCol, "InCorrect");
                     return false;
                 }

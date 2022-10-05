@@ -4,19 +4,29 @@ using UnityEngine;
 using TheKiwiCoder;
 
 namespace MoveToCode {
-    public class TurnOnAnimator : ActionNode {
-        Animator anim;
-        Animator ThisAnim {
+    public abstract class TurnOnAnimator : ActionNode {
+        Animator bAnim, aAnim;
+        protected Animator BodyAnimator {
             get {
-                if (anim == null) {
-                    anim = context.animator;
+                if (bAnim == null) {
+                    bAnim = context.mainAnimator;
                 }
-                return anim;
+                return bAnim;
+            }
+        }
+        protected Animator ArmAnimator {
+            get {
+                if (aAnim == null) {
+                    aAnim = context.armAnimator;
+                }
+                return aAnim;
             }
         }
         protected override void OnStart() {
-            ThisAnim.enabled = true;
+            TurnOnAnim();
         }
+
+        protected abstract void TurnOnAnim();
 
         protected override void OnStop() {
         }

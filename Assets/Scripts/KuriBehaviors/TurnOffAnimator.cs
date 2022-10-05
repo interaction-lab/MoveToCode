@@ -1,23 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TheKiwiCoder;
 
-namespace MoveToCode{
-    public class TurnOffAnimator : ActionNode
-    {
-        Animator anim;
-        Animator ThisAnim {
+namespace MoveToCode {
+    public abstract class TurnOffAnimator : ActionNode {
+        Animator bAnim, aAnim;
+        protected Animator BodyAnimator {
             get {
-                if(anim == null){
-                    anim = context.animator;
+                if (bAnim == null) {
+                    bAnim = context.mainAnimator;
                 }
-                return anim;
+                return bAnim;
+            }
+        }
+        protected Animator ArmAnimator {
+            get {
+                if(aAnim == null) {
+                    aAnim = context.armAnimator;
+                }
+                return aAnim;
             }
         }
         protected override void OnStart() {
-           ThisAnim.enabled = false;
+            TurnOffAnim();
         }
+        
+        protected abstract void TurnOffAnim();
 
         protected override void OnStop() {
         }

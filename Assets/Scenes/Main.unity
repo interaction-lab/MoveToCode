@@ -11555,26 +11555,6 @@ MonoBehaviour:
   finalVariableGoalValues: 
   SaidMazeGoal: 0
   SaidCodingGoal: 0
---- !u!1 &583652138 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1857129389466680272, guid: 01467935cc2dacd4a918ea4e1bb054b6,
-    type: 3}
-  m_PrefabInstance: {fileID: 1527829371}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &583652147
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 583652138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f2eb0f867e2ddc4fa52828cc741cdde, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurAction: 
-  actionSeperator: ~||~
 --- !u!114 &584239309 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3828739441442808834, guid: 9d4fb95003569de428fba011a79f6f10,
@@ -16376,6 +16356,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 852795801}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &853166754 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4270399134813491386, guid: 01467935cc2dacd4a918ea4e1bb054b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1527829371}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &853166758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853166754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0520f6aacb32eec4da934df89fb208ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &854978923
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30435,6 +30433,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 974020717}
     m_Modifications:
+    - target: {fileID: 1857129389473925520, guid: 01467935cc2dacd4a918ea4e1bb054b6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1857129389638163013, guid: 01467935cc2dacd4a918ea4e1bb054b6,
         type: 3}
       propertyPath: m_RootOrder
@@ -30495,8 +30498,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: TutorKuriManager
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1105268079, guid: 01467935cc2dacd4a918ea4e1bb054b6, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01467935cc2dacd4a918ea4e1bb054b6, type: 3}
 --- !u!4 &1527829372 stripped
 Transform:

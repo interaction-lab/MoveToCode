@@ -35,12 +35,9 @@ namespace MoveToCode {
                 return State.Success; // already looking at object
             }
             Quaternion rot = Quaternion.LookRotation(dir);
-            Debug.Log("-------");
-            Debug.Log(kuriHeadPositionManager.HeadRotation);
             kuriHeadPositionManager.HeadRotation = Quaternion.Slerp(kuriHeadPositionManager.HeadRotation,
                 rot,
                 headSpeed * Time.deltaTime);
-            Debug.Log(kuriHeadPositionManager.HeadRotation);
 
             // if rotation is close enough, stop
             if (Quaternion.Angle(kuriHeadPositionManager.HeadRotation, rot) < 0.1f) {

@@ -155,7 +155,6 @@ MonoBehaviour:
   robotKC: -0.04
   usePhysicalKuri: 0
   kuriAIToUse: 3
-  useBehaviorTree: 1
 --- !u!114 &1857129389638163015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -853,6 +852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b2ad8df7c97f4bbd8c41a7f8f2d21db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eventNames: []
 --- !u!114 &583652146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -865,23 +865,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b540a2d1029f7c94e9c4d7dea543ef4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1105268079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1857129389466680272}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1932d9e89484cf45961a1e05b6d8004, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurAction: 
-  actionSeperator: ~||~
-  ArmAnimator: {fileID: 0}
-  IsPointing: 0
-  timeSinceLastActionEndeded: 0
 --- !u!114 &8074134154942852654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -894,6 +877,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da58decf41e70a14ea6164103234dafb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &583652147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857129389466680272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f2eb0f867e2ddc4fa52828cc741cdde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurAction: 
+  actionSeperator: ~||~
 --- !u!4 &1857129389467035136 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2840021487166732704, guid: 64a404c7faf344369ba1d423de506c10,

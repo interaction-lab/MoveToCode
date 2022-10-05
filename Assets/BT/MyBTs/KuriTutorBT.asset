@@ -28,7 +28,12 @@ MonoBehaviour:
     bodySpeed: 1
   description: 
   drawGizmos: 0
+  lm: {fileID: 0}
   actionSeparator: ','
+  TurnOffArm: 0
+  TurnOffBody: 0
+  bAnim: {fileID: 0}
+  aAnim: {fileID: 0}
 --- !u!114 &-7270678516503451307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,6 +95,64 @@ MonoBehaviour:
   description: 
   drawGizmos: 0
   actionSeparator: ','
+--- !u!114 &-5395986302657379707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3b3767680849b0458cfc23437c1a674, type: 3}
+  m_Name: TurnOnAllAnimators
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: c07746d1d09b4d749b4d1971a0560272
+  position: {x: 180.00003, y: 338.40005}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+    objToPointTo: {fileID: 0}
+    objToLookAt: {fileID: 0}
+    objToTurnTo: {fileID: 0}
+    objToMoveTo: {fileID: 0}
+    headSpeed: 1
+    armSpeed: 1
+    bodySpeed: 1
+  description: 
+  drawGizmos: 0
+  actionSeparator: ','
+--- !u!114 &-4736522639135506034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 408d1f70e9757074582f4f60207771a6, type: 3}
+  m_Name: TurnOffAllAnimators
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 0d37ad1c2e19dba4795ca38d67dfa4a6
+  position: {x: -325.59998, y: 339.19998}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+    objToPointTo: {fileID: 0}
+    objToLookAt: {fileID: 0}
+    objToTurnTo: {fileID: 0}
+    objToMoveTo: {fileID: 0}
+    headSpeed: 1
+    armSpeed: 1
+    bodySpeed: 1
+  description: 
+  drawGizmos: 0
+  actionSeparator: ','
 --- !u!114 &-2253335293770299685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,10 +184,10 @@ MonoBehaviour:
   actionSeparator: ','
   children:
   - {fileID: 5680739273219299114}
-  - {fileID: -8794032629101224346}
+  - {fileID: -4736522639135506034}
   - {fileID: 5447069404632048011}
   - {fileID: -5742622530345581631}
-  - {fileID: 4471601715418835181}
+  - {fileID: -5395986302657379707}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,8 +209,8 @@ MonoBehaviour:
   - {fileID: -5742622530345581631}
   - {fileID: -2253335293770299685}
   - {fileID: 5680739273219299114}
-  - {fileID: -8794032629101224346}
-  - {fileID: 4471601715418835181}
+  - {fileID: -4736522639135506034}
+  - {fileID: -5395986302657379707}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -203,7 +266,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 0ceb806e27e8b8b4a819b6a362dae2bb
-  position: {x: 197, y: 144.19998}
+  position: {x: 180.00002, y: 338.39993}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -216,7 +279,9 @@ MonoBehaviour:
     bodySpeed: 1
   description: 
   drawGizmos: 0
+  lm: {fileID: 0}
   actionSeparator: ','
+  anim: {fileID: 0}
 --- !u!114 &5447069404632048011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,7 +326,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 71122ba8d514bbe488e072853a193fc5
-  position: {x: -528, y: 339}
+  position: {x: -550.78674, y: 339.19995}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}

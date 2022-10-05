@@ -827,6 +827,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2840021487176013360, guid: 64a404c7faf344369ba1d423de506c10,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2840021485951289705, guid: 64a404c7faf344369ba1d423de506c10, type: 3}
     - {fileID: 2840021485951289707, guid: 64a404c7faf344369ba1d423de506c10, type: 3}
@@ -865,18 +870,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b540a2d1029f7c94e9c4d7dea543ef4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8074134154942852654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1857129389466680272}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da58decf41e70a14ea6164103234dafb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &583652147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -891,9 +884,63 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurAction: 
   actionSeperator: ~||~
+  IkObjLeft: {fileID: 0}
+  IkObjRight: {fileID: 0}
+--- !u!114 &8074134154942852654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857129389466680272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da58decf41e70a14ea6164103234dafb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1857129389466680288 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2840021487166628928, guid: 64a404c7faf344369ba1d423de506c10,
+    type: 3}
+  m_PrefabInstance: {fileID: 4516003397359525792}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1366840442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857129389466680288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 505e2647b5f564129a3759ad53a096d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HeadPan: {fileID: 1857129389467035146}
+  HeadTilt: {fileID: 1857129389467035148}
+  EyeLids: {fileID: 1857129389467035158}
+  AboveHeadOffset: 0.5
 --- !u!4 &1857129389467035136 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2840021487166732704, guid: 64a404c7faf344369ba1d423de506c10,
+    type: 3}
+  m_PrefabInstance: {fileID: 4516003397359525792}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1857129389467035146 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2840021487166732714, guid: 64a404c7faf344369ba1d423de506c10,
+    type: 3}
+  m_PrefabInstance: {fileID: 4516003397359525792}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1857129389467035148 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2840021487166732716, guid: 64a404c7faf344369ba1d423de506c10,
+    type: 3}
+  m_PrefabInstance: {fileID: 4516003397359525792}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1857129389467035158 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2840021487166732726, guid: 64a404c7faf344369ba1d423de506c10,
     type: 3}
   m_PrefabInstance: {fileID: 4516003397359525792}
   m_PrefabAsset: {fileID: 0}
@@ -909,3 +956,21 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4516003397359525792}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4270399134813491386 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 427719141280173850, guid: 64a404c7faf344369ba1d423de506c10,
+    type: 3}
+  m_PrefabInstance: {fileID: 4516003397359525792}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &853166758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4270399134813491386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0520f6aacb32eec4da934df89fb208ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

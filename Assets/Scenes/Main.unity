@@ -3021,6 +3021,12 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 114779249808278468, guid: 3f1f46cbecbe08e46a303ccfdb5b498a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3f1f46cbecbe08e46a303ccfdb5b498a, type: 3}
+--- !u!4 &168380146 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1857129389467035146, guid: 01467935cc2dacd4a918ea4e1bb054b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1527829371}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &169509102
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8618,6 +8624,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 392636248}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &395061465 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1857129389467035148, guid: 01467935cc2dacd4a918ea4e1bb054b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1527829371}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &396518633
 GameObject:
   m_ObjectHideFlags: 0
@@ -9663,6 +9675,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2204069623020599746, guid: 3f1f46cbecbe08e46a303ccfdb5b498a,
     type: 3}
   m_PrefabInstance: {fileID: 452166890}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &461726914 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1857129389467035158, guid: 01467935cc2dacd4a918ea4e1bb054b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1527829371}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &462502124
 GameObject:
@@ -27692,6 +27710,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventsToReceive: 0
   debounceThreshold: 0.01
+--- !u!1 &1366840440 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1857129389466680288, guid: 01467935cc2dacd4a918ea4e1bb054b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1527829371}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1366840442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1366840440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 505e2647b5f564129a3759ad53a096d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HeadPan: {fileID: 168380146}
+  HeadTilt: {fileID: 395061465}
+  EyeLids: {fileID: 461726914}
+  AboveHeadOffset: 0.5
 --- !u!1 &1370670040
 GameObject:
   m_ObjectHideFlags: 0

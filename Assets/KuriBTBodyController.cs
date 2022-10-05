@@ -36,6 +36,7 @@ namespace MoveToCode {
         UnityEvent OnMoveToObj = new UnityEvent();
         UnityEvent OnTurnToObj = new UnityEvent();
         UnityEvent OnPointToObj = new UnityEvent();
+        UnityEvent OnLookAtObj = new UnityEvent();
 
         #endregion
 
@@ -59,6 +60,7 @@ namespace MoveToCode {
         public override string PointAtObj(Transform obj, float time) {
             KuriBlackBoard.objToPointTo = obj;
             KuriBlackBoard.objToLookAt = obj;
+            OnLookAtObj.Invoke();
             OnPointToObj.Invoke();
             return "Pointing to " + obj.name;
         }
@@ -73,6 +75,8 @@ namespace MoveToCode {
 
         public override void TurnTowardsUser() {
             KuriBlackBoard.objToTurnTo = PlayerTransformManagerInstance.OriginT;
+            KuriBlackBoard.objToLookAt = PlayerTransformManagerInstance.OriginT;
+            OnLookAtObj.Invoke();
             OnTurnToObj.Invoke();
         }
         public override string MoveToObj(Transform obj) {
@@ -94,6 +98,7 @@ namespace MoveToCode {
             KEventRouter.AddEvent(EventNames.OnMoveToObj, OnMoveToObj);
             KEventRouter.AddEvent(EventNames.OnTurnToObj, OnTurnToObj);
             KEventRouter.AddEvent(EventNames.OnPointToObj, OnPointToObj);
+            KEventRouter.AddEvent(EventNames.OnLookAtObj, OnLookAtObj);
         }
         #endregion
 

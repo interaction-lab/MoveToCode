@@ -6,7 +6,7 @@ using TheKiwiCoder;
 namespace MoveToCode{
     public class LogPointToObjEnded : LogActionEnded {
         protected override void SetActionName() {
-            actionName = LogPointToObjStarted.ActionName + blackboard.objToPointTo.name;
+            actionName = string.Join(Separator,EventNames.OnPointToObj, blackboard.objToPointTo.name);
         }
     }
 }

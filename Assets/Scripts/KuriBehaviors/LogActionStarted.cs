@@ -7,7 +7,6 @@ namespace MoveToCode {
     public abstract class LogActionStarted : ActionNode {
         public string actionName;
         public static string ActionStartedCol = "KTActionStarted";
-        public static string Separator = "~~";
         LoggingManager lm;
         LoggingManager LoggingManagerInstance {
             get {

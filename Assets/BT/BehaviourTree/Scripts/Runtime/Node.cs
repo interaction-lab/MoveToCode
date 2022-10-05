@@ -21,7 +21,7 @@ namespace TheKiwiCoder {
         [TextArea] public string description;
         public bool drawGizmos = false;
 
-        [HideInInspector] public static string actionSeparator = ",";
+        [HideInInspector] public static string actionSeparator = "~~";
 
 
         public State Update() {

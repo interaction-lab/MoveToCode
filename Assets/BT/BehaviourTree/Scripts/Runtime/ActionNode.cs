@@ -5,6 +5,6 @@ using UnityEngine;
 
 namespace TheKiwiCoder {
     public abstract class ActionNode : Node {
-
+        public static string Separator = "~~";
     }
 }

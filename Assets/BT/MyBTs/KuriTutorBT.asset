@@ -26,6 +26,8 @@ MonoBehaviour:
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
   description: 
   drawGizmos: 0
 --- !u!114 &-8961210435134816382
@@ -54,6 +56,8 @@ MonoBehaviour:
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
   description: 
   drawGizmos: 0
 --- !u!114 &-8794032629101224346
@@ -116,6 +120,8 @@ MonoBehaviour:
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
   description: 
   drawGizmos: 0
   eventName: 
@@ -145,6 +151,8 @@ MonoBehaviour:
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
   description: 
   drawGizmos: 0
 --- !u!114 &-7750011739515129516
@@ -173,6 +181,8 @@ MonoBehaviour:
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
   description: 
   drawGizmos: 0
 --- !u!114 &-7270678516503451307
@@ -201,6 +211,8 @@ MonoBehaviour:
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
   description: 
   drawGizmos: 0
   child: {fileID: 5455867068348529835}
@@ -232,6 +244,8 @@ MonoBehaviour:
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
   description: 
   drawGizmos: 0
   children:
@@ -268,6 +282,8 @@ MonoBehaviour:
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
   description: 
   drawGizmos: 0
 --- !u!114 &-5903956955837716562
@@ -296,6 +312,8 @@ MonoBehaviour:
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
   description: 
   drawGizmos: 0
   actionName: 
@@ -325,6 +343,8 @@ MonoBehaviour:
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
   description: 
   drawGizmos: 0
 --- !u!114 &-5273666639685414515
@@ -353,6 +373,8 @@ MonoBehaviour:
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
   description: 
   drawGizmos: 0
   children:
@@ -388,6 +410,8 @@ MonoBehaviour:
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
   description: 
   drawGizmos: 0
   actionName: 
@@ -417,6 +441,8 @@ MonoBehaviour:
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
   description: 
   drawGizmos: 0
   duration: 3
@@ -446,6 +472,8 @@ MonoBehaviour:
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
   description: 
   drawGizmos: 0
   eventName: 
@@ -475,6 +503,8 @@ MonoBehaviour:
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
   description: 
   drawGizmos: 0
   actionName: 
@@ -504,6 +534,8 @@ MonoBehaviour:
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
   description: 
   drawGizmos: 0
 --- !u!114 &-292372159940373310
@@ -532,6 +564,8 @@ MonoBehaviour:
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
   description: 
   drawGizmos: 0
 --- !u!114 &11400000
@@ -581,6 +615,7 @@ MonoBehaviour:
   - {fileID: 6172347472781051604}
   - {fileID: 7843292218538360628}
   - {fileID: 5063781781100932898}
+  - {fileID: 7900399307077914378}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -591,6 +626,8 @@ MonoBehaviour:
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
 --- !u!114 &479491708310320765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -617,12 +654,15 @@ MonoBehaviour:
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
   description: 
   drawGizmos: 0
   children:
   - {fileID: 5333853384887555370}
   - {fileID: -529245112039807988}
   - {fileID: 7843292218538360628}
+  - {fileID: 5063781781100932898}
   - {fileID: 6172347472781051604}
 --- !u!114 &702681504464602795
 MonoBehaviour:
@@ -650,6 +690,8 @@ MonoBehaviour:
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
   description: 
   drawGizmos: 0
 --- !u!114 &2504322995770570071
@@ -709,6 +751,8 @@ MonoBehaviour:
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
   description: 
   drawGizmos: 0
   child: {fileID: -7270678516503451307}
@@ -758,7 +802,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: b8cd2abf881359042a6237190ac1145b
-  position: {x: 0, y: 0}
+  position: {x: 2708.2, y: 327.19998}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -769,6 +813,8 @@ MonoBehaviour:
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
   description: 
   drawGizmos: 0
 --- !u!114 &5266085361642218364
@@ -797,6 +843,8 @@ MonoBehaviour:
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
   description: 
   drawGizmos: 0
   children:
@@ -832,6 +880,8 @@ MonoBehaviour:
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
   description: 
   drawGizmos: 0
   eventName: 
@@ -861,6 +911,8 @@ MonoBehaviour:
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
   description: 
   drawGizmos: 0
   children:
@@ -891,6 +943,8 @@ MonoBehaviour:
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
   description: 
   drawGizmos: 0
   eventName: 
@@ -920,6 +974,8 @@ MonoBehaviour:
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
   description: 
   drawGizmos: 0
   actionName: 
@@ -938,7 +994,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 3554c000b4e4dbd40a92ecabfd67eddb
-  position: {x: 2724, y: 295}
+  position: {x: 2928.616, y: 327.19998}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -949,6 +1005,8 @@ MonoBehaviour:
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
   description: 
   drawGizmos: 0
 --- !u!114 &6420646527177219497
@@ -977,6 +1035,8 @@ MonoBehaviour:
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
   description: 
   drawGizmos: 0
   actionName: 
@@ -1006,6 +1066,38 @@ MonoBehaviour:
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
+  description: 
+  drawGizmos: 0
+--- !u!114 &7900399307077914378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02fd3dcd14689974996e3fef0c4ba7c5, type: 3}
+  m_Name: TurnToObj
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 985b8bf7826eb7a42aad47ce10fac9d4
+  position: {x: 0, y: 0}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+    objToPointTo: {fileID: 0}
+    objToLookAt: {fileID: 0}
+    objToTurnTo: {fileID: 0}
+    objToMoveTo: {fileID: 0}
+    headSpeed: 1
+    armSpeed: 1
+    bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
   description: 
   drawGizmos: 0
 --- !u!114 &8008384230073665031
@@ -1034,6 +1126,8 @@ MonoBehaviour:
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
   description: 
   drawGizmos: 0
 --- !u!114 &8805973794668733733
@@ -1062,6 +1156,8 @@ MonoBehaviour:
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
   description: 
   drawGizmos: 0
   children:
@@ -1095,6 +1191,8 @@ MonoBehaviour:
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
   description: 
   drawGizmos: 0
   actionName: 

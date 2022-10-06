@@ -80,6 +80,15 @@ namespace MoveToCode {
             return "Moving to " + obj.name;
         }
 
+        public void TurnAndLookAtObj(Transform obj) {
+            _TurnToObj(obj);
+            _LookAtObj(obj);
+        }
+
+        public void OnlyLookAtObj(Transform obj) {
+            _LookAtObj(obj);
+        }
+
         #endregion
 
         #region protected

@@ -20,6 +20,7 @@ namespace TheKiwiCoder {
         public CapsuleCollider capsuleCollider;
         public TutorKuriTransformManager kuriTransformManager;
         public KuriController KController;
+        public KuriBTEventRouter eventRouter;
 
         // Add other game specific systems here
 
@@ -39,6 +40,7 @@ namespace TheKiwiCoder {
             // M2C specific components
             context.kuriTransformManager = TutorKuriTransformManager.instance;
             context.KController = TutorKuriManager.instance.KController;
+            context.eventRouter = KuriBTEventRouter.instance;
             return context;
         }
     }

@@ -7,10 +7,13 @@ namespace MoveToCode {
     public class TurnToObj : ActionNode {
         Transform objTransform;
         TutorKuriTransformManager kuriTransformManager;
+        KuriBTBodyController kuriBodyController;
+
         float turnSpeed = 1f;
         protected override void OnStart() {
             objTransform = blackboard.objToTurnTo;
             kuriTransformManager = context.kuriTransformManager;
+            kuriBodyController = context.KController as KuriBTBodyController;
         }
 
         protected override void OnStop() {
@@ -20,6 +23,12 @@ namespace MoveToCode {
             if (objTransform == null) {
                 return State.Failure;
             }
+
+            if (!kuriTransformManager.IsWithinHeadPanConstraints()) {
+                // tell kuri controller to look at this object
+                kuriBodyController.OnlyLookAtObj(objTransform);
+            }
+
             Vector3 objPos = objTransform.position;
             Vector3 kuriPos = kuriTransformManager.Position;
             objPos.y = kuriPos.y;

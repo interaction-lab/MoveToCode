@@ -6,15 +6,7 @@ using TheKiwiCoder;
 
 namespace MoveToCode {
     public abstract class SuccessOnEvent : MonitorCondition {
-        KuriBTEventRouter _eventRouter;
-        KuriBTEventRouter eventRouter {
-            get {
-                if (_eventRouter == null) {
-                    _eventRouter = KuriBTEventRouter.instance;
-                }
-                return _eventRouter;
-            }
-        }
+        KuriBTEventRouter eventRouter;
         public string eventName = "";
         UnityEvent evt;
 
@@ -22,6 +14,7 @@ namespace MoveToCode {
         bool processedEvent = true;
 
         protected override void OnStart() {
+            eventRouter = context.eventRouter;
             if (eventName == "") {
                 SetEventName();
             }

@@ -58,10 +58,8 @@ namespace MoveToCode {
         }
 
         public override string PointAtObj(Transform obj, float time) {
-            KuriBlackBoard.objToPointTo = obj;
-            KuriBlackBoard.objToLookAt = obj;
-            OnLookAtObj.Invoke();
-            OnPointToObj.Invoke();
+            _TurnToObj(obj);
+            _PointAtObj(obj);
             return "Pointing to " + obj.name;
         }
 
@@ -74,16 +72,11 @@ namespace MoveToCode {
         }
 
         public override void TurnTowardsUser() {
-            KuriBlackBoard.objToTurnTo = PlayerTransformManagerInstance.OriginT;
-            KuriBlackBoard.objToLookAt = PlayerTransformManagerInstance.OriginT;
-            OnLookAtObj.Invoke();
-            OnTurnToObj.Invoke();
+            MoveToObj(PlayerTransformManagerInstance.OriginT);
         }
         public override string MoveToObj(Transform obj) {
-            KuriBlackBoard.objToMoveTo = obj;
-            KuriBlackBoard.objToLookAt = obj;
-            OnLookAtObj.Invoke();
-            OnMoveToObj.Invoke();
+            _TurnToObj(obj);
+            _MoveToObj(obj);
             return "Moving to " + obj.name;
         }
 
@@ -105,6 +98,22 @@ namespace MoveToCode {
         #endregion
 
         #region private
+        void _TurnToObj(Transform obj) {
+            KuriBlackBoard.objToTurnTo = obj;
+            OnTurnToObj.Invoke();
+        }
+        void _LookAtObj(Transform obj) {
+            KuriBlackBoard.objToLookAt = obj;
+            OnLookAtObj.Invoke();
+        }
+        void _MoveToObj(Transform obj) {
+            KuriBlackBoard.objToMoveTo = obj;
+            OnMoveToObj.Invoke();
+        }
+        void _PointAtObj(Transform obj) {
+            KuriBlackBoard.objToPointTo = obj;
+            OnPointToObj.Invoke();
+        }
         #endregion
     }
 }

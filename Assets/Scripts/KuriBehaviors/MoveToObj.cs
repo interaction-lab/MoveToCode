@@ -7,7 +7,7 @@ namespace MoveToCode {
     public class MoveToObj : ActionNode {
         TutorKuriTransformManager kuriTransformManager;
         Transform goalObj;
-        float distThreshold = 0.1f, speedinMS = 0.5f, bezTimeThreshold = 0.95f;
+        float distThreshold = 0.1f, speedinMS = 0.5f, bezTimeThreshold = 0.95f, controlPointScaler = 0.1f;
         float approxLength, totalTime;
         float positionAlongCurve = 0f;
         Bezier bezierCurve;
@@ -29,7 +29,7 @@ namespace MoveToCode {
             Vector3 lineVec = end - start;
             Vector3 tangent = (lineVec);
             Vector3 normal = Vector3.Cross(tangent, Vector3.up);
-            Vector3 controlPoint = start + tangent * 0.5f + normal * 0.5f;
+            Vector3 controlPoint = start + tangent * controlPointScaler + normal * controlPointScaler;
 
             bezierCurve = new Bezier(
                 Bezier.BezierType.Quadratic,
@@ -41,6 +41,7 @@ namespace MoveToCode {
         }
 
         protected override void OnStop() {
+            controlPointScaler *= -1; // makes the turns alternate left and right
         }
 
         protected override State OnUpdate() {

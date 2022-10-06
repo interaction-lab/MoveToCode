@@ -384,6 +384,36 @@ MonoBehaviour:
   - {fileID: 702681504464602795}
   - {fileID: -292372159940373310}
   - {fileID: -2090839353797539951}
+--- !u!114 &-5073837880765585683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02fd3dcd14689974996e3fef0c4ba7c5, type: 3}
+  m_Name: TurnToObj
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 8d9bc015a775148999c445da53135c30
+  position: {x: 2506.163, y: 468.23782}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+    objToPointTo: {fileID: 0}
+    objToLookAt: {fileID: 0}
+    objToTurnTo: {fileID: 0}
+    objToMoveTo: {fileID: 0}
+    headSpeed: 1
+    armSpeed: 1
+    bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
+  description: 
+  drawGizmos: 0
 --- !u!114 &-2090839353797539951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -523,7 +553,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: c19794733d2ebf1489c4b09000ff606b
-  position: {x: 2120, y: 324}
+  position: {x: 2094.5, y: 324.00003}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -616,6 +646,7 @@ MonoBehaviour:
   - {fileID: 7843292218538360628}
   - {fileID: 5063781781100932898}
   - {fileID: 7900399307077914378}
+  - {fileID: -5073837880765585683}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -802,7 +833,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: b8cd2abf881359042a6237190ac1145b
-  position: {x: 2708.2, y: 327.19998}
+  position: {x: 2727.7715, y: 324.00003}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -994,7 +1025,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 3554c000b4e4dbd40a92ecabfd67eddb
-  position: {x: 2928.616, y: 327.19998}
+  position: {x: 2920.0745, y: 324.00003}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -1055,7 +1086,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: aa8aa5a9cd2a5cc43917cf89f3320802
-  position: {x: 2280.8, y: 323.99994}
+  position: {x: 2254.5, y: 324.00003}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}

@@ -5,13 +5,18 @@ using TheKiwiCoder;
 
 namespace MoveToCode {
     public class TurnToObj : ActionNode {
-        Transform objTransform;
+        Transform objTransform, origTransform;
         TutorKuriTransformManager kuriTransformManager;
         KuriBTBodyController kuriBodyController;
 
         float turnSpeed = 1f;
         protected override void OnStart() {
+            Init();
+        }
+
+        void Init(){
             objTransform = blackboard.objToTurnTo;
+            origTransform = objTransform;
             kuriTransformManager = context.kuriTransformManager;
             kuriBodyController = context.KController as KuriBTBodyController;
         }
@@ -22,6 +27,10 @@ namespace MoveToCode {
         protected override State OnUpdate() {
             if (objTransform == null) {
                 return State.Failure;
+            }
+
+            if(objTransform != origTransform){
+                Init();
             }
 
             if (!kuriTransformManager.IsWithinHeadPanConstraints()) {

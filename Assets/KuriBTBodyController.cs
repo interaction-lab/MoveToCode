@@ -85,6 +85,10 @@ namespace MoveToCode {
             _LookAtObj(obj);
         }
 
+        public void OnlyTurnToObj(Transform obj) {
+            _TurnToObj(obj);
+        }
+
         public void OnlyLookAtObj(Transform obj) {
             _LookAtObj(obj);
         }

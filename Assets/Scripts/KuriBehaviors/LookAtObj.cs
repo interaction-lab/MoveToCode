@@ -5,8 +5,10 @@ using TheKiwiCoder;
 
 namespace MoveToCode {
     public class LookAtObj : ActionNode {
-        Transform objToLookAt;
+        Transform objToLookAt, origTransform;
         KuriHeadPositionManager _kuriHeadPositionManager;
+        TutorKuriTransformManager kuriTransformManager;
+        KuriBTBodyController kuriBodyController;
         KuriHeadPositionManager kuriHeadPositionManager {
             get {
                 if (_kuriHeadPositionManager == null) {
@@ -18,8 +20,15 @@ namespace MoveToCode {
         float headSpeed;
 
         protected override void OnStart() {
+            Init();
+        }
+
+        void Init() {
             objToLookAt = blackboard.objToLookAt;
+            origTransform = objToLookAt;
             headSpeed = blackboard.headSpeed;
+            kuriTransformManager = context.kuriTransformManager;
+            kuriBodyController = context.KController as KuriBTBodyController;
             if (objToLookAt == null) {
                 Debug.LogError("objToLookAt is null in LookAtObj");
             }
@@ -29,6 +38,15 @@ namespace MoveToCode {
         }
 
         protected override State OnUpdate() {
+            if (objToLookAt != origTransform) {
+                Init();
+            }
+
+            if (!kuriTransformManager.IsWithinHeadPanConstraints()) {
+                // tell kuri controller to turn at this object
+                kuriBodyController.OnlyTurnToObj(objToLookAt);
+            }
+
             Vector3 dir = objToLookAt.position - kuriHeadPositionManager.HeadPosition;
             if (dir == Vector3.zero) {
                 return State.Success; // already looking at object

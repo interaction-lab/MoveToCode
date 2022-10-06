@@ -20,16 +20,13 @@ namespace MoveToCode {
         }
 
         private void CalcBezCurve() {
+            positionAlongCurve = 0f;
+
             start = kuriTransformManager.Position;
             end = goalObj.position;
             end.y = kuriTransformManager.GroundYCord;
 
             Vector3 lineVec = end - start;
-
-            // calculate the length of the line
-            float approxLineLength = lineVec.magnitude;
-
-
             Vector3 tangent = (lineVec);
             Vector3 normal = Vector3.Cross(tangent, Vector3.up);
             Vector3 controlPoint = start + tangent * 0.5f + normal * 0.5f;

@@ -20,5 +20,7 @@ namespace TheKiwiCoder {
         public float headSpeed = 1f;
         public float armSpeed = 1f;
         public float bodySpeed = 1f;
+        public float BodyAnimatorSemaphoreCount = 0;
+        public float ArmAnimatorSemaphoreCount = 0;
     }
 }

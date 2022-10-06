@@ -6,7 +6,9 @@ using TheKiwiCoder;
 namespace MoveToCode{
     public class TurnOnArmAnimator : TurnOnAnimator {
         protected override void TurnOnAnim() {
-            ArmAnimator.enabled = true;
+            if(++blackboard.ArmAnimatorSemaphoreCount == 1) {
+                ArmAnimator.enabled = true;
+            }
         }
     }
 }

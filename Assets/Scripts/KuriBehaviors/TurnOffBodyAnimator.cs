@@ -6,7 +6,9 @@ using TheKiwiCoder;
 namespace MoveToCode{
     public class TurnOffBodyAnimator : TurnOffAnimator {
         protected override void TurnOffAnim() {
-            BodyAnimator.enabled = false;
+            if(--blackboard.BodyAnimatorSemaphoreCount == 0) {
+                BodyAnimator.enabled = false;
+            }
         }
     }
 }

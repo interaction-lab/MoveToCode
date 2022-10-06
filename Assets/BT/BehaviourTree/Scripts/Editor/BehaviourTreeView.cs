@@ -11,7 +11,8 @@ namespace TheKiwiCoder {
     public class BehaviourTreeView : GraphView {
 
         public Action<NodeView> OnNodeSelected;
-        public new class UxmlFactory : UxmlFactory<BehaviourTreeView, GraphView.UxmlTraits> { }
+        public new class UxmlFactory : UxmlFactory<BehaviourTreeView, GraphView.UxmlTraits> {
+        }
         BehaviourTree tree;
         BehaviourTreeSettings settings;
 
@@ -160,6 +161,9 @@ namespace TheKiwiCoder {
             {
                 var types = TypeCache.GetTypesDerivedFrom<ActionNode>();
                 foreach (var type in types) {
+                    if (type.IsAbstract) {
+                        continue;
+                    }
                     evt.menu.AppendAction($"[Action]/{type.Name}", (a) => CreateNode(type, nodePosition));
                 }
             }
@@ -167,6 +171,9 @@ namespace TheKiwiCoder {
             {
                 var types = TypeCache.GetTypesDerivedFrom<CompositeNode>();
                 foreach (var type in types) {
+                    if (type.IsAbstract) {
+                        continue;
+                    }
                     evt.menu.AppendAction($"[Composite]/{type.Name}", (a) => CreateNode(type, nodePosition));
                 }
             }
@@ -174,6 +181,9 @@ namespace TheKiwiCoder {
             {
                 var types = TypeCache.GetTypesDerivedFrom<DecoratorNode>();
                 foreach (var type in types) {
+                    if (type.IsAbstract) {
+                        continue;
+                    }
                     evt.menu.AppendAction($"[Decorator]/{type.Name}", (a) => CreateNode(type, nodePosition));
                 }
             }

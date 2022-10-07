@@ -37,13 +37,10 @@ namespace MoveToCode {
 
         private void RestartSequenceOnEvent() {
             if (successOnEventNode.Update() == State.Success) {
-                // check if sequence is already running,
-                // abort if so and start over
                 if (sequenceIsRunning) {
                     children[current].Abort();
-                    RunRemainingLogAndAnimatorNodes();
-                    Init();
                 }
+                Init();
                 sequenceIsRunning = true;
             }
         }
@@ -63,14 +60,6 @@ namespace MoveToCode {
                 }
             }
             return State.Success;
-        }
-
-        private void RunRemainingLogAndAnimatorNodes() {
-            for (int i = current + 1; i < children.Count; ++i) {
-                if (children[i] is LogActionEnded || children[i] is TurnOnAnimator || children[i] is TurnOffAnimator) {
-                    children[i].Update();
-                }
-            }
         }
     }
 }

@@ -193,5 +193,16 @@ namespace MoveToCode {
             }
             return x;
         }
+        // Animator
+        public static bool IsAnimationInAnimator(this Animator animator, string animationName) {
+            if (animator.runtimeAnimatorController.animationClips.Length > 0) {
+                foreach (AnimationClip clip in animator.runtimeAnimatorController.animationClips) {
+                    if (clip.name == animationName) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
     }
 }

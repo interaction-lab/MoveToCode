@@ -44,7 +44,9 @@ namespace MoveToCode {
             // 0 = move to obj
             // 1 = point at obj
             // 2 = do animation
-            int rand = Random.Range(0, 3);
+            KController.PointAtObj(StartCodeBlock.instance.transform);
+            return;
+            int rand = Random.Range(0, 5);
             if (rand == 0) {
                 KController.MoveToObj(Camera.main.transform);
             }
@@ -54,6 +56,10 @@ namespace MoveToCode {
             else if (rand == 2) {
                 KController.TurnTowardsUser();
             }
+            else if (rand == 3) {
+                KController.DoAnimationAction(KuriController.EMOTIONS.happy);
+            }
+
         }
         #endregion
 

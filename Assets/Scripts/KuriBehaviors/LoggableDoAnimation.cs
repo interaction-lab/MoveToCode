@@ -5,7 +5,6 @@ using TheKiwiCoder;
 
 namespace MoveToCode {
     public class LoggableDoAnimation : LoggableBehPrimitive {
-
         #region members
         string animationName;
         Animator activeAnimator;

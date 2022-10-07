@@ -13,5 +13,6 @@ namespace MoveToCode {
         public static string OnLookAtObj = "OnLookAtObj";
         public static string OnDoAnimation = "OnDoAnimation";
         public static string OnEndAllSeq = "OnEndAllSeq";
+        public static string OnStartH5 = "OnStartH5";
     }
 }

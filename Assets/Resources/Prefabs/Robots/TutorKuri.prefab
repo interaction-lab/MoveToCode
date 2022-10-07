@@ -1305,6 +1305,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurAction: 
   actionSeperator: ~||~
+  IkObjLeft: {fileID: 0}
+  IkObjRight: {fileID: 0}
   ArmAnimator: {fileID: 427719141280173847}
   IsPointing: 0
   timeSinceLastActionEndeded: 0
@@ -5344,7 +5346,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fec1771c048f6a4f9b1a674a76d0cd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  states: {fileID: 0}
+  InputActionId: 0
+  isGlobal: 0
+  Dimensions: 1
+  dimensionIndex: 0
+  startDimensionIndex: 0
+  CanSelect: 1
+  CanDeselect: 1
+  voiceCommand: 
+  voiceRequiresFocus: 1
+  profiles: []
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+  Events: []
+  resetOnDestroy: 0
+  enabledOnStart: 1
   IsRightArm: 1
+  OnHitHand:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &-38328581853448000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427719139907630069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fed2de112fda78547a9b01cacbbd9837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Interactable: {fileID: 0}
+  InteractableSearchScope: 0
 --- !u!4 &427719141280173845 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2487772825955322139, guid: 884adbfcd11f41f488b4331181c29910,
@@ -5375,4 +5411,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fec1771c048f6a4f9b1a674a76d0cd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  states: {fileID: 0}
+  InputActionId: 0
+  isGlobal: 0
+  Dimensions: 1
+  dimensionIndex: 0
+  startDimensionIndex: 0
+  CanSelect: 1
+  CanDeselect: 1
+  voiceCommand: 
+  voiceRequiresFocus: 1
+  profiles: []
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+  Events: []
+  resetOnDestroy: 0
+  enabledOnStart: 1
   IsRightArm: 0
+  OnHitHand:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &-6397834277925085673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2447068537734890278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fed2de112fda78547a9b01cacbbd9837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Interactable: {fileID: 0}
+  InteractableSearchScope: 0

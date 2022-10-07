@@ -18,7 +18,9 @@ namespace MoveToCode {
             confused,
             thinking,
             love,
-            close_eyes
+            close_eyes,
+            h5_start,
+            h5_end
         }
         protected static string rISACol = "robotISA", kuriPhysicalEmoteActionCol = "kuriPhysicalAction", kuriMovementActionCol = "kuriMovementAction", kuriCurAction = "kuriCurAction";
         //[HideInInspector]

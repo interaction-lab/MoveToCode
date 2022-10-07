@@ -39,25 +39,10 @@ namespace MoveToCode {
         }
 
         public void DoRandomBTAction() {
-            // pikc a random number 0 or 1
-            int rand = Random.Range(0, 3);
-            Debug.Log(rand);
-            Transform obj;
-            if (rand == 0) {
-                obj = Camera.main.transform;
-                KController.PointAtObj(obj);
-            }
-            else if (rand == 1) {
-                obj = StartCodeBlock.instance.transform;
-                KController.PointAtObj(obj);
-                KController.MoveToObj(obj);
-            }
-            else {
-                KController.StopAllBeh();
-            }
-
+            KController.HighFive();
             return;
-            //int rand = Random.Range(0, 5);
+            // pikc a random number 0 or 1
+            int rand = Random.Range(0, 5);
 
             if (rand == 0) {
                 KController.MoveToObj(Camera.main.transform);

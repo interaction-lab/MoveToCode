@@ -67,6 +67,7 @@ MonoBehaviour:
   drawGizmos: 0
   children:
   - {fileID: -1999444866723321195}
+  - {fileID: 1797858227440081883}
   - {fileID: -5606815232303424574}
 --- !u!114 &-8371660481982443300
 MonoBehaviour:
@@ -411,6 +412,106 @@ MonoBehaviour:
   WaitForBodyAnim: 1
   WaitForArmAnim: 0
   stackOnMySide: 1
+--- !u!114 &-3253637434573013678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c2816189dd190845a97d8c693284332, type: 3}
+  m_Name: SuccessOnStartH5
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 8440f1a23ce56024c8c5d71482d0eedf
+  position: {x: 1827.7004, y: 262.00012}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+    objToPointTo: {fileID: 0}
+    objToLookAt: {fileID: 0}
+    objToTurnTo: {fileID: 0}
+    objToMoveTo: {fileID: 0}
+    headSpeed: 1
+    armSpeed: 1
+    bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
+    emotion: 0
+  description: 
+  drawGizmos: 0
+  eventName: 
+--- !u!114 &-2886907223923008828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87597e7b36182a142b36afe6965e4304, type: 3}
+  m_Name: ActivateAndWaitForH5
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 2c3cc665dac53034ea7493c724f00d23
+  position: {x: 2411, y: 262}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+    objToPointTo: {fileID: 0}
+    objToLookAt: {fileID: 0}
+    objToTurnTo: {fileID: 0}
+    objToMoveTo: {fileID: 0}
+    headSpeed: 1
+    armSpeed: 1
+    bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
+    emotion: 0
+  description: 
+  drawGizmos: 0
+--- !u!114 &-2517789072312802955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f39f8f6863570aa4f868742941e78b75, type: 3}
+  m_Name: EventDrivenSequence
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: d6b110e4cf7954d4bb6c13d8386131f6
+  position: {x: 2235, y: 82.999954}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+    objToPointTo: {fileID: 0}
+    objToLookAt: {fileID: 0}
+    objToTurnTo: {fileID: 0}
+    objToMoveTo: {fileID: 0}
+    headSpeed: 1
+    armSpeed: 1
+    bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
+    emotion: 0
+  description: 
+  drawGizmos: 0
+  children:
+  - {fileID: -3253637434573013678}
+  - {fileID: 4220367624942240227}
+  - {fileID: 7331323295320043374}
+  - {fileID: -2886907223923008828}
+  - {fileID: -1207147473375994724}
 --- !u!114 &-1999444866723321195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -478,6 +579,38 @@ MonoBehaviour:
   WaitForBodyAnim: 1
   WaitForArmAnim: 0
   stackOnMySide: 1
+--- !u!114 &-1207147473375994724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3877435955b01a946a14980f7164cfa8, type: 3}
+  m_Name: LoggableDoAnimation
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: ab6dc42b092ba6c43b16d81dc143e401
+  position: {x: 2613.96, y: 262}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+    objToPointTo: {fileID: 0}
+    objToLookAt: {fileID: 0}
+    objToTurnTo: {fileID: 0}
+    objToMoveTo: {fileID: 0}
+    headSpeed: 1
+    armSpeed: 1
+    bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
+    emotion: 0
+  description: 
+  drawGizmos: 0
+  actionName: 
 --- !u!114 &-863424743980031114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -584,6 +717,12 @@ MonoBehaviour:
   - {fileID: -1409664464866813851}
   - {fileID: -3633006731352339402}
   - {fileID: 1797858227440081883}
+  - {fileID: -2517789072312802955}
+  - {fileID: -3253637434573013678}
+  - {fileID: 4220367624942240227}
+  - {fileID: 7331323295320043374}
+  - {fileID: -2886907223923008828}
+  - {fileID: -1207147473375994724}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -746,7 +885,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 9f2d13731ddc1904da1dabb650189e8c
-  position: {x: 0, y: 0}
+  position: {x: -1020, y: 282.4}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -896,6 +1035,41 @@ MonoBehaviour:
   WaitForBodyAnim: 0
   WaitForArmAnim: 1
   stackOnMySide: 1
+--- !u!114 &4220367624942240227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c4cbcc34c00c41569f1163799dafdfa, type: 3}
+  m_Name: WaitUntilAnimatorsReleased
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 02472f56742155640b78bd163894d97f
+  position: {x: 1998.1504, y: 261.99997}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+    objToPointTo: {fileID: 0}
+    objToLookAt: {fileID: 0}
+    objToTurnTo: {fileID: 0}
+    objToMoveTo: {fileID: 0}
+    headSpeed: 1
+    armSpeed: 1
+    bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
+    emotion: 0
+  description: 
+  drawGizmos: 0
+  timeToWait: 5
+  WaitForBodyAnim: 0
+  WaitForArmAnim: 1
+  stackOnMySide: 0
 --- !u!114 &4471601715418835181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1091,6 +1265,38 @@ MonoBehaviour:
   description: 
   drawGizmos: 0
   actionName: 
+--- !u!114 &7331323295320043374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3877435955b01a946a14980f7164cfa8, type: 3}
+  m_Name: LoggableDoAnimation
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 7e8c646301e16b040b54a68e8e09249a
+  position: {x: 2234.7957, y: 261.99988}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+    objToPointTo: {fileID: 0}
+    objToLookAt: {fileID: 0}
+    objToTurnTo: {fileID: 0}
+    objToMoveTo: {fileID: 0}
+    headSpeed: 1
+    armSpeed: 1
+    bodySpeed: 1
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
+    emotion: 0
+  description: 
+  drawGizmos: 0
+  actionName: 
 --- !u!114 &7352763978259116150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1163,3 +1369,4 @@ MonoBehaviour:
   - {fileID: -6588785799623424298}
   - {fileID: -5273666639685414515}
   - {fileID: 479491708310320765}
+  - {fileID: -2517789072312802955}

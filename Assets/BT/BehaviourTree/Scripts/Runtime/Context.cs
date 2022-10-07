@@ -21,6 +21,7 @@ namespace TheKiwiCoder {
         public TutorKuriTransformManager kuriTransformManager;
         public KuriController KController;
         public KuriBTEventRouter eventRouter;
+        public KuriArms kuriArms;
 
         // Add other game specific systems here
 
@@ -41,6 +42,7 @@ namespace TheKiwiCoder {
             context.kuriTransformManager = TutorKuriTransformManager.instance;
             context.KController = TutorKuriManager.instance.KController;
             context.eventRouter = KuriBTEventRouter.instance;
+            context.kuriArms = KuriArms.instance;
             return context;
         }
     }

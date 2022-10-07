@@ -1,3 +1,4 @@
+using System;
 using TheKiwiCoder;
 using UnityEngine;
 using UnityEngine.Events;
@@ -32,14 +33,6 @@ namespace MoveToCode {
                 return ptm;
             }
         }
-
-        UnityEvent OnMoveToObj = new UnityEvent();
-        UnityEvent OnTurnToObj = new UnityEvent();
-        UnityEvent OnPointToObj = new UnityEvent();
-        UnityEvent OnLookAtObj = new UnityEvent();
-        UnityEvent OnDoAnimation = new UnityEvent();
-        UnityEvent OnEndAllSeq = new UnityEvent();
-
         #endregion
 
         #region unity
@@ -99,6 +92,9 @@ namespace MoveToCode {
         public void StopAllBeh() {
             _EndAllSeq();
         }
+        public void HighFive() {
+            _HighFive();
+        }
 
         #endregion
 
@@ -108,6 +104,14 @@ namespace MoveToCode {
             return false; // TODO: figure this out later lol
         }
 
+
+        UnityEvent OnMoveToObj = new UnityEvent();
+        UnityEvent OnTurnToObj = new UnityEvent();
+        UnityEvent OnPointToObj = new UnityEvent();
+        UnityEvent OnLookAtObj = new UnityEvent();
+        UnityEvent OnDoAnimation = new UnityEvent();
+        UnityEvent OnEndAllSeq = new UnityEvent();
+        UnityEvent OnStartH5 = new UnityEvent();
         protected override void Init() {
             // add all necessary Unity Events
             KEventRouter.AddEvent(EventNames.OnMoveToObj, OnMoveToObj);
@@ -116,6 +120,7 @@ namespace MoveToCode {
             KEventRouter.AddEvent(EventNames.OnLookAtObj, OnLookAtObj);
             KEventRouter.AddEvent(EventNames.OnDoAnimation, OnDoAnimation);
             KEventRouter.AddEvent(EventNames.OnEndAllSeq, OnEndAllSeq);
+            KEventRouter.AddEvent(EventNames.OnStartH5, OnStartH5);
         }
         #endregion
 
@@ -142,6 +147,10 @@ namespace MoveToCode {
             OnDoAnimation.Invoke();
         }
 
+        private void _HighFive() {
+            KuriBlackBoard.emotion = EMOTIONS.h5_start;
+            OnStartH5.Invoke();
+        }
         void _EndAllSeq() {
             OnEndAllSeq.Invoke();
         }

@@ -44,7 +44,8 @@ namespace MoveToCode {
             // 0 = move to obj
             // 1 = point at obj
             // 2 = do animation
-            KController.PointAtObj(StartCodeBlock.instance.transform);
+            KController.MoveToObj(Camera.main.transform);
+
             return;
             int rand = Random.Range(0, 5);
             if (rand == 0) {

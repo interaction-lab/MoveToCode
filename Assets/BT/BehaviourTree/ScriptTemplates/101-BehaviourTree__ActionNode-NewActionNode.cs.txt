@@ -6,6 +6,9 @@ using TheKiwiCoder;
 namespace MoveToCode{
     public class #SCRIPTNAME# : ActionNode
     {
+    #region members
+	#endregion
+	#region overrides
         protected override void OnStart() {
         }
 
@@ -15,5 +18,8 @@ namespace MoveToCode{
         protected override State OnUpdate() {
             return State.Success;
         }
+	 #endregion
+	 #region helpers
+	 #endregion
     }
 }

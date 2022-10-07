@@ -1,56 +1,65 @@
 using TheKiwiCoder;
 using UnityEngine.Assertions;
+using UnityEngine.Events;
 
 namespace MoveToCode {
     public class EventDrivenSequence : Sequencer {
+        #region members
         SuccessOnEvent successOnEventNode;
-        bool sequenceIsRunning;
+        UnityEvent endSeqEvt = null;
+        bool seqRestartingOnNewEventCall = false, eventTriggeredAtLeastOnce = false;
+        #endregion
+        #region bt
         protected override void OnStart() {
-            context.eventRouter.GetEvent(EventNames.OnEndAllSeq)?.AddListener(OnEndAllSeq);
             Init();
         }
 
-        void Init() {
-            current = 1;
-            sequenceIsRunning = false;
-            successOnEventNode = children[0] as SuccessOnEvent;
-            Assert.IsTrue(successOnEventNode != null, "EventDrivenSequence must have a SuccessOnEvent as its first child");
-        }
-
-        void OnEndAllSeq() {
-            EndSequence();
-        }
-
         protected override void OnStop() {
-            context.eventRouter.GetEvent(EventNames.OnEndAllSeq)?.RemoveListener(OnEndAllSeq);
+            eventTriggeredAtLeastOnce = false;
         }
 
         protected override State OnUpdate() {
             RestartSequenceOnEvent();
-
-            if (sequenceIsRunning) {
-                State ret = RunChildren();
-                if (ret != State.Success) {
-                    return ret;
-                }
+            if (eventTriggeredAtLeastOnce) {
+                return RunChildren();
             }
-            sequenceIsRunning = false;
-            return State.Success;
+            return State.Running;
+        }
+        #endregion
+
+        #region helpers
+
+        void Init() {
+            Assert.IsFalse(seqRestartingOnNewEventCall, "EventDrivenSequence must be stopped before starting again");
+            if (endSeqEvt == null) {
+                endSeqEvt = context.eventRouter.GetEvent(EventNames.OnEndAllSeq);
+                endSeqEvt.AddListener(EndSeq);
+            }
+            current = 1;
+            successOnEventNode = children[0] as SuccessOnEvent;
+            Assert.IsTrue(successOnEventNode != null, "EventDrivenSequence must have a SuccessOnEvent as its first child");
         }
 
         private void RestartSequenceOnEvent() {
             if (successOnEventNode.Update() == State.Success) {
-                EndSequence();
-                Init();
-                sequenceIsRunning = true;
+                eventTriggeredAtLeastOnce = true;
+                seqRestartingOnNewEventCall = true;
+                ResetSeq();
+            }
+            else {
+                seqRestartingOnNewEventCall = false;
             }
         }
 
-        private void EndSequence() {
-            if (sequenceIsRunning) {
-                children[current].Abort();
-            }
-            sequenceIsRunning = false;
+        void EndSeq() {
+            Abort();
+        }
+
+        private void ResetSeq() {
+            Assert.IsTrue(seqRestartingOnNewEventCall);
+            children[current].Abort();
+            seqRestartingOnNewEventCall = false;
+            Init();
         }
 
         private State RunChildren() {
@@ -69,5 +78,6 @@ namespace MoveToCode {
             }
             return State.Success;
         }
+        #endregion
     }
 }

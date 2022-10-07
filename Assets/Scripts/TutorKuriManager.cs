@@ -113,9 +113,9 @@ namespace MoveToCode {
             inStartUp = true;
             yield return null;
             SpawnArrowPointer();
-            KController.TurnTowardsUser();
+            //KController.TurnTowardsUser();
             yield return new WaitForSeconds(5);
-            KController.MoveToObj(Camera.main.transform);
+            //KController.MoveToObj(Camera.main.transform);
             yield return new WaitForSeconds(InteractionManager.instance.MinToSeconds(InteractionManager.instance.warmUpTimeMinutes) - 5f);
             inStartUp = false;
         }

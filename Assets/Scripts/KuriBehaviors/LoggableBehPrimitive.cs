@@ -51,11 +51,13 @@ namespace MoveToCode {
             SetAnimatorSemaphoreCount();
             UpdateAnimators(1); // 1 is add to semaphore, used for things turning off the animators
             BehSetUp();
+            //            Debug.Log(actionName + " started");
         }
         protected override void OnStop() {
             BehCleanUp();
             UpdateAnimators(-1); // -1 is remove from semaphore, used for things turning on the animators
             LogActionEnd();
+            //            Debug.Log(actionName + " ended");
         }
         #endregion
         #region helpers

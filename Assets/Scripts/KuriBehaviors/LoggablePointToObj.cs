@@ -74,8 +74,8 @@ namespace MoveToCode {
                         nameT + " Is Behind You");
                 }
                 ViewPortManagerInstance.TurnOnArrow(objToPointTo);
-                ikTransform.position = objToPointTo.position;
             }
+            ikTransform.position = objToPointTo.position;
         }
 
         private void SetMembers() {

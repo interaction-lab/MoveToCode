@@ -11,5 +11,6 @@ namespace MoveToCode {
         public static string OnMoveToObj = "OnMoveToObj";
         public static string OnTurnToObj = "OnTurnToObj";
         public static string OnLookAtObj = "OnLookAtObj";
+        public static string OnDoAnimation = "OnDoAnimation";
     }
 }

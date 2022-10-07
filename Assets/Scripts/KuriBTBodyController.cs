@@ -37,6 +37,7 @@ namespace MoveToCode {
         UnityEvent OnTurnToObj = new UnityEvent();
         UnityEvent OnPointToObj = new UnityEvent();
         UnityEvent OnLookAtObj = new UnityEvent();
+        UnityEvent OnDoAnimation = new UnityEvent();
 
         #endregion
 
@@ -46,7 +47,8 @@ namespace MoveToCode {
         #region public
         // totally forgot what the string return is for..., probably a logger and worth looking at later
         public override string DoAnimationAction(EMOTIONS e) {
-            throw new System.NotImplementedException();
+            _DoAnimation(e);
+            return e.ToString();
         }
 
         public override string DoRandomNegativeAction() {
@@ -107,6 +109,7 @@ namespace MoveToCode {
             KEventRouter.AddEvent(EventNames.OnTurnToObj, OnTurnToObj);
             KEventRouter.AddEvent(EventNames.OnPointToObj, OnPointToObj);
             KEventRouter.AddEvent(EventNames.OnLookAtObj, OnLookAtObj);
+            KEventRouter.AddEvent(EventNames.OnDoAnimation, OnDoAnimation);
         }
         #endregion
 
@@ -126,6 +129,11 @@ namespace MoveToCode {
         void _PointAtObj(Transform obj) {
             KuriBlackBoard.objToPointTo = obj;
             OnPointToObj.Invoke();
+        }
+
+        void _DoAnimation(EMOTIONS e) {
+            KuriBlackBoard.emotion = e;
+            OnDoAnimation.Invoke();
         }
         #endregion
     }

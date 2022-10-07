@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TheKiwiCoder;
-using UnityEngine.Events;
 
 namespace MoveToCode {
     public class KuriAIBTRandom : KuriAI {
@@ -49,10 +45,10 @@ namespace MoveToCode {
             // 1 = point at obj
             // 2 = do animation
             int rand = Random.Range(0, 3);
-            if(rand == 0) {
+            if (rand == 0) {
                 KController.MoveToObj(Camera.main.transform);
             }
-            else if(rand == 1) {
+            else if (rand == 1) {
                 KController.PointAtObj(Camera.main.transform);
             }
             else if (rand == 2) {

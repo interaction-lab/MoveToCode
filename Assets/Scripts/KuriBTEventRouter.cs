@@ -22,7 +22,6 @@ namespace MoveToCode {
 
         public UnityEvent GetEvent(string eventName) {
             if (events.ContainsKey(eventName)) {
-                Debug.Log(events[eventName]);
                 return events[eventName];
             }
             return null;

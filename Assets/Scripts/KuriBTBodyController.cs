@@ -60,7 +60,7 @@ namespace MoveToCode {
             throw new System.NotImplementedException();
         }
 
-        public override string PointAtObj(Transform obj, float time) {
+        public override string PointAtObj(Transform obj, float time = -1) {
             _TurnToObj(obj);
             _PointAtObj(obj);
             return "Pointing to " + obj.name;
@@ -115,6 +115,7 @@ namespace MoveToCode {
             KEventRouter.AddEvent(EventNames.OnPointToObj, OnPointToObj);
             KEventRouter.AddEvent(EventNames.OnLookAtObj, OnLookAtObj);
             KEventRouter.AddEvent(EventNames.OnDoAnimation, OnDoAnimation);
+            KEventRouter.AddEvent(EventNames.OnEndAllSeq, OnEndAllSeq);
         }
         #endregion
 

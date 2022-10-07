@@ -38,6 +38,7 @@ namespace MoveToCode {
         UnityEvent OnPointToObj = new UnityEvent();
         UnityEvent OnLookAtObj = new UnityEvent();
         UnityEvent OnDoAnimation = new UnityEvent();
+        UnityEvent OnEndAllSeq = new UnityEvent();
 
         #endregion
 
@@ -95,6 +96,10 @@ namespace MoveToCode {
             _LookAtObj(obj);
         }
 
+        public void StopAllBeh() {
+            _EndAllSeq();
+        }
+
         #endregion
 
         #region protected
@@ -134,6 +139,10 @@ namespace MoveToCode {
         void _DoAnimation(EMOTIONS e) {
             KuriBlackBoard.emotion = e;
             OnDoAnimation.Invoke();
+        }
+
+        void _EndAllSeq() {
+            OnEndAllSeq.Invoke();
         }
         #endregion
     }

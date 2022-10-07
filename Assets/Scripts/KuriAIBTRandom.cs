@@ -34,20 +34,13 @@ namespace MoveToCode {
         public override void Tick() {
             // launch event every 15 seconds
             if (Time.time - TutorKuriManagerInstance.TimeLastActionEnded.TimeSince() > 15) {
-                DoRandomBTAction();
+                //DoRandomBTAction();
             }
         }
 
         public void DoRandomBTAction() {
-            // using kuri controller
-            // choose random number 0-2
-            // 0 = move to obj
-            // 1 = point at obj
-            // 2 = do animation
-            KController.MoveToObj(Camera.main.transform);
-
-            return;
             int rand = Random.Range(0, 5);
+            Debug.Log(rand);
             if (rand == 0) {
                 KController.MoveToObj(Camera.main.transform);
             }
@@ -60,7 +53,9 @@ namespace MoveToCode {
             else if (rand == 3) {
                 KController.DoAnimationAction(KuriController.EMOTIONS.happy);
             }
-
+            else if (rand == 4) {
+                KController.DoAnimationAction(KuriController.EMOTIONS.sad);
+            }
         }
         #endregion
 

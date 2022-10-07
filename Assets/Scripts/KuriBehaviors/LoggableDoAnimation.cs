@@ -12,7 +12,6 @@ namespace MoveToCode {
         #endregion
         #region overrides
         protected override void BehCleanUp() {
-            throw new System.NotImplementedException();
         }
 
         protected override void BehSetUp() {

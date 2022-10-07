@@ -83,21 +83,8 @@ namespace MoveToCode {
         protected void UpdateAnimators(int flipper) {
             blackboard.ArmAnimatorSemaphoreCount += AddToArmAnimatorSemaphore * flipper;
             blackboard.BodyAnimatorSemaphoreCount += AddToBodyAnimatorSemaphore * flipper;
-            if (blackboard.ArmAnimatorSemaphoreCount <= 0) {
-                ArmAnimator.enabled = true;
-            }
-            else {
-                ArmAnimator.enabled = false;
-            }
-            ArmAnimator.enabled = false;
-
-            if (blackboard.BodyAnimatorSemaphoreCount <= 0) {
-                BodyAnimator.enabled = true;
-            }
-            else {
-
-                BodyAnimator.enabled = false;
-            }
+            ArmAnimator.enabled = blackboard.ArmAnimatorSemaphoreCount <= 0;
+            BodyAnimator.enabled = blackboard.BodyAnimatorSemaphoreCount <= 0;
         }
 
         protected void LogActionEnd() {

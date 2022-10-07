@@ -22,8 +22,9 @@ namespace MoveToCode {
         #endregion
         #region overrides
         protected override void BehCleanUp() {
-            ViewPortManagerInstance.TurnOffArrow(objToPointTo);
-
+            if (objToPointTo != Camera.main.transform) {
+                ViewPortManagerInstance.TurnOffArrow(objToPointTo);
+            }
         }
 
         protected override void BehSetUp() {

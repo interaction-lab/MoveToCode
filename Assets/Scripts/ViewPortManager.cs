@@ -17,6 +17,10 @@ namespace MoveToCode {
         #region public
         // needs methods for spawning ArrowPointPrefabs
         public ArrowPointPrefab SpawnNewArrowPoint(Transform target, Vector3 offSet, Color outerColor, Color innerColor, string text) {
+            if (target == Camera.main.transform) {
+                Debug.LogError("Cannot point to camera, returning");
+                return null;
+            }
             ArrowPointPrefab newArrowPoint = Instantiate(Resources.Load<ArrowPointPrefab>(ResourcePathConstants.ArrowPointPrefab), transform);
             newArrowPoint.Set(target.transform, offSet, outerColor, innerColor, text);
             gameObjToArrowPointDict.Add(target, newArrowPoint);

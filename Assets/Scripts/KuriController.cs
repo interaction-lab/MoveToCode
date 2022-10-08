@@ -20,7 +20,8 @@ namespace MoveToCode {
             love,
             close_eyes,
             h5_start,
-            h5_end
+            h5_end,
+            clap
         }
         protected static string rISACol = "robotISA", kuriPhysicalEmoteActionCol = "kuriPhysicalAction", kuriMovementActionCol = "kuriMovementAction", kuriCurAction = "kuriCurAction";
         //[HideInInspector]

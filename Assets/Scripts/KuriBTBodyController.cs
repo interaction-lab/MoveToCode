@@ -95,6 +95,9 @@ namespace MoveToCode {
         public void HighFive() {
             _HighFive();
         }
+        public void Clap(){
+            _DoAnimation(EMOTIONS.clap);
+        }
 
         #endregion
 

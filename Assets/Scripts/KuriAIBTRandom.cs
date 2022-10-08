@@ -39,7 +39,7 @@ namespace MoveToCode {
         }
 
         public void DoRandomBTAction() {
-            KController.HighFive();
+            KController.Clap();
             return;
             // pikc a random number 0 or 1
             int rand = Random.Range(0, 5);

@@ -32,9 +32,50 @@ namespace MoveToCode {
                 return _rightIKTarget;
             }
         }
+
+        Transform rHand, lHand, rShoulder, lShoulder;
+
+        public Transform RShoulder {
+            get {
+                if (rShoulder == null)
+                    rShoulder = transform.GetChild(0).GetChild(2);
+                return rShoulder;
+            }
+        }
+        public Transform RHand {
+            get {
+                if (rHand == null)
+                    rHand = RShoulder.GetChild(0).GetChild(0).GetChild(0).GetChild(0);
+                return rHand;
+            }
+        }
+        public Transform LShoulder {
+            get {
+                if (lShoulder == null) {
+                    lShoulder = transform.GetChild(1).GetChild(2);
+                }
+                return lShoulder;
+            }
+        }
+        public Transform LHand {
+            get {
+                if (lHand == null) {
+                    lHand = LShoulder.GetChild(0).GetChild(0).GetChild(0).GetChild(0);
+                }
+                return lHand;
+            }
+        }
+
         #endregion
 
         #region unity
+        private void OnEnable() {
+#if !UNITY_EDITOR
+            // turn off the MeshRenderer of both IK objetcs
+            RightIKTarget.GetComponent<MeshRenderer>().enabled = false;
+            LeftIKTarget.GetComponent<MeshRenderer>().enabled = false;
+#endif
+        }
         #endregion
 
         #region public

@@ -7,9 +7,10 @@ namespace MoveToCode {
     public class LoggablePointToObj : LoggableBehPrimitive {
 
         #region members
-        KuriController KController;
-        Transform objToPointTo, ikTransform;
-        float timeToPoint = 3f, startTime = 0f;
+        Transform objToPointTo, handTransform, shoulderTransform;
+        // maxArmLength calced from shoulder to end of hand, this is roughly it
+        // speed is in m/s
+        float timeToPoint = 3f, startTime = 0f, maxArmLength = 0.3f, speed = 0.5f;
         ViewPortManager vpm;
         ViewPortManager ViewPortManagerInstance {
             get {
@@ -19,6 +20,9 @@ namespace MoveToCode {
                 return vpm;
             }
         }
+        Vector3 origEndNormalized, origPosObjToPointTo;
+        KuriArms kArms;
+        TargetIKObject ikObj;
         #endregion
         #region overrides
         protected override void BehCleanUp() {
@@ -32,11 +36,20 @@ namespace MoveToCode {
             CreateAndSetArrowPoint();
         }
 
-        // TODO: make this move over time in arm range and then back to original position
         protected override State OnUpdate() {
+
             if (Time.time - startTime > timeToPoint) {
                 return State.Success;
             }
+
+            // 1. see if the objtopointto position changed
+            if (objToPointTo.position != origPosObjToPointTo) {
+                CalcTransformForIK();
+            }
+
+            // 2. move the ik to the target over time using speed
+            ikObj.transform.position = Vector3.MoveTowards(ikObj.transform.position, origEndNormalized, speed * Time.deltaTime);
+
             return State.Running;
         }
 
@@ -75,14 +88,34 @@ namespace MoveToCode {
                 }
                 ViewPortManagerInstance.TurnOnArrow(objToPointTo);
             }
-            ikTransform.position = objToPointTo.position;
         }
 
         private void SetMembers() {
-            KController = context.KController;
             objToPointTo = blackboard.objToPointTo;
-            ikTransform = KController.IkObjRight.transform;
             startTime = Time.time;
+            kArms = context.kuriArms;
+            CalcWhichArm();
+            CalcTransformForIK();
+        }
+
+        void CalcWhichArm() {
+            // calculate the distance between the shoulder and the obj
+            float leftDist = Vector3.Distance(kArms.LShoulder.position, objToPointTo.position);
+            float rightDist = Vector3.Distance(kArms.RShoulder.position, objToPointTo.position);
+            ikObj = leftDist < rightDist ? kArms.LeftIKTarget : kArms.RightIKTarget;
+            handTransform = leftDist < rightDist ? kArms.LHand : kArms.RHand;
+            shoulderTransform = leftDist < rightDist ? kArms.LShoulder : kArms.RShoulder;
+        }
+        private void CalcTransformForIK() {
+            // get vector from shoulder to obj
+            Vector3 shoulderToObj = objToPointTo.position - shoulderTransform.position;
+            // normalize this vector to a max magnitude of maxArmLength
+            if (shoulderToObj.magnitude > maxArmLength) {
+                shoulderToObj = shoulderToObj.normalized * maxArmLength;
+            }
+            origEndNormalized = shoulderTransform.position + shoulderToObj;
+
+            origPosObjToPointTo = objToPointTo.position;
         }
         #endregion
     }

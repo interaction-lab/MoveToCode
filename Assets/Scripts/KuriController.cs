@@ -75,7 +75,23 @@ namespace MoveToCode {
             }
         }
 
-        public TargetIKObject IkObjLeft, IkObjRight;
+        TargetIKObject ikObjLeft, ikObjRight;
+        public TargetIKObject IkObjLeft {
+            get {
+                if (!ikSet) {
+                    SetUpIKTargets();
+                }
+                return ikObjLeft;
+            }
+        }
+        public TargetIKObject IkObjRight {
+            get {
+                if (!ikSet) {
+                    SetUpIKTargets();
+                }
+                return ikObjRight;
+            }
+        }
 
         private void Awake() {
             SetUpLogColumns();
@@ -83,15 +99,20 @@ namespace MoveToCode {
             Init();
         }
 
+        bool ikSet = false;
         private void SetUpIKTargets() {
+            if (ikSet) {
+                return;
+            }
             foreach (TargetIKObject tik in FindObjectsOfType<TargetIKObject>()) {
                 if (tik.IsRightArm) {
-                    IkObjRight = tik;
+                    ikObjRight = tik;
                 }
                 else {
-                    IkObjLeft = tik;
+                    ikObjLeft = tik;
                 }
             }
+            ikSet = true;
         }
 
         private void SetUpLogColumns() {

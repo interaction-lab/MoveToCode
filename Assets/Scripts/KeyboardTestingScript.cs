@@ -5,6 +5,7 @@ using RosSharp.RosBridgeClient;
 using UnityEngine;
 
 public class KeyboardTestingScript : MonoBehaviour {
+    public Transform t1, t2;
     public Animator anim;
 
     ARTrackingManager arTrackingManager;
@@ -62,7 +63,8 @@ public class KeyboardTestingScript : MonoBehaviour {
             KuriAIBTRandomInstance.DoRandomBTAction();
         }
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
-            TutorKuriManager.instance.TurnOnArrowPoint();
+            // print distance from t1 to t2
+            Debug.Log(Vector3.Distance(t1.position, t2.position));
         }
         if (Input.GetKey(KeyCode.Alpha3)) {
             //FindObjectOfType<GoalTrackBeh>().UpdateAlphaTest();

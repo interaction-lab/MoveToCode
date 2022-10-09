@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9663,6 +9663,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2204069623020599746, guid: 3f1f46cbecbe08e46a303ccfdb5b498a,
     type: 3}
   m_PrefabInstance: {fileID: 452166890}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &457373328 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4270399135941789221, guid: 01467935cc2dacd4a918ea4e1bb054b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1527829371}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &462502124
 GameObject:
@@ -25810,6 +25816,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f99327c42a0b894f9179568e5b93fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  t1: {fileID: 457373328}
+  t2: {fileID: 1510220877}
   anim: {fileID: 0}
 --- !u!4 &1250844566
 Transform:
@@ -30319,6 +30327,12 @@ MonoBehaviour:
   Events: []
   resetOnDestroy: 0
   enabledOnStart: 1
+--- !u!4 &1510220877 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4270399135741723465, guid: 01467935cc2dacd4a918ea4e1bb054b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1527829371}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1510307030
 GameObject:
   m_ObjectHideFlags: 0
@@ -30508,7 +30522,7 @@ PrefabInstance:
     - target: {fileID: 2259024666815131635, guid: 01467935cc2dacd4a918ea4e1bb054b6,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.20311436
+      value: -0.20311458
       objectReference: {fileID: 0}
     - target: {fileID: 2259024666818120944, guid: 01467935cc2dacd4a918ea4e1bb054b6,
         type: 3}
@@ -30523,17 +30537,17 @@ PrefabInstance:
     - target: {fileID: 2259024666991242007, guid: 01467935cc2dacd4a918ea4e1bb054b6,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.86646485
+      value: 0.86646456
       objectReference: {fileID: 0}
     - target: {fileID: 2259024666991242007, guid: 01467935cc2dacd4a918ea4e1bb054b6,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.49923807
+      value: 0.49923858
       objectReference: {fileID: 0}
     - target: {fileID: 2259024667631490456, guid: 01467935cc2dacd4a918ea4e1bb054b6,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.3879057
+      value: 0.38790584
       objectReference: {fileID: 0}
     - target: {fileID: 2259024667631490456, guid: 01467935cc2dacd4a918ea4e1bb054b6,
         type: 3}
@@ -30543,12 +30557,12 @@ PrefabInstance:
     - target: {fileID: 2259024667631490456, guid: 01467935cc2dacd4a918ea4e1bb054b6,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.025088128
+      value: 0.025088083
       objectReference: {fileID: 0}
     - target: {fileID: 2259024667631490456, guid: 01467935cc2dacd4a918ea4e1bb054b6,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.85616934
+      value: 0.8561692
       objectReference: {fileID: 0}
     - target: {fileID: 2259024667894045825, guid: 01467935cc2dacd4a918ea4e1bb054b6,
         type: 3}
@@ -30588,22 +30602,22 @@ PrefabInstance:
     - target: {fileID: 4270399135257058851, guid: 01467935cc2dacd4a918ea4e1bb054b6,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.32197124
+      value: -0.3219711
       objectReference: {fileID: 0}
     - target: {fileID: 4270399135257058851, guid: 01467935cc2dacd4a918ea4e1bb054b6,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.39039147
+      value: 0.39039153
       objectReference: {fileID: 0}
     - target: {fileID: 4270399135257058851, guid: 01467935cc2dacd4a918ea4e1bb054b6,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.26329705
+      value: -0.263297
       objectReference: {fileID: 0}
     - target: {fileID: 4270399135257058851, guid: 01467935cc2dacd4a918ea4e1bb054b6,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.82134265
+      value: 0.8213427
       objectReference: {fileID: 0}
     - target: {fileID: 4270399135352725412, guid: 01467935cc2dacd4a918ea4e1bb054b6,
         type: 3}
@@ -35933,8 +35947,8 @@ Camera:
   m_GameObject: {fileID: 1800814695}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -35948,7 +35962,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 50
+  far clip plane: 1000
   field of view: 60
   orthographic: 0
   orthographic size: 5

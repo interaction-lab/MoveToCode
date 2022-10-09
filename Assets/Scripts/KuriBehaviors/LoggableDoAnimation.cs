@@ -27,7 +27,7 @@ namespace MoveToCode {
         }
 
         protected override State OnUpdate() {
-            if (activeAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name == animationName) {
+            if (activeAnimator.IsThisAnimationPlaying(animationName)) {
                 return State.Running;
             }
             return State.Success;

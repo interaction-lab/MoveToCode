@@ -209,5 +209,13 @@ namespace MoveToCode {
             }
             return false;
         }
+
+        public static bool IsThisAnimationPlaying(this Animator animator, string animationName) {
+            return animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == animationName;
+        }
+
+        public static bool IsFullyIdle(this Animator animator) {
+            return animator.IsThisAnimationPlaying("Idle") || animator.IsThisAnimationPlaying("neutral");
+        }
     }
 }

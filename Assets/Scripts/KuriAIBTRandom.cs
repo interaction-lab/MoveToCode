@@ -59,12 +59,14 @@ namespace MoveToCode {
             // launch event every 15 seconds
             Debug.Log(TutorKuriManagerInstance.TimeLastActionEnded.TimeSince());
             if (TutorKuriManagerInstance.TimeLastActionEnded.TimeSince() > 15) {
+                TutorKuriManagerInstance.TimeLastActionEnded = Time.time;
                 DoRandomBTAction();
             }
             else {
                 // randomly call do look_around Emotion
                 // check if animating anything right now
                 if (BodyAnimator.IsFullyIdle() && (Random.Range(0, 1000) < 1)) {
+                    // set head quaternion to identity
                     BodyAnimator.Play(KuriController.EMOTIONS.look_around.ToString());
                 }
             }

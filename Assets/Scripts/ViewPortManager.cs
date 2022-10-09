@@ -40,7 +40,10 @@ namespace MoveToCode {
         }
 
         public ArrowPointPrefab GetArrowPoint(Transform t) {
-            return gameObjToArrowPointDict[t];
+            if (gameObjToArrowPointDict.ContainsKey(t)) {
+                return gameObjToArrowPointDict[t];
+            }
+            return null;
         }
         #endregion
         #region private

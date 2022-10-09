@@ -107,11 +107,11 @@ namespace MoveToCode {
             return Vector3.Distance(position, Position) < 0.01f;
         }
 
-        public bool IsWithinHeadPanConstraints(){
-            // check on head rotation relative to body rotation and compare to head pan constraints
-            Quaternion headRotationRelativeToBody = Quaternion.Inverse(BodyRotation) * HeadRotation;
-            float headPan = headRotationRelativeToBody.eulerAngles.y;
-            return headPan >= -KuriContraints.HeadPanDeg && headPan <= KuriContraints.HeadPanDeg;
+        public bool IsWithinHeadPanConstraints() {
+            float headYAngle = ExtensionMethods.NormalizeAngle(HeadRotation.eulerAngles.y);
+            float bodyYAngle = ExtensionMethods.NormalizeAngle(BodyRotation.eulerAngles.y);
+            float angleDiff = Mathf.Abs(ExtensionMethods.NormalizedAngleSubtract(headYAngle, bodyYAngle));
+            return angleDiff <= KuriContraints.HeadPanDeg;
         }
         #endregion
         #region private

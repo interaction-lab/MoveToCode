@@ -730,7 +730,7 @@ MonoBehaviour:
     objToLookAt: {fileID: 0}
     objToTurnTo: {fileID: 0}
     objToMoveTo: {fileID: 0}
-    headSpeed: 1
+    headSpeed: 2
     armSpeed: 1
     bodySpeed: 1
     BodyAnimatorSemaphoreCount: 0

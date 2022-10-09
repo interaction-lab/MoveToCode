@@ -11,12 +11,13 @@ namespace MoveToCode {
         TutorKuriTransformManager kuriTransformManager;
         KuriBTBodyController kuriBodyController;
 
-        float turnSpeed = 2f;
+        float turnSpeed;
         #endregion
         #region overrides
         protected override void BehCleanUp() {
         }
         protected override void BehSetUp() {
+            Init();
         }
 
         protected override State OnUpdate() {
@@ -28,8 +29,9 @@ namespace MoveToCode {
                 Init();
             }
 
-            if (!kuriTransformManager.IsWithinHeadPanConstraints()) {
-                // tell kuri controller to look at this object
+            if (!kuriTransformManager.IsWithinHeadPanConstraints() &&
+                NotLookingAtThisObj()) {
+                // tell kuri controller to turn at this object
                 kuriBodyController.OnlyLookAtObj(objTransform);
             }
 
@@ -49,6 +51,11 @@ namespace MoveToCode {
             return State.Running;
         }
 
+        // Note this isn't perfect since the obj is never reset unless a new looking at is passed in
+        private bool NotLookingAtThisObj() {
+            return blackboard.objToLookAt != objTransform;
+        }
+
         protected override void SetAnimatorSemaphoreCount() {
             AddToBodyAnimatorSemaphore = 1;
         }
@@ -61,10 +68,15 @@ namespace MoveToCode {
         #endregion
         #region helpers
         void Init() {
-            objTransform = blackboard.objToTurnTo;
-            origTransform = objTransform;
             kuriTransformManager = context.kuriTransformManager;
             kuriBodyController = context.KController as KuriBTBodyController;
+            turnSpeed = blackboard.bodySpeed;
+            SetObjToTurnTo();
+        }
+
+        void SetObjToTurnTo() {
+            objTransform = blackboard.objToTurnTo;
+            origTransform = objTransform;
         }
         #endregion
     }

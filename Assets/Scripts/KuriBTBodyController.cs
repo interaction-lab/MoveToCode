@@ -54,7 +54,7 @@ namespace MoveToCode {
         }
 
         public override string PointAtObj(Transform obj, float time = -1) {
-            //_LookAtObj(obj);
+            _LookAtObj(obj);
             _PointAtObj(obj);
             return "Pointing to " + obj.name;
         }

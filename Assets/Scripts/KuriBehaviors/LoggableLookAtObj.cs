@@ -23,7 +23,7 @@ namespace MoveToCode {
         #region overrides
         protected override State OnUpdate() {
             if (objToLookAt != origTransform) {
-                Init();
+                SetObjToLookAt();
             }
 
             if (!kuriTransformManager.IsWithinHeadPanConstraints()) {
@@ -67,11 +67,15 @@ namespace MoveToCode {
         #endregion
         #region helpers
         void Init() {
-            objToLookAt = blackboard.objToLookAt;
-            origTransform = objToLookAt;
             headSpeed = blackboard.headSpeed;
             kuriTransformManager = context.kuriTransformManager;
             kuriBodyController = context.KController as KuriBTBodyController;
+            SetObjToLookAt();
+        }
+
+        void SetObjToLookAt() {
+            objToLookAt = blackboard.objToLookAt;
+            origTransform = objToLookAt;
             if (objToLookAt == null) {
                 Debug.LogError("objToLookAt is null in LookAtObj");
             }

@@ -182,7 +182,7 @@ namespace MoveToCode {
             return v;
         }
 
-        private static float NormalizeAngle(float x) {
+        public static float NormalizeAngle(float x) {
             // normalize angle between -180 and 180
             x = x % 360;
             if (x < -180) {
@@ -192,6 +192,11 @@ namespace MoveToCode {
                 x -= 360;
             }
             return x;
+        }
+
+        public static float NormalizedAngleSubtract(float x, float y) {
+            // subtract two angles and normalize the result between -180 and 180
+            return NormalizeAngle(x - y);
         }
         // Animator
         public static bool IsAnimationInAnimator(this Animator animator, string animationName) {

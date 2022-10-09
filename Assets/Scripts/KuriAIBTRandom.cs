@@ -85,7 +85,7 @@ namespace MoveToCode {
                 KController.MoveToObj(objOfInterest);
             }
             else if (rand == 1) {
-                KController.PointAtObj(objOfInterest);
+                KController.PointUntilInteract(objOfInterest);
             }
             else if (rand == 2) {
                 KController.TurnTowardsUser();

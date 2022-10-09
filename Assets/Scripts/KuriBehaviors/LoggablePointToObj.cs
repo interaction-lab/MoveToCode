@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TheKiwiCoder;
+using UnityEngine.Events;
 
 namespace MoveToCode {
     public class LoggablePointToObj : LoggableBehPrimitive {
@@ -10,7 +8,7 @@ namespace MoveToCode {
         Transform objToPointTo, handTransform, shoulderTransform;
         // maxArmLength calced from shoulder to end of hand, this is roughly it
         // speed is in m/s
-        float timeToPoint = 3f, startTime = 0f, maxArmLength = 0.3f, speed = 0.5f;
+        float timeToPoint, startTime = 0f, maxArmLength = 0.3f, speed = 0.5f;
         ViewPortManager vpm;
         ViewPortManager ViewPortManagerInstance {
             get {
@@ -23,11 +21,17 @@ namespace MoveToCode {
         Vector3 origEndNormalized, origPosObjToPointTo;
         KuriArms kArms;
         TargetIKObject ikObj;
+        UnityEvent OnUntilInteract;
+        bool UserInteracted = false;
+
         #endregion
         #region overrides
         protected override void BehCleanUp() {
             if (objToPointTo != Camera.main.transform) {
                 ViewPortManagerInstance.TurnOffArrow(objToPointTo);
+            }
+            if (OnUntilInteract != null) {
+                OnUntilInteract.RemoveListener(UntilInteractListener);
             }
         }
 
@@ -38,7 +42,7 @@ namespace MoveToCode {
 
         protected override State OnUpdate() {
 
-            if (Time.time - startTime > timeToPoint) {
+            if (Time.time - startTime > timeToPoint || UserInteracted) {
                 return State.Success;
             }
 
@@ -91,9 +95,15 @@ namespace MoveToCode {
         }
 
         private void SetMembers() {
+            timeToPoint = blackboard.timeToPoint;
             objToPointTo = blackboard.objToPointTo;
             startTime = Time.time;
             kArms = context.kuriArms;
+            UserInteracted = false;
+            OnUntilInteract = context.eventRouter.GetEvent(EventNames.OnInteractWith);
+            if (OnUntilInteract != null) {
+                OnUntilInteract.AddListener(UntilInteractListener);
+            }
             CalcWhichArm();
             CalcTransformForIK();
         }
@@ -116,6 +126,10 @@ namespace MoveToCode {
             origEndNormalized = shoulderTransform.position + shoulderToObj;
 
             origPosObjToPointTo = objToPointTo.position;
+        }
+
+        void UntilInteractListener() {
+            UserInteracted = true;
         }
         #endregion
     }

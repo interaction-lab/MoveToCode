@@ -17,9 +17,10 @@ namespace TheKiwiCoder {
         public Transform objToLookAt;
         public Transform objToTurnTo;
         public Transform objToMoveTo;
-        public float headSpeed = 1f;
+        public float headSpeed = 1.5f;
         public float armSpeed = 1f;
         public float bodySpeed = 1f;
+        public float timeToPoint = 3f;
         public float BodyAnimatorSemaphoreCount = 0;
         public float ArmAnimatorSemaphoreCount = 0;
         public KuriController.EMOTIONS emotion;

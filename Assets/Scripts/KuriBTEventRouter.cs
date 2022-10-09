@@ -1,8 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.Events;
-using TheKiwiCoder;
 using System.Linq;
 
 namespace MoveToCode {
@@ -25,6 +22,13 @@ namespace MoveToCode {
                 return events[eventName];
             }
             return null;
+        }
+
+        public void ResetEvent(string eventName) {
+            if (events.ContainsKey(eventName) && events[eventName] != null) {
+                events[eventName].RemoveAllListeners();
+                events[eventName] = null;
+            }
         }
     }
 }

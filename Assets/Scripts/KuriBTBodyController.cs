@@ -1,6 +1,7 @@
 using System;
 using TheKiwiCoder;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.Events;
 
 namespace MoveToCode {
@@ -33,6 +34,8 @@ namespace MoveToCode {
                 return ptm;
             }
         }
+
+        float normalPointTime = 3f, pointUntilTime = 15f;
         #endregion
 
         #region unity
@@ -57,6 +60,11 @@ namespace MoveToCode {
             _LookAtObj(obj);
             _PointAtObj(obj);
             return "Pointing to " + obj.name;
+        }
+
+        public void PointUntilInteract(Transform obj) {
+            _LookAtObj(obj);
+            _PointUntilInteract(obj);
         }
 
         public override string TakeISAAction() {
@@ -115,6 +123,7 @@ namespace MoveToCode {
         UnityEvent OnDoAnimation = new UnityEvent();
         UnityEvent OnEndAllSeq = new UnityEvent();
         UnityEvent OnStartH5 = new UnityEvent();
+        UnityEvent OnPointUntilInteract = new UnityEvent();
         protected override void Init() {
             // add all necessary Unity Events
             KEventRouter.AddEvent(EventNames.OnMoveToObj, OnMoveToObj);
@@ -124,6 +133,7 @@ namespace MoveToCode {
             KEventRouter.AddEvent(EventNames.OnDoAnimation, OnDoAnimation);
             KEventRouter.AddEvent(EventNames.OnEndAllSeq, OnEndAllSeq);
             KEventRouter.AddEvent(EventNames.OnStartH5, OnStartH5);
+            KEventRouter.AddEvent(EventNames.OnPointUntilInteract, OnPointUntilInteract);
         }
         #endregion
 
@@ -142,7 +152,26 @@ namespace MoveToCode {
         }
         void _PointAtObj(Transform obj) {
             KuriBlackBoard.objToPointTo = obj;
+            KuriBlackBoard.timeToPoint = normalPointTime;
+            KEventRouter.ResetEvent(EventNames.OnInteractWith);
             OnPointToObj.Invoke();
+        }
+
+        void _PointUntilInteract(Transform obj) {
+            // if player, just point normally
+            if (obj == Camera.main.transform) {
+                _PointAtObj(obj);
+                return;
+            }
+            KuriBlackBoard.objToPointTo = obj;
+            KuriBlackBoard.timeToPoint = pointUntilTime; // long point time, still ends if they don't interact
+            UntilInteract untilInteract = obj.GetComponent<UntilInteract>();
+            if (untilInteract == null) {
+                untilInteract = obj.gameObject.AddComponent<UntilInteract>();
+            }
+
+            KEventRouter.AddEvent(EventNames.OnInteractWith, untilInteract.OnInteract);
+            OnPointUntilInteract.Invoke();
         }
 
         void _DoAnimation(EMOTIONS e) {

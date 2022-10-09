@@ -18,11 +18,11 @@ namespace MoveToCode {
                 return vpm;
             }
         }
-        Vector3 origEndNormalized, origPosObjToPointTo;
+        Vector3 origEndNormalized, origPosObjToPointTo, origStart;
         KuriArms kArms;
         TargetIKObject ikObj;
         UnityEvent OnUntilInteract;
-        bool UserInteracted = false;
+        bool UserInteracted = false, movingBackToOrigStart = false;
 
         #endregion
         #region overrides
@@ -42,12 +42,19 @@ namespace MoveToCode {
 
         protected override State OnUpdate() {
 
-            if (Time.time - startTime > timeToPoint || UserInteracted) {
+            if (movingBackToOrigStart &&
+                Vector3.Distance(ikObj.transform.position, origStart) < 0.01f) { // phase 2 aka move back to orig start
                 return State.Success;
+            }
+            else { // phase 1, aka point to obj
+                if (Time.time - startTime > timeToPoint || UserInteracted) {
+                    movingBackToOrigStart = true;
+                    origEndNormalized = origStart; // hacky but should work
+                }
             }
 
             // 1. see if the objtopointto position changed
-            if (objToPointTo.position != origPosObjToPointTo) {
+            if (!movingBackToOrigStart && objToPointTo.position != origPosObjToPointTo) {
                 CalcTransformForIK();
             }
 
@@ -100,6 +107,7 @@ namespace MoveToCode {
             startTime = Time.time;
             kArms = context.kuriArms;
             UserInteracted = false;
+            movingBackToOrigStart = false;
             OnUntilInteract = context.eventRouter.GetEvent(EventNames.OnInteractWith);
             if (OnUntilInteract != null) {
                 OnUntilInteract.AddListener(UntilInteractListener);
@@ -115,6 +123,7 @@ namespace MoveToCode {
             ikObj = leftDist < rightDist ? kArms.LeftIKTarget : kArms.RightIKTarget;
             handTransform = leftDist < rightDist ? kArms.LHand : kArms.RHand;
             shoulderTransform = leftDist < rightDist ? kArms.LShoulder : kArms.RShoulder;
+            origStart = handTransform.position;
         }
         private void CalcTransformForIK() {
             // get vector from shoulder to obj

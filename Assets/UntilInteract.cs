@@ -23,12 +23,10 @@ namespace MoveToCode {
         }
 
         private void InvokeInteract() {
-            Debug.Log(transform.name + " " + " Interacted interactable");
             OnInteract.Invoke();
         }
 
         private void InvokeInteract(ManipulationEventData arg0) {
-            Debug.Log(transform.name + " " + " Interacted manip");
             OnInteract.Invoke();
         }
         #endregion

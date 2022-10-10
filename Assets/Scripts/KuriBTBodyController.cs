@@ -55,10 +55,13 @@ namespace MoveToCode {
         }
 
         public override string DoRandomPositiveAction() {
-            // need to also include clapping and high five here, more frequently as well, done hackily inside of Positive emotions but really this should just happen when type of affect is congratulations
             EMOTIONS e = PositiveEmotions[UnityEngine.Random.Range(0, PositiveEmotions.Length)];
             _DoAnimation(e);
             return e.ToString();
+        }
+
+        public override void HighFive() {
+            _HighFive();
         }
 
         public override string PointAtObj(Transform obj, float time = -1) {
@@ -104,9 +107,6 @@ namespace MoveToCode {
 
         public void StopAllBeh() {
             _EndAllSeq();
-        }
-        public void HighFive() {
-            _HighFive();
         }
         public void Clap() {
             _DoAnimation(EMOTIONS.clap);

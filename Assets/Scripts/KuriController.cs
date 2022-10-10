@@ -35,9 +35,7 @@ namespace MoveToCode {
                 EMOTIONS.happy,
                 EMOTIONS.love,
                 EMOTIONS.thinking,
-                EMOTIONS.h5_start, // included so these come up more often
-                EMOTIONS.h5_start,
-                EMOTIONS.clap,
+                EMOTIONS.clap
             };
 
         public static EMOTIONS[] NegativeEmotions =
@@ -145,10 +143,20 @@ namespace MoveToCode {
 
         public void SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT toa) {
             TurnTowardsUser();
-            string actionMade = DoRandomPositiveAction();
+            string actionMade = "high_five";
+            if (toa == KuriTextManager.TYPEOFAFFECT.Encouragement) {
+                actionMade = DoRandomPositiveAction();
+            }
+            else {
+                HighFive();
+            }
             loggingManager.UpdateLogColumn(kuriPhysicalEmoteActionCol,
                  actionMade);
             kuriTextManager.SayRandomPositiveAffect(toa);
+        }
+
+        public virtual void HighFive() {
+            // hacky way to do high five that is only imp[lemented in the BT version of the controller
         }
 
         public void TriggerHelpfulAction() {

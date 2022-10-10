@@ -93,7 +93,6 @@ namespace MoveToCode {
 
         public override void Tick() {
             // launch event every 15 seconds
-            Debug.Log(TutorKuriManagerInstance.TimeLastActionEnded.TimeSince());
             if (TutorKuriManagerInstance.TimeLastActionEnded.TimeSince() > 15) {
                 TutorKuriManagerInstance.TimeLastActionEnded = Time.time;
                 DoRandomBTAction();
@@ -101,7 +100,8 @@ namespace MoveToCode {
             else {
                 // randomly call do look_around Emotion
                 // check if animating anything right now
-                if (BodyAnimator.IsFullyIdle() && (Random.Range(0, 1000) < 1)) {
+                if (BodyAnimator.IsFullyIdle() &&
+                     (Random.Range(0, 1000) < 1)) {
                     // set head quaternion to identity
                     BodyAnimator.Play(KuriController.EMOTIONS.look_around.ToString()); // need one more behavior for this, maybe just some blinking or something?
                 }

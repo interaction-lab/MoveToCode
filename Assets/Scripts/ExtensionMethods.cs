@@ -221,7 +221,7 @@ namespace MoveToCode {
 
 
         public static bool IsFullyIdle(this Animator animator) {
-            return animator.IsThisAnimationPlaying("Idle") || animator.IsThisAnimationPlaying("neutral");
+            return animator.enabled && (animator.IsThisAnimationPlaying("Idle") || animator.IsThisAnimationPlaying("neutral"));
         }
     }
 }

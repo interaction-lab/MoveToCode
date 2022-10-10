@@ -8,7 +8,7 @@ namespace MoveToCode {
         #region members
         TutorKuriTransformManager kuriTransformManager;
         Transform goalObj;
-        float distThreshold = 0.3f, speedinMS = 0.5f, bezTimeThreshold = 0.95f, controlPointScaler = 0.1f;
+        float distThreshold = 0.5f, speedinMS = 0.5f, bezTimeThreshold = 0.95f, controlPointScaler = 0.1f;
         float approxLength, totalTime;
         float positionAlongCurve = 0f;
         Bezier bezierCurve;
@@ -21,6 +21,16 @@ namespace MoveToCode {
 
         protected override void BehSetUp() {
             goalObj = blackboard.objToMoveTo;
+            if (goalObj == null) {
+                Debug.LogError("LoggableMoveToObj: goalObj is null");
+                return;
+            }
+            if (goalObj == Camera.main.transform) {
+                distThreshold = 0.75f;
+            }
+            else {
+                distThreshold = 0.35f;
+            }
             kuriTransformManager = TutorKuriTransformManager.instance;
             CalcBezCurve();
         }

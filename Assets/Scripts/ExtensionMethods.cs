@@ -223,5 +223,9 @@ namespace MoveToCode {
         public static bool IsFullyIdle(this Animator animator) {
             return animator.enabled && (animator.IsThisAnimationPlaying("Idle") || animator.IsThisAnimationPlaying("neutral"));
         }
+
+        public static bool IsInAnIdleState(this Animator animator) {
+            return animator.enabled && (animator.IsThisAnimationPlaying("Idle") || animator.IsThisAnimationPlaying("neutral")) || animator.IsThisAnimationPlaying("look_around");
+        }
     }
 }

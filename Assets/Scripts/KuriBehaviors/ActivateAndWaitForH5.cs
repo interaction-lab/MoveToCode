@@ -9,15 +9,21 @@ namespace MoveToCode {
         float maxTimeToWait = 10f, startTime;
         KuriArms kuriArms;
         bool handHit = false, initialized = false;
+        PulseMeshRend RPulseMeshRend = null;
         #endregion
         #region overrides
+        // this is pathetically inefficient and poorly written, but it works
         protected override void OnStart() {
             handHit = false;
             startTime = Time.time;
             kuriArms = context.kuriArms;
+            kuriArms.RightIKTarget.SetCollider(true);
             kuriArms.RightIKTarget.OnHitHand.AddListener(OnHitHand);
+            RPulseMeshRend = context.kuriArms.RPulseMeshRend;
+            RPulseMeshRend.StartPulse(Color.green);
             blackboard.ArmAnimatorSemaphoreCount -= 1;
             initialized = true;
+            KuriTextManager.instance.Addline("Give me a high five!", KuriTextManager.PRIORITY.low);
         }
 
         protected override void OnStop() {
@@ -25,6 +31,9 @@ namespace MoveToCode {
                 kuriArms.RightIKTarget.OnHitHand.RemoveListener(OnHitHand);
                 blackboard.emotion = KuriController.EMOTIONS.h5_end;
                 blackboard.ArmAnimatorSemaphoreCount += 1;
+                kuriArms.RightIKTarget.SetCollider(false);
+                RPulseMeshRend.StopPulse();
+                KuriTextManager.instance.Clear(KuriTextManager.PRIORITY.low);
             }
         }
 

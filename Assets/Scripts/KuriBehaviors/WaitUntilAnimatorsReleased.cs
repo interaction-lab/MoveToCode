@@ -8,8 +8,10 @@ namespace MoveToCode {
         public bool WaitForBodyAnim = true;
         public bool WaitForArmAnim = true;
         public int stackOnMySide = 0; // will allow a queue to happen on one side
+        bool initialized = false;
         protected override void OnStart() {
             timeWaited = 0f;
+            initialized = true;
         }
 
         protected override void OnStop() {

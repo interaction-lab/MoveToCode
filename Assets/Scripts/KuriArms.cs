@@ -66,6 +66,17 @@ namespace MoveToCode {
             }
         }
 
+        public PulseMeshRend RPulseMeshRend {
+            get {
+                return RHand.GetComponent<PulseMeshRend>();
+            }
+        }
+        public PulseMeshRend LPulseMeshRend {
+            get {
+                return LHand.GetComponent<PulseMeshRend>();
+            }
+        }
+
         #endregion
 
         #region unity

@@ -12,9 +12,23 @@ namespace MoveToCode {
         Collider Col {
             get {
                 if (_c == null) {
-                    _c = GetComponent<Collider>();
+                    if (IsRightArm) {
+                        _c = KuriArms.instance.RHand.GetComponent<Collider>();
+                    }
+                    else {
+                        _c = KuriArms.instance.LHand.GetComponent<Collider>();
+                    }
                 }
                 return _c;
+            }
+        }
+        Interactable _i;
+        Interactable Interact {
+            get {
+                if (_i == null) {
+                    _i = Col.GetComponent<Interactable>();
+                }
+                return _i;
             }
         }
         #endregion
@@ -22,11 +36,11 @@ namespace MoveToCode {
         #region unity
         protected override void OnEnable() {
             base.OnEnable();
-            OnClick.AddListener(OnHitHand.Invoke);
+            Interact.OnClick.AddListener(OnHitHand.Invoke);
         }
         protected override void OnDisable() {
             base.OnDisable();
-            OnClick.RemoveListener(OnHitHand.Invoke);
+            Interact.OnClick.RemoveListener(OnHitHand.Invoke);
         }
         #endregion
 

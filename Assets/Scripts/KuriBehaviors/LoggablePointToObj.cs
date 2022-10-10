@@ -57,7 +57,7 @@ namespace MoveToCode {
                 return State.Success;
             }
             else { // phase 1, aka point to obj
-                if (Time.time - startTime > timeToPoint || UserInteracted) {
+                if (Time.time - startTime > timeToPoint || UserInteracted || objToPointTo.gameObject.activeSelf == false) {
                     movingBackToOrigStart = true;
                     origEndNormalized = origStart; // hacky but should work
                 }

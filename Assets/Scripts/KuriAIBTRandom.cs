@@ -31,18 +31,6 @@ namespace MoveToCode {
                 return mm;
             }
         }
-        List<Transform> _objsOfInterest = null;
-        List<Transform> objsOfInterest {
-            get {
-                if (_objsOfInterest == null) {
-                    _objsOfInterest = new List<Transform>(){
-                            StartCodeBlock.instance.transform,
-                            Camera.main.transform
-                    };
-                }
-                return _objsOfInterest;
-            }
-        }
         KuriBTBodyController kc;
         KuriBTBodyController KController {
             get {
@@ -70,6 +58,15 @@ namespace MoveToCode {
                 return _bodyAnimator;
             }
         }
+        Animator _armAnimator;
+        Animator ArmAnimator {
+            get {
+                if (_armAnimator == null) {
+                    _armAnimator = KuriArms.instance.ArmAnimator;
+                }
+                return _armAnimator;
+            }
+        }
         // need to maze completed action
 
         bool initialized = false;
@@ -91,40 +88,42 @@ namespace MoveToCode {
             _DoHelpfulActionGivenMode();
         }
 
+        private bool KuriIdling() {
+            return BodyAnimator.IsInAnIdleState() &&
+                ArmAnimator.IsInAnIdleState();
+        }
+
         public override void Tick() {
-            // launch event every 15 seconds
-            if (TutorKuriManagerInstance.TimeLastActionEnded.TimeSince() > 15) {
+            if (!KuriIdling() || TutorKuriManagerInstance.TimeLastActionEnded.TimeSince() < TutorKuriManagerInstance.TimeWindow) {
+                return;
+            }
+
+            float kctS = HumanStateManager.instance.GetKCt(); // encourage curiosity when they are doing low amounts of KCT
+            if (kctS < TutorKuriManagerInstance.robotKC) {
                 TutorKuriManagerInstance.TimeLastActionEnded = Time.time;
-                DoRandomBTAction();
+                ForceHelpfulAction();
             }
             else {
-                // randomly call do look_around Emotion
-                // check if animating anything right now
-                if (BodyAnimator.IsFullyIdle() &&
-                     (Random.Range(0, 1000) < 1)) {
-                    // set head quaternion to identity
-                    BodyAnimator.Play(KuriController.EMOTIONS.look_around.ToString()); // need one more behavior for this, maybe just some blinking or something?
+                if (HumanStateManager.instance.LastTimeHumanDidAction.TimeSince() >= TutorKuriManagerInstance.TimeWindow) { // only encrourage if the human isn't doing anything
+                    DoRandomBTAction();
+                }
+                else {
+                    // randomly call do look_around Emotion
+                    // check if animating anything right now
+                    if (BodyAnimator.IsFullyIdle() &&
+                         (Random.Range(0, 1000) < 1)) {
+                        // set head quaternion to identity
+                        BodyAnimator.Play(KuriController.EMOTIONS.look_around.ToString()); // need one more behavior for this, maybe just some blinking or something?
+                    }
                 }
             }
 
         }
 
         public void DoRandomBTAction() {
+            int rand = Random.Range(2, 5);
 
-            // choose random object from objsOfInterest
-            Transform objOfInterest = objsOfInterest[Random.Range(0, objsOfInterest.Count)];
-
-            // pikc a random number 0 or 1
-            int rand = Random.Range(0, 5);
-            Debug.Log(rand);
-
-            if (rand == 0) {
-                KController.MoveToObj(objOfInterest);
-            }
-            else if (rand == 1) {
-                KController.PointUntilInteract(objOfInterest);
-            }
-            else if (rand == 2) {
+            if (rand == 2) {
                 KController.TurnTowardsUser();
             }
             else if (rand == 3) {

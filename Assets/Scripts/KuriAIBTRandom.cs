@@ -93,6 +93,10 @@ namespace MoveToCode {
                 ArmAnimator.IsInAnIdleState();
         }
 
+        public void Clap() {
+            KController.DoAnimationAction(KuriController.EMOTIONS.clap);
+        }
+
         public override void Tick() {
             if (!KuriIdling() || TutorKuriManagerInstance.TimeLastActionEnded.TimeSince() < TutorKuriManagerInstance.TimeWindow) {
                 return;

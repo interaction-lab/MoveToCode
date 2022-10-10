@@ -5,7 +5,7 @@ using UnityEngine;
 namespace MoveToCode {
     [RequireComponent(typeof(AudioSource))]
     public class VirtualKuriAudio : MonoBehaviour {
-        public static AudioClip iLoveYouAudioClip, greetingAudioClip, yippeAudioClip, bangDownAudioClip, fartAudioClip, ponderSadAudioClip;
+        public static AudioClip iLoveYouAudioClip, greetingAudioClip, yippeAudioClip, bangDownAudioClip, fartAudioClip, ponderSadAudioClip, clapAudioClip, highFiveAudioClip;
         AudioSource aos;
 
         private void Awake() {
@@ -17,6 +17,9 @@ namespace MoveToCode {
             bangDownAudioClip = Resources.Load<AudioClip>(ResourcePathConstants.KuriBangDownSound);
             fartAudioClip = Resources.Load<AudioClip>(ResourcePathConstants.KuriFart);
             ponderSadAudioClip = Resources.Load<AudioClip>(ResourcePathConstants.KuriPonderSad);
+
+            clapAudioClip = Resources.Load<AudioClip>(ResourcePathConstants.KuriClapSound);
+            highFiveAudioClip = Resources.Load<AudioClip>(ResourcePathConstants.KuriHighFiveSound);
         }
 
         public void PlayILoveYou() {
@@ -41,6 +44,14 @@ namespace MoveToCode {
 
         public void PlayPonderSad() {
             PlayKuriAduioClip(ponderSadAudioClip);
+        }
+
+        public void PlayClap() {
+            PlayKuriAduioClip(clapAudioClip);
+        }
+
+        public void PlayHighFive() {
+            PlayKuriAduioClip(highFiveAudioClip);
         }
 
         public void PlayKuriAduioClip(AudioClip ac) {

@@ -980,19 +980,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4516003397359525792}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2521267471870181638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2259024667030741330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddd56a406f27c0f40b286b19af154582, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsPulsing: 0
 --- !u!135 &4195087841395873246
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1006,6 +993,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.50000054
   m_Center: {x: 0.0000019073486, y: -0.0000009536743, z: -0.0000009536743}
+--- !u!114 &2521267471870181638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2259024667030741330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddd56a406f27c0f40b286b19af154582, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsPulsing: 0
 --- !u!114 &7112771703211521981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1037,6 +1037,20 @@ MonoBehaviour:
   Events: []
   resetOnDestroy: 0
   enabledOnStart: 1
+--- !u!114 &980214456294943678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2259024667030741330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fed2de112fda78547a9b01cacbbd9837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Interactable: {fileID: 0}
+  InteractableSearchScope: 0
 --- !u!1 &2259024667894045830 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2447068537734890278, guid: 64a404c7faf344369ba1d423de506c10,
@@ -1201,19 +1215,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4516003397359525792}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3670099824575389093
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4270399135741723470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddd56a406f27c0f40b286b19af154582, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsPulsing: 0
 --- !u!135 &5064605780795670754
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1227,6 +1228,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.50000054
   m_Center: {x: 0.0000023841858, y: 0.0000019073486, z: -0.0000013113022}
+--- !u!114 &3670099824575389093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4270399135741723470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddd56a406f27c0f40b286b19af154582, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsPulsing: 0
 --- !u!114 &7509798967034551619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1259,3 +1273,17 @@ MonoBehaviour:
   Events: []
   resetOnDestroy: 0
   enabledOnStart: 1
+--- !u!114 &-4302593808886356133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4270399135741723470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fed2de112fda78547a9b01cacbbd9837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Interactable: {fileID: 0}
+  InteractableSearchScope: 0

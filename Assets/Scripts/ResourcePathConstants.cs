@@ -79,6 +79,8 @@ namespace MoveToCode {
         public static string KuriILoveYouSound = KuriPositiveSoundFolder + "i_love_you";
         public static string KuriGreetingSound = KuriPositiveSoundFolder + "Greeting";
         public static string KuriYippeSound = KuriPositiveSoundFolder + "S81_YIPPEEE_2";
+        public static string KuriClapSound = KuriPositiveSoundFolder + "clap";
+        public static string KuriHighFiveSound = KuriPositiveSoundFolder + "highfive";
 
         public static string KuriBangDownSound = KuriNegativeSoundFolder + "BANG_GOINGDOWN";
         public static string KuriFart = KuriNegativeSoundFolder + "Fart";

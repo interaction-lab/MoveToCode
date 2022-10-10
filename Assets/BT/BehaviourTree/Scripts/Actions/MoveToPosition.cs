@@ -14,7 +14,7 @@ public class MoveToPosition : ActionNode {
     public VirtualKuriAudio AudioManager {
         get {
             if (audioManager == null) {
-                audioManager = TutorKuriTransformManager.instance.GetComponent<VirtualKuriAudio>();
+                audioManager = TutorKuriManager.instance.KuriAudio;
             }
             return audioManager;
         }

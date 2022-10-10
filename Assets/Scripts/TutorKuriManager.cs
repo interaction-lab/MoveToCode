@@ -74,6 +74,12 @@ namespace MoveToCode {
                 return tutorKuriTransformManager;
             }
         }
+
+        public VirtualKuriAudio KuriAudio {
+            get {
+                return GetComponentInChildren<VirtualKuriAudio>();
+            }
+        }
         #endregion
 
         #region unity

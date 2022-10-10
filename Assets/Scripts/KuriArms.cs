@@ -77,6 +77,16 @@ namespace MoveToCode {
             }
         }
 
+        VirtualKuriAudio audioManager;
+        public VirtualKuriAudio AudioManager {
+            get {
+                if (audioManager == null) {
+                    audioManager = TutorKuriManager.instance.KuriAudio; ;
+                }
+                return audioManager;
+            }
+        }
+
         #endregion
 
         #region unity
@@ -97,6 +107,10 @@ namespace MoveToCode {
             else {
                 LeftIKTarget.SetCollider(b);
             }
+        }
+
+        public void PlayClap() {
+            AudioManager.PlayClap();
         }
         #endregion
 

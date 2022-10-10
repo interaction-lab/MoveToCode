@@ -10,6 +10,15 @@ namespace MoveToCode {
         KuriArms kuriArms;
         bool handHit = false, initialized = false;
         PulseMeshRend RPulseMeshRend = null;
+        VirtualKuriAudio audioManager;
+        public VirtualKuriAudio AudioManager {
+            get {
+                if (audioManager == null) {
+                    audioManager = TutorKuriManager.instance.KuriAudio;
+                }
+                return audioManager;
+            }
+        }
         #endregion
         #region overrides
         // this is pathetically inefficient and poorly written, but it works
@@ -50,6 +59,7 @@ namespace MoveToCode {
         #region helpers
         void OnHitHand() {
             handHit = true;
+            AudioManager.PlayHighFive();
         }
         #endregion
     }

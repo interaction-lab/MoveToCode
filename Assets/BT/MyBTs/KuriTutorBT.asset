@@ -129,6 +129,7 @@ MonoBehaviour:
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
+    timeToPoint: 3
     BodyAnimatorSemaphoreCount: 0
     ArmAnimatorSemaphoreCount: 0
     emotion: 0
@@ -164,6 +165,7 @@ MonoBehaviour:
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
+    timeToPoint: 3
     BodyAnimatorSemaphoreCount: 0
     ArmAnimatorSemaphoreCount: 0
     emotion: 0
@@ -718,6 +720,7 @@ MonoBehaviour:
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
+    timeToPoint: 3
     BodyAnimatorSemaphoreCount: 0
     ArmAnimatorSemaphoreCount: 0
     emotion: 0
@@ -885,6 +888,7 @@ MonoBehaviour:
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
+    timeToPoint: 3
     BodyAnimatorSemaphoreCount: 0
     ArmAnimatorSemaphoreCount: 0
     emotion: 0
@@ -1463,6 +1467,7 @@ MonoBehaviour:
     headSpeed: 1
     armSpeed: 1
     bodySpeed: 1
+    timeToPoint: 3
     BodyAnimatorSemaphoreCount: 0
     ArmAnimatorSemaphoreCount: 0
     emotion: 0

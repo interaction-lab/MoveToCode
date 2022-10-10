@@ -37,9 +37,7 @@ namespace MoveToCode {
                 if (_objsOfInterest == null) {
                     _objsOfInterest = new List<Transform>(){
                             StartCodeBlock.instance.transform,
-                            Camera.main.transform,
-                            MazeManager.instance.BKMazePiece.transform,
-                            MazeManager.instance.GoalMazePiece.transform
+                            Camera.main.transform
                     };
                 }
                 return _objsOfInterest;
@@ -72,11 +70,8 @@ namespace MoveToCode {
                 return _bodyAnimator;
             }
         }
-        List<CodeBlock> ActiveCBs {
-            get {
-                return CodeBlockManager.instance.ActiveCodeBlocks;
-            }
-        }
+        // need to maze completed action
+
         bool initialized = false;
         #endregion
 
@@ -85,6 +80,7 @@ namespace MoveToCode {
             if (!initialized) {
                 ModeButton.OnSwitchToMazeBuildingMode.AddListener(OnSwitchToBuildingMode);
                 ModeButton.OnSwitchToCodingMode.AddListener(OnSwitchToCodingMode);
+                ExerciseManager.instance.OnExerciseCorrect.AddListener(OnExerciseCorrect);
                 initialized = true;
             }
         }
@@ -159,7 +155,7 @@ namespace MoveToCode {
                 _DoMazeBuildingHelpfulAction();
             }
             else {
-                //_DoCodingHelpfulAction();
+                _DoCodingHelpfulAction();
             }
         }
 
@@ -197,6 +193,30 @@ namespace MoveToCode {
                 KController.PointAtObj(mp.transform);
                 KController.MoveToObj(mp.transform);
             }
+        }
+
+        private void _DoCodingHelpfulAction() {
+            if (!MazeManagerInstance.IsSameAsSolutionMaze()) {
+                KuriTextManager.instance.Addline("I don't think the mazes match, press the 'Switch Mode' to build the maze.");
+                return;
+            }
+
+            // these really have to be exercise specific, maybe hardcoding in a bunch of help conditions although that will be very difficult, I think we might be able to just rely on the idea that students will hopefully be curious during this stage and we can just leave them alone/possibly animate randomly
+            // check if start code block is out of view
+            Transform blockTransformOfInterest = StartCodeBlock.instance.transform; // should probably turn this into a function to use any block of interest
+            ArrowPointPrefab startArrowPoint = ViewPortManager.instance.GetArrowPoint(blockTransformOfInterest);
+            if (startArrowPoint == null) {
+                KController.PointAtObj(blockTransformOfInterest); // this will spawn the arrow point for later/first time using it
+                KController.MoveToObj(blockTransformOfInterest);
+            }
+            else if (!startArrowPoint.IsInViewPort) {
+                KController.PointAtObj(blockTransformOfInterest);
+                KController.MoveToObj(blockTransformOfInterest);
+            }
+        }
+
+        void OnExerciseCorrect() {
+            KController.SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT.Congratulation);
         }
         #endregion
     }

@@ -16,12 +16,19 @@ namespace MoveToCode {
 
         void Awake() {
             MazeManager.instance.OnMazeLocked.AddListener(OnMazeLocked);
+            MazeManager.instance.OnMazeUnlocked.AddListener(OnMazeUnlocked);
             SolMazeCheckMark.instance.OnMazeCorrect.AddListener(OnMazeCorrect);
             SolMazeCheckMark.instance.OnMazeIncorrect.AddListener(OnMazeIncorrect);
         }
 
         void OnMazeLocked() {
             TurnOff();
+        }
+
+        void OnMazeUnlocked() {
+            if (MazeManager.instance.IsSameAsSolutionMaze()) {
+                TurnOn();
+            }
         }
 
         void OnMazeCorrect() {

@@ -34,7 +34,10 @@ namespace MoveToCode {
             new EMOTIONS[] {
                 EMOTIONS.happy,
                 EMOTIONS.love,
-                EMOTIONS.thinking
+                EMOTIONS.thinking,
+                EMOTIONS.h5_start, // included so these come up more often
+                EMOTIONS.h5_start,
+                EMOTIONS.clap,
             };
 
         public static EMOTIONS[] NegativeEmotions =

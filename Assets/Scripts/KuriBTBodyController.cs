@@ -51,19 +51,20 @@ namespace MoveToCode {
         public override string DoRandomNegativeAction() {
             EMOTIONS e = NegativeEmotions[UnityEngine.Random.Range(0, NegativeEmotions.Length)];
             _DoAnimation(e);
-            return "Negative emotion " + e.ToString();
+            return e.ToString();
         }
 
         public override string DoRandomPositiveAction() {
+            // need to also include clapping and high five here, more frequently as well, done hackily inside of Positive emotions but really this should just happen when type of affect is congratulations
             EMOTIONS e = PositiveEmotions[UnityEngine.Random.Range(0, PositiveEmotions.Length)];
             _DoAnimation(e);
-            return "Positive emotion " + e.ToString();
+            return e.ToString();
         }
 
         public override string PointAtObj(Transform obj, float time = -1) {
             _LookAtObj(obj);
             _PointAtObj(obj);
-            return "Pointing to " + obj.name;
+            return obj.name;
         }
 
         public void PointUntilInteract(Transform obj) {

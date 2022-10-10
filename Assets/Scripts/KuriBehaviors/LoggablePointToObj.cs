@@ -138,7 +138,6 @@ namespace MoveToCode {
             ikObj = leftDist < rightDist ? kArms.LeftIKTarget : kArms.RightIKTarget;
             handTransform = leftDist < rightDist ? kArms.LHand : kArms.RHand;
             shoulderTransform = leftDist < rightDist ? kArms.LShoulder : kArms.RShoulder;
-            origStart = handTransform.position;
         }
         private void CalcTransformForIK() {
             // get vector from shoulder to obj
@@ -148,9 +147,9 @@ namespace MoveToCode {
                 shoulderToObj = shoulderToObj.normalized * maxArmLength;
             }
             origEndNormalized = shoulderTransform.position + shoulderToObj;
-
             origPosObjToPointTo = objToPointTo.position;
             kuriOrigPos = TutorKuriTransformManagerInstance.Position;
+            origStart = handTransform.position; // not perfect as it will depend where the hand has moved to but not going to add the body transform each time because fdlkj;djkslf;
         }
 
         void UntilInteractListener() {

@@ -94,9 +94,7 @@ namespace MoveToCode {
             IsAnchored = false;
 
             if (GetComponentInChildren<TrashButton>() == null) {
-                GameObject trashButton = Instantiate(Resources.Load<GameObject>(ResourcePathConstants.TrashButtonCanvasPrefab), transform);
-                // TODO: remove later, used to debug images
-                trashButton.transform.GetChild(0).GetComponentInChildren<TextMeshProUGUI>().text = transform.name;
+                Instantiate(Resources.Load<GameObject>(ResourcePathConstants.TrashButtonCanvasPrefab), transform);
             }
         }
         private void OnEnable() {

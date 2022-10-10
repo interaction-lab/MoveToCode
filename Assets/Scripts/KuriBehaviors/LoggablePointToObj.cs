@@ -19,7 +19,16 @@ namespace MoveToCode {
                 return vpm;
             }
         }
-        Vector3 origEndNormalized, origPosObjToPointTo, origStart;
+        TutorKuriTransformManager tktm;
+        TutorKuriTransformManager TutorKuriTransformManagerInstance {
+            get {
+                if (tktm == null) {
+                    tktm = TutorKuriTransformManager.instance;
+                }
+                return tktm;
+            }
+        }
+        Vector3 origEndNormalized, origPosObjToPointTo, origStart, kuriOrigPos;
         KuriArms kArms;
         TargetIKObject ikObj;
         UnityEvent OnUntilInteract;
@@ -54,8 +63,10 @@ namespace MoveToCode {
                 }
             }
 
-            // 1. see if the objtopointto position changed
-            if (!movingBackToOrigStart && objToPointTo.position != origPosObjToPointTo) {
+            // 1. see if the objtopointto position changed or if kuri has moved
+            if (!movingBackToOrigStart &&
+                    (objToPointTo.position != origPosObjToPointTo ||
+                     TutorKuriTransformManagerInstance.Position != kuriOrigPos)) {
                 CalcTransformForIK();
             }
 
@@ -139,6 +150,7 @@ namespace MoveToCode {
             origEndNormalized = shoulderTransform.position + shoulderToObj;
 
             origPosObjToPointTo = objToPointTo.position;
+            kuriOrigPos = TutorKuriTransformManagerInstance.Position;
         }
 
         void UntilInteractListener() {

@@ -144,6 +144,8 @@ namespace MoveToCode {
             }
         }
 
+        // need to do something on exercise correct as well :)
+
         void _DoMazeBuildingHelpfulAction() {
             if (MazeManagerInstance.IsSameAsSolutionMaze()) {
                 KController.DoRandomPositiveAction();

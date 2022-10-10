@@ -8,7 +8,7 @@ namespace MoveToCode {
         #region members
         float maxTimeToWait = 10f, startTime;
         KuriArms kuriArms;
-        bool handHit = false;
+        bool handHit = false, initialized = false;
         #endregion
         #region overrides
         protected override void OnStart() {
@@ -17,12 +17,15 @@ namespace MoveToCode {
             kuriArms = context.kuriArms;
             kuriArms.RightIKTarget.OnHitHand.AddListener(OnHitHand);
             blackboard.ArmAnimatorSemaphoreCount -= 1;
+            initialized = true;
         }
 
         protected override void OnStop() {
-            kuriArms.RightIKTarget.OnHitHand.RemoveListener(OnHitHand);
-            blackboard.emotion = KuriController.EMOTIONS.h5_end;
-            blackboard.ArmAnimatorSemaphoreCount += 1;
+            if (initialized) {
+                kuriArms.RightIKTarget.OnHitHand.RemoveListener(OnHitHand);
+                blackboard.emotion = KuriController.EMOTIONS.h5_end;
+                blackboard.ArmAnimatorSemaphoreCount += 1;
+            }
         }
 
         protected override State OnUpdate() {

@@ -188,6 +188,10 @@ namespace MoveToCode {
             OnStartH5.Invoke();
         }
         void _EndAllSeq() {
+            // check if time has at least passed a little bit
+            if (Time.time < 2f) {
+                return;
+            }
             OnEndAllSeq.Invoke();
         }
         #endregion

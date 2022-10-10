@@ -77,9 +77,17 @@ namespace MoveToCode {
                 return CodeBlockManager.instance.ActiveCodeBlocks;
             }
         }
+        bool initialized = false;
         #endregion
 
         #region unity
+        private void OnEnable() {
+            if (!initialized) {
+                ModeButton.OnSwitchToMazeBuildingMode.AddListener(OnSwitchToBuildingMode);
+                ModeButton.OnSwitchToCodingMode.AddListener(OnSwitchToCodingMode);
+                initialized = true;
+            }
+        }
         #endregion
 
         #region public
@@ -135,6 +143,17 @@ namespace MoveToCode {
         #endregion
 
         #region private
+        void OnSwitchToBuildingMode() {
+            OnSwitchMode();
+        }
+        void OnSwitchToCodingMode() {
+            OnSwitchMode();
+        }
+
+        void OnSwitchMode() {
+            KuriTextManager.instance.Clear(KuriTextManager.PRIORITY.low);
+            KController.StopAllBeh();
+        }
         void _DoHelpfulActionGivenMode() {
             if (ModeButton.CurrentMode == SwitchModeButton.MODE.MazeBuilding) {
                 _DoMazeBuildingHelpfulAction();
@@ -154,8 +173,21 @@ namespace MoveToCode {
 
             // now we know the maze is not correct, look for the piece to give someone
             MazePiece mp = MazeManagerInstance.GetMissingPiecesFromMaze();
-            if (mp == null) {
+            bool missingPiece = mp != null;
+            if (!missingPiece) {
                 mp = MazeManagerInstance.GetMisalignedPiece(); // need to get a misaligned as maze has all the same pieces as sol
+                KuriTextManager.instance.Addline(
+                    "It looks like your " +
+                    mp.MyMPType.Name + " " +
+                    "piece is not connected right. Move the piece around to connect it to look exactlly like the solution maze.",
+                    KuriTextManager.PRIORITY.low);
+            }
+            else {
+                KuriTextManager.instance.Addline(
+                    "It looks like your maze is missing a " +
+                    mp.MyMPType.Name + " " +
+                    "piece.",
+                    KuriTextManager.PRIORITY.low);
             }
 
             if (!mp.HasBeenTracked) {

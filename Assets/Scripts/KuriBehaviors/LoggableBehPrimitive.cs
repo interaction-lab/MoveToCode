@@ -35,6 +35,7 @@ namespace MoveToCode {
                 return lm;
             }
         }
+        bool initialized = false;
         #endregion
         #region abstract
         protected abstract void SetLogActionName();
@@ -52,11 +53,14 @@ namespace MoveToCode {
             UpdateAnimators(1); // 1 is add to semaphore, used for things turning off the animators
             BehSetUp();
             //            Debug.Log(actionName + " started");
+            initialized = true;
         }
         protected override void OnStop() {
-            BehCleanUp();
-            UpdateAnimators(-1); // -1 is remove from semaphore, used for things turning on the animators
-            LogActionEnd();
+            if (initialized) { // guards against the original OnStart() not being called
+                BehCleanUp();
+                UpdateAnimators(-1); // -1 is remove from semaphore, used for things turning on the animators
+                LogActionEnd();
+            }
             //            Debug.Log(actionName + " ended");
         }
         #endregion

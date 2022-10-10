@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace MoveToCode {
     public class LoggablePointToObj : LoggableBehPrimitive {
@@ -80,9 +81,12 @@ namespace MoveToCode {
                 if (ViewPortManagerInstance.GetArrowPoint(objToPointTo) == null) {
                     Color outter = Color.white;
                     Color inner = Color.black;
-                    Material mat = objToPointTo.GetComponent<MeshRenderer>()?.material;
-                    if (mat != null) {
-                        inner = mat.color;
+                    // check if image
+                    if (objToPointTo.GetComponent<Image>() != null) {
+                        inner = objToPointTo.GetComponent<Image>().color;
+                    }
+                    else if (objToPointTo.GetComponent<MeshRenderer>() != null) {
+                        inner = objToPointTo.GetComponent<MeshRenderer>().material.color;
                     }
                     if (inner == Color.black) {
                         outter = Color.white;

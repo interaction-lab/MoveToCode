@@ -48,6 +48,7 @@ namespace MoveToCode {
         public UnityEvent OnImgStartedTracking, OnImgStoppedTracking;
         bool isTracking = false;
         bool hasBeenInitialized = false;
+        public bool HasBeenTracked = false; // indicates a piece is within a reasonable area
 
         public bool IsTracking {
             get {
@@ -62,6 +63,9 @@ namespace MoveToCode {
                 TrackingIndicator.TurnOff();
                 hasBeenInitialized = true;
             }
+#if UNITY_EDITOR
+            HasBeenTracked = true; // pretend it was tracked because we don't have real paper in the editor
+#endif
         }
 
         #endregion
@@ -69,6 +73,7 @@ namespace MoveToCode {
         #region public
         public void UpdateBehavior(ARTrackedImage img) {
             if (ARTrackingManagerInstance.IsTracking && img.trackingState == UnityEngine.XR.ARSubsystems.TrackingState.Tracking) {
+                HasBeenTracked = true;
                 OnTrackingNow();
             }
             else {

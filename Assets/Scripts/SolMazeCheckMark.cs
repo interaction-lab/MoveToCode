@@ -38,7 +38,7 @@ namespace MoveToCode {
             yield return new WaitForEndOfFrame();
             yield return new WaitForEndOfFrame();
             yield return new WaitForEndOfFrame(); // hack for some race conditions
-            bool toggle = MazeManager.instance.ContainsSolutionMaze();
+            bool toggle = MazeManager.instance.IsSameAsSolutionMaze();
             if (toggle) {
                 IMG.sprite = greenCheckImg;
                 AudioManager.instance.PlayButtonClick();

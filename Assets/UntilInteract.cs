@@ -8,17 +8,23 @@ namespace MoveToCode {
         public UnityEvent OnInteract = new UnityEvent();
         ManipulationHandler mh;
         Interactable interactable;
+        MazePiece mp;
         #endregion
 
         #region unity
         private void OnEnable() {
             mh = GetComponent<ManipulationHandler>();
             interactable = GetComponent<Interactable>();
+            mp = GetComponent<MazePiece>();
             if (mh != null) {
                 mh.OnManipulationStarted.AddListener(InvokeInteract);
             }
             if (interactable != null) {
                 interactable.OnClick.AddListener(InvokeInteract);
+            }
+            // need something for tracked objs, difficult because it is with a real world obj, might be able to do it with MazePiece events specifically
+            if (mp != null) {
+                // on new connection for this maze piece I think is the way to go
             }
         }
 

@@ -4,6 +4,33 @@ using UnityEngine;
 namespace MoveToCode {
     public class KuriAIBTRandom : KuriAI {
         #region members
+        // TODO:
+        // 1. add in logger for these actions
+        // 2. add in helpful action for code blocks
+        // 2a. possibly figure out what is wrong about the solution
+        // 2b. say how to fix
+        // 3. add in helpful action for maze
+        // 3a. figure out what is wrong with solution
+        // 4. identify if the user is just lost af
+        // 5. make another idling behavior
+        SwitchModeButton smb;
+        SwitchModeButton ModeButton {
+            get {
+                if (smb == null) {
+                    smb = SwitchModeButton.instance;
+                }
+                return smb;
+            }
+        }
+        MazeManager mm;
+        MazeManager MazeManagerInstance {
+            get {
+                if (mm == null) {
+                    mm = MazeManager.instance;
+                }
+                return mm;
+            }
+        }
         List<Transform> _objsOfInterest = null;
         List<Transform> objsOfInterest {
             get {
@@ -45,6 +72,11 @@ namespace MoveToCode {
                 return _bodyAnimator;
             }
         }
+        List<CodeBlock> ActiveCBs {
+            get {
+                return CodeBlockManager.instance.ActiveCodeBlocks;
+            }
+        }
         #endregion
 
         #region unity
@@ -52,7 +84,7 @@ namespace MoveToCode {
 
         #region public
         public override void ForceHelpfulAction() {
-            throw new System.NotImplementedException();
+            _DoHelpfulActionGivenMode();
         }
 
         public override void Tick() {
@@ -67,13 +99,14 @@ namespace MoveToCode {
                 // check if animating anything right now
                 if (BodyAnimator.IsFullyIdle() && (Random.Range(0, 1000) < 1)) {
                     // set head quaternion to identity
-                    BodyAnimator.Play(KuriController.EMOTIONS.look_around.ToString());
+                    BodyAnimator.Play(KuriController.EMOTIONS.look_around.ToString()); // need one more behavior for this, maybe just some blinking or something?
                 }
             }
 
         }
 
         public void DoRandomBTAction() {
+
             // choose random object from objsOfInterest
             Transform objOfInterest = objsOfInterest[Random.Range(0, objsOfInterest.Count)];
 
@@ -102,6 +135,35 @@ namespace MoveToCode {
         #endregion
 
         #region private
+        void _DoHelpfulActionGivenMode() {
+            if (ModeButton.CurrentMode == SwitchModeButton.MODE.MazeBuilding) {
+                _DoMazeBuildingHelpfulAction();
+            }
+            else {
+                //_DoCodingHelpfulAction();
+            }
+        }
+
+        void _DoMazeBuildingHelpfulAction() {
+            if (MazeManagerInstance.IsSameAsSolutionMaze()) {
+                KController.DoRandomPositiveAction();
+                return;
+            }
+
+            // now we know the maze is not correct, look for the piece to give someone
+            MazePiece mp = MazeManagerInstance.GetMissingPiecesFromMaze();
+            if (mp == null) {
+                mp = MazeManagerInstance.GetMisalignedPiece(); // need to get a misaligned as maze has all the same pieces as sol
+            }
+
+            if (!mp.HasBeenTracked) {
+                // hold up picture until it has been tracked -> TODO: implement this
+            }
+            else {
+                KController.PointAtObj(mp.transform);
+                KController.MoveToObj(mp.transform);
+            }
+        }
         #endregion
     }
 }

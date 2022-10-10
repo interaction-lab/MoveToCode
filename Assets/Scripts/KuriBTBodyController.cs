@@ -49,11 +49,15 @@ namespace MoveToCode {
         }
 
         public override string DoRandomNegativeAction() {
-            throw new System.NotImplementedException();
+            EMOTIONS e = NegativeEmotions[UnityEngine.Random.Range(0, NegativeEmotions.Length)];
+            _DoAnimation(e);
+            return "Negative emotion " + e.ToString();
         }
 
         public override string DoRandomPositiveAction() {
-            throw new System.NotImplementedException();
+            EMOTIONS e = PositiveEmotions[UnityEngine.Random.Range(0, PositiveEmotions.Length)];
+            _DoAnimation(e);
+            return "Positive emotion " + e.ToString();
         }
 
         public override string PointAtObj(Transform obj, float time = -1) {

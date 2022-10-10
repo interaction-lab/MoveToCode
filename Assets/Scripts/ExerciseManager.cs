@@ -35,7 +35,7 @@ namespace MoveToCode {
 
         public bool AlertCodeFinished() {
             if (curExercise != null) { // This if is to guard against initializing interpreter
-                if (MazeManager.instance.IsBKAtTheGoalNow() && MazeManager.instance.ContainsSolutionMaze()) {
+                if (MazeManager.instance.IsBKAtTheGoalNow() && MazeManager.instance.IsSameAsSolutionMaze()) {
                     LoggingManager.instance.UpdateLogColumn(exerciseSubmissionResultCol, "Correct");
                     lastExerciseCompleted = true;
                     OnExerciseCorrect.Invoke();

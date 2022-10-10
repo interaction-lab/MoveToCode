@@ -68,7 +68,7 @@ namespace MoveToCode {
 
         private void TakeISAAction() {
             // if maze isn't built, move to specific maze piece
-            if (!MazeManager.instance.ContainsSolutionMaze()) {
+            if (!MazeManager.instance.IsSameAsSolutionMaze()) {
                 kuriController.TakeMovementAction(3);
             }
             // if maze is built, try scaffolding

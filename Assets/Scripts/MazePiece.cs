@@ -41,6 +41,11 @@ namespace MoveToCode {
                 return mpType;
             }
         }
+        public bool HasBeenTracked {
+            get {
+                return arTrackBehavior.HasBeenTracked;
+            }
+        }
 
         ARTrackBehavior _aRTrackBehavior;
         ARTrackBehavior arTrackBehavior {

@@ -89,7 +89,7 @@ namespace MoveToCode {
         public override string TakeMovementAction(int option = -1) {
             if (option == -1) {
                 int topOfRange = 3;
-                if (MazeManager.instance.ContainsSolutionMaze() || MazeManager.instance.IsLocked) { // avoid going to misaligned pieces if not in building mode
+                if (MazeManager.instance.IsSameAsSolutionMaze() || MazeManager.instance.IsLocked) { // avoid going to misaligned pieces if not in building mode
                     topOfRange = 2;
                 }
                 option = Random.Range(0, topOfRange); // for some unforsaken reason the top end of the range on random.range is inclusive??? who made this decision? -> https://docs.unity3d.com/ScriptReference/Random.Range.html
@@ -220,7 +220,7 @@ namespace MoveToCode {
         private string MoveToMisalignedPiece() {
             // should assert that the maze is not locked
             onFrameAction = "MoveToMisalignedPiece";
-            Transform misalignedPieceT = MazeManager.instance.GetMisalignedPiece().transform;
+            Transform misalignedPieceT = MazeManager.instance.GetMissingPiecesFromMaze().transform;
             if (misalignedPieceT == null) {
                 return MoveToUser(); // default to move to user if the goal pieces are all good
             }

@@ -39,16 +39,6 @@ namespace MoveToCode {
                 return _allSolMazes;
             }
         }
-        MazeManager _mazeManager;
-        MazeManager MazeManagerInstance {
-            get {
-                if (_mazeManager == null) {
-                    _mazeManager = MazeManager.instance;
-                }
-                return _mazeManager;
-            }
-        }
-
         public MazeGraph ActiveSolMazeGraph {
             get {
                 return CurActiveSolMaze.MyMazeGraph;
@@ -101,7 +91,7 @@ namespace MoveToCode {
                 freePlayIsActive = true;
             }
             // if so that we activate the final sol goal maze
-            if(curIndex + 1 < AllSolMazes.Count) {
+            if (curIndex + 1 < AllSolMazes.Count) {
                 curActiveSolMaze = AllSolMazes[curIndex + 1];
                 curActiveSolMaze.gameObject.SetActive(true);
                 SolMazeCheckMark.instance.ToggleCheckMark();

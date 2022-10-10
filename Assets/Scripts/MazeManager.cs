@@ -134,8 +134,9 @@ namespace MoveToCode {
             return null;
         }
 
-        public bool ContainsSolutionMaze() {
-            return MyMazeGraph.ContainsSubgraph(SolMazeManagerInstance.ActiveSolMazeGraph);
+        public bool IsSameAsSolutionMaze() {
+            return MyMazeGraph.ContainsSubgraph(SolMazeManagerInstance.ActiveSolMazeGraph) &&
+                  (MyMazeGraph.FindMazePieceMisAligned(SolMazeManagerInstance.ActiveSolMazeGraph) == null);
         }
 
         /// <summary>
@@ -224,7 +225,7 @@ namespace MoveToCode {
             return BKAtGoal || GetClosestKuriMazePiece()?.GetComponent<MazeGoal>() != null;
         }
 
-        public MazePiece GetMisalignedPiece() {
+        public MazePiece GetMissingPiecesFromMaze() {
             Dictionary<MPType, int> solMPs = SolMazeManagerInstance.ActiveSolMazeGraph.GetConnectedMazePiecesCount();
             Dictionary<MPType, int> mazeMPs = MyMazeGraph.GetConnectedMazePiecesCount();
             foreach (KeyValuePair<MPType, int> kvp in solMPs) {
@@ -235,7 +236,17 @@ namespace MoveToCode {
             return null;
         }
 
+        public MazePiece GetMisalignedPiece() {
+            // this assumes that GetMissingPiecesFromMaze returns null meaning all pieces are technically in the maze but oriented incorrectly
+            // not calling an assertion here as to not waste time although not sure if assertions run in the main build or not...
+            MazePiece ret = null;
+            Dictionary<MPType, int> solMPs = SolMazeManagerInstance.ActiveSolMazeGraph.GetConnectedMazePiecesCount();
+            Dictionary<MPType, int> mazeMPs = MyMazeGraph.GetConnectedMazePiecesCount();
+            return ret;
+        }
+
         // TODO: fix this so that it is event driven only or at least handles correctly
+        // TODO: check if I ever fixed this, I think so
         private void Update() {
             BKAtGoal = false;
         }
@@ -247,6 +258,7 @@ namespace MoveToCode {
         #endregion
 
         #region private
+        // Note this gives back a piece even if it has never been tracked
         private MazePiece FindClosestPieceOfType(MPType type) {
             HashSet<MazePiece> connectedPieces = MyMazeGraph.GetAllConnectedMazePieces();
             MazePiece closest = null;
@@ -270,7 +282,7 @@ namespace MoveToCode {
             }
             loggedThisFrame = true;
             LoggingManagerInstance.UpdateLogColumn(mazeLogCol, MyMazeGraph.ToString());
-            LoggingManagerInstance.UpdateLogColumn(containsSolCol, ContainsSolutionMaze() ? "1" : "0");
+            LoggingManagerInstance.UpdateLogColumn(containsSolCol, IsSameAsSolutionMaze() ? "1" : "0");
             SolMazeCheckMark.instance.ToggleCheckMark(); // this is super hacky
             yield return new WaitForEndOfFrame();
             loggedThisFrame = false;

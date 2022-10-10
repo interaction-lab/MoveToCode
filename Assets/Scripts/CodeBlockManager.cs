@@ -71,7 +71,7 @@ namespace MoveToCode {
         }
         bool hasBeenInitialized = false;
         List<CodeBlock> _activeCBs;
-        List<CodeBlock> ActiveCodeBlocks {
+        public List<CodeBlock> ActiveCodeBlocks {
             get {
                 if (_activeCBs == null) {
                     _activeCBs = new List<CodeBlock>();

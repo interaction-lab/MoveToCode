@@ -86,6 +86,54 @@ namespace MoveToCode {
             return true;
         }
 
+        public MazePiece FindMazePieceMisAligned(MazeGraph other) { // other is solution
+            // look through my connected pieces
+            foreach (MazePiece myMazePiece in GetAllConnectedMazePieces()) {
+                // look through other connected pieces
+                foreach (MazePiece otherMazePiece in other.GetAllConnectedMazePieces()) {
+                    // check out types are the same
+                    if (myMazePiece.MyMPType != otherMazePiece.MyMPType) {
+                        continue;
+                    }
+                    // if connections of my maze
+                    foreach (MazePiece.CONNECTDIR dir in MazePiece.dirToVector.Keys) {
+                        if (!myMazePiece.ConnectionDict.ContainsKey(dir)) {
+                            continue;
+                        }
+
+                        if (DifferentConnection(myMazePiece, otherMazePiece, dir) > 0) {
+                            return myMazePiece;
+                        }
+                    }
+
+                }
+            }
+            return null;
+        }
+
+        // 0 if the same
+        // -1 if mp0 is null and mp1 is not
+        // 1 if mp0 is not null and mp1 is null 
+        // 2 if mp0 is just different than mp1
+        private int DifferentConnection(MazePiece mp0, MazePiece mp1, MazePiece.CONNECTDIR dir) {
+            MazePiece mp0Neighbor = mp0.ConnectionDict[dir].ConnectedMP;
+            MazePiece mp1Neighbor = mp1.ConnectionDict[dir].ConnectedMP;
+            if (mp0Neighbor == null && mp1Neighbor == null) {
+                return 0;
+            }
+            else if (mp0Neighbor == null && mp1Neighbor != null) {
+                return -1;
+            }
+
+            else if (mp0Neighbor != null && mp1Neighbor == null) {
+                return 1;
+            }
+            else if (mp0Neighbor.MyMPType != mp1Neighbor.MyMPType) {
+                return 2;
+            }
+            return 0; // they are not null and of the same type
+        }
+
         public override string ToString() {
             GetAllEdges();
             return '[' + string.Join(',', edges) + ']';

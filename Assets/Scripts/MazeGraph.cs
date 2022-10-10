@@ -95,40 +95,53 @@ namespace MoveToCode {
                     if (myMazePiece.MyMPType != otherMazePiece.MyMPType) {
                         continue;
                     }
-                    // if connections of my maze
-                    foreach (MazePiece.CONNECTDIR dir in MazePiece.dirToVector.Keys) {
-                        if (!myMazePiece.ConnectionDict.ContainsKey(dir)) {
-                            continue;
-                        }
-
-                        if (DifferentConnection(myMazePiece, otherMazePiece, dir) > 0) {
-                            return myMazePiece;
-                        }
+                    if (!IsSamePieceWConnections(myMazePiece, otherMazePiece)) {
+                        return myMazePiece;
                     }
-
                 }
             }
             return null;
+        }
+
+        private bool IsSamePieceWConnections(MazePiece mp0, MazePiece mp1) {
+            return IsSameMazePiece(mp0, mp1, false) || IsSameMazePiece(mp0, mp1, true);
+        }
+
+        bool IsSameMazePiece(MazePiece mp0, MazePiece mp1, bool isRotated) {
+            foreach (MazePiece.CONNECTDIR dir in MazePiece.dirToVector.Keys) {
+                if (!mp0.ConnectionDict.ContainsKey(dir)) {
+                    continue;
+                }
+                if (DifferentConnection(mp0, mp1, dir, isRotated) > 0) {
+                    return false;
+                }
+            }
+            return true;
         }
 
         // 0 if the same
         // -1 if mp0 is null and mp1 is not
         // 1 if mp0 is not null and mp1 is null 
         // 2 if mp0 is just different than mp1
-        private int DifferentConnection(MazePiece mp0, MazePiece mp1, MazePiece.CONNECTDIR dir) {
+        private int DifferentConnection(MazePiece mp0, MazePiece mp1, MazePiece.CONNECTDIR dir, bool rotateSecondPiece) {
+            // hold dir for mp0 the same
+            // check both the same dir and the opposite dir for mp1
             MazePiece mp0Neighbor = mp0.ConnectionDict[dir].ConnectedMP;
-            MazePiece mp1Neighbor = mp1.ConnectionDict[dir].ConnectedMP;
-            if (mp0Neighbor == null && mp1Neighbor == null) {
+            if (rotateSecondPiece) {
+                dir = MazePiece.GetOppositeDir(dir);
+            }
+            MazePiece mp1SameDirNeighbor = mp1.ConnectionDict[dir].ConnectedMP;
+            if (mp0Neighbor == null && mp1SameDirNeighbor == null) {
                 return 0;
             }
-            else if (mp0Neighbor == null && mp1Neighbor != null) {
+            else if (mp0Neighbor == null && mp1SameDirNeighbor != null) {
                 return -1;
             }
 
-            else if (mp0Neighbor != null && mp1Neighbor == null) {
+            else if (mp0Neighbor != null && mp1SameDirNeighbor == null) {
                 return 1;
             }
-            else if (mp0Neighbor.MyMPType != mp1Neighbor.MyMPType) {
+            else if (mp0Neighbor.MyMPType != mp1SameDirNeighbor.MyMPType) {
                 return 2;
             }
             return 0; // they are not null and of the same type

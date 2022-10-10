@@ -109,6 +109,23 @@ namespace MoveToCode {
         #endregion
 
         #region public
+        public static CONNECTDIR GetOppositeDir(CONNECTDIR dir) {
+            if (dir == CONNECTDIR.North) {
+                return CONNECTDIR.South;
+            }
+            else if (dir == CONNECTDIR.South) {
+                return CONNECTDIR.North;
+            }
+            else if (dir == CONNECTDIR.East) {
+                return CONNECTDIR.West;
+            }
+            else if (dir == CONNECTDIR.West) {
+                return CONNECTDIR.East;
+            }
+            else {
+                throw new ArgumentException("Invalid CONNECTDIR");
+            }
+        }
         internal void RegisterConnector(CONNECTDIR connectionDir, MazeConnector mazeConnector) {
             ConnectionDict.Add(connectionDir, mazeConnector);
         }

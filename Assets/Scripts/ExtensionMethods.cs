@@ -211,8 +211,14 @@ namespace MoveToCode {
         }
 
         public static bool IsThisAnimationPlaying(this Animator animator, string animationName) {
-            return animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == animationName;
+            try {
+                return animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == animationName;
+            }
+            catch (System.Exception) {
+                return false;
+            }
         }
+
 
         public static bool IsFullyIdle(this Animator animator) {
             return animator.IsThisAnimationPlaying("Idle") || animator.IsThisAnimationPlaying("neutral");

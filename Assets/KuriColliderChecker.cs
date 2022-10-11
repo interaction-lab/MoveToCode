@@ -52,17 +52,21 @@ namespace MoveToCode {
             playerPos.y = 0;
             Vector3 kuriPos = transform.position;
             kuriPos.y = 0;
-            Debug.Log(Vector3.Distance(playerPos, kuriPos));
             if (Vector3.Distance(playerPos, kuriPos) < minDistFromPlayer) {
                 MoveAway(PlayerT);
             }
         }
-        private void OnCollisionStay(Collision collision) {
+        private void OnTriggerStay(Collider other) {
+            Debug.Log(other.transform.name);
+            // this seems to collide with everything, need to fix that
+            // also the movement isn't working
+            // looking at stuff also has messed up eyelids
             if (TutorKuriManagerInstance.KController.IsDoingAction) {
                 return;
             }
-            MoveAway(collision.transform);
+            MoveAway(other.transform);
         }
+
         #endregion
 
         #region public

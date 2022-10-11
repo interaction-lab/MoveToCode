@@ -94,6 +94,9 @@ namespace MoveToCode {
         #endregion
 
         #region public
+        public void AskForHelp() {
+            kuriAI.ForceHelpfulAction();
+        }
         public void SetKC(float kcRIn) {
             robotKC = kcRIn;
             LoggingManager.instance.UpdateLogColumn(robotKCLevel, robotKC.ToString("F3"));

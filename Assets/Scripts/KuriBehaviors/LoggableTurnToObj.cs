@@ -7,7 +7,7 @@ namespace MoveToCode {
     public class LoggableTurnToObj : LoggableBehPrimitive {
 
         #region members
-        Transform objTransform, origTransform;
+        Transform objTransform, origTransform, mazePaperT;
         TutorKuriTransformManager kuriTransformManager;
         KuriBTBodyController kuriBodyController;
 
@@ -17,11 +17,12 @@ namespace MoveToCode {
         protected override void BehCleanUp() {
         }
         protected override void BehSetUp() {
+            mazePaperT = MazePaper.instance.transform;
             Init();
         }
 
         protected override State OnUpdate() {
-            if (objTransform == null) {
+            if (objTransform == null || objTransform == mazePaperT) { // because mazepaper is within the kuri body, it will forever turn, I would make this search for anyting below or do a chekc earlier but that would take a lot of time
                 return State.Failure;
             }
 
@@ -77,6 +78,7 @@ namespace MoveToCode {
         void SetObjToTurnTo() {
             objTransform = blackboard.objToTurnTo;
             origTransform = objTransform;
+
         }
         #endregion
     }

@@ -29,8 +29,8 @@ namespace MoveToCode {
                 Init();
             }
 
-            if (!kuriTransformManager.IsWithinHeadPanConstraints() &&
-                NotLookingAtThisObj()) {
+            if (!LookingAtThisObj() &&
+                !kuriTransformManager.IsWithinHeadPanConstraints()) {
                 // tell kuri controller to turn at this object
                 kuriBodyController.OnlyLookAtObj(objTransform);
             }
@@ -52,8 +52,8 @@ namespace MoveToCode {
         }
 
         // Note this isn't perfect since the obj is never reset unless a new looking at is passed in
-        private bool NotLookingAtThisObj() {
-            return blackboard.objToLookAt != objTransform;
+        private bool LookingAtThisObj() {
+            return blackboard.objToLookAt == objTransform;
         }
 
         protected override void SetAnimatorSemaphoreCount() {

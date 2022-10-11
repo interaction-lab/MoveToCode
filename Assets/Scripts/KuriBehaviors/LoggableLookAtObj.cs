@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TheKiwiCoder;
+using System;
 
 namespace MoveToCode {
     public class LoggableLookAtObj : LoggableBehPrimitive {
@@ -22,11 +23,13 @@ namespace MoveToCode {
         #endregion
         #region overrides
         protected override State OnUpdate() {
+            // deal with exit time for backToUser looking
             if (objToLookAt != origTransform) {
                 SetObjToLookAt();
             }
 
-            if (!kuriTransformManager.IsWithinHeadPanConstraints()) {
+            if (!TurningToThisObj() &&
+                !kuriTransformManager.IsWithinHeadPanConstraints()) {
                 // tell kuri controller to turn at this object
                 kuriBodyController.OnlyTurnToObj(objToLookAt);
             }
@@ -48,6 +51,10 @@ namespace MoveToCode {
             return State.Running;
         }
 
+        private bool TurningToThisObj() {
+            return objToLookAt == blackboard.objToTurnTo;
+        }
+
         protected override void SetLogActionName() {
             actionName = string.Join(Separator,
                 EventNames.OnLookAtObj,
@@ -63,6 +70,7 @@ namespace MoveToCode {
         }
 
         protected override void BehCleanUp() {
+            kuriHeadPositionManager.ResetHead(); // quick and dirty way to just make it snap back but good enough
         }
         #endregion
         #region helpers

@@ -165,7 +165,7 @@ namespace MoveToCode {
         }
 
         private void Update() {
-            IsDoingAction = UpdateCurrentActionString();
+            IsDoingAction = UpdateIsDoingAction();
             loggingManager.UpdateLogColumn(kuriCurAction, CurAction);
         }
 
@@ -177,6 +177,6 @@ namespace MoveToCode {
         public abstract void TurnTowardsUser();
         public abstract string PointAtObj(Transform objectOfInterest, float time = -1);
         // Returns true if currently doing action
-        protected abstract bool UpdateCurrentActionString();
+        protected abstract bool UpdateIsDoingAction();
     }
 }

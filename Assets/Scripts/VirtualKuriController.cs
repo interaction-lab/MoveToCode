@@ -136,7 +136,7 @@ namespace MoveToCode {
 
         #endregion
         #region protected
-        protected override bool UpdateCurrentActionString() {
+        protected override bool UpdateIsDoingAction() {
             timeSinceLastActionEndeded = TutorKuriManager.instance.TimeLastActionEnded.TimeSince();
             string doingAnim = Anim.GetCurrentAnimatorClipInfo(0)[0].clip.name;
             CurAction = onFrameAction;

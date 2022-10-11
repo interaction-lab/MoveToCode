@@ -58,7 +58,7 @@ namespace MoveToCode {
         #endregion
 
         #region public
-        // totally forgot what the string return is for..., probably a logger and worth looking at later
+        // totally forgot what the string return is for..., probably a logger and worth looking at later -> yes it is
         public override string DoAnimationAction(EMOTIONS e) {
             _DoAnimation(e);
             return e.ToString();
@@ -89,6 +89,10 @@ namespace MoveToCode {
         public void PointUntilInteract(Transform obj) {
             _LookAtObj(obj);
             _PointUntilInteract(obj);
+        }
+
+        public void MoveAwayFromMaze() {
+            _MoveToObj(MoveAwayFromMazeObj.instance.transform);
         }
 
         public override string TakeISAAction() {
@@ -135,8 +139,9 @@ namespace MoveToCode {
 
         #region protected
 
-        protected override bool UpdateCurrentActionString() {
-            return false; // TODO: figure this out later lol
+        protected override bool UpdateIsDoingAction() {
+            return KuriBlackBoard.BodyAnimatorSemaphoreCount != 0 ||
+                KuriBlackBoard.ArmAnimatorSemaphoreCount != 0;
         }
 
 

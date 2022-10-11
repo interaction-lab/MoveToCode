@@ -26,7 +26,7 @@ namespace MoveToCode {
                 return;
             }
             if (goalObj == Camera.main.transform) {
-                distThreshold = 0.75f;
+                distThreshold = 1f;
             }
             else {
                 distThreshold = 0.35f;

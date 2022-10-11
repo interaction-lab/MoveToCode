@@ -35,6 +35,15 @@ namespace MoveToCode {
                 return lm;
             }
         }
+        TutorKuriManager tkm;
+        TutorKuriManager TutorKuriManagerInstance {
+            get {
+                if (tkm == null) {
+                    tkm = TutorKuriManager.instance;
+                }
+                return tkm;
+            }
+        }
         bool initialized = false;
         #endregion
         #region abstract
@@ -52,16 +61,17 @@ namespace MoveToCode {
             SetAnimatorSemaphoreCount();
             UpdateAnimators(1); // 1 is add to semaphore, used for things turning off the animators
             BehSetUp();
-            //            Debug.Log(actionName + " started");
+
             initialized = true;
+            TutorKuriManagerInstance.TimeLastActionStarted = Time.time;
         }
         protected override void OnStop() {
             if (initialized) { // guards against the original OnStart() not being called
                 BehCleanUp();
                 UpdateAnimators(-1); // -1 is remove from semaphore, used for things turning on the animators
                 LogActionEnd();
+                TutorKuriManagerInstance.TimeLastActionEnded = Time.time;
             }
-            //            Debug.Log(actionName + " ended");
         }
         #endregion
         #region helpers

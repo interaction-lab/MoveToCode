@@ -98,13 +98,14 @@ namespace MoveToCode {
         }
 
         public override void Tick() {
-            if (!KuriIdling() || TutorKuriManagerInstance.TimeLastActionEnded.TimeSince() < TutorKuriManagerInstance.TimeWindow) {
+            if (!KuriIdling() ||
+                TutorKuriManagerInstance.TimeLastActionStarted > TutorKuriManagerInstance.TimeLastActionEnded ||
+                TutorKuriManagerInstance.TimeLastActionEnded.TimeSince() < TutorKuriManagerInstance.TimeWindow) {
                 return;
             }
 
             float kctS = HumanStateManager.instance.GetKCt(); // encourage curiosity when they are doing low amounts of KCT
             if (kctS < TutorKuriManagerInstance.robotKC) {
-                TutorKuriManagerInstance.TimeLastActionEnded = Time.time;
                 ForceHelpfulAction();
             }
             else {

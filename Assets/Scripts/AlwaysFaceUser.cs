@@ -15,13 +15,13 @@ namespace MoveToCode {
                 return user;
             }
         }
-        public float offsetInDeg;
+        public float xOffsetInDeg;
         #endregion
 
         #region unity
         void Update() {
             transform.LookAt(User);
-            transform.Rotate(offsetInDeg, (ReverseIt ? 180 : 0), 0);
+            transform.Rotate(xOffsetInDeg, (ReverseIt ? 180 : 0), 0);
         }
         #endregion
 

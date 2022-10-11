@@ -36,9 +36,25 @@ namespace MoveToCode {
         }
 
         float normalPointTime = 3f, pointUntilTime = 15f;
+        ExerciseManager em;
+        ExerciseManager ExerciseManagerInstance {
+            get {
+                if (em == null) {
+                    em = ExerciseManager.instance;
+                }
+                return em;
+            }
+        }
+        bool initialized = false;
         #endregion
 
         #region unity
+        private void OnEnable() {
+            if (!initialized) {
+                ExerciseManagerInstance.OnCyleNewExercise.AddListener(OnCycleNewExercise);
+                initialized = true;
+            }
+        }
         #endregion
 
         #region public
@@ -189,11 +205,11 @@ namespace MoveToCode {
             OnStartH5.Invoke();
         }
         void _EndAllSeq() {
-            // check if time has at least passed a little bit
-            if (Time.time < 2f) {
-                return;
-            }
             OnEndAllSeq.Invoke();
+        }
+
+        void OnCycleNewExercise() {
+            _EndAllSeq();
         }
         #endregion
     }

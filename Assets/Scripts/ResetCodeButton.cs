@@ -58,6 +58,15 @@ namespace MoveToCode {
                 return tmpUI;
             }
         }
+        SwitchModeButton smb;
+        SwitchModeButton SwitchModeButton {
+            get {
+                if (smb == null) {
+                    smb = SwitchModeButton.instance;
+                }
+                return smb;
+            }
+        }
         #endregion
 
         #region unity
@@ -65,6 +74,16 @@ namespace MoveToCode {
             InterpreterInstance.OnCodeEnd.AddListener(OnCodeEnd);
             InterpreterInstance.OnCodeReset.AddListener(OnCodeReset);
             ExerciseManager.instance.OnExerciseCorrect.AddListener(OnExerciseCorrect);
+            SwitchModeButton.OnSwitchToCodingMode.AddListener(OnSwitchToCodingMode);
+            SwitchModeButton.OnSwitchToMazeBuildingMode.AddListener(OnSwitchToBuildingMode);
+        }
+
+        private void OnSwitchToBuildingMode() {
+            transform.parent.gameObject.SetActive(false);
+        }
+
+        private void OnSwitchToCodingMode() {
+            transform.parent.gameObject.SetActive(true);
         }
         #endregion
 
@@ -82,14 +101,6 @@ namespace MoveToCode {
                 ButtonConfig.MainLabelText = "Reset";
             }
         }
-
-        void Update(){
-            if (IsUIButton && MazeManager.instance.IsLocked) {
-                                // make sure my parent is active
-                transform.parent.gameObject.SetActive(true);
-            }
-        }
-
 
         private void OnCodeEnd() {
             if (IsUIButton) {

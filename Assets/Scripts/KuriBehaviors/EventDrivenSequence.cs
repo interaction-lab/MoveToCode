@@ -52,12 +52,12 @@ namespace MoveToCode {
         }
 
         void EndSeq() {
-            Abort();
+            AbortOnlyRunningNodes();
         }
 
         private void ResetSeq() {
             Assert.IsTrue(seqRestartingOnNewEventCall);
-            children[current].Abort();
+            children[current].AbortOnlyRunningNodes();
             seqRestartingOnNewEventCall = false;
             Init();
         }

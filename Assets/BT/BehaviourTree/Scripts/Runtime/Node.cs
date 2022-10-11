@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using MoveToCode;
 using System.Linq;
+using UnityEditor.Experimental.GraphView;
 
 namespace TheKiwiCoder {
     public abstract class Node : ScriptableObject {
@@ -53,6 +54,15 @@ namespace TheKiwiCoder {
             });
         }
 
+        public void AbortOnlyRunningNodes() {
+            BehaviourTree.Traverse(this, (node) => {
+                if (node.started) {
+                    node.started = false;
+                    node.state = State.Running;
+                    node.OnStop();
+                }
+            });
+        }
         public virtual void OnDrawGizmos() { }
 
         protected abstract void OnStart();

@@ -4,12 +4,24 @@ using UnityEngine;
 
 namespace MoveToCode {
     public class OnScreenPlayCodeButton : MonoBehaviour {
-        void Update(){
-            if (MazeManager.instance.IsLocked) {
-                                // make sure my parent is active
-                transform.parent.gameObject.SetActive(true);
-            }
-        }
-    }
+        #region members
+        #endregion
 
+        #region unity
+        private void Awake() {
+            SwitchModeButton.instance.OnSwitchToCodingMode.AddListener(OnSwitchToCodingMode);
+            SwitchModeButton.instance.OnSwitchToMazeBuildingMode.AddListener(OnSwitchToBuildingMode);
+        }
+        #endregion
+
+        #region private
+        private void OnSwitchToBuildingMode() {
+            transform.parent.gameObject.SetActive(false);
+        }
+
+        private void OnSwitchToCodingMode() {
+            transform.parent.gameObject.SetActive(true);
+        }
+        #endregion
+    }
 }

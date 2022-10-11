@@ -67,13 +67,21 @@ namespace MoveToCode {
                 return smb;
             }
         }
+        MazeManager mm;
+        MazeManager MazeManagerInstance {
+            get {
+                if (mm == null) {
+                    mm = MazeManager.instance;
+                }
+                return mm;
+            }
+        }
         #endregion
 
         #region unity
         private void Awake() {
             InterpreterInstance.OnCodeEnd.AddListener(OnCodeEnd);
             InterpreterInstance.OnCodeReset.AddListener(OnCodeReset);
-            ExerciseManager.instance.OnExerciseCorrect.AddListener(OnExerciseCorrect);
             SwitchModeButton.OnSwitchToCodingMode.AddListener(OnSwitchToCodingMode);
             SwitchModeButton.OnSwitchToMazeBuildingMode.AddListener(OnSwitchToBuildingMode);
         }
@@ -104,14 +112,19 @@ namespace MoveToCode {
 
         private void OnCodeEnd() {
             if (IsUIButton) {
-                PulseIMG.StartPulse(Color.red);
+                // if the code is incorrect, pulse the button
+                if (!MazeManagerInstance.ExerciseInFullyCompleteState) {
+                    PulseIMG.StartPulse(Color.red);
+                }
             }
             else {
-                Pulse3DMeshRend.StartPulse(Color.red);
+                if (!MazeManagerInstance.ExerciseInFullyCompleteState) {
+                    Pulse3DMeshRend.StartPulse(Color.red);
+                }
             }
         }
 
-        void OnExerciseCorrect() {
+        public void SetToNextMazeWPulse() {
             if (IsUIButton) {
                 TXTUI.text = "Next Maze";
                 PulseIMG.StopPulse();

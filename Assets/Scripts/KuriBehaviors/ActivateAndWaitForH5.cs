@@ -19,6 +19,24 @@ namespace MoveToCode {
                 return audioManager;
             }
         }
+        MazeManager mm;
+        MazeManager MazeManagerInstance {
+            get {
+                if (mm == null) {
+                    mm = MazeManager.instance;
+                }
+                return mm;
+            }
+        }
+        ScreenMenuManager smmm;
+        ScreenMenuManager ScreenMenuManagerInstance {
+            get {
+                if (smmm == null) {
+                    smmm = ScreenMenuManager.instance;
+                }
+                return smmm;
+            }
+        }
         #endregion
         #region overrides
         // this is pathetically inefficient and poorly written, but it works
@@ -32,6 +50,7 @@ namespace MoveToCode {
             RPulseMeshRend.StartPulse(Color.green);
             blackboard.ArmAnimatorSemaphoreCount -= 1;
             initialized = true;
+            KuriTextManager.instance.Clear(KuriTextManager.PRIORITY.low);
             KuriTextManager.instance.Addline("Give me a high five!", KuriTextManager.PRIORITY.low);
         }
 
@@ -43,6 +62,9 @@ namespace MoveToCode {
                 kuriArms.RightIKTarget.SetCollider(false);
                 RPulseMeshRend.StopPulse();
                 KuriTextManager.instance.Clear(KuriTextManager.PRIORITY.low);
+                if (MazeManagerInstance.ExerciseInFullyCompleteState) {
+                    ScreenMenuManagerInstance.MyResetCodeButton.SetToNextMazeWPulse();
+                }
             }
         }
 

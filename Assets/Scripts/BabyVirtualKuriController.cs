@@ -111,6 +111,7 @@ namespace MoveToCode {
             for (int i = 0; i < BodyPlatesToChangeColor.Count; i++) {
                 BodyPlatesToChangeColor[i].material.color = OrigColors[i];
             }
+            MazeManagerInstance.UpdateCurrentMP(MazeManagerInstance.BKMazePiece);
         }
 
         public void SetColor(Color color) {
@@ -137,11 +138,11 @@ namespace MoveToCode {
         private void MoveBK(KeyValuePair<Type, float> p) {
             CodeBlockEnums.Move move = p.Value > 0 ? CodeBlockEnums.Move.Forward : CodeBlockEnums.Move.Backward;
             MazePiece potentialNextPiece = MazeManagerInstance.GetPotentialNextMP(move);
-            MazeManagerInstance.BKIsMovingToPiece(potentialNextPiece);
+            MazeManagerInstance.UpdateCurrentMP(potentialNextPiece);
             if (potentialNextPiece == null) {
                 ThrowKuriOffTheRails(move == CodeBlockEnums.Move.Forward);
             }
-            else { 
+            else {
                 StartCoroutine(GoToPosition(potentialNextPiece.Center, move == CodeBlockEnums.Move.Forward, false));
             }
         }

@@ -91,7 +91,12 @@ namespace MoveToCode {
             SwitchToMazeBuildingMode();
         }
         private void OnMazeCorrect() {
-            PulseIMG.StartPulse(Color.green);
+            if (CurrentMode == MODE.MazeBuilding) {
+                PulseIMG.StartPulse(Color.green); // alert them to switch to coding mode as the maze is correct
+            }
+            else {
+                PulseIMG.StopPulse();
+            }
         }
         private void OnMazeIncorrect() {
             PulseIMG.StopPulse();

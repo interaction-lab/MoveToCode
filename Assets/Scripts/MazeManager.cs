@@ -71,6 +71,7 @@ namespace MoveToCode {
                 return smb;
             }
         }
+        public MazePiece BKCurrentMP = null;
         public bool IsLocked {
             get {
                 return SMB.CurrentMode != SwitchModeButton.MODE.MazeBuilding;
@@ -86,7 +87,7 @@ namespace MoveToCode {
                 return mazeGraph;
             }
         }
-        public bool BKAtGoal = false;
+
         MazePiece _goalPiece;
         public MazePiece GoalMazePiece {
             get {
@@ -217,12 +218,15 @@ namespace MoveToCode {
             return GetMazeConnectorRelBKInDir(direction)?.ConnectedMP;
         }
 
-        public void BKIsMovingToPiece(MazePiece mp) {
-            UpdateBKGoalEvents(mp);
-        }
 
         public bool IsBKAtTheGoalNow() {
-            return BKAtGoal || GetClosestKuriMazePiece()?.GetComponent<MazeGoal>() != null;
+            return BKCurrentMP == GoalMazePiece;
+        }
+
+        public bool ExerciseInFullyCompleteState {
+            get {
+                return IsBKAtTheGoalNow() && IsSameAsSolutionMaze() && Interpreter.instance.CodeIsFinished();
+            }
         }
 
         public MazePiece GetMissingPiecesFromMaze() {
@@ -243,12 +247,6 @@ namespace MoveToCode {
             Dictionary<MPType, int> solMPs = SolMazeManagerInstance.ActiveSolMazeGraph.GetConnectedMazePiecesCount();
             Dictionary<MPType, int> mazeMPs = MyMazeGraph.GetConnectedMazePiecesCount();
             return ret;
-        }
-
-        // TODO: fix this so that it is event driven only or at least handles correctly
-        // TODO: check if I ever fixed this, I think so
-        private void Update() {
-            BKAtGoal = false;
         }
 
         public void LogMaze() {
@@ -311,21 +309,7 @@ namespace MoveToCode {
             OnMazeUnlocked.Invoke();
             LoggingManagerInstance.UpdateLogColumn(mazeLockCol, "Unlocked");
         }
-        private void UpdateBKGoalEvents(MazePiece mp) {
-            bool lastIsAtGoal = BKAtGoal;
-            if (mp?.GetComponent<MazeGoal>()) {
-                if (!lastIsAtGoal) {
-                    BKAtGoal = true;
-                    OnBKGoalEnter.Invoke();
-                }
-            }
-            else {
-                if (lastIsAtGoal) {
-                    BKAtGoal = false;
-                    OnBKGoalExit.Invoke();
-                }
-            }
-        }
+
         private void SnapPiecesTogether() {
             BKMazePiece.SnapConnections();
             BKTransformManager?.SetOriginalState();
@@ -348,6 +332,10 @@ namespace MoveToCode {
                     }
                 }
             }
+        }
+
+        internal void UpdateCurrentMP(MazePiece potentialNextPiece) {
+            BKCurrentMP = potentialNextPiece;
         }
         #endregion
     }

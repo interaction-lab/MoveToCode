@@ -47,6 +47,7 @@ namespace MoveToCode {
         bool initialized = false;
         #endregion
         #region abstract
+        // Make sure to use the blackboard for log action name as it comes before behavior set up, this likely means this is designed poorly/should have an init function but whatever
         protected abstract void SetLogActionName();
         protected abstract void SetAnimatorSemaphoreCount();
         protected abstract void BehSetUp();

@@ -57,7 +57,9 @@ namespace MoveToCode {
 
         private void ResetSeq() {
             Assert.IsTrue(seqRestartingOnNewEventCall);
-            children[current].AbortOnlyRunningNodes();
+            if (current < children.Count) {
+                children[current].AbortOnlyRunningNodes();
+            }
             seqRestartingOnNewEventCall = false;
             Init();
         }

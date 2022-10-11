@@ -88,6 +88,7 @@ namespace MoveToCode {
 
         // ARImages
         // TODO: outdated but not needed either
+        // well now I can kind of use them for the sprites
         public static string str_wall_1 = "wall_1";
         public static string str_wall_2 = "wall_2";
         public static string str_wall_3 = "wall_3";
@@ -96,13 +97,25 @@ namespace MoveToCode {
         public static string turn_1 = "turn_1";
         public static string connection = "Connection";
 
-        public static string ARImageFolder = "ARImageReferences/";
-        public static string MazePrefabFolder = ARImageFolder + "MazePrefabs/";
+        public static string ARReferenceFolder = "ARImageReferences/";
+        public static string MazePrefabFolder = ARReferenceFolder + "MazePrefabs/";
         public static string Wall_1 = MazePrefabFolder + str_wall_1;
         public static string Wall_2 = MazePrefabFolder + str_wall_2;
         public static string Wall_3 = MazePrefabFolder + str_wall_3;
         public static string Goal = MazePrefabFolder + goal;
         public static string Turn_1 = MazePrefabFolder + turn_1;
+
+        // ARImage Sprites
+        public static string ARImageFolder = ARReferenceFolder + "Images/";
+        public static string GrayScaleFolder = ARImageFolder + "GrayScaleImages/";
+        public static string GrayScaleSpriteFolder = GrayScaleFolder + "Sprites/";
+
+        public static string BKMazePieceSprite = GrayScaleSpriteFolder + "BKMazePiece";
+        public static string GoalPieceSprite = GrayScaleSpriteFolder + "goal";
+        public static string Hall1PieceSprite = GrayScaleSpriteFolder + "hall_1";
+        public static string Hall2PieceSprite = GrayScaleSpriteFolder + "hall_2";
+        public static string TurnNW1PieceSprite = GrayScaleSpriteFolder + "turnnw_1";
+        public static string TurnNW2PieceSprite = GrayScaleSpriteFolder + "turnnw_2";
 
         public static string ConnectionP = MazePrefabFolder + connection;
 
@@ -112,7 +125,7 @@ namespace MoveToCode {
             {str_wall_3, Resources.Load<GameObject>(Wall_3)},
             {goal, Resources.Load<GameObject>(Goal)},
             {turn_1, Resources.Load<GameObject>(Turn_1)},
-            {kuri_start, Resources.Load<GameObject>(ARImageFolder + kuri_start)},
+            {kuri_start, Resources.Load<GameObject>(ARReferenceFolder + kuri_start)},
         };
 
         // AWS Credentials

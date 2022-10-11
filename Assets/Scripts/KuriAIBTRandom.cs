@@ -93,10 +93,6 @@ namespace MoveToCode {
                 ArmAnimator.IsInAnIdleState();
         }
 
-        public void Clap() {
-            KController.DoAnimationAction(KuriController.EMOTIONS.clap);
-        }
-
         public override void Tick() {
             if (!KuriIdling() ||
                 TutorKuriManagerInstance.TimeLastActionStarted > TutorKuriManagerInstance.TimeLastActionEnded ||
@@ -191,11 +187,16 @@ namespace MoveToCode {
             }
 
             if (!mp.HasBeenTracked) {
-                // hold up picture until it has been tracked -> TODO: implement this
+                KController.PointToPaper(mp.gameObject.name);
             }
             else {
-                KController.PointAtObj(mp.transform);
-                KController.MoveToObj(mp.transform);
+                if (Random.Range(0, 2) == 0) {
+                    KController.PointToPaper(mp.gameObject.name);
+                }
+                else {
+                    KController.PointAtObj(mp.transform);
+                    KController.MoveToObj(mp.transform);
+                }
             }
         }
 

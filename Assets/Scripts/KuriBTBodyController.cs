@@ -127,6 +127,9 @@ namespace MoveToCode {
         public void Clap() {
             _DoAnimation(EMOTIONS.clap);
         }
+        public void PointToPaper(string mpName) {
+            _PointToPaper(mpName);
+        }
 
         #endregion
 
@@ -145,6 +148,7 @@ namespace MoveToCode {
         UnityEvent OnEndAllSeq = new UnityEvent();
         UnityEvent OnStartH5 = new UnityEvent();
         UnityEvent OnPointUntilInteract = new UnityEvent();
+        UnityEvent OnPointToPaper = new UnityEvent();
         protected override void Init() {
             // add all necessary Unity Events
             KEventRouter.AddEvent(EventNames.OnMoveToObj, OnMoveToObj);
@@ -155,6 +159,7 @@ namespace MoveToCode {
             KEventRouter.AddEvent(EventNames.OnEndAllSeq, OnEndAllSeq);
             KEventRouter.AddEvent(EventNames.OnStartH5, OnStartH5);
             KEventRouter.AddEvent(EventNames.OnPointUntilInteract, OnPointUntilInteract);
+            KEventRouter.AddEvent(EventNames.OnPointToPaper, OnPointToPaper);
         }
         #endregion
 
@@ -210,6 +215,16 @@ namespace MoveToCode {
 
         void OnCycleNewExercise() {
             _EndAllSeq();
+        }
+
+        void _PointToPaper(string mpName) {
+            KuriBlackBoard.pointToPaperName = mpName;
+            KuriBlackBoard.objToPointTo = MazePaper.instance.transform;
+
+            _TurnToObj(Camera.main.transform);
+            _LookAtObj(KuriBlackBoard.objToPointTo);
+            OnPointToPaper.Invoke();
+            OnPointToObj.Invoke();
         }
         #endregion
     }

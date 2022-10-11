@@ -37,22 +37,27 @@ namespace MoveToCode {
             get;
         }
 
-        public string Name{
-            get{
-                if(BabyKuri){
+        public string Name {
+            get {
+                if (BabyKuri) {
                     return "BabyKuri";
                 }
-                else if(Goal){
+                else if (Goal) {
                     return "Goal";
                 }
-                else if(!West && !East){
+                else if (!West && !East) {
                     return "Hall";
                 }
-                else{
+                else {
                     return "TurnNW";
                 }
             }
         }
+
+        public static MPType BKMPT = new MPType(true, false, false, false, true, false);
+        public static MPType GoalMPT = new MPType(true, false, false, false, false, true);
+        public static MPType HallMPT = new MPType(true, true, false, false, false, false);
+        public static MPType TurnNWMPT = new MPType(true, true, false, true, false, false);
 
         #endregion
 

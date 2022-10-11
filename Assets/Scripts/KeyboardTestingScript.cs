@@ -60,7 +60,7 @@ public class KeyboardTestingScript : MonoBehaviour {
             }
         }
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
-            KuriAIBTRandomInstance.Clap();
+            KuriAIBTRandomInstance.ForceHelpfulAction();
         }
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
             // print distance from t1 to t2

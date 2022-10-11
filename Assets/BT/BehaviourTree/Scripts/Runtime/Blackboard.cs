@@ -24,5 +24,6 @@ namespace TheKiwiCoder {
         public float BodyAnimatorSemaphoreCount = 0;
         public float ArmAnimatorSemaphoreCount = 0;
         public KuriController.EMOTIONS emotion;
+        public string pointToPaperName;
     }
 }

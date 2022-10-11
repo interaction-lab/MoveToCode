@@ -16,5 +16,6 @@ namespace MoveToCode {
         public static string OnStartH5 = "OnStartH5";
         public static string OnPointUntilInteract = "OnPointUntilInteract";
         public static string OnInteractWith = "OnInteractWith";
+        public static string OnPointToPaper = "OnPointToPaper";
     }
 }

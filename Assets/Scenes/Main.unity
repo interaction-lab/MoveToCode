@@ -30694,6 +30694,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 974020717}
     m_Modifications:
+    - target: {fileID: 1857129389121966167, guid: 01467935cc2dacd4a918ea4e1bb054b6,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1857129389121966167, guid: 01467935cc2dacd4a918ea4e1bb054b6,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1857129389121966167, guid: 01467935cc2dacd4a918ea4e1bb054b6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.408
+      objectReference: {fileID: 0}
     - target: {fileID: 1857129389638163013, guid: 01467935cc2dacd4a918ea4e1bb054b6,
         type: 3}
       propertyPath: m_RootOrder
@@ -30754,17 +30769,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: TutorKuriManager
       objectReference: {fileID: 0}
+    - target: {fileID: 1857129389746048329, guid: 01467935cc2dacd4a918ea4e1bb054b6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1857129390569293284, guid: 01467935cc2dacd4a918ea4e1bb054b6,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1857129390569293284, guid: 01467935cc2dacd4a918ea4e1bb054b6,
+        type: 3}
+      propertyPath: m_margin.w
+      value: 66.10947
+      objectReference: {fileID: 0}
+    - target: {fileID: 1857129390569293284, guid: 01467935cc2dacd4a918ea4e1bb054b6,
+        type: 3}
+      propertyPath: m_margin.x
+      value: 40.25887
+      objectReference: {fileID: 0}
+    - target: {fileID: 1857129390569293284, guid: 01467935cc2dacd4a918ea4e1bb054b6,
+        type: 3}
+      propertyPath: m_margin.z
+      value: 47.339924
+      objectReference: {fileID: 0}
+    - target: {fileID: 1857129390569293284, guid: 01467935cc2dacd4a918ea4e1bb054b6,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1857129390569293285, guid: 01467935cc2dacd4a918ea4e1bb054b6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.005
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01467935cc2dacd4a918ea4e1bb054b6, type: 3}
 --- !u!4 &1527829372 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1857129389638163013, guid: 01467935cc2dacd4a918ea4e1bb054b6,
-    type: 3}
-  m_PrefabInstance: {fileID: 1527829371}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1527829373 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1857129389467035250, guid: 01467935cc2dacd4a918ea4e1bb054b6,
     type: 3}
   m_PrefabInstance: {fileID: 1527829371}
   m_PrefabAsset: {fileID: 0}
@@ -31851,81 +31895,6 @@ MonoBehaviour:
   finalVariableGoalValues: 
   SaidMazeGoal: 0
   SaidCodingGoal: 0
---- !u!1 &1582486638
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1582486639}
-  - component: {fileID: 1582486641}
-  - component: {fileID: 1582486640}
-  - component: {fileID: 1582486642}
-  m_Layer: 9
-  m_Name: KuriColliderChecker
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1582486639
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1582486638}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1527829373}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1582486640
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1582486638}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4526f8c1c32d51346b3da85fd57b8659, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!135 &1582486641
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1582486638}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &1582486642
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1582486638}
-  serializedVersion: 2
-  m_Mass: 0.0000001
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1001 &1587348183
 PrefabInstance:
   m_ObjectHideFlags: 0

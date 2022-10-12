@@ -34,7 +34,7 @@ namespace MoveToCode {
                 distThreshold = 1f;
             }
             else {
-                distThreshold = 0.35f;
+                distThreshold = 0.4f;
             }
             kuriTransformManager = TutorKuriTransformManager.instance;
             CalcBezCurve();

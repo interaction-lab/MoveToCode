@@ -46,6 +46,25 @@ namespace MoveToCode {
             }
         }
         bool initialized = false;
+        KuriAIBTRandom kuriAIBTRandom;
+        KuriAIBTRandom KuriAIBTRandomInstance {
+            get {
+                if (kuriAIBTRandom == null) {
+                    kuriAIBTRandom = GetComponent<KuriAIBTRandom>();
+                }
+                return kuriAIBTRandom;
+            }
+        }
+        Animator BodyAnimator {
+            get {
+                return KuriAIBTRandomInstance.BodyAnimator;
+            }
+        }
+        Animator ArmAnimator {
+            get {
+                return KuriAIBTRandomInstance.ArmAnimator;
+            }
+        }
         #endregion
 
         #region unity
@@ -230,6 +249,14 @@ namespace MoveToCode {
         }
         void _EndAllSeq() {
             OnEndAllSeq.Invoke();
+            _ResetAnimators();
+        }
+
+        void _ResetAnimators() {
+            KuriBlackBoard.BodyAnimatorSemaphoreCount = 0;
+            KuriBlackBoard.ArmAnimatorSemaphoreCount = 0;
+            BodyAnimator.Play("neutral");
+            ArmAnimator.Play("Idle");
         }
 
         void OnCycleNewExercise() {

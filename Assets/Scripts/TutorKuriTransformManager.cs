@@ -1,3 +1,4 @@
+using Microsoft.MixedReality.Toolkit.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -100,6 +101,11 @@ namespace MoveToCode {
                     }
                 }
             }
+        }
+        private void OnEnable() {
+#if !UNITY_EDITOR
+            GetComponent<ManipulationHandler>().enabled = false;
+#endif
         }
         #endregion
         #region public

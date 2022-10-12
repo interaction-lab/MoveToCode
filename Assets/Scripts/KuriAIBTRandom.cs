@@ -50,7 +50,7 @@ namespace MoveToCode {
             }
         }
         Animator _bodyAnimator;
-        Animator BodyAnimator {
+        public Animator BodyAnimator {
             get {
                 if (_bodyAnimator == null) {
                     _bodyAnimator = GetComponent<Animator>();
@@ -59,7 +59,7 @@ namespace MoveToCode {
             }
         }
         Animator _armAnimator;
-        Animator ArmAnimator {
+        public Animator ArmAnimator {
             get {
                 if (_armAnimator == null) {
                     _armAnimator = KuriArms.instance.ArmAnimator;

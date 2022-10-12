@@ -88,6 +88,16 @@ namespace MoveToCode {
                 return b;
             }
         }
+
+        TutorKuriManager tkm;
+        TutorKuriManager TutorKuriManagerInstance {
+            get {
+                if (tkm == null) {
+                    tkm = TutorKuriManager.instance;
+                }
+                return tkm;
+            }
+        }
         #endregion
 
         #region unity
@@ -111,7 +121,7 @@ namespace MoveToCode {
         }
 
         void OnButtonClick() {
-            TutorKuriManager.instance.AskForHelp();
+            TutorKuriManagerInstance.AskForHelp();
         }
         #endregion
     }

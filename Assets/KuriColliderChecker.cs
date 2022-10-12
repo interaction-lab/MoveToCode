@@ -73,6 +73,10 @@ namespace MoveToCode {
         #endregion
 
         #region private
+
+        private bool IsLeftOfLine(Vector3 lineStart, Vector3 lineEnd, Vector3 point) {
+            return ((lineEnd.x - lineStart.x) * (point.z - lineStart.z) - (lineEnd.z - lineStart.z) * (point.x - lineStart.x)) > 0;
+        }
         void MoveAway(Transform col) {
             // calculate a position from user to move away to
             if (col == PlayerT) {
@@ -86,8 +90,12 @@ namespace MoveToCode {
 
             // calculate line from PlayerT to col
             Vector3 line = colP - playerP;
-            // rotate line left 15 degrees
-            line = Quaternion.Euler(0, 45, 0) * line;
+
+            // check if Kuri is to the left or to the right
+            Vector3 kuriP = TutorKuriTransformManager.instance.Position;
+            float angle = IsLeftOfLine(playerP, colP, kuriP) ? -55 : 55;
+
+            line = Quaternion.Euler(0, angle, 0) * line;
 
             // calculate global position of rotated line
             Vector3 newPos = playerP + line;

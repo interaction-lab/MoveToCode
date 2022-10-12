@@ -1614,7 +1614,7 @@ MonoBehaviour:
   state: 0
   started: 1
   guid: 8e3ed244c658c4c498c61a9625675ca8
-  position: {x: 314.40002, y: -579.19995}
+  position: {x: 314, y: -311}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -1632,7 +1632,7 @@ MonoBehaviour:
     pointToPaperName: 
   description: 
   drawGizmos: 0
-  child: {fileID: 0}
+  child: {fileID: 8805973794668733733}
 --- !u!114 &3331453131761682593
 MonoBehaviour:
   m_ObjectHideFlags: 0

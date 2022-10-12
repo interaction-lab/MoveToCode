@@ -92,7 +92,7 @@ namespace MoveToCode {
         }
 
         public void MoveAwayFromMaze() {
-            _MoveToObj(MoveAwayFromMazeObj.instance.transform);
+            _TurnMoveTurn(MoveAwayFromMazeObj.instance.transform);
         }
 
         public override string TakeISAAction() {
@@ -107,8 +107,13 @@ namespace MoveToCode {
             MoveToObj(PlayerTransformManagerInstance.OriginT);
         }
         public override string MoveToObj(Transform obj) {
-            _TurnToObj(obj);
-            _MoveToObj(obj);
+            if (obj == MoveAwayFromMazeObj.instance.transform) {
+                MoveAwayFromMaze();
+            }
+            else {
+                _TurnToObj(obj);
+                _MoveToObj(obj);
+            }
             return "Moving to " + obj.name;
         }
 
@@ -154,6 +159,7 @@ namespace MoveToCode {
         UnityEvent OnStartH5 = new UnityEvent();
         UnityEvent OnPointUntilInteract = new UnityEvent();
         UnityEvent OnPointToPaper = new UnityEvent();
+        UnityEvent OnTurnMoveTurn = new UnityEvent();
         protected override void Init() {
             // add all necessary Unity Events
             KEventRouter.AddEvent(EventNames.OnMoveToObj, OnMoveToObj);
@@ -165,6 +171,7 @@ namespace MoveToCode {
             KEventRouter.AddEvent(EventNames.OnStartH5, OnStartH5);
             KEventRouter.AddEvent(EventNames.OnPointUntilInteract, OnPointUntilInteract);
             KEventRouter.AddEvent(EventNames.OnPointToPaper, OnPointToPaper);
+            KEventRouter.AddEvent(EventNames.OnTurnMoveTurn, OnTurnMoveTurn);
         }
         #endregion
 
@@ -230,6 +237,12 @@ namespace MoveToCode {
             _LookAtObj(KuriBlackBoard.objToPointTo);
             OnPointToPaper.Invoke();
             OnPointToObj.Invoke();
+        }
+
+        void _TurnMoveTurn(Transform obj) {
+            KuriBlackBoard.objToTurnTo = obj;
+            KuriBlackBoard.objToMoveTo = obj;
+            OnTurnMoveTurn.Invoke();
         }
         #endregion
     }

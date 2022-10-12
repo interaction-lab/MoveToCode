@@ -13,13 +13,18 @@ namespace MoveToCode {
         float positionAlongCurve = 0f;
         Bezier bezierCurve;
         Vector3 objPosWhenBezWasCalculated, start, end;
+        public static LoggableMoveToObj CurLoggableMoveToObj = null;
         #endregion
         #region overrides
         protected override void BehCleanUp() {
+            if (CurLoggableMoveToObj == this) {
+                CurLoggableMoveToObj = null;
+            }
             controlPointScaler *= -1; // makes the turns alternate left and right
         }
 
         protected override void BehSetUp() {
+            CurLoggableMoveToObj = this;
             goalObj = blackboard.objToMoveTo;
             if (goalObj == null) {
                 Debug.LogError("LoggableMoveToObj: goalObj is null");
@@ -36,6 +41,9 @@ namespace MoveToCode {
         }
 
         protected override State OnUpdate() {
+            if (CurLoggableMoveToObj != this) {
+                return State.Success; // quietly finish
+            }
             // if the object has moved, recalculate the curve
             if (objPosWhenBezWasCalculated != goalObj.position) {
                 CalcBezCurve();

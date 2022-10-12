@@ -141,6 +141,40 @@ MonoBehaviour:
   WaitForBodyAnim: 1
   WaitForArmAnim: 0
   stackOnMySide: 1
+--- !u!114 &-8025163157460944050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6651f8db2c9cacb4c8022cc7356e9262, type: 3}
+  m_Name: LoggableLookAtObj
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 7faf382921cb2ca4c9dc583d673eb8bb
+  position: {x: 5067, y: 231}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+    objToPointTo: {fileID: 0}
+    objToLookAt: {fileID: 0}
+    objToTurnTo: {fileID: 0}
+    objToMoveTo: {fileID: 0}
+    headSpeed: 1.5
+    armSpeed: 1
+    bodySpeed: 1
+    timeToPoint: 3
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
+    emotion: 0
+    pointToPaperName: 
+  description: 
+  drawGizmos: 0
+  actionName: 
 --- !u!114 &-8002246689728313540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,6 +284,40 @@ MonoBehaviour:
   - {fileID: 5680739273219299114}
   - {fileID: 3331453131761682593}
   - {fileID: 2953893976837848678}
+--- !u!114 &-6420162839138941025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe2f679eeef93a0489c1a31a661a0556, type: 3}
+  m_Name: LoggableTurnToObj
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 7994d32594b443c4ba13259d3d9ebb54
+  position: {x: 4549, y: 231}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+    objToPointTo: {fileID: 0}
+    objToLookAt: {fileID: 0}
+    objToTurnTo: {fileID: 0}
+    objToMoveTo: {fileID: 0}
+    headSpeed: 1.5
+    armSpeed: 1
+    bodySpeed: 1
+    timeToPoint: 3
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
+    emotion: 0
+    pointToPaperName: 
+  description: 
+  drawGizmos: 0
+  actionName: 
 --- !u!114 &-6143583157240790941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,6 +426,40 @@ MonoBehaviour:
   - {fileID: -863424743980031114}
   - {fileID: -6143583157240790941}
   - {fileID: 897939562172012710}
+--- !u!114 &-4983275756010725359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe2f679eeef93a0489c1a31a661a0556, type: 3}
+  m_Name: LoggableTurnToObj
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 566f1c679c0765640afd2ce3f109aebb
+  position: {x: 5216.6377, y: 231}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+    objToPointTo: {fileID: 0}
+    objToLookAt: {fileID: 0}
+    objToTurnTo: {fileID: 0}
+    objToMoveTo: {fileID: 0}
+    headSpeed: 1.5
+    armSpeed: 1
+    bodySpeed: 1
+    timeToPoint: 3
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
+    emotion: 0
+    pointToPaperName: 
+  description: 
+  drawGizmos: 0
+  actionName: 
 --- !u!114 &-4456570047763158925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -432,6 +534,40 @@ MonoBehaviour:
   WaitForBodyAnim: 1
   WaitForArmAnim: 0
   stackOnMySide: 1
+--- !u!114 &-3597841464614455581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6bf04adf43e44643a8f7c94bd147063, type: 3}
+  m_Name: SuccessOnTurnMoveTurn
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 06c8272eaf64ac448bdb05d938d82e40
+  position: {x: 4125, y: 229.99997}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+    objToPointTo: {fileID: 0}
+    objToLookAt: {fileID: 0}
+    objToTurnTo: {fileID: 0}
+    objToMoveTo: {fileID: 0}
+    headSpeed: 1.5
+    armSpeed: 1
+    bodySpeed: 1
+    timeToPoint: 3
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
+    emotion: 0
+    pointToPaperName: 
+  description: 
+  drawGizmos: 0
+  eventName: 
 --- !u!114 &-3253637434573013678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -817,6 +953,47 @@ MonoBehaviour:
   WaitForBodyAnim: 0
   WaitForArmAnim: 1
   stackOnMySide: 1
+--- !u!114 &-289553461551979411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f39f8f6863570aa4f868742941e78b75, type: 3}
+  m_Name: EventDrivenSequence
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 1832ebd66edf0d54fbab23c8c6866460
+  position: {x: 4549, y: 31}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+    objToPointTo: {fileID: 0}
+    objToLookAt: {fileID: 0}
+    objToTurnTo: {fileID: 0}
+    objToMoveTo: {fileID: 0}
+    headSpeed: 1.5
+    armSpeed: 1
+    bodySpeed: 1
+    timeToPoint: 3
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
+    emotion: 0
+    pointToPaperName: 
+  description: 
+  drawGizmos: 0
+  children:
+  - {fileID: -3597841464614455581}
+  - {fileID: 6549486384427017817}
+  - {fileID: -6420162839138941025}
+  - {fileID: 2992599023743866734}
+  - {fileID: 1501302816100963004}
+  - {fileID: -8025163157460944050}
+  - {fileID: -4983275756010725359}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -869,6 +1046,14 @@ MonoBehaviour:
   - {fileID: -856281718602768863}
   - {fileID: 6835578527775189920}
   - {fileID: 3424300790548671402}
+  - {fileID: -289553461551979411}
+  - {fileID: -6420162839138941025}
+  - {fileID: 2992599023743866734}
+  - {fileID: -4983275756010725359}
+  - {fileID: 1501302816100963004}
+  - {fileID: 6549486384427017817}
+  - {fileID: -3597841464614455581}
+  - {fileID: -8025163157460944050}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -1025,6 +1210,41 @@ MonoBehaviour:
   description: 
   drawGizmos: 0
   actionName: 
+--- !u!114 &1501302816100963004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 743e3e8236652444fa88da50fd716b81, type: 3}
+  m_Name: ChangeBlackboardVar
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: cb785454e144dbb4fa5adf8ab9d34879
+  position: {x: 4896, y: 231}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+    objToPointTo: {fileID: 0}
+    objToLookAt: {fileID: 0}
+    objToTurnTo: {fileID: 0}
+    objToMoveTo: {fileID: 0}
+    headSpeed: 1.5
+    armSpeed: 1
+    bodySpeed: 1
+    timeToPoint: 3
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
+    emotion: 0
+    pointToPaperName: 
+  description: 
+  drawGizmos: 0
+  TurnToUser: 1
+  LookAtUser: 1
 --- !u!114 &1797858227440081883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1154,6 +1374,40 @@ MonoBehaviour:
     objToTurnTo: {fileID: 0}
     objToMoveTo: {fileID: 0}
     headSpeed: 1
+    armSpeed: 1
+    bodySpeed: 1
+    timeToPoint: 3
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
+    emotion: 0
+    pointToPaperName: 
+  description: 
+  drawGizmos: 0
+  actionName: 
+--- !u!114 &2992599023743866734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f42d155122c80f4e9b939f04ce2abca, type: 3}
+  m_Name: LoggableMoveToObj
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 0be5315cdb23562488b36d6eb287ab03
+  position: {x: 4734, y: 231}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+    objToPointTo: {fileID: 0}
+    objToLookAt: {fileID: 0}
+    objToTurnTo: {fileID: 0}
+    objToMoveTo: {fileID: 0}
+    headSpeed: 1.5
     armSpeed: 1
     bodySpeed: 1
     timeToPoint: 3
@@ -1548,6 +1802,43 @@ MonoBehaviour:
   description: 
   drawGizmos: 0
   actionName: 
+--- !u!114 &6549486384427017817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c4cbcc34c00c41569f1163799dafdfa, type: 3}
+  m_Name: WaitUntilAnimatorsReleased
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: da6becc3e98b1944b98e1dc4ae7e1bfa
+  position: {x: 4330.6475, y: 231}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+    objToPointTo: {fileID: 0}
+    objToLookAt: {fileID: 0}
+    objToTurnTo: {fileID: 0}
+    objToMoveTo: {fileID: 0}
+    headSpeed: 1.5
+    armSpeed: 1
+    bodySpeed: 1
+    timeToPoint: 3
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
+    emotion: 0
+    pointToPaperName: 
+  description: 
+  drawGizmos: 0
+  timeToWait: 5
+  WaitForBodyAnim: 1
+  WaitForArmAnim: 0
+  stackOnMySide: 0
 --- !u!114 &6835578527775189920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1563,7 +1854,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 13a9c6452409d0a4aa7cdf1587734dfa
-  position: {x: 3654.729, y: 231.19994}
+  position: {x: 3655, y: 230.00008}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -1694,6 +1985,7 @@ MonoBehaviour:
   - {fileID: -2517789072312802955}
   - {fileID: 3124745330417707916}
   - {fileID: -856281718602768863}
+  - {fileID: -289553461551979411}
 --- !u!114 &9002051904723564352
 MonoBehaviour:
   m_ObjectHideFlags: 0

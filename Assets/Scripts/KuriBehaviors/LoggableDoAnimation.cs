@@ -8,12 +8,17 @@ namespace MoveToCode {
         #region members
         string animationName;
         Animator activeAnimator;
+        public static LoggableDoAnimation CurDoAnim = null;
         #endregion
         #region overrides
         protected override void BehCleanUp() {
+            if (CurDoAnim == this) {
+                CurDoAnim = null;
+            }
         }
 
         protected override void BehSetUp() {
+            CurDoAnim = this;
             animationName = blackboard.emotion.ToString();
             // check if animation is in body animator
             if (BodyAnimator.IsAnimationInAnimator(animationName)) {
@@ -27,6 +32,9 @@ namespace MoveToCode {
         }
 
         protected override State OnUpdate() {
+            if (CurDoAnim != this) {
+                return State.Success; // quietly finish
+            }
             if (activeAnimator.IsThisAnimationPlaying(animationName)) {
                 return State.Running;
             }

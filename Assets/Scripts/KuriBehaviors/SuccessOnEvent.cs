@@ -9,10 +9,9 @@ namespace MoveToCode {
         KuriBTEventRouter eventRouter;
         public string eventName = "";
         UnityEvent evt;
-
-        float timeEventHappened = -1f, lastFrameTime = -1f;
         bool processedEvent = true;
-
+        float eventLockOutTime = 0.2f; // don't allow event to be processed again until this time has passed
+        float timeSinceLastEvent = 0.21f;
         protected override void OnStart() {
             eventRouter = context.eventRouter;
             if (eventName == "") {
@@ -32,18 +31,16 @@ namespace MoveToCode {
         }
 
         protected virtual void OnEvent() {
-            timeEventHappened = Time.time;
-            processedEvent = false;
+            if (timeSinceLastEvent > eventLockOutTime) {
+                processedEvent = false;
+                timeSinceLastEvent = 0;
+            }
         }
 
         protected override State OnUpdate() {
-            bool ret = false;
-            if (timeEventHappened == Time.time || // happened this frame
-               (timeEventHappened == lastFrameTime && !processedEvent)) { // happened last frame and was not processed
-                processedEvent = true;
-                ret = true;
-            }
-            lastFrameTime = Time.time;
+            bool ret = !processedEvent;
+            processedEvent = true;
+            timeSinceLastEvent += Time.deltaTime;
             return ret ? State.Success : State.Failure;
         }
     }

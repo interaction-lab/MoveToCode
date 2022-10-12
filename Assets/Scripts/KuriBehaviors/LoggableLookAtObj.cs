@@ -11,6 +11,7 @@ namespace MoveToCode {
         KuriHeadPositionManager _kuriHeadPositionManager;
         TutorKuriTransformManager kuriTransformManager;
         KuriBTBodyController kuriBodyController;
+        public static LoggableLookAtObj CurLoggableLookAtObj = null;
         KuriHeadPositionManager kuriHeadPositionManager {
             get {
                 if (_kuriHeadPositionManager == null) {
@@ -23,6 +24,9 @@ namespace MoveToCode {
         #endregion
         #region overrides
         protected override State OnUpdate() {
+            if (CurLoggableLookAtObj != this) {
+                return State.Success; // quietly quit out of this behavior if another one is running
+            }
             // deal with exit time for backToUser looking
             if (objToLookAt != origTransform) {
                 SetObjToLookAt();
@@ -66,10 +70,14 @@ namespace MoveToCode {
         }
 
         protected override void BehSetUp() {
+            CurLoggableLookAtObj = this;
             Init();
         }
 
         protected override void BehCleanUp() {
+            if (CurLoggableLookAtObj == this) {
+                CurLoggableLookAtObj = null;
+            }
             kuriHeadPositionManager.ResetHead(); // quick and dirty way to just make it snap back but good enough
         }
         #endregion

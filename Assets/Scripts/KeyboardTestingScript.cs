@@ -55,9 +55,7 @@ public class KeyboardTestingScript : MonoBehaviour {
     }
     void Update() {
         if (Input.GetKeyDown(KeyCode.Alpha0)) {
-            foreach (CodeBlock cb in CodeBlockManager.instance.GetAllCodeBlocks()) {
-                Debug.Log(cb.GetMyIArgument().ToJSON());
-            }
+
         }
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
             KuriAIBTRandomInstance.ForceHelpfulAction();

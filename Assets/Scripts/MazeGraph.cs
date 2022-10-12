@@ -117,6 +117,7 @@ namespace MoveToCode {
                 if (!mp0.ConnectionDict.ContainsKey(dir)) {
                     continue;
                 }
+
                 if (DifferentConnection(mp0, mp1, dir, isRotated) > 0) {
                     return false;
                 }
@@ -134,7 +135,11 @@ namespace MoveToCode {
             MazePiece mp0Neighbor = mp0.ConnectionDict[dir].ConnectedMP;
             if (rotateSecondPiece) {
                 dir = MazePiece.GetOppositeDir(dir);
+                if (!mp1.ConnectionDict.ContainsKey(dir)) {
+                    return 2;
+                }
             }
+
             MazePiece mp1SameDirNeighbor = mp1.ConnectionDict[dir].ConnectedMP;
             if (mp0Neighbor == null && mp1SameDirNeighbor == null) {
                 return 0;

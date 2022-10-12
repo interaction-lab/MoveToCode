@@ -194,8 +194,8 @@ namespace MoveToCode {
                     KController.PointToPaper(mp.gameObject.name);
                 }
                 else {
-                    KController.PointAtObj(mp.transform);
-                    KController.MoveToObj(mp.transform);
+                    KController.OnlyLookAtObj(mp.transform);
+                    KController.MoveToThenPoint(mp.transform);
                 }
             }
         }

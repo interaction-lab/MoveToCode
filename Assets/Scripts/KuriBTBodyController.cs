@@ -140,6 +140,10 @@ namespace MoveToCode {
             _PointToPaper(mpName);
         }
 
+        public void MoveToThenPoint(Transform obj) {
+            _MoveThenPoint(obj);
+        }
+
         #endregion
 
         #region protected
@@ -160,6 +164,7 @@ namespace MoveToCode {
         UnityEvent OnPointUntilInteract = new UnityEvent();
         UnityEvent OnPointToPaper = new UnityEvent();
         UnityEvent OnTurnMoveTurn = new UnityEvent();
+        UnityEvent OnMoveThenPoint = new UnityEvent();
         protected override void Init() {
             // add all necessary Unity Events
             KEventRouter.AddEvent(EventNames.OnMoveToObj, OnMoveToObj);
@@ -172,6 +177,7 @@ namespace MoveToCode {
             KEventRouter.AddEvent(EventNames.OnPointUntilInteract, OnPointUntilInteract);
             KEventRouter.AddEvent(EventNames.OnPointToPaper, OnPointToPaper);
             KEventRouter.AddEvent(EventNames.OnTurnMoveTurn, OnTurnMoveTurn);
+            KEventRouter.AddEvent(EventNames.OnMoveThenPoint, OnMoveThenPoint);
         }
         #endregion
 
@@ -243,6 +249,13 @@ namespace MoveToCode {
             KuriBlackBoard.objToTurnTo = obj;
             KuriBlackBoard.objToMoveTo = obj;
             OnTurnMoveTurn.Invoke();
+        }
+
+        void _MoveThenPoint(Transform obj) {
+            KuriBlackBoard.objToMoveTo = obj;
+            KuriBlackBoard.objToPointTo = obj;
+            KuriBlackBoard.timeToPoint = normalPointTime;
+            OnMoveThenPoint.Invoke();
         }
         #endregion
     }

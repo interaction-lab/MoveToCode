@@ -18,5 +18,6 @@ namespace MoveToCode {
         public static string OnInteractWith = "OnInteractWith";
         public static string OnPointToPaper = "OnPointToPaper";
         public static string OnTurnMoveTurn = "OnTurnMoveTurn";
+        public static string OnMoveThenPoint = "OnMoveThenPoint";
     }
 }

@@ -1,5 +1,39 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9051881218917962677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7d109b0b4cae8c4ebcaa6d05795642b, type: 3}
+  m_Name: LoggablePointToObj
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: e8f6161d39fc9a0408b130c71caa6118
+  position: {x: 4611.7935, y: 221.00002}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+    objToPointTo: {fileID: 0}
+    objToLookAt: {fileID: 0}
+    objToTurnTo: {fileID: 0}
+    objToMoveTo: {fileID: 0}
+    headSpeed: 1.5
+    armSpeed: 1
+    bodySpeed: 1
+    timeToPoint: 3
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
+    emotion: 0
+    pointToPaperName: 
+  description: 
+  drawGizmos: 0
+  actionName: 
 --- !u!114 &-8794032629101224346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,6 +139,44 @@ MonoBehaviour:
   description: 
   drawGizmos: 0
   eventName: 
+--- !u!114 &-8338947891967766112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f39f8f6863570aa4f868742941e78b75, type: 3}
+  m_Name: EventDrivenSequence
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 3a6a92be87096f24ab2e2216895773e6
+  position: {x: 4234.5474, y: 50.000027}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+    objToPointTo: {fileID: 0}
+    objToLookAt: {fileID: 0}
+    objToTurnTo: {fileID: 0}
+    objToMoveTo: {fileID: 0}
+    headSpeed: 1.5
+    armSpeed: 1
+    bodySpeed: 1
+    timeToPoint: 3
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
+    emotion: 0
+    pointToPaperName: 
+  description: 
+  drawGizmos: 0
+  children:
+  - {fileID: -6724293140805098191}
+  - {fileID: -3812509793920048257}
+  - {fileID: 590803800559264466}
+  - {fileID: -9051881218917962677}
 --- !u!114 &-8331754927214135792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,7 +228,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 7faf382921cb2ca4c9dc583d673eb8bb
-  position: {x: 5067, y: 231}
+  position: {x: 5930.0737, y: 222.43735}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -247,6 +319,40 @@ MonoBehaviour:
   child: {fileID: 5455867068348529835}
   restartOnSuccess: 1
   restartOnFailure: 1
+--- !u!114 &-6724293140805098191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e12743851d65b943a17c12100092e66, type: 3}
+  m_Name: SuccessOnMoveThenPoint
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: e618d098cf8cf7947917b8b8af092a5d
+  position: {x: 4051, y: 231}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+    objToPointTo: {fileID: 0}
+    objToLookAt: {fileID: 0}
+    objToTurnTo: {fileID: 0}
+    objToMoveTo: {fileID: 0}
+    headSpeed: 1.5
+    armSpeed: 1
+    bodySpeed: 1
+    timeToPoint: 3
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
+    emotion: 0
+    pointToPaperName: 
+  description: 
+  drawGizmos: 0
+  eventName: 
 --- !u!114 &-6588785799623424298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,7 +405,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 7994d32594b443c4ba13259d3d9ebb54
-  position: {x: 4549, y: 231}
+  position: {x: 5412.0737, y: 222.43735}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -441,7 +547,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 566f1c679c0765640afd2ce3f109aebb
-  position: {x: 5216.6377, y: 231}
+  position: {x: 6080.0737, y: 222.43735}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -497,6 +603,43 @@ MonoBehaviour:
   WaitForBodyAnim: 1
   WaitForArmAnim: 1
   stackOnMySide: 0
+--- !u!114 &-3812509793920048257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c4cbcc34c00c41569f1163799dafdfa, type: 3}
+  m_Name: WaitUntilAnimatorsReleased
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 85ef1d9dfcc491543b4c4235ea6181b4
+  position: {x: 4257, y: 230.99997}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+    objToPointTo: {fileID: 0}
+    objToLookAt: {fileID: 0}
+    objToTurnTo: {fileID: 0}
+    objToMoveTo: {fileID: 0}
+    headSpeed: 1.5
+    armSpeed: 1
+    bodySpeed: 1
+    timeToPoint: 3
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
+    emotion: 0
+    pointToPaperName: 
+  description: 
+  drawGizmos: 0
+  timeToWait: 5
+  WaitForBodyAnim: 1
+  WaitForArmAnim: 1
+  stackOnMySide: 1
 --- !u!114 &-3633006731352339402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -549,7 +692,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 06c8272eaf64ac448bdb05d938d82e40
-  position: {x: 4125, y: 229.99997}
+  position: {x: 4988.0737, y: 221.43742}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -968,7 +1111,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 1832ebd66edf0d54fbab23c8c6866460
-  position: {x: 4549, y: 31}
+  position: {x: 5412.0737, y: 22.437368}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -1054,6 +1197,11 @@ MonoBehaviour:
   - {fileID: 6549486384427017817}
   - {fileID: -3597841464614455581}
   - {fileID: -8025163157460944050}
+  - {fileID: -8338947891967766112}
+  - {fileID: -6724293140805098191}
+  - {fileID: 590803800559264466}
+  - {fileID: -9051881218917962677}
+  - {fileID: -3812509793920048257}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -1106,6 +1254,40 @@ MonoBehaviour:
   - {fileID: 5333853384887555370}
   - {fileID: -1409664464866813851}
   - {fileID: 6086065679420354868}
+--- !u!114 &590803800559264466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f42d155122c80f4e9b939f04ce2abca, type: 3}
+  m_Name: LoggableMoveToObj
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 1109c4f84467bd545883fce4482bcc6c
+  position: {x: 4462.5, y: 221.00002}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+    objToPointTo: {fileID: 0}
+    objToLookAt: {fileID: 0}
+    objToTurnTo: {fileID: 0}
+    objToMoveTo: {fileID: 0}
+    headSpeed: 1.5
+    armSpeed: 1
+    bodySpeed: 1
+    timeToPoint: 3
+    BodyAnimatorSemaphoreCount: 0
+    ArmAnimatorSemaphoreCount: 0
+    emotion: 0
+    pointToPaperName: 
+  description: 
+  drawGizmos: 0
+  actionName: 
 --- !u!114 &897939562172012710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1225,7 +1407,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: cb785454e144dbb4fa5adf8ab9d34879
-  position: {x: 4896, y: 231}
+  position: {x: 5759.0737, y: 222.43735}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -1399,7 +1581,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 0be5315cdb23562488b36d6eb287ab03
-  position: {x: 4734, y: 231}
+  position: {x: 5597.0737, y: 222.43735}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -1817,7 +1999,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: da6becc3e98b1944b98e1dc4ae7e1bfa
-  position: {x: 4330.6475, y: 231}
+  position: {x: 5194.0737, y: 222.43735}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -1985,6 +2167,7 @@ MonoBehaviour:
   - {fileID: -2517789072312802955}
   - {fileID: 3124745330417707916}
   - {fileID: -856281718602768863}
+  - {fileID: -8338947891967766112}
   - {fileID: -289553461551979411}
 --- !u!114 &9002051904723564352
 MonoBehaviour:

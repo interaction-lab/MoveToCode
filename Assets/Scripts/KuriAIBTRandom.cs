@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 namespace MoveToCode {
@@ -67,6 +67,15 @@ namespace MoveToCode {
                 return _armAnimator;
             }
         }
+        Interpreter interpreter;
+        Interpreter InterpreterInstance {
+            get {
+                if (interpreter == null) {
+                    interpreter = Interpreter.instance;
+                }
+                return interpreter;
+            }
+        }
         // need to maze completed action
 
         bool initialized = false;
@@ -96,7 +105,8 @@ namespace MoveToCode {
         public override void Tick() {
             if (!KuriIdling() ||
                 TutorKuriManagerInstance.TimeLastActionStarted > TutorKuriManagerInstance.TimeLastActionEnded ||
-                TutorKuriManagerInstance.TimeLastActionEnded.TimeSince() < TutorKuriManagerInstance.TimeWindow) {
+                TutorKuriManagerInstance.TimeLastActionEnded.TimeSince() < TutorKuriManagerInstance.TimeWindow ||
+                InterpreterInstance.CodeIsRunning()) {
                 return;
             }
 
@@ -112,7 +122,7 @@ namespace MoveToCode {
                     // randomly call do look_around Emotion
                     // check if animating anything right now
                     if (BodyAnimator.IsFullyIdle() &&
-                         (Random.Range(0, 1000) < 1)) {
+                         (UnityEngine.Random.Range(0, 1000) < 1)) {
                         // set head quaternion to identity
                         BodyAnimator.Play(KuriController.EMOTIONS.look_around.ToString()); // need one more behavior for this, maybe just some blinking or something?
                     }
@@ -122,18 +132,18 @@ namespace MoveToCode {
         }
 
         public void DoRandomBTAction() {
-            int rand = Random.Range(2, 5);
+            int rand = UnityEngine.Random.Range(2, 5);
 
             if (rand == 2) {
                 KController.TurnTowardsUser();
             }
             else if (rand == 3) {
                 // random happy
-                KController.DoAnimationAction(KuriController.PositiveEmotions[Random.Range(0, KuriController.PositiveEmotions.Length)]);
+                KController.DoAnimationAction(KuriController.PositiveEmotions[UnityEngine.Random.Range(0, KuriController.PositiveEmotions.Length)]);
             }
             else if (rand == 4) {
                 // random sad
-                KController.DoAnimationAction(KuriController.NegativeEmotions[Random.Range(0, KuriController.NegativeEmotions.Length)]);
+                KController.DoAnimationAction(KuriController.NegativeEmotions[UnityEngine.Random.Range(0, KuriController.NegativeEmotions.Length)]);
             }
         }
         #endregion
@@ -190,7 +200,7 @@ namespace MoveToCode {
                 KController.PointToPaper(mp.gameObject.name);
             }
             else {
-                if (Random.Range(0, 2) == 0) {
+                if (UnityEngine.Random.Range(0, 2) == 0) {
                     KController.PointToPaper(mp.gameObject.name);
                 }
                 else {
@@ -206,16 +216,20 @@ namespace MoveToCode {
                 return;
             }
 
-            ExerciseManager.instance.SayScaffoldingOfCurExercise(); // this needs to also return an obj to move to
+            // first = said something, second = objofinterest
+            Pair<bool, Transform> pair = ExerciseManager.instance.SayScaffoldingOfCurExercise(); // this needs to also return an obj to move to
 
-            // these really have to be exercise specific, maybe hardcoding in a bunch of help conditions although that will be very difficult, I think we might be able to just rely on the idea that students will hopefully be curious during this stage and we can just leave them alone/possibly animate randomly
-            // check if start code block is out of view
-            Transform blockTransformOfInterest = StartCodeBlock.instance.transform; // should probably turn this into a function to use any block of interest
-            ArrowPointPrefab startArrowPoint = ViewPortManager.instance.GetArrowPoint(blockTransformOfInterest);
-            if (startArrowPoint == null) {
-                KController.PointAtObj(blockTransformOfInterest); // this will spawn the arrow point for later/first time using it
+            if (pair.First && pair.Second != null) {
+                Transform blockTransformOfInterest = pair.Second;
+                ArrowPointPrefab vpArrowPoint = ViewPortManager.instance.GetArrowPoint(blockTransformOfInterest);
+                if (vpArrowPoint == null) {
+                    KController.PointAtObj(blockTransformOfInterest); // this will spawn the arrow point for later/first time using it
+                }
+                KController.MoveToThenPoint(blockTransformOfInterest);
             }
-            KController.MoveToThenPoint(blockTransformOfInterest);
+            else if (!pair.First) { // used up all scaffolding
+                KController.SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT.Encouragement);
+            }
         }
 
         void OnExerciseCorrect() {

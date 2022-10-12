@@ -80,7 +80,9 @@ namespace MoveToCode {
         void MoveAway(Transform col) {
             // calculate a position from user to move away to
             if (col == PlayerT) {
-                col = MazeManager.instance.BKMazePiece.transform;
+                // move MoveAwayTarget 1 meter in front of the player and use that
+                moveAwayTransform.position = PlayerT.position + PlayerT.forward * 1.5f;
+                col = moveAwayTransform;
             }
 
             Vector3 playerP = PlayerT.position;

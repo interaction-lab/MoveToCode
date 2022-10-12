@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine.Events;
+using UnityEngine;
 
 namespace MoveToCode {
     public class ExerciseManager : Singleton<ExerciseManager> {
@@ -33,7 +34,7 @@ namespace MoveToCode {
             return curExercise;
         }
 
-        public bool SayScaffoldingOfCurExercise() {
+        public Pair<bool, Transform> SayScaffoldingOfCurExercise() {
             return curExercise.GetComponent<ExerciseScaffolding>().SayNextScaffold();
         }
 

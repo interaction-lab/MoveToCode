@@ -283,42 +283,6 @@ MonoBehaviour:
   WaitForBodyAnim: 1
   WaitForArmAnim: 1
   stackOnMySide: 0
---- !u!114 &-7270678516503451307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afb5496e8cd973748a10b3e3ef436ebd, type: 3}
-  m_Name: Repeat
-  m_EditorClassIdentifier: 
-  state: 0
-  started: 1
-  guid: 7aa6018060dc51a48b98d12a65def982
-  position: {x: 314.40002, y: -425.59998}
-  blackboard:
-    goalPosition: {x: 0, y: 0, z: 0}
-    goalRotation: {x: 0, y: 0, z: 0}
-    objToPointTo: {fileID: 0}
-    objToLookAt: {fileID: 0}
-    objToTurnTo: {fileID: 0}
-    objToMoveTo: {fileID: 0}
-    headSpeed: 1
-    armSpeed: 1
-    bodySpeed: 1
-    timeToPoint: 3
-    BodyAnimatorSemaphoreCount: 0
-    ArmAnimatorSemaphoreCount: 0
-    emotion: 0
-    pointToPaperName: 
-  description: 
-  drawGizmos: 0
-  child: {fileID: 5455867068348529835}
-  restartOnSuccess: 1
-  restartOnFailure: 1
 --- !u!114 &-6724293140805098191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1153,10 +1117,8 @@ MonoBehaviour:
   treeState: 0
   nodes:
   - {fileID: 3231384683707443026}
-  - {fileID: -7270678516503451307}
   - {fileID: 5680739273219299114}
   - {fileID: -8371660481982443300}
-  - {fileID: 5455867068348529835}
   - {fileID: 8805973794668733733}
   - {fileID: 5266085361642218364}
   - {fileID: -6588785799623424298}
@@ -1670,7 +1632,7 @@ MonoBehaviour:
     pointToPaperName: 
   description: 
   drawGizmos: 0
-  child: {fileID: -7270678516503451307}
+  child: {fileID: 0}
 --- !u!114 &3331453131761682593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1881,41 +1843,6 @@ MonoBehaviour:
   description: 
   drawGizmos: 0
   eventName: 
---- !u!114 &5455867068348529835
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2932073b8a6c3b34391576c45d359457, type: 3}
-  m_Name: Parallel
-  m_EditorClassIdentifier: 
-  state: 0
-  started: 0
-  guid: 0ab9ed365c5b05744b5922e26555e747
-  position: {x: 314.40002, y: -290.40002}
-  blackboard:
-    goalPosition: {x: 0, y: 0, z: 0}
-    goalRotation: {x: 0, y: 0, z: 0}
-    objToPointTo: {fileID: 0}
-    objToLookAt: {fileID: 0}
-    objToTurnTo: {fileID: 0}
-    objToMoveTo: {fileID: 0}
-    headSpeed: 1
-    armSpeed: 1
-    bodySpeed: 1
-    timeToPoint: 3
-    BodyAnimatorSemaphoreCount: 0
-    ArmAnimatorSemaphoreCount: 0
-    emotion: 0
-    pointToPaperName: 
-  description: 
-  drawGizmos: 0
-  children:
-  - {fileID: 8805973794668733733}
 --- !u!114 &5680739273219299114
 MonoBehaviour:
   m_ObjectHideFlags: 0

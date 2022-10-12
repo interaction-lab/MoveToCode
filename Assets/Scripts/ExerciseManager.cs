@@ -33,6 +33,10 @@ namespace MoveToCode {
             return curExercise;
         }
 
+        public bool SayScaffoldingOfCurExercise() {
+            return curExercise.GetComponent<ExerciseScaffolding>().SayNextScaffold();
+        }
+
         public bool AlertCodeFinished() {
             if (curExercise != null) { // This if is to guard against initializing interpreter
                 if (MazeManager.instance.IsBKAtTheGoalNow() && MazeManager.instance.IsSameAsSolutionMaze()) {

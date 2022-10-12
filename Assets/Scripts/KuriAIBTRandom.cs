@@ -206,18 +206,16 @@ namespace MoveToCode {
                 return;
             }
 
+            ExerciseManager.instance.SayScaffoldingOfCurExercise(); // this needs to also return an obj to move to
+
             // these really have to be exercise specific, maybe hardcoding in a bunch of help conditions although that will be very difficult, I think we might be able to just rely on the idea that students will hopefully be curious during this stage and we can just leave them alone/possibly animate randomly
             // check if start code block is out of view
             Transform blockTransformOfInterest = StartCodeBlock.instance.transform; // should probably turn this into a function to use any block of interest
             ArrowPointPrefab startArrowPoint = ViewPortManager.instance.GetArrowPoint(blockTransformOfInterest);
             if (startArrowPoint == null) {
                 KController.PointAtObj(blockTransformOfInterest); // this will spawn the arrow point for later/first time using it
-                KController.MoveToObj(blockTransformOfInterest);
             }
-            else if (!startArrowPoint.IsInViewPort) {
-                KController.PointAtObj(blockTransformOfInterest);
-                KController.MoveToObj(blockTransformOfInterest);
-            }
+            KController.MoveToThenPoint(blockTransformOfInterest);
         }
 
         void OnExerciseCorrect() {

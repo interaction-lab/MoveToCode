@@ -113,11 +113,11 @@ namespace MoveToCode {
 
         #region private
         private void OnCodeEnd() {
-            MyButton.enabled = true;
+            transform.parent.gameObject.SetActive(true);
         }
 
         private void OnCodeStart() {
-            MyButton.enabled = false;
+            transform.parent.gameObject.SetActive(false);
         }
 
         void OnButtonClick() {

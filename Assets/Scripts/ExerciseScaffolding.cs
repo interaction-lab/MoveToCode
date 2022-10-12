@@ -5,12 +5,13 @@ namespace MoveToCode {
         public string[] scafoldDialogue;
         int curScaffold = 0;
 
-        public void SayNextScaffold() {
+        public bool SayNextScaffold() {
             if (curScaffold >= scafoldDialogue.Length) {
                 TutorKuriManager.instance.KController.SayAndDoPositiveAffect(KuriTextManager.TYPEOFAFFECT.Encouragement);
-                return;
+                return false;
             }
             KuriTextManager.instance.Addline(scafoldDialogue[curScaffold++], KuriTextManager.PRIORITY.high); // high so that it does disappear
+            return true;
         }
 
         public void SetScaffoldDialogue(string[] dialogue) {

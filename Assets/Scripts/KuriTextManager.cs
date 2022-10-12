@@ -102,6 +102,10 @@ namespace MoveToCode {
         IEnumerator ProcessText(int myCommandNum) {
             yield return new WaitUntil(() => curCommandNum == myCommandNum);
             TutorKuriManagerInstance.TimeLastActionStarted = Time.time; // counting text saying as an action now
+            if (!TutorKuriManager.instance.IsKuriOnScreen()) {
+                TutorKuriManager.instance.TurnOnArrowPoint();
+            }
+
             CurTextCommand = commandQueue.Peek();
             commandQueue.Dequeue();
 

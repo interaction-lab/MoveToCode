@@ -102,21 +102,33 @@ namespace MoveToCode {
             LoggingManager.instance.UpdateLogColumn(robotKCLevel, robotKC.ToString("F3"));
         }
         public void TurnOnArrowPoint() {
-            viewPortManager.TurnOnArrow(transformManager.OriginT);
+            if (myArrowPoint != null) {
+                viewPortManager.TurnOnArrow(transformManager.OriginT);
+            }
         }
         public void TurnOffArrowPoint() {
-            viewPortManager.TurnOffArrow(transformManager.OriginT);
+            if (myArrowPoint != null) {
+                viewPortManager.TurnOffArrow(transformManager.OriginT);
+            }
+        }
+        public bool IsKuriOnScreen(){
+            if(myArrowPoint == null){
+                return true; // shouldn't happen but whatever
+            }
+            return myArrowPoint.IsInViewPort;
         }
         #endregion
 
         #region private
+        ArrowPointPrefab myArrowPoint;
         private void SpawnArrowPointer() {
-            viewPortManager.SpawnNewArrowPoint(transformManager.OriginT, // body
+            myArrowPoint = viewPortManager.SpawnNewArrowPoint(transformManager.OriginT, // body
                 new Vector3(0, 0.1f, 0),
                 Color.black, // outer color
                 Color.white,  // inner color
                 "Kuri Is Behind You");
             TurnOffArrowPoint();
+            myArrowPoint.OnEnterViewPort.AddListener(TurnOffArrowPoint);
         }
         IEnumerator StartRoutine() {
             inStartUp = true;

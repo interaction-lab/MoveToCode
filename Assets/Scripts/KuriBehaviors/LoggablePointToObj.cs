@@ -6,6 +6,7 @@ namespace MoveToCode {
     public class LoggablePointToObj : LoggableBehPrimitive {
 
         #region members
+        public static LoggablePointToObj CurPointToObj = null;
         Transform objToPointTo, handTransform, shoulderTransform;
         // maxArmLength calced from shoulder to end of hand, this is roughly it
         // speed is in m/s
@@ -37,6 +38,9 @@ namespace MoveToCode {
         #endregion
         #region overrides
         protected override void BehCleanUp() {
+            if (CurPointToObj == this) {
+                CurPointToObj = null;
+            }
             if (objToPointTo != Camera.main.transform) {
                 ViewPortManagerInstance.TurnOffArrow(objToPointTo);
             }
@@ -46,12 +50,15 @@ namespace MoveToCode {
         }
 
         protected override void BehSetUp() {
+            CurPointToObj = this;
             SetMembers();
             CreateAndSetArrowPoint();
         }
 
         protected override State OnUpdate() {
-
+            if (CurPointToObj != this) {
+                return State.Success; // quietly finish
+            }
             if (movingBackToOrigStart &&
                 Vector3.Distance(ikObj.transform.position, origStart) < 0.01f) { // phase 2 aka move back to orig start
                 return State.Success;

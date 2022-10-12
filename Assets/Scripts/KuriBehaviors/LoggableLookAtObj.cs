@@ -56,7 +56,7 @@ namespace MoveToCode {
         }
 
         private bool TurningToThisObj() {
-            return objToLookAt == blackboard.objToTurnTo;
+            return objToLookAt == blackboard.objToTurnTo && LoggableTurnToObj.CurTurnToObj != null;
         }
 
         protected override void SetLogActionName() {

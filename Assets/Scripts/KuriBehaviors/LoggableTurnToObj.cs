@@ -62,7 +62,7 @@ namespace MoveToCode {
 
         // Note this isn't perfect since the obj is never reset unless a new looking at is passed in
         private bool LookingAtThisObj() {
-            return blackboard.objToLookAt == objTransform;
+            return blackboard.objToLookAt == objTransform && LoggableLookAtObj.CurLoggableLookAtObj != null;
         }
 
         protected override void SetAnimatorSemaphoreCount() {

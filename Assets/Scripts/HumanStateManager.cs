@@ -8,7 +8,7 @@ namespace MoveToCode {
 
         public bool IsDoingAction {
             get {
-                return ManipulationLogger.currentlyManipulating;
+                return ManipulationLogger.currentlyManipulating || MazeConnector.HitThisFrame;
             }
         }
 
@@ -98,7 +98,12 @@ namespace MoveToCode {
         void Update() {
             if (IsDoingAction) {
                 LastTimeHumanDidAction = Time.time;
-                LoggingManager.instance.UpdateLogColumn(humanCurAction, ManipulationLogger.CurAction); // TODO: get the actual aciton
+                if (MazeConnector.HitThisFrame) {
+                    LoggingManager.instance.UpdateLogColumn(humanCurAction, "ConnectMazePiece"); // TODO: get the actual aciton
+                }
+                else {
+                    LoggingManager.instance.UpdateLogColumn(humanCurAction, ManipulationLogger.CurAction); // TODO: get the actual aciton
+                }
             }
         }
         public void DebugLogData() {

@@ -1,5 +1,5 @@
 using System;
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -65,6 +65,11 @@ namespace MoveToCode {
             }
         }
 
+        public static bool HitThisFrame {
+            get;
+            set;
+        }
+
 
         #endregion
 
@@ -78,12 +83,13 @@ namespace MoveToCode {
             if ((otherMazeConnector != null && IsSameMazePieceType(otherMazeConnector.MyMazePiece)) &&
             On && otherMazeConnector.On) { // BUG possible: the On parts may not work correctly, this may need to be done in MazeManager
                 AddRequestAndAttemptConnect(otherMazeConnector);
+                StartCoroutine(HitForOneFrame());
                 ReliableOnTriggerExit.NotifyTriggerEnter(other, gameObject, OnTriggerExit);
             }
         }
         private void OnTriggerExit(Collider other) {
             MazeConnector otherMazeConnector = other.gameObject.GetComponent<MazeConnector>();
-            if ((otherMazeConnector != null && IsSameMazePieceType(otherMazeConnector.MyMazePiece)) 
+            if ((otherMazeConnector != null && IsSameMazePieceType(otherMazeConnector.MyMazePiece))
             && On && otherMazeConnector.On) {
                 RemoveRequestAndAttemptConnect(otherMazeConnector);
                 ReliableOnTriggerExit.NotifyTriggerExit(other, gameObject);
@@ -137,6 +143,13 @@ namespace MoveToCode {
 
             MyMazePiece.SnapConnections();
             AudioManager.instance?.PlaySoundAtObject(gameObject, AudioManager.snapAudioClip);
+        }
+
+        WaitForEndOfFrame wfe = new WaitForEndOfFrame();
+        IEnumerator HitForOneFrame() {
+            HitThisFrame = true;
+            yield return wfe;
+            HitThisFrame = false;
         }
 
         private float GetAngleOfConnectorRelativeToForward(MazeConnector anchorMC) {

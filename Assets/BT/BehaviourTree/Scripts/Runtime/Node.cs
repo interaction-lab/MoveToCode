@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using MoveToCode;
 using System.Linq;
+#if UNITY_EDITOR
 using UnityEditor.Experimental.GraphView;
+#endif
 
 namespace TheKiwiCoder {
     public abstract class Node : ScriptableObject {

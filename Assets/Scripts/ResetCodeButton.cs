@@ -80,6 +80,7 @@ namespace MoveToCode {
 
         #region unity
         private void Awake() {
+            InterpreterInstance.OnCodeStart.AddListener(OnCodeStart);
             InterpreterInstance.OnCodeEnd.AddListener(OnCodeEnd);
             InterpreterInstance.OnCodeReset.AddListener(OnCodeReset);
             SwitchModeButton.OnSwitchToCodingMode.AddListener(OnSwitchToCodingMode);
@@ -99,6 +100,10 @@ namespace MoveToCode {
         #endregion
 
         #region private
+        private void OnCodeStart() {
+            transform.parent.gameObject.SetActive(false);
+        }
+
         private void OnCodeReset() {
             if (IsUIButton) {
                 PulseIMG.StopPulse();
@@ -111,6 +116,7 @@ namespace MoveToCode {
         }
 
         private void OnCodeEnd() {
+            transform.parent.gameObject.SetActive(true);
             if (IsUIButton) {
                 // if the code is incorrect, pulse the button
                 if (!MazeManagerInstance.ExerciseInFullyCompleteState) {

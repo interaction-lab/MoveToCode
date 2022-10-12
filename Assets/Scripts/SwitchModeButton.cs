@@ -71,7 +71,7 @@ namespace MoveToCode {
         private void Awake() {
             MyButton.onClick.AddListener(OnScreenClick);
             InterpreterInstance.OnCodeStart.AddListener(OnCodeStart);
-            InterpreterInstance.OnCodeReset.AddListener(OnCodeReset);
+            InterpreterInstance.OnCodeEnd.AddListener(OnCodeEnd);
             ExerciseManager.instance.OnCyleNewExercise.AddListener(OnNewExercise);
             SolMazeCheckMark.instance.OnMazeCorrect.AddListener(OnMazeCorrect);
             SolMazeCheckMark.instance.OnMazeIncorrect.AddListener(OnMazeIncorrect);
@@ -86,6 +86,9 @@ namespace MoveToCode {
         #endregion
 
         #region private
+        private void OnCodeEnd() {
+            SetVisibilityOfThisButton(true);
+        }
         IEnumerator SwitchToBuildAfterOneFrame() {
             yield return null;
             SwitchToMazeBuildingMode();
@@ -107,10 +110,6 @@ namespace MoveToCode {
                 SwitchToMazeBuildingMode();
             }
         }
-        private void OnCodeReset() {
-            SetVisibilityOfThisButton(true);
-        }
-
         private void OnCodeStart() {
             SetVisibilityOfThisButton(false);
         }

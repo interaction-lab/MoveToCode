@@ -1,7 +1,9 @@
 namespace MoveToCode {
     public class RepeatCodeBlock : SingleControlFlowCodeBlock {
         protected override void SetMyBlockInternalArg() {
-            myBlockInternalArg = new RepeatInstruction(this);
+            if (myBlockInternalArg == null) {
+                myBlockInternalArg = new RepeatInstruction(this);
+            }
         }
     }
 }

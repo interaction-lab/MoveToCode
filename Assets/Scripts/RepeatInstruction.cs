@@ -32,7 +32,6 @@ namespace MoveToCode {
 
         private void SetCurIter(int num) {
             curIter = num;
-            MyCodeBlock.UpdateText();
         }
 
         public override string ToString() {

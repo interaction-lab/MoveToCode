@@ -81,14 +81,17 @@ namespace MoveToCode {
             // calculate a position from user to move away to
             if (col == PlayerT) {
                 // move MoveAwayTarget 1 meter in front of the player and use that
-                moveAwayTransform.position = PlayerT.position + PlayerT.forward * 1.5f;
+                moveAwayTransform.position = PlayerT.position + PlayerT.forward;
                 col = moveAwayTransform;
             }
 
             Vector3 playerP = PlayerT.position;
             playerP.y = TutorKuriTransformManager.instance.GroundYCord;
             Vector3 colP = col.position;
+            colP *= 2.2f;
             colP.y = TutorKuriTransformManager.instance.GroundYCord;
+
+
 
             // calculate line from PlayerT to col
             Vector3 line = colP - playerP;

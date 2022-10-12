@@ -5,6 +5,15 @@ using UnityEngine;
 namespace MoveToCode {
     public class PlayerTransformManager : TransformManager {
         #region members
+        public static PlayerTransformManager _instance;
+        public static PlayerTransformManager instance {
+            get {
+                if (_instance == null) {
+                    _instance = FindObjectOfType<PlayerTransformManager>();
+                }
+                return _instance;
+            }
+        }
         public override Vector3 Forward {
             get {
                 return OriginT.forward;
@@ -18,14 +27,14 @@ namespace MoveToCode {
                 throw new System.NotImplementedException("Cannot set player position");
             }
         }
-		public override Quaternion Rotation {
-			get {
-				return OriginT.rotation;
-			}
-			set {
-				OriginT.rotation = value;
-			}
-		}
+        public override Quaternion Rotation {
+            get {
+                return OriginT.rotation;
+            }
+            set {
+                OriginT.rotation = value;
+            }
+        }
 
         TutorKuriTransformManager _kuriTransformManager;
         TutorKuriTransformManager KuriT {
@@ -46,7 +55,7 @@ namespace MoveToCode {
             }
         }
 
-        
+
         #endregion
 
         #region unity

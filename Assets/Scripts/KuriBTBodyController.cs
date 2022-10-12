@@ -29,7 +29,7 @@ namespace MoveToCode {
         PlayerTransformManager PlayerTransformManagerInstance {
             get {
                 if (ptm == null) {
-                    ptm = Camera.main.GetComponent<PlayerTransformManager>();
+                    ptm = PlayerTransformManager.instance;
                 }
                 return ptm;
             }
@@ -222,7 +222,7 @@ namespace MoveToCode {
 
         void _PointUntilInteract(Transform obj) {
             // if player, just point normally
-            if (obj == Camera.main.transform) {
+            if (obj == PlayerTransformManager.instance.OriginT) {
                 _PointAtObj(obj);
                 return;
             }
@@ -244,7 +244,7 @@ namespace MoveToCode {
 
         private void _HighFive() {
             KuriBlackBoard.emotion = EMOTIONS.h5_start;
-            _LookAtObj(Camera.main.transform); // look at user to start
+            _LookAtObj(PlayerTransformManagerInstance.OriginT); // look at user to start
             OnStartH5.Invoke();
         }
         void _EndAllSeq() {
@@ -267,7 +267,7 @@ namespace MoveToCode {
             KuriBlackBoard.pointToPaperName = mpName;
             KuriBlackBoard.objToPointTo = MazePaper.instance.transform;
 
-            _TurnToObj(Camera.main.transform);
+            _TurnToObj(PlayerTransformManager.instance.OriginT);
             _LookAtObj(KuriBlackBoard.objToPointTo);
             OnPointToPaper.Invoke();
             OnPointToObj.Invoke();

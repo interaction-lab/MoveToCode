@@ -92,6 +92,7 @@ namespace MoveToCode {
 
         #region private
         private void CatchCodeError(Exception ex) {
+            OnCodeEnd.Invoke(); // code has ended, will reset later so invoking this first for other clean up e.g., on screen buttons
             Debug.LogWarning(ex.Message);
             string lineToAdd = ex.ToString();
             if (lineToAdd.Contains(kuriOffMaze)) {

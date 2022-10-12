@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
-using static Microsoft.MixedReality.Toolkit.UI.ObjectManipulator;
 
 namespace MoveToCode {
     public abstract class CodeBlock : MonoBehaviour {
@@ -39,9 +38,7 @@ namespace MoveToCode {
             Assert.IsTrue(enabled == true); // race condition issues if this is starting disabled I think
             AddMRTKComponents();
             AddSnapColliderComponents();
-            if (myBlockInternalArg == null) {
-                SetMyBlockInternalArg();
-            }
+            GetMyIArgument(); // sets interal arg
             codeBlockManagerInstance.RegisterCodeBlock(this);
             SetUpManipulationLogger();
             dragScript = gameObject.AddComponent<CloneOnDrag>(); // TODO: clean this up
@@ -117,10 +114,7 @@ namespace MoveToCode {
         }
 
         public void ResetInstructionInternalState() {
-            if (myBlockInternalArg == null) {
-                SetMyBlockInternalArg();
-            }
-            myBlockInternalArg.ResestInternalState();
+            GetMyIArgument().ResestInternalState();
         }
 
         // Relay to object mesh
@@ -168,6 +162,10 @@ namespace MoveToCode {
         }
 
         public void UpdateText() {
+            // need to deal where the internal arg is not set yet
+            if (myBlockInternalArg == null) {
+                return; // hacky af but whateva hopefully fixes the issue
+            }
             if (textMesh == null) {
                 textMesh = codeBlockTextGameObject?.GetComponent<TextMeshPro>();
             }
@@ -183,7 +181,7 @@ namespace MoveToCode {
         }
 
         public override string ToString() {
-            return myBlockInternalArg.ToString();
+            return GetMyIArgument().ToString();
         }
 
         private void OnEnable() {

@@ -20,22 +20,12 @@ namespace MoveToCode {
             if (CurLoggableMoveToObj == this) {
                 CurLoggableMoveToObj = null;
             }
+            speedinMS = blackboard.bodySpeed;
             controlPointScaler *= -1; // makes the turns alternate left and right
         }
 
         protected override void BehSetUp() {
             CurLoggableMoveToObj = this;
-            goalObj = blackboard.objToMoveTo;
-            if (goalObj == null) {
-                Debug.LogError("LoggableMoveToObj: goalObj is null");
-                return;
-            }
-            if (goalObj == Camera.main.transform) {
-                distThreshold = 1f;
-            }
-            else {
-                distThreshold = 0.4f;
-            }
             kuriTransformManager = TutorKuriTransformManager.instance;
             CalcBezCurve();
         }
@@ -75,6 +65,20 @@ namespace MoveToCode {
         #endregion
         #region helpers
         private void CalcBezCurve() {
+            goalObj = blackboard.objToMoveTo;
+            if (goalObj == null) {
+                Debug.LogError("LoggableMoveToObj: goalObj is null");
+                KuriTextManager.instance.Addline("null obj");
+                return;
+            }
+            KuriTextManager.instance.Addline(goalObj.position.ToString() + ", " + goalObj.gameObject.name);
+
+            if (goalObj == PlayerTransformManager.instance.OriginT) {
+                distThreshold = 0.8f;
+            }
+            else {
+                distThreshold = 0.4f;
+            }
             positionAlongCurve = 0f;
 
             start = kuriTransformManager.Position;

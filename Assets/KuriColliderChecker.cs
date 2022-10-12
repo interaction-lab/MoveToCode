@@ -81,7 +81,10 @@ namespace MoveToCode {
             // calculate a position from user to move away to
             if (col == PlayerT) {
                 // move MoveAwayTarget 1 meter in front of the player and use that
-                moveAwayTransform.position = PlayerT.position + PlayerT.forward;
+                Vector3 forwardVec = PlayerT.forward;
+                forwardVec.y = 0;
+                forwardVec.Normalize();
+                moveAwayTransform.position = PlayerT.position + forwardVec;
                 col = moveAwayTransform;
             }
 

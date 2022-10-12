@@ -10,7 +10,7 @@ namespace MoveToCode {
             // get mesh renderer and turn it off
             MeshRenderer mr = GetComponent<MeshRenderer>();
             if(mr != null){
-                mr.enabled = false;
+            //    mr.enabled = false;
             }
 #endif
         }

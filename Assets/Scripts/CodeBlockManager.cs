@@ -242,6 +242,10 @@ namespace MoveToCode {
                                                                                          //MazeManager.instance.BKMazePiece.transform.position +
                                                                                          //(Vector3.up * .25f + Vector3.right * .2f);
 
+            // get goal piece
+            MazePiece goalPiece = MazeManager.instance.BKMazePiece;
+            transform.position = goalPiece.transform.position + (Vector3.up * .25f + Vector3.right * .2f);
+
             // find the direction toward the user
             Vector3 directionToUser = UserTransform.position - transform.position;
             // rotate the code block to face the user

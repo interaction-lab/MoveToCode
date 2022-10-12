@@ -20,12 +20,12 @@ namespace MoveToCode {
             if (CurLoggableMoveToObj == this) {
                 CurLoggableMoveToObj = null;
             }
-            speedinMS = blackboard.bodySpeed;
             controlPointScaler *= -1; // makes the turns alternate left and right
         }
 
         protected override void BehSetUp() {
             CurLoggableMoveToObj = this;
+            speedinMS = blackboard.bodySpeed;
             kuriTransformManager = TutorKuriTransformManager.instance;
             CalcBezCurve();
         }
@@ -35,7 +35,8 @@ namespace MoveToCode {
                 return State.Success; // quietly finish
             }
             // if the object has moved, recalculate the curve
-            if (objPosWhenBezWasCalculated != goalObj.position) {
+            if (NotCloseBabyyy(objPosWhenBezWasCalculated, goalObj.position)) {
+                Debug.Log("new goal position");
                 CalcBezCurve();
             }
             // check if they are close
@@ -64,6 +65,9 @@ namespace MoveToCode {
         }
         #endregion
         #region helpers
+        private bool NotCloseBabyyy(Vector3 a, Vector3 b) {
+            return Vector3.Distance(a, b) > 0.1f;
+        }
         private void CalcBezCurve() {
             goalObj = blackboard.objToMoveTo;
             if (goalObj == null) {

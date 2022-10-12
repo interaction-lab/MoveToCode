@@ -225,6 +225,7 @@ namespace MoveToCode {
 
         private void _HighFive() {
             KuriBlackBoard.emotion = EMOTIONS.h5_start;
+            _LookAtObj(Camera.main.transform); // look at user to start
             OnStartH5.Invoke();
         }
         void _EndAllSeq() {

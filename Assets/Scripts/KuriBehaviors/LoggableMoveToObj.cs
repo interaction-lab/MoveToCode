@@ -72,10 +72,8 @@ namespace MoveToCode {
             goalObj = blackboard.objToMoveTo;
             if (goalObj == null) {
                 Debug.LogError("LoggableMoveToObj: goalObj is null");
-                KuriTextManager.instance.Addline("null obj");
                 return;
             }
-            KuriTextManager.instance.Addline(goalObj.position.ToString() + ", " + goalObj.gameObject.name);
 
             if (goalObj == PlayerTransformManager.instance.OriginT) {
                 distThreshold = 0.8f;

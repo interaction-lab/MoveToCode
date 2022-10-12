@@ -102,7 +102,7 @@ namespace MoveToCode {
 
         #region unity
         private void Awake() {
-            InterpreterInstance.OnCodeEnd.AddListener(OnCodeEnd);
+            InterpreterInstance.OnCodeReset.AddListener(OnCodeReset);
             InterpreterInstance.OnCodeStart.AddListener(OnCodeStart);
             MyButton.onClick.AddListener(OnButtonClick);
         }
@@ -112,7 +112,7 @@ namespace MoveToCode {
         #endregion
 
         #region private
-        private void OnCodeEnd() {
+        private void OnCodeReset() {
             transform.parent.gameObject.SetActive(true);
         }
 

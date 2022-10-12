@@ -91,22 +91,21 @@ namespace MoveToCode {
             Vector3 playerP = PlayerT.position;
             playerP.y = TutorKuriTransformManager.instance.GroundYCord;
             Vector3 colP = col.position;
-            colP *= 2.2f;
             colP.y = TutorKuriTransformManager.instance.GroundYCord;
 
 
 
             // calculate line from PlayerT to col
-            Vector3 line = colP - playerP;
+            Vector3 line = (colP - playerP).normalized;
 
             // check if Kuri is to the left or to the right
-            Vector3 kuriP = TutorKuriTransformManager.instance.Position;
+            Vector3 kuriP = TutorKuriTransformManager.instance.Position.normalized;
             float angle = IsLeftOfLine(playerP, colP, kuriP) ? -55 : 55;
 
             line = Quaternion.Euler(0, angle, 0) * line;
 
             // calculate global position of rotated line
-            Vector3 newPos = playerP + line;
+            Vector3 newPos = playerP + line * 2.0f;
 
             moveAwayTransform.position = newPos;
 

@@ -90,14 +90,19 @@ namespace MoveToCode {
             // look through my connected pieces
             foreach (MazePiece myMazePiece in GetAllConnectedMazePieces()) {
                 // look through other connected pieces
+                bool foundSamePiece = false;
                 foreach (MazePiece otherMazePiece in other.GetAllConnectedMazePieces()) {
                     // check out types are the same
                     if (myMazePiece.MyMPType != otherMazePiece.MyMPType) {
                         continue;
                     }
-                    if (!IsSamePieceWConnections(myMazePiece, otherMazePiece)) {
-                        return myMazePiece;
+                    if (IsSamePieceWConnections(myMazePiece, otherMazePiece)) {
+                        foundSamePiece = true;
+                        break;
                     }
+                }
+                if (!foundSamePiece) {
+                    return myMazePiece;
                 }
             }
             return null;

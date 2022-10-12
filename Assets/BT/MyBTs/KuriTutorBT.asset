@@ -1173,8 +1173,8 @@ MonoBehaviour:
     objToMoveTo: {fileID: 0}
     headSpeed: 2
     armSpeed: 1
-    bodySpeed: 1
-    timeToPoint: 3
+    bodySpeed: 4
+    timeToPoint: 5
     BodyAnimatorSemaphoreCount: 0
     ArmAnimatorSemaphoreCount: 0
     emotion: 0

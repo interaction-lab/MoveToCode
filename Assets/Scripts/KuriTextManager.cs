@@ -18,6 +18,15 @@ namespace MoveToCode {
                 return string.Join("", "C: ", commandType.ToString(), " P: ", priority.ToString(), " T: ", text.Replace("\n", ""));
             }
         }
+        TutorKuriManager kuriManager;
+        TutorKuriManager TutorKuriManagerInstance {
+            get {
+                if (kuriManager == null) {
+                    kuriManager = TutorKuriManager.instance;
+                }
+                return kuriManager;
+            }
+        }
 
         float textTypingTime = 0.0025f; // the lower the faster it is
         static string textLogCol = "KuriDialogue";
@@ -92,6 +101,7 @@ namespace MoveToCode {
 
         IEnumerator ProcessText(int myCommandNum) {
             yield return new WaitUntil(() => curCommandNum == myCommandNum);
+            TutorKuriManagerInstance.TimeLastActionStarted = Time.time; // counting text saying as an action now
             CurTextCommand = commandQueue.Peek();
             commandQueue.Dequeue();
 
@@ -121,6 +131,7 @@ namespace MoveToCode {
             }
             ++curCommandNum;
             CurTextCommand = null; // used for check of not talking
+            TutorKuriManagerInstance.TimeLastActionEnded = Time.time;
         }
 
         public enum TYPEOFAFFECT {

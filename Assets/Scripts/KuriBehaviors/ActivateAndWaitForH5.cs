@@ -63,7 +63,7 @@ namespace MoveToCode {
                 RPulseMeshRend.StopPulse();
                 KuriTextManager.instance.Clear(KuriTextManager.PRIORITY.low);
                 if (MazeManagerInstance.ExerciseInFullyCompleteState) {
-                    ScreenMenuManagerInstance.MyResetCodeButton.SetToNextMazeWPulse();
+                    ScreenMenuManagerInstance.MyOnScreenPlayButton.SetToNextMazeWPulse();
                 }
             }
         }

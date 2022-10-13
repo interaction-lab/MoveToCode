@@ -52,7 +52,6 @@ namespace MoveToCode {
         }
 
         public GameObject screenPlayButtonObject;
-        public GameObject screenResetButtonObject;
         public TextMeshProUGUI modeText;
         PulseImg _pulseImg;
         PulseImg PulseIMG {
@@ -124,7 +123,6 @@ namespace MoveToCode {
             CurrentMode = MODE.MazeBuilding; // need to be careful because changing state prior to actually running anything
             MazeManagerInstance.UnlockMaze();
             screenPlayButtonObject.SetActive(false);
-            screenResetButtonObject.SetActive(false);
             modeText.text = "Mode 1: Maze Building";
             OnSwitchToMazeBuildingMode.Invoke();
         }
@@ -133,7 +131,6 @@ namespace MoveToCode {
             CurrentMode = MODE.Coding; // need to be careful because changing state prior to actually running anything
             MazeManagerInstance.LockMaze();
             screenPlayButtonObject.SetActive(true);
-            screenResetButtonObject.SetActive(true);
             modeText.text = "Mode 2: Coding";
             PulseIMG.StopPulse();
             OnSwitchToCodingMode.Invoke();

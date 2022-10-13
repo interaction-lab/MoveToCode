@@ -109,6 +109,16 @@ namespace MoveToCode {
                 return _allMazePieces;
             }
         }
+
+        MazeLoggingManager mlm;
+        MazeLoggingManager MLM {
+            get {
+                if (mlm == null) {
+                    mlm = MazeLoggingManager.instance;
+                }
+                return mlm;
+            }
+        }
         #endregion
         #region unity
         private void OnEnable() {
@@ -251,7 +261,8 @@ namespace MoveToCode {
 
         public void LogMaze() {
             // log maze a single time at end of frame using coroutine
-            StartCoroutine(LogMazeCoroutine());
+            MLM.LogMaze();
+
         }
         #endregion
 
@@ -272,19 +283,7 @@ namespace MoveToCode {
             }
             return closest;
         }
-        bool loggedThisFrame = false;
-        IEnumerator LogMazeCoroutine() {
-            yield return new WaitForEndOfFrame();
-            if (loggedThisFrame) {
-                yield break;
-            }
-            loggedThisFrame = true;
-            LoggingManagerInstance.UpdateLogColumn(mazeLogCol, MyMazeGraph.ToString());
-            LoggingManagerInstance.UpdateLogColumn(containsSolCol, IsSameAsSolutionMaze() ? "1" : "0");
-            SolMazeCheckMark.instance.ToggleCheckMark(); // this is super hacky
-            yield return new WaitForEndOfFrame();
-            loggedThisFrame = false;
-        }
+
         private void MoveOutOfView() {
             transform.position = new Vector3(0, 100, 0);
         }

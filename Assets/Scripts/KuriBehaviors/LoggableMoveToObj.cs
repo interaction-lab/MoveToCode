@@ -36,7 +36,6 @@ namespace MoveToCode {
             }
             // if the object has moved, recalculate the curve
             if (NotCloseBabyyy(objPosWhenBezWasCalculated, goalObj.position)) {
-                Debug.Log("new goal position");
                 CalcBezCurve();
             }
             // check if they are close

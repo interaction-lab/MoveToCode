@@ -33,6 +33,15 @@ namespace MoveToCode {
                 return mm;
             }
         }
+        NextMazeArrow nma;
+        NextMazeArrow NextMazeArrowInstance {
+            get {
+                if (nma == null) {
+                    nma = transform.parent.gameObject.GetComponentInChildren<NextMazeArrow>();
+                }
+                return nma;
+            }
+        }
         #endregion
 
         #region unity
@@ -48,6 +57,7 @@ namespace MoveToCode {
         public void SetToNextMazeWPulse() {
             TXTUI.text = "Next Maze";
             PulseIMG.StopPulse();
+            NextMazeArrowInstance.TurnOn();
             PulseIMG.StartPulse(Color.blue);
         }
         #endregion
@@ -59,6 +69,7 @@ namespace MoveToCode {
 
         private void OnSwitchToCodingMode() {
             transform.parent.gameObject.SetActive(true);
+            NextMazeArrowInstance.TurnOff();
         }
 
         private void OnCodeStart() {
@@ -71,12 +82,14 @@ namespace MoveToCode {
             if (!MazeManagerInstance.ExerciseInFullyCompleteState) {
                 PulseIMG.StartPulse(Color.red);
                 TXTUI.text = "Reset Code";
+                NextMazeArrowInstance.TurnOn();
             }
         }
 
         private void OnCodeReset() {
             PulseIMG.StopPulse();
             TXTUI.text = "Play Code";
+            NextMazeArrowInstance.TurnOff();
         }
         #endregion
     }

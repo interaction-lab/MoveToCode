@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace MoveToCode {
-    public class SwitchModeArrow : MonoBehaviour {
-        PulseImg _pulseImg;
+    public class NextMazeArrow : MonoBehaviour {
+        PulseImg _pulseImg = null;
         public PulseImg PulseIMG {
             get {
                 if (_pulseImg == null) {
@@ -15,41 +15,18 @@ namespace MoveToCode {
         }
         Vector3 origPos;
 
-        void Awake() {
-            MazeManager.instance.OnMazeLocked.AddListener(OnMazeLocked);
-            MazeManager.instance.OnMazeUnlocked.AddListener(OnMazeUnlocked);
-            SolMazeCheckMark.instance.OnMazeCorrect.AddListener(OnMazeCorrect);
-            SolMazeCheckMark.instance.OnMazeIncorrect.AddListener(OnMazeIncorrect);
+        private void Awake() {
             origPos = transform.position;
         }
 
-        void OnMazeLocked() {
-            TurnOff();
-        }
-
-        void OnMazeUnlocked() {
-            if (MazeManager.instance.IsSameAsSolutionMaze()) {
-                TurnOn();
-            }
-        }
-
-        void OnMazeCorrect() {
-            if (!MazeManager.instance.IsLocked) {
-                TurnOn();
-            }
-        }
-
-        void OnMazeIncorrect() {
-            TurnOff();
-        }
-
-        void TurnOn() {
+        public void TurnOn() {
             gameObject.SetActive(true);
             PulseIMG.StartPulse(Color.white);
+            // start a coroutine to move right some then back
             StartCoroutine(MoveRightThenBack());
         }
 
-        void TurnOff() {
+        public void TurnOff() {
             moving = false;
             PulseIMG.StopPulse();
             gameObject.SetActive(false);
@@ -60,9 +37,9 @@ namespace MoveToCode {
             if (moving) {
                 yield break;
             }
-            moving = true;
             RectTransform rt = GetComponent<RectTransform>();
             rt.localPosition = new Vector3(100, 0, 0); // origPos just hacked
+            moving = true;
 
             float time = 0;
             float duration = 0.5f;

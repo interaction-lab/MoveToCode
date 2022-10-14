@@ -265,12 +265,10 @@ namespace MoveToCode {
 
         void _PointToPaper(string mpName) {
             KuriBlackBoard.pointToPaperName = mpName;
+            KuriBlackBoard.objToTurnTo = PlayerTransformManager.instance.OriginT;
             KuriBlackBoard.objToPointTo = MazePaper.instance.transform;
 
-            _TurnToObj(PlayerTransformManager.instance.OriginT);
-            _LookAtObj(KuriBlackBoard.objToPointTo);
             OnPointToPaper.Invoke();
-            OnPointToObj.Invoke();
         }
 
         void _TurnMoveTurn(Transform obj) {

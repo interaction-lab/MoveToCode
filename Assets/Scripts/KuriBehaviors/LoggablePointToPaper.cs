@@ -18,6 +18,7 @@ namespace MoveToCode {
 
         protected override void BehSetUp() {
             MazePaperInstance.TurnOn(blackboard.pointToPaperName);
+            blackboard.objToLookAt = MazePaperInstance.transform; // just in case the turn to user changes where kuri is looking
             timeToPoint = blackboard.timeToPoint;
             startTime = Time.time;
         }

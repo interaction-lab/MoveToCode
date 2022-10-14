@@ -97,6 +97,11 @@ namespace MoveToCode {
                 IsSameMazePieceTypeRegardingSolutionVsRealMazePieces(otherMazeConnector.MyMazePiece)) &&
                 On &&
                 otherMazeConnector.On) {
+                // make a check here to see if my connection is all messed up
+                if (MyConnection != null && MyConnection.IsPartiallyOpen()) {
+                    MyConnection.RequestDisconnect();
+                }
+
                 AddRequestAndAttemptConnect(otherMazeConnector);
                 ReliableOnTriggerExit.NotifyTriggerEnter(other, gameObject, OnTriggerExit);
                 StartCoroutine(HitForOneFrame());

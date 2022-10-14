@@ -120,7 +120,7 @@ namespace MoveToCode {
         }
 
         private void OnTrackingNow() {
-            PulseAlphaMesh();
+            //PulseAlphaMesh();
             MeshOut.enabled = true;
             if (!isTracking) {
                 isTracking = true;

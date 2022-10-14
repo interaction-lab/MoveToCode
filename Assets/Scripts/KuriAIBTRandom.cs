@@ -182,6 +182,11 @@ namespace MoveToCode {
             bool missingPiece = mp != null;
             if (!missingPiece) {
                 mp = MazeManagerInstance.GetMisalignedPiece(); // need to get a misaligned as maze has all the same pieces as sol
+                if (mp == null) { // this happens when the maze has extra pieces
+                    KuriTextManager.instance.Addline("Too many pieces in maze, make sure it looks exactly like the solution maze.");
+                    KController.DoRandomPositiveAction();
+                    return;
+                }
                 KuriTextManager.instance.Addline(
                     "It looks like your " +
                     mp.MyMPType.Name + " " +

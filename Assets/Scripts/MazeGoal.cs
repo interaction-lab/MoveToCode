@@ -57,13 +57,8 @@ namespace MoveToCode {
             var main = Particles.main;
             main.loop = false;
 #if UNITY_EDITOR
-            // remove trashbutton canvas so that we don't accidently remove the goal during debugging in the editor
-            foreach (Transform t in transform) {
-                if (t.name.Contains("Trash")) {
-                    Destroy(t.gameObject);
-                    break;
-                }
-            }
+            StartCoroutine(RemoveTrashOnNextFrame());
+
 #endif
         }
         #endregion
@@ -72,6 +67,20 @@ namespace MoveToCode {
         #endregion
 
         #region private
+
+#if UNITY_EDITOR
+        IEnumerator RemoveTrashOnNextFrame() {
+            yield return null;
+            yield return null;
+            // remove trashbutton canvas so that we don't accidently remove the goal during debugging in the editor
+            foreach (Transform t in transform) {
+                if (t.name.Contains("Trash")) {
+                    Destroy(t.gameObject);
+                    break;
+                }
+            }
+        }
+#endif
         void OnCodeEnd() {
             if (MazeManagerInstance.ExerciseInFullyCompleteState) {
                 KuriTextManager.instance.Addline("Maze completed!");

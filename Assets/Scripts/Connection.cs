@@ -15,7 +15,7 @@ namespace MoveToCode {
             }
         }
         Pair<MazeConnector, MazeConnector> mazeConnectors = new Pair<MazeConnector, MazeConnector>(null, null);
-        bool oneMemberHasAttemptedDisconnect = false;
+        public bool OneMemberHasRequestedDisconnect = false;
         public Color connectedColor;
 
         public bool BothPiecesAreAnchored {
@@ -95,7 +95,7 @@ namespace MoveToCode {
         }
 
         internal void RequestDisconnect() {
-            if (oneMemberHasAttemptedDisconnect) {
+            if (OneMemberHasRequestedDisconnect) {
                 mazeConnectors.First.Disconnect();
                 mazeConnectors.Second.Disconnect();
                 mazeConnectors.First = null;
@@ -103,7 +103,7 @@ namespace MoveToCode {
                 MazeManagerInstance.ReturnOpenConnectionToPool(this);
             }
             else {
-                oneMemberHasAttemptedDisconnect = true;
+                OneMemberHasRequestedDisconnect = true;
             }
         }
         #endregion

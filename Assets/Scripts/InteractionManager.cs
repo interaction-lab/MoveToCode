@@ -40,18 +40,25 @@ namespace MoveToCode {
 
         IEnumerator PolicySwapCoroutine() {
 
+            // warm up routine (let things level out)
             TutorKuriManagerInstance.SetKC(reallyHighKC);
             TutorKuriManagerInstance.SetKuriVisibility(false); // turn off during warm up time
-            yield return new WaitForSeconds(MinToSeconds(warmUpTimeMinutes));
+            yield return new WaitForSecondsRealtime(MinToSeconds(warmUpTimeMinutes));
 
-
-            SetConditionOnDeviceID(true);
 
             float timeLeft = MinToSeconds(fullInteractionTimeMinutes) - MinToSeconds(warmUpTimeMinutes);
             float intervalTime = timeLeft / numIntervals;
-            yield return new WaitForSeconds(intervalTime);
 
+            // first condition
+            SetConditionOnDeviceID(true);
+            yield return new WaitForSecondsRealtime(intervalTime);
+
+
+            // second condition
             SetConditionOnDeviceID(false);
+            yield return new WaitForSecondsRealtime(intervalTime);
+
+            Debug.Log("Quiting at time: " + Time.time);
             Application.Quit();
         }
     }

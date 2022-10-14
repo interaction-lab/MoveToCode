@@ -102,13 +102,19 @@ namespace MoveToCode {
                 }
             }
         }
+        bool initialized = false;
         private void OnEnable() {
 #if !UNITY_EDITOR
             GetComponent<ManipulationHandler>().enabled = false;
 #endif
+            if (!initialized) {
+                initialized = true;
+                return;
+            }
         }
         #endregion
         #region public
+
         public bool IsAtPosition(Vector3 position) {
             return Vector3.Distance(position, Position) < 0.01f;
         }

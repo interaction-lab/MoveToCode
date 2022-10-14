@@ -5,8 +5,21 @@ using UnityEngine;
 namespace MoveToCode {
     [RequireComponent(typeof(AudioSource))]
     public class VirtualKuriAudio : MonoBehaviour {
+
         public static AudioClip iLoveYouAudioClip, greetingAudioClip, yippeAudioClip, bangDownAudioClip, fartAudioClip, ponderSadAudioClip, clapAudioClip, highFiveAudioClip;
         AudioSource aos;
+
+        LoggingManager lm;
+        LoggingManager LoggingManagerInstance {
+            get {
+                if (lm == null) {
+                    lm = LoggingManager.instance;
+                }
+                return lm;
+            }
+        }
+
+        public static string kuriAudioCol = "KuriAudioPlayed";
 
         private void Awake() {
             aos = GetComponent<AudioSource>();
@@ -20,6 +33,8 @@ namespace MoveToCode {
 
             clapAudioClip = Resources.Load<AudioClip>(ResourcePathConstants.KuriClapSound);
             highFiveAudioClip = Resources.Load<AudioClip>(ResourcePathConstants.KuriHighFiveSound);
+
+            LoggingManagerInstance.AddLogColumn(kuriAudioCol, "");
         }
 
         public void PlayILoveYou() {
@@ -55,7 +70,10 @@ namespace MoveToCode {
         }
 
         public void PlayKuriAduioClip(AudioClip ac) {
-            aos.PlayOneShot(ac);
+            if (enabled) {
+                aos.PlayOneShot(ac);
+                LoggingManagerInstance.UpdateLogColumn(kuriAudioCol, ac.name);
+            }
         }
     }
 }

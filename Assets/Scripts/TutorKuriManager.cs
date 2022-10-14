@@ -80,6 +80,16 @@ namespace MoveToCode {
                 return GetComponentInChildren<VirtualKuriAudio>();
             }
         }
+        List<MeshRenderer> _meshrends = null;
+        List<MeshRenderer> KuriMeshRends {
+            get {
+                if (_meshrends == null) {
+                    _meshrends = new List<MeshRenderer>(GetComponentsInChildren<MeshRenderer>(true));
+                }
+                return _meshrends;
+            }
+        }
+        public bool IsOn = true;
         #endregion
 
         #region unity
@@ -111,8 +121,8 @@ namespace MoveToCode {
                 viewPortManager.TurnOffArrow(transformManager.OriginT);
             }
         }
-        public bool IsKuriOnScreen(){
-            if(myArrowPoint == null){
+        public bool IsKuriOnScreen() {
+            if (myArrowPoint == null) {
                 return true; // shouldn't happen but whatever
             }
             return myArrowPoint.IsInViewPort;
@@ -137,19 +147,26 @@ namespace MoveToCode {
             KController.TurnTowardsUser();
             yield return new WaitForSeconds(5);
             KController.MoveToObj(PlayerTransformManager.instance.OriginT);
+            SetKuriVisibility(false);
             yield return new WaitForSeconds(InteractionManager.instance.MinToSeconds(InteractionManager.instance.warmUpTimeMinutes) - 5f);
             inStartUp = false;
         }
 
-        void TurnOffAllMeshRenderers(Transform[] goArr) {
-            foreach (Transform go in goArr) {
-                TurnOffMeshRenderers(go);
-            }
+        public void SetKuriVisibility(bool b) {
+            SetMREnabledRecurssive(transform, b);
+            KuriAudio.enabled = b;
+            IsOn = b;
         }
 
-        void TurnOffMeshRenderers(Transform go) {
-            if (go.name == "KuriArms") {
-                return; // don't turn these off
+        void SetMRsOfAllChildrenTransforms(Transform[] goArr, bool on) {
+            foreach (Transform go in goArr) {
+                SetMREnabledRecurssive(go, on);
+            }
+        }
+        HashSet<string> MRsNotToTurnOffSet = new HashSet<string>() { "MazePaper", "KuriTextManager" };
+        void SetMREnabledRecurssive(Transform go, bool on) {
+            if (MRsNotToTurnOffSet.Contains(go.name)) {
+                return; // don't turn these off or any of their children
             }
 
             if (go.transform.childCount > 0) {
@@ -157,12 +174,12 @@ namespace MoveToCode {
                 foreach (Transform t in go.transform) {
                     goArr.Add(t);
                 }
-                TurnOffAllMeshRenderers(goArr.ToArray());
+                SetMRsOfAllChildrenTransforms(goArr.ToArray(), on);
             }
 
             MeshRenderer rend = go.GetComponent<MeshRenderer>();
             if (rend) {
-                rend.enabled = false;
+                rend.enabled = on;
             }
         }
 

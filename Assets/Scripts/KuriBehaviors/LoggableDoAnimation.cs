@@ -9,6 +9,15 @@ namespace MoveToCode {
         string animationName;
         Animator activeAnimator;
         public static LoggableDoAnimation CurDoAnim = null;
+        TutorKuriManager tkManager;
+        TutorKuriManager TutorKuriManagerInstance {
+            get {
+                if (tkManager == null) {
+                    tkManager = TutorKuriManager.instance;
+                }
+                return tkManager;
+            }
+        }
         #endregion
         #region overrides
         protected override void BehCleanUp() {
@@ -32,7 +41,7 @@ namespace MoveToCode {
         }
 
         protected override State OnUpdate() {
-            if (CurDoAnim != this) {
+            if (CurDoAnim != this || !TutorKuriManagerInstance.IsOn) {
                 return State.Success; // quietly finish
             }
             if (activeAnimator.IsThisAnimationPlaying(animationName)) {

@@ -1,14 +1,25 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MoveToCode {
     public class InteractionManager : Singleton<InteractionManager> {
         public float fullInteractionTimeMinutes, warmUpTimeMinutes;
-        public float startKC = 1f;
-        public float numIntervals = 10;
+        float numIntervals = 2;
         float reallyHighKC = 700f;
-        public bool startLow;
-        bool kcState;
+        TutorKuriManager tkm;
+        TutorKuriManager TutorKuriManagerInstance {
+            get {
+                if (tkm == null) {
+                    tkm = TutorKuriManager.instance;
+                }
+                return tkm;
+            }
+        }
+
+        HashSet<string> OddDevices = new HashSet<string>() {
+
+        };
 
         private void Start() {
             StartCoroutine(PolicySwapCoroutine());
@@ -18,29 +29,30 @@ namespace MoveToCode {
             return f * 60f;
         }
 
-        IEnumerator PolicySwapCoroutine() {
-            TutorKuriManager.instance.SetKC(reallyHighKC);
-            yield return new WaitForSeconds(MinToSeconds(warmUpTimeMinutes));
-            float timeLeft = MinToSeconds(fullInteractionTimeMinutes) - MinToSeconds(warmUpTimeMinutes);
-            float intervalTime = timeLeft / numIntervals;
-            for (int i = 0; i < numIntervals; ++i) {
-                TutorKuriManager.instance.SetKC(ChooseKCRAtInterval(i));
-                yield return new WaitForSeconds(intervalTime);
+        void SetConditionOnDeviceID(bool startUp) {
+            bool cond = OddDevices.Contains(UserIDManager.DeviceId);
+            if (!startUp) {
+                cond = !cond; // flip halfway
             }
-            Application.Quit();
+            TutorKuriManagerInstance.SetKuriVisibility(cond);
+            TutorKuriManagerInstance.SetKC(TutorKuriManagerInstance.robotKC); // does not flip, always whatever is set (-0.5 for experiment)
         }
 
-        public float ChooseKCRAtInterval(int atInterval) {
-            float result = startKC;
-            float addition = atInterval * (1.0f / (numIntervals - 1));
-            if (startLow) {
-                result = -startKC;
-                result += addition;
-            }
-            else {
-                result -= addition;
-            }
-            return result;
+        IEnumerator PolicySwapCoroutine() {
+
+            TutorKuriManagerInstance.SetKC(reallyHighKC);
+            TutorKuriManagerInstance.SetKuriVisibility(false); // turn off during warm up time
+            yield return new WaitForSeconds(MinToSeconds(warmUpTimeMinutes));
+
+
+            SetConditionOnDeviceID(true);
+
+            float timeLeft = MinToSeconds(fullInteractionTimeMinutes) - MinToSeconds(warmUpTimeMinutes);
+            float intervalTime = timeLeft / numIntervals;
+            yield return new WaitForSeconds(intervalTime);
+
+            SetConditionOnDeviceID(false);
+            Application.Quit();
         }
     }
 }

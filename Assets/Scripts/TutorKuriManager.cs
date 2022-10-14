@@ -80,15 +80,7 @@ namespace MoveToCode {
                 return GetComponentInChildren<VirtualKuriAudio>();
             }
         }
-        List<MeshRenderer> _meshrends = null;
-        List<MeshRenderer> KuriMeshRends {
-            get {
-                if (_meshrends == null) {
-                    _meshrends = new List<MeshRenderer>(GetComponentsInChildren<MeshRenderer>(true));
-                }
-                return _meshrends;
-            }
-        }
+
         public bool IsOn = true;
         #endregion
 
@@ -140,6 +132,7 @@ namespace MoveToCode {
             TurnOffArrowPoint();
             myArrowPoint.OnEnterViewPort.AddListener(TurnOffArrowPoint);
         }
+
         IEnumerator StartRoutine() {
             inStartUp = true;
             yield return null;
@@ -147,10 +140,10 @@ namespace MoveToCode {
             KController.TurnTowardsUser();
             yield return new WaitForSeconds(5);
             KController.MoveToObj(PlayerTransformManager.instance.OriginT);
-            SetKuriVisibility(false);
             yield return new WaitForSeconds(InteractionManager.instance.MinToSeconds(InteractionManager.instance.warmUpTimeMinutes) - 5f);
             inStartUp = false;
         }
+
 
         public void SetKuriVisibility(bool b) {
             SetMREnabledRecurssive(transform, b);
@@ -163,7 +156,7 @@ namespace MoveToCode {
                 SetMREnabledRecurssive(go, on);
             }
         }
-        HashSet<string> MRsNotToTurnOffSet = new HashSet<string>() { "MazePaper", "KuriTextManager" };
+        HashSet<string> MRsNotToTurnOffSet = new HashSet<string>() { "MazePaper", "KuriTextManager", "TargetIKLeft", "TargetIKRight" };
         void SetMREnabledRecurssive(Transform go, bool on) {
             if (MRsNotToTurnOffSet.Contains(go.name)) {
                 return; // don't turn these off or any of their children

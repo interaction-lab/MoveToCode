@@ -15,7 +15,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 950df8a20e70c5741af62568acb3a7eb
-  position: {x: 0, y: 0}
+  position: {x: 4436.39, y: 380.75458}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -437,7 +437,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 81460fbc96f32b142ba3c5cd24e413d4
-  position: {x: 4332.642, y: 387.99997}
+  position: {x: 4260.39, y: 379.95456}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -508,7 +508,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 727e4813593d5134f92a3c684e466e92
-  position: {x: 4224, y: 231.20003}
+  position: {x: 4257.599, y: 206.40002}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -529,6 +529,7 @@ MonoBehaviour:
   children:
   - {fileID: 3424300790548671402}
   - {fileID: -6388061338332549969}
+  - {fileID: -9196416312023341697}
 --- !u!114 &-5606815232303424574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1833,7 +1834,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: e86bb99dcebe3aa409543138cbd3b100
-  position: {x: 4132.642, y: 387.99997}
+  position: {x: 4060.3901, y: 379.95456}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}

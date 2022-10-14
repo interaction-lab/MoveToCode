@@ -37,6 +37,15 @@ namespace MoveToCode {
                 return smmm;
             }
         }
+        TutorKuriManager tkm;
+        TutorKuriManager TutorKuriManagerInstance {
+            get {
+                if (tkm == null) {
+                    tkm = TutorKuriManager.instance;
+                }
+                return tkm;
+            }
+        }
         #endregion
         #region overrides
         // this is pathetically inefficient and poorly written, but it works
@@ -69,7 +78,7 @@ namespace MoveToCode {
         }
 
         protected override State OnUpdate() {
-            if (handHit) {
+            if (handHit || !TutorKuriManagerInstance.IsOn) { // want this to end right away if this is not on
                 return State.Success;
             }
             if (Time.time - startTime > maxTimeToWait) {

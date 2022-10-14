@@ -83,10 +83,9 @@ namespace MoveToCode {
         private void Connect(MazeConnector mazeConnector, MazeConnector otherMazeConnector) {
             mazeConnectors.First = mazeConnector;
             mazeConnectors.Second = otherMazeConnector;
+            mazeConnector.MyConnection = this;
             otherMazeConnector.MyConnection = this;
 
-            // connectedColor = UnityEngine.Random.ColorHSV(0f, 1f, 0.5f, 1f, 0.5f, 1f, 1f, 1f);
-            // connectedColor should be average color of both pieces
             connectedColor = Color.Lerp(mazeConnector.MyMazePiece.MyColor, otherMazeConnector.MyMazePiece.MyColor, 0.5f);
             connectedColor.a = 1f;
             mazeConnector.SetColor(connectedColor);
@@ -99,7 +98,8 @@ namespace MoveToCode {
             if (oneMemberHasAttemptedDisconnect) {
                 mazeConnectors.First.Disconnect();
                 mazeConnectors.Second.Disconnect();
-                mazeConnectors.First = mazeConnectors.Second = null;
+                mazeConnectors.First = null;
+                mazeConnectors.Second = null;
                 MazeManagerInstance.ReturnOpenConnectionToPool(this);
             }
             else {

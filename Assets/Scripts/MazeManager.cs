@@ -171,15 +171,15 @@ namespace MoveToCode {
             connectRequests[requestingMazeConnector].Remove(collidedMazeConnector);
         }
 
-        internal Connection GetConnection(MazeConnector requestingMazeConnector) {
+        internal void SetUpConnection(MazeConnector requestingMazeConnector) {
             Assert.IsTrue(connectRequests.ContainsKey(requestingMazeConnector));
-            foreach (var mc in from MazeConnector mc in connectRequests[requestingMazeConnector]// check for matching request
-                               where connectRequests.ContainsKey(mc) && connectRequests[mc].Contains(requestingMazeConnector) && mc.MyConnection == null
+            foreach (var mc in from MazeConnector mc in connectRequests[requestingMazeConnector]    // get all things requesting my connection
+                               where connectRequests.ContainsKey(mc) &&                             // select down only to mcs that have a connection request
+                                    connectRequests[mc].Contains(requestingMazeConnector) &&        // select down again to an mc that contains myself in its set
+                                    mc.MyConnection == null                                         // select down one more to an mc that doesn't have a connection already
                                select mc) {
-                // check for matching connection
-                return new Connection(requestingMazeConnector, mc);
+                new Connection(requestingMazeConnector, mc); // creates a new connection between the two, `Connection.cs` does the connecting
             }
-            return null;
         }
 
         public void AddPopulatedConnection(Connection connection) {

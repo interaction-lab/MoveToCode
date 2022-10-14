@@ -70,6 +70,15 @@ namespace MoveToCode {
             set;
         }
 
+        SwitchModeButton smb;
+        SwitchModeButton ModeButton {
+            get {
+                if (smb == null) {
+                    smb = SwitchModeButton.instance;
+                }
+                return smb;
+            }
+        }
 
         #endregion
 
@@ -78,19 +87,25 @@ namespace MoveToCode {
             SetUpMazeConnector();
         }
 
+        private void Update() {
+            // this is where I would do a jank double check to see if the connection is still populated
+        }
+
         private void OnTriggerEnter(Collider other) {
             MazeConnector otherMazeConnector = other.gameObject.GetComponent<MazeConnector>();
-            if ((otherMazeConnector != null && IsSameMazePieceType(otherMazeConnector.MyMazePiece)) &&
-            On && otherMazeConnector.On) { // BUG possible: the On parts may not work correctly, this may need to be done in MazeManager
+            if ((otherMazeConnector != null &&
+                IsSameMazePieceTypeRegardingSolutionVsRealMazePieces(otherMazeConnector.MyMazePiece)) &&
+                On &&
+                otherMazeConnector.On) {
                 AddRequestAndAttemptConnect(otherMazeConnector);
-                StartCoroutine(HitForOneFrame());
                 ReliableOnTriggerExit.NotifyTriggerEnter(other, gameObject, OnTriggerExit);
+                StartCoroutine(HitForOneFrame());
             }
         }
         private void OnTriggerExit(Collider other) {
             MazeConnector otherMazeConnector = other.gameObject.GetComponent<MazeConnector>();
-            if ((otherMazeConnector != null && IsSameMazePieceType(otherMazeConnector.MyMazePiece))
-            && On && otherMazeConnector.On) {
+            if ((otherMazeConnector != null &&
+                IsSameMazePieceTypeRegardingSolutionVsRealMazePieces(otherMazeConnector.MyMazePiece))) { // maybe just never care about being on vs off here
                 RemoveRequestAndAttemptConnect(otherMazeConnector);
                 ReliableOnTriggerExit.NotifyTriggerExit(other, gameObject);
             }
@@ -108,7 +123,7 @@ namespace MoveToCode {
             MeshRend.enabled = false;
         }
 
-        public bool IsSameMazePieceType(MazePiece otherMP) { // super jank, but it works to change the difference in solution maze pieces and generic maze pieces
+        public bool IsSameMazePieceTypeRegardingSolutionVsRealMazePieces(MazePiece otherMP) { // super jank, but it works to change the difference in solution maze pieces and generic maze pieces
             bool iamsol = (MyMazePiece as SolMazePiece) != null;
             bool theyaresol = (otherMP as SolMazePiece) != null;
             return iamsol == theyaresol;
@@ -217,9 +232,13 @@ namespace MoveToCode {
 
         private void AttemptNewConnection() {
             if (MyConnection == null) {
-                MyConnection = MazeManagerInstance.GetConnection(this);
+                MazeManagerInstance.SetUpConnection(this);
             }
-            // tell the maze to log itself here as long as it is not a solution maze
+            else { // already have a connection
+
+            }
+
+
             if (!(MyMazePiece is SolMazePiece)) {
                 MazeManagerInstance.LogMaze();
             }

@@ -225,7 +225,8 @@ namespace MoveToCode {
         }
         private void RemoveRequestAndAttemptConnect(MazeConnector otherMazeConnector) {
             MazeManagerInstance.RemoveRequest(this, otherMazeConnector);
-            if (otherMazeConnector?.MyConnection == MyConnection) {
+            if (MyConnection != null &&
+                otherMazeConnector?.MyConnection == MyConnection) {
                 MyConnection.RequestDisconnect();
             }
         }

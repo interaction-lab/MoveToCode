@@ -253,10 +253,7 @@ namespace MoveToCode {
         public MazePiece GetMisalignedPiece() {
             // this assumes that GetMissingPiecesFromMaze returns null meaning all pieces are technically in the maze but oriented incorrectly
             // not calling an assertion here as to not waste time although not sure if assertions run in the main build or not...
-            MazePiece ret = null;
-            Dictionary<MPType, int> solMPs = SolMazeManagerInstance.ActiveSolMazeGraph.GetConnectedMazePiecesCount();
-            Dictionary<MPType, int> mazeMPs = MyMazeGraph.GetConnectedMazePiecesCount();
-            return ret;
+            return MyMazeGraph.FindMazePieceMisAligned(SolMazeManagerInstance.ActiveSolMazeGraph);
         }
 
         public void LogMaze() {

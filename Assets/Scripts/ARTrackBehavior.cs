@@ -1,3 +1,4 @@
+using Microsoft.MixedReality.Toolkit.Utilities;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.XR.ARFoundation;
@@ -55,6 +56,31 @@ namespace MoveToCode {
                 return isTracking;
             }
         }
+
+        Material _outlineMat;
+        Material OutlineMaterial {
+            get {
+                if (_outlineMat == null) {
+                    _outlineMat = Resources.Load<Material>(ResourcePathConstants.OutlineMazePieceMaterial);
+                }
+                return _outlineMat;
+            }
+        }
+        MeshOutline mo;
+        MeshOutline MeshOut {
+            get {
+                if (mo == null) {
+                    mo = GetComponent<MeshOutline>();
+                    if (mo == null) {
+                        mo = gameObject.AddComponent<MeshOutline>();
+                    }
+                    mo.OutlineMaterial = OutlineMaterial;
+                    mo.OutlineWidth = 0.01f;
+                    mo.enabled = false;
+                }
+                return mo;
+            }
+        }
         #endregion
 
         #region unity
@@ -84,6 +110,7 @@ namespace MoveToCode {
 
         private void OnNotTracking() {
             ResetMeshAlpha();
+            MeshOut.enabled = false;
             if (isTracking) {
                 isTracking = false;
                 TrackingIndicator.TurnOff();
@@ -94,6 +121,7 @@ namespace MoveToCode {
 
         private void OnTrackingNow() {
             PulseAlphaMesh();
+            MeshOut.enabled = true;
             if (!isTracking) {
                 isTracking = true;
                 TrackingIndicator.TurnOn();

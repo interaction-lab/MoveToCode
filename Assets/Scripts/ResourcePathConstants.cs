@@ -50,6 +50,7 @@ namespace MoveToCode {
         public static string MaterialFolder = "Materials/";
         public static string OutlineSnapColliderMaterial = MaterialFolder + "OutlineSnapCollider";
         public static string OutlineCodeBlockMaterial = MaterialFolder + "OutlineCodeBlock";
+        public static string OutlineMazePieceMaterial = MaterialFolder + "OutlineMazePieces";
         public static string FakeButtonPressParticleMaterial = MaterialFolder + "FakeButtonPressParticle";
         public static string locLedOnMaterial = MaterialFolder + "ChestLED";
         public static string locLedOffMaterial = MaterialFolder + "ChestLED_off";

@@ -190,7 +190,7 @@ namespace MoveToCode {
                 KuriTextManager.instance.Addline(
                     "It looks like your " +
                     mp.MyMPType.Name + " " +
-                    "piece is not connected right. Move the piece around to connect it to look exactlly like the solution maze.",
+                    "piece is not connected right. Move the piece around to connect it to look exactly like the solution maze.",
                     KuriTextManager.PRIORITY.low);
             }
             else {

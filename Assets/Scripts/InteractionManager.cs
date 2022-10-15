@@ -30,7 +30,7 @@ namespace MoveToCode {
         }
 
         void SetConditionOnDeviceID(bool startUp) {
-            bool cond = OddDevices.Contains(UserIDManager.DeviceId);
+            bool cond = !OddDevices.Contains(UserIDManager.DeviceId); // allows for starting with kuri when in editor etc
             if (!startUp) {
                 cond = !cond; // flip halfway
             }

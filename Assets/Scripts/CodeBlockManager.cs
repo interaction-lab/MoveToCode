@@ -244,12 +244,20 @@ namespace MoveToCode {
 
             // get goal piece
             MazePiece goalPiece = MazeManager.instance.BKMazePiece;
-            transform.position = goalPiece.transform.position + (Vector3.up * .25f + Vector3.right * .2f);
+            // checked that is has been tracked
+            if (goalPiece.HasBeenTracked) {
+                transform.position = goalPiece.transform.position + (Vector3.up * .25f + Vector3.right * .2f);
+            }
 
             // find the direction toward the user
             Vector3 directionToUser = UserTransform.position - transform.position;
             // rotate the code block to face the user
             transform.rotation = Quaternion.LookRotation(-directionToUser);
+            // check if they are upside down relative to the user
+            if (Vector3.Dot(transform.up, UserTransform.up) < 0) {
+                // flip the code block
+                transform.Rotate(Vector3.right, 180);
+            }
         }
         #endregion
     }

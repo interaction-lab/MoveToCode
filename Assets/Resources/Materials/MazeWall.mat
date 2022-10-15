@@ -193,7 +193,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 0.4811321, g: 0.47432363, b: 0.47432363, a: 0.42745098}
     - _ClippingBorderColor: {r: 1, g: 0.2, b: 0, a: 1}
-    - _Color: {r: 0.4811321, g: 0.47432357, b: 0.47432357, a: 0.42745098}
+    - _Color: {r: 0.4811321, g: 0.47432363, b: 0.47432363, a: 0.42745098}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _EmissiveColor: {r: 0, g: 0, b: 0, a: 1}
     - _EnvironmentColorX: {r: 1, g: 0, b: 0, a: 1}

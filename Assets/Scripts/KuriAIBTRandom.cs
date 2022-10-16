@@ -97,6 +97,10 @@ namespace MoveToCode {
             _DoHelpfulActionGivenMode();
         }
 
+
+        public override void Wave() {
+            KController.DoAnimationAction(KuriController.EMOTIONS.NewWave);
+        }
         private bool KuriIdling() {
             return BodyAnimator.IsInAnIdleState() &&
                 ArmAnimator.IsInAnIdleState();

@@ -96,6 +96,9 @@ namespace MoveToCode {
         #endregion
 
         #region public
+        public void Wave() {
+            kuriAI.Wave();
+        }
         public void AskForHelp() {
             kuriAI.ForceHelpfulAction();
         }

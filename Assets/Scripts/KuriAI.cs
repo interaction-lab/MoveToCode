@@ -12,5 +12,8 @@ namespace MoveToCode {
         }
         public abstract void Tick();
         public abstract void ForceHelpfulAction();
+        public virtual void Wave(){
+            
+        }
     }
 }

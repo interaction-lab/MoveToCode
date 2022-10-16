@@ -29,13 +29,34 @@ namespace MoveToCode {
             return f * 60f;
         }
 
-        void SetConditionOnDeviceID(bool startUp) {
-            bool cond = !OddDevices.Contains(UserIDManager.DeviceId); // allows for starting with kuri when in editor etc
+        IEnumerator SetConditionOnDeviceID(bool startUp) {
+            bool kuriIsOn = !OddDevices.Contains(UserIDManager.DeviceId); // allows for starting with kuri when in editor etc
             if (!startUp) {
-                cond = !cond; // flip halfway
+                kuriIsOn = !kuriIsOn; // flip halfway
             }
-            TutorKuriManagerInstance.SetKuriVisibility(cond);
+
+            if(kuriIsOn){
+                TutorKuriManagerInstance.SetKuriVisibility(kuriIsOn);
+            }
+           
             TutorKuriManagerInstance.SetKC(TutorKuriManagerInstance.robotKC); // does not flip, always whatever is set (-0.5 for experiment)
+            // do the wave animation
+            TutorKuriManagerInstance.Wave();
+            if (kuriIsOn) {
+                KuriTextManager.instance.Addline("Hello, I'm Kuri!");
+            }
+            else {
+                KuriTextManager.instance.Addline("I'm going to take a break now, goodbye!");
+            }
+            yield return new WaitForSecondsRealtime(4.1f); // length of wave anim + some wiggle
+
+            TutorKuriManagerInstance.Wave(); // do a second wave because it is so short and I don't want to make another animation
+            yield return new WaitForSecondsRealtime(4.1f); // length of wave anim + some wiggle
+
+            if(!kuriIsOn){ // let wave goodbye
+                TutorKuriManagerInstance.SetKuriVisibility(kuriIsOn);
+            }
+            KuriTextManager.instance.Clear();
         }
 
         IEnumerator PolicySwapCoroutine() {
@@ -50,12 +71,12 @@ namespace MoveToCode {
             float intervalTime = timeLeft / numIntervals;
 
             // first condition
-            SetConditionOnDeviceID(true);
+            yield return SetConditionOnDeviceID(true);
             yield return new WaitForSecondsRealtime(intervalTime);
 
 
             // second condition
-            SetConditionOnDeviceID(false);
+            yield return SetConditionOnDeviceID(false);
             yield return new WaitForSecondsRealtime(intervalTime);
 
             Debug.Log("Quiting at time: " + Time.time);

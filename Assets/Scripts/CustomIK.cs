@@ -19,6 +19,24 @@ public class CustomIK : MonoBehaviour {
     public bool isEnabled;
     #endregion
 
+    void Awake(){
+        // // arm
+        // if (rootBone == null) {
+        //     rootBone = transform.GetChild(0);
+        // }
+        // if (elbowBone == null) {
+        //     elbowBone = transform;
+        // }
+        // if (endBone == null) {
+        //     endBone = transform.GetChild(0);
+        // }
+        // if (targetIK == null) {
+        //     targetIK = transform;
+        // }
+        // if (elbowIK == null) {
+        //     elbowIK = transform;
+        // }
+    }
     void Update() {
         if (isEnabled) {
             if (rootBone == null || elbowBone == null || endBone == null || targetIK == null || elbowIK == null) {

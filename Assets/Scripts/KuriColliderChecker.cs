@@ -56,15 +56,10 @@ namespace MoveToCode {
             }
         }
         private void OnTriggerStay(Collider other) {
-
-            // this seems to collide with everything, need to fix that
-            // also the movement isn't working
-            // looking at stuff also has messed up eyelids
             if (TutorKuriManagerInstance.KController.IsDoingAction) {
                 return;
             }
             MoveAway(other.transform);
-            Debug.Log(other.transform.name);
         }
 
         #endregion
@@ -98,14 +93,23 @@ namespace MoveToCode {
             // calculate line from PlayerT to col
             Vector3 line = (colP - playerP).normalized;
 
+            // calculate line of player forward vector
+            Vector3 playerForwardLine = PlayerT.forward;
+            playerForwardLine.y = 0;
+            playerForwardLine.Normalize();
+
+            // calculate average of the two lines
+            Vector3 avgLine = (line + playerForwardLine).normalized;
+
+
             // check if Kuri is to the left or to the right
             Vector3 kuriP = TutorKuriTransformManager.instance.Position.normalized;
-            float angle = IsLeftOfLine(playerP, colP, kuriP) ? -55 : 55;
+            float angle = IsLeftOfLine(playerP, colP, kuriP) ? -15 : 15;
 
-            line = Quaternion.Euler(0, angle, 0) * line;
+            line = Quaternion.Euler(0, angle, 0) * avgLine;
 
             // calculate global position of rotated line
-            Vector3 newPos = playerP + line * 2.0f;
+            Vector3 newPos = playerP + avgLine * 2.0f;
 
             moveAwayTransform.position = newPos;
 

@@ -123,7 +123,7 @@ namespace MoveToCode {
 
         private void OnTrackingNow() {
             //PulseAlphaMesh();
-            MeshOut.enabled = true;
+            //MeshOut.enabled = true;
 
             HigherMeshAlpha();
             if (!isTracking) {

@@ -97,6 +97,7 @@ namespace MoveToCode {
         private void OnTriggerEnter(Collider other) {
             MazeConnector otherMazeConnector = other.gameObject.GetComponent<MazeConnector>();
             if ((otherMazeConnector != null &&
+                otherMazeConnector.MyMazePiece != MyMazePiece &&
                 IsSameMazePieceTypeRegardingSolutionVsRealMazePieces(otherMazeConnector.MyMazePiece)) &&
                 On &&
                 otherMazeConnector.On) {

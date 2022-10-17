@@ -65,11 +65,11 @@ namespace MoveToCode {
             lastExerciseCompleted = false;
             curExercise.CleanUp();
             ToggleCurrentExercise(false);
-            OnCyleNewExercise.Invoke();
             curExercisePos += 1;
             LoggingManager.instance.UpdateLogColumn(curExcersieCol, curExercisePos.ToString());
             curExercise = exerciseList[curExercisePos];
             ToggleCurrentExercise(true);
+            OnCyleNewExercise.Invoke();
         }
 
         private void ToggleCurrentExercise(bool desiredActiveState) {

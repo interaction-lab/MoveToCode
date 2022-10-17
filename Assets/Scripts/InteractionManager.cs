@@ -43,15 +43,15 @@ namespace MoveToCode {
             // do the wave animation
             TutorKuriManagerInstance.Wave();
             if (kuriIsOn) {
-                KuriTextManager.instance.Addline("Hello, I'm Kuri!");
+                KuriTextManager.instance.Addline("Hello, I'm Kuri! I'm here to help.");
             }
             else {
                 KuriTextManager.instance.Addline("I'm going to take a break now, goodbye!");
             }
-            yield return new WaitForSecondsRealtime(4.1f); // length of wave anim + some wiggle
+            yield return new WaitForSecondsRealtime(4.01f); // length of wave anim + some wiggle
 
             TutorKuriManagerInstance.Wave(); // do a second wave because it is so short and I don't want to make another animation
-            yield return new WaitForSecondsRealtime(4.1f); // length of wave anim + some wiggle
+            yield return new WaitForSecondsRealtime(4.01f); // length of wave anim + some wiggle
 
             if(!kuriIsOn){ // let wave goodbye
                 TutorKuriManagerInstance.SetKuriVisibility(kuriIsOn);

@@ -17516,7 +17516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consoleStringGoal: 
-  mazeGoalString: The Goal piece will be behind the Kuri piece.
+  mazeGoalString: Place the goal piece behind the Kuri piece.
   codingGoalString: Make baby Kuri move backward.
   varNames: []
   initialVariableValues: 
@@ -21623,7 +21623,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consoleStringGoal: 
-  mazeGoalString: You will need to use a Hall piece for this maze.
+  mazeGoalString: Same maze, add a hall behind.
   codingGoalString: Code baby Kuri to go forward twice!
   varNames: []
   initialVariableValues: 
@@ -31108,8 +31108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consoleStringGoal: 
-  mazeGoalString: You are making the backward maze again. You will use different
-    code blocks this time.
+  mazeGoalString: Same maze, different code blocks.
   codingGoalString: Get baby Kuri to the goal!
   varNames: []
   initialVariableValues: 
@@ -34493,7 +34492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consoleStringGoal: 
-  mazeGoalString: Build a maze that matches the one on the bottom left of your screen.
+  mazeGoalString: Build a maze to match the bottom left maze.
   codingGoalString: Code baby Kuri to the goal one step forward.
   varNames: []
   initialVariableValues: 
@@ -35032,7 +35031,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consoleStringGoal: 
-  mazeGoalString: You will use new blocks to solve this maze.
+  mazeGoalString: Same maze, different code blocks.
   codingGoalString: Use the repeat block to get baby Kuri to the goal.
   varNames: []
   initialVariableValues: 
@@ -63064,7 +63063,7 @@ GameObject:
   - component: {fileID: 1857129390649721643}
   - component: {fileID: 1857129390649721642}
   - component: {fileID: 1857129390649721640}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: KuriTextBackPlate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63537,7 +63536,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2259024666978272994}
-  m_LocalRotation: {x: -0.34040296, y: 0.025087696, z: 0.85616875, w: 0.38790673}
+  m_LocalRotation: {x: -0.34040293, y: 0.02508753, z: 0.8561685, w: 0.3879071}
   m_LocalPosition: {x: -0.16000013, y: 0.16000007, z: 0.026667245}
   m_LocalScale: {x: 2.2222223, y: 2.2222228, z: 2.2222226}
   m_ConstrainProportionsScale: 0
@@ -63701,7 +63700,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2259024667644491887}
-  m_LocalRotation: {x: 0.49924004, y: 0, z: 0, w: 0.8664637}
+  m_LocalRotation: {x: 0.49924096, y: 0, z: 0, w: 0.8664632}
   m_LocalPosition: {x: -0, y: 0, z: 25.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -63750,7 +63749,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2259024667803958411}
-  m_LocalRotation: {x: -0.20311531, y: 0, z: 0, w: 0.9791548}
+  m_LocalRotation: {x: -0.20311584, y: 0, z: 0, w: 0.9791547}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 0.0328084, y: 0.0328084, z: 0.0328084}
   m_ConstrainProportionsScale: 0

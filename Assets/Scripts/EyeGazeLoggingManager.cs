@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.MixedReality.Toolkit;
+using UnityEngine;
 
 namespace MoveToCode {
     public class EyeGazeLoggingManager : Singleton<EyeGazeLoggingManager> {

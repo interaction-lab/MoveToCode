@@ -147,13 +147,13 @@ namespace MoveToCode {
 
         void LowMeshAlpha(){
             Color c = MeshRend.material.color;
-            c.a = 100;
+            c.a = 70;
             MeshRend.material.color = c;
         }
 
         void HigherMeshAlpha(){
             Color c = MeshRend.material.color;
-            c.a = 170;
+            c.a = 120;
             MeshRend.material.color = c;
         }
         protected float CalculateAlpha(float curAlpha) {

@@ -110,6 +110,7 @@ namespace MoveToCode {
 
         private void OnNotTracking() {
             ResetMeshAlpha();
+            LowMeshAlpha();
             MeshOut.enabled = false;
             if (isTracking) {
                 isTracking = false;
@@ -121,6 +122,7 @@ namespace MoveToCode {
 
         private void OnTrackingNow() {
             //PulseAlphaMesh();
+            HigherMeshAlpha();
             MeshOut.enabled = true;
             if (!isTracking) {
                 isTracking = true;
@@ -141,6 +143,18 @@ namespace MoveToCode {
         }
         protected void ResetMeshAlpha() {
             MeshRend.material.color = OrigColor; // TODO make this more efficient/actually fix it -> meh no
+        }
+
+        void LowMeshAlpha(){
+            Color c = MeshRend.material.color;
+            c.a = 100;
+            MeshRend.material.color = c;
+        }
+
+        void HigherMeshAlpha(){
+            Color c = MeshRend.material.color;
+            c.a = 170;
+            MeshRend.material.color = c;
         }
         protected float CalculateAlpha(float curAlpha) {
             float tmpA = (curAlpha - alphaFloor) / (alphaCeil - alphaFloor); // normalize alpha

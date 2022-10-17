@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 
@@ -137,6 +138,7 @@ namespace MoveToCode {
             gameObject.SetActive(true);
         }
         public void LogAllCodeBlocks() {
+            _activeCBs = null; // reset every time we log, hacky but works for now
             List<string> codeBlockJsonList = new List<string>();
             foreach (CodeBlock c in ActiveCodeBlocks) {
                 codeBlockJsonList.Add(c.GetMyIArgument().ToJSON());
@@ -144,6 +146,7 @@ namespace MoveToCode {
             _activeCBs = null; // reset every time we log, hacky but works for now
             LoggingManagerInstance.UpdateLogColumn(codeBlockJsonCol, "[" + string.Join(",", codeBlockJsonList) + "]");
         }
+
         #endregion
 
         #region private

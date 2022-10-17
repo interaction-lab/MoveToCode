@@ -5,6 +5,16 @@ using UnityEngine;
 namespace MoveToCode {
     public class InteractionManager : Singleton<InteractionManager> {
         public float fullInteractionTimeMinutes, warmUpTimeMinutes;
+        LoggingManager lm;
+        LoggingManager LoggingManagerInstance {
+            get {
+                if (lm == null) {
+                    lm = LoggingManager.instance;
+                }
+                return lm;
+            }
+        }
+        public static string conditionCol = "conditionCol";
         float numIntervals = 2;
         float reallyHighKC = 700f;
         TutorKuriManager tkm;
@@ -22,6 +32,7 @@ namespace MoveToCode {
         };
 
         private void Start() {
+            LoggingManagerInstance.AddLogColumn(conditionCol, "");
             StartCoroutine(PolicySwapCoroutine());
         }
 
@@ -35,12 +46,13 @@ namespace MoveToCode {
                 kuriIsOn = !kuriIsOn; // flip halfway
             }
 
-            if(kuriIsOn){
+            if (kuriIsOn) {
                 TutorKuriManagerInstance.SetKuriVisibility(kuriIsOn);
             }
-           
-            TutorKuriManagerInstance.SetKC(TutorKuriManagerInstance.robotKC); // does not flip, always whatever is set (-0.5 for experiment)
+
+            TutorKuriManagerInstance.SetKC(-0.5f); // does not flip, always whatever is set (-0.5 for experiment)
             // do the wave animation
+            LoggingManagerInstance.UpdateLogColumn(conditionCol, "Wave");
             TutorKuriManagerInstance.Wave();
             if (kuriIsOn) {
                 KuriTextManager.instance.Addline("Hello, I'm Kuri! I'm here to help.");
@@ -53,7 +65,8 @@ namespace MoveToCode {
             TutorKuriManagerInstance.Wave(); // do a second wave because it is so short and I don't want to make another animation
             yield return new WaitForSecondsRealtime(4.01f); // length of wave anim + some wiggle
 
-            if(!kuriIsOn){ // let wave goodbye
+            LoggingManagerInstance.UpdateLogColumn(conditionCol, kuriIsOn.ToString());
+            if (!kuriIsOn) { // let wave goodbye
                 TutorKuriManagerInstance.SetKuriVisibility(kuriIsOn);
             }
             KuriTextManager.instance.Clear();
@@ -64,6 +77,7 @@ namespace MoveToCode {
             // warm up routine (let things level out)
             TutorKuriManagerInstance.SetKC(reallyHighKC);
             TutorKuriManagerInstance.SetKuriVisibility(false); // turn off during warm up time
+            LoggingManagerInstance.UpdateLogColumn(conditionCol, "warmup");
             yield return new WaitForSecondsRealtime(MinToSeconds(warmUpTimeMinutes));
 
 

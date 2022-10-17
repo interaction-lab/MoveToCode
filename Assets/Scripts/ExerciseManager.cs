@@ -42,6 +42,7 @@ namespace MoveToCode {
         public bool AlertCodeFinished() {
             if (curExercise != null) { // This if is to guard against initializing interpreter
                 if (MazeManager.instance.IsBKAtTheGoalNow() && MazeManager.instance.IsSameAsSolutionMaze()) {
+                    KuriTextManager.instance.Clear(KuriTextManager.PRIORITY.high); // clear all the text
                     LoggingManager.instance.UpdateLogColumn(exerciseSubmissionResultCol, "Correct");
                     lastExerciseCompleted = true;
                     OnExerciseCorrect.Invoke();

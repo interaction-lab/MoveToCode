@@ -207,6 +207,13 @@ namespace MoveToCode {
         internal void MoveAway(Transform moveAwayTransform) {
             KController.MoveToObj(moveAwayTransform);
         }
+
+        internal void EndAllBehaviors() {
+            KuriBTBodyController btBodyController = KController  as KuriBTBodyController;
+            if(btBodyController != null){
+                btBodyController.StopAllBeh();
+            }
+        }
         #endregion
     }
 }

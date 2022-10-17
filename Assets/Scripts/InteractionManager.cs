@@ -68,6 +68,7 @@ namespace MoveToCode {
             LoggingManagerInstance.UpdateLogColumn(conditionCol, kuriIsOn.ToString());
             if (!kuriIsOn) { // let wave goodbye
                 TutorKuriManagerInstance.SetKuriVisibility(kuriIsOn);
+                TutorKuriManagerInstance.EndAllBehaviors();
             }
             KuriTextManager.instance.Clear();
         }

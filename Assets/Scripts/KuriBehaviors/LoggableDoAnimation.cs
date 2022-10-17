@@ -26,6 +26,7 @@ namespace MoveToCode {
             }
         }
 
+        float timeRun = 0;
         protected override void BehSetUp() {
             CurDoAnim = this;
             animationName = blackboard.emotion.ToString();
@@ -38,13 +39,16 @@ namespace MoveToCode {
                 activeAnimator = ArmAnimator;
                 ArmAnimator.Play(animationName);
             }
+            timeRun = 0;
         }
 
         protected override State OnUpdate() {
             if (CurDoAnim != this || !TutorKuriManagerInstance.IsOn) {
                 return State.Success; // quietly finish
             }
-            if (activeAnimator.IsThisAnimationPlaying(animationName)) {
+            if (timeRun < 0.1f || // wait for transitiontime
+                activeAnimator.IsThisAnimationPlaying(animationName)) {
+                timeRun += Time.deltaTime;
                 return State.Running;
             }
             return State.Success;

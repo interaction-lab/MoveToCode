@@ -25,7 +25,7 @@ namespace MoveToCode {
             look_around,
             NewWave
         }
-        protected static string rISACol = "robotISA", kuriPhysicalEmoteActionCol = "kuriPhysicalAction", kuriMovementActionCol = "kuriMovementAction", kuriCurAction = "kuriCurAction";
+        protected static string rISACol = "robotISA", kuriPhysicalEmoteActionCol = "kuriPhysicalAction", kuriMovementActionCol = "kuriMovementAction", kuriCurAction = "kuriCurAction", isDoingActionLogCol = "isDoingAction";
         //[HideInInspector]
         public bool IsDoingAction { get; set; } = false;
         //[HideInInspector]
@@ -123,6 +123,7 @@ namespace MoveToCode {
             loggingManager.AddLogColumn(kuriPhysicalEmoteActionCol, "");
             loggingManager.AddLogColumn(kuriMovementActionCol, "");
             loggingManager.AddLogColumn(kuriCurAction, "");
+            loggingManager.AddLogColumn(isDoingActionLogCol, "");
         }
 
         protected abstract void Init();
@@ -167,6 +168,7 @@ namespace MoveToCode {
 
         private void Update() {
             IsDoingAction = UpdateIsDoingAction();
+            loggingManager.UpdateLogColumn(isDoingActionLogCol, IsDoingAction.ToString());
             loggingManager.UpdateLogColumn(kuriCurAction, CurAction);
         }
 

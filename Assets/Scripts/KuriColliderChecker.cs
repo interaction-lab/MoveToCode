@@ -104,7 +104,7 @@ namespace MoveToCode {
 
             // check if Kuri is to the left or to the right
             Vector3 kuriP = TutorKuriTransformManager.instance.Position.normalized;
-            float angle = IsLeftOfLine(playerP, colP, kuriP) ? -30 : 30;
+            float angle = IsLeftOfLine(playerP, colP, kuriP) ? -20 : 20;
 
             line = Quaternion.Euler(0, angle, 0) * avgLine;
 

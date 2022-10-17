@@ -96,8 +96,8 @@ namespace MoveToCode {
 
         internal void RequestDisconnect() {
             if (OneMemberHasRequestedDisconnect) {
-                mazeConnectors.First.Disconnect();
-                mazeConnectors.Second.Disconnect();
+                mazeConnectors.First?.Disconnect();
+                mazeConnectors.Second?.Disconnect();
                 mazeConnectors.First = null;
                 mazeConnectors.Second = null;
                 MazeManagerInstance.ReturnOpenConnectionToPool(this);

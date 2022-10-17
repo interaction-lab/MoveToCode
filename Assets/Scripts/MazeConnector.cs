@@ -89,6 +89,9 @@ namespace MoveToCode {
 
         private void Update() {
             // this is where I would do a jank double check to see if the connection is still populated
+            if (MyConnection != null && MyConnection.IsPartiallyOpen()) {
+                MyConnection.RequestDisconnect();
+            }
         }
 
         private void OnTriggerEnter(Collider other) {
@@ -231,7 +234,8 @@ namespace MoveToCode {
         private void RemoveRequestAndAttemptConnect(MazeConnector otherMazeConnector) {
             MazeManagerInstance.RemoveRequest(this, otherMazeConnector);
             if (MyConnection != null &&
-                otherMazeConnector?.MyConnection == MyConnection) {
+                (otherMazeConnector == null ||
+                otherMazeConnector?.MyConnection == MyConnection)) {
                 MyConnection.RequestDisconnect();
             }
         }

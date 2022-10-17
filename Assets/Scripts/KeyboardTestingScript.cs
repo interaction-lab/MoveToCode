@@ -55,7 +55,7 @@ public class KeyboardTestingScript : MonoBehaviour {
     }
     void Update() {
         if (Input.GetKeyDown(KeyCode.Alpha0)) {
-
+            MazeManager.instance.BKMazePiece.GetComponent<ARTrackBehavior>().HigherMeshAlpha();
         }
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
             KuriAIBTRandomInstance.ForceHelpfulAction();

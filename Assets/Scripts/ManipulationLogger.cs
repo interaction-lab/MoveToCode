@@ -14,6 +14,7 @@ namespace MoveToCode {
         public static bool currentlyManipulating = false;
         public static string CurAction { get; set; } = "";
         string grabInteractableS = "GrabInteractable", pressButtonS = "PressButton";
+        static string sep = "~||";
 
         void Start() {
             manipHandler = GetComponent<ManipulationHandler>();
@@ -39,7 +40,7 @@ namespace MoveToCode {
             if (myLastState != state.CurrentState()) { // state change
                 myLastState = state.CurrentState();
                 if (myLastState.Name == "Pressed" && !currentlyManipulating) {
-                    CurAction = grabInteractableS;
+                    CurAction = string.Join(sep, grabInteractableS, gameObject.TryGetNiceNameOfObjectForLogging());
                     LogManipulationStart();
                 }
                 else {
@@ -57,7 +58,7 @@ namespace MoveToCode {
         }
 
         private void LogManipulationStart(ManipulationEventData arg0) {
-            CurAction = grabInteractableS;
+            //CurAction = grabInteractableS;
             LogManipulationStart();
         }
 

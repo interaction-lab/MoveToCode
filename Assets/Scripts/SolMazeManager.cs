@@ -46,6 +46,15 @@ namespace MoveToCode {
         }
 
         bool hasBeenInitialized = false;
+        SwitchModeButton smb;
+        SwitchModeButton ModeButton {
+            get {
+                if (smb == null) {
+                    smb = SwitchModeButton.instance;
+                }
+                return smb;
+            }
+        }
         #endregion
 
         #region unity
@@ -56,6 +65,7 @@ namespace MoveToCode {
                 hasBeenInitialized = true;
                 CurActiveSolMaze.gameObject.SetActive(true);
                 ExerciseManager.instance.OnCyleNewExercise.AddListener(OnCyleNewExercise);
+                ModeButton.OnSwitchToMazeBuildingMode.AddListener(OnSwitchToMazeBuildingMode);
             }
         }
         #endregion
@@ -76,10 +86,20 @@ namespace MoveToCode {
         #endregion
 
         #region private
+        int exerciseNumLogged = -1;
         IEnumerator LogMazeCoroutine() {
-            yield return new WaitForEndOfFrame();
-            LoggingManagerInstance.UpdateLogColumn(solutionMazeCol, CurActiveSolMaze.MyMazeGraph.ToString());
-            LoggingManagerInstance.UpdateLogColumn(exerciseNameCol, CurActiveSolMaze.gameObject.name);
+            yield return null;
+            yield return null; // hacky but fixes the solution graph initializing order
+            if (exerciseNumLogged < ExerciseManager.instance.curExercisePos) { // allows maze to log as soon as a new exercise is actually moved to
+                Debug.Log(CurActiveSolMaze.MyMazeGraph.ToString());
+                LoggingManagerInstance.UpdateLogColumn(solutionMazeCol, CurActiveSolMaze.MyMazeGraph.ToString());
+                LoggingManagerInstance.UpdateLogColumn(exerciseNameCol, CurActiveSolMaze.gameObject.name);
+                exerciseNumLogged = ExerciseManager.instance.curExercisePos;
+            }
+        }
+
+        void OnSwitchToMazeBuildingMode() {
+            LogMaze();
         }
 
         bool freePlayIsActive = false;
@@ -98,8 +118,6 @@ namespace MoveToCode {
                 curActiveSolMaze.gameObject.SetActive(true);
                 SolMazeCheckMark.instance.ToggleCheckMark();
             }
-
-            LogMaze();
         }
         #endregion
     }

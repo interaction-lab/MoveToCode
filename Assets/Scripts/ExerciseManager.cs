@@ -20,6 +20,7 @@ namespace MoveToCode {
             ToggleCurrentExercise(true);
             LoggingManager.instance.AddLogColumn(curExcersieCol, curExercisePos.ToString());
             LoggingManager.instance.AddLogColumn(exerciseSubmissionResultCol, "");
+            SolMazeManager.instance.LogMaze(); // log first maze
         }
 
         private void SetUpExerciseList() {
@@ -80,7 +81,6 @@ namespace MoveToCode {
                 CodeBlockMenuManager.instance.TurnMenuOff();
             }
             curExercise.gameObject.SetActive(desiredActiveState);
-            SolMazeManager.instance.LogMaze();
         }
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 namespace MoveToCode {
     public class SolMazeManager : Singleton<SolMazeManager> {
         #region members
-        public static string solutionMazeCol = "SolutionMaze";
+        public static string solutionMazeCol = "SolutionMaze", exerciseNameCol = "ExerciseName";
 
         LoggingManager _loggingManager;
         LoggingManager LoggingManagerInstance {
@@ -52,6 +52,7 @@ namespace MoveToCode {
         private void OnEnable() {
             if (!hasBeenInitialized) {
                 LoggingManagerInstance.AddLogColumn(solutionMazeCol, "");
+                LoggingManagerInstance.AddLogColumn(exerciseNameCol, "");
                 hasBeenInitialized = true;
                 CurActiveSolMaze.gameObject.SetActive(true);
                 ExerciseManager.instance.OnCyleNewExercise.AddListener(OnCyleNewExercise);
@@ -77,7 +78,8 @@ namespace MoveToCode {
         #region private
         IEnumerator LogMazeCoroutine() {
             yield return new WaitForEndOfFrame();
-            LoggingManagerInstance.UpdateLogColumn(solutionMazeCol, curActiveSolMaze.MyMazeGraph.ToString());
+            LoggingManagerInstance.UpdateLogColumn(solutionMazeCol, CurActiveSolMaze.MyMazeGraph.ToString());
+            LoggingManagerInstance.UpdateLogColumn(exerciseNameCol, CurActiveSolMaze.gameObject.name);
         }
 
         bool freePlayIsActive = false;
@@ -96,6 +98,8 @@ namespace MoveToCode {
                 curActiveSolMaze.gameObject.SetActive(true);
                 SolMazeCheckMark.instance.ToggleCheckMark();
             }
+
+            LogMaze();
         }
         #endregion
     }

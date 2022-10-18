@@ -188,6 +188,10 @@ namespace MoveToCode {
 
         private void OnCycleNewExercise() {
             LogAllCodeBlocks();
+            ResetPositions();
+        }
+
+        private void ResetPositions() {
             transform.position = OriginalPos;
             transform.rotation = Quaternion.identity;
             StartCodeBlock.instance.ResetToLocalStartLocation(); // TODO: double check where this goes
@@ -198,7 +202,6 @@ namespace MoveToCode {
         private void UpdateStartBlockLocation() {
             if (!StartLocationSet) {
                 SpawnStartBlockInFrontOfPlayer();
-                StartLocationSet = true;
             }
         }
 
@@ -212,13 +215,12 @@ namespace MoveToCode {
         }
 
         void SpawnStartBlockInFrontOfPlayer() {
-
-
             // get goal piece
             MazePiece goalPiece = MazeManager.instance.BKMazePiece;
             // checked that is has been tracked
             Vector3 goalPos = UserTransform.position + UserTransform.forward.normalized * 0.3f; // should be player to goal piece
-            if (Vector3.Distance(UserTransform.position, goalPiece.transform.position) < 5f) {
+            if (Vector3.Distance(UserTransform.position, goalPiece.transform.position) < 10f) {
+                ResetPositions();
                 Vector3 flatPlayer = UserTransform.position;
                 flatPlayer.y = 0;
                 Vector3 flatGoal = goalPiece.transform.position;
@@ -227,6 +229,7 @@ namespace MoveToCode {
                 Vector3 playerToGoalNormalized = playerToGoal.normalized * 0.2f; // 20cm forward
                 playerToGoalNormalized.y = 0.5f; // 50cm above ground
                 goalPos = goalPiece.transform.position + playerToGoalNormalized;
+                StartLocationSet = true;
             }
 
             // find the direction toward the user

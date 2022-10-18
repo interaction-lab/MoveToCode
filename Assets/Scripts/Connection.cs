@@ -53,6 +53,17 @@ namespace MoveToCode {
             return !IsPopulated() && (mazeConnectors.First != null || mazeConnectors.Second != null);
         }
 
+        public bool IsValid() {
+            return (mazeConnectors.First != null &&
+                     mazeConnectors.First.MyConnection == this &&
+                     mazeConnectors.Second != null &&
+                     mazeConnectors.Second.MyConnection == this);
+        }
+
+        public bool IsBroke() {
+            return !IsValid();
+        }
+
         public bool IsFullyOpen() {
             return !IsPopulated() && !IsPartiallyOpen();
         }

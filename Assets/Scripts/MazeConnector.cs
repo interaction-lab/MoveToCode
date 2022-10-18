@@ -89,7 +89,7 @@ namespace MoveToCode {
 
         private void Update() {
             // this is where I would do a jank double check to see if the connection is still populated
-            if (MyConnection != null && MyConnection.IsPartiallyOpen()) {
+            if (MyConnection != null && MyConnection.IsBroke()) {
                 MyConnection.RequestDisconnect();
             }
         }
@@ -109,7 +109,7 @@ namespace MoveToCode {
                 On &&
                 otherMazeConnector.On) {
                 // make a check here to see if my connection is all messed up
-                if (MyConnection != null && MyConnection.IsPartiallyOpen()) {
+                if (MyConnection != null && MyConnection.IsBroke()) {
                     MyConnection.RequestDisconnect();
                 }
 

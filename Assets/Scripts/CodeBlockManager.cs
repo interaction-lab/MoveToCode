@@ -98,6 +98,7 @@ namespace MoveToCode {
                 SwitchModeButton.instance.OnSwitchToCodingMode.AddListener(OnSwitchToCodingMode);
                 SwitchModeButton.instance.OnSwitchToMazeBuildingMode.AddListener(OnSwitchToMazeBuildingMode);
                 SpawnArrowPrefab();
+                OnCycleNewExercise();
                 LogAllCodeBlocks();
             }
             else {
@@ -212,55 +213,27 @@ namespace MoveToCode {
         }
 
         void SpawnStartBlockInFrontOfPlayer() {
-            // this can stay, super fragile and does extra work but works for now
-            Vector3 fbcbT = ActiveCodeBlocks.First().transform.position;
-            Vector3 highestPos = fbcbT;
-            Vector3 lowestPos = fbcbT;
-            Vector3 mostRightPos = fbcbT;
-            Vector3 mostLeftPos = fbcbT;
-            foreach (CodeBlock cb in ActiveCodeBlocks) {
-                if (cb.GetIsMenuBlock()) {
-                    continue;
-                }
-                Vector3 cbPos = cb.transform.position;
-                if (cbPos.y > highestPos.y) {
-                    highestPos = cbPos;
-                }
-                if (cbPos.y < lowestPos.y) {
-                    lowestPos = cbPos;
-                }
-                if (cbPos.x > mostRightPos.x) {
-                    mostRightPos = cbPos;
-                }
-                if (cbPos.x < mostLeftPos.x) {
-                    mostLeftPos = cbPos;
-                }
-            }
-            // find the average of the highest, lowest, most right, and most left code block positions
-            Vector2 centerPos = new Vector2(mostLeftPos.x + mostRightPos.x, lowestPos.y + highestPos.y) / 2;
-            float bottomToCenter = centerPos.y - lowestPos.y;
-            float rightToCenter = centerPos.x - mostLeftPos.x;
-            // move code blocks close to BKMazePiece
-            transform.position = UserTransform.position + UserTransform.forward * 0.75f; // + UserTransform.right * 0.2f + UserTransform.up * 0.2f;
-                                                                                         //MazeManager.instance.BKMazePiece.transform.position +
-                                                                                         //(Vector3.up * .25f + Vector3.right * .2f);
+
 
             // get goal piece
             MazePiece goalPiece = MazeManager.instance.BKMazePiece;
             // checked that is has been tracked
+            Vector3 goalPos = transform.position;
             if (goalPiece.HasBeenTracked) {
-                transform.position = goalPiece.transform.position + (Vector3.up * .25f + Vector3.right * .2f);
+                goalPos = goalPiece.transform.position + (Vector3.up * .25f + Vector3.right * .2f);
             }
 
             // find the direction toward the user
-            Vector3 directionToUser = UserTransform.position - transform.position;
+            Vector3 directionToUser = UserTransform.position - goalPos;
             // rotate the code block to face the user
             transform.rotation = Quaternion.LookRotation(-directionToUser);
-            // check if they are upside down relative to the user
-            if (Vector3.Dot(transform.up, UserTransform.up) < 0) {
-                // flip the code block
-                transform.Rotate(Vector3.right, 180);
-            }
+
+            transform.position = goalPos;
+            // // check if they are upside down relative to the user
+            // if (Vector3.Dot(transform.up, UserTransform.up) < 0) {
+            //     // flip the code block
+            //     transform.Rotate(Vector3.right, 180);
+            // }
         }
         #endregion
     }

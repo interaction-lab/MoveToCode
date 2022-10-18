@@ -94,6 +94,13 @@ namespace MoveToCode {
             }
         }
 
+        public void RemoveConnection() {
+            if (MyConnection != null) {
+                MyConnection.RequestDisconnect();
+                MazeManagerInstance.RemoveAllRequests(this);
+            }
+        }
+
         private void OnTriggerEnter(Collider other) {
             MazeConnector otherMazeConnector = other.gameObject.GetComponent<MazeConnector>();
             if ((otherMazeConnector != null &&

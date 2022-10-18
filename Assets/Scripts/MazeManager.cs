@@ -166,19 +166,33 @@ namespace MoveToCode {
         }
 
         internal void RemoveRequest(MazeConnector requestingMazeConnector, MazeConnector collidedMazeConnector) {
-            Assert.IsTrue(connectRequests.ContainsKey(requestingMazeConnector));
-            Assert.IsTrue(connectRequests[requestingMazeConnector].Contains(collidedMazeConnector));
-            connectRequests[requestingMazeConnector].Remove(collidedMazeConnector);
+            if (connectRequests.Keys.Contains(requestingMazeConnector) &&
+                connectRequests[requestingMazeConnector].Contains(collidedMazeConnector)) {
+                connectRequests[requestingMazeConnector].Remove(collidedMazeConnector);
+            }
         }
 
         internal void SetUpConnection(MazeConnector requestingMazeConnector) {
-            Assert.IsTrue(connectRequests.ContainsKey(requestingMazeConnector));
+            if (!connectRequests.ContainsKey(requestingMazeConnector)) {
+                return;
+            }
             foreach (var mc in from MazeConnector mc in connectRequests[requestingMazeConnector]    // get all things requesting my connection
                                where connectRequests.ContainsKey(mc) &&                             // select down only to mcs that have a connection request
                                     connectRequests[mc].Contains(requestingMazeConnector) &&        // select down again to an mc that contains myself in its set
                                     mc.MyConnection == null                                         // select down one more to an mc that doesn't have a connection already
                                select mc) {
                 new Connection(requestingMazeConnector, mc); // creates a new connection between the two, `Connection.cs` does the connecting
+            }
+        }
+
+        internal void RemoveAllRequests(MazeConnector requestingMazeConnector) {
+            foreach (MazeConnector mc in connectRequests.Keys) {
+                if (connectRequests[mc].Contains(requestingMazeConnector)) {
+                    connectRequests[mc].Remove(requestingMazeConnector);
+                }
+            }
+            if (connectRequests.ContainsKey(requestingMazeConnector)) {
+                connectRequests.Remove(requestingMazeConnector);
             }
         }
 

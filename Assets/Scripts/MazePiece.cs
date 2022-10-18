@@ -156,6 +156,10 @@ namespace MoveToCode {
         public void DisableMyPiece() {
             // move my piece way off screen so that all systems work as if I removed the peice to another location
             transform.position = new Vector3(0, -100, 0);
+            // remove my connections
+            foreach (MazeConnector mc in ConnectionDict.Values) {
+                mc.RemoveConnection();
+            }
         }
 
         #endregion

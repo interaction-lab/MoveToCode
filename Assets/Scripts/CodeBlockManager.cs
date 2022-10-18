@@ -98,7 +98,6 @@ namespace MoveToCode {
                 SwitchModeButton.instance.OnSwitchToCodingMode.AddListener(OnSwitchToCodingMode);
                 SwitchModeButton.instance.OnSwitchToMazeBuildingMode.AddListener(OnSwitchToMazeBuildingMode);
                 SpawnArrowPrefab();
-                OnCycleNewExercise();
                 LogAllCodeBlocks();
             }
             else {
@@ -218,9 +217,16 @@ namespace MoveToCode {
             // get goal piece
             MazePiece goalPiece = MazeManager.instance.BKMazePiece;
             // checked that is has been tracked
-            Vector3 goalPos = transform.position;
+            Vector3 goalPos = UserTransform.position + UserTransform.forward.normalized * 0.3f; // should be player to goal piece
             if (goalPiece.HasBeenTracked) {
-                goalPos = goalPiece.transform.position + (Vector3.up * .25f + Vector3.right * .2f);
+                Vector3 flatPlayer = UserTransform.position;
+                flatPlayer.y = 0;
+                Vector3 flatGoal = goalPiece.transform.position;
+                flatGoal.y = 0;
+                Vector3 playerToGoal = flatGoal - flatPlayer;
+                Vector3 playerToGoalNormalized = playerToGoal.normalized * 0.2f; // 20cm forward
+                playerToGoalNormalized.y =  0.5f; // 50cm above ground
+                goalPos = goalPiece.transform.position + playerToGoalNormalized;
             }
 
             // find the direction toward the user

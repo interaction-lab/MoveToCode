@@ -218,14 +218,14 @@ namespace MoveToCode {
             MazePiece goalPiece = MazeManager.instance.BKMazePiece;
             // checked that is has been tracked
             Vector3 goalPos = UserTransform.position + UserTransform.forward.normalized * 0.3f; // should be player to goal piece
-            if (goalPiece.HasBeenTracked) {
+            if (Vector3.Distance(UserTransform.position, goalPiece.transform.position) < 5f) {
                 Vector3 flatPlayer = UserTransform.position;
                 flatPlayer.y = 0;
                 Vector3 flatGoal = goalPiece.transform.position;
                 flatGoal.y = 0;
                 Vector3 playerToGoal = flatGoal - flatPlayer;
                 Vector3 playerToGoalNormalized = playerToGoal.normalized * 0.2f; // 20cm forward
-                playerToGoalNormalized.y =  0.5f; // 50cm above ground
+                playerToGoalNormalized.y = 0.5f; // 50cm above ground
                 goalPos = goalPiece.transform.position + playerToGoalNormalized;
             }
 

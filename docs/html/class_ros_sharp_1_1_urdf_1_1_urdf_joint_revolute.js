@@ -8,6 +8,5 @@ var class_ros_sharp_1_1_urdf_1_1_urdf_joint_revolute =
     [ "GetPosition", "class_ros_sharp_1_1_urdf_1_1_urdf_joint_revolute.html#a656e04e5d09ea2289c33fd00e415843a", null ],
     [ "GetVelocity", "class_ros_sharp_1_1_urdf_1_1_urdf_joint_revolute.html#a28ce0a4b85ef3eadb60f6346e60bcae2", null ],
     [ "ImportJointData", "class_ros_sharp_1_1_urdf_1_1_urdf_joint_revolute.html#a22b0bb94468b37da86ee23517e00112a", null ],
-    [ "OnUpdateJointState", "class_ros_sharp_1_1_urdf_1_1_urdf_joint_revolute.html#a498f0a6f773c79fe6d5fb6b75c936223", null ],
-    [ "JointType", "class_ros_sharp_1_1_urdf_1_1_urdf_joint_revolute.html#a80b8f1c5ce3ccf194d572f8273133452", null ]
+    [ "OnUpdateJointState", "class_ros_sharp_1_1_urdf_1_1_urdf_joint_revolute.html#a498f0a6f773c79fe6d5fb6b75c936223", null ]
 ];

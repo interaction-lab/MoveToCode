@@ -1,16 +1,10 @@
 var class_move_to_code_1_1_exercise_information_seeking_actions =
 [
-    [ "SNAPACTIONS", "class_move_to_code_1_1_exercise_information_seeking_actions.html#a9b267579ccf8c035fa6cf566649549fe", [
-      [ "REMOVE", "class_move_to_code_1_1_exercise_information_seeking_actions.html#a9b267579ccf8c035fa6cf566649549fea78baf367c4626442174307cdf41c6538", null ],
-      [ "SNAPATZERO", "class_move_to_code_1_1_exercise_information_seeking_actions.html#a9b267579ccf8c035fa6cf566649549fea9593d407e50dba4760c502c7178b024b", null ],
-      [ "SNAPATONE", "class_move_to_code_1_1_exercise_information_seeking_actions.html#a9b267579ccf8c035fa6cf566649549fea05c8098a37fbe6abdb97a2fdc08dd34f", null ],
-      [ "SNAPATTWO", "class_move_to_code_1_1_exercise_information_seeking_actions.html#a9b267579ccf8c035fa6cf566649549fea11c1acb33ecfb9b965b674b1e2e5e079", null ],
-      [ "SNAPATTHREE", "class_move_to_code_1_1_exercise_information_seeking_actions.html#a9b267579ccf8c035fa6cf566649549feaa69cdeb86c2a8e6841e5d3d2aef7b37e", null ]
-    ] ],
-    [ "ConvertSnapActionToIntPos", "class_move_to_code_1_1_exercise_information_seeking_actions.html#a3c490b19ee583794c5ee9fd0fbf08677", null ],
+    [ "SNAPARGTYPES", "class_move_to_code_1_1_exercise_information_seeking_actions.html#aa46f5cd4303d4cbef8c006d57110a5ce", null ],
+    [ "ConvertToSnapColClass", "class_move_to_code_1_1_exercise_information_seeking_actions.html#a3d5f5c299fca0a5f1dd648ed41eaa4c6", null ],
     [ "DoISAAction", "class_move_to_code_1_1_exercise_information_seeking_actions.html#aa1660804e884fab1598cd244b13c4359", null ],
     [ "goOfFocus", "class_move_to_code_1_1_exercise_information_seeking_actions.html#a421cd2dfc4239ee5dda5c4a9e1640b0d", null ],
+    [ "snapArgs", "class_move_to_code_1_1_exercise_information_seeking_actions.html#ac3c19b05397db5ef857f77575adedc7c", null ],
     [ "snapChild", "class_move_to_code_1_1_exercise_information_seeking_actions.html#a5e7087ad1a592affc6e3ca72c2e0f59d", null ],
-    [ "snapParent", "class_move_to_code_1_1_exercise_information_seeking_actions.html#a8d7b04c3a0d1016e5a9743c5a16c9c8e", null ],
-    [ "withAction", "class_move_to_code_1_1_exercise_information_seeking_actions.html#a1826f42c31e94e1d4c0d297da2b198ff", null ]
+    [ "snapParent", "class_move_to_code_1_1_exercise_information_seeking_actions.html#a8d7b04c3a0d1016e5a9743c5a16c9c8e", null ]
 ];

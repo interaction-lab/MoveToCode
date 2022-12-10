@@ -1,0 +1,4 @@
+var _directory_action_auto_gen_editor_window_8cs =
+[
+    [ "RosSharp.RosBridgeClient.MessageGeneration.DirectoryActionAutoGenEditorWindow", "class_ros_sharp_1_1_ros_bridge_client_1_1_message_generation_1_1_directory_action_auto_gen_editor_window.html", "class_ros_sharp_1_1_ros_bridge_client_1_1_message_generation_1_1_directory_action_auto_gen_editor_window" ]
+];

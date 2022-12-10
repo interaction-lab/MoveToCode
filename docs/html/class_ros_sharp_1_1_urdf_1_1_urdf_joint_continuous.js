@@ -6,6 +6,5 @@ var class_ros_sharp_1_1_urdf_1_1_urdf_joint_continuous =
     [ "GetPosition", "class_ros_sharp_1_1_urdf_1_1_urdf_joint_continuous.html#add2b73b5bad5cfbca9676a77d703244b", null ],
     [ "GetVelocity", "class_ros_sharp_1_1_urdf_1_1_urdf_joint_continuous.html#a7047aba7b8bb53ebb3fcc92611156a29", null ],
     [ "ImportJointData", "class_ros_sharp_1_1_urdf_1_1_urdf_joint_continuous.html#a1cd5730b9a5383708d4eb7cceff43284", null ],
-    [ "OnUpdateJointState", "class_ros_sharp_1_1_urdf_1_1_urdf_joint_continuous.html#a8eb8c5c12f67d1f194a2a90340eb0004", null ],
-    [ "JointType", "class_ros_sharp_1_1_urdf_1_1_urdf_joint_continuous.html#a5b842d9a4c5c1aa249f9b585524402ae", null ]
+    [ "OnUpdateJointState", "class_ros_sharp_1_1_urdf_1_1_urdf_joint_continuous.html#a8eb8c5c12f67d1f194a2a90340eb0004", null ]
 ];

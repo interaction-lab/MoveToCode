@@ -8,7 +8,7 @@ var generate__xml__from__google__services__json_8py =
     [ "indent", "generate__xml__from__google__services__json_8py.html#a638764f8a1d6ff3898b80c69bf688560", null ],
     [ "main", "generate__xml__from__google__services__json_8py.html#ac910e418d00e1de6a2b28e3cc66df0a1", null ],
     [ "read_xml_value", "generate__xml__from__google__services__json_8py.html#abf4f021a85a4c7f036d5cb6625bb04af", null ],
-    [ "__author__", "generate__xml__from__google__services__json_8py.html#afb561ee119a3008830ebd181611256d7", null ],
+    [ "update_dict_keys", "generate__xml__from__google__services__json_8py.html#ad3bb6ec73efae4451658566f0353980a", null ],
     [ "DEFAULT_INPUT_FILENAME", "generate__xml__from__google__services__json_8py.html#ad7831332497f5026faa6ee3e248ddabf", null ],
     [ "DEFAULT_JSON_OUTPUT_FILENAME", "generate__xml__from__google__services__json_8py.html#a128e751c09ee3c908a14501fa2035d41", null ],
     [ "DEFAULT_OUTPUT_FILENAME", "generate__xml__from__google__services__json_8py.html#a1b1fc5e17d031af2db3ce73f6fa44992", null ],

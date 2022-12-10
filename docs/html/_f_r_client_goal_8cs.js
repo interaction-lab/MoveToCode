@@ -1,0 +1,4 @@
+var _f_r_client_goal_8cs =
+[
+    [ "RosSharp.RosBridgeClient.MessageTypes.ProcrobFunctional.FRClientGoal", "class_ros_sharp_1_1_ros_bridge_client_1_1_message_types_1_1_procrob_functional_1_1_f_r_client_goal.html", "class_ros_sharp_1_1_ros_bridge_client_1_1_message_types_1_1_procrob_functional_1_1_f_r_client_goal" ]
+];

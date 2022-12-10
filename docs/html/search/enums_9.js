@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['jointtypes_17790',['JointTypes',['../class_ros_sharp_1_1_urdf_1_1_urdf_joint.html#ad0bef76f0d9a761ebdf58a04619ec4bb',1,'RosSharp::Urdf::UrdfJoint']]],
-  ['joystickmode_17791',['JoystickMode',['../namespace_microsoft_1_1_mixed_reality_1_1_toolkit_1_1_experimental_1_1_joystick.html#aee76985b45e2cc64c10c5ff79a0d7d1a',1,'Microsoft::MixedReality::Toolkit::Experimental::Joystick']]]
+  ['operation_0',['OPERATION',['../class_move_to_code_1_1_conditional_code_block.html#a16b8f7ecb6b23b34f87b160337a90176',1,'MoveToCode.ConditionalCodeBlock.OPERATION()'],['../class_move_to_code_1_1_math_operation_code_block.html#ab6b2e310837979f415dd3cd50d6d8e56',1,'MoveToCode.MathOperationCodeBlock.OPERATION()']]]
 ];

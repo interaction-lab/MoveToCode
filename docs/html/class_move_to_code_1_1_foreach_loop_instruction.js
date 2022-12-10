@@ -4,5 +4,6 @@ var class_move_to_code_1_1_foreach_loop_instruction =
     [ "DescriptiveInstructionToString", "class_move_to_code_1_1_foreach_loop_instruction.html#a49345374692322297e6493bfa5f4c27a", null ],
     [ "EvaluateArgumentsOfInstruction", "class_move_to_code_1_1_foreach_loop_instruction.html#ada69c2e397a777d4e9da1a03b02a3923", null ],
     [ "RunInstruction", "class_move_to_code_1_1_foreach_loop_instruction.html#a6e425ee15c605beb811fccd917e2ccb5", null ],
+    [ "ToJSON", "class_move_to_code_1_1_foreach_loop_instruction.html#a0dab4ec68913767f4fd7f0fb07853612", null ],
     [ "ToString", "class_move_to_code_1_1_foreach_loop_instruction.html#a0eff5db3c0162a4e111f2a58105e19d6", null ]
 ];

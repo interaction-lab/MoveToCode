@@ -9,6 +9,7 @@ var class_move_to_code_1_1_code_block =
     [ "GetMyIArgument", "class_move_to_code_1_1_code_block.html#a24c06a506108a02f080afbd112e95727", null ],
     [ "GetSnapColliderCodeBlock", "class_move_to_code_1_1_code_block.html#a839d2b15440c649a2f875213ff3b8f9b", null ],
     [ "GetSnapColliderGroup", "class_move_to_code_1_1_code_block.html#a75278a504af0d6d9cb131141962c77a2", null ],
+    [ "GetSnapColliderImAttachedTo", "class_move_to_code_1_1_code_block.html#a83cedd77afa31508ae1de59b80a0269f", null ],
     [ "RemoveFromParentSnapCollider", "class_move_to_code_1_1_code_block.html#abf449fc6dbdfaa33f14b4840b2b2bb7e", null ],
     [ "ResetInstructionInternalState", "class_move_to_code_1_1_code_block.html#a20204574098791df68afd9e1d09c38fa", null ],
     [ "SetIsMenuBlock", "class_move_to_code_1_1_code_block.html#a12ba81ffd1076791da6f85215ba1d751", null ],
@@ -16,5 +17,6 @@ var class_move_to_code_1_1_code_block =
     [ "ToggleColliders", "class_move_to_code_1_1_code_block.html#a0397d4677e881b173b27e63ccb2147fb", null ],
     [ "ToggleOutline", "class_move_to_code_1_1_code_block.html#a113130c27ae40119417bca1915a55c9d", null ],
     [ "ToString", "class_move_to_code_1_1_code_block.html#a9ec92c91eca39eb7a12312b3c4e164a9", null ],
+    [ "UpdateText", "class_move_to_code_1_1_code_block.html#ab87ca8f09edf064cfc9942efc5444011", null ],
     [ "myBlockInternalArg", "class_move_to_code_1_1_code_block.html#ae4c99b26b6cb3eb73390cca063427987", null ]
 ];

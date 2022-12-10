@@ -13,5 +13,6 @@ var class_move_to_code_1_1_array_data_structure =
     [ "ResestInternalState", "class_move_to_code_1_1_array_data_structure.html#a12e1173bf00f331c173a44b9516a3af8", null ],
     [ "SetNumFilledElements", "class_move_to_code_1_1_array_data_structure.html#ac9cafbf1ed0828b84044940ac0c0911a", null ],
     [ "SetValueAtIndex", "class_move_to_code_1_1_array_data_structure.html#a9a1ee6781dcdf771e0215b501114706f", null ],
+    [ "ToJSON", "class_move_to_code_1_1_array_data_structure.html#a1521cb16cc37fcbff51190f61417a602", null ],
     [ "ToString", "class_move_to_code_1_1_array_data_structure.html#a1ff24e9ca625703e8aee9ee9e8d749ef", null ]
 ];

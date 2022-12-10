@@ -1,10 +1,6 @@
 var class_doxygen_window =
 [
-    [ "WindowModes", "class_doxygen_window.html#ad1f6043062e30f52cb634b72294a5676", [
-      [ "Generate", "class_doxygen_window.html#ad1f6043062e30f52cb634b72294a5676a32b919d18cfaca89383f6000dcc9c031", null ],
-      [ "Configuration", "class_doxygen_window.html#ad1f6043062e30f52cb634b72294a5676a254f642527b45bc260048e30704edb39", null ],
-      [ "About", "class_doxygen_window.html#ad1f6043062e30f52cb634b72294a5676a8f7f4c1ce7a4f933663d10543562b096", null ]
-    ] ],
+    [ "WindowModes", "class_doxygen_window.html#ad1f6043062e30f52cb634b72294a5676", null ],
     [ "Init", "class_doxygen_window.html#a48f456c44b07cc9283a0583579b1d65a", null ],
     [ "MakeNewDoxyFile", "class_doxygen_window.html#abf3c2a3c3a53e6691e58b865da8404de", null ],
     [ "OnDoxygenFinished", "class_doxygen_window.html#a2809a93b756a6cfc371ee76a9d7168d7", null ],

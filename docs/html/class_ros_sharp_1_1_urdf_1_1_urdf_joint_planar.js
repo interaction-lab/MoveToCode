@@ -6,6 +6,5 @@ var class_ros_sharp_1_1_urdf_1_1_urdf_joint_planar =
     [ "ExportSpecificJointData", "class_ros_sharp_1_1_urdf_1_1_urdf_joint_planar.html#a9b1f0989d53d3e0119475d37da94d81a", null ],
     [ "GetPosition", "class_ros_sharp_1_1_urdf_1_1_urdf_joint_planar.html#a0acade54bc20cafc86ae8bfd80b9a28d", null ],
     [ "ImportJointData", "class_ros_sharp_1_1_urdf_1_1_urdf_joint_planar.html#a71f0653ded4e326c7d8e73002a04dffe", null ],
-    [ "IsJointAxisDefined", "class_ros_sharp_1_1_urdf_1_1_urdf_joint_planar.html#ac2fc0dc8439c9b642c1bf110304dd62b", null ],
-    [ "JointType", "class_ros_sharp_1_1_urdf_1_1_urdf_joint_planar.html#a7847c6279a1fa040eff5c6684bc4af8b", null ]
+    [ "IsJointAxisDefined", "class_ros_sharp_1_1_urdf_1_1_urdf_joint_planar.html#ac2fc0dc8439c9b642c1bf110304dd62b", null ]
 ];

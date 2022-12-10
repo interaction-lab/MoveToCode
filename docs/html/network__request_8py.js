@@ -1,6 +1,6 @@
 var network__request_8py =
 [
-    [ "NetworkRequest", "classnetwork__request_1_1_network_request.html", "classnetwork__request_1_1_network_request" ],
+    [ "network_request.NetworkRequest", "classnetwork__request_1_1_network_request.html", "classnetwork__request_1_1_network_request" ],
     [ "get_argsparser", "network__request_8py.html#a6441aa8109ac1614f8d8d06dadc12565", null ],
     [ "main", "network__request_8py.html#a07366ab17b78e84aeeabe138e23035d4", null ],
     [ "make_request", "network__request_8py.html#a558bb7df893213b127b7831dbbc55b70", null ],

@@ -1,13 +1,6 @@
 var class_ros_sharp_1_1_urdf_1_1_urdf_joint =
 [
-    [ "JointTypes", "class_ros_sharp_1_1_urdf_1_1_urdf_joint.html#ad0bef76f0d9a761ebdf58a04619ec4bb", [
-      [ "Fixed", "class_ros_sharp_1_1_urdf_1_1_urdf_joint.html#ad0bef76f0d9a761ebdf58a04619ec4bba4457d440870ad6d42bab9082d9bf9b61", null ],
-      [ "Continuous", "class_ros_sharp_1_1_urdf_1_1_urdf_joint.html#ad0bef76f0d9a761ebdf58a04619ec4bba535863a82f163709557e59e2eb8139a7", null ],
-      [ "Revolute", "class_ros_sharp_1_1_urdf_1_1_urdf_joint.html#ad0bef76f0d9a761ebdf58a04619ec4bba358561ac4d41f41d479b7c54b19b639e", null ],
-      [ "Floating", "class_ros_sharp_1_1_urdf_1_1_urdf_joint.html#ad0bef76f0d9a761ebdf58a04619ec4bbac8df43648942ec3a9aec140f07f47b7c", null ],
-      [ "Prismatic", "class_ros_sharp_1_1_urdf_1_1_urdf_joint.html#ad0bef76f0d9a761ebdf58a04619ec4bba35fa8acd1b8b1beb23e6c2e24313570c", null ],
-      [ "Planar", "class_ros_sharp_1_1_urdf_1_1_urdf_joint.html#ad0bef76f0d9a761ebdf58a04619ec4bba93a097009b6443e711996c50b5354adf", null ]
-    ] ],
+    [ "JointTypes", "class_ros_sharp_1_1_urdf_1_1_urdf_joint.html#ad0bef76f0d9a761ebdf58a04619ec4bb", null ],
     [ "AreLimitsCorrect", "class_ros_sharp_1_1_urdf_1_1_urdf_joint.html#a3a664e454a416b2c7eeaef8a806ff36d", null ],
     [ "ChangeJointType", "class_ros_sharp_1_1_urdf_1_1_urdf_joint.html#acea9ebc42a99da54d0db35dd2ee3b8b4", null ],
     [ "Create", "class_ros_sharp_1_1_urdf_1_1_urdf_joint.html#af150edac1d4f122a1985199a423a2bff", null ],
@@ -31,6 +24,7 @@ var class_ros_sharp_1_1_urdf_1_1_urdf_joint =
     [ "OnUpdateJointState", "class_ros_sharp_1_1_urdf_1_1_urdf_joint.html#a4ee0788cad5a20e685113e66e33fc4e2", null ],
     [ "Start", "class_ros_sharp_1_1_urdf_1_1_urdf_joint.html#aa6920e99b7cbc6e869d256b505e88ada", null ],
     [ "UpdateJointState", "class_ros_sharp_1_1_urdf_1_1_urdf_joint.html#a2e0a2c5ed8b7f7a55209e6fc64a696d8", null ],
+    [ "_jointType", "class_ros_sharp_1_1_urdf_1_1_urdf_joint.html#a8698bbb04782bd4acf1cfaff7f2f8811", null ],
     [ "EffortLimit", "class_ros_sharp_1_1_urdf_1_1_urdf_joint.html#a39c665ab6eda642c0b5a065ffd352d8a", null ],
     [ "JointName", "class_ros_sharp_1_1_urdf_1_1_urdf_joint.html#ae4fcc0b8b693e41f249fbcb3040fda1a", null ],
     [ "RoundDigits", "class_ros_sharp_1_1_urdf_1_1_urdf_joint.html#a28c0f433d476b268e1fbc10cdbec1bd7", null ],
@@ -38,5 +32,5 @@ var class_ros_sharp_1_1_urdf_1_1_urdf_joint =
     [ "UnityJoint", "class_ros_sharp_1_1_urdf_1_1_urdf_joint.html#ac94d51ffc798101a994b1c80a8b105ad", null ],
     [ "VelocityLimit", "class_ros_sharp_1_1_urdf_1_1_urdf_joint.html#a60ee3602684ab5c1ef7db093139303d5", null ],
     [ "IsRevoluteOrContinuous", "class_ros_sharp_1_1_urdf_1_1_urdf_joint.html#a5d3ecc7932ed570e1b38ee6cfb05f519", null ],
-    [ "JointType", "class_ros_sharp_1_1_urdf_1_1_urdf_joint.html#a22a581cddeefb63b84f33273e29ec8b5", null ]
+    [ "JointType", "class_ros_sharp_1_1_urdf_1_1_urdf_joint.html#a91246a20f04f2db1d3832334f13d75e8", null ]
 ];

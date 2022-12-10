@@ -1,6 +1,6 @@
 var class_ros_sharp_1_1_ros_bridge_client_1_1_laser_scan_reader =
 [
-    [ "Scan", "class_ros_sharp_1_1_ros_bridge_client_1_1_laser_scan_reader.html#a58d6e29616515e3fdb353aaaabbcb0a8", null ],
+    [ "Scan", "class_ros_sharp_1_1_ros_bridge_client_1_1_laser_scan_reader.html#ac3e3f22273cb0a2f6e03f74bb803e996", null ],
     [ "Start", "class_ros_sharp_1_1_ros_bridge_client_1_1_laser_scan_reader.html#ab4f77e390508e5609e0414a1c249627e", null ],
     [ "angle_increment", "class_ros_sharp_1_1_ros_bridge_client_1_1_laser_scan_reader.html#a105216b31853c85f1ee88c95a98394c1", null ],
     [ "angle_max", "class_ros_sharp_1_1_ros_bridge_client_1_1_laser_scan_reader.html#a2cb03541e8fcc5496fea35eb420f6acd", null ],

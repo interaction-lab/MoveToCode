@@ -1,14 +1,16 @@
 var class_move_to_code_1_1_exercise =
 [
-    [ "Exercise", "class_move_to_code_1_1_exercise.html#a73fdeb1c12f2c77705f1de6a64bcaab8", null ],
-    [ "GetExerciseInternals", "class_move_to_code_1_1_exercise.html#a2d0fa5677beb937eddefb298a719aa28", null ],
-    [ "GetGoalString", "class_move_to_code_1_1_exercise.html#ab05195f932f58d6568f791b3f804981d", null ],
-    [ "InstantiateCodeBlocks", "class_move_to_code_1_1_exercise.html#a9e588470957efadb6bc106352fc6c5dc", null ],
+    [ "GetCodeGoalString", "class_move_to_code_1_1_exercise.html#ad1d20837c115981b4e180bbe36b43f67", null ],
+    [ "GetMazeGoalString", "class_move_to_code_1_1_exercise.html#a52f453f689b7d326ef152674fb06f26b", null ],
     [ "IsExerciseCorrect", "class_move_to_code_1_1_exercise.html#a7491618129e9c0718d2834205e115dc0", null ],
     [ "OnEnable", "class_move_to_code_1_1_exercise.html#ad1842c507fa703729e23a1307be08b36", null ],
-    [ "SetExerciseInternals", "class_move_to_code_1_1_exercise.html#aa8e26e604b2f69fec6ea6e72e6e716a9", null ],
-    [ "SetupExercise", "class_move_to_code_1_1_exercise.html#ac673a8aa0386f2399ed4365596d924a8", null ],
-    [ "SetUpKuriInExercise", "class_move_to_code_1_1_exercise.html#a9b8320245316ea2627912904a3cb9cd3", null ],
     [ "UnsnapAllBlockFromBlockManager", "class_move_to_code_1_1_exercise.html#a8b3696186f324f1a5f2437744bae5f52", null ],
-    [ "myExerciseInternals", "class_move_to_code_1_1_exercise.html#a5b87636332598f2bd9d8bc2f38f6b098", null ]
+    [ "codingGoalString", "class_move_to_code_1_1_exercise.html#a30e0e3d572387c656d6303be16edb1d7", null ],
+    [ "consoleStringGoal", "class_move_to_code_1_1_exercise.html#a2b8845fe4bc23f031546c8c310fe1b34", null ],
+    [ "finalVariableGoalValues", "class_move_to_code_1_1_exercise.html#a12f57852e168cb1be9588c9b3369173a", null ],
+    [ "initialVariableValues", "class_move_to_code_1_1_exercise.html#a2d31b128778622c9f9d2ec7cc3897790", null ],
+    [ "mazeGoalString", "class_move_to_code_1_1_exercise.html#a9ae00cc2da0082c394ec4609358fae6c", null ],
+    [ "SaidCodingGoal", "class_move_to_code_1_1_exercise.html#a9df71e2219054cc7aeb67d9cd47af2fb", null ],
+    [ "SaidMazeGoal", "class_move_to_code_1_1_exercise.html#a5626298c40823aeb739dda1672ac65d0", null ],
+    [ "varNames", "class_move_to_code_1_1_exercise.html#ae3161d4a918467a8de611f40cf7a35be", null ]
 ];
